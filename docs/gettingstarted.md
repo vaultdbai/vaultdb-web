@@ -2,55 +2,28 @@
 title: Getting Started
 ---
 
-Examples
-========
+# Installing VaultDB
 
-This page shows some of the special features that come out of the box in Doctave. You can view how
-this file is constructed by opening the `examples.md` file in your `docs` folder.
+VaultDB is available as a Python package for macOS and Linux. You can visit our [GitHub
+repository](https://github.com/vaultdbai/vaultdb) or get the latest version from
+[PyPI](https://pypi.org/):
 
-## Diagrams
-
-Doctave comes with Mermaid.js support, which means you can create intricate diagrams directly in
-your Markdown files:
-
-```mermaid
-graph TD;
-    A-->B;
-    A-->C;
-    B-->D;
-    C-->D;
-
+```bash
+pip install vaultdbai
 ```
 
-You can read more about Mermaid JS in the [Doctave
-docs](https://cli.doctave.com/features/mermaid-js) or by going through the Mermaid JS
-[tutorials](https://mermaid-js.github.io/mermaid/diagrams-and-syntax-and-examples/n00b-syntaxReference.html).
+We highly recommend using **Python 3** for new projects. VaultDB does supports Python 3.7 and higher.
 
-## Syntax highlighting
+:::info
 
-Syntax highlighting is provided by [Prism](https://prismjs.com/) and Doctave supports most popular
-languages out of the box.
+If you want to get a feel of VaultDB and the infrastructure behind it without having to
+install anything locally, you can do in the browser by signing up for [a VaultDB
+Hub](datahub.html).
 
-```rust
-impl Watcher {
-    fn notify<S: Into<String>>(&self, path: PathBuf, msg: S) -> bool {
-        self.channel.send((path, msg.into())).is_ok()
-    }
-}
+## Upgrading VaultDB
+
+If you have installed Metaflow previously, you can upgrade to the latest version with:
+
+```bash
+pip install --upgrade vaultdbai``
 ```
-
-You can refer to the Doctave [Markdown reference](https://cli.doctave.com/features/markdown) to see
-how to use syntax highlighting.
-
-## Search
-
-Doctave automatically indexes all your pages and allows you to search for them without any 3rd party
-services. You can see the search bar at the top of the page - hit the `s` key, and you can start
-searching all the content of the site.
-
-Note - the results are keyboard-friendly. Use either the tab key or arrow keys to navigate them.
-
-## Dark mode
-
-You can turn on dark mode by clicking on the button on the left side of the page - the one with the
-moon icon. Your browser will remember your selection for each Doctave site.

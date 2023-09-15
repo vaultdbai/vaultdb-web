@@ -1,42 +1,21 @@
 Welcome to VaultDB
 ==================
 
-Nice one! You're up and running. This site was generated from the contents of your `docs` folder. It
-currently is made of two pages. This one, and `examples.md`, which you can visit by clicking on the
-link on the left side of the page. You can get back to this page by clicking the top left title of
-the page.
+VaultDB is the Inprocess OLAP database that allows it's users to commit locally, push data to central location and merge from different streams. It is similar to Git and Github, work local share globaly. With Vaultdb your query results are merged from local and remote. We call it Data Inheritence. Set remote location to query remote data with local changes(Yes you can hide remote data from your queries with local delete statements). 
 
-## Let's add another page
+Vaultdb also has built in Security Framework for use cases where data is controlled through roles and data fortresses for Governance, Risk and Controls. This will aloow control partners ability to control who sees what without external softwares and managers.
 
-All of your documentation lives under the `docs` directory. You can start adding markdown files, and
-when running the `serve` command you will see changes automatically updated in the browser.
+VaultDB is built on top of [DuckDB](https://duckdb.org)
 
-Try it - add a new markdown file under `docs`, paste the content below, and watch what happens.
+## Functionality Coming Soon
 
-```markdown
----
-title: Another page
----
-
-Adding new pages is that simple
-===============================
-
-```
-
-When you hit save, you should see the left side navigation has updated, and a link to your new page
-shows up.
-
-## What next?
-
-There are plenty of resources to learn more about Doctave and how to use it effectively. Here are
-some articles to get you started:
-
-* [The official tutorial](https://cli.doctave.com/tutorial)
-* [Deployment instructions](https://cli.doctave.com/deployment)
-* [Doctave docs](https://cli.doctave.com/)
+1) Feature Engineering Views/Functions
+2) Integrated Machine learning or Deterministic Models that can be pulled from remote and pushed and merged to remote
+3) Model Deployment through Push 
+4) Production deployment through Merge 
+5) Model HUB
 
 ## Where can I get help?
 
-Feel free to open issues on the [Github Repo](https://github.com/Doctave/doctave), especially if
-you did not find an answer to a question in our documentation. You can also reach out directly to
-the maintainer via [Twitter](https://twitter.com/NiklasBegley) or email at nik@doctave.com.
+Feel free to open issues on the [Github Repo](https://github.com/vaultdbai), especially if
+you did not find an answer to a question in our documentation. You can also reach out directly to the us [Twitter](https://twitter.com/vaultdbai) or email at support@vaultdb.ai.

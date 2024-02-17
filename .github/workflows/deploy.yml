@@ -1,4 +1,4 @@
-name: Upload Cloudformation templates & deploy for preview
+name: deploy vaultdb.ai
 
 on:
   workflow_dispatch:

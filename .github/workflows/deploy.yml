@@ -24,7 +24,7 @@ env:
 
 jobs:
   Deploy:
-    name: Deploy Vaultdb Analytics and Datalake
+    name: Deploy VaultDB.ai
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -60,4 +60,3 @@ jobs:
           aws_secret_access_key: ${{ secrets.S3_KEY}}
           aws_bucket: ${{ secrets.AWS_BUCKET }}
           source_dir: 'dist'
-          destination_dir: ''

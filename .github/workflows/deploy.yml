@@ -11,8 +11,6 @@ on:
     tags:
       - '**'
     paths-ignore:
-      - 'examples/**'
-      - 'test/**'
       - '.github/workflows/**'
 
 concurrency:
@@ -36,7 +34,6 @@ jobs:
         run: |
             mkdir -p dist
             cp ./*.html ./dist/
-            cp ./README.md ./dist/
             cp -r ./css ./dist/          
             cp -r ./img ./dist/          
             cp -r ./js ./dist/          

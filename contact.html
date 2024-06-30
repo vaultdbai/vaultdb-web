@@ -391,121 +391,26 @@
     </div>
 
     <section class="contact_section">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-5 col-lg-6 col-xxl-5 col-sm-12 col col-12">
-            <div class="left_contact">
-              <h3 class="contact_heading">Contact Us</h3>
-              <div class="contact_line"></div>
-              <p>
-                Have a question or need more information <br />
-                about our advanced IoT Machine Learning <br />
-                (ML) models? We're here to help! Reach out <br />
-                to us through any of the following channels, <br />
-                and our team will be glad to assist you:
-              </p>
-            </div>
-          </div>
-          <img src="img/contactlight.png" alt="" class="contact_light" />
-
-          <div class="col-md-7 col-lg-6 col-xxl-7 col-sm-12 col2 col-12">
-            <div class="right_contact mt-5">
-              <h4 class="right_heading mb-3">Get In Touch</h4>
-              <p class="mb-4">Joined Now</p>
-
-              <form
-                id="myform"
-                onsubmit="return validation()"
-                action="https://formsubmit.co/chintumodi24@gmail.com"
-                target="_blank"
-                method="POST"
-              >
-                <div class="input_group">
-                  <label for="firstname">Fist Name</label>
-                  <input
-                    type="text"
-                    placeholder="First Name"
-                    name="fname"
-                    class="firstname form-control input inputStyle"
-                    id="firstname"
-                  />
-                  <div id="fnameError" class="error"></div>
-                </div>
-                <div class="input_group">
-                  <label for="lastname">Last Name</label>
-                  <input
-                    type="text"
-                    placeholder="Last Name"
-                    name="lname"
-                    class="lastname form-control input inputStyle"
-                    id="lastname"
-                  />
-                  <div id="lnameError" class="error"></div>
-                </div>
-                <div class="input_group">
-                  <label for="Email">Your Email</label>
-                  <input
-                    type="email"
-                    placeholder="Email"
-                    name="email"
-                    class="Email form-control input inputStyle"
-                    id="Email"
-                  />
-                  <div id="emailError" class="error"></div>
-                </div>
-
-                <h6 class="product">Our Product</h6>
-                <div class="product_group">
-                  <input
-                    type="checkbox"
-                    id="checkbox1"
-                    name="product"
-                    class="checkbox"
-                    value="VaultDB HUB"
-                  />
-                  <label for="checkbox1" class="checkboxTextStyle"
-                    >VaultDB HUB</label
-                  >
-                </div>
-                <div class="product_group">
-                  <input
-                    type="checkbox"
-                    id="checkbox2"
-                    name="product"
-                    class="checkbox"
-                    value="VaultDB Compute"
-                  />
-                  <label for="checkbox2" class="checkboxTextStyle"
-                    >VaultDB Compute</label
-                  >
-                </div>
-                <div class="product_group">
-                  <input
-                    type="checkbox"
-                    name="product"
-                    id="checkbox3"
-                    class="checkbox"
-                    value="VaultDB Actions (DevOps)"
-                  />
-                  <label for="checkbox3" class="checkboxTextStyle"
-                    >VaultDB Actions (DevOps)</label
-                  >
-                </div>
-                <!-- captcha false -->
-                <input type="hidden" name="_captcha" value="false" />
-                <!-- layout email form -->
-                <input type="hidden" name="_template" value="box" />
-
-                <div class="sumbit">
-                  <!-- <button id="submit_btn" data-bs-toggle="modal"
-                                    data-bs-target="#reg-modal">Submit</button> -->
-                  <button id="submit_btn" onclick="sendMail()">Submit</button>
-                </div>
-              </form>
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-10 col-lg-8 col-xl-6">
+            <div class="contact_box">
+              <div class="left_contact">
+                <h3 class="contact_heading">Contact Us</h3>
+                <div class="contact_line"></div>
+                <p>
+                  Have a question or need more information <br />
+                  about our advanced IoT Machine Learning <br />
+                  (ML) models? We're here to help! Reach out to us at <br />
+                  <a href="mailto:*****@vaultdb.ai" class="contact-email">*****@vaultdb.ai</a> or call us at 732-***-**** <br />
+                  and our team will be glad to assist you!
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
+      <img src="img/contactlight.png" alt="" class="contact_light" />
     </section>
 
     <!-- footer section ===========================================-->

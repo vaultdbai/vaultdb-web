@@ -2,6 +2,10 @@ import os
 import glob
 import copy
 from bs4 import BeautifulSoup
+from pathlib import Path
+
+# Exclusion list for layout syncing (documentation folders have their own custom nav)
+EXCLUDE_DIRS = ["docs", "products"]
 
 def adjust_paths(soup, depth):
     if depth == 0:
@@ -11,22 +15,26 @@ def adjust_paths(soup, depth):
     # Adjust href
     for tag in soup.find_all(['a', 'link']):
         href = tag.get('href')
-        if href and not href.startswith('http') and not href.startswith('mailto:') and not href.startswith('#'):
-            # If it already starts with ../, don't prefix it extra if we are just cloning from index
+        if href and not href.startswith(('http', 'mailto:', '#')):
             if not href.startswith('../'):
                 tag['href'] = prefix + href
 
     # Adjust src
     for tag in soup.find_all(['img', 'script']):
         src = tag.get('src')
-        if src and not src.startswith('http') and not src.startswith('data:'):
+        if src and not src.startswith(('http', 'data:')):
             if not src.startswith('../'):
                 tag['src'] = prefix + src
 
 def sync_layouts():
-    base_dir = '/vaultdb/vaultdb-web'
-    index_path = os.path.join(base_dir, 'index.html')
+    # Use relative pathing to ensure portability
+    base_dir = Path(os.path.abspath(os.path.dirname(__file__)))
+    index_path = base_dir / 'index.html'
     
+    if not index_path.exists():
+        print(f"Error: index.html not found in {base_dir}")
+        return
+
     with open(index_path, 'r', encoding='utf-8') as f:
         orig_html = f.read()
 
@@ -41,21 +49,27 @@ def sync_layouts():
         return
 
     # Find all html files
-    html_files = glob.glob(os.path.join(base_dir, '**', '*.html'), recursive=True)
+    html_files = glob.glob(str(base_dir / '**' / '*.html'), recursive=True)
     
-    for filepath in html_files:
+    for filepath_str in html_files:
+        filepath = Path(filepath_str)
+        
+        # Skip master page
         if filepath == index_path:
             continue
             
-        print(f"Syncing layout in {filepath}")
+        # Check if file is inside an excluded directory
+        rel_path = filepath.relative_to(base_dir)
+        if any(part in EXCLUDE_DIRS for part in rel_path.parts):
+            print(f"Skipping {rel_path} (Inside excluded doc directory)")
+            continue
+            
+        print(f"Syncing layout in {rel_path}")
         with open(filepath, 'r', encoding='utf-8') as f:
             content = f.read()
             
         page_soup = BeautifulSoup(content, 'html.parser')
-        
-        # Calculate depth for relative paths
-        rel_path = os.path.relpath(filepath, base_dir)
-        depth = rel_path.count(os.sep)
+        depth = len(rel_path.parts) - 1
         
         # Replace Header
         curr_header = page_soup.find('header', class_='header')
@@ -64,7 +78,7 @@ def sync_layouts():
             adjust_paths(new_header, depth)
             curr_header.replace_with(new_header)
             
-        # Replace Sidebar
+        # Replace Sidebar (Mobile)
         curr_sidebar = page_soup.find('div', class_='side_accordian')
         if curr_sidebar:
             new_sidebar = copy.copy(master_sidebar)
@@ -79,9 +93,9 @@ def sync_layouts():
             curr_footer.replace_with(new_footer)
             
         with open(filepath, 'w', encoding='utf-8') as f:
-            f.write(str(page_soup))
+            f.write(page_soup.prettify())
             
-    print("Sync complete.")
+    print("✨ Sync complete.")
 
 if __name__ == "__main__":
     sync_layouts()

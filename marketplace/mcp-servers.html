@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Kronos Re: The AI-Native Bermuda Sidecar</title>
+<meta content="noindex," name="“robots”" nofollow”=""/>
+<meta content="noindex," follow”="" name="“robots”"/>
+<meta content="index," name="“robots”" nofollow”=""/>
+<meta content="VaultDB.ai: Secure Inprocess database and cloud DataHub for IOT and Modeling" property="”og:title”">
+<meta content="Secure Inprocess database and cloud DataHub for IOT and Modeling" property="”og:description”">
+<meta content="Database, DataHub, IO, AI Modeling" property="”og:type”">
+<meta content="img/v-logo.png" property="”og:image”"/>
+<meta content="http://vaultdb.ai" property="”og:url”"/>
+<meta content="VaultDB.ai" property="”og:site_name”"/>
+<!--meta name+" keywords" content=" keywords go here"/-->
+<link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" rel="stylesheet"/>
+<link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" referrerpolicy="no-referrer" rel="stylesheet"/>
+<!-- favicon -->
+<link href="../img/v-logo.png" rel="icon" type="image/png"/>
+<!-- animation  -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+<link href="../css/style.css" rel="stylesheet"/>
+</meta></meta></meta>
+<style>
+    /* Marketplace Page Styles */
+    .mp-hero {
+        text-align: center;
+        padding: 12rem 2rem 6rem;
+    }
+    .mp-hero h1 {
+        font-family: var(--plus-font-family, 'Plus Jakarta Sans', sans-serif);
+        font-size: 4.8rem;
+        font-weight: 800;
+        color: #fff;
+        letter-spacing: -0.03em;
+        margin-bottom: 1.5rem;
+    }
+    .mp-hero p {
+        font-size: 1.8rem;
+        color: var(--para-color, #A896B7);
+        max-width: 600px;
+        margin: 0 auto 4rem;
+        line-height: 1.6;
+    }
+    .mp-stats {
+        display: flex;
+        justify-content: center;
+        gap: 4rem;
+        margin-bottom: 3rem;
+    }
+    .mp-stat {
+        text-align: center;
+    }
+    .mp-stat i {
+        font-size: 2.4rem;
+        color: var(--purple-color, #A044FF);
+        display: block;
+        margin-bottom: 0.8rem;
+    }
+    .mp-stat .count {
+        font-size: 3.6rem;
+        font-weight: 800;
+        color: #fff;
+        display: block;
+        line-height: 1;
+    }
+    .mp-stat .label {
+        font-size: 1.4rem;
+        color: var(--para-color, #A896B7);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+    }
+
+    /* Category Cards (Landing Page) */
+    .mp-categories {
+        padding: 0 2rem 8rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    .mp-cat-card {
+        display: block;
+        background: rgba(16, 16, 30, 0.6);
+        border: 1px solid rgba(168, 150, 183, 0.15);
+        border-radius: 20px;
+        padding: 4rem 3rem;
+        text-align: center;
+        text-decoration: none;
+        transition: all 0.35s ease;
+        height: 100%;
+    }
+    .mp-cat-card:hover {
+        border-color: var(--purple-color, #A044FF);
+        transform: translateY(-6px);
+        box-shadow: 0 20px 40px rgba(160, 68, 255, 0.2);
+        text-decoration: none;
+    }
+    .mp-cat-card i {
+        font-size: 3.6rem;
+        color: var(--purple-color, #A044FF);
+        margin-bottom: 2rem;
+        display: block;
+    }
+    .mp-cat-card h3 {
+        font-size: 2.4rem;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 1rem;
+    }
+    .mp-cat-card p {
+        font-size: 1.5rem;
+        color: var(--para-color, #A896B7);
+        margin-bottom: 1.5rem;
+        line-height: 1.5;
+    }
+    .mp-cat-count {
+        font-size: 1.3rem;
+        color: var(--purple-color, #A044FF);
+        font-weight: 600;
+    }
+
+    /* Toolbar (Search + Tags) */
+    .mp-toolbar {
+        max-width: 1200px;
+        margin: 0 auto 3rem;
+        padding: 0 2rem;
+    }
+    .mp-search {
+        width: 100%;
+        padding: 1.4rem 2rem;
+        font-size: 1.6rem;
+        background: rgba(16, 16, 30, 0.8);
+        border: 1px solid rgba(168, 150, 183, 0.2);
+        border-radius: 12px;
+        color: #fff;
+        outline: none;
+        transition: border-color 0.3s;
+        margin-bottom: 2rem;
+        font-family: inherit;
+    }
+    .mp-search:focus {
+        border-color: var(--purple-color, #A044FF);
+    }
+    .mp-search::placeholder {
+        color: rgba(168, 150, 183, 0.5);
+    }
+    .mp-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+    }
+    .mp-tag-btn {
+        padding: 0.6rem 1.4rem;
+        font-size: 1.3rem;
+        border: 1px solid rgba(168, 150, 183, 0.25);
+        border-radius: 99px;
+        background: transparent;
+        color: var(--para-color, #A896B7);
+        cursor: pointer;
+        transition: all 0.25s;
+        font-family: inherit;
+    }
+    .mp-tag-btn:hover, .mp-tag-btn.active {
+        background: var(--purple-color, #A044FF);
+        border-color: var(--purple-color, #A044FF);
+        color: #fff;
+    }
+
+    /* Item Cards */
+    .mp-grid {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem 8rem;
+    }
+    .mp-card {
+        background: rgba(16, 16, 30, 0.6);
+        border: 1px solid rgba(168, 150, 183, 0.12);
+        border-radius: 16px;
+        padding: 2.5rem;
+        transition: all 0.35s ease;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .mp-card:hover {
+        border-color: var(--purple-color, #A044FF);
+        transform: translateY(-4px);
+        box-shadow: 0 16px 32px rgba(160, 68, 255, 0.15);
+    }
+    .mp-card-header {
+        display: flex;
+        align-items: center;
+        gap: 1.2rem;
+        margin-bottom: 1.5rem;
+    }
+    .mp-card-header i {
+        font-size: 2.4rem;
+        color: var(--purple-color, #A044FF);
+    }
+    .mp-card-header h4 {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #fff;
+        margin: 0;
+        flex: 1;
+    }
+    .mp-version {
+        font-size: 1.1rem;
+        padding: 0.3rem 0.8rem;
+        background: rgba(160, 68, 255, 0.15);
+        border: 1px solid rgba(160, 68, 255, 0.3);
+        border-radius: 6px;
+        color: var(--purple-color, #A044FF);
+        white-space: nowrap;
+    }
+    .mp-card-desc {
+        font-size: 1.4rem;
+        color: var(--para-color, #A896B7);
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+        flex: 1;
+    }
+    .mp-card-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1.5rem;
+    }
+    .mp-card-tag {
+        font-size: 1.1rem;
+        padding: 0.3rem 0.8rem;
+        border: 1px solid rgba(168, 150, 183, 0.2);
+        border-radius: 6px;
+        color: var(--para-color, #A896B7);
+    }
+    .mp-card-meta {
+        display: flex;
+        gap: 1.5rem;
+        font-size: 1.2rem;
+        color: rgba(168, 150, 183, 0.6);
+        margin-bottom: 1.5rem;
+    }
+    .mp-card-meta i {
+        margin-right: 0.4rem;
+        color: rgba(168, 150, 183, 0.4);
+    }
+    .mp-install {
+        display: flex;
+        align-items: center;
+        background: rgba(11, 11, 26, 0.8);
+        border: 1px solid rgba(168, 150, 183, 0.1);
+        border-radius: 10px;
+        padding: 1rem 1.2rem;
+        margin-top: auto;
+    }
+    .mp-install code {
+        flex: 1;
+        font-size: 1.2rem;
+        color: #d0c4db;
+        overflow-x: auto;
+        white-space: nowrap;
+        font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+    }
+    .mp-install .copy-btn {
+        background: none;
+        border: none;
+        color: var(--para-color, #A896B7);
+        cursor: pointer;
+        padding: 0.4rem 0.6rem;
+        font-size: 1.3rem;
+        transition: color 0.25s;
+        flex-shrink: 0;
+    }
+    .mp-install .copy-btn:hover {
+        color: var(--purple-color, #A044FF);
+    }
+
+    /* Featured badge */
+    .mp-featured {
+        font-size: 1.0rem;
+        padding: 0.2rem 0.7rem;
+        background: rgba(160, 68, 255, 0.2);
+        border: 1px solid var(--purple-color, #A044FF);
+        border-radius: 4px;
+        color: var(--purple-color, #A044FF);
+        text-transform: uppercase;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+    }
+
+    /* Section header on listing pages */
+    .mp-section-header {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 12rem 2rem 3rem;
+    }
+    .mp-section-header h1 {
+        font-family: var(--plus-font-family, 'Plus Jakarta Sans', sans-serif);
+        font-size: 4rem;
+        font-weight: 800;
+        color: #fff;
+        margin-bottom: 1rem;
+    }
+    .mp-section-header p {
+        font-size: 1.6rem;
+        color: var(--para-color, #A896B7);
+    }
+    .mp-section-header .breadcrumb-link {
+        font-size: 1.4rem;
+        color: var(--purple-color, #A044FF);
+        text-decoration: none;
+        margin-bottom: 2rem;
+        display: inline-block;
+    }
+    .mp-section-header .breadcrumb-link:hover {
+        text-decoration: underline;
+    }
+
+    /* No results */
+    .mp-no-results {
+        text-align: center;
+        padding: 6rem 2rem;
+        color: var(--para-color, #A896B7);
+        font-size: 1.6rem;
+        display: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .mp-hero h1 { font-size: 3.2rem; }
+        .mp-hero { padding: 10rem 1.5rem 4rem; }
+        .mp-stats { gap: 2rem; }
+        .mp-stat .count { font-size: 2.8rem; }
+        .mp-section-header { padding: 10rem 1.5rem 2rem; }
+        .mp-section-header h1 { font-size: 3rem; }
+    }
+
+    /* Reset font sizing for marketplace (match site) */
+    html { font-size: 10px !important; }
+    body { font-size: 1.6rem !important; }
+</style>
+</head>
+<body style="overflow: hidden !important">
+<div class="container_body">
+<div class="container_inside">
+<!-- Nav Bar start Lg  -->
+<header class="header">
+<div class="logo">
+<img alt="" src="../img/mainlogo.png"/>
+<a href="../index.html">VaultDB.ai</a>
+</div>
+<ul class="menu_bar">
+          <li>
+            <a href="#" class="header_hover">KRONOS Modules</a>
+            <ul class="dropdown-menu" style="background-color: #10101e; width: 60rem;">
+              <div class="row p-4">
+                <div class="col-md-4">
+                  <li class="p-2"><a href="../products/asset/docs/index.html"><i
+                        class="fa-solid fa-cube me-2 text-purple"></i>Asset</a></li>
+                  <li class="p-2"><a href="../products/market/docs/index.html"><i
+                        class="fa-solid fa-chart-line me-2 text-purple"></i>Market</a></li>
+                  <li class="p-2"><a href="../products/liability/docs/index.html"><i
+                        class="fa-solid fa-file-invoice-dollar me-2 text-purple"></i>Liability</a></li>
+                  <li class="p-2"><a href="../products/assumptions/docs/index.html"><i
+                        class="fa-solid fa-table me-2 text-purple"></i>Assumptions</a></li>
+                  <li class="p-2"><a href="../products/scenario/docs/index.html"><i
+                        class="fa-solid fa-shuffle me-2 text-purple"></i>Scenario</a></li>
+                </div>
+                <div class="col-md-4">
+                  <li class="p-2"><a href="../products/valuation/docs/index.html"><i
+                        class="fa-solid fa-calculator me-2 text-purple"></i>Valuation</a></li>
+                  <li class="p-2"><a href="../products/alm/docs/index.html"><i
+                        class="fa-solid fa-scale-balanced me-2 text-purple"></i>ALM</a></li>
+                  <li class="p-2"><a href="../products/trading/docs/index.html"><i
+                        class="fa-solid fa-arrow-right-arrow-left me-2 text-purple"></i>Trading</a></li>
+                  <li class="p-2"><a href="../products/risk/docs/index.html"><i
+                        class="fa-solid fa-shield-halved me-2 text-purple"></i>Risk</a></li>
+                  <li class="p-2"><a href="../products/reporting/docs/index.html"><i
+                        class="fa-solid fa-file-lines me-2 text-purple"></i>Reporting</a></li>
+                </div>
+                <div class="col-md-4">
+                  <li class="p-2"><a href="../products/ingestion/docs/index.html"><i
+                        class="fa-solid fa-upload me-2 text-purple"></i>Ingestion</a></li>
+                  <li class="p-2"><a href="../products/dashboard/docs/index.html"><i
+                        class="fa-solid fa-gauge-high me-2 text-purple"></i>Dashboard</a></li>
+                  <li class="p-2"><a href="../products/core/docs/index.html"><i
+                        class="fa-solid fa-microchip me-2 text-purple"></i>Core Platform</a></li>
+                </div>
+              </div>
+            </ul>
+          </li>
+          <li class="second_bar">
+            <a href="#" class="header_hover">Developers</a>
+            <ul class="dev_menu" style="background-color: #10101e">
+              <li>
+                <div class="dev_box">
+                  <img src="../img/Group 1000001838.png" alt="menu_logo" class="first_dev_img" />
+                  <a href="../docs/index.html">Documentation Home</a>
+                  <div class="line" style="width: 100%"></div>
+                </div>
+                <div class="dev_box">
+                  <img src="../img/Group 1000001840.png" alt="menu_logo" />
+                  <a href="../docs/ARCHITECTURE.html">System Architecture</a>
+                  <div class="line"></div>
+                </div>
+                <div class="dev_box">
+                  <img src="../img/Group 1000001843.png" alt="menu_logo" />
+                  <a href="../docs/technology_system_architecture.html">End-to-End Architecture</a>
+                  <div class="line"></div>
+                </div>
+                <div class="dev_box">
+                  <img src="../img/Group 1000001843.png" alt="menu_logo" />
+                  <a href="../docs/standards_SUBMODULE_DOC_CONVENTION.html">Doc Standards</a>
+                </div>
+              </li>
+            </ul>
+          </li>
+          <li class="first_bar">
+            <a href="#" class="header_hover">Database</a>
+            <ul class="dropdown-menu" style="background-color: #10101e">
+              <li class="first_content_container">
+                <div class="first_content">
+                  <div class="dropdown_img">
+                    <img src="../img/Group 1000001831.png" alt="" />
+                  </div>
+                  <div class="dropdown_content">
+                    <p>VaultDB HUB</p>
+                    <p>
+                      Train, Test and deploy and manage your models with
+                      integrated Governance, Risk and Controls.
+                    </p>
+                  </div>
+                </div>
+                <div class="dropdown_btns">
+                  <a href="../database/index.html" class="dropdown_btn">VaultDB Database IOT Platform</a>
+                  <a href="../database/index.html" class="dropdown_btn">Websites and mobile Apps</a>
+                  <a href="https://docs.vaultdb.ai/hub/datahub" class="dropdown_btn">VaultDB Data Hub</a>
+                </div>
+                <div class="line"></div>
+              </li>
+              <li>
+                <div class="second_content second">
+                  <div class="dropdown_img">
+                    <img src="../img/Group 1000001832.png" alt="" />
+                  </div>
+                  <div class="dropdown_content">
+                    <p>VaultDB Compute</p>
+                    <p>
+                      Scalable cloud resources for distributed model execution.
+                    </p>
+                  </div>
+                  <div class="line_bottom">
+                    <div class="line"></div>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="second_content third_content">
+                  <div class="dropdown_img">
+                    <img src="../img/Group 1000001793.png" alt="" />
+                  </div>
+                  <div class="dropdown_content">
+                    <p>VaultDB Actions</p>
+                    <p class="para_1">
+                      CI/CD for compute intensive and analytical pipelines.
+                    </p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#" class="header_hover">AI Marketplace</a>
+            <ul class="dropdown-menu" style="background-color: #10101e; width: 30rem;">
+              <div class="p-4">
+                <li class="p-2"><a href="../marketplace/index.html"><i
+                      class="fa-solid fa-store me-2 text-purple"></i>Browse All</a></li>
+                <li class="p-2"><a href="../marketplace/skills.html"><i
+                      class="fa-solid fa-wand-magic-sparkles me-2 text-purple"></i>Skills</a></li>
+                <li class="p-2"><a href="../marketplace/mcp-servers.html"><i
+                      class="fa-solid fa-server me-2 text-purple"></i>MCP Servers</a></li>
+                <li class="p-2"><a href="../marketplace/plugins.html"><i
+                      class="fa-solid fa-plug me-2 text-purple"></i>Plugins</a></li>
+              </div>
+            </ul>
+          </li>
+          <li><a href="../about.html" class="header_hover">About Us</a></li>
+
+          <li>
+            <a href="../contact.html" class="contact_btn">Contact Us</a>
+          </li>
+        </ul>
+        <div class="header_icons">
+<i class="fa-solid fa-bars text-white fs-1 menu"></i>
+</div>
+</header>
+<!-- Nav Bar End -->
+<!-- Mobile sidebar=========================== -->
+<div class="side_accordian">
+<div class="menu_accordian">
+<div class="mobile_nav" style="background-color: var(--main-color)">
+<div class="logo">
+<img alt="" src="../img/logo.png"/>
+<a class="f-2" href="../index.html">VaultDB.ai</a>
+</div>
+<i class="fa-solid fa-xmark text-white fs-1 close_icon"></i>
+</div>
+<div class="link">
+<p class="dropdown_link dropdown_bar">Developers</p>
+<ul class="sub_menu dropdown">
+<a href="../docs/index.html">
+<div class="dev_nav">
+<div class="dev_nav_box">
+<div class="dev_nav_img">
+<img alt="" src="../img/Group 1000001838.png"/>
+</div>
+<div class="dev_para">Documentation Home</div>
+</div>
+</div>
+</a>
+</ul>
+<div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
+<ul class="sub_menu dropdown">
+<a href="../docs/ARCHITECTURE.html">
+<div class="dev_nav">
+<div class="dev_nav_box">
+<div class="dev_nav_img image">
+<img alt="" src="../img/Group 1000001840.png"/>
+</div>
+<div class="dev_para">System Architecture</div>
+</div>
+</div>
+</a>
+</ul>
+<div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
+<ul class="sub_menu dropdown">
+<a href="../docs/technology_system_architecture.html">
+<div class="dev_nav">
+<div class="dev_nav_box">
+<div class="dev_nav_img image">
+<img alt="" src="../img/Group 1000001843.png"/>
+</div>
+<div class="dev_para">End-to-End Architecture</div>
+</div>
+</div>
+</a>
+</ul>
+<div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
+<ul class="sub_menu dropdown">
+<a href="../docs/standards_SUBMODULE_DOC_CONVENTION.html">
+<div class="dev_nav">
+<div class="dev_nav_box">
+<div class="dev_nav_img image">
+<img alt="" src="../img/Group 1000001843.png"/>
+</div>
+<div class="dev_para">Doc Standards</div>
+</div>
+</div>
+</a>
+</ul>
+<div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
+</div>
+<div class="link">
+<p class="dropdown_link dropdown_bar">Database</p>
+<ul class="sub_menu dropdown">
+<div class="first_menu pb-5">
+<div class="content">
+<div class="first_img">
+<img alt="" src="../img/Group 1000001831.png"/>
+</div>
+<div class="first_menu_content">VaultDB HUB</div>
+</div>
+<div class="bottom_para">
+                  Train, Test and deploy and manage your models with
+                  integrated Governance, Risk and Controls. Control data your
+                  models are training on for Bias and compliance.
+                </div>
+<div class="first_btns">
+           <a class="contact_btn first_btn" href="../database/index.html">
+            VaultDB Database
+           </a>
+           <a class="contact_btn first_btn" href="../database/index.html">
+            VaultDB Applications
+           </a>
+<a class="dropdown_btn" href="https://docs.vaultdb.ai/hub/datahub">VaultDB Data Hub</a>
+</div>
+</div>
+</ul>
+<div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
+<ul class="sub_menu dropdown">
+<div class="second_menu first_menu mt-5">
+<div class="content">
+<div class="second_img first_img">
+<img alt="" src="../img/Group 1000001832.png"/>
+</div>
+<div class="first_menu_content">VaultDB Compute</div>
+</div>
+<div class="bottom_para">
+                  Train and Run your models across cloud providers on cheapest
+                  and unlimited resources.
+                </div>
+</div>
+</ul>
+<div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
+<ul class="sub_menu dropdown">
+<div class="second_menu first_menu">
+<div class="content">
+<div class="second_img first_img">
+<img alt="" src="../img/Frame.png"/>
+</div>
+<div class="first_menu_content">
+                    VaultDB Actions (DevOps)
+                  </div>
+</div>
+<div class="bottom_para">
+                  Train and Run your models across cloud providers on cheapest
+                  and unlimited resources.
+                </div>
+</div>
+</ul>
+<div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
+</div>
+<div class="link">
+<p class="dropdown_link dropdown_bar">AI Marketplace</p>
+<ul class="sub_menu dropdown">
+<a href="../marketplace/index.html">
+<div class="dev_nav">
+<div class="dev_nav_box">
+<div class="dev_nav_img image">
+<i class="fa-solid fa-store text-purple fs-4" style="padding: 0.5rem;"></i>
+</div>
+<div class="dev_para">Browse All</div>
+</div>
+</div>
+</a>
+</ul>
+<div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
+<ul class="sub_menu dropdown">
+<a href="../marketplace/skills.html">
+<div class="dev_nav">
+<div class="dev_nav_box">
+<div class="dev_nav_img image">
+<i class="fa-solid fa-wand-magic-sparkles text-purple fs-4" style="padding: 0.5rem;"></i>
+</div>
+<div class="dev_para">Skills</div>
+</div>
+</div>
+</a>
+</ul>
+<div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
+<ul class="sub_menu dropdown">
+<a href="../marketplace/mcp-servers.html">
+<div class="dev_nav">
+<div class="dev_nav_box">
+<div class="dev_nav_img image">
+<i class="fa-solid fa-server text-purple fs-4" style="padding: 0.5rem;"></i>
+</div>
+<div class="dev_para">MCP Servers</div>
+</div>
+</div>
+</a>
+</ul>
+<div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
+<ul class="sub_menu dropdown">
+<a href="../marketplace/plugins.html">
+<div class="dev_nav">
+<div class="dev_nav_box">
+<div class="dev_nav_img image">
+<i class="fa-solid fa-plug text-purple fs-4" style="padding: 0.5rem;"></i>
+</div>
+<div class="dev_para">Plugins</div>
+</div>
+</div>
+</a>
+</ul>
+<div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
+</div>
+<!--div class="link">
+              <p class="dropdown_link dropdown_bar">Services</p>
+              <ul class="sub_menu dropdown">
+                <div class="dev_nav service_nav">
+                  <div class="dev_nav_box service_nav_box">
+                    <div class="dev_nav_img image service_nav_img">
+                      <img src="../img/Group 1000001846.png" alt="" />
+                    </div>
+                    <div class="dev_para service_para">UX / UI Design</div>
+                  </div>
+                </div>
+              </ul>
+              <div
+                class="line line_navbar"
+                style="position: relative; bottom: 0; left: 0"
+              ></div>
+              <ul class="sub_menu dropdown">
+                <div class="dev_nav service_nav">
+                  <div class="dev_nav_box service_nav_box">
+                    <div class="dev_nav_img image service_nav_img">
+                      <img src="../img/Group 1000001847.png" alt="" />
+                    </div>
+                    <div class="dev_para service_para">Web Development</div>
+                  </div>
+                </div>
+              </ul>
+              <div
+                class="line line_navbar"
+                style="position: relative; bottom: 0; left: 0"
+              ></div>
+              <ul class="sub_menu dropdown">
+                <div class="dev_nav service_nav">
+                  <div class="dev_nav_box service_nav_box">
+                    <div class="dev_nav_img image service_nav_img">
+                      <img src="../img/Group 1000001797.png" alt="" />
+                    </div>
+                    <div class="dev_para service_para">App Development</div>
+                  </div>
+                </div>
+              </ul>
+              <div
+                class="line line_navbar"
+                style="position: relative; bottom: 0; left: 0"
+              ></div>
+              <ul class="sub_menu dropdown">
+                <div class="dev_nav service_nav">
+                  <div class="dev_nav_box service_nav_box">
+                    <div class="dev_nav_img image service_nav_img">
+                      <img src="../img/Group 1000001844.png" alt="" />
+                    </div>
+                    <div class="dev_para service_para">Consulting</div>
+                  </div>
+                </div>
+                <div class="service_p" style="color: var(--border-color)">
+                  Contact us for Cloud and model (deterministic or mathematical)
+                  development.
+                </div>
+              </ul>
+              <div
+                class="line line_navbar"
+                style="position: relative; bottom: 0; left: 0"
+              ></div>
+            </div-->
+<div class="link" style="border: 0; outline: 0">
+<a class="dropdown_link" href="../about.html" style="font-size: 20px">About Us</a>
+<div class="middle" style="border: 0">
+<a class="contact_btn" href="../contact.html">Contact Us</a>
+</div>
+</div>
+</div>
+</div>
+
+
+    <div class="mp-section-header">
+        <a href="index.html" class="breadcrumb-link">
+            <i class="fa-solid fa-arrow-left" style="margin-right: 0.5rem;"></i>Back to Marketplace
+        </a>
+        <h1>
+            <i class="fa-solid fa-server" style="color: var(--purple-color, #A044FF); margin-right: 1.5rem;"></i>
+            MCP Servers
+        </h1>
+        <p>Tools and data access via Model Context Protocol</p>
+    </div>
+
+    <div class="mp-toolbar">
+        <input type="text" id="mp-search" class="mp-search"
+               placeholder="Search mcp servers..." />
+        <div class="mp-tags">
+            <button class="mp-tag-btn active" data-tag="all">All</button>
+<button class="mp-tag-btn" data-tag="analytics">analytics</button>
+<button class="mp-tag-btn" data-tag="browser">browser</button>
+<button class="mp-tag-btn" data-tag="curves">curves</button>
+<button class="mp-tag-btn" data-tag="data">data</button>
+<button class="mp-tag-btn" data-tag="documents">documents</button>
+<button class="mp-tag-btn" data-tag="duckdb">duckdb</button>
+<button class="mp-tag-btn" data-tag="esg">esg</button>
+<button class="mp-tag-btn" data-tag="insurance">insurance</button>
+<button class="mp-tag-btn" data-tag="market">market</button>
+<button class="mp-tag-btn" data-tag="monte-carlo">monte-carlo</button>
+<button class="mp-tag-btn" data-tag="prospectus">prospectus</button>
+<button class="mp-tag-btn" data-tag="rates">rates</button>
+<button class="mp-tag-btn" data-tag="scenario">scenario</button>
+<button class="mp-tag-btn" data-tag="sec-edgar">sec-edgar</button>
+<button class="mp-tag-btn" data-tag="simulation">simulation</button>
+<button class="mp-tag-btn" data-tag="spreads">spreads</button>
+<button class="mp-tag-btn" data-tag="sql">sql</button>
+<button class="mp-tag-btn" data-tag="web-crawling">web-crawling</button>
+
+        </div>
+    </div>
+
+    <div class="mp-grid">
+        <div class="row" id="mp-card-grid">
+            
+    <div class="col-lg-4 col-md-6 mb-4 mp-item"
+         data-name="duckdb analytics"
+         data-desc="query actuarial and financial data stored in duckdb/ducklake with sql and natural language."
+         data-tags="analytics,sql,duckdb,data">
+        <div class="mp-card">
+            <div class="mp-card-header">
+                <i class="fa-solid fa-database"></i>
+                <h4>DuckDB Analytics</h4>
+                <span class="mp-version">v1.0.0</span>
+                <span class="mp-featured">Featured</span>
+            </div>
+            <p class="mp-card-desc">Query actuarial and financial data stored in DuckDB/DuckLake with SQL and natural language.</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">analytics</span><span class="mp-card-tag">sql</span><span class="mp-card-tag">duckdb</span><span class="mp-card-tag">data</span></div>
+            <div class="mp-card-meta">
+                <span><i class="fa-solid fa-user"></i>VaultDB</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>core, assumptions, liability, valuation</span>
+            </div>
+            <div class="mp-install">
+                <code>claude mcp add duckdb-analytics -- python servers/duckdb-analytics/server.py</code>
+                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-4 mp-item"
+         data-name="insurance browser"
+         data-desc="intelligent web browser agent for discovering and downloading insurance prospectuses, sec filings, and regulatory documents."
+         data-tags="browser,insurance,prospectus,sec-edgar,web-crawling,documents">
+        <div class="mp-card">
+            <div class="mp-card-header">
+                <i class="fa-solid fa-globe"></i>
+                <h4>Insurance Browser</h4>
+                <span class="mp-version">v1.0.0</span>
+                <span class="mp-featured">Featured</span>
+            </div>
+            <p class="mp-card-desc">Intelligent web browser agent for discovering and downloading insurance prospectuses, SEC filings, and regulatory documents.</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">browser</span><span class="mp-card-tag">insurance</span><span class="mp-card-tag">prospectus</span><span class="mp-card-tag">sec-edgar</span><span class="mp-card-tag">web-crawling</span><span class="mp-card-tag">documents</span></div>
+            <div class="mp-card-meta">
+                <span><i class="fa-solid fa-user"></i>VaultDB</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>ingestion, assumptions, liability</span>
+            </div>
+            <div class="mp-install">
+                <code>claude mcp add insurance-browser -- python servers/insurance-browser/server.py</code>
+                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-4 mp-item"
+         data-name="scenario engine"
+         data-desc="generate economic scenarios — risk-neutral and real-world paths for interest rates, equity, and credit."
+         data-tags="scenario,esg,simulation,monte-carlo">
+        <div class="mp-card">
+            <div class="mp-card-header">
+                <i class="fa-solid fa-shuffle"></i>
+                <h4>Scenario Engine</h4>
+                <span class="mp-version">v1.0.0</span>
+                <span class="mp-featured">Featured</span>
+            </div>
+            <p class="mp-card-desc">Generate economic scenarios — risk-neutral and real-world paths for interest rates, equity, and credit.</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">scenario</span><span class="mp-card-tag">esg</span><span class="mp-card-tag">simulation</span><span class="mp-card-tag">monte-carlo</span></div>
+            <div class="mp-card-meta">
+                <span><i class="fa-solid fa-user"></i>VaultDB</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>scenario, valuation, risk, alm</span>
+            </div>
+            <div class="mp-install">
+                <code>claude mcp add scenario-engine -- python servers/scenario-engine/server.py</code>
+                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-4 mp-item"
+         data-name="market data"
+         data-desc="access real-time and historical yield curves, credit spreads, equity indices, and volatility surfaces."
+         data-tags="market,curves,rates,spreads">
+        <div class="mp-card">
+            <div class="mp-card-header">
+                <i class="fa-solid fa-chart-line"></i>
+                <h4>Market Data</h4>
+                <span class="mp-version">v1.0.0</span>
+                
+            </div>
+            <p class="mp-card-desc">Access real-time and historical yield curves, credit spreads, equity indices, and volatility surfaces.</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">market</span><span class="mp-card-tag">curves</span><span class="mp-card-tag">rates</span><span class="mp-card-tag">spreads</span></div>
+            <div class="mp-card-meta">
+                <span><i class="fa-solid fa-user"></i>VaultDB</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>market, asset, scenario, valuation</span>
+            </div>
+            <div class="mp-install">
+                <code>claude mcp add market-data -- python servers/market-data/server.py</code>
+                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+        </div>
+        <div class="mp-no-results" id="mp-no-results">
+            <i class="fa-solid fa-search" style="font-size: 3rem; display: block; margin-bottom: 1.5rem;"></i>
+            No mcp servers match your search.
+        </div>
+    </div>
+
+    <!-- footer section ===========================================-->
+<div class="container_body">
+<div class="container_inside">
+<section class="footer_section">
+<div class="footer mt-5" data-aos="fade-left" data-aos-duration="2000">
+<div class="left">
+<img alt="" src="../img/mainlogo.png">
+<a class="footer_logo" href="#">VaultDB.ai</a>
+</img></div>
+<div class="right" style="margin-bottom: 10px">
+<a href="#">
+<i class="fa-brands fa-github"></i>
+</a>
+<a href="#">
+<i class="fa-brands fa-youtube"></i>
+</a>
+<a href="#">
+<i class="fa-brands fa-facebook"></i>
+</a>
+<a href="#">
+<i class="fa-brands fa-twitter"></i>
+</a>
+<a href="#">
+<i class="fa-brands fa-instagram"></i>
+</a>
+<a href="#">
+<i class="fa-brands fa-linkedin"></i>
+</a>
+</div>
+</div>
+<div>
+<div class="row mb-5">
+<div class="line mb-5"></div>
+<div class="col-md-4 col-sm-12 col-lg-4">
+<h5 class="bottom_left">
+                VaultDB.ai @ 2026. All rights reserved.
+              </h5>
+</div>
+<div class="col-md-8 col-sm-12 col-lg-8 bottom_right">
+<a href="../index.html">VaultDB.ai</a>
+<a href="../contact.html">Contact Us</a>
+<a href="../about.html">About Us</a>
+<a href="#">Privacy Policy</a>
+<a href="#">Terms and Conditions</a>
+</div>
+</div>
+</div>
+<div class="footer_box">
+<img alt="" class="footer_img" src="../img/Rectangle 9.png">
+</img></div>
+</section>
+</div>
+</div>
+<script crossorigin="anonymous" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+  </script>
+<script src="../js/index.js"></script>
+</body>
+</html>
+    
+<script>
+(function() {
+    // Search + Tag Filter
+    var searchBox = document.getElementById('mp-search');
+    var cards = document.querySelectorAll('.mp-item');
+    var tagBtns = document.querySelectorAll('.mp-tag-btn');
+    var noResults = document.getElementById('mp-no-results');
+    var activeTag = 'all';
+
+    if (!searchBox) return;
+
+    function filterCards() {
+        var q = searchBox.value.toLowerCase();
+        var visible = 0;
+        cards.forEach(function(card) {
+            var name = card.getAttribute('data-name') || '';
+            var desc = card.getAttribute('data-desc') || '';
+            var tags = card.getAttribute('data-tags') || '';
+            var matchSearch = !q || name.indexOf(q) !== -1 || desc.indexOf(q) !== -1 || tags.indexOf(q) !== -1;
+            var matchTag = activeTag === 'all' || tags.split(',').indexOf(activeTag) !== -1;
+            if (matchSearch && matchTag) {
+                card.style.display = '';
+                visible++;
+            } else {
+                card.style.display = 'none';
+            }
+        });
+        if (noResults) {
+            noResults.style.display = visible === 0 ? 'block' : 'none';
+        }
+    }
+
+    searchBox.addEventListener('input', filterCards);
+
+    tagBtns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            tagBtns.forEach(function(b) { b.classList.remove('active'); });
+            this.classList.add('active');
+            activeTag = this.getAttribute('data-tag');
+            filterCards();
+        });
+    });
+
+    // Copy to clipboard
+    window.copyInstallCmd = function(btn) {
+        var code = btn.previousElementSibling;
+        if (!code) return;
+        var text = code.textContent || code.innerText;
+        if (navigator.clipboard) {
+            navigator.clipboard.writeText(text.trim());
+        } else {
+            var ta = document.createElement('textarea');
+            ta.value = text.trim();
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+        }
+        btn.innerHTML = '<i class="fa-solid fa-check"></i>';
+        setTimeout(function() {
+            btn.innerHTML = '<i class="fa-solid fa-copy"></i>';
+        }, 2000);
+    };
+})();
+</script>

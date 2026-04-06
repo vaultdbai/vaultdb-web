@@ -34,9 +34,13 @@ jobs:
         run: |
             mkdir -p dist
             cp ./*.html ./dist/
-            cp -r ./css ./dist/          
-            cp -r ./img ./dist/          
-            cp -r ./js ./dist/          
+            cp -r ./css ./dist/
+            cp -r ./img ./dist/
+            cp -r ./js ./dist/
+            [ -d ./marketplace ] && cp -r ./marketplace ./dist/
+            [ -d ./database ] && cp -r ./database ./dist/
+            [ -d ./docs ] && cp -r ./docs ./dist/
+            [ -d ./products ] && cp -r ./products ./dist/
 
       - uses: vitorsgomes/s3-rm-action@master
         name: cleanup s3 folder awsquickstart

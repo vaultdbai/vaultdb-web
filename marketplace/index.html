@@ -1,0 +1,1661 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Kronos Re: The AI-Native Bermuda Sidecar</title>
+<meta content="noindex," name="“robots”" nofollow”=""/>
+<meta content="noindex," follow”="" name="“robots”"/>
+<meta content="index," name="“robots”" nofollow”=""/>
+<meta content="VaultDB.ai: Secure Inprocess database and cloud DataHub for IOT and Modeling" property="”og:title”">
+<meta content="Secure Inprocess database and cloud DataHub for IOT and Modeling" property="”og:description”">
+<meta content="Database, DataHub, IO, AI Modeling" property="”og:type”">
+<meta content="img/v-logo.png" property="”og:image”"/>
+<meta content="http://vaultdb.ai" property="”og:url”"/>
+<meta content="VaultDB.ai" property="”og:site_name”"/>
+<!--meta name+" keywords" content=" keywords go here"/-->
+<link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" rel="stylesheet"/>
+<link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" referrerpolicy="no-referrer" rel="stylesheet"/>
+<!-- favicon -->
+<link href="../img/v-logo.png" rel="icon" type="image/png"/>
+<!-- animation  -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+<link href="../css/style.css" rel="stylesheet"/>
+</meta></meta></meta>
+<style>
+    /* Marketplace Page Styles */
+    .mp-hero {
+        text-align: center;
+        padding: 12rem 2rem 6rem;
+    }
+    .mp-hero h1 {
+        font-family: var(--plus-font-family, 'Plus Jakarta Sans', sans-serif);
+        font-size: 4.8rem;
+        font-weight: 800;
+        color: #fff;
+        letter-spacing: -0.03em;
+        margin-bottom: 1.5rem;
+    }
+    .mp-hero p {
+        font-size: 1.8rem;
+        color: var(--para-color, #A896B7);
+        max-width: 600px;
+        margin: 0 auto 4rem;
+        line-height: 1.6;
+    }
+    .mp-stats {
+        display: flex;
+        justify-content: center;
+        gap: 4rem;
+        margin-bottom: 3rem;
+    }
+    .mp-stat {
+        text-align: center;
+    }
+    .mp-stat i {
+        font-size: 2.4rem;
+        color: var(--purple-color, #A044FF);
+        display: block;
+        margin-bottom: 0.8rem;
+    }
+    .mp-stat .count {
+        font-size: 3.6rem;
+        font-weight: 800;
+        color: #fff;
+        display: block;
+        line-height: 1;
+    }
+    .mp-stat .label {
+        font-size: 1.4rem;
+        color: var(--para-color, #A896B7);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+    }
+
+    /* Category Cards (Landing Page) */
+    .mp-categories {
+        padding: 0 2rem 8rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    .mp-cat-card {
+        display: block;
+        background: rgba(16, 16, 30, 0.6);
+        border: 1px solid rgba(168, 150, 183, 0.15);
+        border-radius: 20px;
+        padding: 4rem 3rem;
+        text-align: center;
+        text-decoration: none;
+        transition: all 0.35s ease;
+        height: 100%;
+    }
+    .mp-cat-card:hover {
+        border-color: var(--purple-color, #A044FF);
+        transform: translateY(-6px);
+        box-shadow: 0 20px 40px rgba(160, 68, 255, 0.2);
+        text-decoration: none;
+    }
+    .mp-cat-card i {
+        font-size: 3.6rem;
+        color: var(--purple-color, #A044FF);
+        margin-bottom: 2rem;
+        display: block;
+    }
+    .mp-cat-card h3 {
+        font-size: 2.4rem;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 1rem;
+    }
+    .mp-cat-card p {
+        font-size: 1.5rem;
+        color: var(--para-color, #A896B7);
+        margin-bottom: 1.5rem;
+        line-height: 1.5;
+    }
+    .mp-cat-count {
+        font-size: 1.3rem;
+        color: var(--purple-color, #A044FF);
+        font-weight: 600;
+    }
+
+    /* Toolbar (Search + Tags) */
+    .mp-toolbar {
+        max-width: 1200px;
+        margin: 0 auto 3rem;
+        padding: 0 2rem;
+    }
+    .mp-search {
+        width: 100%;
+        padding: 1.4rem 2rem;
+        font-size: 1.6rem;
+        background: rgba(16, 16, 30, 0.8);
+        border: 1px solid rgba(168, 150, 183, 0.2);
+        border-radius: 12px;
+        color: #fff;
+        outline: none;
+        transition: border-color 0.3s;
+        margin-bottom: 2rem;
+        font-family: inherit;
+    }
+    .mp-search:focus {
+        border-color: var(--purple-color, #A044FF);
+    }
+    .mp-search::placeholder {
+        color: rgba(168, 150, 183, 0.5);
+    }
+    .mp-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+    }
+    .mp-tag-btn {
+        padding: 0.6rem 1.4rem;
+        font-size: 1.3rem;
+        border: 1px solid rgba(168, 150, 183, 0.25);
+        border-radius: 99px;
+        background: transparent;
+        color: var(--para-color, #A896B7);
+        cursor: pointer;
+        transition: all 0.25s;
+        font-family: inherit;
+    }
+    .mp-tag-btn:hover, .mp-tag-btn.active {
+        background: var(--purple-color, #A044FF);
+        border-color: var(--purple-color, #A044FF);
+        color: #fff;
+    }
+
+    /* Item Cards */
+    .mp-grid {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem 8rem;
+    }
+    .mp-card {
+        background: rgba(16, 16, 30, 0.6);
+        border: 1px solid rgba(168, 150, 183, 0.12);
+        border-radius: 16px;
+        padding: 2.5rem;
+        transition: all 0.35s ease;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .mp-card:hover {
+        border-color: var(--purple-color, #A044FF);
+        transform: translateY(-4px);
+        box-shadow: 0 16px 32px rgba(160, 68, 255, 0.15);
+    }
+    .mp-card-header {
+        display: flex;
+        align-items: center;
+        gap: 1.2rem;
+        margin-bottom: 1.5rem;
+    }
+    .mp-card-header i {
+        font-size: 2.4rem;
+        color: var(--purple-color, #A044FF);
+    }
+    .mp-card-header h4 {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #fff;
+        margin: 0;
+        flex: 1;
+    }
+    .mp-version {
+        font-size: 1.1rem;
+        padding: 0.3rem 0.8rem;
+        background: rgba(160, 68, 255, 0.15);
+        border: 1px solid rgba(160, 68, 255, 0.3);
+        border-radius: 6px;
+        color: var(--purple-color, #A044FF);
+        white-space: nowrap;
+    }
+    .mp-card-desc {
+        font-size: 1.4rem;
+        color: var(--para-color, #A896B7);
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+        flex: 1;
+    }
+    .mp-card-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1.5rem;
+    }
+    .mp-card-tag {
+        font-size: 1.1rem;
+        padding: 0.3rem 0.8rem;
+        border: 1px solid rgba(168, 150, 183, 0.2);
+        border-radius: 6px;
+        color: var(--para-color, #A896B7);
+    }
+    .mp-card-meta {
+        display: flex;
+        gap: 1.5rem;
+        font-size: 1.2rem;
+        color: rgba(168, 150, 183, 0.6);
+        margin-bottom: 1.5rem;
+    }
+    .mp-card-meta i {
+        margin-right: 0.4rem;
+        color: rgba(168, 150, 183, 0.4);
+    }
+    .mp-install {
+        display: flex;
+        align-items: center;
+        background: rgba(11, 11, 26, 0.8);
+        border: 1px solid rgba(168, 150, 183, 0.1);
+        border-radius: 10px;
+        padding: 1rem 1.2rem;
+        margin-top: auto;
+    }
+    .mp-install code {
+        flex: 1;
+        font-size: 1.2rem;
+        color: #d0c4db;
+        overflow-x: auto;
+        white-space: nowrap;
+        font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+    }
+    .mp-install .copy-btn {
+        background: none;
+        border: none;
+        color: var(--para-color, #A896B7);
+        cursor: pointer;
+        padding: 0.4rem 0.6rem;
+        font-size: 1.3rem;
+        transition: color 0.25s;
+        flex-shrink: 0;
+    }
+    .mp-install .copy-btn:hover {
+        color: var(--purple-color, #A044FF);
+    }
+
+    /* Featured badge */
+    .mp-featured {
+        font-size: 1.0rem;
+        padding: 0.2rem 0.7rem;
+        background: rgba(160, 68, 255, 0.2);
+        border: 1px solid var(--purple-color, #A044FF);
+        border-radius: 4px;
+        color: var(--purple-color, #A044FF);
+        text-transform: uppercase;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+    }
+
+    /* Section header on listing pages */
+    .mp-section-header {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 12rem 2rem 3rem;
+    }
+    .mp-section-header h1 {
+        font-family: var(--plus-font-family, 'Plus Jakarta Sans', sans-serif);
+        font-size: 4rem;
+        font-weight: 800;
+        color: #fff;
+        margin-bottom: 1rem;
+    }
+    .mp-section-header p {
+        font-size: 1.6rem;
+        color: var(--para-color, #A896B7);
+    }
+    .mp-section-header .breadcrumb-link {
+        font-size: 1.4rem;
+        color: var(--purple-color, #A044FF);
+        text-decoration: none;
+        margin-bottom: 2rem;
+        display: inline-block;
+    }
+    .mp-section-header .breadcrumb-link:hover {
+        text-decoration: underline;
+    }
+
+    /* No results */
+    .mp-no-results {
+        text-align: center;
+        padding: 6rem 2rem;
+        color: var(--para-color, #A896B7);
+        font-size: 1.6rem;
+        display: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .mp-hero h1 { font-size: 3.2rem; }
+        .mp-hero { padding: 10rem 1.5rem 4rem; }
+        .mp-stats { gap: 2rem; }
+        .mp-stat .count { font-size: 2.8rem; }
+        .mp-section-header { padding: 10rem 1.5rem 2rem; }
+        .mp-section-header h1 { font-size: 3rem; }
+    }
+
+    /* Reset font sizing for marketplace (match site) */
+    html { font-size: 10px !important; }
+    body { font-size: 1.6rem !important; }
+</style>
+</head>
+<body style="overflow: hidden !important">
+<div class="container_body">
+<div class="container_inside">
+<!-- Nav Bar start Lg  -->
+<header class="header">
+<div class="logo">
+<img alt="" src="../img/mainlogo.png"/>
+<a href="../index.html">VaultDB.ai</a>
+</div>
+<ul class="menu_bar">
+          <li>
+            <a href="#" class="header_hover">KRONOS Modules</a>
+            <ul class="dropdown-menu" style="background-color: #10101e; width: 60rem;">
+              <div class="row p-4">
+                <div class="col-md-4">
+                  <li class="p-2"><a href="../products/asset/docs/index.html"><i
+                        class="fa-solid fa-cube me-2 text-purple"></i>Asset</a></li>
+                  <li class="p-2"><a href="../products/market/docs/index.html"><i
+                        class="fa-solid fa-chart-line me-2 text-purple"></i>Market</a></li>
+                  <li class="p-2"><a href="../products/liability/docs/index.html"><i
+                        class="fa-solid fa-file-invoice-dollar me-2 text-purple"></i>Liability</a></li>
+                  <li class="p-2"><a href="../products/assumptions/docs/index.html"><i
+                        class="fa-solid fa-table me-2 text-purple"></i>Assumptions</a></li>
+                  <li class="p-2"><a href="../products/scenario/docs/index.html"><i
+                        class="fa-solid fa-shuffle me-2 text-purple"></i>Scenario</a></li>
+                </div>
+                <div class="col-md-4">
+                  <li class="p-2"><a href="../products/valuation/docs/index.html"><i
+                        class="fa-solid fa-calculator me-2 text-purple"></i>Valuation</a></li>
+                  <li class="p-2"><a href="../products/alm/docs/index.html"><i
+                        class="fa-solid fa-scale-balanced me-2 text-purple"></i>ALM</a></li>
+                  <li class="p-2"><a href="../products/trading/docs/index.html"><i
+                        class="fa-solid fa-arrow-right-arrow-left me-2 text-purple"></i>Trading</a></li>
+                  <li class="p-2"><a href="../products/risk/docs/index.html"><i
+                        class="fa-solid fa-shield-halved me-2 text-purple"></i>Risk</a></li>
+                  <li class="p-2"><a href="../products/reporting/docs/index.html"><i
+                        class="fa-solid fa-file-lines me-2 text-purple"></i>Reporting</a></li>
+                </div>
+                <div class="col-md-4">
+                  <li class="p-2"><a href="../products/ingestion/docs/index.html"><i
+                        class="fa-solid fa-upload me-2 text-purple"></i>Ingestion</a></li>
+                  <li class="p-2"><a href="../products/dashboard/docs/index.html"><i
+                        class="fa-solid fa-gauge-high me-2 text-purple"></i>Dashboard</a></li>
+                  <li class="p-2"><a href="../products/core/docs/index.html"><i
+                        class="fa-solid fa-microchip me-2 text-purple"></i>Core Platform</a></li>
+                </div>
+              </div>
+            </ul>
+          </li>
+          <li class="second_bar">
+            <a href="#" class="header_hover">Developers</a>
+            <ul class="dev_menu" style="background-color: #10101e">
+              <li>
+                <div class="dev_box">
+                  <img src="../img/Group 1000001838.png" alt="menu_logo" class="first_dev_img" />
+                  <a href="../docs/index.html">Documentation Home</a>
+                  <div class="line" style="width: 100%"></div>
+                </div>
+                <div class="dev_box">
+                  <img src="../img/Group 1000001840.png" alt="menu_logo" />
+                  <a href="../docs/ARCHITECTURE.html">System Architecture</a>
+                  <div class="line"></div>
+                </div>
+                <div class="dev_box">
+                  <img src="../img/Group 1000001843.png" alt="menu_logo" />
+                  <a href="../docs/technology_system_architecture.html">End-to-End Architecture</a>
+                  <div class="line"></div>
+                </div>
+                <div class="dev_box">
+                  <img src="../img/Group 1000001843.png" alt="menu_logo" />
+                  <a href="../docs/standards_SUBMODULE_DOC_CONVENTION.html">Doc Standards</a>
+                </div>
+              </li>
+            </ul>
+          </li>
+          <li class="first_bar">
+            <a href="#" class="header_hover">Database</a>
+            <ul class="dropdown-menu" style="background-color: #10101e">
+              <li class="first_content_container">
+                <div class="first_content">
+                  <div class="dropdown_img">
+                    <img src="../img/Group 1000001831.png" alt="" />
+                  </div>
+                  <div class="dropdown_content">
+                    <p>VaultDB HUB</p>
+                    <p>
+                      Train, Test and deploy and manage your models with
+                      integrated Governance, Risk and Controls.
+                    </p>
+                  </div>
+                </div>
+                <div class="dropdown_btns">
+                  <a href="../database/index.html" class="dropdown_btn">VaultDB Database IOT Platform</a>
+                  <a href="../database/index.html" class="dropdown_btn">Websites and mobile Apps</a>
+                  <a href="https://docs.vaultdb.ai/hub/datahub" class="dropdown_btn">VaultDB Data Hub</a>
+                </div>
+                <div class="line"></div>
+              </li>
+              <li>
+                <div class="second_content second">
+                  <div class="dropdown_img">
+                    <img src="../img/Group 1000001832.png" alt="" />
+                  </div>
+                  <div class="dropdown_content">
+                    <p>VaultDB Compute</p>
+                    <p>
+                      Scalable cloud resources for distributed model execution.
+                    </p>
+                  </div>
+                  <div class="line_bottom">
+                    <div class="line"></div>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="second_content third_content">
+                  <div class="dropdown_img">
+                    <img src="../img/Group 1000001793.png" alt="" />
+                  </div>
+                  <div class="dropdown_content">
+                    <p>VaultDB Actions</p>
+                    <p class="para_1">
+                      CI/CD for compute intensive and analytical pipelines.
+                    </p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#" class="header_hover">AI Marketplace</a>
+            <ul class="dropdown-menu" style="background-color: #10101e; width: 30rem;">
+              <div class="p-4">
+                <li class="p-2"><a href="../marketplace/index.html"><i
+                      class="fa-solid fa-store me-2 text-purple"></i>Browse All</a></li>
+                <li class="p-2"><a href="../marketplace/skills.html"><i
+                      class="fa-solid fa-wand-magic-sparkles me-2 text-purple"></i>Skills</a></li>
+                <li class="p-2"><a href="../marketplace/mcp-servers.html"><i
+                      class="fa-solid fa-server me-2 text-purple"></i>MCP Servers</a></li>
+                <li class="p-2"><a href="../marketplace/plugins.html"><i
+                      class="fa-solid fa-plug me-2 text-purple"></i>Plugins</a></li>
+              </div>
+            </ul>
+          </li>
+          <li><a href="../about.html" class="header_hover">About Us</a></li>
+
+          <li>
+            <a href="../contact.html" class="contact_btn">Contact Us</a>
+          </li>
+        </ul>
+        <div class="header_icons">
+<i class="fa-solid fa-bars text-white fs-1 menu"></i>
+</div>
+</header>
+<!-- Nav Bar End -->
+<!-- Mobile sidebar=========================== -->
+<div class="side_accordian">
+<div class="menu_accordian">
+<div class="mobile_nav" style="background-color: var(--main-color)">
+<div class="logo">
+<img alt="" src="../img/logo.png"/>
+<a class="f-2" href="../index.html">VaultDB.ai</a>
+</div>
+<i class="fa-solid fa-xmark text-white fs-1 close_icon"></i>
+</div>
+<div class="link">
+<p class="dropdown_link dropdown_bar">Developers</p>
+<ul class="sub_menu dropdown">
+<a href="../docs/index.html">
+<div class="dev_nav">
+<div class="dev_nav_box">
+<div class="dev_nav_img">
+<img alt="" src="../img/Group 1000001838.png"/>
+</div>
+<div class="dev_para">Documentation Home</div>
+</div>
+</div>
+</a>
+</ul>
+<div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
+<ul class="sub_menu dropdown">
+<a href="../docs/ARCHITECTURE.html">
+<div class="dev_nav">
+<div class="dev_nav_box">
+<div class="dev_nav_img image">
+<img alt="" src="../img/Group 1000001840.png"/>
+</div>
+<div class="dev_para">System Architecture</div>
+</div>
+</div>
+</a>
+</ul>
+<div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
+<ul class="sub_menu dropdown">
+<a href="../docs/technology_system_architecture.html">
+<div class="dev_nav">
+<div class="dev_nav_box">
+<div class="dev_nav_img image">
+<img alt="" src="../img/Group 1000001843.png"/>
+</div>
+<div class="dev_para">End-to-End Architecture</div>
+</div>
+</div>
+</a>
+</ul>
+<div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
+<ul class="sub_menu dropdown">
+<a href="../docs/standards_SUBMODULE_DOC_CONVENTION.html">
+<div class="dev_nav">
+<div class="dev_nav_box">
+<div class="dev_nav_img image">
+<img alt="" src="../img/Group 1000001843.png"/>
+</div>
+<div class="dev_para">Doc Standards</div>
+</div>
+</div>
+</a>
+</ul>
+<div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
+</div>
+<div class="link">
+<p class="dropdown_link dropdown_bar">Database</p>
+<ul class="sub_menu dropdown">
+<div class="first_menu pb-5">
+<div class="content">
+<div class="first_img">
+<img alt="" src="../img/Group 1000001831.png"/>
+</div>
+<div class="first_menu_content">VaultDB HUB</div>
+</div>
+<div class="bottom_para">
+                  Train, Test and deploy and manage your models with
+                  integrated Governance, Risk and Controls. Control data your
+                  models are training on for Bias and compliance.
+                </div>
+<div class="first_btns">
+           <a class="contact_btn first_btn" href="../database/index.html">
+            VaultDB Database
+           </a>
+           <a class="contact_btn first_btn" href="../database/index.html">
+            VaultDB Applications
+           </a>
+<a class="dropdown_btn" href="https://docs.vaultdb.ai/hub/datahub">VaultDB Data Hub</a>
+</div>
+</div>
+</ul>
+<div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
+<ul class="sub_menu dropdown">
+<div class="second_menu first_menu mt-5">
+<div class="content">
+<div class="second_img first_img">
+<img alt="" src="../img/Group 1000001832.png"/>
+</div>
+<div class="first_menu_content">VaultDB Compute</div>
+</div>
+<div class="bottom_para">
+                  Train and Run your models across cloud providers on cheapest
+                  and unlimited resources.
+                </div>
+</div>
+</ul>
+<div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
+<ul class="sub_menu dropdown">
+<div class="second_menu first_menu">
+<div class="content">
+<div class="second_img first_img">
+<img alt="" src="../img/Frame.png"/>
+</div>
+<div class="first_menu_content">
+                    VaultDB Actions (DevOps)
+                  </div>
+</div>
+<div class="bottom_para">
+                  Train and Run your models across cloud providers on cheapest
+                  and unlimited resources.
+                </div>
+</div>
+</ul>
+<div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
+</div>
+<div class="link">
+<p class="dropdown_link dropdown_bar">AI Marketplace</p>
+<ul class="sub_menu dropdown">
+<a href="../marketplace/index.html">
+<div class="dev_nav">
+<div class="dev_nav_box">
+<div class="dev_nav_img image">
+<i class="fa-solid fa-store text-purple fs-4" style="padding: 0.5rem;"></i>
+</div>
+<div class="dev_para">Browse All</div>
+</div>
+</div>
+</a>
+</ul>
+<div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
+<ul class="sub_menu dropdown">
+<a href="../marketplace/skills.html">
+<div class="dev_nav">
+<div class="dev_nav_box">
+<div class="dev_nav_img image">
+<i class="fa-solid fa-wand-magic-sparkles text-purple fs-4" style="padding: 0.5rem;"></i>
+</div>
+<div class="dev_para">Skills</div>
+</div>
+</div>
+</a>
+</ul>
+<div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
+<ul class="sub_menu dropdown">
+<a href="../marketplace/mcp-servers.html">
+<div class="dev_nav">
+<div class="dev_nav_box">
+<div class="dev_nav_img image">
+<i class="fa-solid fa-server text-purple fs-4" style="padding: 0.5rem;"></i>
+</div>
+<div class="dev_para">MCP Servers</div>
+</div>
+</div>
+</a>
+</ul>
+<div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
+<ul class="sub_menu dropdown">
+<a href="../marketplace/plugins.html">
+<div class="dev_nav">
+<div class="dev_nav_box">
+<div class="dev_nav_img image">
+<i class="fa-solid fa-plug text-purple fs-4" style="padding: 0.5rem;"></i>
+</div>
+<div class="dev_para">Plugins</div>
+</div>
+</div>
+</a>
+</ul>
+<div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
+</div>
+<!--div class="link">
+              <p class="dropdown_link dropdown_bar">Services</p>
+              <ul class="sub_menu dropdown">
+                <div class="dev_nav service_nav">
+                  <div class="dev_nav_box service_nav_box">
+                    <div class="dev_nav_img image service_nav_img">
+                      <img src="../img/Group 1000001846.png" alt="" />
+                    </div>
+                    <div class="dev_para service_para">UX / UI Design</div>
+                  </div>
+                </div>
+              </ul>
+              <div
+                class="line line_navbar"
+                style="position: relative; bottom: 0; left: 0"
+              ></div>
+              <ul class="sub_menu dropdown">
+                <div class="dev_nav service_nav">
+                  <div class="dev_nav_box service_nav_box">
+                    <div class="dev_nav_img image service_nav_img">
+                      <img src="../img/Group 1000001847.png" alt="" />
+                    </div>
+                    <div class="dev_para service_para">Web Development</div>
+                  </div>
+                </div>
+              </ul>
+              <div
+                class="line line_navbar"
+                style="position: relative; bottom: 0; left: 0"
+              ></div>
+              <ul class="sub_menu dropdown">
+                <div class="dev_nav service_nav">
+                  <div class="dev_nav_box service_nav_box">
+                    <div class="dev_nav_img image service_nav_img">
+                      <img src="../img/Group 1000001797.png" alt="" />
+                    </div>
+                    <div class="dev_para service_para">App Development</div>
+                  </div>
+                </div>
+              </ul>
+              <div
+                class="line line_navbar"
+                style="position: relative; bottom: 0; left: 0"
+              ></div>
+              <ul class="sub_menu dropdown">
+                <div class="dev_nav service_nav">
+                  <div class="dev_nav_box service_nav_box">
+                    <div class="dev_nav_img image service_nav_img">
+                      <img src="../img/Group 1000001844.png" alt="" />
+                    </div>
+                    <div class="dev_para service_para">Consulting</div>
+                  </div>
+                </div>
+                <div class="service_p" style="color: var(--border-color)">
+                  Contact us for Cloud and model (deterministic or mathematical)
+                  development.
+                </div>
+              </ul>
+              <div
+                class="line line_navbar"
+                style="position: relative; bottom: 0; left: 0"
+              ></div>
+            </div-->
+<div class="link" style="border: 0; outline: 0">
+<a class="dropdown_link" href="../about.html" style="font-size: 20px">About Us</a>
+<div class="middle" style="border: 0">
+<a class="contact_btn" href="../contact.html">Contact Us</a>
+</div>
+</div>
+</div>
+</div>
+
+
+    <section class="mp-hero">
+        <h1>AI Marketplace</h1>
+        <p>Curated skills, MCP servers, and plugins for KRONOS Re — the AI-native reinsurance platform.</p>
+        <div class="mp-stats">
+            
+        <div class="mp-stat">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+            <span class="count">32</span>
+            <span class="label">Skills</span>
+        </div>
+        
+        <div class="mp-stat">
+            <i class="fa-solid fa-server"></i>
+            <span class="count">4</span>
+            <span class="label">MCP Servers</span>
+        </div>
+        
+        <div class="mp-stat">
+            <i class="fa-solid fa-plug"></i>
+            <span class="count">15</span>
+            <span class="label">Plugins</span>
+        </div>
+        
+        </div>
+    </section>
+
+    <section class="mp-categories">
+        <div class="row">
+            
+        <div class="col-lg-4 col-md-6 mb-4">
+            <a href="skills.html" class="mp-cat-card">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                <h3>Skills</h3>
+                <p>Reusable Claude Code instructions for actuarial workflows</p>
+                <span class="mp-cat-count">32 skills available</span>
+            </a>
+        </div>
+        
+        <div class="col-lg-4 col-md-6 mb-4">
+            <a href="mcp-servers.html" class="mp-cat-card">
+                <i class="fa-solid fa-server"></i>
+                <h3>MCP Servers</h3>
+                <p>Tools and data access via Model Context Protocol</p>
+                <span class="mp-cat-count">4 mcp servers available</span>
+            </a>
+        </div>
+        
+        <div class="col-lg-4 col-md-6 mb-4">
+            <a href="plugins.html" class="mp-cat-card">
+                <i class="fa-solid fa-plug"></i>
+                <h3>Plugins</h3>
+                <p>KRONOS chatbot integrations and workflow extensions</p>
+                <span class="mp-cat-count">15 plugins available</span>
+            </a>
+        </div>
+        
+        </div>
+    </section>
+
+    <!-- Featured Items -->
+    <div class="mp-grid">
+        <h2 style="color: #fff; font-size: 2.8rem; font-weight: 700; margin-bottom: 3rem;
+                   font-family: var(--plus-font-family, 'Plus Jakarta Sans', sans-serif);">
+            <i class="fa-solid fa-star" style="color: var(--purple-color, #A044FF); margin-right: 1rem;"></i>
+            Featured
+        </h2>
+        <div class="row">
+            
+    <div class="col-lg-4 col-md-6 mb-4 mp-item"
+         data-name="insurance prospectus hunter"
+         data-desc="systematically browse the web to discover, download, and organize insurance prospectuses, sec filings, and regulatory documents."
+         data-tags="insurance,prospectus,sec-edgar,web-browsing,document-discovery,ingestion">
+        <div class="mp-card">
+            <div class="mp-card-header">
+                <i class="fa-solid fa-magnifying-glass-dollar"></i>
+                <h4>Insurance Prospectus Hunter</h4>
+                <span class="mp-version">v1.0.0</span>
+                <span class="mp-featured">Featured</span>
+            </div>
+            <p class="mp-card-desc">Systematically browse the web to discover, download, and organize insurance prospectuses, SEC filings, and regulatory documents.</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">insurance</span><span class="mp-card-tag">prospectus</span><span class="mp-card-tag">sec-edgar</span><span class="mp-card-tag">web-browsing</span><span class="mp-card-tag">document-discovery</span><span class="mp-card-tag">ingestion</span></div>
+            <div class="mp-card-meta">
+                <span><i class="fa-solid fa-user"></i>VaultDB</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>ingestion, assumptions, liability, valuation</span>
+            </div>
+            <div class="mp-install">
+                <code>claude skill add vaultdbai/marketplace-skills --skill insurance-prospectus-hunter</code>
+                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-4 mp-item"
+         data-name="valuation actuary"
+         data-desc="expert valuation actuary specializing in fia, rila, va, and fixed income annuities (myga/spda/spia/dia). deep command of us statutory (sap/rbc), us gaap (ldti/asc 944), and bermuda (bscr/ebs) regulatory frameworks, including stochastic reserve, ag49, ag43/c3p2, and cnsf requirements.
+"
+         data-tags="valuation,actuarial,FIA,RILA,variable-annuity,fixed-annuity,bermuda,BSCR,statutory,LDTI,stochastic,AG49,AG43">
+        <div class="mp-card">
+            <div class="mp-card-header">
+                <i class="fa-solid fa-calculator"></i>
+                <h4>Valuation Actuary</h4>
+                <span class="mp-version">v1.0.0</span>
+                <span class="mp-featured">Featured</span>
+            </div>
+            <p class="mp-card-desc">Expert valuation actuary specializing in FIA, RILA, VA, and fixed income annuities (MYGA/SPDA/SPIA/DIA). Deep command of US statutory (SAP/RBC), US GAAP (LDTI/ASC 944), and Bermuda (BSCR/EBS) regulatory frameworks, including stochastic reserve, AG49, AG43/C3P2, and CNSF requirements.
+</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">valuation</span><span class="mp-card-tag">actuarial</span><span class="mp-card-tag">FIA</span><span class="mp-card-tag">RILA</span><span class="mp-card-tag">variable-annuity</span><span class="mp-card-tag">fixed-annuity</span><span class="mp-card-tag">bermuda</span><span class="mp-card-tag">BSCR</span><span class="mp-card-tag">statutory</span><span class="mp-card-tag">LDTI</span><span class="mp-card-tag">stochastic</span><span class="mp-card-tag">AG49</span><span class="mp-card-tag">AG43</span></div>
+            <div class="mp-card-meta">
+                <span><i class="fa-solid fa-user"></i>VaultDB</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>cashflow-modeling, actuarial-tables, regulatory-report, risk-analysis, portfolio-review</span>
+            </div>
+            <div class="mp-install">
+                <code>claude skill add vaultdbai/marketplace-skills --skill valuation-actuary</code>
+                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-4 mp-item"
+         data-name="financial quant modeling"
+         data-desc="elite quantitative finance engineer with expertise across derivatives pricing, structured products (abs/mbs/cmbs/clo/cds), arbitrage, hedging, and regulatory capital (rwa/rac/tier 1). builds production-grade pricing engines in python and c++ using pytorch tensors for performance. implements full instrument, quote, curve, and vol-surface infrastructure with unit tests and market data loaders. deep knowledge of greeks, intex, and private equity analytics.
+"
+         data-tags="quant,derivatives,structured-products,ABS,MBS,CMBS,CLO,CDS,pricing-engine,Greeks,hedging,arbitrage,pytorch,RWA,tier1-capital,INTEX,financial-engineering,vol-surface,yield-curve">
+        <div class="mp-card">
+            <div class="mp-card-header">
+                <i class="fa-solid fa-chart-line"></i>
+                <h4>Financial Quant Modeling</h4>
+                <span class="mp-version">v1.0.0</span>
+                <span class="mp-featured">Featured</span>
+            </div>
+            <p class="mp-card-desc">Elite quantitative finance engineer with expertise across derivatives pricing, structured products (ABS/MBS/CMBS/CLO/CDS), arbitrage, hedging, and regulatory capital (RWA/RaC/Tier 1). Builds production-grade pricing engines in Python and C++ using PyTorch tensors for performance. Implements full instrument, quote, curve, and vol-surface infrastructure with unit tests and market data loaders. Deep knowledge of Greeks, INTEX, and private equity analytics.
+</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">quant</span><span class="mp-card-tag">derivatives</span><span class="mp-card-tag">structured-products</span><span class="mp-card-tag">ABS</span><span class="mp-card-tag">MBS</span><span class="mp-card-tag">CMBS</span><span class="mp-card-tag">CLO</span><span class="mp-card-tag">CDS</span><span class="mp-card-tag">pricing-engine</span><span class="mp-card-tag">Greeks</span><span class="mp-card-tag">hedging</span><span class="mp-card-tag">arbitrage</span><span class="mp-card-tag">pytorch</span><span class="mp-card-tag">RWA</span><span class="mp-card-tag">tier1-capital</span><span class="mp-card-tag">INTEX</span><span class="mp-card-tag">financial-engineering</span><span class="mp-card-tag">vol-surface</span><span class="mp-card-tag">yield-curve</span></div>
+            <div class="mp-card-meta">
+                <span><i class="fa-solid fa-user"></i>VaultDB</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>valuation-actuary, cashflow-modeling, risk-analysis, portfolio-review, regulatory-report</span>
+            </div>
+            <div class="mp-install">
+                <code>claude skill add vaultdbai/marketplace-skills --skill quant-modeling</code>
+                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-4 mp-item"
+         data-name="asset-liability management"
+         data-desc="asset-liability management: duration gap, dv01 gap, cashflow matching, spread analysis, and ny7 c3/bscr alm runs."
+         data-tags="alm,duration,dv01,cashflow-matching,rebalancing">
+        <div class="mp-card">
+            <div class="mp-card-header">
+                <i class="fa-solid fa-scale-balanced"></i>
+                <h4>Asset-Liability Management</h4>
+                <span class="mp-version">v1.0.0</span>
+                <span class="mp-featured">Featured</span>
+            </div>
+            <p class="mp-card-desc">Asset-liability management: duration gap, DV01 gap, cashflow matching, spread analysis, and NY7 C3/BSCR ALM runs.</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">alm</span><span class="mp-card-tag">duration</span><span class="mp-card-tag">dv01</span><span class="mp-card-tag">cashflow-matching</span><span class="mp-card-tag">rebalancing</span></div>
+            <div class="mp-card-meta">
+                <span><i class="fa-solid fa-user"></i>VaultDB</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>alm, liability, valuation, risk</span>
+            </div>
+            <div class="mp-install">
+                <code>claude skill add vaultdbai/marketplace-skills --skill alm</code>
+                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-4 mp-item"
+         data-name="asset pricing"
+         data-desc="instrument pricing engines for bonds, swaps, options, cds, fx forwards, and exotics via quantlib and pytorch."
+         data-tags="asset-pricing,bonds,swaps,options,derivatives">
+        <div class="mp-card">
+            <div class="mp-card-header">
+                <i class="fa-solid fa-chart-line"></i>
+                <h4>Asset Pricing</h4>
+                <span class="mp-version">v1.0.0</span>
+                <span class="mp-featured">Featured</span>
+            </div>
+            <p class="mp-card-desc">Instrument pricing engines for bonds, swaps, options, CDS, FX forwards, and exotics via QuantLib and PyTorch.</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">asset-pricing</span><span class="mp-card-tag">bonds</span><span class="mp-card-tag">swaps</span><span class="mp-card-tag">options</span><span class="mp-card-tag">derivatives</span></div>
+            <div class="mp-card-meta">
+                <span><i class="fa-solid fa-user"></i>VaultDB</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>asset, market, valuation</span>
+            </div>
+            <div class="mp-install">
+                <code>claude skill add vaultdbai/marketplace-skills --skill asset</code>
+                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-4 mp-item"
+         data-name="actuarial assumptions"
+         data-desc="versioned actuarial assumption library: soa/cia/bma mortality tables, dynamic lapse, surrender charges, and assumptionset bundling."
+         data-tags="actuarial,mortality,lapse,assumptions,surrender">
+        <div class="mp-card">
+            <div class="mp-card-header">
+                <i class="fa-solid fa-table-list"></i>
+                <h4>Actuarial Assumptions</h4>
+                <span class="mp-version">v1.0.0</span>
+                <span class="mp-featured">Featured</span>
+            </div>
+            <p class="mp-card-desc">Versioned actuarial assumption library: SOA/CIA/BMA mortality tables, dynamic lapse, surrender charges, and AssumptionSet bundling.</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">actuarial</span><span class="mp-card-tag">mortality</span><span class="mp-card-tag">lapse</span><span class="mp-card-tag">assumptions</span><span class="mp-card-tag">surrender</span></div>
+            <div class="mp-card-meta">
+                <span><i class="fa-solid fa-user"></i>VaultDB</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>assumptions, liability, valuation</span>
+            </div>
+            <div class="mp-install">
+                <code>claude skill add vaultdbai/marketplace-skills --skill assumptions</code>
+                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-4 mp-item"
+         data-name="liability modeling"
+         data-desc="annuity and life liability modeling: fa/fia/myga/va cashflow projection, stat/gaap reserves, dac, lfpb, and stochastic discount rate engines."
+         data-tags="liability,reserves,cashflow,annuity,gaap,stat">
+        <div class="mp-card">
+            <div class="mp-card-header">
+                <i class="fa-solid fa-file-invoice-dollar"></i>
+                <h4>Liability Modeling</h4>
+                <span class="mp-version">v1.0.0</span>
+                <span class="mp-featured">Featured</span>
+            </div>
+            <p class="mp-card-desc">Annuity and life liability modeling: FA/FIA/MYGA/VA cashflow projection, STAT/GAAP reserves, DAC, LFPB, and stochastic discount rate engines.</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">liability</span><span class="mp-card-tag">reserves</span><span class="mp-card-tag">cashflow</span><span class="mp-card-tag">annuity</span><span class="mp-card-tag">gaap</span><span class="mp-card-tag">stat</span></div>
+            <div class="mp-card-meta">
+                <span><i class="fa-solid fa-user"></i>VaultDB</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>liability, assumptions, scenario, valuation</span>
+            </div>
+            <div class="mp-install">
+                <code>claude skill add vaultdbai/marketplace-skills --skill liability</code>
+                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-4 mp-item"
+         data-name="market data"
+         data-desc="market data, instruments, yield curve bootstrapping, volatility surfaces, and quantlib integration for the kronos re platform."
+         data-tags="market-data,yield-curve,volatility,quantlib,instruments">
+        <div class="mp-card">
+            <div class="mp-card-header">
+                <i class="fa-solid fa-chart-area"></i>
+                <h4>Market Data</h4>
+                <span class="mp-version">v1.0.0</span>
+                <span class="mp-featured">Featured</span>
+            </div>
+            <p class="mp-card-desc">Market data, instruments, yield curve bootstrapping, volatility surfaces, and QuantLib integration for the KRONOS Re platform.</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">market-data</span><span class="mp-card-tag">yield-curve</span><span class="mp-card-tag">volatility</span><span class="mp-card-tag">quantlib</span><span class="mp-card-tag">instruments</span></div>
+            <div class="mp-card-meta">
+                <span><i class="fa-solid fa-user"></i>VaultDB</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>market, asset, valuation</span>
+            </div>
+            <div class="mp-install">
+                <code>claude skill add vaultdbai/marketplace-skills --skill market</code>
+                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-4 mp-item"
+         data-name="regulatory reporting"
+         data-desc="regulatory report generation: gaap ldti, statutory sap/rbc, bma bscr capital reports, actuarial memos, and immutable audit trail records."
+         data-tags="reporting,gaap,stat,bscr,regulatory,audit">
+        <div class="mp-card">
+            <div class="mp-card-header">
+                <i class="fa-solid fa-file-lines"></i>
+                <h4>Regulatory Reporting</h4>
+                <span class="mp-version">v1.0.0</span>
+                <span class="mp-featured">Featured</span>
+            </div>
+            <p class="mp-card-desc">Regulatory report generation: GAAP LDTI, Statutory SAP/RBC, BMA BSCR capital reports, actuarial memos, and immutable audit trail records.</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">reporting</span><span class="mp-card-tag">gaap</span><span class="mp-card-tag">stat</span><span class="mp-card-tag">bscr</span><span class="mp-card-tag">regulatory</span><span class="mp-card-tag">audit</span></div>
+            <div class="mp-card-meta">
+                <span><i class="fa-solid fa-user"></i>VaultDB</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>reporting, valuation, risk</span>
+            </div>
+            <div class="mp-install">
+                <code>claude skill add vaultdbai/marketplace-skills --skill reporting</code>
+                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-4 mp-item"
+         data-name="risk & solvency"
+         data-desc="capital and solvency analytics: bma bscr c1-c8 modules, var/cvar, stress tests (rate/lapse/equity shocks), and green/amber/red solvency dashboard."
+         data-tags="risk,bscr,var,stress-test,solvency">
+        <div class="mp-card">
+            <div class="mp-card-header">
+                <i class="fa-solid fa-shield-halved"></i>
+                <h4>Risk & Solvency</h4>
+                <span class="mp-version">v1.0.0</span>
+                <span class="mp-featured">Featured</span>
+            </div>
+            <p class="mp-card-desc">Capital and solvency analytics: BMA BSCR C1-C8 modules, VaR/CVaR, stress tests (rate/lapse/equity shocks), and GREEN/AMBER/RED solvency dashboard.</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">risk</span><span class="mp-card-tag">bscr</span><span class="mp-card-tag">var</span><span class="mp-card-tag">stress-test</span><span class="mp-card-tag">solvency</span></div>
+            <div class="mp-card-meta">
+                <span><i class="fa-solid fa-user"></i>VaultDB</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>risk, valuation, scenario</span>
+            </div>
+            <div class="mp-install">
+                <code>claude skill add vaultdbai/marketplace-skills --skill risk</code>
+                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-4 mp-item"
+         data-name="scenario generation"
+         data-desc="interest rate and economic scenario generation: naic ny7 deterministic c3/vm-21 scenarios and hull-white stochastic esg paths."
+         data-tags="scenario,interest-rate,ny7,stochastic,esg">
+        <div class="mp-card">
+            <div class="mp-card-header">
+                <i class="fa-solid fa-wave-square"></i>
+                <h4>Scenario Generation</h4>
+                <span class="mp-version">v1.0.0</span>
+                <span class="mp-featured">Featured</span>
+            </div>
+            <p class="mp-card-desc">Interest rate and economic scenario generation: NAIC NY7 deterministic C3/VM-21 scenarios and Hull-White stochastic ESG paths.</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">scenario</span><span class="mp-card-tag">interest-rate</span><span class="mp-card-tag">ny7</span><span class="mp-card-tag">stochastic</span><span class="mp-card-tag">esg</span></div>
+            <div class="mp-card-meta">
+                <span><i class="fa-solid fa-user"></i>VaultDB</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>scenario, liability, valuation</span>
+            </div>
+            <div class="mp-install">
+                <code>claude skill add vaultdbai/marketplace-skills --skill scenario</code>
+                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-4 mp-item"
+         data-name="valuation orchestration"
+         data-desc="end-to-end valuation orchestration: run_full_valuation() coordinating reserves, alm, embedded value, required capital, and period-over-period attribution."
+         data-tags="valuation,embedded-value,attribution,orchestration,reporting">
+        <div class="mp-card">
+            <div class="mp-card-header">
+                <i class="fa-solid fa-calculator"></i>
+                <h4>Valuation Orchestration</h4>
+                <span class="mp-version">v1.0.0</span>
+                <span class="mp-featured">Featured</span>
+            </div>
+            <p class="mp-card-desc">End-to-end valuation orchestration: run_full_valuation() coordinating reserves, ALM, embedded value, required capital, and period-over-period attribution.</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">valuation</span><span class="mp-card-tag">embedded-value</span><span class="mp-card-tag">attribution</span><span class="mp-card-tag">orchestration</span><span class="mp-card-tag">reporting</span></div>
+            <div class="mp-card-meta">
+                <span><i class="fa-solid fa-user"></i>VaultDB</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>valuation, liability, alm, risk, reporting</span>
+            </div>
+            <div class="mp-install">
+                <code>claude skill add vaultdbai/marketplace-skills --skill valuation</code>
+                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-4 mp-item"
+         data-name="data modeling"
+         data-desc="define vaultdb orm models with typed columns, timeseriesmodel, usertype, and automatic schema sync to ducklake tables."
+         data-tags="data-modeling,orm,models,schema,ducklake">
+        <div class="mp-card">
+            <div class="mp-card-header">
+                <i class="fa-solid fa-sitemap"></i>
+                <h4>Data Modeling</h4>
+                <span class="mp-version">v1.0.0</span>
+                <span class="mp-featured">Featured</span>
+            </div>
+            <p class="mp-card-desc">Define VaultDB ORM models with typed columns, TimeSeriesModel, UserType, and automatic schema sync to DuckLake tables.</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">data-modeling</span><span class="mp-card-tag">orm</span><span class="mp-card-tag">models</span><span class="mp-card-tag">schema</span><span class="mp-card-tag">ducklake</span></div>
+            <div class="mp-card-meta">
+                <span><i class="fa-solid fa-user"></i>VaultDB</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>core</span>
+            </div>
+            <div class="mp-install">
+                <code>claude skill add vaultdbai/marketplace-skills --skill data-modeling</code>
+                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-4 mp-item"
+         data-name="crud operations"
+         data-desc="save, get, search, delete, and bulk-load vaultdb model records. queryset filtering, modelcache, and paginated search."
+         data-tags="crud,queryset,search,cache,bulk">
+        <div class="mp-card">
+            <div class="mp-card-header">
+                <i class="fa-solid fa-table"></i>
+                <h4>CRUD Operations</h4>
+                <span class="mp-version">v1.0.0</span>
+                <span class="mp-featured">Featured</span>
+            </div>
+            <p class="mp-card-desc">Save, get, search, delete, and bulk-load VaultDB model records. QuerySet filtering, ModelCache, and paginated search.</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">crud</span><span class="mp-card-tag">queryset</span><span class="mp-card-tag">search</span><span class="mp-card-tag">cache</span><span class="mp-card-tag">bulk</span></div>
+            <div class="mp-card-meta">
+                <span><i class="fa-solid fa-user"></i>VaultDB</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>core</span>
+            </div>
+            <div class="mp-install">
+                <code>claude skill add vaultdbai/marketplace-skills --skill crud</code>
+                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-4 mp-item"
+         data-name="compute & task execution"
+         data-desc="define ted tasks and dispatch to service, function, batch, or local runners. async tracing and execution context management."
+         data-tags="compute,tasks,celery,lambda,batch">
+        <div class="mp-card">
+            <div class="mp-card-header">
+                <i class="fa-solid fa-microchip"></i>
+                <h4>Compute & Task Execution</h4>
+                <span class="mp-version">v1.0.0</span>
+                <span class="mp-featured">Featured</span>
+            </div>
+            <p class="mp-card-desc">Define TED tasks and dispatch to Service, Function, Batch, or Local runners. Async tracing and execution context management.</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">compute</span><span class="mp-card-tag">tasks</span><span class="mp-card-tag">celery</span><span class="mp-card-tag">lambda</span><span class="mp-card-tag">batch</span></div>
+            <div class="mp-card-meta">
+                <span><i class="fa-solid fa-user"></i>VaultDB</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>core</span>
+            </div>
+            <div class="mp-install">
+                <code>claude skill add vaultdbai/marketplace-skills --skill compute</code>
+                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-4 mp-item"
+         data-name="duckdb analytics"
+         data-desc="query actuarial and financial data stored in duckdb/ducklake with sql and natural language."
+         data-tags="analytics,sql,duckdb,data">
+        <div class="mp-card">
+            <div class="mp-card-header">
+                <i class="fa-solid fa-database"></i>
+                <h4>DuckDB Analytics</h4>
+                <span class="mp-version">v1.0.0</span>
+                <span class="mp-featured">Featured</span>
+            </div>
+            <p class="mp-card-desc">Query actuarial and financial data stored in DuckDB/DuckLake with SQL and natural language.</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">analytics</span><span class="mp-card-tag">sql</span><span class="mp-card-tag">duckdb</span><span class="mp-card-tag">data</span></div>
+            <div class="mp-card-meta">
+                <span><i class="fa-solid fa-user"></i>VaultDB</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>core, assumptions, liability, valuation</span>
+            </div>
+            <div class="mp-install">
+                <code>claude mcp add duckdb-analytics -- python servers/duckdb-analytics/server.py</code>
+                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-4 mp-item"
+         data-name="scenario engine"
+         data-desc="generate economic scenarios — risk-neutral and real-world paths for interest rates, equity, and credit."
+         data-tags="scenario,esg,simulation,monte-carlo">
+        <div class="mp-card">
+            <div class="mp-card-header">
+                <i class="fa-solid fa-shuffle"></i>
+                <h4>Scenario Engine</h4>
+                <span class="mp-version">v1.0.0</span>
+                <span class="mp-featured">Featured</span>
+            </div>
+            <p class="mp-card-desc">Generate economic scenarios — risk-neutral and real-world paths for interest rates, equity, and credit.</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">scenario</span><span class="mp-card-tag">esg</span><span class="mp-card-tag">simulation</span><span class="mp-card-tag">monte-carlo</span></div>
+            <div class="mp-card-meta">
+                <span><i class="fa-solid fa-user"></i>VaultDB</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>scenario, valuation, risk, alm</span>
+            </div>
+            <div class="mp-install">
+                <code>claude mcp add scenario-engine -- python servers/scenario-engine/server.py</code>
+                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-4 mp-item"
+         data-name="insurance browser"
+         data-desc="intelligent web browser agent for discovering and downloading insurance prospectuses, sec filings, and regulatory documents."
+         data-tags="browser,insurance,prospectus,sec-edgar,web-crawling,documents">
+        <div class="mp-card">
+            <div class="mp-card-header">
+                <i class="fa-solid fa-globe"></i>
+                <h4>Insurance Browser</h4>
+                <span class="mp-version">v1.0.0</span>
+                <span class="mp-featured">Featured</span>
+            </div>
+            <p class="mp-card-desc">Intelligent web browser agent for discovering and downloading insurance prospectuses, SEC filings, and regulatory documents.</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">browser</span><span class="mp-card-tag">insurance</span><span class="mp-card-tag">prospectus</span><span class="mp-card-tag">sec-edgar</span><span class="mp-card-tag">web-crawling</span><span class="mp-card-tag">documents</span></div>
+            <div class="mp-card-meta">
+                <span><i class="fa-solid fa-user"></i>VaultDB</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>ingestion, assumptions, liability</span>
+            </div>
+            <div class="mp-install">
+                <code>claude mcp add insurance-browser -- python servers/insurance-browser/server.py</code>
+                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-4 mp-item"
+         data-name="workflow builder"
+         data-desc="visual dag workflow builder for multi-step actuarial pipelines with approval gates."
+         data-tags="workflow,automation,pipeline,dag">
+        <div class="mp-card">
+            <div class="mp-card-header">
+                <i class="fa-solid fa-diagram-project"></i>
+                <h4>Workflow Builder</h4>
+                <span class="mp-version">v1.0.0</span>
+                <span class="mp-featured">Featured</span>
+            </div>
+            <p class="mp-card-desc">Visual DAG workflow builder for multi-step actuarial pipelines with approval gates.</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">workflow</span><span class="mp-card-tag">automation</span><span class="mp-card-tag">pipeline</span><span class="mp-card-tag">dag</span></div>
+            <div class="mp-card-meta">
+                <span><i class="fa-solid fa-user"></i>VaultDB</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>core, dashboard, valuation</span>
+            </div>
+            <div class="mp-install">
+                <code>kronos plugin install vaultdbai/marketplace-plugins --plugin kronos-workflow</code>
+                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-4 mp-item"
+         data-name="core framework"
+         data-desc="core vaultdb framework — data modeling, orm, crud, transactions, compute, scheduling, caching, authentication, web api, logging, configuration, and infrastructure patterns. provides the foundational skills for building any vaultdb application.
+"
+         data-tags="core,orm,data-modeling,compute,authentication,infrastructure">
+        <div class="mp-card">
+            <div class="mp-card-header">
+                <i class="fa-solid fa-database"></i>
+                <h4>Core Framework</h4>
+                <span class="mp-version">v1.0.0</span>
+                <span class="mp-featured">Featured</span>
+            </div>
+            <p class="mp-card-desc">Core VaultDB framework — data modeling, ORM, CRUD, transactions, compute, scheduling, caching, authentication, web API, logging, configuration, and infrastructure patterns. Provides the foundational skills for building any VaultDB application.
+</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">core</span><span class="mp-card-tag">orm</span><span class="mp-card-tag">data-modeling</span><span class="mp-card-tag">compute</span><span class="mp-card-tag">authentication</span><span class="mp-card-tag">infrastructure</span></div>
+            <div class="mp-card-meta">
+                <span><i class="fa-solid fa-user"></i>VaultDB</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>all</span>
+            </div>
+            <div class="mp-install">
+                <code>kronos plugin install vaultdbai/marketplace-plugins --plugin core</code>
+                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-4 mp-item"
+         data-name="market data"
+         data-desc="market data, instruments, yield curves, volatility surfaces, quantlib integration, and yfinance loaders. the foundational market data layer for all pricing engines.
+"
+         data-tags="market,curves,instruments,quantlib,volatility,yfinance">
+        <div class="mp-card">
+            <div class="mp-card-header">
+                <i class="fa-solid fa-chart-candlestick"></i>
+                <h4>Market Data</h4>
+                <span class="mp-version">v1.0.0</span>
+                <span class="mp-featured">Featured</span>
+            </div>
+            <p class="mp-card-desc">Market data, instruments, yield curves, volatility surfaces, QuantLib integration, and YFinance loaders. The foundational market data layer for all pricing engines.
+</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">market</span><span class="mp-card-tag">curves</span><span class="mp-card-tag">instruments</span><span class="mp-card-tag">quantlib</span><span class="mp-card-tag">volatility</span><span class="mp-card-tag">yfinance</span></div>
+            <div class="mp-card-meta">
+                <span><i class="fa-solid fa-user"></i>VaultDB</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>asset, alm, valuation</span>
+            </div>
+            <div class="mp-install">
+                <code>kronos plugin install vaultdbai/marketplace-plugins --plugin market</code>
+                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-4 mp-item"
+         data-name="asset pricing"
+         data-desc="asset pricing engines for all instrument types — bonds, swaps, options, caps/floors, swaptions, cds, fx forwards, equity structures, exotic options, and trs. marketenvironment bridges quantlib curves and pytorch tensors.
+"
+         data-tags="pricing,bonds,swaps,options,cds,quantlib,pytorch">
+        <div class="mp-card">
+            <div class="mp-card-header">
+                <i class="fa-solid fa-coins"></i>
+                <h4>Asset Pricing</h4>
+                <span class="mp-version">v1.0.0</span>
+                <span class="mp-featured">Featured</span>
+            </div>
+            <p class="mp-card-desc">Asset pricing engines for all instrument types — bonds, swaps, options, caps/floors, swaptions, CDS, FX forwards, equity structures, exotic options, and TRS. MarketEnvironment bridges QuantLib curves and PyTorch tensors.
+</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">pricing</span><span class="mp-card-tag">bonds</span><span class="mp-card-tag">swaps</span><span class="mp-card-tag">options</span><span class="mp-card-tag">cds</span><span class="mp-card-tag">quantlib</span><span class="mp-card-tag">pytorch</span></div>
+            <div class="mp-card-meta">
+                <span><i class="fa-solid fa-user"></i>VaultDB</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>market, alm, valuation</span>
+            </div>
+            <div class="mp-install">
+                <code>kronos plugin install vaultdbai/marketplace-plugins --plugin asset</code>
+                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-4 mp-item"
+         data-name="liability modeling"
+         data-desc="annuity and life insurance liability modeling — policy records, cohort projection, stat/gaap reserve engines, dac amortization (ldti), and lfpb computation. supports fa, fia, myga, va, spia, and traditional life products.
+"
+         data-tags="liability,annuity,reserves,GAAP,statutory,LDTI,FIA,MYGA">
+        <div class="mp-card">
+            <div class="mp-card-header">
+                <i class="fa-solid fa-shield-halved"></i>
+                <h4>Liability Modeling</h4>
+                <span class="mp-version">v1.0.0</span>
+                <span class="mp-featured">Featured</span>
+            </div>
+            <p class="mp-card-desc">Annuity and life insurance liability modeling — policy records, cohort projection, STAT/GAAP reserve engines, DAC amortization (LDTI), and LFPB computation. Supports FA, FIA, MYGA, VA, SPIA, and traditional life products.
+</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">liability</span><span class="mp-card-tag">annuity</span><span class="mp-card-tag">reserves</span><span class="mp-card-tag">GAAP</span><span class="mp-card-tag">statutory</span><span class="mp-card-tag">LDTI</span><span class="mp-card-tag">FIA</span><span class="mp-card-tag">MYGA</span></div>
+            <div class="mp-card-meta">
+                <span><i class="fa-solid fa-user"></i>VaultDB</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>assumptions, scenario, alm, valuation</span>
+            </div>
+            <div class="mp-install">
+                <code>kronos plugin install vaultdbai/marketplace-plugins --plugin liability</code>
+                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-4 mp-item"
+         data-name="actuarial assumptions"
+         data-desc="versioned actuarial assumption library — mortality tables (soa vbt 2015, cso 2017), lapse rate tables with dynamic adjustment, surrender charge schedules, expense assumptions, crediting rate assumptions, behavioral assumptions, and named assumptionset bundles.
+"
+         data-tags="actuarial,mortality,lapse,assumptions,VBT2015,CSO2017">
+        <div class="mp-card">
+            <div class="mp-card-header">
+                <i class="fa-solid fa-table-list"></i>
+                <h4>Actuarial Assumptions</h4>
+                <span class="mp-version">v1.0.0</span>
+                <span class="mp-featured">Featured</span>
+            </div>
+            <p class="mp-card-desc">Versioned actuarial assumption library — mortality tables (SOA VBT 2015, CSO 2017), lapse rate tables with dynamic adjustment, surrender charge schedules, expense assumptions, crediting rate assumptions, behavioral assumptions, and named AssumptionSet bundles.
+</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">actuarial</span><span class="mp-card-tag">mortality</span><span class="mp-card-tag">lapse</span><span class="mp-card-tag">assumptions</span><span class="mp-card-tag">VBT2015</span><span class="mp-card-tag">CSO2017</span></div>
+            <div class="mp-card-meta">
+                <span><i class="fa-solid fa-user"></i>VaultDB</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>liability, alm, valuation</span>
+            </div>
+            <div class="mp-install">
+                <code>kronos plugin install vaultdbai/marketplace-plugins --plugin assumptions</code>
+                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-4 mp-item"
+         data-name="scenario generation"
+         data-desc="interest rate and economic scenario generation — naic ny7 deterministic scenarios for c3 phase i / vm-21, hull-white stochastic esg paths, equity index paths, and credit spread scenarios for bscr capital calculation.
+"
+         data-tags="scenarios,NY7,ESG,interest-rates,stochastic,C3,VM-21">
+        <div class="mp-card">
+            <div class="mp-card-header">
+                <i class="fa-solid fa-wave-sine"></i>
+                <h4>Scenario Generation</h4>
+                <span class="mp-version">v1.0.0</span>
+                <span class="mp-featured">Featured</span>
+            </div>
+            <p class="mp-card-desc">Interest rate and economic scenario generation — NAIC NY7 deterministic scenarios for C3 Phase I / VM-21, Hull-White stochastic ESG paths, equity index paths, and credit spread scenarios for BSCR capital calculation.
+</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">scenarios</span><span class="mp-card-tag">NY7</span><span class="mp-card-tag">ESG</span><span class="mp-card-tag">interest-rates</span><span class="mp-card-tag">stochastic</span><span class="mp-card-tag">C3</span><span class="mp-card-tag">VM-21</span></div>
+            <div class="mp-card-meta">
+                <span><i class="fa-solid fa-user"></i>VaultDB</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>liability, alm, risk</span>
+            </div>
+            <div class="mp-install">
+                <code>kronos plugin install vaultdbai/marketplace-plugins --plugin scenario</code>
+                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-4 mp-item"
+         data-name="asset-liability management"
+         data-desc="asset-liability management analysis engine — duration gap, dv01 gap, key-rate exposure, cashflow matching, spread analysis by asset class, rebalancing alerts, and alm policy enforcement. runs across all ny7 scenarios for c3 compliance.
+"
+         data-tags="alm,duration,hedging,DV01,spread,C3,cashflow-matching">
+        <div class="mp-card">
+            <div class="mp-card-header">
+                <i class="fa-solid fa-scale-balanced"></i>
+                <h4>Asset-Liability Management</h4>
+                <span class="mp-version">v1.0.0</span>
+                <span class="mp-featured">Featured</span>
+            </div>
+            <p class="mp-card-desc">Asset-liability management analysis engine — duration gap, DV01 gap, key-rate exposure, cashflow matching, spread analysis by asset class, rebalancing alerts, and ALM policy enforcement. Runs across all NY7 scenarios for C3 compliance.
+</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">alm</span><span class="mp-card-tag">duration</span><span class="mp-card-tag">hedging</span><span class="mp-card-tag">DV01</span><span class="mp-card-tag">spread</span><span class="mp-card-tag">C3</span><span class="mp-card-tag">cashflow-matching</span></div>
+            <div class="mp-card-meta">
+                <span><i class="fa-solid fa-user"></i>VaultDB</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>market, asset, liability, scenario</span>
+            </div>
+            <div class="mp-install">
+                <code>kronos plugin install vaultdbai/marketplace-plugins --plugin alm</code>
+                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-4 mp-item"
+         data-name="risk & solvency"
+         data-desc="capital computation and solvency analytics — bma bscr (c1-c8 risk modules), var/cvar via historical simulation or monte carlo, stress testing, and real-time solvency dashboard (green/amber/red traffic lights).
+"
+         data-tags="risk,BSCR,capital,VaR,stress-test,solvency,BMA,ECR">
+        <div class="mp-card">
+            <div class="mp-card-header">
+                <i class="fa-solid fa-circle-exclamation"></i>
+                <h4>Risk & Solvency</h4>
+                <span class="mp-version">v1.0.0</span>
+                <span class="mp-featured">Featured</span>
+            </div>
+            <p class="mp-card-desc">Capital computation and solvency analytics — BMA BSCR (C1-C8 risk modules), VaR/CVaR via historical simulation or Monte Carlo, stress testing, and real-time solvency dashboard (GREEN/AMBER/RED traffic lights).
+</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">risk</span><span class="mp-card-tag">BSCR</span><span class="mp-card-tag">capital</span><span class="mp-card-tag">VaR</span><span class="mp-card-tag">stress-test</span><span class="mp-card-tag">solvency</span><span class="mp-card-tag">BMA</span><span class="mp-card-tag">ECR</span></div>
+            <div class="mp-card-meta">
+                <span><i class="fa-solid fa-user"></i>VaultDB</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>valuation, alm, reporting</span>
+            </div>
+            <div class="mp-install">
+                <code>kronos plugin install vaultdbai/marketplace-plugins --plugin risk</code>
+                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-4 mp-item"
+         data-name="valuation engine"
+         data-desc="full valuation orchestration — coordinates liability projection, stat/gaap reserve calculation, alm snapshot, embedded value, and vif computation in a single call. produces the economic balance sheet summary (valuationrun) and source-of-change attribution waterfall between periods.
+"
+         data-tags="valuation,reserves,embedded-value,attribution,economic-balance-sheet">
+        <div class="mp-card">
+            <div class="mp-card-header">
+                <i class="fa-solid fa-calculator"></i>
+                <h4>Valuation Engine</h4>
+                <span class="mp-version">v1.0.0</span>
+                <span class="mp-featured">Featured</span>
+            </div>
+            <p class="mp-card-desc">Full valuation orchestration — coordinates liability projection, STAT/GAAP reserve calculation, ALM snapshot, embedded value, and VIF computation in a single call. Produces the economic balance sheet summary (ValuationRun) and source-of-change attribution waterfall between periods.
+</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">valuation</span><span class="mp-card-tag">reserves</span><span class="mp-card-tag">embedded-value</span><span class="mp-card-tag">attribution</span><span class="mp-card-tag">economic-balance-sheet</span></div>
+            <div class="mp-card-meta">
+                <span><i class="fa-solid fa-user"></i>VaultDB</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>liability, alm, risk, reporting</span>
+            </div>
+            <div class="mp-install">
+                <code>kronos plugin install vaultdbai/marketplace-plugins --plugin valuation</code>
+                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-4 mp-item"
+         data-name="regulatory reporting"
+         data-desc="regulatory report generation — gaap (ldti/asc 944 lfpb, dac, mrb), statutory (sap reserve, rbc ratio, avr/imr), bermuda bscr capital reports, actuarial draft memorandum generation, and immutable audit trail logging.
+"
+         data-tags="reporting,GAAP,statutory,BSCR,actuarial-memo,audit,LDTI,RBC">
+        <div class="mp-card">
+            <div class="mp-card-header">
+                <i class="fa-solid fa-file-contract"></i>
+                <h4>Regulatory Reporting</h4>
+                <span class="mp-version">v1.0.0</span>
+                <span class="mp-featured">Featured</span>
+            </div>
+            <p class="mp-card-desc">Regulatory report generation — GAAP (LDTI/ASC 944 LFPB, DAC, MRB), Statutory (SAP reserve, RBC ratio, AVR/IMR), Bermuda BSCR capital reports, actuarial draft memorandum generation, and immutable audit trail logging.
+</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">reporting</span><span class="mp-card-tag">GAAP</span><span class="mp-card-tag">statutory</span><span class="mp-card-tag">BSCR</span><span class="mp-card-tag">actuarial-memo</span><span class="mp-card-tag">audit</span><span class="mp-card-tag">LDTI</span><span class="mp-card-tag">RBC</span></div>
+            <div class="mp-card-meta">
+                <span><i class="fa-solid fa-user"></i>VaultDB</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>valuation, risk, liability</span>
+            </div>
+            <div class="mp-install">
+                <code>kronos plugin install vaultdbai/marketplace-plugins --plugin reporting</code>
+                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+        </div>
+    </div>
+
+    <!-- footer section ===========================================-->
+<div class="container_body">
+<div class="container_inside">
+<section class="footer_section">
+<div class="footer mt-5" data-aos="fade-left" data-aos-duration="2000">
+<div class="left">
+<img alt="" src="../img/mainlogo.png">
+<a class="footer_logo" href="#">VaultDB.ai</a>
+</img></div>
+<div class="right" style="margin-bottom: 10px">
+<a href="#">
+<i class="fa-brands fa-github"></i>
+</a>
+<a href="#">
+<i class="fa-brands fa-youtube"></i>
+</a>
+<a href="#">
+<i class="fa-brands fa-facebook"></i>
+</a>
+<a href="#">
+<i class="fa-brands fa-twitter"></i>
+</a>
+<a href="#">
+<i class="fa-brands fa-instagram"></i>
+</a>
+<a href="#">
+<i class="fa-brands fa-linkedin"></i>
+</a>
+</div>
+</div>
+<div>
+<div class="row mb-5">
+<div class="line mb-5"></div>
+<div class="col-md-4 col-sm-12 col-lg-4">
+<h5 class="bottom_left">
+                VaultDB.ai @ 2026. All rights reserved.
+              </h5>
+</div>
+<div class="col-md-8 col-sm-12 col-lg-8 bottom_right">
+<a href="../index.html">VaultDB.ai</a>
+<a href="../contact.html">Contact Us</a>
+<a href="../about.html">About Us</a>
+<a href="#">Privacy Policy</a>
+<a href="#">Terms and Conditions</a>
+</div>
+</div>
+</div>
+<div class="footer_box">
+<img alt="" class="footer_img" src="../img/Rectangle 9.png">
+</img></div>
+</section>
+</div>
+</div>
+<script crossorigin="anonymous" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+  </script>
+<script src="../js/index.js"></script>
+</body>
+</html>

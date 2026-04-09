@@ -317,6 +317,29 @@
         text-decoration: underline;
     }
 
+    /* Setup prerequisite banner */
+    .mp-setup-banner {
+        background: rgba(160, 68, 255, 0.08);
+        border: 1px solid rgba(160, 68, 255, 0.25);
+        border-radius: 14px;
+        padding: 2rem 2.5rem;
+        margin-bottom: 3rem;
+    }
+    .mp-setup-header {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        margin-bottom: 1rem;
+        color: var(--purple-color, #A044FF);
+        font-size: 1.6rem;
+    }
+    .mp-setup-banner p {
+        font-size: 1.4rem;
+        color: var(--para-color, #A896B7);
+        margin-bottom: 1.2rem;
+        line-height: 1.5;
+    }
+
     /* No results */
     .mp-no-results {
         text-align: center;
@@ -759,6 +782,8 @@
         </h1>
         <p>Tools and data access via Model Context Protocol</p>
     </div>
+
+    
 
     <div class="mp-toolbar">
         <input type="text" id="mp-search" class="mp-search"

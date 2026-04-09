@@ -317,6 +317,29 @@
         text-decoration: underline;
     }
 
+    /* Setup prerequisite banner */
+    .mp-setup-banner {
+        background: rgba(160, 68, 255, 0.08);
+        border: 1px solid rgba(160, 68, 255, 0.25);
+        border-radius: 14px;
+        padding: 2rem 2.5rem;
+        margin-bottom: 3rem;
+    }
+    .mp-setup-header {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        margin-bottom: 1rem;
+        color: var(--purple-color, #A044FF);
+        font-size: 1.6rem;
+    }
+    .mp-setup-banner p {
+        font-size: 1.4rem;
+        color: var(--para-color, #A896B7);
+        margin-bottom: 1.2rem;
+        line-height: 1.5;
+    }
+
     /* No results */
     .mp-no-results {
         text-align: center;
@@ -760,6 +783,8 @@
         <p>Reusable Claude Code instructions for actuarial workflows</p>
     </div>
 
+    
+
     <div class="mp-toolbar">
         <input type="text" id="mp-search" class="mp-search"
                placeholder="Search skills..." />
@@ -882,7 +907,7 @@
                 <span><i class="fa-solid fa-puzzle-piece"></i>assumptions, liability, valuation</span>
             </div>
             <div class="mp-install">
-                <code>claude skill add vaultdbai/marketplace-skills --skill actuarial-tables</code>
+                <code>vaultdb-skills add https://github.com/vaultdbai/skills --skill actuarial-tables</code>
                 <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
                     <i class="fa-solid fa-copy"></i>
                 </button>
@@ -908,7 +933,7 @@
                 <span><i class="fa-solid fa-puzzle-piece"></i>all</span>
             </div>
             <div class="mp-install">
-                <code>claude skill add vaultdbai/marketplace-skills --skill duckdb-analyst</code>
+                <code>vaultdb-skills add https://github.com/vaultdbai/skills --skill duckdb-analyst</code>
                 <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
                     <i class="fa-solid fa-copy"></i>
                 </button>
@@ -936,7 +961,7 @@
                 <span><i class="fa-solid fa-puzzle-piece"></i>valuation, risk, market, asset, alm, trading, reporting</span>
             </div>
             <div class="mp-install">
-                <code>claude skill add vaultdbai/marketplace-skills --skill quant-modeling</code>
+                <code>vaultdb-skills add https://github.com/vaultdbai/skills --skill quant-modeling</code>
                 <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
                     <i class="fa-solid fa-copy"></i>
                 </button>
@@ -962,7 +987,7 @@
                 <span><i class="fa-solid fa-puzzle-piece"></i>ingestion, assumptions, liability, valuation</span>
             </div>
             <div class="mp-install">
-                <code>claude skill add vaultdbai/marketplace-skills --skill insurance-prospectus-hunter</code>
+                <code>vaultdb-skills add https://github.com/vaultdbai/skills --skill insurance-prospectus-hunter</code>
                 <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
                     <i class="fa-solid fa-copy"></i>
                 </button>
@@ -988,7 +1013,7 @@
                 <span><i class="fa-solid fa-puzzle-piece"></i>liability, assumptions, scenario, alm, valuation</span>
             </div>
             <div class="mp-install">
-                <code>claude skill add vaultdbai/marketplace-skills --skill liability</code>
+                <code>vaultdb-skills add https://github.com/vaultdbai/skills --skill liability</code>
                 <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
                     <i class="fa-solid fa-copy"></i>
                 </button>
@@ -1014,7 +1039,7 @@
                 <span><i class="fa-solid fa-puzzle-piece"></i>risk, valuation, alm, reporting</span>
             </div>
             <div class="mp-install">
-                <code>claude skill add vaultdbai/marketplace-skills --skill risk</code>
+                <code>vaultdb-skills add https://github.com/vaultdbai/skills --skill risk</code>
                 <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
                     <i class="fa-solid fa-copy"></i>
                 </button>
@@ -1042,7 +1067,7 @@
                 <span><i class="fa-solid fa-puzzle-piece"></i>cashflow-modeling, actuarial-tables, regulatory-report, risk-analysis, portfolio-review</span>
             </div>
             <div class="mp-install">
-                <code>claude skill add vaultdbai/marketplace-skills --skill valuation-actuary</code>
+                <code>vaultdb-skills add https://github.com/vaultdbai/skills --skill valuation-actuary</code>
                 <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
                     <i class="fa-solid fa-copy"></i>
                 </button>
@@ -1068,7 +1093,7 @@
                 <span><i class="fa-solid fa-puzzle-piece"></i>alm, market, asset, liability</span>
             </div>
             <div class="mp-install">
-                <code>claude skill add vaultdbai/marketplace-skills --skill alm</code>
+                <code>vaultdb-skills add https://github.com/vaultdbai/skills --skill alm</code>
                 <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
                     <i class="fa-solid fa-copy"></i>
                 </button>
@@ -1094,7 +1119,7 @@
                 <span><i class="fa-solid fa-puzzle-piece"></i>assumptions, liability, alm, valuation</span>
             </div>
             <div class="mp-install">
-                <code>claude skill add vaultdbai/marketplace-skills --skill assumptions</code>
+                <code>vaultdb-skills add https://github.com/vaultdbai/skills --skill assumptions</code>
                 <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
                     <i class="fa-solid fa-copy"></i>
                 </button>
@@ -1120,7 +1145,7 @@
                 <span><i class="fa-solid fa-puzzle-piece"></i>asset, market, alm, valuation</span>
             </div>
             <div class="mp-install">
-                <code>claude skill add vaultdbai/marketplace-skills --skill asset</code>
+                <code>vaultdb-skills add https://github.com/vaultdbai/skills --skill asset</code>
                 <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
                     <i class="fa-solid fa-copy"></i>
                 </button>
@@ -1146,7 +1171,7 @@
                 <span><i class="fa-solid fa-puzzle-piece"></i>ingestion, liability, assumptions</span>
             </div>
             <div class="mp-install">
-                <code>claude skill add vaultdbai/marketplace-skills --skill ingestion</code>
+                <code>vaultdb-skills add https://github.com/vaultdbai/skills --skill ingestion</code>
                 <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
                     <i class="fa-solid fa-copy"></i>
                 </button>
@@ -1172,7 +1197,7 @@
                 <span><i class="fa-solid fa-puzzle-piece"></i>trading, alm, asset, market</span>
             </div>
             <div class="mp-install">
-                <code>claude skill add vaultdbai/marketplace-skills --skill trading</code>
+                <code>vaultdb-skills add https://github.com/vaultdbai/skills --skill trading</code>
                 <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
                     <i class="fa-solid fa-copy"></i>
                 </button>
@@ -1198,7 +1223,7 @@
                 <span><i class="fa-solid fa-puzzle-piece"></i>valuation, liability, alm, risk, reporting</span>
             </div>
             <div class="mp-install">
-                <code>claude skill add vaultdbai/marketplace-skills --skill valuation</code>
+                <code>vaultdb-skills add https://github.com/vaultdbai/skills --skill valuation</code>
                 <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
                     <i class="fa-solid fa-copy"></i>
                 </button>
@@ -1224,7 +1249,7 @@
                 <span><i class="fa-solid fa-puzzle-piece"></i>market, asset, alm, valuation</span>
             </div>
             <div class="mp-install">
-                <code>claude skill add vaultdbai/marketplace-skills --skill market</code>
+                <code>vaultdb-skills add https://github.com/vaultdbai/skills --skill market</code>
                 <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
                     <i class="fa-solid fa-copy"></i>
                 </button>
@@ -1250,7 +1275,7 @@
                 <span><i class="fa-solid fa-puzzle-piece"></i>all</span>
             </div>
             <div class="mp-install">
-                <code>claude skill add vaultdbai/marketplace-skills --skill python-expert</code>
+                <code>vaultdb-skills add https://github.com/vaultdbai/skills --skill python-expert</code>
                 <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
                     <i class="fa-solid fa-copy"></i>
                 </button>
@@ -1276,7 +1301,7 @@
                 <span><i class="fa-solid fa-puzzle-piece"></i>reporting, valuation, risk, liability</span>
             </div>
             <div class="mp-install">
-                <code>claude skill add vaultdbai/marketplace-skills --skill reporting</code>
+                <code>vaultdb-skills add https://github.com/vaultdbai/skills --skill reporting</code>
                 <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
                     <i class="fa-solid fa-copy"></i>
                 </button>
@@ -1302,7 +1327,7 @@
                 <span><i class="fa-solid fa-puzzle-piece"></i>scenario, liability, alm, risk</span>
             </div>
             <div class="mp-install">
-                <code>claude skill add vaultdbai/marketplace-skills --skill scenario</code>
+                <code>vaultdb-skills add https://github.com/vaultdbai/skills --skill scenario</code>
                 <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
                     <i class="fa-solid fa-copy"></i>
                 </button>

@@ -317,6 +317,29 @@
         text-decoration: underline;
     }
 
+    /* Setup prerequisite banner */
+    .mp-setup-banner {
+        background: rgba(160, 68, 255, 0.08);
+        border: 1px solid rgba(160, 68, 255, 0.25);
+        border-radius: 14px;
+        padding: 2rem 2.5rem;
+        margin-bottom: 3rem;
+    }
+    .mp-setup-header {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        margin-bottom: 1rem;
+        color: var(--purple-color, #A044FF);
+        font-size: 1.6rem;
+    }
+    .mp-setup-banner p {
+        font-size: 1.4rem;
+        color: var(--para-color, #A896B7);
+        margin-bottom: 1.2rem;
+        line-height: 1.5;
+    }
+
     /* No results */
     .mp-no-results {
         text-align: center;
@@ -760,6 +783,24 @@
         <p>KRONOS chatbot integrations and workflow extensions</p>
     </div>
 
+    
+    <div class="mp-grid">
+        <div class="mp-setup-banner">
+            <div class="mp-setup-header">
+                <i class="fa-solid fa-circle-info"></i>
+                <strong>Before you install</strong>
+            </div>
+            <p>Register the plugins marketplace first (one-time setup):</p>
+            <div class="mp-install" style="max-width: 700px;">
+                <code>claude plugin marketplace add vaultdbai/plugins</code>
+                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy setup command">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+
     <div class="mp-toolbar">
         <input type="text" id="mp-search" class="mp-search"
                placeholder="Search plugins..." />
@@ -874,7 +915,7 @@
                 <span><i class="fa-solid fa-puzzle-piece"></i>liability, alm, valuation</span>
             </div>
             <div class="mp-install">
-                <code>claude plugin install vaultdbai/plugins --plugin assumptions</code>
+                <code>claude plugin install assumptions</code>
                 <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
                     <i class="fa-solid fa-copy"></i>
                 </button>
@@ -902,7 +943,7 @@
                 <span><i class="fa-solid fa-puzzle-piece"></i>market, alm, valuation</span>
             </div>
             <div class="mp-install">
-                <code>claude plugin install vaultdbai/plugins --plugin asset</code>
+                <code>claude plugin install asset</code>
                 <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
                     <i class="fa-solid fa-copy"></i>
                 </button>
@@ -930,7 +971,7 @@
                 <span><i class="fa-solid fa-puzzle-piece"></i>market, asset, liability, scenario</span>
             </div>
             <div class="mp-install">
-                <code>claude plugin install vaultdbai/plugins --plugin alm</code>
+                <code>claude plugin install alm</code>
                 <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
                     <i class="fa-solid fa-copy"></i>
                 </button>
@@ -958,7 +999,7 @@
                 <span><i class="fa-solid fa-puzzle-piece"></i>all</span>
             </div>
             <div class="mp-install">
-                <code>claude plugin install vaultdbai/plugins --plugin core</code>
+                <code>claude plugin install core</code>
                 <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
                     <i class="fa-solid fa-copy"></i>
                 </button>
@@ -986,7 +1027,7 @@
                 <span><i class="fa-solid fa-puzzle-piece"></i>assumptions, scenario, alm, valuation</span>
             </div>
             <div class="mp-install">
-                <code>claude plugin install vaultdbai/plugins --plugin liability</code>
+                <code>claude plugin install liability</code>
                 <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
                     <i class="fa-solid fa-copy"></i>
                 </button>
@@ -1014,7 +1055,7 @@
                 <span><i class="fa-solid fa-puzzle-piece"></i>asset, alm, valuation</span>
             </div>
             <div class="mp-install">
-                <code>claude plugin install vaultdbai/plugins --plugin market</code>
+                <code>claude plugin install market</code>
                 <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
                     <i class="fa-solid fa-copy"></i>
                 </button>
@@ -1042,7 +1083,7 @@
                 <span><i class="fa-solid fa-puzzle-piece"></i>valuation, risk, liability</span>
             </div>
             <div class="mp-install">
-                <code>claude plugin install vaultdbai/plugins --plugin reporting</code>
+                <code>claude plugin install reporting</code>
                 <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
                     <i class="fa-solid fa-copy"></i>
                 </button>
@@ -1070,7 +1111,7 @@
                 <span><i class="fa-solid fa-puzzle-piece"></i>valuation, alm, reporting</span>
             </div>
             <div class="mp-install">
-                <code>claude plugin install vaultdbai/plugins --plugin risk</code>
+                <code>claude plugin install risk</code>
                 <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
                     <i class="fa-solid fa-copy"></i>
                 </button>
@@ -1098,7 +1139,7 @@
                 <span><i class="fa-solid fa-puzzle-piece"></i>liability, alm, risk</span>
             </div>
             <div class="mp-install">
-                <code>claude plugin install vaultdbai/plugins --plugin scenario</code>
+                <code>claude plugin install scenario</code>
                 <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
                     <i class="fa-solid fa-copy"></i>
                 </button>
@@ -1126,7 +1167,7 @@
                 <span><i class="fa-solid fa-puzzle-piece"></i>liability, alm, risk, reporting</span>
             </div>
             <div class="mp-install">
-                <code>claude plugin install vaultdbai/plugins --plugin valuation</code>
+                <code>claude plugin install valuation</code>
                 <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
                     <i class="fa-solid fa-copy"></i>
                 </button>
@@ -1152,7 +1193,7 @@
                 <span><i class="fa-solid fa-puzzle-piece"></i>core, dashboard, valuation</span>
             </div>
             <div class="mp-install">
-                <code>claude plugin install vaultdbai/plugins --plugin kronos-workflow</code>
+                <code>claude plugin install kronos-workflow</code>
                 <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
                     <i class="fa-solid fa-copy"></i>
                 </button>
@@ -1178,7 +1219,7 @@
                 <span><i class="fa-solid fa-puzzle-piece"></i>assumptions, ingestion, liability</span>
             </div>
             <div class="mp-install">
-                <code>claude plugin install vaultdbai/plugins --plugin assumption-loader</code>
+                <code>claude plugin install assumption-loader</code>
                 <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
                     <i class="fa-solid fa-copy"></i>
                 </button>
@@ -1204,7 +1245,7 @@
                 <span><i class="fa-solid fa-puzzle-piece"></i>reporting, valuation, risk</span>
             </div>
             <div class="mp-install">
-                <code>claude plugin install vaultdbai/plugins --plugin compliance-checker</code>
+                <code>claude plugin install compliance-checker</code>
                 <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
                     <i class="fa-solid fa-copy"></i>
                 </button>
@@ -1232,7 +1273,7 @@
                 <span><i class="fa-solid fa-puzzle-piece"></i>liability, assumptions</span>
             </div>
             <div class="mp-install">
-                <code>claude plugin install vaultdbai/plugins --plugin ingestion</code>
+                <code>claude plugin install ingestion</code>
                 <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
                     <i class="fa-solid fa-copy"></i>
                 </button>
@@ -1260,7 +1301,7 @@
                 <span><i class="fa-solid fa-puzzle-piece"></i>alm, asset, market</span>
             </div>
             <div class="mp-install">
-                <code>claude plugin install vaultdbai/plugins --plugin trading</code>
+                <code>claude plugin install trading</code>
                 <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
                     <i class="fa-solid fa-copy"></i>
                 </button>

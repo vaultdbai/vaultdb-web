@@ -1,858 +1,226 @@
 <!DOCTYPE html>
 <html lang="en">
- <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>
-   VaultDB.ai: Secure Inprocess database and cloud DataHub for IOT and Modeling
-  </title>
-  <meta content="noindex," name="“robots”" nofollow”=""/>
-  <meta content="noindex," follow”="" name="“robots”"/>
-  <meta content="index," name="“robots”" nofollow”=""/>
-  <meta content="VaultDB.ai: Secure Inprocess database and cloud DataHub for IOT and Modeling" property="”og:title”">
-   <meta content="Secure Inprocess database and cloud DataHub for IOT and Modeling" property="”og:description”">
-    <meta content="Database, DataHub, IO, AI Modeling" property="”og:type”">
-     <meta content="../img/v-logo.png" property="”og:image”"/>
-     <meta content="http://vaultdb.ai" property="”og:url”"/>
-     <meta content="VaultDB.ai" property="”og:site_name”"/>
-     <!--meta name+" keywords" content=" keywords go here"/-->
-     <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" rel="stylesheet"/>
-     <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" referrerpolicy="no-referrer" rel="stylesheet"/>
-     <!-- favicon -->
-     <link href="../img/v-logo.png" rel="icon" type="image/png"/>
-     <!-- animation  -->
-     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
-     <link href="../css/style.css" rel="stylesheet"/>
-    </meta>
-   </meta>
-  </meta>
- </head>
- <body style="overflow: hidden !important">
-  <div class="container_body">
-   <div class="container_inside">
-    <!-- Nav Bar start Lg  -->
-    <header class="header">
-     <div class="logo">
-      <img alt="" src="../img/mainlogo.png"/>
-      <a href="../index.html">
-       VaultDB.ai
-      </a>
-     </div>
-     <ul class="menu_bar">
-      <li>
-       <a class="header_hover" href="#">
-        KRONOS Modules
-       </a>
-       <ul class="dropdown-menu" style="background-color: #10101e; width: 60rem;">
-        <div class="row p-4">
-         <div class="col-md-4">
-          <li class="p-2">
-           <a href="../products/asset/docs/index.html">
-            <i class="fa-solid fa-cube me-2 text-purple">
-            </i>
-            Asset
-           </a>
-          </li>
-          <li class="p-2">
-           <a href="../products/market/docs/index.html">
-            <i class="fa-solid fa-chart-line me-2 text-purple">
-            </i>
-            Market
-           </a>
-          </li>
-          <li class="p-2">
-           <a href="../products/liability/docs/index.html">
-            <i class="fa-solid fa-file-invoice-dollar me-2 text-purple">
-            </i>
-            Liability
-           </a>
-          </li>
-          <li class="p-2">
-           <a href="../products/assumptions/docs/index.html">
-            <i class="fa-solid fa-table me-2 text-purple">
-            </i>
-            Assumptions
-           </a>
-          </li>
-          <li class="p-2">
-           <a href="../products/scenario/docs/index.html">
-            <i class="fa-solid fa-shuffle me-2 text-purple">
-            </i>
-            Scenario
-           </a>
-          </li>
-         </div>
-         <div class="col-md-4">
-          <li class="p-2">
-           <a href="../products/valuation/docs/index.html">
-            <i class="fa-solid fa-calculator me-2 text-purple">
-            </i>
-            Valuation
-           </a>
-          </li>
-          <li class="p-2">
-           <a href="../products/alm/docs/index.html">
-            <i class="fa-solid fa-scale-balanced me-2 text-purple">
-            </i>
-            ALM
-           </a>
-          </li>
-          <li class="p-2">
-           <a href="../products/trading/docs/index.html">
-            <i class="fa-solid fa-arrow-right-arrow-left me-2 text-purple">
-            </i>
-            Trading
-           </a>
-          </li>
-          <li class="p-2">
-           <a href="../products/risk/docs/index.html">
-            <i class="fa-solid fa-shield-halved me-2 text-purple">
-            </i>
-            Risk
-           </a>
-          </li>
-          <li class="p-2">
-           <a href="../products/reporting/docs/index.html">
-            <i class="fa-solid fa-file-lines me-2 text-purple">
-            </i>
-            Reporting
-           </a>
-          </li>
-         </div>
-         <div class="col-md-4">
-          <li class="p-2">
-           <a href="../products/ingestion/docs/index.html">
-            <i class="fa-solid fa-upload me-2 text-purple">
-            </i>
-            Ingestion
-           </a>
-          </li>
-          <li class="p-2">
-           <a href="../products/dashboard/docs/index.html">
-            <i class="fa-solid fa-gauge-high me-2 text-purple">
-            </i>
-            Dashboard
-           </a>
-          </li>
-          <li class="p-2">
-           <a href="../products/core/docs/index.html">
-            <i class="fa-solid fa-microchip me-2 text-purple">
-            </i>
-            Core Platform
-           </a>
-          </li>
-         </div>
-        </div>
-       </ul>
-      </li>
-      <li class="second_bar">
-       <a class="header_hover" href="#">
-        Developers
-       </a>
-       <ul class="dev_menu" style="background-color: #10101e">
-        <li>
-         <div class="dev_box">
-          <img alt="menu_logo" class="first_dev_img" src="../img/Group 1000001838.png"/>
-          <a href="../docs/index.html">
-           Documentation Home
-          </a>
-          <div class="line" style="width: 100%">
-          </div>
-         </div>
-         <div class="dev_box">
-          <img alt="menu_logo" src="../img/Group 1000001840.png"/>
-          <a href="../docs/ARCHITECTURE.html">
-           System Architecture
-          </a>
-          <div class="line">
-          </div>
-         </div>
-         <div class="dev_box">
-          <img alt="menu_logo" src="../img/Group 1000001843.png"/>
-          <a href="../docs/technology_system_architecture.html">
-           End-to-End Architecture
-          </a>
-          <div class="line">
-          </div>
-         </div>
-         <div class="dev_box">
-          <img alt="menu_logo" src="../img/Group 1000001843.png"/>
-          <a href="../docs/standards_SUBMODULE_DOC_CONVENTION.html">
-           Doc Standards
-          </a>
-         </div>
-        </li>
-       </ul>
-      </li>
-      <li class="first_bar">
-       <a class="header_hover" href="#">
-        Database
-       </a>
-       <ul class="dropdown-menu" style="background-color: #10101e">
-        <li class="first_content_container">
-         <div class="first_content">
-          <div class="dropdown_img">
-           <img alt="" src="../img/Group 1000001831.png"/>
-          </div>
-          <div class="dropdown_content">
-           <p>
-            VaultDB HUB
-           </p>
-           <p>
-            Train, Test and deploy and manage your models with
-                      integrated Governance, Risk and Controls.
-           </p>
-          </div>
-         </div>
-         <div class="dropdown_btns">
-          <a class="dropdown_btn" href="../database/index.html">
-           VaultDB Database IOT Platform
-          </a>
-          <a class="dropdown_btn" href="../database/index.html">
-           Websites and mobile Apps
-          </a>
-          <a class="dropdown_btn" href="https://docs.vaultdb.ai/hub/datahub">
-           VaultDB Data Hub
-          </a>
-         </div>
-         <div class="line">
-         </div>
-        </li>
-        <li>
-         <div class="second_content second">
-          <div class="dropdown_img">
-           <img alt="" src="../img/Group 1000001832.png"/>
-          </div>
-          <div class="dropdown_content">
-           <p>
-            VaultDB Compute
-           </p>
-           <p>
-            Scalable cloud resources for distributed model execution.
-           </p>
-          </div>
-          <div class="line_bottom">
-           <div class="line">
-           </div>
-          </div>
-         </div>
-        </li>
-        <li>
-         <div class="second_content third_content">
-          <div class="dropdown_img">
-           <img alt="" src="../img/Group 1000001793.png"/>
-          </div>
-          <div class="dropdown_content">
-           <p>
-            VaultDB Actions
-           </p>
-           <p class="para_1">
-            CI/CD for compute intensive and analytical pipelines.
-           </p>
-          </div>
-         </div>
-        </li>
-       </ul>
-      </li>
-      <li>
-       <a class="header_hover" href="../about.html">
-        About Us
-       </a>
-      </li>
-      <li>
-       <a class="contact_btn" href="../contact.html">
-        Contact Us
-       </a>
-      </li>
-     </ul>
-     <div class="header_icons">
-      <i class="fa-solid fa-bars text-white fs-1 menu">
-      </i>
-     </div>
-    </header>
-    <!-- Nav Bar End -->
-    <!-- Mobile sidebar=========================== -->
-    <div class="side_accordian">
-     <div class="menu_accordian">
-      <div class="mobile_nav" style="background-color: var(--main-color)">
-       <div class="logo">
-        <img alt="" src="../img/logo.png"/>
-        <a class="f-2" href="../index.html">
-         VaultDB.ai
-        </a>
-       </div>
-       <i class="fa-solid fa-xmark text-white fs-1 close_icon">
-       </i>
-      </div>
-      <div class="link">
-       <p class="dropdown_link dropdown_bar">
-        Developers
-       </p>
-       <ul class="sub_menu dropdown">
-        <a href="../docs/index.html">
-         <div class="dev_nav">
-          <div class="dev_nav_box">
-           <div class="dev_nav_img">
-            <img alt="" src="../img/Group 1000001838.png"/>
-           </div>
-           <div class="dev_para">
-            Documentation Home
-           </div>
-          </div>
-         </div>
-        </a>
-       </ul>
-       <div class="line line_navbar" style="position: relative; bottom: 0; left: 0">
-       </div>
-       <ul class="sub_menu dropdown">
-        <a href="../docs/ARCHITECTURE.html">
-         <div class="dev_nav">
-          <div class="dev_nav_box">
-           <div class="dev_nav_img image">
-            <img alt="" src="../img/Group 1000001840.png"/>
-           </div>
-           <div class="dev_para">
-            System Architecture
-           </div>
-          </div>
-         </div>
-        </a>
-       </ul>
-       <div class="line line_navbar" style="position: relative; bottom: 0; left: 0">
-       </div>
-       <ul class="sub_menu dropdown">
-        <a href="../docs/technology_system_architecture.html">
-         <div class="dev_nav">
-          <div class="dev_nav_box">
-           <div class="dev_nav_img image">
-            <img alt="" src="../img/Group 1000001843.png"/>
-           </div>
-           <div class="dev_para">
-            End-to-End Architecture
-           </div>
-          </div>
-         </div>
-        </a>
-       </ul>
-       <div class="line line_navbar" style="position: relative; bottom: 0; left: 0">
-       </div>
-       <ul class="sub_menu dropdown">
-        <a href="../docs/standards_SUBMODULE_DOC_CONVENTION.html">
-         <div class="dev_nav">
-          <div class="dev_nav_box">
-           <div class="dev_nav_img image">
-            <img alt="" src="../img/Group 1000001843.png"/>
-           </div>
-           <div class="dev_para">
-            Doc Standards
-           </div>
-          </div>
-         </div>
-        </a>
-       </ul>
-       <div class="line line_navbar" style="position: relative; bottom: 0; left: 0">
-       </div>
-      </div>
-      <div class="link">
-       <p class="dropdown_link dropdown_bar">
-        Database
-       </p>
-       <ul class="sub_menu dropdown">
-        <div class="first_menu pb-5">
-         <div class="content">
-          <div class="first_img">
-           <img alt="" src="../img/Group 1000001831.png"/>
-          </div>
-          <div class="first_menu_content">
-           VaultDB HUB
-          </div>
-         </div>
-         <div class="bottom_para">
-          Train, Test and deploy and manage your models with
-                  integrated Governance, Risk and Controls. Control data your
-                  models are training on for Bias and compliance.
-         </div>
-         <div class="first_btns">
-          <a class="contact_btn first_btn" href="../database/index.html">
-           VaultDB Database
-          </a>
-          <a class="contact_btn first_btn" href="../database/index.html">
-           VaultDB Applications
-          </a>
-          <a class="dropdown_btn" href="https://docs.vaultdb.ai/hub/datahub">
-           VaultDB Data Hub
-          </a>
-         </div>
-        </div>
-       </ul>
-       <div class="line line_navbar" style="position: relative; bottom: 0; left: 0">
-       </div>
-       <ul class="sub_menu dropdown">
-        <div class="second_menu first_menu mt-5">
-         <div class="content">
-          <div class="second_img first_img">
-           <img alt="" src="../img/Group 1000001832.png"/>
-          </div>
-          <div class="first_menu_content">
-           VaultDB Compute
-          </div>
-         </div>
-         <div class="bottom_para">
-          Train and Run your models across cloud providers on cheapest
-                  and unlimited resources.
-         </div>
-        </div>
-       </ul>
-       <div class="line line_navbar" style="position: relative; bottom: 0; left: 0">
-       </div>
-       <ul class="sub_menu dropdown">
-        <div class="second_menu first_menu">
-         <div class="content">
-          <div class="second_img first_img">
-           <img alt="" src="../img/Frame.png"/>
-          </div>
-          <div class="first_menu_content">
-           VaultDB Actions (DevOps)
-          </div>
-         </div>
-         <div class="bottom_para">
-          Train and Run your models across cloud providers on cheapest
-                  and unlimited resources.
-         </div>
-        </div>
-       </ul>
-       <div class="line line_navbar" style="position: relative; bottom: 0; left: 0">
-       </div>
-      </div>
-      <!--div class="link">
-              <p class="dropdown_link dropdown_bar">Services</p>
-              <ul class="sub_menu dropdown">
-                <div class="dev_nav service_nav">
-                  <div class="dev_nav_box service_nav_box">
-                    <div class="dev_nav_img image service_nav_img">
-                      <img src="img/Group 1000001846.png" alt="" />
-                    </div>
-                    <div class="dev_para service_para">UX / UI Design</div>
-                  </div>
-                </div>
-              </ul>
-              <div
-                class="line line_navbar"
-                style="position: relative; bottom: 0; left: 0"
-              ></div>
-              <ul class="sub_menu dropdown">
-                <div class="dev_nav service_nav">
-                  <div class="dev_nav_box service_nav_box">
-                    <div class="dev_nav_img image service_nav_img">
-                      <img src="img/Group 1000001847.png" alt="" />
-                    </div>
-                    <div class="dev_para service_para">Web Development</div>
-                  </div>
-                </div>
-              </ul>
-              <div
-                class="line line_navbar"
-                style="position: relative; bottom: 0; left: 0"
-              ></div>
-              <ul class="sub_menu dropdown">
-                <div class="dev_nav service_nav">
-                  <div class="dev_nav_box service_nav_box">
-                    <div class="dev_nav_img image service_nav_img">
-                      <img src="img/Group 1000001797.png" alt="" />
-                    </div>
-                    <div class="dev_para service_para">App Development</div>
-                  </div>
-                </div>
-              </ul>
-              <div
-                class="line line_navbar"
-                style="position: relative; bottom: 0; left: 0"
-              ></div>
-              <ul class="sub_menu dropdown">
-                <div class="dev_nav service_nav">
-                  <div class="dev_nav_box service_nav_box">
-                    <div class="dev_nav_img image service_nav_img">
-                      <img src="img/Group 1000001844.png" alt="" />
-                    </div>
-                    <div class="dev_para service_para">Consulting</div>
-                  </div>
-                </div>
-                <div class="service_p" style="color: var(--border-color)">
-                  Contact us for Cloud and model (deterministic or mathematical)
-                  development.
-                </div>
-              </ul>
-              <div
-                class="line line_navbar"
-                style="position: relative; bottom: 0; left: 0"
-              ></div>
-            </div-->
-      <div class="link" style="border: 0; outline: 0">
-       <a class="dropdown_link" href="../about.html" style="font-size: 20px">
-        About Us
-       </a>
-       <div class="middle" style="border: 0">
-        <a class="contact_btn" href="../contact.html">
-         Contact Us
-        </a>
-       </div>
-      </div>
-     </div>
-    </div>
-    <!-- <section class="hero_section"> -->
-    <div class="container-fluid row justify-content-center align-items-center ms-3" style="margin-top: 5%">
-     <div class="col-lg-8 col-md-7 col-sm-12">
-      <div class="hero_content">
-       <p>
-        Welcome to VaultDB.ai
-       </p>
-       <h2>
-        Distributed Database
-       </h2>
-       <!-- <p class="para">
-                            with Advanced Machine Learning Models, <br>
-                            At VaultDB, we believe in the potential of , the internet of Things <br>
-                            (IoT) to revolutionize industries and enhance everyday <br>
-                            experiences.
-                        </p> -->
-       <h5 class="hero_head fs-2" style="color: var(--para-color); font-weight: bold">
-        The capability of “Commit, Push and Merge”
-       </h5>
-       <p class="para">
-        in VaultDB allows for distributed data collection, which can be streamed to the
-              central cloud database VaultDB HUB.
-        <br/>
-        <br/>
-        In distributed computing environment centralized database server becomes a bottleneck and does not scale.
-              VaultDB removes this bottleneck and eliminates the cost of database server for the modern day AI Model
-              Apps and IOT devices.
-       </p>
-       <h2>
-        Empowering your IoT
-       </h2>
-       <!-- <p class="para">
-                            with Advanced Machine Learning Models, <br>
-                            At VaultDB, we believe in the potential of , the internet of Things <br>
-                            (IoT) to revolutionize industries and enhance everyday <br>
-                            experiences.
-                        </p> -->
-       <h5 class="hero_head fs-2" style="color: var(--para-color); font-weight: bold">
-        Today’s business applications and Internet of Things (IoT)
-       </h5>
-       <p class="para">
-        Devices generate massive amounts of data, often in real-time,
-              which must be collected, processed, and stored for analysis and
-              future use.
-        <br/>
-        <br/>
-        VaultDB is the most secure and reliable cloud database for your IoT devices. Don't loose the gold your
-              devices are mining.
-       </p>
-       <a class="contact_btn" href="#">
-        Start With Us
-       </a>
-      </div>
-     </div>
-     <div class="col-lg-4 col-md-4 col-sm-8 mt-md-0 d-flex justify-content-center">
-      <!-- <div class="hero_img_box"> -->
-      <!-- <img src="../img/Group 1000001781.png" alt="" /> -->
-      <img alt="" class="img-fluid EmpoweringImage" src="../img/EmpoweringYourIotImage.png"/>
-      <!-- </div> -->
-     </div>
-    </div>
-    <div class="light_img">
-     <img alt="" src="../img/Rectangle 9.png"/>
-    </div>
-    <!-- </section> -->
-    <!-- hero_section end =============-->
-    <!--work section start========= -->
-    <!-- <section class="work_section" style="z-index:-9999999999999 !important;"> -->
-    <div class="container" style="margin-top: 15vh">
-     <div class="row gy-3">
-      <div class="work_heading" style="margin-bottom: 8vh">
-       <h1 class="text-center text-white h1 mt-2">
-        How it Works
-       </h1>
-       <div class="text-center work_p">
-        The capability of “GRC” in VaultDb ensures security, including
-              authentication and authorization, data encryption, secure data
-              transfer protocols, regular updates and patches, strict
-              data-governance and access control policies. The capabilities of
-              Feature Engineering and AI are bolted onto VaultDB.
-       </div>
-      </div>
-      <div class="col-md-4 col-lg-4 col-sm-12 col-12 col" data-aos="fade-up" data-aos-duration="2000">
-       <div class="work_box">
-        <div class="work_img_box">
-         <img alt="" src="../img/Group 1000001855.png"/>
-        </div>
-        <h3 class="work_info" style="margin-top: 11.5rem">
-         Database
-        </h3>
-       </div>
-       <div class="vector_box">
-        <img alt="" src="../img/Vector 5.png"/>
-       </div>
-      </div>
-      <div class="col-md-4 col-lg-4 col-sm-12 col-12 col" data-aos="fade-up" data-aos-duration="2000">
-       <div class="work_box">
-        <div class="work_img_box">
-         <img alt="" src="../img/Group 1000001856.png"/>
-        </div>
-        <h3 class="work_info" style="margin-top: 11.5rem">
-         GRC and Controls
-        </h3>
-       </div>
-       <div class="vector_box1">
-        <img alt="" src="../img/Vector 6.png"/>
-       </div>
-      </div>
-      <div class="col-md-4 col-lg-4 col-sm-12 col-12 col" data-aos="fade-up" data-aos-duration="2000">
-       <div class="work_box last" style="margin-bottom: 10rem">
-        <div class="work_img_box">
-         <img alt="" class="last_work_img" src="../img/Group 1000001850.png"/>
-        </div>
-        <h3 class="work_info2" style="margin-top: 2rem">
-         Feature Engineering and AI
-        </h3>
-       </div>
-      </div>
-     </div>
-    </div>
-    <div class="footer_box">
-     <img alt="" class="footer_img work_right_img" src="../img/aboutligt.png"/>
-    </div>
-    <!-- </section> -->
-    <!-- <section class="faq_section"> -->
-    <div class="container col-lg-8 align-self-center accordian" style="margin-top: 10vh">
-     <div class="faq_heading">
-      Frequently Asked Questions
-     </div>
-     <div class="accordian_box">
-      <div class="label_box">
-       <div class="label">
-        What is VaultDB?
-       </div>
-       <img alt="" class="arrow_down" src="../img/Group 19700.svg"/>
-      </div>
-      <div class="content">
-       <p>
-        VaultDB is the in-process database that allows aany process to utilize local compute capability for query
-              and
-              data processing instead of relying on a centralized database server which becomes a bottleneck in
-              distributed
-              computing environments. VaultDB and VaultDB HUB data lakes are perfect for distributed cloud processes and
-              on IoT devices.
-        <br/>
-        <br/>
-        Each processes uses VaultDB library (python, nodejs, odjbc, jdbc) for data access and processing and once
-              ready pushes data to centralized VaultDB
-              HUB.
-        <br/>
-        <br/>
-        VaultDB also has built In GRC capability that allows users to secure data and access.
-              In short VaultDB frees models, business applications and Internet of Things (IoT) through in-process
-              database with centralized VaultDB Hub data lake.
-        <br/>
-        <br/>
-        VaultDB is perfect tool for ETL using tools such as AWS glue as it supports different input formats such
-              as CSV, parquet, json etc.
-              Vectorization is used to support faster data processing for ETL type of work.
-       </p>
-      </div>
-     </div>
-     <div class="accordian_box">
-      <div class="label_box">
-       <div class="label">
-        How much does VaultDB Cost?
-       </div>
-       <img alt="" src="../img/Group 19700.svg"/>
-      </div>
-      <div class="content">
-       <p>
-        VaultDB is free to use. We do not charge anything. You pay for storage and compute you use to your cloud
-              provider.
-       </p>
-      </div>
-     </div>
-     <div class="accordian_box">
-      <div class="label_box">
-       <div class="label">
-        Why should I consider using VaultDB for my IoT
-              devices?
-       </div>
-       <img alt="" src="../img/Group 19700.svg"/>
-      </div>
-      <div class="content">
-       <p>
-        IoT devices generate vast amount of data real-time which is invaluable for the organizations and
-              individuals.
-              This data maybe a perfect source tyo train AI/AGI models.
-        <br/>
-        <br/>
-        VaultDB is perfect for this type of use cases as it provides local writes when device is disconnected and
-              has push ability to send data to centralized VaultDB Data lake.
-        <br/>
-        <br/>
-        Your IoT devices can also use VaultDB to query merged local and centralized data at the speed.
-        <br/>
-        <br/>
-        VaultDB is highly cost effective as you only have to bear storage cost as there is no server running all
-              the time.
-       </p>
-      </div>
-     </div>
-     <div class="accordian_box">
-      <div class="label_box">
-       <div class="label">
-        Why should I consider using VaultDB for Model training testing?
-       </div>
-       <img alt="" src="../img/Group 19700.svg"/>
-      </div>
-      <div class="content">
-       <p>
-        Machine Learning Model training and testing requires lot of data preparation, data engineering and
-              security.
-        <br/>
-        <br/>
-        VaultDB is built on DuckDB which is built for big Data analytics and data engineering.
-              VaultDB Python package is integrated with pandas and numpy and makes data processing multiple folds faster
-              as it uses Vectorization.
-              VaultDB also supports PyArrow and so many more extensions supported by DuckDB.
-        <br/>
-        <br/>
-        VaultDB Governance, Risk and Control capability such as Fortress, Column level security, Roles
-              helps in preventing model bias and unnecessary PI or PII information during training.
-        <br/>
-        <br/>
-        VaultDB also allows you to partition tables for faster processing of data, which is paramount in the world
-              where GPU and CPU compute costs are astronomical.
-       </p>
-      </div>
-     </div>
-     <div class="accordian_box">
-      <div class="label_box">
-       <div class="label">
-        What is Data Inheritance?
-       </div>
-       <img alt="" src="../img/Group 19700.svg"/>
-      </div>
-      <div class="content">
-       <p>
-        Your Local vaultDB instance works like a database server that returns merged results from remote and local
-              dataset.
-              this way you can develop like you are working in production.
-              just enable data inheritance to true and see the magic. you can even hide remote rows you are inheriting
-              from remote for your local testing.
-       </p>
-      </div>
-     </div>
-     <div class="accordian_box">
-      <div class="label_box">
-       <div class="label">
-        Why VaultDB?
-       </div>
-       <img alt="" src="../img/Group 19700.svg"/>
-      </div>
-      <div class="content">
-       <p>
-        Because of So many reasons but to list few VaultDB Does following:--
-              1) Written in C++ so it's very faster
-              2) Built in support to read and write parquet, csv, json etc files
-              3) Integrated with pandas, numpy, PyArrow
-              4) supports all extensions supported by DuckDB
-              5) Works on all platforms (Windows, Linux, Mac)
-              6) Allows you to use your laptop/desktop resources instead of using caloud for everything
-              7) Did I say it costs you pennies to run.
-              8) Allows you to develop like you are working in Production.
-       </p>
-      </div>
-     </div>
-     <img alt="" class="light2_img" src="../img/Rectangle 23791.png"/>
-    </div>
-    <!-- </section> -->
-   </div>
-  </div>
-  <!-- footer section ===========================================-->
-  <div class="container_body">
-   <div class="container_inside">
-    <section class="footer_section">
-     <div class="footer mt-5" data-aos="fade-left" data-aos-duration="2000">
-      <div class="left">
-       <img alt="" src="../img/mainlogo.png"/>
-       <a class="footer_logo" href="#">
-        VaultDB.ai
-       </a>
-      </div>
-      <div class="right" style="margin-bottom: 10px">
-       <a href="#">
-        <i class="fa-brands fa-github">
-        </i>
-       </a>
-       <a href="#">
-        <i class="fa-brands fa-youtube">
-        </i>
-       </a>
-       <a href="#">
-        <i class="fa-brands fa-facebook">
-        </i>
-       </a>
-       <a href="#">
-        <i class="fa-brands fa-twitter">
-        </i>
-       </a>
-       <a href="#">
-        <i class="fa-brands fa-instagram">
-        </i>
-       </a>
-       <a href="#">
-        <i class="fa-brands fa-linkedin">
-        </i>
-       </a>
-      </div>
-     </div>
-     <div>
-      <div class="row mb-5">
-       <div class="line mb-5">
-       </div>
-       <div class="col-md-4 col-sm-12 col-lg-4">
-        <h5 class="bottom_left">
-         VaultDB.ai @ 2026. All rights reserved.
-        </h5>
-       </div>
-       <div class="col-md-8 col-sm-12 col-lg-8 bottom_right">
-        <a href="../index.html">
-         VaultDB.ai
-        </a>
-        <a href="../contact.html">
-         Contact Us
-        </a>
-        <a href="../about.html">
-         About Us
-        </a>
-        <a href="#">
-         Privacy Policy
-        </a>
-        <a href="#">
-         Terms and Conditions
-        </a>
-       </div>
-      </div>
-     </div>
-     <div class="footer_box">
-      <img alt="" class="footer_img" src="../img/Rectangle 9.png"/>
-     </div>
-    </section>
-   </div>
-  </div>
-  <script crossorigin="anonymous" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js">
-  </script>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js">
-  </script>
-  <script>
-   AOS.init();
-  </script>
-  <script src="../js/index.js">
-  </script>
- </body>
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VaultDB.ai: Distributed Database for IOT and Modeling</title>
+<meta content="noindex, nofollow" name="robots"/>
+<meta content="VaultDB.ai: Secure Inprocess database and cloud DataHub for IOT and Modeling" property="og:title"/>
+<meta content="Secure Inprocess database and cloud DataHub for IOT and Modeling" property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="../img/v-logo.png" property="og:image"/>
+<meta content="http://vaultdb.ai" property="og:url"/>
+<meta content="VaultDB.ai" property="og:site_name"/>
+<link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" rel="stylesheet"/>
+<link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" referrerpolicy="no-referrer" rel="stylesheet"/>
+<link href="../img/v-logo.png" rel="icon" type="image/png"/>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+<link href="../css/style.css" rel="stylesheet"/>
+</head>
+<body style="overflow: hidden !important">
+<div class="container_body">
+<div class="container_inside">
+
+<!-- Navigation (injected by js/nav.js) -->
+<div id="vdb-header"></div>
+<!-- Mobile sidebar (injected by js/nav.js) -->
+<div id="vdb-sidebar"></div>
+
+<!-- Hero -->
+<div class="container-fluid row justify-content-center align-items-center ms-3" style="margin-top: 5%">
+<div class="col-lg-8 col-md-7 col-sm-12">
+<div class="hero_content">
+<p>Welcome to VaultDB.ai</p>
+<h2>Distributed Database</h2>
+<h5 class="hero_head fs-2" style="color: var(--para-color); font-weight: bold">
+  The capability of "Commit, Push and Merge"
+</h5>
+<p class="para">
+  in VaultDB allows for distributed data collection, which can be streamed to the
+  central cloud database VaultDB HUB.
+  <br/><br/>
+  In distributed computing environment centralized database server becomes a bottleneck and does not scale.
+  VaultDB removes this bottleneck and eliminates the cost of database server for the modern day AI Model
+  Apps and IOT devices.
+</p>
+<h2>Empowering your IoT</h2>
+<h5 class="hero_head fs-2" style="color: var(--para-color); font-weight: bold">
+  Today's business applications and Internet of Things (IoT)
+</h5>
+<p class="para">
+  Devices generate massive amounts of data, often in real-time,
+  which must be collected, processed, and stored for analysis and
+  future use.
+  <br/><br/>
+  VaultDB is the most secure and reliable cloud database for your IoT devices. Don't loose the gold your
+  devices are mining.
+</p>
+<a class="contact_btn" href="#">Start With Us</a>
+</div>
+</div>
+<div class="col-lg-4 col-md-4 col-sm-8 mt-md-0 d-flex justify-content-center">
+<img alt="" class="img-fluid EmpoweringImage" src="../img/EmpoweringYourIotImage.png"/>
+</div>
+</div>
+<div class="light_img">
+<img alt="" src="../img/Rectangle 9.png"/>
+</div>
+
+<!-- How it Works -->
+<div class="container" style="margin-top: 15vh">
+<div class="row gy-3">
+<div class="work_heading" style="margin-bottom: 8vh">
+<h1 class="text-center text-white h1 mt-2">How it Works</h1>
+<div class="text-center work_p">
+  The capability of "GRC" in VaultDb ensures security, including
+  authentication and authorization, data encryption, secure data
+  transfer protocols, regular updates and patches, strict
+  data-governance and access control policies. The capabilities of
+  Feature Engineering and AI are bolted onto VaultDB.
+</div>
+</div>
+<div class="col-md-4 col-lg-4 col-sm-12 col-12 col" data-aos="fade-up" data-aos-duration="2000">
+<div class="work_box">
+  <div class="work_img_box"><img alt="" src="../img/Group 1000001855.png"/></div>
+  <h3 class="work_info" style="margin-top: 11.5rem">Database</h3>
+</div>
+<div class="vector_box"><img alt="" src="../img/Vector 5.png"/></div>
+</div>
+<div class="col-md-4 col-lg-4 col-sm-12 col-12 col" data-aos="fade-up" data-aos-duration="2000">
+<div class="work_box">
+  <div class="work_img_box"><img alt="" src="../img/Group 1000001856.png"/></div>
+  <h3 class="work_info" style="margin-top: 11.5rem">GRC and Controls</h3>
+</div>
+<div class="vector_box1"><img alt="" src="../img/Vector 6.png"/></div>
+</div>
+<div class="col-md-4 col-lg-4 col-sm-12 col-12 col" data-aos="fade-up" data-aos-duration="2000">
+<div class="work_box last" style="margin-bottom: 10rem">
+  <div class="work_img_box"><img alt="" class="last_work_img" src="../img/Group 1000001850.png"/></div>
+  <h3 class="work_info2" style="margin-top: 2rem">Feature Engineering and AI</h3>
+</div>
+</div>
+</div>
+</div>
+<div class="footer_box">
+<img alt="" class="footer_img work_right_img" src="../img/aboutligt.png"/>
+</div>
+
+<!-- FAQ Section -->
+<div class="container col-lg-8 align-self-center accordian" style="margin-top: 10vh">
+<div class="faq_heading">Frequently Asked Questions</div>
+<div class="accordian_box">
+<div class="label_box">
+  <div class="label">What is VaultDB?</div>
+  <img alt="" class="arrow_down" src="../img/Group 19700.svg"/>
+</div>
+<div class="content">
+<p>VaultDB is the in-process database that allows any process to utilize local compute capability for query
+and data processing instead of relying on a centralized database server which becomes a bottleneck in
+distributed computing environments. VaultDB and VaultDB HUB data lakes are perfect for distributed cloud processes and
+on IoT devices.
+<br/><br/>
+Each processes uses VaultDB library (python, nodejs, odjbc, jdbc) for data access and processing and once
+ready pushes data to centralized VaultDB HUB.
+<br/><br/>
+VaultDB also has built In GRC capability that allows users to secure data and access.
+In short VaultDB frees models, business applications and Internet of Things (IoT) through in-process
+database with centralized VaultDB Hub data lake.
+<br/><br/>
+VaultDB is perfect tool for ETL using tools such as AWS glue as it supports different input formats such
+as CSV, parquet, json etc. Vectorization is used to support faster data processing for ETL type of work.
+</p>
+</div>
+</div>
+<div class="accordian_box">
+<div class="label_box">
+  <div class="label">How much does VaultDB Cost?</div>
+  <img alt="" src="../img/Group 19700.svg"/>
+</div>
+<div class="content">
+<p>VaultDB is free to use. We do not charge anything. You pay for storage and compute you use to your cloud provider.</p>
+</div>
+</div>
+<div class="accordian_box">
+<div class="label_box">
+  <div class="label">Why should I consider using VaultDB for my IoT devices?</div>
+  <img alt="" src="../img/Group 19700.svg"/>
+</div>
+<div class="content">
+<p>IoT devices generate vast amount of data real-time which is invaluable for the organizations and individuals.
+This data maybe a perfect source to train AI/AGI models.
+<br/><br/>
+VaultDB is perfect for this type of use cases as it provides local writes when device is disconnected and
+has push ability to send data to centralized VaultDB Data lake.
+<br/><br/>
+Your IoT devices can also use VaultDB to query merged local and centralized data at the speed.
+<br/><br/>
+VaultDB is highly cost effective as you only have to bear storage cost as there is no server running all the time.
+</p>
+</div>
+</div>
+<div class="accordian_box">
+<div class="label_box">
+  <div class="label">Why should I consider using VaultDB for Model training testing?</div>
+  <img alt="" src="../img/Group 19700.svg"/>
+</div>
+<div class="content">
+<p>Machine Learning Model training and testing requires lot of data preparation, data engineering and security.
+<br/><br/>
+VaultDB is built on DuckDB which is built for big Data analytics and data engineering.
+VaultDB Python package is integrated with pandas and numpy and makes data processing multiple folds faster
+as it uses Vectorization. VaultDB also supports PyArrow and so many more extensions supported by DuckDB.
+<br/><br/>
+VaultDB Governance, Risk and Control capability such as Fortress, Column level security, Roles
+helps in preventing model bias and unnecessary PI or PII information during training.
+<br/><br/>
+VaultDB also allows you to partition tables for faster processing of data, which is paramount in the world
+where GPU and CPU compute costs are astronomical.
+</p>
+</div>
+</div>
+<div class="accordian_box">
+<div class="label_box">
+  <div class="label">What is Data Inheritance?</div>
+  <img alt="" src="../img/Group 19700.svg"/>
+</div>
+<div class="content">
+<p>Your Local vaultDB instance works like a database server that returns merged results from remote and local
+dataset. This way you can develop like you are working in production.
+Just enable data inheritance to true and see the magic. You can even hide remote rows you are inheriting
+from remote for your local testing.
+</p>
+</div>
+</div>
+<div class="accordian_box">
+<div class="label_box">
+  <div class="label">Why VaultDB?</div>
+  <img alt="" src="../img/Group 19700.svg"/>
+</div>
+<div class="content">
+<p>Because of So many reasons but to list few VaultDB Does following:--
+1) Written in C++ so it's very faster
+2) Built in support to read and write parquet, csv, json etc files
+3) Integrated with pandas, numpy, PyArrow
+4) supports all extensions supported by DuckDB
+5) Works on all platforms (Windows, Linux, Mac)
+6) Allows you to use your laptop/desktop resources instead of using cloud for everything
+7) Did I say it costs you pennies to run.
+8) Allows you to develop like you are working in Production.
+</p>
+</div>
+</div>
+<img alt="" class="light2_img" src="../img/Rectangle 23791.png"/>
+</div>
+
+</div></div>
+
+<!-- Footer (injected by js/nav.js) -->
+<div id="vdb-footer"></div>
+
+<script crossorigin="anonymous" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>AOS.init();</script>
+<script src="../js/nav.js"></script>
+<script src="../js/index.js"></script>
+</body>
 </html>

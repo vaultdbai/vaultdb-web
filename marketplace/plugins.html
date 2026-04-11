@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>KRONOS Re: Plugins — AI Marketplace</title>
+<meta content="noindex, nofollow" name="robots"/>
+<link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" rel="stylesheet"/>
+<link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" referrerpolicy="no-referrer" rel="stylesheet"/>
+<link href="../img/v-logo.png" rel="icon" type="image/png"/>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+<link href="../css/style.css" rel="stylesheet"/>
+<style>
+    /* Marketplace Page Styles */
+    .mp-hero {
+        text-align: center;
+        padding: 12rem 2rem 6rem;
+    }
+    .mp-hero h1 {
+        font-family: var(--plus-font-family, 'Plus Jakarta Sans', sans-serif);
+        font-size: 4.8rem;
+        font-weight: 800;
+        color: #fff;
+        letter-spacing: -0.03em;
+        margin-bottom: 1.5rem;
+    }
+    .mp-hero p {
+        font-size: 1.8rem;
+        color: var(--para-color, #A896B7);
+        max-width: 600px;
+        margin: 0 auto 4rem;
+        line-height: 1.6;
+    }
+    .mp-stats {
+        display: flex;
+        justify-content: center;
+        gap: 4rem;
+        margin-bottom: 3rem;
+    }
+    .mp-stat {
+        text-align: center;
+    }
+    .mp-stat i {
+        font-size: 2.4rem;
+        color: var(--purple-color, #A044FF);
+        display: block;
+        margin-bottom: 0.8rem;
+    }
+    .mp-stat .count {
+        font-size: 3.6rem;
+        font-weight: 800;
+        color: #fff;
+        display: block;
+        line-height: 1;
+    }
+    .mp-stat .label {
+        font-size: 1.4rem;
+        color: var(--para-color, #A896B7);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+    }
+
+    /* Category Cards (Landing Page) */
+    .mp-categories {
+        padding: 0 2rem 8rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    .mp-cat-card {
+        display: block;
+        background: rgba(16, 16, 30, 0.6);
+        border: 1px solid rgba(168, 150, 183, 0.15);
+        border-radius: 20px;
+        padding: 4rem 3rem;
+        text-align: center;
+        text-decoration: none;
+        transition: all 0.35s ease;
+        height: 100%;
+    }
+    .mp-cat-card:hover {
+        border-color: var(--purple-color, #A044FF);
+        transform: translateY(-6px);
+        box-shadow: 0 20px 40px rgba(160, 68, 255, 0.2);
+        text-decoration: none;
+    }
+    .mp-cat-card i {
+        font-size: 3.6rem;
+        color: var(--purple-color, #A044FF);
+        margin-bottom: 2rem;
+        display: block;
+    }
+    .mp-cat-card h3 {
+        font-size: 2.4rem;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 1rem;
+    }
+    .mp-cat-card p {
+        font-size: 1.5rem;
+        color: var(--para-color, #A896B7);
+        margin-bottom: 1.5rem;
+        line-height: 1.5;
+    }
+    .mp-cat-count {
+        font-size: 1.3rem;
+        color: var(--purple-color, #A044FF);
+        font-weight: 600;
+    }
+
+    /* Toolbar (Search + Tags) */
+    .mp-toolbar {
+        max-width: 1200px;
+        margin: 0 auto 3rem;
+        padding: 0 2rem;
+    }
+    .mp-search {
+        width: 100%;
+        padding: 1.4rem 2rem;
+        font-size: 1.6rem;
+        background: rgba(16, 16, 30, 0.8);
+        border: 1px solid rgba(168, 150, 183, 0.2);
+        border-radius: 12px;
+        color: #fff;
+        outline: none;
+        transition: border-color 0.3s;
+        margin-bottom: 2rem;
+        font-family: inherit;
+    }
+    .mp-search:focus {
+        border-color: var(--purple-color, #A044FF);
+    }
+    .mp-search::placeholder {
+        color: rgba(168, 150, 183, 0.5);
+    }
+    .mp-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+    }
+    .mp-tag-btn {
+        padding: 0.6rem 1.4rem;
+        font-size: 1.3rem;
+        border: 1px solid rgba(168, 150, 183, 0.25);
+        border-radius: 99px;
+        background: transparent;
+        color: var(--para-color, #A896B7);
+        cursor: pointer;
+        transition: all 0.25s;
+        font-family: inherit;
+    }
+    .mp-tag-btn:hover, .mp-tag-btn.active {
+        background: var(--purple-color, #A044FF);
+        border-color: var(--purple-color, #A044FF);
+        color: #fff;
+    }
+
+    /* Item Cards */
+    .mp-grid {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem 8rem;
+    }
+    .mp-card {
+        background: rgba(16, 16, 30, 0.6);
+        border: 1px solid rgba(168, 150, 183, 0.12);
+        border-radius: 16px;
+        padding: 2.5rem;
+        transition: all 0.35s ease;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .mp-card:hover {
+        border-color: var(--purple-color, #A044FF);
+        transform: translateY(-4px);
+        box-shadow: 0 16px 32px rgba(160, 68, 255, 0.15);
+    }
+    .mp-card-header {
+        display: flex;
+        align-items: center;
+        gap: 1.2rem;
+        margin-bottom: 1.5rem;
+    }
+    .mp-card-header i {
+        font-size: 2.4rem;
+        color: var(--purple-color, #A044FF);
+    }
+    .mp-card-header h4 {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #fff;
+        margin: 0;
+        flex: 1;
+    }
+    .mp-version {
+        font-size: 1.1rem;
+        padding: 0.3rem 0.8rem;
+        background: rgba(160, 68, 255, 0.15);
+        border: 1px solid rgba(160, 68, 255, 0.3);
+        border-radius: 6px;
+        color: var(--purple-color, #A044FF);
+        white-space: nowrap;
+    }
+    .mp-card-desc {
+        font-size: 1.4rem;
+        color: var(--para-color, #A896B7);
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+        flex: 1;
+    }
+    .mp-card-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1.5rem;
+    }
+    .mp-card-tag {
+        font-size: 1.1rem;
+        padding: 0.3rem 0.8rem;
+        border: 1px solid rgba(168, 150, 183, 0.2);
+        border-radius: 6px;
+        color: var(--para-color, #A896B7);
+    }
+    .mp-card-meta {
+        display: flex;
+        gap: 1.5rem;
+        font-size: 1.2rem;
+        color: rgba(168, 150, 183, 0.6);
+        margin-bottom: 1.5rem;
+    }
+    .mp-card-meta i {
+        margin-right: 0.4rem;
+        color: rgba(168, 150, 183, 0.4);
+    }
+    .mp-install {
+        display: flex;
+        align-items: center;
+        background: rgba(11, 11, 26, 0.8);
+        border: 1px solid rgba(168, 150, 183, 0.1);
+        border-radius: 10px;
+        padding: 1rem 1.2rem;
+        margin-top: auto;
+    }
+    .mp-install code {
+        flex: 1;
+        font-size: 1.2rem;
+        color: #d0c4db;
+        overflow-x: auto;
+        white-space: nowrap;
+        font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+    }
+    .mp-install .copy-btn {
+        background: none;
+        border: none;
+        color: var(--para-color, #A896B7);
+        cursor: pointer;
+        padding: 0.4rem 0.6rem;
+        font-size: 1.3rem;
+        transition: color 0.25s;
+        flex-shrink: 0;
+    }
+    .mp-install .copy-btn:hover {
+        color: var(--purple-color, #A044FF);
+    }
+
+    /* Featured badge */
+    .mp-featured {
+        font-size: 1.0rem;
+        padding: 0.2rem 0.7rem;
+        background: rgba(160, 68, 255, 0.2);
+        border: 1px solid var(--purple-color, #A044FF);
+        border-radius: 4px;
+        color: var(--purple-color, #A044FF);
+        text-transform: uppercase;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+    }
+
+    /* Section header on listing pages */
+    .mp-section-header {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 12rem 2rem 3rem;
+    }
+    .mp-section-header h1 {
+        font-family: var(--plus-font-family, 'Plus Jakarta Sans', sans-serif);
+        font-size: 4rem;
+        font-weight: 800;
+        color: #fff;
+        margin-bottom: 1rem;
+    }
+    .mp-section-header p {
+        font-size: 1.6rem;
+        color: var(--para-color, #A896B7);
+    }
+    .mp-section-header .breadcrumb-link {
+        font-size: 1.4rem;
+        color: var(--purple-color, #A044FF);
+        text-decoration: none;
+        margin-bottom: 2rem;
+        display: inline-block;
+    }
+    .mp-section-header .breadcrumb-link:hover {
+        text-decoration: underline;
+    }
+
+    /* No results */
+    .mp-no-results {
+        text-align: center;
+        padding: 6rem 2rem;
+        color: var(--para-color, #A896B7);
+        font-size: 1.6rem;
+        display: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .mp-hero h1 { font-size: 3.2rem; }
+        .mp-hero { padding: 10rem 1.5rem 4rem; }
+        .mp-stats { gap: 2rem; }
+        .mp-stat .count { font-size: 2.8rem; }
+        .mp-section-header { padding: 10rem 1.5rem 2rem; }
+        .mp-section-header h1 { font-size: 3rem; }
+    }
+
+    /* Reset font sizing for marketplace (match site) */
+    html { font-size: 10px !important; }
+    body { font-size: 1.6rem !important; }
+</style>
+
+</head>
+<body style="overflow: hidden !important">
+<div class="container_body">
+<div class="container_inside">
+
+<!-- Navigation (injected by js/nav.js) -->
+<div id="vdb-header"></div>
+<!-- Mobile sidebar (injected by js/nav.js) -->
+<div id="vdb-sidebar"></div>
+
+
+    <div class="mp-section-header">
+        <a href="index.html" class="breadcrumb-link">
+            <i class="fa-solid fa-arrow-left" style="margin-right: 0.5rem;"></i>Back to Marketplace
+        </a>
+        <h1>
+            <i class="fa-solid fa-plug" style="color: var(--purple-color, #A044FF); margin-right: 1.5rem;"></i>
+            Plugins
+        </h1>
+        <p>KRONOS chatbot integrations and workflow extensions</p>
+    </div>
+
+    <div class="mp-toolbar">
+        <input type="text" id="mp-search" class="mp-search"
+               placeholder="Search plugins..." />
+        <div class="mp-tags">
+            <button class="mp-tag-btn active" data-tag="all">All</button>
+
+        </div>
+    </div>
+
+    <div class="mp-grid">
+        <div class="row" id="mp-card-grid">
+            
+        </div>
+        <div class="mp-no-results" id="mp-no-results">
+            <i class="fa-solid fa-search" style="font-size: 3rem; display: block; margin-bottom: 1.5rem;"></i>
+            No plugins match your search.
+        </div>
+    </div>
+    
+
+</div></div>
+
+<!-- Footer (injected by js/nav.js) -->
+<div id="vdb-footer"></div>
+
+<script crossorigin="anonymous" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>AOS.init();</script>
+<script src="../js/nav.js"></script>
+<script>
+(function() {
+    // Search + Tag Filter
+    var searchBox = document.getElementById('mp-search');
+    var cards = document.querySelectorAll('.mp-item');
+    var tagBtns = document.querySelectorAll('.mp-tag-btn');
+    var noResults = document.getElementById('mp-no-results');
+    var activeTag = 'all';
+
+    if (!searchBox) return;
+
+    function filterCards() {
+        var q = searchBox.value.toLowerCase();
+        var visible = 0;
+        cards.forEach(function(card) {
+            var name = card.getAttribute('data-name') || '';
+            var desc = card.getAttribute('data-desc') || '';
+            var tags = card.getAttribute('data-tags') || '';
+            var matchSearch = !q || name.indexOf(q) !== -1 || desc.indexOf(q) !== -1 || tags.indexOf(q) !== -1;
+            var matchTag = activeTag === 'all' || tags.split(',').indexOf(activeTag) !== -1;
+            if (matchSearch && matchTag) {
+                card.style.display = '';
+                visible++;
+            } else {
+                card.style.display = 'none';
+            }
+        });
+        if (noResults) {
+            noResults.style.display = visible === 0 ? 'block' : 'none';
+        }
+    }
+
+    searchBox.addEventListener('input', filterCards);
+
+    tagBtns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            tagBtns.forEach(function(b) { b.classList.remove('active'); });
+            this.classList.add('active');
+            activeTag = this.getAttribute('data-tag');
+            filterCards();
+        });
+    });
+
+    // Copy to clipboard
+    window.copyInstallCmd = function(btn) {
+        var code = btn.previousElementSibling;
+        if (!code) return;
+        var text = code.textContent || code.innerText;
+        if (navigator.clipboard) {
+            navigator.clipboard.writeText(text.trim());
+        } else {
+            var ta = document.createElement('textarea');
+            ta.value = text.trim();
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+        }
+        btn.innerHTML = '<i class="fa-solid fa-check"></i>';
+        setTimeout(function() {
+            btn.innerHTML = '<i class="fa-solid fa-copy"></i>';
+        }, 2000);
+    };
+})();
+</script>
+
+</body>
+</html>

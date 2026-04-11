@@ -507,7 +507,7 @@
         </li>
         
         <li class="nav-item">
-            <a class="nav-link  " href="RESEARCH-AGENT-ARCHITECTURE.html">
+            <a class="nav-link active " href="RESEARCH-AGENT-ARCHITECTURE.html">
                 <i class="fa-solid fa-house me-2"></i> Research Agent Architecture
             </a>
         </li>
@@ -537,7 +537,7 @@
         </li>
         
         <li class="nav-item">
-            <a class="nav-link active ps-4" href="standards_SUBMODULE_DOC_CONVENTION.html">
+            <a class="nav-link  ps-4" href="standards_SUBMODULE_DOC_CONVENTION.html">
                 <i class="fa-solid fa-file-lines me-2"></i> Submodule Doc Convention
             </a>
         </li>
@@ -560,60 +560,306 @@
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
                                 <li class="breadcrumb-item"><a href="#">Platform</a></li>
-                                <li class="breadcrumb-item active">Submodule Doc Convention <span class="persona-badge">standards</span></li>
+                                <li class="breadcrumb-item active">Research-Agent-Architecture <span class="persona-badge">index</span></li>
                             </ol>
                         </nav>
-                        <h1 id="vaultdb-submodule-documentation-standard">VaultDB Submodule Documentation Standard</h1>
-<p>To ensure a consistent, Docusaurus-style experience on the <code>vaultdb.ai</code> portal, all submodules must adhere to the following documentation structure.</p>
-<h2 id="1-directory-structure">1. Directory Structure</h2>
-<p>Every submodule MUST contain a <code>docs/</code> directory at its root:</p>
-<pre><code class="language-text">docs/
-├── index.md             # Functional Mission &amp; Executive Summary
-├── actuarial/           # PERSONA: Actuaries &amp; Quantitative Researchers
-│   ├── methodology.md   # Mathematical formulas, regulatory logic, and basis
-│   └── assumptions.md   # How domain-specific assumptions (e.g. lapse) are applied
-├── technology/          # PERSONA: Developers &amp; Data Engineers
-│   ├── architecture.md  # API design, task flow (TED), and DuckLake schema
-│   └── deployment.md    # Scaling, timeouts, and resource requirements
-├── compliance/          # PERSONA: Auditors &amp; Risk Officers
-│   ├── explainability.md # AI decision audit trails and data lineage
-│   └── controls.md       # HMAC approval gates and sign-off policies
-└── external/            # PUBLIC-FACING docs (published to vaultdb.ai)
-    └── README.md         # External developer guide → becomes index.html
+                        <h1 id="research-agent-architecture-extensible-design">Research Agent Architecture — Extensible Design</h1>
+<h2 id="vision">Vision</h2>
+<p>The <code>vaultdb.crawler.research</code> framework provides a <strong>pluggable research agent system</strong>
+where anyone can build domain-specific research agents by extending a base class.
+The insurance prospectus hunter is the first concrete implementation, but the framework
+is designed for:</p>
+<ul>
+<li><strong>Regulatory data research</strong> (NAIC, SERFF, state DOI portals)</li>
+<li><strong>Scenario data research</strong> (Fed economic data, treasury curves, equity indices)</li>
+<li><strong>Assumption data research</strong> (SOA mortality tables, lapse studies, expense benchmarks)</li>
+<li><strong>Competitive intelligence</strong> (product comparisons, rate sheet tracking)</li>
+<li><strong>Academic/quantitative research</strong> (papers, models, calibration data)</li>
+</ul>
+<h2 id="architecture-overview">Architecture Overview</h2>
+<pre><code>vaultdb.crawler                          # Base crawling infrastructure
+├── config.py                            # CrawlerConfig (LLM backends)
+├── advisor.py                           # BaseLLMAdvisor (generate/vision)
+├── browser.py                           # Playwright utilities
+├── http.py                              # HttpClient
+├── search.py                            # WebSearcher
+├── links.py                             # LinkClassifier
+├── files.py                             # FileManager, dedup
+├── content.py                           # Content detection
+│
+└── research/                            # Extensible research framework
+    ├── __init__.py                       # Public API
+    ├── base.py                          # BaseResearchAgent (abstract)
+    ├── registry.py                      # AgentRegistry (discover/register agents)
+    ├── sources.py                       # DataSource protocol + built-in sources
+    ├── storage.py                       # StorageBackend protocol
+    │
+    ├── agents/                          # Concrete research agents
+    │   ├── __init__.py
+    │   ├── insurance.py                 # InsuranceResearchAgent (prospectus hunter)
+    │   ├── regulatory.py                # RegulatoryResearchAgent (SERFF/NAIC/DOI)
+    │   ├── scenario.py                  # ScenarioResearchAgent (rates/curves/indices)
+    │   └── assumptions.py               # AssumptionResearchAgent (mortality/lapse tables)
+    │
+    ├── sources/                         # Pluggable data sources
+    │   ├── __init__.py
+    │   ├── sec_edgar.py                 # SEC EDGAR filing search
+    │   ├── serff.py                     # SERFF Filing Access navigation
+    │   ├── naic.py                      # NAIC company database
+    │   ├── state_doi.py                 # State DOI portals
+    │   ├── web_search.py                # Google/DuckDuckGo search
+    │   ├── web_crawl.py                 # Smart LLM-guided crawling
+    │   └── fred.py                      # FRED economic data (future)
+    │
+    ├── advisor.py                       # InsuranceAdvisor (domain LLM prompts)
+    ├── cli.py                           # CLI entry point
+    └── plugin.py                        # Dashboard chatbot plugin entry point
 </code></pre>
-<h3 id="external-documentation-docsexternal">External Documentation (<code>docs/external/</code>)</h3>
-<p>The <code>external/</code> subfolder contains documentation intended for <strong>public consumption</strong> on vaultdb.ai. Key rules:</p>
+<h2 id="core-abstractions">Core Abstractions</h2>
+<h3 id="1-baseresearchagent">1. BaseResearchAgent</h3>
+<p>The abstract base that all research agents extend:</p>
+<pre><code class="language-python">class BaseResearchAgent(ABC):
+    &quot;&quot;&quot;Base class for all research agents.
+
+    Subclasses define:
+    - What to search for (target documents, data types)
+    - Where to search (data sources to use)
+    - How to validate (LLM prompts, acceptance criteria)
+    - Where to store results (directory structure)
+    &quot;&quot;&quot;
+
+    # -- Override in subclass --
+    name: str                          # e.g. &quot;insurance&quot;, &quot;scenario&quot;
+    description: str                   # Human-readable description
+
+    @abstractmethod
+    def get_sources(self) -&gt; list[DataSource]:
+        &quot;&quot;&quot;Return the data sources this agent searches.&quot;&quot;&quot;
+
+    @abstractmethod
+    def get_advisor(self) -&gt; BaseLLMAdvisor | None:
+        &quot;&quot;&quot;Return the domain-specific LLM advisor.&quot;&quot;&quot;
+
+    @abstractmethod
+    def get_storage(self) -&gt; StorageBackend:
+        &quot;&quot;&quot;Return the storage backend for results.&quot;&quot;&quot;
+
+    @abstractmethod
+    def validate_document(self, content: bytes, metadata: dict) -&gt; bool:
+        &quot;&quot;&quot;Validate whether a downloaded document is relevant.&quot;&quot;&quot;
+
+    # -- Provided by base --
+    def hunt(self, target: str, **kwargs) -&gt; dict:
+        &quot;&quot;&quot;Full autonomous hunt for a target (company, topic, etc.).&quot;&quot;&quot;
+
+    def search(self, query: str, **kwargs) -&gt; list[dict]:
+        &quot;&quot;&quot;Search across configured sources.&quot;&quot;&quot;
+
+    def download(self, url: str, **kwargs) -&gt; dict | None:
+        &quot;&quot;&quot;Download and validate a single document.&quot;&quot;&quot;
+
+    def list_downloads(self, target: str = &quot;&quot;) -&gt; dict:
+        &quot;&quot;&quot;List downloaded documents.&quot;&quot;&quot;
+
+    def status(self) -&gt; dict:
+        &quot;&quot;&quot;Agent status including LLM availability.&quot;&quot;&quot;
+
+    def get_tool_definitions(self) -&gt; list[dict]:
+        &quot;&quot;&quot;Return Anthropic SDK tool definitions for chatbot integration.&quot;&quot;&quot;
+
+    def dispatch_tool(self, tool_name: str, tool_input: dict) -&gt; Any:
+        &quot;&quot;&quot;Dispatch a tool call from the chatbot.&quot;&quot;&quot;
+</code></pre>
+<h3 id="2-datasource-protocol">2. DataSource Protocol</h3>
+<p>Pluggable sources that agents compose:</p>
+<pre><code class="language-python">class DataSource(Protocol):
+    &quot;&quot;&quot;Protocol for pluggable research data sources.&quot;&quot;&quot;
+
+    name: str                          # e.g. &quot;sec_edgar&quot;, &quot;serff&quot;
+    description: str
+
+    def search(self, query: str, **kwargs) -&gt; list[SearchResult]:
+        &quot;&quot;&quot;Search this source and return results.&quot;&quot;&quot;
+
+    def download(self, result: SearchResult) -&gt; DownloadResult | None:
+        &quot;&quot;&quot;Download a specific result.&quot;&quot;&quot;
+
+    @property
+    def available(self) -&gt; bool:
+        &quot;&quot;&quot;Whether this source is currently accessible.&quot;&quot;&quot;
+</code></pre>
+<p>Built-in sources:
+- <strong>WebSearchSource</strong> — Google/DuckDuckGo web search
+- <strong>WebCrawlSource</strong> — LLM-guided deep crawling
+- <strong>SECEdgarSource</strong> — SEC EDGAR API
+- <strong>SERFFSource</strong> — SERFF Filing Access (Playwright)
+- <strong>NAICSource</strong> — NAIC company database
+- <strong>StateDOISource</strong> — State DOI portals</p>
+<h3 id="3-storagebackend-protocol">3. StorageBackend Protocol</h3>
+<p>Where results are saved:</p>
+<pre><code class="language-python">class StorageBackend(Protocol):
+    &quot;&quot;&quot;Protocol for research result storage.&quot;&quot;&quot;
+
+    def save(self, content: bytes, metadata: dict) -&gt; str:
+        &quot;&quot;&quot;Save content, return path.&quot;&quot;&quot;
+
+    def exists(self, content: bytes) -&gt; bool:
+        &quot;&quot;&quot;Check for duplicates.&quot;&quot;&quot;
+
+    def list(self, target: str = &quot;&quot;) -&gt; list[dict]:
+        &quot;&quot;&quot;List saved items.&quot;&quot;&quot;
+
+    def remove(self, path: str) -&gt; bool:
+        &quot;&quot;&quot;Remove an item.&quot;&quot;&quot;
+</code></pre>
+<p>Built-in:
+- <strong>FileStorageBackend</strong> — Local filesystem (default, uses PROSPECTUS_DIR)
+- Future: DuckLake storage, S3, etc.</p>
+<h3 id="4-agentregistry">4. AgentRegistry</h3>
+<p>Discovery and registration:</p>
+<pre><code class="language-python">class AgentRegistry:
+    &quot;&quot;&quot;Registry for research agents — enables plugin discovery.&quot;&quot;&quot;
+
+    _agents: dict[str, type[BaseResearchAgent]]
+
+    def register(self, agent_cls: type[BaseResearchAgent]) -&gt; None:
+        &quot;&quot;&quot;Register an agent class.&quot;&quot;&quot;
+
+    def get(self, name: str) -&gt; type[BaseResearchAgent]:
+        &quot;&quot;&quot;Get agent class by name.&quot;&quot;&quot;
+
+    def list(self) -&gt; list[str]:
+        &quot;&quot;&quot;List registered agent names.&quot;&quot;&quot;
+
+    def discover(self) -&gt; None:
+        &quot;&quot;&quot;Auto-discover agents via entry_points.&quot;&quot;&quot;
+
+# Global registry
+registry = AgentRegistry()
+</code></pre>
+<h2 id="concrete-agents">Concrete Agents</h2>
+<h3 id="insuranceresearchagent">InsuranceResearchAgent</h3>
 <ul>
-<li><code>README.md</code> in <code>external/</code> is converted to <code>index.html</code> by <code>build_docs.py</code>.</li>
-<li><strong>Never expose</strong> internal file paths, class names, environment variables, ports, or secret configuration.</li>
-<li><strong>Focus on capabilities</strong> — what the module does, not internal implementation details.</li>
-<li><strong>Use Mermaid diagrams</strong> — <code>build_docs.py</code> converts them to SVG images when <code>mmdc</code> is available, or falls back to client-side rendering.</li>
-<li>Each submodule's CLAUDE.md should include instructions for generating correct external documentation.</li>
+<li><strong>Sources</strong>: WebSearch, WebCrawl, SECEdgar, SERFF, NAIC, StateDOI</li>
+<li><strong>Advisor</strong>: InsuranceAdvisor (FIA/RILA/VA/FA prompts)</li>
+<li><strong>Storage</strong>: FileStorage under <code>prospectuses/{Company}/</code></li>
+<li><strong>Targets</strong>: Company names → autonomous multi-phase hunt</li>
 </ul>
-<h2 id="2-persona-requirements">2. Persona Requirements</h2>
-<h3 id="a-actuars-methodology">A. Actuars (Methodology)</h3>
+<h3 id="regulatoryresearchagent">RegulatoryResearchAgent</h3>
 <ul>
-<li><strong>Content</strong>: Focus on the "Math and Mandates".</li>
-<li><strong>Requirements</strong>: Use LaTeX for formulas, detail the statutory vs. GAAP differences, and explain the QuantLib configuration used.</li>
-<li><strong>Audit</strong>: Must link to source regulatory documents where applicable.</li>
+<li><strong>Sources</strong>: SERFF, NAIC, StateDOI</li>
+<li><strong>Advisor</strong>: InsuranceAdvisor (regulatory prompts)</li>
+<li><strong>Storage</strong>: FileStorage under <code>prospectuses/{Company}/SERFF_Filings/</code></li>
+<li><strong>Targets</strong>: Company + state → filing search</li>
 </ul>
-<h3 id="b-technology-architecture">B. Technology (Architecture)</h3>
+<h3 id="scenarioresearchagent-future">ScenarioResearchAgent (future)</h3>
 <ul>
-<li><strong>Content</strong>: Focus on the "Pip and Payload".</li>
-<li><strong>Requirements</strong>: Mermaid sequence diagrams for async tasks, detailed field-level descriptions for Parquet outputs, and API endpoint signatures.</li>
-<li><strong>Audit</strong>: Must include performance benchmarks and error-handling strategies.</li>
+<li><strong>Sources</strong>: FRED, Treasury.gov, WebSearch</li>
+<li><strong>Advisor</strong>: ScenarioAdvisor (rate/curve prompts)</li>
+<li><strong>Storage</strong>: FileStorage under <code>data/scenarios/</code></li>
+<li><strong>Targets</strong>: Curve types, date ranges → rate data download</li>
 </ul>
-<h3 id="c-compliance-auditors">C. Compliance (Auditors)</h3>
+<h3 id="assumptionresearchagent-future">AssumptionResearchAgent (future)</h3>
 <ul>
-<li><strong>Content</strong>: Focus on "Provenance and Permissions".</li>
-<li><strong>Requirements</strong>: Documentation of the <code>ApprovalRecord</code> created for specific actions, logs for AI-proposed changes, and role-based access control (RBAC) details.</li>
+<li><strong>Sources</strong>: SOA website, WebSearch, academic papers</li>
+<li><strong>Advisor</strong>: AssumptionAdvisor (mortality/lapse prompts)</li>
+<li><strong>Storage</strong>: FileStorage under <code>data/assumptions/</code></li>
+<li><strong>Targets</strong>: Table types → SOA data download</li>
 </ul>
-<h2 id="3-build-process">3. Build Process</h2>
-<p>Documentation is automatically converted to HTML and hosted on the static <code>vaultdb-web</code> site via the global <code>build_docs.py</code> script. </p>
+<h2 id="integration-points">Integration Points</h2>
+<h3 id="1-cli-vaultdb-research">1. CLI (<code>vaultdb-research</code>)</h3>
+<pre><code class="language-bash">vaultdb-research hunt insurance --company &quot;Athene&quot; --include-sec --include-regulatory
+vaultdb-research hunt regulatory --company &quot;Jackson&quot; --states TX,NY
+vaultdb-research search insurance --query &quot;FIA prospectus 2025&quot;
+vaultdb-research list insurance --company &quot;Athene&quot;
+vaultdb-research status
+vaultdb-research agents                    # list available agents
+</code></pre>
+<h3 id="2-dashboard-chatbot-tools">2. Dashboard Chatbot Tools</h3>
+<p>Each agent auto-generates tool definitions via <code>get_tool_definitions()</code>:
+- <code>research_hunt</code> — autonomous hunt
+- <code>research_search</code> — search across sources
+- <code>research_download</code> — download specific URL
+- <code>research_list</code> — list downloads
+- <code>research_status</code> — agent status</p>
+<h3 id="3-claude-code-skill-research">3. Claude Code Skill (<code>/research</code>)</h3>
+<p>Slash command that loads the research agent and provides instructions.</p>
+<h3 id="4-plugin-entry-point">4. Plugin Entry Point</h3>
+<pre><code class="language-toml"># kronos-skill.toml
+[skill]
+name = &quot;research&quot;
+entry_point = &quot;vaultdb.crawler.research.plugin:get_tool_definitions&quot;
+</code></pre>
+<h3 id="5-python-api">5. Python API</h3>
+<pre><code class="language-python">from vaultdb.crawler.research import ResearchAgent
+
+agent = ResearchAgent(&quot;insurance&quot;)
+result = agent.hunt(&quot;Athene&quot;, include_sec=True)
+</code></pre>
+<h2 id="extension-example-building-a-custom-research-agent">Extension Example — Building a Custom Research Agent</h2>
+<pre><code class="language-python">from vaultdb.crawler.research.base import BaseResearchAgent, DataSource
+from vaultdb.crawler.research.sources import WebSearchSource
+from vaultdb.crawler.research.registry import registry
+
+class CreditRatingResearchAgent(BaseResearchAgent):
+    name = &quot;credit_ratings&quot;
+    description = &quot;Research credit ratings and rating actions for insurers&quot;
+
+    def get_sources(self):
+        return [
+            WebSearchSource(),
+            MoodysSource(),     # custom source
+            SPGlobalSource(),   # custom source
+        ]
+
+    def get_advisor(self):
+        return CreditRatingAdvisor()  # custom prompts
+
+    def get_storage(self):
+        return FileStorageBackend(base_dir=Path(&quot;data/ratings&quot;))
+
+    def validate_document(self, content, metadata):
+        # Custom validation logic
+        ...
+
+# Register so it appears in CLI and dashboard
+registry.register(CreditRatingResearchAgent)
+</code></pre>
+<h2 id="implementation-plan">Implementation Plan</h2>
+<h3 id="phase-1-core-framework-this-pr">Phase 1: Core Framework (this PR)</h3>
+<ol>
+<li>Create <code>base.py</code> with <code>BaseResearchAgent</code></li>
+<li>Create <code>sources.py</code> with <code>DataSource</code> protocol and built-in sources</li>
+<li>Create <code>storage.py</code> with <code>StorageBackend</code> protocol</li>
+<li>Create <code>registry.py</code> with <code>AgentRegistry</code></li>
+<li>Move insurance-browser code into <code>agents/insurance.py</code></li>
+<li>Move regulatory code into <code>agents/regulatory.py</code> and <code>sources/</code></li>
+</ol>
+<h3 id="phase-2-integration">Phase 2: Integration</h3>
+<ol>
+<li>Create <code>cli.py</code> with argparse CLI</li>
+<li>Create <code>plugin.py</code> with dashboard tool definitions</li>
+<li>Add Claude Code skill</li>
+<li>Add installer registration</li>
+<li>Add tests</li>
+</ol>
+<h3 id="phase-3-additional-agents-future-prs">Phase 3: Additional Agents (future PRs)</h3>
+<ol>
+<li>ScenarioResearchAgent</li>
+<li>AssumptionResearchAgent</li>
+<li>Competitive intelligence agent</li>
+</ol>
+<h2 id="file-naming-conventions">File Naming Conventions</h2>
 <ul>
-<li><strong>Sidebar</strong>: The built-in script generates a navigation sidebar based on the folder structure.</li>
-<li><strong>Header/Footer</strong>: Site-wide branding is injected automatically.</li>
-<li><strong>Mermaid</strong>: Diagrams are rendered using a CDN-based Mermaid.js injector.</li>
+<li><code>base.py</code> — abstract base classes and protocols</li>
+<li><code>agents/*.py</code> — concrete agent implementations</li>
+<li><code>sources/*.py</code> — data source implementations</li>
+<li><code>registry.py</code> — agent discovery and registration</li>
+<li><code>storage.py</code> — storage backends</li>
+<li><code>advisor.py</code> — domain-specific LLM advisors (kept at research/ level for backward compat)</li>
+<li><code>config.py</code> — shared configuration constants</li>
+<li><code>cli.py</code> — CLI entry point</li>
+<li><code>plugin.py</code> — chatbot plugin entry point</li>
 </ul>
                     </div>
                 </div>

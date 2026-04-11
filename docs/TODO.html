@@ -513,7 +513,7 @@
         </li>
         
         <li class="nav-item">
-            <a class="nav-link  " href="TODO.html">
+            <a class="nav-link active " href="TODO.html">
                 <i class="fa-solid fa-house me-2"></i> Todo
             </a>
         </li>
@@ -537,7 +537,7 @@
         </li>
         
         <li class="nav-item">
-            <a class="nav-link active ps-4" href="standards_SUBMODULE_DOC_CONVENTION.html">
+            <a class="nav-link  ps-4" href="standards_SUBMODULE_DOC_CONVENTION.html">
                 <i class="fa-solid fa-file-lines me-2"></i> Submodule Doc Convention
             </a>
         </li>
@@ -560,61 +560,54 @@
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
                                 <li class="breadcrumb-item"><a href="#">Platform</a></li>
-                                <li class="breadcrumb-item active">Submodule Doc Convention <span class="persona-badge">standards</span></li>
+                                <li class="breadcrumb-item active">Todo <span class="persona-badge">index</span></li>
                             </ol>
                         </nav>
-                        <h1 id="vaultdb-submodule-documentation-standard">VaultDB Submodule Documentation Standard</h1>
-<p>To ensure a consistent, Docusaurus-style experience on the <code>vaultdb.ai</code> portal, all submodules must adhere to the following documentation structure.</p>
-<h2 id="1-directory-structure">1. Directory Structure</h2>
-<p>Every submodule MUST contain a <code>docs/</code> directory at its root:</p>
-<pre><code class="language-text">docs/
-├── index.md             # Functional Mission &amp; Executive Summary
-├── actuarial/           # PERSONA: Actuaries &amp; Quantitative Researchers
-│   ├── methodology.md   # Mathematical formulas, regulatory logic, and basis
-│   └── assumptions.md   # How domain-specific assumptions (e.g. lapse) are applied
-├── technology/          # PERSONA: Developers &amp; Data Engineers
-│   ├── architecture.md  # API design, task flow (TED), and DuckLake schema
-│   └── deployment.md    # Scaling, timeouts, and resource requirements
-├── compliance/          # PERSONA: Auditors &amp; Risk Officers
-│   ├── explainability.md # AI decision audit trails and data lineage
-│   └── controls.md       # HMAC approval gates and sign-off policies
-└── external/            # PUBLIC-FACING docs (published to vaultdb.ai)
-    └── README.md         # External developer guide → becomes index.html
-</code></pre>
-<h3 id="external-documentation-docsexternal">External Documentation (<code>docs/external/</code>)</h3>
-<p>The <code>external/</code> subfolder contains documentation intended for <strong>public consumption</strong> on vaultdb.ai. Key rules:</p>
-<ul>
-<li><code>README.md</code> in <code>external/</code> is converted to <code>index.html</code> by <code>build_docs.py</code>.</li>
-<li><strong>Never expose</strong> internal file paths, class names, environment variables, ports, or secret configuration.</li>
-<li><strong>Focus on capabilities</strong> — what the module does, not internal implementation details.</li>
-<li><strong>Use Mermaid diagrams</strong> — <code>build_docs.py</code> converts them to SVG images when <code>mmdc</code> is available, or falls back to client-side rendering.</li>
-<li>Each submodule's CLAUDE.md should include instructions for generating correct external documentation.</li>
-</ul>
-<h2 id="2-persona-requirements">2. Persona Requirements</h2>
-<h3 id="a-actuars-methodology">A. Actuars (Methodology)</h3>
-<ul>
-<li><strong>Content</strong>: Focus on the "Math and Mandates".</li>
-<li><strong>Requirements</strong>: Use LaTeX for formulas, detail the statutory vs. GAAP differences, and explain the QuantLib configuration used.</li>
-<li><strong>Audit</strong>: Must link to source regulatory documents where applicable.</li>
-</ul>
-<h3 id="b-technology-architecture">B. Technology (Architecture)</h3>
-<ul>
-<li><strong>Content</strong>: Focus on the "Pip and Payload".</li>
-<li><strong>Requirements</strong>: Mermaid sequence diagrams for async tasks, detailed field-level descriptions for Parquet outputs, and API endpoint signatures.</li>
-<li><strong>Audit</strong>: Must include performance benchmarks and error-handling strategies.</li>
-</ul>
-<h3 id="c-compliance-auditors">C. Compliance (Auditors)</h3>
-<ul>
-<li><strong>Content</strong>: Focus on "Provenance and Permissions".</li>
-<li><strong>Requirements</strong>: Documentation of the <code>ApprovalRecord</code> created for specific actions, logs for AI-proposed changes, and role-based access control (RBAC) details.</li>
-</ul>
-<h2 id="3-build-process">3. Build Process</h2>
-<p>Documentation is automatically converted to HTML and hosted on the static <code>vaultdb-web</code> site via the global <code>build_docs.py</code> script. </p>
-<ul>
-<li><strong>Sidebar</strong>: The built-in script generates a navigation sidebar based on the folder structure.</li>
-<li><strong>Header/Footer</strong>: Site-wide branding is injected automatically.</li>
-<li><strong>Mermaid</strong>: Diagrams are rendered using a CDN-based Mermaid.js injector.</li>
-</ul>
+                        <p>1) Insuranmc-browser is now an mcpserver,i do not think that makes sense as this should be an agent or plugin or skill or something that is better suited for this job. mcp server is not suitewd for it. In order to that make it a agent cum tool or plugin inside vaultdb core module where crawler is there and make that installable like graphify and other tools do. move all tools and code from insurance browser to vaultddb crawler (maybe give it better name) and create a agent and or plugin and or skill I can ask to go through all the things and does the download etc. same agent should be exposed in dashboard chat system. I want to be able to call it from claude code like menu so add this as installer how graphify has it after pip install is done. I want to be able to ask it to download prospectuses for kronos re and also for other products we want to build models for. I also want it to be able to download data for scenarios and assumptions and save them in the right format so we can use them in our models. I want to be able to do that from dashboard and also from command line using a simple interface. This will help us keep all our data organized and easily accessible for our modeling and analysis work.</p>
+<p>1) Create scenarios generation models for real world and esg scenarios.</p>
+<p>2) create assumption generation models and generate assumptions and save them</p>
+<p>3) Download product prospectuses for kronos re. I want to build alm models and end to end models and system for these productios so we can show off a system. I also want to build sample inforce data for them and loaders so when we get original inforce we can use that with minimmal modifications.</p>
+<p>4) for each product calculate lapse build assumptions and write model to generate cashflows and Present value for differnt scenarions. also build runners that uses scenarios and differnet assumptions and create reserves and capital requirements.</p>
+<p>5) create UI to manipulate scenarios and shocks to value inforce and calcualte greeks. we must always use pytorch capability.</p>
+<p>6) build models that compares reserve and spread can be made if client goes through Krons reinsurance. dashboard must have pages for it
+"PROMPT":--</p>
+<p>Act as an Expert Actuarial Developer and Financial Engineer. I am building a platform for KRONOS Re, an AI-native reinsurance sidecar focused on Fixed and Fixed Indexed Annuity (FIA) blocks. I need a Python-based framework to demonstrate an end-to-end 'Digital Chief Actuary' system.</p>
+<p>Please write modular code for the following four components:</p>
+<ol>
+<li>
+<p>Synthetic Inforce Data Generator:
+Build a script to generate a CSV census file of 1,000 sample annuity policies. Each record must include: Policy ID, Issue Date, Product Type (Fixed/FIA), Account Value, Cash Surrender Value, Attained Age, Gender, Crediting Strategy (e.g., S&amp;P 500 Annual Point-to-Point), Participation Rate, and any Living Benefit Rider indicators.</p>
+</li>
+<li>
+<p>Intelligent Data Loader &amp; Normalizer:
+Create a loader module that:</p>
+</li>
+</ol>
+<p>Ingests the synthetic CSV.</p>
+<p>Performs 'Sanity Checks' (e.g., flagging negative account values or impossible ages).</p>
+<p>Maps raw policy data to standardized actuarial tables (e.g., 2012 IAR Mortality Table).</p>
+<p>Logs 'Attribution Tags' for each record to ensure an audit trail for regulatory compliance.</p>
+<ol>
+<li>ALM &amp; Stochastic Modeling Engine:
+Create a simplified modeling class that:</li>
+</ol>
+<p>Projects cash flows for these policies over 30 years.</p>
+<p>Calculates 'Greeks' (Delta and Vega) for the FIA positions.</p>
+<p>Includes a placeholder function for Stochastic Nested Modeling (simulating 1,000 market paths) to determine Capital Buffers required for Bermuda Solvency Capital Requirement (BSCR).</p>
+<ol>
+<li>The 'Explainability' Layer:
+Write a function that takes the output of the ALM engine and generates a 'Draft Actuarial Memo' in text format. This memo should explain the hedging logic (Duration Matching for Fixed, Dynamic Delta/Vega for FIA) and the resulting capital adequacy in plain English for a human Chief Actuary to review.</li>
+</ol>
+<p>Technical Requirements:</p>
+<p>Use Python with pandas, numpy, and scipy.</p>
+<p>Ensure the code is object-oriented and well-commented.</p>
+<p>Prioritize transparency in the logic so it can be audited by external partners.</p>
+<p>1) Lets create sample data and laoders for each model so we have data on dashboard and ui and we can run things for demo.</p>
+<p>2) in core project and dashboard can you build documents and architecture diagrams for approval, chahub and other functionalities so that I can understand what is going on how this whole thing works. before you do that review all code in it's entirity and check for errors.</p>
+<hr />
+<p>2) lets look at vaultdb-web and make about kronos re, move Database part to separate page that talks about it with a separate top link, it's faq should also be in it's own page main website should become about Kronos Re and all it's features documantation and come up with pictures etc. deep think and plan first by reading following and attached @beautifulMention@beautifulMention@beautifulMention  </p>
+<p>3) based on attached plan build alm, trading, scenario generators, asset, markets, assumptions and other missing modules and required models and functionality to run them end to end and live using TED in vaultdb. suggest missing repos and add them. build plan first and save the plan in docs so we can use it later for refrence.</p>
+<p>use .md to html helper document website build repo and add script to convert and add thoes documents and links for vaultdb-web repo in basic form. make sure documents follow similar theme and colr and css as vaultdb-web website has. do not change the website just add link for documantation for each sub git submodule so each product documantation is avaialble.</p>
                     </div>
                 </div>
             </div>

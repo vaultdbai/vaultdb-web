@@ -477,43 +477,103 @@
                     <div class="col-lg-3">
                         <div class="side_accordian doc-nav"><ul class="nav flex-column">
         <li class="nav-item">
-            <a class="nav-link  " href="README.html">
-                <i class="fa-solid fa-house me-2"></i> Readme
+            <a class="nav-link  " href="AUTHENTICATION_GUIDE.html">
+                <i class="fa-solid fa-house me-2"></i> Authentication Guide
             </a>
         </li>
         
         <li class="nav-item">
-            <a class="nav-link  ps-4" href="compliance_approval_integration.html">
-                <i class="fa-solid fa-shield-halved me-2"></i> Approval Integration
+            <a class="nav-link  " href="CODEOWNERS_SETUP.html">
+                <i class="fa-solid fa-house me-2"></i> Codeowners Setup
             </a>
         </li>
         
         <li class="nav-item">
-            <a class="nav-link active " href="index.html">
+            <a class="nav-link  " href="abstract.html">
+                <i class="fa-solid fa-house me-2"></i> Abstract
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  ps-4" href="compliance_approval_controls.html">
+                <i class="fa-solid fa-shield-halved me-2"></i> Approval Controls
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="ducklake.html">
+                <i class="fa-solid fa-house me-2"></i> Ducklake
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="ducklake_evaluation.html">
+                <i class="fa-solid fa-house me-2"></i> Ducklake Evaluation
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="glittery-brewing-riddle.html">
+                <i class="fa-solid fa-house me-2"></i> Glittery Brewing Riddle
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="implementation-plan-unified-runners.html">
+                <i class="fa-solid fa-house me-2"></i> Implementation Plan Unified Runners
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="index.html">
                 <i class="fa-solid fa-house me-2"></i> Index
             </a>
         </li>
         
         <li class="nav-item">
-            <a class="nav-link  ps-4" href="technology_api_reference.html">
-                <i class="fa-solid fa-code me-2"></i> Api Reference
+            <a class="nav-link  " href="logger_usage.html">
+                <i class="fa-solid fa-house me-2"></i> Logger Usage
             </a>
         </li>
         
         <li class="nav-item">
-            <a class="nav-link  ps-4" href="technology_chatbot_engine.html">
-                <i class="fa-solid fa-code me-2"></i> Chatbot Engine
+            <a class="nav-link  " href="oauth2_authentication_guide.html">
+                <i class="fa-solid fa-house me-2"></i> Oauth2 Authentication Guide
             </a>
         </li>
         
         <li class="nav-item">
-            <a class="nav-link  ps-4" href="technology_chathub.html">
-                <i class="fa-solid fa-code me-2"></i> Chathub
+            <a class="nav-link  " href="task_runners_integration_guide.html">
+                <i class="fa-solid fa-house me-2"></i> Task Runners Integration Guide
             </a>
         </li>
         
         <li class="nav-item">
-            <a class="nav-link  " href="system-context.html">
+            <a class="nav-link  " href="task_scheduling.html">
+                <i class="fa-solid fa-house me-2"></i> Task Scheduling
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  ps-4" href="technology_approval.html">
+                <i class="fa-solid fa-code me-2"></i> Approval
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  ps-4" href="technology_workflow.html">
+                <i class="fa-solid fa-code me-2"></i> Workflow
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="workflow-approval.html">
+                <i class="fa-solid fa-house me-2"></i> Workflow Approval
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link active " href="system-context.html">
                 <i class="fa-solid fa-brain me-2"></i> System Context
             </a>
         </li>
@@ -523,139 +583,281 @@
                         <nav aria-label="breadcrumb" class="mb-5">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="../../../index.html">Home</a></li>
-                                <li class="breadcrumb-item"><a href="#">dashboard</a></li>
-                                <li class="breadcrumb-item active">Index <span class="persona-badge">index</span></li>
+                                <li class="breadcrumb-item"><a href="#">core</a></li>
+                                <li class="breadcrumb-item active">System-Context <span class="persona-badge">system-context</span></li>
                             </ol>
                         </nav>
-                        <h1 id="kronos-re-dashboard">KRONOS Re Dashboard</h1>
-<p>The KRONOS Re Dashboard is the primary user interface for the platform. It is a Python Dash application backed by a FastAPI router, serving actuaries, CIOs, risk officers, and regulators.</p>
-<h2 id="platform-role">Platform Role</h2>
-<pre class="mermaid">graph LR
-    subgraph &quot;User-Facing&quot;
-        DASH[&quot;KRONOS Dashboard<br/>(Port 8050)<br/>Application UI&quot;]
-        WEB[&quot;vaultdb.ai<br/>Marketing Website&quot;]
-    end
-
-    subgraph &quot;Backend&quot;
-        API[&quot;KRONOS FastAPI Router&quot;]
-        CORE[&quot;VaultDB Core API<br/>(Port 8000)&quot;]
-        HUB[&quot;ChatHub<br/>(Port 8060)&quot;]
-    end
-
-    DASH --> API
-    DASH --> HUB
-    API --> CORE
-    WEB -.->|docs only| DASH
-</pre>
+                        <h1 id="system-rules-do-not-override">SYSTEM RULES [DO NOT OVERRIDE]</h1>
+<p>This file contains the absolute source of truth for this project. 
+Before suggesting any code, verify it aligns with the standards below.</p>
+<h1 id="system-context-vaultdb">System Context: VaultDB</h1>
+<p><CONTEXT>
+<strong>VaultDB Core Mission</strong>
+VaultDB is an advanced data orchestration and execution layer designed for high-performance financial and enterprise workloads. It provides isolated, branchable data sandboxes ("Virtual Forks") using a DuckLake and DuckDB architecture. It enables analysts to manipulate production-inherited data safely in isolated sandboxes, perform vectorized computations (Arrow/DuckDB), and then propagate or discard changes without impacting the upstream production environment.
+</CONTEXT></p>
+<p><STACK>
+*   <strong>Language</strong>: Python 3.12+ (Strict typing: <code>disallow_untyped_defs = True</code>)
+*   <strong>Data Lakehouse</strong>: DuckLake (DuckDB-backed, Parquet on S3)
+*   <strong>In-Memory Engine</strong>: Apache Arrow (<code>pyarrow</code>), DuckDB (integrated via DuckLake, version &gt;= 1.5.0)
+*   <strong>Task Runners</strong>: Celery (Redis), AWS Batch, AWS Lambda
+*   <strong>Web API</strong>: FastAPI
+*   <strong>Caching</strong>: Redis
+*   <strong>LLM Backends</strong>: Ollama (Gemma default), OpenAI, Anthropic (Claude), AWS Bedrock, Google Gemini, HuggingFace Transformers
+*   <strong>Tooling</strong>: Ruff (Formatter/Linter, 160 char limit), MyPy, Pytest
+</STACK></p>
+<h2 id="project-map">Project Map</h2>
 <ul>
-<li><strong>Dashboard</strong> is where all KRONOS Re features are accessed: chatbot, workflow approval, ALM analysis, risk, trading, and reporting.</li>
-<li><strong>vaultdb-web</strong> is the public marketing site only.</li>
+<li><code>/src/vaultdb/</code>: Base package.<ul>
+<li><code>core.py</code>: Application class for connection management (DuckLake attach, S3 secrets).</li>
+<li><code>data/</code>: Data layer (DuckLake/Inheritance).<ul>
+<li><code>catalog.py</code>: <code>DuckLakeCatalogManager</code> — manages DuckDB/DuckLake connection, sandbox schemas, and data I/O.</li>
+<li><code>reader.py</code>: <code>InheritedReader</code> — merge-and-override reads across main→sandbox hierarchy via SQL pushdown.</li>
+<li><code>timemachine.py</code>: Point-in-time historical queries on DuckLake versions/timestamps.</li>
+<li><code>model.py</code>: ORM-like <code>Model</code> base class mapping Python objects to DuckLake tables; inherits from main snapshots.</li>
+<li><code>columns.py</code> / <code>usertype.py</code>: Column descriptors and user-defined types with Arrow schema mapping.</li>
 </ul>
-<h2 id="architecture">Architecture</h2>
+</li>
+<li><code>compute/</code>: Universal execution framework (<code>Runner</code> interfaces). <code>TED</code> proxy singleton in <code>_state.py</code> routes <code>@TED.task()</code> to the active runner.</li>
+<li><code>batch/</code> | <code>function/</code>: AWS Batch and Lambda runners.</li>
+<li><code>service/</code>: Celery task runner service.</li>
+<li><code>scheduler/</code>: Business calendars and task scheduling.</li>
+<li><code>cache/</code>: Redis-based caching.</li>
+<li><code>auth/</code>: Authentication — <code>AuthType.BASIC</code>, <code>AuthType.OIDC</code>, <code>AuthType.GITHUB</code>. OIDC yields AWS credentials for S3 access.</li>
+<li><code>web/</code>: FastAPI app.</li>
+<li><code>crawler/</code>: Intelligent web crawling with multi-provider LLM support.<ul>
+<li><code>advisor.py</code>: <code>BaseLLMAdvisor</code> — multi-backend LLM abstraction (Ollama, OpenAI, Claude, Bedrock, Gemini, transformers).</li>
+<li><code>config.py</code>: <code>CrawlerConfig</code> — configuration dataclass with env var overrides for all LLM providers.</li>
+<li><code>http.py</code>: <code>HttpClient</code> — session management, rate limiting, UA rotation.</li>
+<li><code>browser.py</code>: Playwright browser helpers (launch, overlays, dropdowns, iframes, accordions).</li>
+<li><code>links.py</code>: <code>LinkClassifier</code> — link classification with scoring and optional LLM integration.</li>
+<li><code>search.py</code>: <code>WebSearcher</code> — Google and DuckDuckGo HTML scraping.</li>
+<li><code>content.py</code>: Content validation, text extraction, junk detection, PDF/HTML handling.</li>
+<li><code>files.py</code>: <code>FileManager</code> — document saving, deduplication, content hashing.</li>
+</ul>
+</li>
+<li><code>workflow/</code>: Workflow orchestration with triple-gate approval.</li>
+<li><code>approval/</code>: Approval engine and policy enforcement.</li>
+<li><code>skills_installer/</code>: GitHub skill installer.</li>
+<li><code>config.py</code>: <strong>SOLE AUTHORITY</strong> for configuration.</li>
+<li><code>logger/</code>: Centralized structured logging.</li>
+</ul>
+</li>
+<li><code>/tests/</code>: Unit and integration tests (using <code>pytest</code> + <code>unittest</code>).</li>
+<li><code>/docs/</code>: Detailed project documentation.</li>
+</ul>
+<hr />
+<h2 id="crawler-llm-architecture">Crawler LLM Architecture</h2>
+<p>The <code>crawler/</code> package provides a pluggable multi-provider LLM layer via
+<code>BaseLLMAdvisor</code>.  All backends are <strong>lazily initialised</strong> — no API call
+is made until <code>generate()</code> or <code>available</code> is first invoked.</p>
+<h3 id="supported-backends">Supported Backends</h3>
 <table>
 <thead>
 <tr>
-<th>Component</th>
-<th>Technology</th>
-<th>Port</th>
-<th>Purpose</th>
+<th>Backend</th>
+<th>Config env vars</th>
+<th>Default model</th>
+<th>Vision</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>Dash UI</strong></td>
-<td>Plotly Dash + Bootstrap</td>
-<td>8050 (WSGI)</td>
-<td>Multi-page analytical frontend</td>
+<td><code>ollama</code></td>
+<td><code>OLLAMA_URL</code>, <code>OLLAMA_MODEL</code></td>
+<td><code>gemma3:4b</code></td>
+<td>Yes</td>
 </tr>
 <tr>
-<td><strong>KRONOS API</strong></td>
-<td>FastAPI</td>
-<td>8050 (ASGI)</td>
-<td>REST endpoints for all domain operations</td>
+<td><code>openai</code></td>
+<td><code>OPENAI_API_KEY</code>, <code>OPENAI_MODEL</code></td>
+<td><code>gpt-4o-mini</code></td>
+<td>Yes</td>
 </tr>
 <tr>
-<td><strong>ChatHub</strong></td>
-<td>FastAPI</td>
-<td>8060</td>
-<td>JupyterHub-style per-user chatbot process manager</td>
+<td><code>anthropic</code></td>
+<td><code>ANTHROPIC_API_KEY</code>, <code>ANTHROPIC_MODEL</code></td>
+<td><code>claude-sonnet-4-6</code></td>
+<td>Yes</td>
 </tr>
 <tr>
-<td><strong>UserProcess</strong></td>
-<td>FastAPI + Claude SDK</td>
-<td>9100-9999</td>
-<td>Isolated per-user AI conversation servers</td>
+<td><code>bedrock</code></td>
+<td><code>BEDROCK_REGION</code>, <code>BEDROCK_MODEL</code></td>
+<td><code>anthropic.claude-sonnet-4-6-v1:0</code></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>gemini</code></td>
+<td><code>GEMINI_API_KEY</code>, <code>GEMINI_MODEL</code></td>
+<td><code>gemini-2.0-flash</code></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>transformers</code></td>
+<td><code>LLM_MODEL</code></td>
+<td><code>Qwen/Qwen2.5-1.5B-Instruct</code></td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>none</code></td>
+<td>—</td>
+<td>—</td>
+<td>No</td>
 </tr>
 </tbody>
 </table>
-<h2 id="pages">Pages</h2>
-<table>
-<thead>
-<tr>
-<th>Page</th>
-<th>Path</th>
-<th>Audience</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>AI Chatbot</td>
-<td><code>/chatbot</code></td>
-<td>All users</td>
-<td>Conversational AI for building workflows</td>
-</tr>
-<tr>
-<td>Workflow Viewer</td>
-<td><code>/workflow?id=</code></td>
-<td>Actuaries, CIO</td>
-<td>Dedicated workflow inspection and approval</td>
-</tr>
-<tr>
-<td>Solvency Overview</td>
-<td><code>/</code></td>
-<td>PE partners, CRO</td>
-<td>Portfolio dashboard</td>
-</tr>
-<tr>
-<td>Liability Portfolio</td>
-<td><code>/liability</code></td>
-<td>Actuaries</td>
-<td>Cash flow projections and reserves</td>
-</tr>
-<tr>
-<td>ALM Analysis</td>
-<td><code>/alm</code></td>
-<td>ALM committee, CIO</td>
-<td>Duration gap, KRD, spread analytics</td>
-</tr>
-<tr>
-<td>Trading &amp; Hedge Book</td>
-<td><code>/trading</code></td>
-<td>CIO, traders</td>
-<td>Hedge recommendations and positions</td>
-</tr>
-<tr>
-<td>Risk (BSCR)</td>
-<td><code>/risk</code></td>
-<td>CRO, BMA</td>
-<td>Regulatory capital and stress testing</td>
-</tr>
-<tr>
-<td>Reports</td>
-<td><code>/reports</code></td>
-<td>Regulators, auditors</td>
-<td>GAAP/STAT/BSCR report generation</td>
-</tr>
-</tbody>
-</table>
-<h2 id="documentation-index">Documentation Index</h2>
+<p>Select a backend via <code>LLM_BACKEND</code> env var (default: <code>ollama</code>).</p>
+<h3 id="install-extras">Install extras</h3>
+<pre><code class="language-bash">pip install &quot;vaultdb.core[crawler-openai]&quot;       # OpenAI only
+pip install &quot;vaultdb.core[crawler-anthropic]&quot;     # Claude only
+pip install &quot;vaultdb.core[crawler-bedrock]&quot;       # Bedrock only
+pip install &quot;vaultdb.core[crawler-gemini]&quot;        # Gemini only
+pip install &quot;vaultdb.core[crawler-llm]&quot;           # All commercial providers
+</code></pre>
+<hr />
+<h2 id="ai-cross-tool-instructions">AI Cross-Tool Instructions</h2>
+<h3 id="for-claude-claude-code-claudeaicode">For Claude (Claude Code / claude.ai/code)</h3>
 <ul>
-<li><a href="technology/chathub.md">ChatHub Architecture</a> — Per-user process management and security model</li>
-<li><a href="technology/chatbot_engine.md">Chatbot Engine</a> — Claude SDK integration, tools, and workflow proposal</li>
-<li><a href="technology/api_reference.md">API Reference</a> — Complete KRONOS REST API endpoint reference</li>
-<li><a href="compliance/approval_integration.md">Approval Integration</a> — How the dashboard integrates with the core approval engine</li>
+<li>Prioritize the <strong>Behavioral Guardrails</strong> and <strong>Coding Standards</strong> below. Ensure all generated code adheres to strict configuration and logging rules.</li>
+<li><strong>Use Graphify for codebase understanding.</strong> Before performing complex refactors, architecture reviews, or onboarding to an unfamiliar module, run <code>/graphify</code> to generate a knowledge graph of the relevant code. The resulting HTML visualization and JSON graph provide a clustered community view of modules, classes, and their relationships. Use this to:<ul>
+<li>Identify tightly-coupled components before refactoring.</li>
+<li>Discover hidden dependencies across packages.</li>
+<li>Validate that changes stay within the correct architectural boundaries.</li>
+<li>Understand the call graph and data flow between <code>crawler/</code>, <code>data/</code>, <code>compute/</code>, and <code>workflow/</code> packages.</li>
 </ul>
+</li>
+<li>When working on the <code>crawler/</code> package, understand the <code>BaseLLMAdvisor</code> multi-provider architecture — all backends share the same <code>generate()</code> / <code>generate_with_vision()</code> interface and JSON parsing pipeline.</li>
+</ul>
+<h3 id="for-antigravity">For Antigravity</h3>
+<ul>
+<li>Analyze the repository structure based on the <strong>Project Map</strong>. Use this context to maintain architectural alignment during complex refactors.</li>
+<li><strong>Use Graphify graphs as your primary navigation aid.</strong> Before performing any multi-file refactor or cross-module analysis, generate a knowledge graph using <code>/graphify</code> on the target directories. The graph communities map directly to architectural boundaries:<ul>
+<li><code>data/</code> community → DuckLake/Arrow data layer</li>
+<li><code>compute/</code> community → TED task dispatch</li>
+<li><code>crawler/</code> community → web crawling + LLM advisor layer</li>
+<li><code>workflow/</code> + <code>approval/</code> community → orchestration + triple-gate security</li>
+<li><code>web/</code> + <code>service/</code> community → FastAPI + Celery surface area</li>
+</ul>
+</li>
+<li>When the graph shows edges crossing community boundaries, treat those as high-risk change points that require extra test coverage.</li>
+<li>Prefer the graph's cluster view over manual <code>grep</code>/<code>find</code> for discovering which files to modify during a refactor.</li>
+</ul>
+<h3 id="for-all-ai-tools">For All AI Tools</h3>
+<ul>
+<li><strong>Graphify-first workflow:</strong> Any time you are asked to "understand", "map", "audit", or "refactor" a section of this codebase, your first step should be to produce a knowledge graph of the relevant source tree. This gives you a machine-readable dependency map that is more reliable than heuristic file scanning.</li>
+<li>The knowledge graph JSON output (<code>nodes</code> + <code>edges</code> + <code>communities</code>) can be fed back into subsequent prompts for targeted analysis of specific clusters.</li>
+</ul>
+<hr />
+<h2 id="behavioral-guardrails-no-go-zones">Behavioral Guardrails (No-Go Zones)</h2>
+<ul>
+<li><strong>Strict Configuration</strong>: <strong>NEVER</strong> use <code>os.getenv</code> or <code>os.environ</code> directly in business logic. All parameters must be mapped in <code>src/vaultdb/config.py</code> and accessed via <code>vaultdb.config</code>. <em>(Exception: <code>crawler/config.py</code> uses <code>os.environ.get</code> in dataclass defaults for crawler-specific LLM settings — this is intentional and scoped.)</em></li>
+<li><strong>No Prints</strong>: <strong>NEVER</strong> use <code>print()</code>. Use the internal logger: <code>logger = get_logger(config.LOGGER_*)</code>.</li>
+<li><strong>Vectorization First</strong>: Prefer <code>pyarrow</code> compute kernels or DuckDB SQL over iterative Python loops for any data manipulation.</li>
+<li><strong>Interface Consistency</strong>: New runners must implement the <code>Runner</code> interface to remain compatible with the <code>TED</code> (Task Execution Dispatcher) singleton.</li>
+<li><strong>Sandbox Isolation</strong>: ALWAYS use user-specific schemas (<code>sandbox_&lt;role&gt;</code>) for any non-production writes.</li>
+<li><strong>Pristine Workspace</strong>: Always clean up temporary execution scripts or scratch files (<code>/tmp/*.py</code>) immediately after verification.</li>
+<li><strong>LLM Backend Isolation</strong>: Never hard-code a specific LLM provider in business logic. Always go through <code>BaseLLMAdvisor.generate()</code> — the backend is selected by config, not by the caller.</li>
+</ul>
+<hr />
+<h2 id="workflow-commands">Workflow Commands</h2>
+<ul>
+<li><code>/refactor</code>: Check for <code>os.getenv</code> violations, missing type hints (functions, variables, class attributes, module-level vars), and ensure <code>pyarrow</code>/DuckDB is used for data processing. Run <code>mypy src/</code> and fix all reported errors before considering the refactor complete.</li>
+<li><code>/test</code>: Execute <code>python -m pytest -v</code> on relevant modules.</li>
+<li><code>/ducklake</code>: Verify DuckLake catalog connectivity, inlining row limits, and inherited read SQL pushdown.</li>
+<li><code>/graphify</code>: Generate a knowledge graph of the target source tree for architectural understanding and dependency analysis.</li>
+</ul>
+<h2 id="coding-standards-quality">Coding Standards &amp; Quality</h2>
+<h3 id="ruff-general-style">Ruff &amp; General Style</h3>
+<ul>
+<li><strong>Primary Tool</strong>: <code>ruff</code> is the exclusive tool for linting and formatting.</li>
+<li><strong>Line Length</strong>: Strict <strong>160 character</strong> limit.</li>
+<li><strong>Quotes</strong>: Use double quotes (<code>"</code>) for all string literals.</li>
+<li><strong>Imports</strong>: Single-line imports only (forced via ruff).</li>
+<li><strong>Typing</strong>: Mandatory type hints everywhere — see detailed rules below.</li>
+<li><strong>Logging</strong>: Use <code>get_logger(config.LOGGER_*)</code>. Use f-strings for clarity.</li>
+</ul>
+<h3 id="typing-standards-strict-no-exceptions">Typing Standards (Strict — No Exceptions)</h3>
+<blockquote>
+<p>MyPy is configured with <code>disallow_untyped_defs = True</code>. ALL code must pass <code>mypy src/</code> without errors.</p>
+</blockquote>
+<p>Always add <code>from __future__ import annotations</code> at the top of every file to enable PEP 563 postponed evaluation.</p>
+<p><strong>Functions and methods</strong>
+*   Every parameter must have an explicit type annotation, including <code>self</code> (no annotation) and <code>cls</code> (no annotation).
+*   Every function and method must declare a return type, including <code>-&gt; None</code> for procedures.
+*   <code>*args</code> and <code>**kwargs</code> must be typed (e.g., <code>*args: int</code>, <code>**kwargs: str</code>).</p>
+<pre><code class="language-python"># CORRECT
+def process(self, table: str, limit: int = 100) -&gt; list[dict[str, Any]]: ...
+async def fetch(self, key: str) -&gt; bytes | None: ...
+
+# WRONG — missing return type and parameter type
+def process(self, table, limit=100): ...
+</code></pre>
+<p><strong>Variables</strong>
+*   Annotate all module-level variables and class-level attributes explicitly.
+*   Annotate local variables when the type is not immediately obvious from the right-hand side (e.g., empty collections, <code>None</code> assignments, results of untyped third-party calls).</p>
+<pre><code class="language-python"># CORRECT
+TIMEOUT: int = 30
+_cache: dict[str, bytes] = {}
+result: list[str] = []
+
+# WRONG — unannotated module var and ambiguous local
+TIMEOUT = 30
+result = []
+</code></pre>
+<p><strong>Class attributes</strong>
+*   Declare all instance attributes in <code>__init__</code> or via <code>ClassVar</code> / dataclass fields with full annotations.
+*   Use <code>ClassVar[T]</code> for class-level constants shared across instances.</p>
+<pre><code class="language-python">class Reader:
+    _registry: ClassVar[dict[str, type[Reader]]] = {}
+
+    def __init__(self, schema: str) -&gt; None:
+        self.schema: str = schema
+        self._conn: duckdb.DuckDBPyConnection | None = None
+</code></pre>
+<p><strong>Collections and generics</strong>
+*   Always parameterize generic types: <code>list[str]</code>, <code>dict[str, Any]</code>, <code>tuple[int, ...]</code>, <code>set[str]</code>.
+*   Prefer built-in generics (<code>list</code>, <code>dict</code>, <code>tuple</code>, <code>set</code>) over <code>typing.List</code> / <code>typing.Dict</code> (Python 3.9+).
+*   Use <code>X | Y</code> union syntax instead of <code>Optional[X]</code> or <code>Union[X, Y]</code> (Python 3.10+, enabled by <code>from __future__ import annotations</code>).</p>
+<p><strong>Type aliases and Protocols</strong>
+*   Define type aliases at module level for complex repeated types: <code>SchemaName = str</code>, <code>RowDict = dict[str, Any]</code>.
+*   Use <code>typing.Protocol</code> for structural interfaces rather than <code>Any</code>.</p>
+<p><strong>Implementation rule</strong>
+Whenever you write or modify code, immediately add missing annotations. Never leave a function, method, module variable, or class attribute without a type annotation. When reviewing or refactoring existing code, treat every missing annotation as a bug to fix.</p>
+<h3 id="testing-standards-tdd-mandatory">Testing Standards (TDD Mandatory)</h3>
+<ul>
+<li><strong>Framework</strong>: <code>pytest</code> + <code>unittest.mock</code>.</li>
+<li><strong>Coverage Goal</strong>: Aim for <strong>&gt;90%</strong> coverage on all new features.</li>
+<li><strong>Mirroring</strong>: Tests must mirror the source tree: <code>src/vaultdb/data/foo.py</code> -&gt; <code>tests/vaultdb/data/test_foo.py</code>.</li>
+<li><strong>Scenario Requirements</strong>:<ul>
+<li><strong>Happy Path</strong>: Standard successful execution.</li>
+<li><strong>Edge Cases</strong>: Boundary values (nulls, empty lists).</li>
+<li><strong>Error Handling</strong>: Verify specific exceptions are raised.</li>
+<li><strong>Isolation</strong>: ALWAYS mock Redis, AWS, and Cloud catalogs. Use local DuckDB (<code>:memory:</code>)/DuckLake for data layer tests.</li>
+</ul>
+</li>
+</ul>
+<h3 id="commands">Commands</h3>
+<pre><code class="language-bash"># Format
+ruff format .
+
+# Lint and auto-fix
+ruff check . --fix
+
+# Type check
+mypy src/
+
+# Run all tests with coverage
+python -m pytest -v --cov=src/vaultdb
+
+# Run a single test file
+python -m pytest tests/data/test_model.py -v
+
+# Run local web server (DEBUG mode, requires Redis)
+export DEBUG=true &amp;&amp; export run_type=local
+python -m vaultdb.web          # http://localhost:8000
+
+# Generate knowledge graph for architecture review
+/graphify
+</code></pre>
                     </div>
                 </div>
             </div>

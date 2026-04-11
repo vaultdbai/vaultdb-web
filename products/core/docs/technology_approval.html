@@ -477,38 +477,98 @@
                     <div class="col-lg-3">
                         <div class="side_accordian doc-nav"><ul class="nav flex-column">
         <li class="nav-item">
-            <a class="nav-link  " href="README.html">
-                <i class="fa-solid fa-house me-2"></i> Readme
+            <a class="nav-link  " href="AUTHENTICATION_GUIDE.html">
+                <i class="fa-solid fa-house me-2"></i> Authentication Guide
             </a>
         </li>
         
         <li class="nav-item">
-            <a class="nav-link  ps-4" href="compliance_approval_integration.html">
-                <i class="fa-solid fa-shield-halved me-2"></i> Approval Integration
+            <a class="nav-link  " href="CODEOWNERS_SETUP.html">
+                <i class="fa-solid fa-house me-2"></i> Codeowners Setup
             </a>
         </li>
         
         <li class="nav-item">
-            <a class="nav-link active " href="index.html">
+            <a class="nav-link  " href="abstract.html">
+                <i class="fa-solid fa-house me-2"></i> Abstract
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  ps-4" href="compliance_approval_controls.html">
+                <i class="fa-solid fa-shield-halved me-2"></i> Approval Controls
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="ducklake.html">
+                <i class="fa-solid fa-house me-2"></i> Ducklake
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="ducklake_evaluation.html">
+                <i class="fa-solid fa-house me-2"></i> Ducklake Evaluation
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="glittery-brewing-riddle.html">
+                <i class="fa-solid fa-house me-2"></i> Glittery Brewing Riddle
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="implementation-plan-unified-runners.html">
+                <i class="fa-solid fa-house me-2"></i> Implementation Plan Unified Runners
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="index.html">
                 <i class="fa-solid fa-house me-2"></i> Index
             </a>
         </li>
         
         <li class="nav-item">
-            <a class="nav-link  ps-4" href="technology_api_reference.html">
-                <i class="fa-solid fa-code me-2"></i> Api Reference
+            <a class="nav-link  " href="logger_usage.html">
+                <i class="fa-solid fa-house me-2"></i> Logger Usage
             </a>
         </li>
         
         <li class="nav-item">
-            <a class="nav-link  ps-4" href="technology_chatbot_engine.html">
-                <i class="fa-solid fa-code me-2"></i> Chatbot Engine
+            <a class="nav-link  " href="oauth2_authentication_guide.html">
+                <i class="fa-solid fa-house me-2"></i> Oauth2 Authentication Guide
             </a>
         </li>
         
         <li class="nav-item">
-            <a class="nav-link  ps-4" href="technology_chathub.html">
-                <i class="fa-solid fa-code me-2"></i> Chathub
+            <a class="nav-link  " href="task_runners_integration_guide.html">
+                <i class="fa-solid fa-house me-2"></i> Task Runners Integration Guide
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="task_scheduling.html">
+                <i class="fa-solid fa-house me-2"></i> Task Scheduling
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link active ps-4" href="technology_approval.html">
+                <i class="fa-solid fa-code me-2"></i> Approval
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  ps-4" href="technology_workflow.html">
+                <i class="fa-solid fa-code me-2"></i> Workflow
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="workflow-approval.html">
+                <i class="fa-solid fa-house me-2"></i> Workflow Approval
             </a>
         </li>
         
@@ -523,139 +583,485 @@
                         <nav aria-label="breadcrumb" class="mb-5">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="../../../index.html">Home</a></li>
-                                <li class="breadcrumb-item"><a href="#">dashboard</a></li>
-                                <li class="breadcrumb-item active">Index <span class="persona-badge">index</span></li>
+                                <li class="breadcrumb-item"><a href="#">core</a></li>
+                                <li class="breadcrumb-item active">Approval <span class="persona-badge">technology</span></li>
                             </ol>
                         </nav>
-                        <h1 id="kronos-re-dashboard">KRONOS Re Dashboard</h1>
-<p>The KRONOS Re Dashboard is the primary user interface for the platform. It is a Python Dash application backed by a FastAPI router, serving actuaries, CIOs, risk officers, and regulators.</p>
-<h2 id="platform-role">Platform Role</h2>
-<pre class="mermaid">graph LR
-    subgraph &quot;User-Facing&quot;
-        DASH[&quot;KRONOS Dashboard<br/>(Port 8050)<br/>Application UI&quot;]
-        WEB[&quot;vaultdb.ai<br/>Marketing Website&quot;]
+                        <h1 id="approval-engine-architecture-design">Approval Engine — Architecture &amp; Design</h1>
+<p>The VaultDB approval engine provides cryptographically verified human approvals for any action in the KRONOS Re platform. It enforces the BMA (Bermuda Monetary Authority) mandate that AI-proposed actions require a verified human signature before execution.</p>
+<h2 id="architecture-overview">Architecture Overview</h2>
+<pre class="mermaid">graph TD
+    subgraph &quot;Dashboard UI&quot;
+        VIEWER[&quot;Workflow Viewer Page&quot;]
+        PANEL[&quot;Approval Panel Component&quot;]
     end
 
-    subgraph &quot;Backend&quot;
-        API[&quot;KRONOS FastAPI Router&quot;]
-        CORE[&quot;VaultDB Core API<br/>(Port 8000)&quot;]
-        HUB[&quot;ChatHub<br/>(Port 8060)&quot;]
+    subgraph &quot;ChatHub (Port 8060)&quot;
+        HUB_API[&quot;/_hub/api/workflows/approve&quot;]
     end
 
-    DASH --> API
-    DASH --> HUB
-    API --> CORE
-    WEB -.->|docs only| DASH
+    subgraph &quot;Approval Engine (core)&quot;
+        PE[&quot;PolicyEnforcer&quot;]
+        SVC[&quot;Approval Service&quot;]
+        KS[&quot;KeyStore&quot;]
+        RULES[&quot;6 Policy Rules&quot;]
+    end
+
+    subgraph &quot;Storage&quot;
+        AR[(&quot;ApprovalRecord&quot;)]
+        AP[(&quot;ApprovalPolicy&quot;)]
+        AKV[(&quot;ApprovalKeyVersion&quot;)]
+    end
+
+    VIEWER --> PANEL
+    PANEL -->|POST /approve| HUB_API
+    HUB_API --> PE
+    PE --> RULES
+    PE -->|loads| AP
+    PE -->|passed=True| SVC
+    SVC -->|generate HMAC| KS
+    SVC -->|persist| AR
+    KS -->|audit| AKV
 </pre>
-<ul>
-<li><strong>Dashboard</strong> is where all KRONOS Re features are accessed: chatbot, workflow approval, ALM analysis, risk, trading, and reporting.</li>
-<li><strong>vaultdb-web</strong> is the public marketing site only.</li>
-</ul>
-<h2 id="architecture">Architecture</h2>
+<h2 id="separation-of-concerns">Separation of Concerns</h2>
+<p>The approval system is strictly separated into three layers:</p>
 <table>
 <thead>
 <tr>
-<th>Component</th>
-<th>Technology</th>
-<th>Port</th>
-<th>Purpose</th>
+<th>Layer</th>
+<th>File</th>
+<th>Responsibility</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>Dash UI</strong></td>
-<td>Plotly Dash + Bootstrap</td>
-<td>8050 (WSGI)</td>
-<td>Multi-page analytical frontend</td>
+<td><strong>Policy</strong></td>
+<td><code>policy.py</code></td>
+<td>Determines IF an approval is allowed (rules evaluation)</td>
 </tr>
 <tr>
-<td><strong>KRONOS API</strong></td>
-<td>FastAPI</td>
-<td>8050 (ASGI)</td>
-<td>REST endpoints for all domain operations</td>
+<td><strong>Service</strong></td>
+<td><code>service.py</code></td>
+<td>Creates and verifies approval records (HMAC + CRUD)</td>
 </tr>
 <tr>
-<td><strong>ChatHub</strong></td>
-<td>FastAPI</td>
-<td>8060</td>
-<td>JupyterHub-style per-user chatbot process manager</td>
-</tr>
-<tr>
-<td><strong>UserProcess</strong></td>
-<td>FastAPI + Claude SDK</td>
-<td>9100-9999</td>
-<td>Isolated per-user AI conversation servers</td>
+<td><strong>Key Store</strong></td>
+<td><code>key_store.py</code></td>
+<td>Manages versioned key material (env / AWS Secrets Manager)</td>
 </tr>
 </tbody>
 </table>
-<h2 id="pages">Pages</h2>
+<p><strong>Critical design rule:</strong> <code>service.py</code> contains ZERO policy logic. It is called only after <code>PolicyEnforcer.enforce()</code> returns <code>passed=True</code>.</p>
+<h2 id="data-models">Data Models</h2>
+<h3 id="approvalrecord">ApprovalRecord</h3>
+<p>Immutable record of one human approval. Never modified after creation except for revocation fields.</p>
 <table>
 <thead>
 <tr>
-<th>Page</th>
-<th>Path</th>
-<th>Audience</th>
+<th>Field</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>AI Chatbot</td>
-<td><code>/chatbot</code></td>
-<td>All users</td>
-<td>Conversational AI for building workflows</td>
+<td><code>approval_id</code></td>
+<td>Text (PK)</td>
+<td>UUID</td>
 </tr>
 <tr>
-<td>Workflow Viewer</td>
-<td><code>/workflow?id=</code></td>
-<td>Actuaries, CIO</td>
-<td>Dedicated workflow inspection and approval</td>
+<td><code>subject_id</code></td>
+<td>Text</td>
+<td>What is being approved (e.g., workflow_id)</td>
 </tr>
 <tr>
-<td>Solvency Overview</td>
-<td><code>/</code></td>
-<td>PE partners, CRO</td>
-<td>Portfolio dashboard</td>
+<td><code>subject_type</code></td>
+<td>Text</td>
+<td>Category: <code>WORKFLOW</code>, <code>REPORT</code>, <code>TRADE</code>, <code>ASSUMPTION_SET</code>, <code>DATA_BATCH</code>, <code>POLICY</code></td>
 </tr>
 <tr>
-<td>Liability Portfolio</td>
-<td><code>/liability</code></td>
-<td>Actuaries</td>
-<td>Cash flow projections and reserves</td>
+<td><code>subject_name</code></td>
+<td>Text</td>
+<td>Human-readable name</td>
 </tr>
 <tr>
-<td>ALM Analysis</td>
-<td><code>/alm</code></td>
-<td>ALM committee, CIO</td>
-<td>Duration gap, KRD, spread analytics</td>
+<td><code>approver_id</code></td>
+<td>Text</td>
+<td>OIDC subject identifier</td>
 </tr>
 <tr>
-<td>Trading &amp; Hedge Book</td>
-<td><code>/trading</code></td>
-<td>CIO, traders</td>
-<td>Hedge recommendations and positions</td>
+<td><code>approver_email</code></td>
+<td>Text</td>
+<td>From OIDC claims</td>
 </tr>
 <tr>
-<td>Risk (BSCR)</td>
-<td><code>/risk</code></td>
-<td>CRO, BMA</td>
-<td>Regulatory capital and stress testing</td>
+<td><code>approver_name</code></td>
+<td>Text</td>
+<td>Display name typed by user</td>
 </tr>
 <tr>
-<td>Reports</td>
-<td><code>/reports</code></td>
-<td>Regulators, auditors</td>
-<td>GAAP/STAT/BSCR report generation</td>
+<td><code>approver_roles</code></td>
+<td>JSON</td>
+<td>OIDC roles/groups at approval time</td>
+</tr>
+<tr>
+<td><code>session_id</code></td>
+<td>Text</td>
+<td>Session identifier</td>
+</tr>
+<tr>
+<td><code>ip_address</code></td>
+<td>Text</td>
+<td>Client IP</td>
+</tr>
+<tr>
+<td><code>user_agent</code></td>
+<td>Text</td>
+<td>Browser user-agent</td>
+</tr>
+<tr>
+<td><code>submitter_id</code></td>
+<td>Text</td>
+<td>Who created the subject (for self-approval check)</td>
+</tr>
+<tr>
+<td><code>approved_at</code></td>
+<td>DateTime</td>
+<td>UTC timestamp</td>
+</tr>
+<tr>
+<td><code>notes</code></td>
+<td>Text</td>
+<td>Reviewer's notes</td>
+</tr>
+<tr>
+<td><code>token</code></td>
+<td>Text</td>
+<td><code>"v{key_version}:{hmac_hex}"</code> — cryptographic signature</td>
+</tr>
+<tr>
+<td><code>key_version</code></td>
+<td>Integer</td>
+<td>Which key was used (rotation support)</td>
+</tr>
+<tr>
+<td><code>is_valid</code></td>
+<td>Boolean</td>
+<td>False if revoked</td>
+</tr>
+<tr>
+<td><code>revoked_by</code></td>
+<td>Text</td>
+<td>Who revoked</td>
+</tr>
+<tr>
+<td><code>revoked_at</code></td>
+<td>DateTime</td>
+<td>When revoked</td>
+</tr>
+<tr>
+<td><code>revoked_reason</code></td>
+<td>Text</td>
+<td>Why revoked</td>
 </tr>
 </tbody>
 </table>
-<h2 id="documentation-index">Documentation Index</h2>
-<ul>
-<li><a href="technology/chathub.md">ChatHub Architecture</a> — Per-user process management and security model</li>
-<li><a href="technology/chatbot_engine.md">Chatbot Engine</a> — Claude SDK integration, tools, and workflow proposal</li>
-<li><a href="technology/api_reference.md">API Reference</a> — Complete KRONOS REST API endpoint reference</li>
-<li><a href="compliance/approval_integration.md">Approval Integration</a> — How the dashboard integrates with the core approval engine</li>
-</ul>
+<p><strong>Security note:</strong> <code>to_dict()</code> only exposes the last 8 characters of the token (<code>token_suffix</code>). The full token is never sent to clients.</p>
+<h3 id="approvalpolicy">ApprovalPolicy</h3>
+<p>Configures which rules apply to each <code>subject_type</code>. If no row exists, an open policy applies (any authenticated user may approve).</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Rule It Activates</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>required_approver_roles</code></td>
+<td>JSON</td>
+<td>RequiredRolesRule</td>
+</tr>
+<tr>
+<td><code>require_notes</code></td>
+<td>Boolean</td>
+<td>RequireNotesRule</td>
+</tr>
+<tr>
+<td><code>min_review_seconds</code></td>
+<td>Integer</td>
+<td>MinReviewTimeRule</td>
+</tr>
+<tr>
+<td><code>no_self_approval</code></td>
+<td>Boolean</td>
+<td>NoSelfApprovalRule</td>
+</tr>
+<tr>
+<td><code>expiry_hours</code></td>
+<td>Integer</td>
+<td>ExpiryRule</td>
+</tr>
+</tbody>
+</table>
+<h2 id="hmac-token-system">HMAC Token System</h2>
+<h3 id="token-format">Token Format</h3>
+<pre><code>v{key_version}:{hmac_sha256_hex}
+</code></pre>
+<p>Example: <code>v3:a1b2c3d4e5f6...</code></p>
+<p>The version prefix allows verification after key rotation — old tokens remain verifiable using the key version that created them.</p>
+<h3 id="canonical-message">Canonical Message</h3>
+<p>The HMAC message is constructed by pipe-separating six fields:</p>
+<pre><code>{approval_id}|{subject_id}|{subject_type}|{approver_id}|{approver_email}|{approved_at_iso}
+</code></pre>
+<p>This binds the token cryptographically to the specific approval, subject, approver identity, and timestamp.</p>
+<h3 id="token-generation">Token Generation</h3>
+<pre class="mermaid">sequenceDiagram
+    participant SVC as Approval Service
+    participant KS as KeyStore
+    participant SM as AWS Secrets Manager
+
+    SVC->>KS: get_current_key()
+    alt Cache fresh (< 300s)
+        KS-->>SVC: (version, key_bytes)
+    else Cache stale
+        KS->>SM: get_secret_value(ARN)
+        SM-->>KS: {current_version, keys}
+        KS-->>SVC: (version, key_bytes)
+    end
+    SVC->>SVC: message = pipe_join(fields)
+    SVC->>SVC: mac = hmac_sha256(key_bytes, message)
+    SVC-->>SVC: token = f&quot;v{version}:{mac.hexdigest()}&quot;
+</pre>
+<h3 id="token-verification">Token Verification</h3>
+<pre><code class="language-python"># 1. Parse version from token prefix
+&quot;v3:a1b2c3...&quot; → version=3, mac=&quot;a1b2c3...&quot;
+
+# 2. Load key for that version
+key_bytes = KeyStore.get_key_version(3)
+
+# 3. Recompute HMAC with same canonical message
+expected = hmac.new(key_bytes, message, sha256).hexdigest()
+
+# 4. Constant-time comparison (timing-attack safe)
+hmac.compare_digest(expected, mac)
+</code></pre>
+<h2 id="key-store">Key Store</h2>
+<h3 id="key-sources">Key Sources</h3>
+<table>
+<thead>
+<tr>
+<th>Environment</th>
+<th>Source</th>
+<th>Format</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Dev / CI</strong></td>
+<td>Environment variables</td>
+<td><code>APPROVAL_SECRET_CURRENT=3</code>, <code>APPROVAL_SECRET_V1=&lt;hex&gt;</code>, <code>APPROVAL_SECRET_V2=&lt;hex&gt;</code>, <code>APPROVAL_SECRET_V3=&lt;hex&gt;</code></td>
+</tr>
+<tr>
+<td><strong>Production</strong></td>
+<td>AWS Secrets Manager</td>
+<td>JSON: <code>{"current_version": 3, "keys": {"1": "&lt;hex&gt;", "2": "&lt;hex&gt;", "3": "&lt;hex&gt;"}}</code></td>
+</tr>
+<tr>
+<td><strong>Legacy</strong></td>
+<td>Single env var</td>
+<td><code>WORKFLOW_APPROVAL_SECRET=&lt;string&gt;</code> (maps to version 1)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="key-rotation">Key Rotation</h3>
+<ol>
+<li>Add new key version to Secrets Manager (e.g., version 4).</li>
+<li>Set <code>current_version: 4</code>.</li>
+<li>New approvals use version 4; old tokens remain verifiable via their version prefix.</li>
+<li>Retired keys can be removed after all approvals using that version have expired or been revoked.</li>
+</ol>
+<h3 id="caching">Caching</h3>
+<p>The <code>KeyStore</code> uses a thread-safe TTL cache (<code>_KeyCache</code>) with a 300-second TTL to avoid hammering AWS Secrets Manager on every verification.</p>
+<h2 id="policy-engine">Policy Engine</h2>
+<h3 id="approvalcontext">ApprovalContext</h3>
+<p>All data available at approval request time, passed to every rule:</p>
+<pre><code class="language-python">@dataclass
+class ApprovalContext:
+    subject_id: str
+    subject_type: str
+    subject_name: str
+    approver_id: str          # OIDC sub
+    approver_email: str       # OIDC claims
+    approver_name: str        # Typed by user
+    approver_roles: list[str] # OIDC roles/groups
+    submitter_id: str | None  # Who created the subject
+    notes: str
+    request_time: datetime    # When approval POST arrived (UTC)
+    viewer_opened_at: datetime | None  # Server-set, unforgeable
+    ip_address: str
+    session_id: str
+    user_agent: str
+</code></pre>
+<h3 id="policy-rules">Policy Rules</h3>
+<p>All 6 rules are evaluated independently. A broken rule is treated as a violation (fail-closed).</p>
+<pre class="mermaid">flowchart LR
+    CTX[&quot;ApprovalContext&quot;] --> PE[&quot;PolicyEnforcer&quot;]
+    PE --> R1[&quot;RequiredRolesRule&quot;]
+    PE --> R2[&quot;RequireNotesRule&quot;]
+    PE --> R3[&quot;MinReviewTimeRule&quot;]
+    PE --> R4[&quot;NoSelfApprovalRule&quot;]
+    PE --> R5[&quot;ExpiryRule&quot;]
+    PE --> R6[&quot;SingleApproverRule&quot;]
+    R1 --> AGG[&quot;Aggregate Violations&quot;]
+    R2 --> AGG
+    R3 --> AGG
+    R4 --> AGG
+    R5 --> AGG
+    R6 --> AGG
+    AGG -->|0 violations| PASS[&quot;passed=True&quot;]
+    AGG -->|1+ violations| FAIL[&quot;passed=False&quot;]
+</pre>
+<table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>Code</th>
+<th>Activation</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>RequiredRolesRule</strong></td>
+<td><code>INSUFFICIENT_ROLE</code></td>
+<td><code>required_approver_roles</code> non-empty</td>
+<td>Approver must hold at least one required role</td>
+</tr>
+<tr>
+<td><strong>RequireNotesRule</strong></td>
+<td><code>NOTES_REQUIRED</code></td>
+<td><code>require_notes=True</code></td>
+<td>Notes field must be non-empty</td>
+</tr>
+<tr>
+<td><strong>MinReviewTimeRule</strong></td>
+<td><code>VIEWER_NOT_OPENED</code> / <code>REVIEW_TIME_INSUFFICIENT</code></td>
+<td><code>min_review_seconds &gt; 0</code></td>
+<td>Approver must spend N seconds on viewer page. <code>viewer_opened_at</code> is server-set and unforgeable.</td>
+</tr>
+<tr>
+<td><strong>NoSelfApprovalRule</strong></td>
+<td><code>SELF_APPROVAL_FORBIDDEN</code></td>
+<td><code>no_self_approval=True</code></td>
+<td>Approver cannot be the person who submitted the subject</td>
+</tr>
+<tr>
+<td><strong>ExpiryRule</strong></td>
+<td><code>ALREADY_APPROVED</code></td>
+<td><code>expiry_hours &gt; 0</code></td>
+<td>Prevents re-approval if valid approval already exists</td>
+</tr>
+<tr>
+<td><strong>SingleApproverRule</strong></td>
+<td><code>DUPLICATE_APPROVAL</code></td>
+<td>Always active</td>
+<td>Same approver cannot approve same subject twice without revoking</td>
+</tr>
+</tbody>
+</table>
+<h3 id="adding-custom-rules">Adding Custom Rules</h3>
+<p>New rules are added by writing one class that extends <code>PolicyRule</code>:</p>
+<pre><code class="language-python">class MyCustomRule(PolicyRule):
+    def check(self, policy, context: ApprovalContext) -&gt; list[PolicyViolation]:
+        if some_condition:
+            return [PolicyViolation(
+                rule=self.name,
+                code=&quot;MY_VIOLATION&quot;,
+                message=&quot;Human-readable explanation&quot;,
+            )]
+        return []
+
+# Register:
+enforcer = PolicyEnforcer(extra_rules=[MyCustomRule()])
+</code></pre>
+<h2 id="service-api">Service API</h2>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>create_approval(...)</code></td>
+<td>Generate HMAC token, persist ApprovalRecord</td>
+</tr>
+<tr>
+<td><code>verify_approval(subject_id, subject_type)</code></td>
+<td>Full cryptographic verification (used by execute_workflow)</td>
+</tr>
+<tr>
+<td><code>find_valid_approval(subject_id, subject_type)</code></td>
+<td>DB lookup for most recent valid approval</td>
+</tr>
+<tr>
+<td><code>revoke_approval(subject_id, revoked_by, reason)</code></td>
+<td>Mark approval as invalid</td>
+</tr>
+<tr>
+<td><code>get_audit_trail(subject_id, subject_type, approver_id, since)</code></td>
+<td>Query approval history</td>
+</tr>
+</tbody>
+</table>
+<h2 id="end-to-end-approval-flow">End-to-End Approval Flow</h2>
+<pre class="mermaid">sequenceDiagram
+    participant AI as AI Chatbot
+    participant HUB as ChatHub
+    participant DB as DuckLake
+    participant USER as Actuary (Browser)
+    participant PE as PolicyEnforcer
+    participant SVC as Approval Service
+    participant KS as KeyStore
+
+    AI->>HUB: propose_workflow(definition)
+    HUB->>DB: submit_workflow() → PENDING_APPROVAL
+
+    USER->>HUB: Open workflow viewer
+    HUB->>DB: Set viewer_opened_at (server timestamp)
+
+    USER->>USER: Review DAG, steps, estimated costs
+    Note over USER: MinReviewTimeRule timer running
+
+    USER->>HUB: Click &quot;Approve&quot; (with notes)
+    HUB->>PE: enforce(ApprovalContext)
+    PE->>PE: Evaluate all 6 rules
+
+    alt Policy violations
+        PE-->>HUB: passed=False, violations=[...]
+        HUB-->>USER: Show violation messages
+    else Policy passed
+        PE-->>HUB: passed=True
+        HUB->>SVC: create_approval(context)
+        SVC->>KS: get_current_key()
+        SVC->>SVC: Generate HMAC token
+        SVC->>DB: Persist ApprovalRecord
+        SVC-->>HUB: ApprovalRecord
+        HUB->>DB: WorkflowRun.status = APPROVED
+        HUB-->>USER: Show &quot;Approved&quot; badge
+    end
+
+    USER->>HUB: Click &quot;Execute&quot;
+    HUB->>DB: execute_workflow(workflow_id)
+    DB->>SVC: verify_approval(workflow_id, &quot;WORKFLOW&quot;)
+    SVC->>KS: get_key_version(token_version)
+    SVC->>SVC: Recalculate HMAC, compare_digest
+    SVC-->>DB: ApprovalRecord (verified)
+    DB->>DB: Execute steps in DAG order
+</pre>
                     </div>
                 </div>
             </div>

@@ -477,38 +477,98 @@
                     <div class="col-lg-3">
                         <div class="side_accordian doc-nav"><ul class="nav flex-column">
         <li class="nav-item">
-            <a class="nav-link  " href="README.html">
-                <i class="fa-solid fa-house me-2"></i> Readme
+            <a class="nav-link  " href="AUTHENTICATION_GUIDE.html">
+                <i class="fa-solid fa-house me-2"></i> Authentication Guide
             </a>
         </li>
         
         <li class="nav-item">
-            <a class="nav-link  ps-4" href="compliance_approval_integration.html">
-                <i class="fa-solid fa-shield-halved me-2"></i> Approval Integration
+            <a class="nav-link  " href="CODEOWNERS_SETUP.html">
+                <i class="fa-solid fa-house me-2"></i> Codeowners Setup
             </a>
         </li>
         
         <li class="nav-item">
-            <a class="nav-link active " href="index.html">
+            <a class="nav-link  " href="abstract.html">
+                <i class="fa-solid fa-house me-2"></i> Abstract
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  ps-4" href="compliance_approval_controls.html">
+                <i class="fa-solid fa-shield-halved me-2"></i> Approval Controls
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="ducklake.html">
+                <i class="fa-solid fa-house me-2"></i> Ducklake
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="ducklake_evaluation.html">
+                <i class="fa-solid fa-house me-2"></i> Ducklake Evaluation
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="glittery-brewing-riddle.html">
+                <i class="fa-solid fa-house me-2"></i> Glittery Brewing Riddle
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="implementation-plan-unified-runners.html">
+                <i class="fa-solid fa-house me-2"></i> Implementation Plan Unified Runners
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="index.html">
                 <i class="fa-solid fa-house me-2"></i> Index
             </a>
         </li>
         
         <li class="nav-item">
-            <a class="nav-link  ps-4" href="technology_api_reference.html">
-                <i class="fa-solid fa-code me-2"></i> Api Reference
+            <a class="nav-link  " href="logger_usage.html">
+                <i class="fa-solid fa-house me-2"></i> Logger Usage
             </a>
         </li>
         
         <li class="nav-item">
-            <a class="nav-link  ps-4" href="technology_chatbot_engine.html">
-                <i class="fa-solid fa-code me-2"></i> Chatbot Engine
+            <a class="nav-link  " href="oauth2_authentication_guide.html">
+                <i class="fa-solid fa-house me-2"></i> Oauth2 Authentication Guide
             </a>
         </li>
         
         <li class="nav-item">
-            <a class="nav-link  ps-4" href="technology_chathub.html">
-                <i class="fa-solid fa-code me-2"></i> Chathub
+            <a class="nav-link  " href="task_runners_integration_guide.html">
+                <i class="fa-solid fa-house me-2"></i> Task Runners Integration Guide
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link active " href="task_scheduling.html">
+                <i class="fa-solid fa-house me-2"></i> Task Scheduling
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  ps-4" href="technology_approval.html">
+                <i class="fa-solid fa-code me-2"></i> Approval
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  ps-4" href="technology_workflow.html">
+                <i class="fa-solid fa-code me-2"></i> Workflow
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="workflow-approval.html">
+                <i class="fa-solid fa-house me-2"></i> Workflow Approval
             </a>
         </li>
         
@@ -523,139 +583,336 @@
                         <nav aria-label="breadcrumb" class="mb-5">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="../../../index.html">Home</a></li>
-                                <li class="breadcrumb-item"><a href="#">dashboard</a></li>
-                                <li class="breadcrumb-item active">Index <span class="persona-badge">index</span></li>
+                                <li class="breadcrumb-item"><a href="#">core</a></li>
+                                <li class="breadcrumb-item active">Task Scheduling <span class="persona-badge">index</span></li>
                             </ol>
                         </nav>
-                        <h1 id="kronos-re-dashboard">KRONOS Re Dashboard</h1>
-<p>The KRONOS Re Dashboard is the primary user interface for the platform. It is a Python Dash application backed by a FastAPI router, serving actuaries, CIOs, risk officers, and regulators.</p>
-<h2 id="platform-role">Platform Role</h2>
-<pre class="mermaid">graph LR
-    subgraph &quot;User-Facing&quot;
-        DASH[&quot;KRONOS Dashboard<br/>(Port 8050)<br/>Application UI&quot;]
-        WEB[&quot;vaultdb.ai<br/>Marketing Website&quot;]
-    end
+                        <h1 id="task-scheduling-guide">Task Scheduling Guide</h1>
+<p>This guide explains how to define, schedule, and manage tasks in VaultDB.</p>
+<h2 id="overview">Overview</h2>
+<p>VaultDB provides a flexible task scheduling system that allows you to:
+- Define tasks using Celery decorators
+- Schedule tasks using the <code>@scheduled</code> decorator
+- View all scheduled tasks via the FastAPI endpoint
+- Automatically discover and register tasks from <code>*tasks.py</code> files</p>
+<h2 id="quick-start">Quick Start</h2>
+<h3 id="1-define-a-task">1. Define a Task</h3>
+<p>Create a task in any <code>*tasks.py</code> file:</p>
+<pre><code class="language-python">from vaultdb.celery.tasks import app
 
-    subgraph &quot;Backend&quot;
-        API[&quot;KRONOS FastAPI Router&quot;]
-        CORE[&quot;VaultDB Core API<br/>(Port 8000)&quot;]
-        HUB[&quot;ChatHub<br/>(Port 8060)&quot;]
-    end
+@app.task()
+def my_task(arg1, arg2, keyword_arg=None):
+    &quot;&quot;&quot;Your task logic here.&quot;&quot;&quot;
+    print(f&quot;Processing: {arg1}, {arg2}, {keyword_arg}&quot;)
+    return &quot;Task completed&quot;
+</code></pre>
+<h3 id="2-schedule-a-task">2. Schedule a Task</h3>
+<p>Add the <code>@scheduled</code> decorator to make your task run periodically:</p>
+<pre><code class="language-python">from vaultdb.scheduler import scheduled
+from vaultdb.celery.tasks import app
+from celery.schedules import crontab
 
-    DASH --> API
-    DASH --> HUB
-    API --> CORE
-    WEB -.->|docs only| DASH
-</pre>
-<ul>
-<li><strong>Dashboard</strong> is where all KRONOS Re features are accessed: chatbot, workflow approval, ALM analysis, risk, trading, and reporting.</li>
-<li><strong>vaultdb-web</strong> is the public marketing site only.</li>
-</ul>
-<h2 id="architecture">Architecture</h2>
-<table>
-<thead>
-<tr>
-<th>Component</th>
-<th>Technology</th>
-<th>Port</th>
-<th>Purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Dash UI</strong></td>
-<td>Plotly Dash + Bootstrap</td>
-<td>8050 (WSGI)</td>
-<td>Multi-page analytical frontend</td>
-</tr>
-<tr>
-<td><strong>KRONOS API</strong></td>
-<td>FastAPI</td>
-<td>8050 (ASGI)</td>
-<td>REST endpoints for all domain operations</td>
-</tr>
-<tr>
-<td><strong>ChatHub</strong></td>
-<td>FastAPI</td>
-<td>8060</td>
-<td>JupyterHub-style per-user chatbot process manager</td>
-</tr>
-<tr>
-<td><strong>UserProcess</strong></td>
-<td>FastAPI + Claude SDK</td>
-<td>9100-9999</td>
-<td>Isolated per-user AI conversation servers</td>
-</tr>
-</tbody>
-</table>
-<h2 id="pages">Pages</h2>
-<table>
-<thead>
-<tr>
-<th>Page</th>
-<th>Path</th>
-<th>Audience</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>AI Chatbot</td>
-<td><code>/chatbot</code></td>
-<td>All users</td>
-<td>Conversational AI for building workflows</td>
-</tr>
-<tr>
-<td>Workflow Viewer</td>
-<td><code>/workflow?id=</code></td>
-<td>Actuaries, CIO</td>
-<td>Dedicated workflow inspection and approval</td>
-</tr>
-<tr>
-<td>Solvency Overview</td>
-<td><code>/</code></td>
-<td>PE partners, CRO</td>
-<td>Portfolio dashboard</td>
-</tr>
-<tr>
-<td>Liability Portfolio</td>
-<td><code>/liability</code></td>
-<td>Actuaries</td>
-<td>Cash flow projections and reserves</td>
-</tr>
-<tr>
-<td>ALM Analysis</td>
-<td><code>/alm</code></td>
-<td>ALM committee, CIO</td>
-<td>Duration gap, KRD, spread analytics</td>
-</tr>
-<tr>
-<td>Trading &amp; Hedge Book</td>
-<td><code>/trading</code></td>
-<td>CIO, traders</td>
-<td>Hedge recommendations and positions</td>
-</tr>
-<tr>
-<td>Risk (BSCR)</td>
-<td><code>/risk</code></td>
-<td>CRO, BMA</td>
-<td>Regulatory capital and stress testing</td>
-</tr>
-<tr>
-<td>Reports</td>
-<td><code>/reports</code></td>
-<td>Regulators, auditors</td>
-<td>GAAP/STAT/BSCR report generation</td>
-</tr>
-</tbody>
-</table>
-<h2 id="documentation-index">Documentation Index</h2>
-<ul>
-<li><a href="technology/chathub.md">ChatHub Architecture</a> — Per-user process management and security model</li>
-<li><a href="technology/chatbot_engine.md">Chatbot Engine</a> — Claude SDK integration, tools, and workflow proposal</li>
-<li><a href="technology/api_reference.md">API Reference</a> — Complete KRONOS REST API endpoint reference</li>
-<li><a href="compliance/approval_integration.md">Approval Integration</a> — How the dashboard integrates with the core approval engine</li>
-</ul>
+@scheduled(
+    schedule=crontab(minute=&quot;*/15&quot;),  # Run every 15 minutes
+    args=(1, 2),                       # Positional arguments
+    kwargs={&quot;keyword_arg&quot;: &quot;value&quot;}    # Keyword arguments
+)
+@app.task()
+def my_scheduled_task(arg1, arg2, keyword_arg=None):
+    &quot;&quot;&quot;This task runs every 15 minutes.&quot;&quot;&quot;
+    print(f&quot;Scheduled execution: {arg1}, {arg2}, {keyword_arg}&quot;)
+    return &quot;Scheduled task completed&quot;
+</code></pre>
+<h2 id="schedule-types">Schedule Types</h2>
+<h3 id="crontab-schedules">Crontab Schedules</h3>
+<p>Use <code>crontab</code> for flexible scheduling based on time:</p>
+<pre><code class="language-python">from celery.schedules import crontab
+
+# Every 15 minutes
+schedule=crontab(minute=&quot;*/15&quot;)
+
+# Every hour at minute 30
+schedule=crontab(minute=30)
+
+# Every day at 5:30 AM
+schedule=crontab(hour=5, minute=30)
+
+# Every Monday at 7:30 AM
+schedule=crontab(hour=7, minute=30, day_of_week=1)
+
+# Every first day of the month
+schedule=crontab(hour=0, minute=0, day_of_month=1)
+
+# Weekdays only (Monday-Friday) at 9 AM
+schedule=crontab(hour=9, minute=0, day_of_week='mon-fri')
+</code></pre>
+<h3 id="interval-schedules">Interval Schedules</h3>
+<p>Use <code>schedule</code> for simple interval-based scheduling:</p>
+<pre><code class="language-python">from vaultdb.scheduler.schedules import schedule
+
+# Run every 60 seconds
+schedule=schedule(run_every=60)
+
+# Run every 5 minutes (300 seconds)
+schedule=schedule(run_every=300)
+</code></pre>
+<p>You can also use <code>timedelta</code>:</p>
+<pre><code class="language-python">from datetime import timedelta
+
+# Run every 30 minutes
+schedule=timedelta(minutes=30)
+
+# Run every hour
+schedule=timedelta(hours=1)
+
+# Run every day
+schedule=timedelta(days=1)
+</code></pre>
+<h2 id="complete-example">Complete Example</h2>
+<p>Here's a complete example showing different types of scheduled tasks:</p>
+<pre><code class="language-python">&quot;&quot;&quot;
+Example tasks file: vaultdb/analytics/analytics_tasks.py
+&quot;&quot;&quot;
+from vaultdb.celery.tasks import app, Task
+from vaultdb.scheduler import scheduled
+from celery.schedules import crontab
+from datetime import timedelta
+
+@scheduled(
+    schedule=crontab(hour=2, minute=0),  # Daily at 2 AM
+    kwargs={&quot;full_sync&quot;: True}
+)
+@app.task(bind=True, base=Task)
+def daily_analytics_sync(self, full_sync=False):
+    &quot;&quot;&quot;Run daily analytics synchronization.&quot;&quot;&quot;
+    with self.connect():
+        # Database operations here
+        if full_sync:
+            print(&quot;Running full analytics sync...&quot;)
+        else:
+            print(&quot;Running incremental sync...&quot;)
+    return &quot;Analytics sync completed&quot;
+
+
+@scheduled(
+    schedule=crontab(minute=&quot;*/5&quot;),  # Every 5 minutes
+)
+@app.task(bind=True, base=Task)
+def refresh_cache(self):
+    &quot;&quot;&quot;Refresh application cache every 5 minutes.&quot;&quot;&quot;
+    with self.connect():
+        print(&quot;Refreshing cache...&quot;)
+        # Cache refresh logic
+    return &quot;Cache refreshed&quot;
+
+
+@scheduled(
+    schedule=timedelta(hours=1),  # Every hour
+    args=(&quot;hourly_report&quot;,)
+)
+@app.task()
+def generate_report(report_type):
+    &quot;&quot;&quot;Generate reports on an hourly basis.&quot;&quot;&quot;
+    print(f&quot;Generating {report_type}...&quot;)
+    return f&quot;Report {report_type} generated&quot;
+</code></pre>
+<h2 id="task-discovery">Task Discovery</h2>
+<p>VaultDB automatically discovers tasks from files matching the pattern <code>*tasks.py</code> or <code>tasks.py</code> in your application.</p>
+<h3 id="discovery-process">Discovery Process</h3>
+<ol>
+<li>On application startup, VaultDB scans for <code>*tasks.py</code> files</li>
+<li>All tasks decorated with <code>@scheduled</code> are registered in the <code>ScheduledTaskRegistry</code></li>
+<li>The registry is converted to Celery's <code>beat_schedule</code> format</li>
+<li>Tasks become available for periodic execution</li>
+</ol>
+<h3 id="file-naming-convention">File Naming Convention</h3>
+<p>Your task files should follow one of these patterns:
+- <code>tasks.py</code>
+- <code>*_tasks.py</code> (e.g., <code>analytics_tasks.py</code>, <code>cleanup_tasks.py</code>)</p>
+<h2 id="fastapi-endpoints">FastAPI Endpoints</h2>
+<h3 id="list-all-tasks">List All Tasks</h3>
+<p>Get a list of all registered tasks:</p>
+<pre><code class="language-bash">GET http://localhost:8000/tasks
+</code></pre>
+<p>Response:</p>
+<pre><code class="language-json">{
+  &quot;tasks&quot;: [
+    {
+      &quot;name&quot;: &quot;vaultdb.celery.tasks.scheduled_example_task&quot;,
+      &quot;doc&quot;: &quot;Example scheduled task.&quot;,
+      &quot;module&quot;: &quot;vaultdb.celery.tasks&quot;,
+      &quot;annotations&quot;: [&quot;self&quot;, &quot;message&quot;, &quot;delay&quot;]
+    }
+  ]
+}
+</code></pre>
+<h3 id="list-scheduled-tasks">List Scheduled Tasks</h3>
+<p>Get a list of all scheduled tasks with their schedules:</p>
+<pre><code class="language-bash">GET http://localhost:8000/schedules
+</code></pre>
+<p>Response:</p>
+<pre><code class="language-json">{
+  &quot;schedules&quot;: [
+    {
+      &quot;name&quot;: &quot;vaultdb.celery.tasks.scheduled_example_task&quot;,
+      &quot;task&quot;: &quot;vaultdb.celery.tasks.scheduled_example_task&quot;,
+      &quot;schedule&quot;: &quot;&lt;crontab: */15 * * * * (m/h/dM/MY/d)&gt;&quot;,
+      &quot;args&quot;: [&quot;Scheduled message&quot;],
+      &quot;kwargs&quot;: {&quot;delay&quot;: 1}
+    }
+  ]
+}
+</code></pre>
+<h3 id="submit-a-task-manually">Submit a Task Manually</h3>
+<p>Execute a task immediately (bypassing the schedule):</p>
+<pre><code class="language-bash">POST http://localhost:8000/tasks/submit
+Content-Type: application/json
+
+{
+  &quot;task_name&quot;: &quot;vaultdb.celery.tasks.scheduled_example_task&quot;,
+  &quot;args&quot;: [&quot;Manual execution&quot;],
+  &quot;kwargs&quot;: {&quot;delay&quot;: 0},
+  &quot;runner&quot;: &quot;celery&quot;
+}
+</code></pre>
+<p>Response:</p>
+<pre><code class="language-json">{
+  &quot;task_id&quot;: &quot;abc123-def456-...&quot;,
+  &quot;status&quot;: &quot;SUBMITTED&quot;,
+  &quot;runner&quot;: &quot;celery&quot;,
+  &quot;message&quot;: &quot;Task 'vaultdb.celery.tasks.scheduled_example_task' submitted successfully&quot;
+}
+</code></pre>
+<h3 id="check-task-status">Check Task Status</h3>
+<pre><code class="language-bash">GET http://localhost:8000/tasks/{task_id}/status
+</code></pre>
+<h2 id="advanced-usage">Advanced Usage</h2>
+<h3 id="task-options">Task Options</h3>
+<p>You can pass additional options to the scheduler:</p>
+<pre><code class="language-python">@scheduled(
+    schedule=crontab(hour=3, minute=0),
+    args=(1, 2),
+    kwargs={&quot;foo&quot;: &quot;bar&quot;},
+    expires=3600,  # Task expires after 1 hour
+    priority=5     # Task priority
+)
+@app.task()
+def advanced_task(a, b, foo=None):
+    pass
+</code></pre>
+<h3 id="using-vaultdb-connection-in-tasks">Using VaultDB Connection in Tasks</h3>
+<p>When using the <code>Task</code> base class, you get automatic connection management:</p>
+<pre><code class="language-python">@scheduled(schedule=crontab(minute=&quot;*/10&quot;))
+@app.task(bind=True, base=Task)
+def database_cleanup(self):
+    &quot;&quot;&quot;Clean up old records every 10 minutes.&quot;&quot;&quot;
+    with self.connect():
+        # self.connection is available here
+        # Automatically closed when exiting the context
+        result = self.connection.execute(&quot;DELETE FROM logs WHERE age &gt; 30&quot;)
+    return f&quot;Cleaned up {result.rowcount} records&quot;
+</code></pre>
+<h3 id="error-handling-and-retries">Error Handling and Retries</h3>
+<pre><code class="language-python">@scheduled(schedule=crontab(hour=&quot;*/6&quot;))  # Every 6 hours
+@app.task(
+    bind=True,
+    autoretry_for=(Exception,),
+    retry_kwargs={'max_retries': 3, 'countdown': 60}
+)
+def resilient_task(self):
+    &quot;&quot;&quot;Task with automatic retry on failure.&quot;&quot;&quot;
+    try:
+        # Task logic
+        pass
+    except Exception as e:
+        # Log the error
+        print(f&quot;Task failed: {e}&quot;)
+        raise  # Will trigger auto-retry
+</code></pre>
+<h2 id="registry-api">Registry API</h2>
+<p>You can programmatically access the registry:</p>
+<pre><code class="language-python">from vaultdb.scheduler import ScheduledTaskRegistry
+
+# Get all scheduled tasks
+registry = ScheduledTaskRegistry()
+all_tasks = registry.get_all()
+
+for name, task in all_tasks.items():
+    print(f&quot;Task: {name}&quot;)
+    print(f&quot;  Schedule: {task.schedule}&quot;)
+    print(f&quot;  Args: {task.args}&quot;)
+    print(f&quot;  Kwargs: {task.kwargs}&quot;)
+</code></pre>
+<h2 id="running-the-scheduler">Running the Scheduler</h2>
+<h3 id="celery-beat-localdevelopment">Celery Beat (Local/Development)</h3>
+<p>Start Celery Beat to execute scheduled tasks:</p>
+<pre><code class="language-bash">celery -A vaultdb.celery.celery beat --loglevel=info
+</code></pre>
+<h3 id="celery-worker">Celery Worker</h3>
+<p>Start a worker to execute tasks:</p>
+<pre><code class="language-bash">celery -A vaultdb.celery.celery worker --loglevel=info
+</code></pre>
+<h3 id="combined-development">Combined (Development)</h3>
+<p>Run both beat and worker together:</p>
+<pre><code class="language-bash">celery -A vaultdb.celery.celery worker --beat --loglevel=info
+</code></pre>
+<h2 id="best-practices">Best Practices</h2>
+<ol>
+<li><strong>Keep Tasks Idempotent</strong>: Tasks should produce the same result when run multiple times</li>
+<li><strong>Use Specific Schedules</strong>: Be precise with your cron expressions to avoid unexpected behavior</li>
+<li><strong>Handle Failures Gracefully</strong>: Always implement proper error handling</li>
+<li><strong>Monitor Task Execution</strong>: Use the FastAPI endpoints to monitor scheduled tasks</li>
+<li><strong>Test Schedules</strong>: Verify your cron expressions using online cron calculators</li>
+<li><strong>Avoid Long-Running Tasks</strong>: Break down long tasks into smaller chunks</li>
+<li><strong>Use Appropriate Timeouts</strong>: Set time limits for tasks that might hang</li>
+</ol>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="task-not-running">Task Not Running</h3>
+<ol>
+<li>Check if the task is registered: <code>GET /schedules</code></li>
+<li>Verify Celery Beat is running</li>
+<li>Check Celery worker logs for errors</li>
+<li>Ensure Redis/broker is accessible</li>
+</ol>
+<h3 id="task-running-multiple-times">Task Running Multiple Times</h3>
+<ol>
+<li>Verify only one Celery Beat instance is running</li>
+<li>Check for duplicate task definitions</li>
+<li>Review schedule expressions</li>
+</ol>
+<h3 id="task-not-discovered">Task Not Discovered</h3>
+<ol>
+<li>Ensure file follows naming convention (<code>*tasks.py</code>)</li>
+<li>Check for import errors in the task file</li>
+<li>Verify the file is in the correct package</li>
+</ol>
+<h2 id="migration-from-old-system">Migration from Old System</h2>
+<p>If you were using the old <code>schedules.py</code> approach, migrate by:</p>
+<ol>
+<li>Remove manual <code>beat_schedule</code> dictionary definitions</li>
+<li>Add <code>@scheduled</code> decorator to your tasks</li>
+<li>The system will automatically register them</li>
+</ol>
+<p>Old way:</p>
+<pre><code class="language-python">app.conf.beat_schedule = {
+    &quot;my-task&quot;: {
+        &quot;task&quot;: &quot;tasks.my_task&quot;,
+        &quot;schedule&quot;: crontab(minute=&quot;*/15&quot;),
+        &quot;args&quot;: (1, 2),
+    },
+}
+</code></pre>
+<p>New way:</p>
+<pre><code class="language-python">@scheduled(schedule=crontab(minute=&quot;*/15&quot;), args=(1, 2))
+@app.task()
+def my_task(a, b):
+    pass
+</code></pre>
+<h2 id="support">Support</h2>
+<p>For more information, refer to:
+- <a href="https://docs.celeryproject.org/">Celery Documentation</a>
+- <a href="https://crontab.guru/">Crontab Guru</a> - Cron expression helper
+- VaultDB source code: <code>src/vaultdb/scheduler/</code></p>
                     </div>
                 </div>
             </div>

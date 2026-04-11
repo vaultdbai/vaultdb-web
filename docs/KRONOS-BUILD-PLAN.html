@@ -1,0 +1,1686 @@
+
+            <!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Kronos Re: The AI-Native Bermuda Sidecar</title>
+<meta content="noindex," name="“robots”" nofollow”=""/>
+<meta content="noindex," follow”="" name="“robots”"/>
+<meta content="index," name="“robots”" nofollow”=""/>
+<meta content="VaultDB.ai: Secure Inprocess database and cloud DataHub for IOT and Modeling" property="”og:title”">
+<meta content="Secure Inprocess database and cloud DataHub for IOT and Modeling" property="”og:description”">
+<meta content="Database, DataHub, IO, AI Modeling" property="”og:type”">
+<meta content="img/v-logo.png" property="”og:image”"/>
+<meta content="http://vaultdb.ai" property="”og:url”"/>
+<meta content="VaultDB.ai" property="”og:site_name”"/>
+<!--meta name+" keywords" content=" keywords go here"/-->
+<link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" rel="stylesheet"/>
+<link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" referrerpolicy="no-referrer" rel="stylesheet"/>
+<!-- favicon -->
+<link href="../img/v-logo.png" rel="icon" type="image/png"/>
+<!-- animation  -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+<link href="../css/style.css" rel="stylesheet"/>
+</meta></meta></meta>
+    <style>
+        html { font-size: 10px !important; }
+        body { font-size: 1.6rem !important; background: var(--main-color) !important; color: #f5f5f5; }
+
+        .doc-wrapper { margin-top: 15vh; margin-bottom: 5vh; min-height: 80vh; }
+        .doc-nav { border-right: 1px solid rgba(168, 150, 183, 0.2); height: 100%; padding-right: 2rem; }
+        .doc-nav .nav-link {
+            color: #A896B7; border-radius: 12px; margin-bottom: 8px; transition: 0.3s;
+            font-size: 1.6rem; padding: 1.4rem 2rem; border: 1px solid transparent;
+        }
+        .doc-nav .nav-link:hover { background: rgba(160, 68, 255, 0.1); color: var(--purple-color); transform: translateX(8px); }
+        .doc-nav .nav-link.active { background: var(--purple-color); color: #fff !important; font-weight: 700; box-shadow: 0 12px 24px rgba(160, 68, 255, 0.4); }
+
+        .doc-content { padding-left: 6rem; max-width: 1000px; }
+        .doc-content h1, .doc-content h2, .doc-content h3 { font-family: var(--plus-font-family); color: #fff; margin-top: 4.5rem; }
+        .doc-content h1 { font-size: 5.2rem; font-weight: 800; margin-top: 0; margin-bottom: 4rem; letter-spacing: -0.03em; }
+        .doc-content h2 { font-size: 3.6rem; border-bottom: 2px solid rgba(168, 150, 183, 0.15); padding-bottom: 1.5rem; }
+        .doc-content h3 { font-size: 2.8rem; color: var(--purple-color); }
+
+        .doc-content p, .doc-content li { font-size: 1.8rem; line-height: 2.0; color: #d0c4db; margin-bottom: 2.8rem; }
+        .doc-content code { background: #0b0b1a; padding: 4px 10px; border-radius: 8px; color: #f8f8f2; border: 1px solid rgba(255,255,255,0.1); }
+        .doc-content pre { padding: 3.5rem; border-radius: 20px; box-shadow: 0 30px 60px rgba(0,0,0,0.5); }
+
+        .persona-badge { font-size: 0.9rem; text-transform: uppercase; padding: 6px 16px; border-radius: 99px; background: rgba(160, 68, 255, 0.25); border: 1px solid var(--purple-color); color: #fff; margin-left: 20px; }
+
+        .breadcrumb-item a { color: var(--purple-color); font-size: 1.6rem; text-decoration: none; }
+        .breadcrumb-item.active { color: #666; font-size: 1.6rem; }
+
+        .doc-content table { border-radius: 16px; overflow: hidden; border: 1px solid rgba(168, 150, 183, 0.3); }
+        .doc-content th { background: #131326; padding: 2rem; font-size: 1.7rem; color: #fff; }
+        .doc-content td { padding: 2rem; border-top: 1px solid rgba(168, 150, 183, 0.1); font-size: 1.7rem; }
+
+        .mermaid-diagram { margin: 3rem 0; text-align: center; }
+        .mermaid-diagram img { max-width: 100%; border-radius: 16px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+        .mermaid { background: transparent; }
+    </style>
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true, theme: 'dark', fontFamily: 'DM Sans' });
+    </script>
+    </head>
+<body style="overflow: hidden !important">
+<div class="container_body">
+<div class="container_inside">
+<!-- Nav Bar start Lg  -->
+<header class="header">
+<div class="logo">
+<img alt="" src="../img/mainlogo.png"/>
+<a href="../index.html">VaultDB.ai</a>
+</div>
+<ul class="menu_bar">
+          <li>
+            <a href="#" class="header_hover">KRONOS Modules</a>
+            <ul class="dropdown-menu" style="background-color: #10101e; width: 60rem;">
+              <div class="row p-4">
+                <div class="col-md-4">
+                  <li class="p-2"><a href="../products/asset/docs/index.html"><i
+                        class="fa-solid fa-cube me-2 text-purple"></i>Asset</a></li>
+                  <li class="p-2"><a href="../products/market/docs/index.html"><i
+                        class="fa-solid fa-chart-line me-2 text-purple"></i>Market</a></li>
+                  <li class="p-2"><a href="../products/liability/docs/index.html"><i
+                        class="fa-solid fa-file-invoice-dollar me-2 text-purple"></i>Liability</a></li>
+                  <li class="p-2"><a href="../products/assumptions/docs/index.html"><i
+                        class="fa-solid fa-table me-2 text-purple"></i>Assumptions</a></li>
+                  <li class="p-2"><a href="../products/scenario/docs/index.html"><i
+                        class="fa-solid fa-shuffle me-2 text-purple"></i>Scenario</a></li>
+                </div>
+                <div class="col-md-4">
+                  <li class="p-2"><a href="../products/valuation/docs/index.html"><i
+                        class="fa-solid fa-calculator me-2 text-purple"></i>Valuation</a></li>
+                  <li class="p-2"><a href="../products/alm/docs/index.html"><i
+                        class="fa-solid fa-scale-balanced me-2 text-purple"></i>ALM</a></li>
+                  <li class="p-2"><a href="../products/trading/docs/index.html"><i
+                        class="fa-solid fa-arrow-right-arrow-left me-2 text-purple"></i>Trading</a></li>
+                  <li class="p-2"><a href="../products/risk/docs/index.html"><i
+                        class="fa-solid fa-shield-halved me-2 text-purple"></i>Risk</a></li>
+                  <li class="p-2"><a href="../products/reporting/docs/index.html"><i
+                        class="fa-solid fa-file-lines me-2 text-purple"></i>Reporting</a></li>
+                </div>
+                <div class="col-md-4">
+                  <li class="p-2"><a href="../products/ingestion/docs/index.html"><i
+                        class="fa-solid fa-upload me-2 text-purple"></i>Ingestion</a></li>
+                  <li class="p-2"><a href="../products/dashboard/docs/index.html"><i
+                        class="fa-solid fa-gauge-high me-2 text-purple"></i>Dashboard</a></li>
+                  <li class="p-2"><a href="../products/core/docs/index.html"><i
+                        class="fa-solid fa-microchip me-2 text-purple"></i>Core Platform</a></li>
+                </div>
+              </div>
+            </ul>
+          </li>
+          <li class="second_bar">
+            <a href="#" class="header_hover">Developers</a>
+            <ul class="dev_menu" style="background-color: #10101e">
+              <li>
+                <div class="dev_box">
+                  <img src="../img/Group 1000001838.png" alt="menu_logo" class="first_dev_img" />
+                  <a href="../docs/index.html">Documentation Home</a>
+                  <div class="line" style="width: 100%"></div>
+                </div>
+                <div class="dev_box">
+                  <img src="../img/Group 1000001840.png" alt="menu_logo" />
+                  <a href="../docs/ARCHITECTURE.html">System Architecture</a>
+                  <div class="line"></div>
+                </div>
+                <div class="dev_box">
+                  <img src="../img/Group 1000001843.png" alt="menu_logo" />
+                  <a href="../docs/technology_system_architecture.html">End-to-End Architecture</a>
+                  <div class="line"></div>
+                </div>
+                <div class="dev_box">
+                  <img src="../img/Group 1000001843.png" alt="menu_logo" />
+                  <a href="../docs/standards_SUBMODULE_DOC_CONVENTION.html">Doc Standards</a>
+                </div>
+              </li>
+            </ul>
+          </li>
+          <li class="first_bar">
+            <a href="#" class="header_hover">Database</a>
+            <ul class="dropdown-menu" style="background-color: #10101e">
+              <li class="first_content_container">
+                <div class="first_content">
+                  <div class="dropdown_img">
+                    <img src="../img/Group 1000001831.png" alt="" />
+                  </div>
+                  <div class="dropdown_content">
+                    <p>VaultDB HUB</p>
+                    <p>
+                      Train, Test and deploy and manage your models with
+                      integrated Governance, Risk and Controls.
+                    </p>
+                  </div>
+                </div>
+                <div class="dropdown_btns">
+                  <a href="../database/index.html" class="dropdown_btn">VaultDB Database IOT Platform</a>
+                  <a href="../database/index.html" class="dropdown_btn">Websites and mobile Apps</a>
+                  <a href="https://docs.vaultdb.ai/hub/datahub" class="dropdown_btn">VaultDB Data Hub</a>
+                </div>
+                <div class="line"></div>
+              </li>
+              <li>
+                <div class="second_content second">
+                  <div class="dropdown_img">
+                    <img src="../img/Group 1000001832.png" alt="" />
+                  </div>
+                  <div class="dropdown_content">
+                    <p>VaultDB Compute</p>
+                    <p>
+                      Scalable cloud resources for distributed model execution.
+                    </p>
+                  </div>
+                  <div class="line_bottom">
+                    <div class="line"></div>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="second_content third_content">
+                  <div class="dropdown_img">
+                    <img src="../img/Group 1000001793.png" alt="" />
+                  </div>
+                  <div class="dropdown_content">
+                    <p>VaultDB Actions</p>
+                    <p class="para_1">
+                      CI/CD for compute intensive and analytical pipelines.
+                    </p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#" class="header_hover">AI Marketplace</a>
+            <ul class="dropdown-menu" style="background-color: #10101e; width: 30rem;">
+              <div class="p-4">
+                <li class="p-2"><a href="../marketplace/index.html"><i
+                      class="fa-solid fa-store me-2 text-purple"></i>Browse All</a></li>
+                <li class="p-2"><a href="../marketplace/skills.html"><i
+                      class="fa-solid fa-wand-magic-sparkles me-2 text-purple"></i>Skills</a></li>
+                <li class="p-2"><a href="../marketplace/mcp-servers.html"><i
+                      class="fa-solid fa-server me-2 text-purple"></i>MCP Servers</a></li>
+                <li class="p-2"><a href="../marketplace/plugins.html"><i
+                      class="fa-solid fa-plug me-2 text-purple"></i>Plugins</a></li>
+              </div>
+            </ul>
+          </li>
+          <li><a href="../about.html" class="header_hover">About Us</a></li>
+
+          <li>
+            <a href="../contact.html" class="contact_btn">Contact Us</a>
+          </li>
+        </ul>
+        <div class="header_icons">
+<i class="fa-solid fa-bars text-white fs-1 menu"></i>
+</div>
+</header>
+<!-- Nav Bar End -->
+<!-- Mobile sidebar=========================== -->
+<div class="side_accordian">
+<div class="menu_accordian">
+<div class="mobile_nav" style="background-color: var(--main-color)">
+<div class="logo">
+<img alt="" src="../img/logo.png"/>
+<a class="f-2" href="../index.html">VaultDB.ai</a>
+</div>
+<i class="fa-solid fa-xmark text-white fs-1 close_icon"></i>
+</div>
+<div class="link">
+<p class="dropdown_link dropdown_bar">Developers</p>
+<ul class="sub_menu dropdown">
+<a href="../docs/index.html">
+<div class="dev_nav">
+<div class="dev_nav_box">
+<div class="dev_nav_img">
+<img alt="" src="../img/Group 1000001838.png"/>
+</div>
+<div class="dev_para">Documentation Home</div>
+</div>
+</div>
+</a>
+</ul>
+<div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
+<ul class="sub_menu dropdown">
+<a href="../docs/ARCHITECTURE.html">
+<div class="dev_nav">
+<div class="dev_nav_box">
+<div class="dev_nav_img image">
+<img alt="" src="../img/Group 1000001840.png"/>
+</div>
+<div class="dev_para">System Architecture</div>
+</div>
+</div>
+</a>
+</ul>
+<div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
+<ul class="sub_menu dropdown">
+<a href="../docs/technology_system_architecture.html">
+<div class="dev_nav">
+<div class="dev_nav_box">
+<div class="dev_nav_img image">
+<img alt="" src="../img/Group 1000001843.png"/>
+</div>
+<div class="dev_para">End-to-End Architecture</div>
+</div>
+</div>
+</a>
+</ul>
+<div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
+<ul class="sub_menu dropdown">
+<a href="../docs/standards_SUBMODULE_DOC_CONVENTION.html">
+<div class="dev_nav">
+<div class="dev_nav_box">
+<div class="dev_nav_img image">
+<img alt="" src="../img/Group 1000001843.png"/>
+</div>
+<div class="dev_para">Doc Standards</div>
+</div>
+</div>
+</a>
+</ul>
+<div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
+</div>
+<div class="link">
+<p class="dropdown_link dropdown_bar">Database</p>
+<ul class="sub_menu dropdown">
+<div class="first_menu pb-5">
+<div class="content">
+<div class="first_img">
+<img alt="" src="../img/Group 1000001831.png"/>
+</div>
+<div class="first_menu_content">VaultDB HUB</div>
+</div>
+<div class="bottom_para">
+                  Train, Test and deploy and manage your models with
+                  integrated Governance, Risk and Controls. Control data your
+                  models are training on for Bias and compliance.
+                </div>
+<div class="first_btns">
+           <a class="contact_btn first_btn" href="../database/index.html">
+            VaultDB Database
+           </a>
+           <a class="contact_btn first_btn" href="../database/index.html">
+            VaultDB Applications
+           </a>
+<a class="dropdown_btn" href="https://docs.vaultdb.ai/hub/datahub">VaultDB Data Hub</a>
+</div>
+</div>
+</ul>
+<div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
+<ul class="sub_menu dropdown">
+<div class="second_menu first_menu mt-5">
+<div class="content">
+<div class="second_img first_img">
+<img alt="" src="../img/Group 1000001832.png"/>
+</div>
+<div class="first_menu_content">VaultDB Compute</div>
+</div>
+<div class="bottom_para">
+                  Train and Run your models across cloud providers on cheapest
+                  and unlimited resources.
+                </div>
+</div>
+</ul>
+<div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
+<ul class="sub_menu dropdown">
+<div class="second_menu first_menu">
+<div class="content">
+<div class="second_img first_img">
+<img alt="" src="../img/Frame.png"/>
+</div>
+<div class="first_menu_content">
+                    VaultDB Actions (DevOps)
+                  </div>
+</div>
+<div class="bottom_para">
+                  Train and Run your models across cloud providers on cheapest
+                  and unlimited resources.
+                </div>
+</div>
+</ul>
+<div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
+</div>
+<div class="link">
+<p class="dropdown_link dropdown_bar">AI Marketplace</p>
+<ul class="sub_menu dropdown">
+<a href="../marketplace/index.html">
+<div class="dev_nav">
+<div class="dev_nav_box">
+<div class="dev_nav_img image">
+<i class="fa-solid fa-store text-purple fs-4" style="padding: 0.5rem;"></i>
+</div>
+<div class="dev_para">Browse All</div>
+</div>
+</div>
+</a>
+</ul>
+<div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
+<ul class="sub_menu dropdown">
+<a href="../marketplace/skills.html">
+<div class="dev_nav">
+<div class="dev_nav_box">
+<div class="dev_nav_img image">
+<i class="fa-solid fa-wand-magic-sparkles text-purple fs-4" style="padding: 0.5rem;"></i>
+</div>
+<div class="dev_para">Skills</div>
+</div>
+</div>
+</a>
+</ul>
+<div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
+<ul class="sub_menu dropdown">
+<a href="../marketplace/mcp-servers.html">
+<div class="dev_nav">
+<div class="dev_nav_box">
+<div class="dev_nav_img image">
+<i class="fa-solid fa-server text-purple fs-4" style="padding: 0.5rem;"></i>
+</div>
+<div class="dev_para">MCP Servers</div>
+</div>
+</div>
+</a>
+</ul>
+<div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
+<ul class="sub_menu dropdown">
+<a href="../marketplace/plugins.html">
+<div class="dev_nav">
+<div class="dev_nav_box">
+<div class="dev_nav_img image">
+<i class="fa-solid fa-plug text-purple fs-4" style="padding: 0.5rem;"></i>
+</div>
+<div class="dev_para">Plugins</div>
+</div>
+</div>
+</a>
+</ul>
+<div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
+</div>
+<!--div class="link">
+              <p class="dropdown_link dropdown_bar">Services</p>
+              <ul class="sub_menu dropdown">
+                <div class="dev_nav service_nav">
+                  <div class="dev_nav_box service_nav_box">
+                    <div class="dev_nav_img image service_nav_img">
+                      <img src="../img/Group 1000001846.png" alt="" />
+                    </div>
+                    <div class="dev_para service_para">UX / UI Design</div>
+                  </div>
+                </div>
+              </ul>
+              <div
+                class="line line_navbar"
+                style="position: relative; bottom: 0; left: 0"
+              ></div>
+              <ul class="sub_menu dropdown">
+                <div class="dev_nav service_nav">
+                  <div class="dev_nav_box service_nav_box">
+                    <div class="dev_nav_img image service_nav_img">
+                      <img src="../img/Group 1000001847.png" alt="" />
+                    </div>
+                    <div class="dev_para service_para">Web Development</div>
+                  </div>
+                </div>
+              </ul>
+              <div
+                class="line line_navbar"
+                style="position: relative; bottom: 0; left: 0"
+              ></div>
+              <ul class="sub_menu dropdown">
+                <div class="dev_nav service_nav">
+                  <div class="dev_nav_box service_nav_box">
+                    <div class="dev_nav_img image service_nav_img">
+                      <img src="../img/Group 1000001797.png" alt="" />
+                    </div>
+                    <div class="dev_para service_para">App Development</div>
+                  </div>
+                </div>
+              </ul>
+              <div
+                class="line line_navbar"
+                style="position: relative; bottom: 0; left: 0"
+              ></div>
+              <ul class="sub_menu dropdown">
+                <div class="dev_nav service_nav">
+                  <div class="dev_nav_box service_nav_box">
+                    <div class="dev_nav_img image service_nav_img">
+                      <img src="../img/Group 1000001844.png" alt="" />
+                    </div>
+                    <div class="dev_para service_para">Consulting</div>
+                  </div>
+                </div>
+                <div class="service_p" style="color: var(--border-color)">
+                  Contact us for Cloud and model (deterministic or mathematical)
+                  development.
+                </div>
+              </ul>
+              <div
+                class="line line_navbar"
+                style="position: relative; bottom: 0; left: 0"
+              ></div>
+            </div-->
+<div class="link" style="border: 0; outline: 0">
+<a class="dropdown_link" href="../about.html" style="font-size: 20px">About Us</a>
+<div class="middle" style="border: 0">
+<a class="contact_btn" href="../contact.html">Contact Us</a>
+</div>
+</div>
+</div>
+</div>
+
+            <div class="container doc-wrapper">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="side_accordian doc-nav"><ul class="nav flex-column">
+        <li class="nav-item">
+            <a class="nav-link  " href="ARCHITECTURE.html">
+                <i class="fa-solid fa-house me-2"></i> Architecture
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="Global_Actuarial_Ingestion_Strategy.html">
+                <i class="fa-solid fa-house me-2"></i> Global Actuarial Ingestion Strategy
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="KRONOS-APPROVAL-VIEWER-PLAN.html">
+                <i class="fa-solid fa-house me-2"></i> Kronos Approval Viewer Plan
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link active " href="KRONOS-BUILD-PLAN.html">
+                <i class="fa-solid fa-house me-2"></i> Kronos Build Plan
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="KRONOS-CHATBOT-PLAN.html">
+                <i class="fa-solid fa-house me-2"></i> Kronos Chatbot Plan
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="RESEARCH-AGENT-ARCHITECTURE.html">
+                <i class="fa-solid fa-house me-2"></i> Research Agent Architecture
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="TODO.html">
+                <i class="fa-solid fa-house me-2"></i> Todo
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="index.html">
+                <i class="fa-solid fa-house me-2"></i> Index
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="marketin-ideas.html">
+                <i class="fa-solid fa-house me-2"></i> Marketin Ideas
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="project_regulatory_data_plan.html">
+                <i class="fa-solid fa-house me-2"></i> Project Regulatory Data Plan
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  ps-4" href="standards_SUBMODULE_DOC_CONVENTION.html">
+                <i class="fa-solid fa-file-lines me-2"></i> Submodule Doc Convention
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  ps-4" href="technology_system_architecture.html">
+                <i class="fa-solid fa-code me-2"></i> System Architecture
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="system-context.html">
+                <i class="fa-solid fa-brain me-2"></i> System Context
+            </a>
+        </li>
+        </ul></div>
+                    </div>
+                    <div class="col-lg-9 doc-content">
+                        <nav aria-label="breadcrumb" class="mb-5">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="#">Platform</a></li>
+                                <li class="breadcrumb-item active">Kronos-Build-Plan <span class="persona-badge">index</span></li>
+                            </ol>
+                        </nav>
+                        <h1 id="kronos-re-vaultdb-end-to-end-build-plan">KRONOS Re — VaultDB End-to-End Build Plan</h1>
+<p><strong>Date:</strong> 2026-03-28
+<strong>Purpose:</strong> Implementation roadmap for building out the KRONOS Re AI-Augmented ALM platform in VaultDB — covering all missing modules, new repos, and the end-to-end live workflow ("TED").</p>
+<p><strong>Related documents:</strong>
+- <a href="KRONOS-CHATBOT-PLAN.md">KRONOS-CHATBOT-PLAN.md</a> — AI chatbot, plugin/skill system, and TED WorkflowManager design</p>
+<hr />
+<h2 id="1-current-state-audit">1. Current State Audit</h2>
+<h3 id="implemented-production-ready">Implemented (Production-Ready)</h3>
+<table>
+<thead>
+<tr>
+<th>Module</th>
+<th>Status</th>
+<th>Key Capabilities</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>core</code></td>
+<td>✅ Mature</td>
+<td>Auth, DuckLake ORM, Celery/Redis compute, FastAPI web, batch jobs</td>
+</tr>
+<tr>
+<td><code>asset</code></td>
+<td>✅ Implemented</td>
+<td>37+ pricing engines: bonds, swaps, options, swaptions, CDS, FX, TRS, FIA options</td>
+</tr>
+<tr>
+<td><code>market</code></td>
+<td>✅ Implemented</td>
+<td>Yield curves, vol surfaces, SOFR/Treasury/LIBOR loaders, QuantLib utilities</td>
+</tr>
+<tr>
+<td><code>infrastructure</code></td>
+<td>✅ Complete</td>
+<td>AWS CloudFormation (ECS, Lambda, Batch), Docker, IAM, ECR, Elasticache</td>
+</tr>
+<tr>
+<td><code>vaultdb-web</code></td>
+<td>✅ Complete</td>
+<td>Static marketing site with module doc stubs</td>
+</tr>
+</tbody>
+</table>
+<h3 id="empty-stubs-require-full-implementation">Empty Stubs (Require Full Implementation)</h3>
+<table>
+<thead>
+<tr>
+<th>Module</th>
+<th>Priority</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>liability</code></td>
+<td>P0</td>
+<td>Annuity/life product models, cash flow projection, reserve calculation</td>
+</tr>
+<tr>
+<td><code>scenario</code></td>
+<td>P0</td>
+<td>Interest rate + economic scenario generators (NY7, stochastic)</td>
+</tr>
+<tr>
+<td><code>alm</code></td>
+<td>P0</td>
+<td>Asset-liability matching, duration gap, spread analysis</td>
+</tr>
+<tr>
+<td><code>trading</code></td>
+<td>P1</td>
+<td>Hedging strategy execution, Greeks management, rebalancing</td>
+</tr>
+<tr>
+<td><code>valuation</code></td>
+<td>P1</td>
+<td>Coordinated valuations, attribution analysis, GAAP fair value</td>
+</tr>
+<tr>
+<td><code>risk</code></td>
+<td>P1</td>
+<td>BSCR, VaR/CVaR, capital adequacy, stress testing</td>
+</tr>
+</tbody>
+</table>
+<h3 id="missing-repos-net-new-submodules">Missing Repos (Net-New Submodules)</h3>
+<table>
+<thead>
+<tr>
+<th>New Module</th>
+<th>Priority</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>assumptions</code></td>
+<td>P0</td>
+<td>Actuarial assumption library (mortality, lapse, surrender, expenses)</td>
+</tr>
+<tr>
+<td><code>reporting</code></td>
+<td>P1</td>
+<td>GAAP/STAT/BSCR regulatory report generation</td>
+</tr>
+<tr>
+<td><code>ingestion</code></td>
+<td>P2</td>
+<td>Census data normalization from ceding carriers</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="2-new-submodules-to-add">2. New Submodules to Add</h2>
+<h3 id="21-assumptions-new-p0">2.1 <code>assumptions</code> (NEW — P0)</h3>
+<p>Actuarial assumptions are the foundation of all liability and ALM calculations. Without a centralized, versioned assumptions library, every module would embed its own tables inconsistently.</p>
+<p><strong>Responsibilities:</strong>
+- SOA/NAIC standard mortality tables (CSO 2017, VBT 2015, SOA LLAT)
+- Lapse rate tables by product type, policy year, and interest rate environment
+- Dynamic policyholder behavior models (surrender, partial withdrawal, annuitization)
+- Surrender charge schedules by product
+- Expense assumption sets (per policy, per $1000 face, percent of premium)
+- Crediting rate assumptions for Fixed Annuities and FIAs
+- Reversion-to-the-mean (RTM) interest rate assumptions for AAT
+- Assumption version control and effective-dating</p>
+<p><strong>Key Models:</strong></p>
+<pre><code>MortalityTable          — SOA table with qx by age, sex, duration
+LapseRateTable          — Lapse rates by product, year, spread-to-crediting-rate
+SurrenderChargeSchedule — Charge % by policy year
+ExpenseAssumption       — Admin expense, commission, per-policy costs
+CredittingRateAssumption— Minimum guaranteed rates, current crediting rates
+BehaviorAssumption      — Partial withdrawal, annuitization election rates
+AssumptionSet           — Named, versioned bundle of all above
+</code></pre>
+<p><strong>Key Tasks:</strong></p>
+<pre><code>load_soa_mortality(table_name)   — Load SOA published tables
+create_assumption_set(name, ...) — Bundle assumptions into a named set
+</code></pre>
+<hr />
+<h3 id="22-reporting-new-p1">2.2 <code>reporting</code> (NEW — P1)</h3>
+<p>Generates fully auditable regulatory reports and human-review draft memos. Critical for BMA "Explainability Mandate" and NAIC AG 55 compliance.</p>
+<p><strong>Responsibilities:</strong>
+- GAAP reporting: ASC 944 (insurance contracts), ASC 820 (fair value)
+- STAT reporting: NAIC Life Annual Statement schedules
+- BSCR reporting: Bermuda Solvency Capital Requirement computation and filing
+- Attribution analysis: Source-of-change reports showing why reserves/capital moved
+- Hedge effectiveness reports: Per GAAP ASC 815 / IFRS 9
+- Solvency dashboard data feeds (for PE partner read-only access)
+- Draft memo generation (AI drafts the narrative; human actuary signs)
+- Audit trail: Every model run, input assumption, and output logged immutably</p>
+<p><strong>Key Models:</strong></p>
+<pre><code>GaapReport              — GAAP financial statement data
+StatReport              — NAIC STAT filing data
+BscrReport              — BMA BSCR computation
+AttributionReport       — Source-of-change analysis
+HedgeEffectivenessReport— Hedge designations and effectiveness testing
+SolvencySnapshot        — Point-in-time capital ratios for dashboard
+DraftMemo               — AI-generated narrative for human review
+AuditRecord             — Immutable log of every computation step
+</code></pre>
+<hr />
+<h3 id="23-ingestion-new-p2">2.3 <code>ingestion</code> (NEW — P2)</h3>
+<p>Normalizes raw census data from ceding U.S. carriers into the VaultDB data model. First step in the KRONOS Re "Data Ingestion" phase where an actuarial analyst peer-reviews sanity check flags.</p>
+<p><strong>Responsibilities:</strong>
+- Census file format parsing (CSV, Excel, RI/delimited, fixed-width legacy)
+- Field mapping templates per carrier
+- Data quality validation and sanity check flags
+- Anomaly detection (outliers in age, face amount, crediting rates)
+- Policy record normalization into VaultDB liability models
+- Ingestion job tracking and audit trail
+- Rejection queue for records requiring human review</p>
+<p><strong>Key Models:</strong></p>
+<pre><code>IngestionJob            — Tracks a census file import run
+PolicyRecord            — Raw normalized policy census record
+IngestionFlag           — Sanity check warning or error on a record
+FieldMappingTemplate    — Per-carrier column mapping configuration
+RejectionQueue          — Records requiring human actuarial review
+</code></pre>
+<hr />
+<h2 id="3-module-implementation-plans">3. Module Implementation Plans</h2>
+<h3 id="31-liability-p0">3.1 <code>liability</code> (P0)</h3>
+<p>The core actuarial engine. Models annuity and life insurance products as cash-flow-generating liabilities, calculates statutory and GAAP reserves, and interfaces with <code>assumptions</code> for all demographic and behavioral inputs.</p>
+<p><strong>Products to Model:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Product</th>
+<th>Key Features</th>
+<th>Hedging Complexity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fixed Annuity (FA)</td>
+<td>Crediting rate, guaranteed min rate, surrender charges</td>
+<td>Duration matching</td>
+</tr>
+<tr>
+<td>Fixed Indexed Annuity (FIA)</td>
+<td>Option budget, participation rate, cap/floor</td>
+<td>Delta/Vega</td>
+</tr>
+<tr>
+<td>Variable Annuity (VA)</td>
+<td>Separate account, GMDB/GMIB/GMWB riders</td>
+<td>Convexity/Rho</td>
+</tr>
+<tr>
+<td>Fixed Deferred Annuity (MYGA)</td>
+<td>Multi-year guaranteed rate, surrender period</td>
+<td>Duration matching</td>
+</tr>
+<tr>
+<td>Life Insurance (Term/WL)</td>
+<td>Death benefit, CSV, premium payment</td>
+<td>Mortality risk</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key Models:</strong></p>
+<pre><code>AnnuityPolicy           — Master policy record (FA, FIA, MYGA)
+VariableAnnuityPolicy   — VA-specific with rider information
+LifePolicy              — Term/whole life policy
+PolicyCohort            — Grouped policies for model point compression
+CashFlowProjection      — Projected liability cash flows by period
+Reserve                 — GAAP/STAT reserve by policy and basis
+EmbeddedValue           — VIF (Value In Force) calculations
+</code></pre>
+<p><strong>Key Engines:</strong></p>
+<pre><code>AnnuityCashFlowEngine   — Projects FA/MYGA liability cash flows
+FiaCashFlowEngine       — Projects FIA cash flows including option cost
+VaCashFlowEngine        — Projects VA cash flows with rider utilization
+ReserveEngine           — GAAP/STAT reserve calculation (PBR, AG 33, AG 38)
+AatEngine               — Asset Adequacy Testing (NY7 scenario runs)
+</code></pre>
+<p><strong>Key Tasks:</strong></p>
+<pre><code>project_liability_cash_flows(cohort_id, assumption_set, scenarios)
+calculate_reserves(policy_ids, basis, valuation_date)
+run_aat(block_id, scenario_set, assumption_set)
+</code></pre>
+<hr />
+<h3 id="32-scenario-p0">3.2 <code>scenario</code> (P0)</h3>
+<p>Generates economic and actuarial scenario sets used across liability projection, ALM analysis, and stress testing. Supports both deterministic regulatory scenarios and stochastic Monte Carlo sets.</p>
+<p><strong>Scenario Types:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Use Case</th>
+<th>Count</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NY7 (NAIC AAT)</td>
+<td>Statutory asset adequacy testing</td>
+<td>7 deterministic</td>
+</tr>
+<tr>
+<td>BSCR Stress</td>
+<td>Bermuda regulatory capital</td>
+<td>~12 prescribed stresses</td>
+</tr>
+<tr>
+<td>Stochastic ESG</td>
+<td>Pricing, embedded value, risk</td>
+<td>1,000–10,000 paths</td>
+</tr>
+<tr>
+<td>Reverse Stress</td>
+<td>Board risk appetite</td>
+<td>User-defined</td>
+</tr>
+<tr>
+<td>Historical</td>
+<td>Back-testing</td>
+<td>Configurable window</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Interest Rate Models:</strong>
+- <strong>Hull-White 1F</strong> — Mean-reverting short rate; calibrated to SOFR curve + swaptions
+- <strong>CIR</strong> — Non-negative rates; suited for stressed scenarios
+- <strong>LMM (LIBOR Market Model)</strong> — Full forward curve simulation; for VA/FIA hedging</p>
+<p><strong>Key Models:</strong></p>
+<pre><code>ScenarioSet             — Named collection of scenarios (e.g., &quot;NY7_2026Q1&quot;)
+Scenario                — Individual path with rate/equity/spread vectors
+InterestRatePath        — Time-series of forward rates across tenors
+EquityPath              — Equity index total return paths
+CreditSpreadPath        — Credit spread paths by rating
+MortalityScenario       — Shocked mortality/longevity for longevity risk
+</code></pre>
+<p><strong>Key Tasks:</strong></p>
+<pre><code>generate_ny7_scenarios(valuation_date)          — NAIC NY7 deterministic set
+generate_bscr_stresses(valuation_date)          — BMA prescribed stress set
+generate_stochastic_scenarios(model, n, seed)   — Monte Carlo ESG paths
+calibrate_hull_white(curve_name, vol_surface)   — Calibrate HW to market
+</code></pre>
+<hr />
+<h3 id="33-alm-p0">3.3 <code>alm</code> (P0)</h3>
+<p>The strategic ALM engine — the core of the KRONOS Re competitive advantage. Computes duration gaps, cash flow mismatches, and spread analytics across the combined asset + liability portfolio.</p>
+<p><strong>Core Capabilities:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Analysis</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Duration Gap</td>
+<td>Asset – Liability modified duration mismatch</td>
+</tr>
+<tr>
+<td>Key Rate Duration (KRD)</td>
+<td>Rate sensitivity at each tenor bucket</td>
+</tr>
+<tr>
+<td>Cash Flow Matching</td>
+<td>Period-by-period asset vs. liability cash flows</td>
+</tr>
+<tr>
+<td>Spread Analysis</td>
+<td>Asset yield vs. liability cost-of-funds</td>
+</tr>
+<tr>
+<td>Convexity Gap</td>
+<td>Asset – Liability convexity mismatch</td>
+</tr>
+<tr>
+<td>Greeks Aggregation</td>
+<td>Net delta/vega/gamma across asset+liability</td>
+</tr>
+<tr>
+<td>Surplus Analysis</td>
+<td>Economic and statutory surplus with sensitivities</td>
+</tr>
+<tr>
+<td>Rebalancing Triggers</td>
+<td>Rule-based alerts when gaps exceed thresholds</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key Models:</strong></p>
+<pre><code>AlmSnapshot             — Point-in-time ALM state (date, block, portfolio)
+DurationGap             — Asset vs. liability duration by bucket
+CashFlowMatchReport     — Period-by-period projected cash flow alignment
+SpreadAnalysis          — Yield, liability cost, spread by asset class
+SurplusAnalysis         — Economic and statutory surplus decomposition
+RebalancingAlert        — Triggered when gap exceeds defined limits
+AlmPolicy               — Target duration gap, KRD limits, spread targets
+</code></pre>
+<p><strong>Key Tasks:</strong></p>
+<pre><code>compute_alm_snapshot(asset_portfolio, liability_block, assumption_set, scenario)
+compute_duration_gap(snapshot_id)
+compute_krd_profile(snapshot_id)
+compute_spread_analysis(snapshot_id)
+run_alm_optimization(snapshot_id, alm_policy_id)  — Suggest rebalancing trades
+</code></pre>
+<hr />
+<h3 id="34-trading-p1">3.4 <code>trading</code> (P1)</h3>
+<p>Generates and tracks hedging trades per the KRONOS Re approach: AI drafts the hedge strategy and trade recommendations, the human CIO approves execution. Supports product-specific hedging templates.</p>
+<p><strong>Hedging Templates by Product (per KRONOS Re plan):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Product</th>
+<th>Instrument</th>
+<th>Strategy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fixed Annuity</td>
+<td>UST, SOFR Swaps</td>
+<td>Duration matching, key-rate targeting</td>
+</tr>
+<tr>
+<td>FIA</td>
+<td>Vanilla calls, swaptions, collars</td>
+<td>Dynamic delta/vega hedging</td>
+</tr>
+<tr>
+<td>Variable Annuity</td>
+<td>Swaptions, equity puts</td>
+<td>Convexity and rho management</td>
+</tr>
+<tr>
+<td>MYGA</td>
+<td>SOFR Swaps</td>
+<td>Duration lock with rolling ladders</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key Models:</strong></p>
+<pre><code>HedgingStrategy         — Named template with product type and instruments
+TradeRecommendation     — AI-generated suggested trade for human approval
+TradeOrder              — Approved trade awaiting/pending execution
+TradeExecution          — Confirmed executed trade with fills
+Position                — Current holding of a hedging instrument
+HedgeEffectivenessRecord— GAAP ASC 815 hedge designation and test result
+GreeksAggregation       — Net portfolio Greeks across assets + liabilities
+RebalancingPlan         — Batch of recommended trades to close ALM gaps
+</code></pre>
+<p><strong>Key Tasks:</strong></p>
+<pre><code>generate_hedge_recommendation(alm_snapshot_id, strategy_id)
+simulate_trade_impact(trade_recommendation_id)   — Pre-trade ALM impact
+submit_trade_for_approval(recommendation_id)     — Human-in-the-loop step
+record_execution(trade_order_id, fill_details)
+compute_hedge_effectiveness(position_id, period)
+</code></pre>
+<hr />
+<h3 id="35-valuation-p1">3.5 <code>valuation</code> (P1)</h3>
+<p>Orchestrates the complete valuation run — coordinating asset pricing (via <code>asset</code>), liability valuation (via <code>liability</code>), and producing consolidated reporting inputs. Also handles attribution analysis.</p>
+<p><strong>Key Capabilities:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Asset Portfolio Valuation</td>
+<td>Calls asset pricing engines for all held instruments</td>
+</tr>
+<tr>
+<td>Liability Fair Value</td>
+<td>GAAP ASC 820 fair value of insurance liabilities</td>
+</tr>
+<tr>
+<td>Embedded Value (EV)</td>
+<td>VIF + required capital for the block</td>
+</tr>
+<tr>
+<td>Adjusted Net Asset Value</td>
+<td>Economic balance sheet for sidecar</td>
+</tr>
+<tr>
+<td>Attribution Analysis</td>
+<td>Source-of-change between two valuation dates</td>
+</tr>
+<tr>
+<td>Delta Valuation</td>
+<td>Fast approximate re-valuation for Greeks</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key Models:</strong></p>
+<pre><code>ValuationRun            — Master record for a complete valuation job
+AssetValuationResult    — NPV, duration, Greeks per held instrument
+LiabilityValuationResult— Reserve, fair value, VIF per policy cohort
+ConsolidatedBalanceSheet— Economic asset + liability positions
+AttributionReport       — Source-of-change with components
+</code></pre>
+<p><strong>Key Tasks:</strong></p>
+<pre><code>run_full_valuation(block_id, portfolio_id, valuation_date, assumption_set)
+run_asset_valuation(portfolio_id, curve_name, vol_surface)
+run_liability_valuation(block_id, assumption_set, scenario_set)
+compute_attribution(prior_run_id, current_run_id)
+compute_embedded_value(block_id, assumption_set, scenario_set)
+</code></pre>
+<hr />
+<h3 id="36-risk-p1">3.6 <code>risk</code> (P1)</h3>
+<p>Computes regulatory capital (BSCR), economic capital, and risk metrics. Generates the solvency dashboard data for PE partner visibility. The "Explainability Layer" for BMA compliance.</p>
+<p><strong>Key Risk Metrics:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Standard</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BSCR</td>
+<td>BMA</td>
+<td>Bermuda Solvency Capital Requirement</td>
+</tr>
+<tr>
+<td>ECR</td>
+<td>BMA</td>
+<td>Enhanced Capital Requirement (add-ons)</td>
+</tr>
+<tr>
+<td>VaR 99%</td>
+<td>Internal</td>
+<td>Value at Risk at 1-year, 99th percentile</td>
+</tr>
+<tr>
+<td>CVaR 99%</td>
+<td>Internal</td>
+<td>Conditional VaR (tail expectation)</td>
+</tr>
+<tr>
+<td>Stress Capital</td>
+<td>BSCR/NAIC</td>
+<td>Capital under prescribed stress scenarios</td>
+</tr>
+<tr>
+<td>Hedge Ratio</td>
+<td>Internal</td>
+<td>% of liability risk economically hedged</td>
+</tr>
+<tr>
+<td>Liquidity Coverage</td>
+<td>BMA</td>
+<td>Cash/liquid assets vs. 30-day stress outflows</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key Models:</strong></p>
+<pre><code>RiskRun                 — Master record for a capital/risk computation
+BscrResult              — BSCR components by risk module (C1-C8)
+EcrResult               — ECR with any add-ons from BMA
+VarResult               — VaR/CVaR at specified confidence and horizon
+StressTestResult        — Capital impact under each stress scenario
+SolvencySnapshot        — Dashboard: BSCR ratio, ECR ratio, trend
+RiskAlert               — Triggered when ratio breaches threshold
+</code></pre>
+<p><strong>Key Tasks:</strong></p>
+<pre><code>compute_bscr(valuation_run_id, bscr_scenario_set)
+compute_ecr(bscr_result_id, add_on_factors)
+compute_var(valuation_run_id, confidence, horizon, scenario_count)
+run_stress_tests(valuation_run_id, stress_scenario_set)
+generate_solvency_snapshot(risk_run_id)     — Dashboard data
+generate_bscr_explainability_memo(risk_run_id)  — AI draft for BMA
+</code></pre>
+<hr />
+<h2 id="4-end-to-end-workflow-ted-the-end-to-end-demo">4. End-to-End Workflow (TED — The End-to-End Demo)</h2>
+<p>TED is the live demonstration of the full KRONOS Re operational loop, from liability ingestion through solvency reporting. It is also the integration test suite for all modules.</p>
+<h3 id="41-full-pipeline-8-step-loop">4.1 Full Pipeline: 8-Step Loop</h3>
+<pre><code>┌──────────────┐
+│  1. INGEST   │  ingestion: Normalize ceding carrier census data
+│  (census)    │  → Human Analyst: Sanity check flag review
+└──────┬───────┘
+       │
+┌──────▼───────┐
+│  2. MARKET   │  market: Load SOFR curve, vol surface, spreads
+│  (live data) │  → Runs on schedule (daily)
+└──────┬───────┘
+       │
+┌──────▼───────┐
+│  3. SCENARIO │  scenario: Generate NY7 + stochastic ESG paths
+│  (generate)  │  → Calibrate Hull-White to live market
+└──────┬───────┘
+       │
+┌──────▼───────┐
+│  4. VALUE    │  valuation: Price assets + project liability CFs
+│  (assets +   │  → Compute reserves, fair values, EV
+│   liabilities)│
+└──────┬───────┘
+       │
+┌──────▼───────┐
+│  5. ALM      │  alm: Compute duration gap, KRD, spread analysis
+│  (analyze)   │  → Generate rebalancing alerts
+└──────┬───────┘
+       │
+┌──────▼───────┐
+│  6. HEDGE    │  trading: Draft hedge recommendations
+│  (recommend) │  → Human CIO: Reviews and approves trades
+└──────┬───────┘
+       │
+┌──────▼───────┐
+│  7. RISK     │  risk: Compute BSCR, VaR, stress tests
+│  (capital)   │  → Generate solvency snapshot for PE dashboard
+└──────┬───────┘
+       │
+┌──────▼───────┐
+│  8. REPORT   │  reporting: Draft GAAP/STAT/BSCR filings
+│  (file)      │  → Human Actuary: Reviews, signs, submits
+└──────────────┘
+</code></pre>
+<h3 id="42-ted-demo-dataset">4.2 TED Demo Dataset</h3>
+<p>A synthetic $1.5B Fixed Annuity block representing a realistic KRONOS Re "first deal":</p>
+<pre><code>Block:          TED-FA-2026 (Fixed Annuity)
+Policies:       12,000 synthetic policyholders
+Account Value:  $1.5B total
+Avg Age:        67 years
+Avg Duration:   8 years to expected annuitization
+Crediting Rate: 4.85% current / 2.0% MGIR
+Surrender:      7-year schedule, 8% to 1%
+Assumptions:    SOA VBT 2015, dynamic lapse model
+Asset Portfolio: 40% IG Corp, 30% UST, 20% Private Credit, 10% ABS
+</code></pre>
+<h3 id="43-ted-api-endpoints-fastapi-via-core">4.3 TED API Endpoints (FastAPI via <code>core</code>)</h3>
+<p>Each module exposes a FastAPI router following <code>core</code> web patterns:</p>
+<pre><code>POST /api/v1/ingestion/jobs                     — Start census ingestion
+GET  /api/v1/ingestion/jobs/{id}/flags          — Review sanity flags
+
+GET  /api/v1/market/curves/{name}               — Current yield curve
+GET  /api/v1/market/volatility/{surface}        — Vol surface
+
+POST /api/v1/scenario/generate                  — Generate scenario set
+GET  /api/v1/scenario/sets/{id}                 — Fetch generated set
+
+POST /api/v1/valuation/run                      — Full valuation job
+GET  /api/v1/valuation/runs/{id}/attribution    — Source-of-change report
+
+GET  /api/v1/alm/snapshots/{id}                 — ALM snapshot
+GET  /api/v1/alm/snapshots/{id}/krd             — Key rate durations
+GET  /api/v1/alm/snapshots/{id}/rebalancing     — Rebalancing alerts
+
+POST /api/v1/trading/recommendations            — Generate hedge recs
+POST /api/v1/trading/recommendations/{id}/approve  — CIO approval step
+GET  /api/v1/trading/positions                  — Current hedge book
+
+GET  /api/v1/risk/bscr/{run_id}                 — BSCR result
+GET  /api/v1/risk/solvency/latest               — PE dashboard snapshot
+
+GET  /api/v1/reporting/drafts/{run_id}/bscr     — Draft BSCR memo
+GET  /api/v1/reporting/drafts/{run_id}/gaap     — Draft GAAP report
+</code></pre>
+<hr />
+<h2 id="5-implementation-phases">5. Implementation Phases</h2>
+<h3 id="phase-1-foundation-assumptions-liability-weeks-14">Phase 1 — Foundation: Assumptions + Liability (Weeks 1–4)</h3>
+<p><strong>Goal:</strong> Model a real annuity block, project cash flows, calculate reserves.</p>
+<ul>
+<li>[ ] Create <code>assumptions</code> submodule skeleton (pyproject, Docker, CI)</li>
+<li>[ ] Implement <code>MortalityTable</code> model and SOA table loader</li>
+<li>[ ] Implement <code>LapseRateTable</code>, <code>SurrenderChargeSchedule</code>, <code>ExpenseAssumption</code></li>
+<li>[ ] Implement <code>AssumptionSet</code> versioning and bundling</li>
+<li>[ ] Create <code>liability</code> models: <code>AnnuityPolicy</code>, <code>PolicyCohort</code></li>
+<li>[ ] Implement <code>AnnuityCashFlowEngine</code> (FA/MYGA)</li>
+<li>[ ] Implement <code>ReserveEngine</code> (GAAP/STAT, AG 33)</li>
+<li>[ ] Build TED synthetic block loader</li>
+</ul>
+<p><strong>Exit Criteria:</strong> Can load 12,000 synthetic FA policies, run cash flow projections, compute reserves.</p>
+<hr />
+<h3 id="phase-2-scenarios-weeks-36">Phase 2 — Scenarios (Weeks 3–6)</h3>
+<p><strong>Goal:</strong> Generate NY7 and stochastic ESG interest rate paths calibrated to live SOFR.</p>
+<ul>
+<li>[ ] Create <code>scenario</code> module structure</li>
+<li>[ ] Implement <code>ScenarioSet</code> and <code>Scenario</code> models</li>
+<li>[ ] Implement NY7 deterministic scenario generator (NAIC mandated paths)</li>
+<li>[ ] Implement Hull-White 1F calibration to SOFR curve + swaption vol</li>
+<li>[ ] Implement stochastic Monte Carlo generator (vectorized, 1000+ paths)</li>
+<li>[ ] Implement BSCR prescribed stress scenario generator</li>
+<li>[ ] Connect <code>scenario</code> to <code>market</code> for live calibration inputs</li>
+</ul>
+<p><strong>Exit Criteria:</strong> Generate NY7 scenarios, generate 1,000 stochastic paths, calibrate to live SOFR.</p>
+<hr />
+<h3 id="phase-3-alm-engine-weeks-58">Phase 3 — ALM Engine (Weeks 5–8)</h3>
+<p><strong>Goal:</strong> Compute ALM gaps between the TED asset portfolio and liability block.</p>
+<ul>
+<li>[ ] Create <code>alm</code> module structure</li>
+<li>[ ] Implement <code>AlmSnapshot</code> model</li>
+<li>[ ] Implement duration gap computation (asset <code>dv01</code> from <code>asset</code> vs. liability duration)</li>
+<li>[ ] Implement key-rate duration profile engine</li>
+<li>[ ] Implement cash flow matching report engine</li>
+<li>[ ] Implement spread analysis (yield vs. cost-of-funds)</li>
+<li>[ ] Implement surplus analysis (economic and statutory)</li>
+<li>[ ] Implement <code>RebalancingAlert</code> trigger logic</li>
+<li>[ ] Connect <code>alm</code> to <code>asset.tasks.price_portfolio</code> and <code>liability</code> reserve engine</li>
+</ul>
+<p><strong>Exit Criteria:</strong> Full ALM snapshot for TED block showing duration gap, KRD, spread, and surplus.</p>
+<hr />
+<h3 id="phase-4-trading-hedging-weeks-710">Phase 4 — Trading / Hedging (Weeks 7–10)</h3>
+<p><strong>Goal:</strong> Generate AI-drafted hedge recommendations for human CIO approval.</p>
+<ul>
+<li>[ ] Create <code>trading</code> module structure</li>
+<li>[ ] Implement <code>HedgingStrategy</code> templates (FA: duration; FIA: delta/vega)</li>
+<li>[ ] Implement <code>TradeRecommendation</code> generation from ALM gaps</li>
+<li>[ ] Implement pre-trade impact simulation (delta ALM snapshot)</li>
+<li>[ ] Implement <code>TradeOrder</code> approval workflow (human-in-the-loop API)</li>
+<li>[ ] Implement <code>TradeExecution</code> recording</li>
+<li>[ ] Implement <code>Position</code> tracking (current hedge book)</li>
+<li>[ ] Implement <code>GreeksAggregation</code> across all positions + liabilities</li>
+<li>[ ] Implement GAAP ASC 815 hedge effectiveness testing</li>
+</ul>
+<p><strong>Exit Criteria:</strong> Generate duration-matching swap recommendations for TED block; CIO approval flow works end-to-end.</p>
+<hr />
+<h3 id="phase-5-valuation-coordinator-weeks-912">Phase 5 — Valuation Coordinator (Weeks 9–12)</h3>
+<p><strong>Goal:</strong> Single-command full valuation of TED block (assets + liabilities + attribution).</p>
+<ul>
+<li>[ ] Create <code>valuation</code> module structure</li>
+<li>[ ] Implement <code>ValuationRun</code> orchestration (calls <code>asset</code> + <code>liability</code>)</li>
+<li>[ ] Implement consolidated economic balance sheet</li>
+<li>[ ] Implement embedded value (VIF) calculation</li>
+<li>[ ] Implement attribution analysis (source-of-change report)</li>
+<li>[ ] Implement GAAP ASC 820 fair value of insurance liabilities</li>
+<li>[ ] Connect to <code>scenario</code> for stochastic EV runs</li>
+</ul>
+<p><strong>Exit Criteria:</strong> <code>run_full_valuation(block_id, portfolio_id, date)</code> produces complete economic balance sheet + attribution.</p>
+<hr />
+<h3 id="phase-6-risk-capital-weeks-1114">Phase 6 — Risk &amp; Capital (Weeks 11–14)</h3>
+<p><strong>Goal:</strong> Compute BSCR and solvency snapshot for PE partner dashboard.</p>
+<ul>
+<li>[ ] Create <code>risk</code> module structure</li>
+<li>[ ] Implement BSCR computation (C1 through C8 risk modules)</li>
+<li>[ ] Implement ECR with BMA add-on factor logic</li>
+<li>[ ] Implement VaR/CVaR from stochastic valuation runs</li>
+<li>[ ] Implement stress test runner (prescribed BSCR stresses)</li>
+<li>[ ] Implement <code>SolvencySnapshot</code> model for PE dashboard</li>
+<li>[ ] Implement <code>RiskAlert</code> threshold monitoring</li>
+<li>[ ] Implement BSCR explainability memo generation (AI draft)</li>
+</ul>
+<p><strong>Exit Criteria:</strong> TED block produces BSCR ratio, ECR, solvency snapshot, and human-readable explainability memo.</p>
+<hr />
+<h3 id="phase-7-regulatory-reporting-weeks-1316">Phase 7 — Regulatory Reporting (Weeks 13–16)</h3>
+<p><strong>Goal:</strong> Generate draft GAAP, STAT, and BSCR filings for human actuary review.</p>
+<ul>
+<li>[ ] Create <code>reporting</code> module structure</li>
+<li>[ ] Implement <code>GaapReport</code> draft generator (ASC 944, ASC 820)</li>
+<li>[ ] Implement <code>StatReport</code> draft (NAIC Life Annual Statement schedules)</li>
+<li>[ ] Implement <code>BscrReport</code> generator (BMA quarterly/annual filing)</li>
+<li>[ ] Implement <code>AttributionReport</code> with per-component waterfall</li>
+<li>[ ] Implement <code>HedgeEffectivenessReport</code> (ASC 815 documentation)</li>
+<li>[ ] Implement <code>DraftMemo</code> narrative generator (for human actuary sign-off)</li>
+<li>[ ] Implement <code>AuditRecord</code> immutable logging of all computation steps</li>
+<li>[ ] Connect to <code>dashboard</code> for solvency dashboard HTML views</li>
+</ul>
+<p><strong>Exit Criteria:</strong> Full regulatory reporting package for TED block; each report has clear "AI drafted, actuary approved" workflow.</p>
+<hr />
+<h3 id="phase-8-ingestion-pipeline-weeks-1518">Phase 8 — Ingestion Pipeline (Weeks 15–18)</h3>
+<p><strong>Goal:</strong> Load a real (or realistic synthetic) ceding carrier census file into VaultDB.</p>
+<ul>
+<li>[ ] Create <code>ingestion</code> module structure</li>
+<li>[ ] Implement <code>IngestionJob</code> and <code>PolicyRecord</code> models</li>
+<li>[ ] Implement CSV/Excel census file parser</li>
+<li>[ ] Implement <code>FieldMappingTemplate</code> for per-carrier column mapping</li>
+<li>[ ] Implement data quality validation rules</li>
+<li>[ ] Implement <code>IngestionFlag</code> anomaly detection</li>
+<li>[ ] Implement <code>RejectionQueue</code> workflow for human review</li>
+<li>[ ] Expose ingestion API endpoints</li>
+<li>[ ] Connect normalized records to <code>liability</code> policy models</li>
+</ul>
+<p><strong>Exit Criteria:</strong> Ingest a synthetic 12,000-record census file; flags are surfaced for actuarial review; approved records flow into liability projection.</p>
+<hr />
+<h2 id="6-cross-cutting-technical-standards">6. Cross-Cutting Technical Standards</h2>
+<h3 id="61-module-skeleton-pattern">6.1 Module Skeleton Pattern</h3>
+<p>Every module follows the <code>asset</code>/<code>market</code> pattern:</p>
+<pre><code>{module}/
+  src/vaultdb_{module}/
+    __init__.py         — Public API exports
+    models.py           — Data models (vaultdb.data.Model / TimeSeriesModel)
+    tasks.py            — Task functions (integrate with vaultdb.compute)
+    engines/            — Computation engines (one class per engine type)
+    api.py              — FastAPI router (registered in core web server)
+  tests/
+  docs/
+  pyproject.toml
+  requirements.txt
+  Dockerfile
+  CLAUDE.md
+</code></pre>
+<h3 id="62-compute-pattern">6.2 Compute Pattern</h3>
+<p>All heavy computation uses <code>vaultdb.compute</code>:
+- Development: <code>RunType.LOCAL</code>
+- Async batch jobs: <code>RunType.SERVICE</code> (Celery/Redis)
+- Long stochastic runs: <code>RunType.BATCH</code> (AWS Batch GPU)
+- Event-triggered: <code>RunType.FUNCTION</code> (Lambda)</p>
+<h3 id="63-data-pattern">6.3 Data Pattern</h3>
+<p>All persistent data uses <code>vaultdb.data</code>:
+- Reference data (products, assumptions): <code>Model</code>
+- Time-varying data (snapshots, results): <code>TimeSeriesModel</code>
+- DuckLake catalog on S3 (prod) / local DuckDB (dev)</p>
+<h3 id="64-human-in-the-loop-api-pattern">6.4 Human-in-the-Loop API Pattern</h3>
+<p>For BMA explainability compliance, every material decision has a two-step API:</p>
+<pre><code>POST /api/v1/{module}/recommendations     — AI generates draft
+POST /api/v1/{module}/recommendations/{id}/approve   — Human approves
+</code></pre>
+<p>Approval records are stored in <code>AuditRecord</code> with the approver identity.</p>
+<h3 id="65-pythonpath-for-development">6.5 PYTHONPATH for Development</h3>
+<p>When running any non-core submodule:</p>
+<pre><code class="language-bash">PYTHONPATH=&quot;./core/src:./assumptions/src:./market/src:./{module}/src&quot; python ...
+</code></pre>
+<hr />
+<h2 id="7-suggested-new-repos-summary">7. Suggested New Repos Summary</h2>
+<p>Three new Git submodule repositories to be created and added to the parent:</p>
+<table>
+<thead>
+<tr>
+<th>Repo Name</th>
+<th>Git Remote</th>
+<th>Priority</th>
+<th>Parent <code>.gitmodules</code> Entry</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>assumptions</code></td>
+<td>github.com/vaultdb/assumptions</td>
+<td>P0</td>
+<td><code>[submodule "assumptions"]</code></td>
+</tr>
+<tr>
+<td><code>reporting</code></td>
+<td>github.com/vaultdb/reporting</td>
+<td>P1</td>
+<td><code>[submodule "reporting"]</code></td>
+</tr>
+<tr>
+<td><code>ingestion</code></td>
+<td>github.com/vaultdb/ingestion</td>
+<td>P2</td>
+<td><code>[submodule "ingestion"]</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Add to parent <code>.gitmodules</code>:</strong></p>
+<pre><code class="language-ini">[submodule &quot;assumptions&quot;]
+    path = assumptions
+    url = git@github.com:vaultdbai/assumptions.git
+
+[submodule &quot;reporting&quot;]
+    path = reporting
+    url = git@github.com:vaultdbai/reporting.git
+
+[submodule &quot;ingestion&quot;]
+    path = ingestion
+    url = git@github.com:vaultdbai/ingestion.git
+</code></pre>
+<p><strong>Update parent <code>CLAUDE.md</code></strong> to add these three modules to the submodule list.</p>
+<hr />
+<h2 id="8-dependency-graph">8. Dependency Graph</h2>
+<pre><code>core  ←────────── all modules depend on core
+market ←────────── asset, liability, scenario, alm, valuation, risk
+assumptions ←───── liability, alm, valuation, risk, scenario
+│
+├── liability ←── alm, valuation, risk, reporting
+├── scenario ←─── alm, valuation, risk, reporting
+├── asset ←─────── alm, valuation, trading, risk
+│
+├── alm ←────────── trading, risk, reporting
+├── valuation ←──── risk, reporting
+├── trading ←─────── reporting
+│
+├── risk ←────────── reporting
+└── reporting
+    └── ingestion ← liability (normalized records)
+</code></pre>
+<p><strong>Build order:</strong> core → market → assumptions → (asset ∥ liability ∥ scenario) → alm → (valuation ∥ trading) → risk → reporting → ingestion → <strong>dashboard</strong></p>
+<hr />
+<h2 id="9-dashboard-default-kronos-re-ui">9. Dashboard — Default KRONOS Re UI</h2>
+<p>The <code>dashboard</code> submodule is the primary user interface for the entire KRONOS Re platform.</p>
+<h3 id="architecture">Architecture</h3>
+<ul>
+<li><strong>Technology:</strong> Python Dash (Plotly) + FastAPI + dash-ag-grid</li>
+<li><strong>Port:</strong> 8050 (combined Dash UI + KRONOS REST API)</li>
+<li><strong>Auth:</strong> Same OAuth2/OIDC client IDs as <code>vaultdb.core</code> (<code>AUTH_CLIENT_ID</code> / <code>AUTH_CLIENT_SECRET</code> from Secrets Manager)</li>
+<li><strong>Entry point:</strong> <code>uvicorn dashboard.server:app --port 8050</code></li>
+</ul>
+<h3 id="pages">Pages</h3>
+<table>
+<thead>
+<tr>
+<th>Page</th>
+<th>Path</th>
+<th>Audience</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Solvency Overview</td>
+<td><code>/</code></td>
+<td>PE partner, CRO</td>
+</tr>
+<tr>
+<td>Liability Portfolio</td>
+<td><code>/liability</code></td>
+<td>Actuary</td>
+</tr>
+<tr>
+<td>ALM Analysis</td>
+<td><code>/alm</code></td>
+<td>ALM committee, CIO</td>
+</tr>
+<tr>
+<td>Trading &amp; Hedge Book</td>
+<td><code>/trading</code></td>
+<td>CIO, traders</td>
+</tr>
+<tr>
+<td>Risk (BSCR)</td>
+<td><code>/risk</code></td>
+<td>CRO, BMA</td>
+</tr>
+<tr>
+<td>Reports</td>
+<td><code>/reports</code></td>
+<td>Regulators, auditors</td>
+</tr>
+<tr>
+<td>Pipeline Runner</td>
+<td><code>/pipeline</code></td>
+<td>Operations</td>
+</tr>
+</tbody>
+</table>
+<h3 id="vaultdb-web-clarification">vaultdb-web Clarification</h3>
+<p><code>vaultdb-web</code> is the <strong>public marketing website</strong> only — it describes the platform and links to documentation but does NOT expose any application features or internal data.</p>
+<hr />
+<h2 id="10-testing-requirements">10. Testing Requirements</h2>
+<p>Every submodule MUST maintain a <code>tests/</code> directory with four test layers:</p>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Layer</th>
+<th>Contents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>test_smoke.py</code></td>
+<td>Smoke</td>
+<td>Import validation, version check, model class presence</td>
+</tr>
+<tr>
+<td><code>test_models.py</code></td>
+<td>Unit</td>
+<td>Field validation, defaults, required fields, search filters</td>
+</tr>
+<tr>
+<td><code>test_&lt;domain&gt;.py</code></td>
+<td>Unit</td>
+<td>Computation engines, task functions, edge cases</td>
+</tr>
+<tr>
+<td><code>test_integration.py</code></td>
+<td>Integration</td>
+<td>End-to-end flows against TED demo dataset</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Running tests:</strong></p>
+<pre><code class="language-bash"># All modules
+python scripts/aadhya/local_tester.py
+
+# One module, verbose
+python scripts/aadhya/local_tester.py --module alm -v
+
+# Smoke only (fast CI gate)
+python scripts/aadhya/local_tester.py --fast
+
+# With coverage
+python scripts/aadhya/local_tester.py --coverage --module risk
+</code></pre>
+<p><strong>PYTHONPATH</strong> for each module must include <code>core/src</code> and the module's own <code>src/</code> plus all upstream dependencies. The <code>local_tester.py</code> handles this automatically.</p>
+<hr />
+<h2 id="11-aadhya-local-development-environment">11. AADHYA — Local Development Environment</h2>
+<p><code>scripts/aadhya/</code> is the developer control center for running all KRONOS Re services locally.</p>
+<h3 id="files">Files</h3>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>supervisord.conf</code></td>
+<td>Supervisor config — manages Redis, Celery worker/beat, Flower, VaultDB API, KRONOS dashboard</td>
+</tr>
+<tr>
+<td><code>start.sh</code></td>
+<td>Shell launcher (<code>./scripts/aadhya/start.sh start\|stop\|status\|logs\|test\|tasks</code>)</td>
+</tr>
+<tr>
+<td><code>run_tasks.py</code></td>
+<td>CLI task runner — lists and runs any task from any module</td>
+</tr>
+<tr>
+<td><code>local_tester.py</code></td>
+<td>pytest runner across all modules with correct PYTHONPATH</td>
+</tr>
+<tr>
+<td><code>start_worker.py</code></td>
+<td>Celery worker bootstrap with all modules registered</td>
+</tr>
+<tr>
+<td><code>start_beat.py</code></td>
+<td>Celery beat scheduler bootstrap</td>
+</tr>
+</tbody>
+</table>
+<h3 id="quick-start">Quick start</h3>
+<pre><code class="language-bash"># Start everything (Redis + Celery + VaultDB API + KRONOS Dashboard)
+./scripts/aadhya/start.sh start
+
+# Check status
+./scripts/aadhya/start.sh status
+
+# Run dashboard only (no Celery)
+./scripts/aadhya/start.sh dashboard
+
+# List all tasks
+./scripts/aadhya/start.sh tasks list
+
+# Run full TED pipeline
+./scripts/aadhya/start.sh tasks pipeline --block-id TED-FA-2026
+
+# Run all tests
+./scripts/aadhya/start.sh test
+
+# Tail dashboard logs
+./scripts/aadhya/start.sh logs kronos-dashboard
+</code></pre>
+<h3 id="service-ports">Service ports</h3>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>Port</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>KRONOS Re Dashboard</td>
+<td>8050</td>
+<td>http://localhost:8050</td>
+</tr>
+<tr>
+<td>VaultDB Core API</td>
+<td>8000</td>
+<td>http://localhost:8000/api/docs</td>
+</tr>
+<tr>
+<td>Flower (Celery UI)</td>
+<td>5555</td>
+<td>http://localhost:5555</td>
+</tr>
+<tr>
+<td>Supervisor RPC</td>
+<td>9001</td>
+<td>http://localhost:9001</td>
+</tr>
+<tr>
+<td>Redis</td>
+<td>6379</td>
+<td>redis://localhost:6379</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="12-open-questions-for-human-review">12. Open Questions for Human Review</h2>
+<p>Before Phase 1 implementation begins, the following require human actuary/business decisions:</p>
+<ol>
+<li><strong>Assumption set governance</strong> — Who owns and approves assumption updates? What is the change-approval workflow?</li>
+<li><strong>Mortality table selection</strong> — SOA VBT 2015 vs. SOA LLAT (Longevity) for primary modeling basis?</li>
+<li><strong>Dynamic lapse model spec</strong> — What is the exact formula for interest-crediting-rate-sensitive lapse? (e.g., Dukes-MacDonald or custom?)</li>
+<li><strong>BSCR module scope</strong> — Which of the 8 BSCR risk modules are in scope for initial launch? (C-1 through C-8)</li>
+<li><strong>Stochastic scenario count</strong> — 1,000 paths for pricing; 10,000 for BSCR? Or fewer for speed?</li>
+<li><strong>AG 55 interpretation</strong> — Legal counsel review of AG 55 attribution analysis format before reporting module is built.</li>
+<li><strong>Trade execution integration</strong> — Is the <code>trading</code> module generating recommendations only, or connecting to a real execution venue (Bloomberg TSOX, FIX protocol)? <em>(Current answer: recommendations only — CIO approval required before order generation.)</em></li>
+<li><strong>PE dashboard auth</strong> — Resolved: same <code>AUTH_CLIENT_ID</code>/<code>AUTH_CLIENT_SECRET</code> as VaultDB core. Read-only PE view via role-based access in OIDC claims.</li>
+</ol>
+<hr />
+<p><em>Plan updated: 2026-03-28 | Dashboard added as default UI; vaultdb-web clarified as marketing site only; AADHYA local dev environment documented; testing requirements formalized across all submodules.</em></p>
+                    </div>
+                </div>
+            </div>
+            <!-- footer section ===========================================-->
+<div class="container_body">
+<div class="container_inside">
+<section class="footer_section">
+<div class="footer mt-5" data-aos="fade-left" data-aos-duration="2000">
+<div class="left">
+<img alt="" src="../img/mainlogo.png">
+<a class="footer_logo" href="#">VaultDB.ai</a>
+</img></div>
+<div class="right" style="margin-bottom: 10px">
+<a href="#">
+<i class="fa-brands fa-github"></i>
+</a>
+<a href="#">
+<i class="fa-brands fa-youtube"></i>
+</a>
+<a href="#">
+<i class="fa-brands fa-facebook"></i>
+</a>
+<a href="#">
+<i class="fa-brands fa-twitter"></i>
+</a>
+<a href="#">
+<i class="fa-brands fa-instagram"></i>
+</a>
+<a href="#">
+<i class="fa-brands fa-linkedin"></i>
+</a>
+</div>
+</div>
+<div>
+<div class="row mb-5">
+<div class="line mb-5"></div>
+<div class="col-md-4 col-sm-12 col-lg-4">
+<h5 class="bottom_left">
+                VaultDB.ai @ 2026. All rights reserved.
+              </h5>
+</div>
+<div class="col-md-8 col-sm-12 col-lg-8 bottom_right">
+<a href="../index.html">VaultDB.ai</a>
+<a href="../contact.html">Contact Us</a>
+<a href="../about.html">About Us</a>
+<a href="#">Privacy Policy</a>
+<a href="#">Terms and Conditions</a>
+</div>
+</div>
+</div>
+<div class="footer_box">
+<img alt="" class="footer_img" src="../img/Rectangle 9.png">
+</img></div>
+</section>
+</div>
+</div>
+<script crossorigin="anonymous" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+  </script>
+<script src="../js/index.js"></script>
+</body>
+</html>
+            

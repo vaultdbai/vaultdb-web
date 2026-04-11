@@ -1,0 +1,1735 @@
+
+            <!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Kronos Re: The AI-Native Bermuda Sidecar</title>
+<meta content="noindex," name="“robots”" nofollow”=""/>
+<meta content="noindex," follow”="" name="“robots”"/>
+<meta content="index," name="“robots”" nofollow”=""/>
+<meta content="VaultDB.ai: Secure Inprocess database and cloud DataHub for IOT and Modeling" property="”og:title”">
+<meta content="Secure Inprocess database and cloud DataHub for IOT and Modeling" property="”og:description”">
+<meta content="Database, DataHub, IO, AI Modeling" property="”og:type”">
+<meta content="img/v-logo.png" property="”og:image”"/>
+<meta content="http://vaultdb.ai" property="”og:url”"/>
+<meta content="VaultDB.ai" property="”og:site_name”"/>
+<!--meta name+" keywords" content=" keywords go here"/-->
+<link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" rel="stylesheet"/>
+<link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" referrerpolicy="no-referrer" rel="stylesheet"/>
+<!-- favicon -->
+<link href="../img/v-logo.png" rel="icon" type="image/png"/>
+<!-- animation  -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+<link href="../css/style.css" rel="stylesheet"/>
+</meta></meta></meta>
+    <style>
+        html { font-size: 10px !important; }
+        body { font-size: 1.6rem !important; background: var(--main-color) !important; color: #f5f5f5; }
+
+        .doc-wrapper { margin-top: 15vh; margin-bottom: 5vh; min-height: 80vh; }
+        .doc-nav { border-right: 1px solid rgba(168, 150, 183, 0.2); height: 100%; padding-right: 2rem; }
+        .doc-nav .nav-link {
+            color: #A896B7; border-radius: 12px; margin-bottom: 8px; transition: 0.3s;
+            font-size: 1.6rem; padding: 1.4rem 2rem; border: 1px solid transparent;
+        }
+        .doc-nav .nav-link:hover { background: rgba(160, 68, 255, 0.1); color: var(--purple-color); transform: translateX(8px); }
+        .doc-nav .nav-link.active { background: var(--purple-color); color: #fff !important; font-weight: 700; box-shadow: 0 12px 24px rgba(160, 68, 255, 0.4); }
+
+        .doc-content { padding-left: 6rem; max-width: 1000px; }
+        .doc-content h1, .doc-content h2, .doc-content h3 { font-family: var(--plus-font-family); color: #fff; margin-top: 4.5rem; }
+        .doc-content h1 { font-size: 5.2rem; font-weight: 800; margin-top: 0; margin-bottom: 4rem; letter-spacing: -0.03em; }
+        .doc-content h2 { font-size: 3.6rem; border-bottom: 2px solid rgba(168, 150, 183, 0.15); padding-bottom: 1.5rem; }
+        .doc-content h3 { font-size: 2.8rem; color: var(--purple-color); }
+
+        .doc-content p, .doc-content li { font-size: 1.8rem; line-height: 2.0; color: #d0c4db; margin-bottom: 2.8rem; }
+        .doc-content code { background: #0b0b1a; padding: 4px 10px; border-radius: 8px; color: #f8f8f2; border: 1px solid rgba(255,255,255,0.1); }
+        .doc-content pre { padding: 3.5rem; border-radius: 20px; box-shadow: 0 30px 60px rgba(0,0,0,0.5); }
+
+        .persona-badge { font-size: 0.9rem; text-transform: uppercase; padding: 6px 16px; border-radius: 99px; background: rgba(160, 68, 255, 0.25); border: 1px solid var(--purple-color); color: #fff; margin-left: 20px; }
+
+        .breadcrumb-item a { color: var(--purple-color); font-size: 1.6rem; text-decoration: none; }
+        .breadcrumb-item.active { color: #666; font-size: 1.6rem; }
+
+        .doc-content table { border-radius: 16px; overflow: hidden; border: 1px solid rgba(168, 150, 183, 0.3); }
+        .doc-content th { background: #131326; padding: 2rem; font-size: 1.7rem; color: #fff; }
+        .doc-content td { padding: 2rem; border-top: 1px solid rgba(168, 150, 183, 0.1); font-size: 1.7rem; }
+
+        .mermaid-diagram { margin: 3rem 0; text-align: center; }
+        .mermaid-diagram img { max-width: 100%; border-radius: 16px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+        .mermaid { background: transparent; }
+    </style>
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true, theme: 'dark', fontFamily: 'DM Sans' });
+    </script>
+    </head>
+<body style="overflow: hidden !important">
+<div class="container_body">
+<div class="container_inside">
+<!-- Nav Bar start Lg  -->
+<header class="header">
+<div class="logo">
+<img alt="" src="../img/mainlogo.png"/>
+<a href="../index.html">VaultDB.ai</a>
+</div>
+<ul class="menu_bar">
+          <li>
+            <a href="#" class="header_hover">KRONOS Modules</a>
+            <ul class="dropdown-menu" style="background-color: #10101e; width: 60rem;">
+              <div class="row p-4">
+                <div class="col-md-4">
+                  <li class="p-2"><a href="../products/asset/docs/index.html"><i
+                        class="fa-solid fa-cube me-2 text-purple"></i>Asset</a></li>
+                  <li class="p-2"><a href="../products/market/docs/index.html"><i
+                        class="fa-solid fa-chart-line me-2 text-purple"></i>Market</a></li>
+                  <li class="p-2"><a href="../products/liability/docs/index.html"><i
+                        class="fa-solid fa-file-invoice-dollar me-2 text-purple"></i>Liability</a></li>
+                  <li class="p-2"><a href="../products/assumptions/docs/index.html"><i
+                        class="fa-solid fa-table me-2 text-purple"></i>Assumptions</a></li>
+                  <li class="p-2"><a href="../products/scenario/docs/index.html"><i
+                        class="fa-solid fa-shuffle me-2 text-purple"></i>Scenario</a></li>
+                </div>
+                <div class="col-md-4">
+                  <li class="p-2"><a href="../products/valuation/docs/index.html"><i
+                        class="fa-solid fa-calculator me-2 text-purple"></i>Valuation</a></li>
+                  <li class="p-2"><a href="../products/alm/docs/index.html"><i
+                        class="fa-solid fa-scale-balanced me-2 text-purple"></i>ALM</a></li>
+                  <li class="p-2"><a href="../products/trading/docs/index.html"><i
+                        class="fa-solid fa-arrow-right-arrow-left me-2 text-purple"></i>Trading</a></li>
+                  <li class="p-2"><a href="../products/risk/docs/index.html"><i
+                        class="fa-solid fa-shield-halved me-2 text-purple"></i>Risk</a></li>
+                  <li class="p-2"><a href="../products/reporting/docs/index.html"><i
+                        class="fa-solid fa-file-lines me-2 text-purple"></i>Reporting</a></li>
+                </div>
+                <div class="col-md-4">
+                  <li class="p-2"><a href="../products/ingestion/docs/index.html"><i
+                        class="fa-solid fa-upload me-2 text-purple"></i>Ingestion</a></li>
+                  <li class="p-2"><a href="../products/dashboard/docs/index.html"><i
+                        class="fa-solid fa-gauge-high me-2 text-purple"></i>Dashboard</a></li>
+                  <li class="p-2"><a href="../products/core/docs/index.html"><i
+                        class="fa-solid fa-microchip me-2 text-purple"></i>Core Platform</a></li>
+                </div>
+              </div>
+            </ul>
+          </li>
+          <li class="second_bar">
+            <a href="#" class="header_hover">Developers</a>
+            <ul class="dev_menu" style="background-color: #10101e">
+              <li>
+                <div class="dev_box">
+                  <img src="../img/Group 1000001838.png" alt="menu_logo" class="first_dev_img" />
+                  <a href="../docs/index.html">Documentation Home</a>
+                  <div class="line" style="width: 100%"></div>
+                </div>
+                <div class="dev_box">
+                  <img src="../img/Group 1000001840.png" alt="menu_logo" />
+                  <a href="../docs/ARCHITECTURE.html">System Architecture</a>
+                  <div class="line"></div>
+                </div>
+                <div class="dev_box">
+                  <img src="../img/Group 1000001843.png" alt="menu_logo" />
+                  <a href="../docs/technology_system_architecture.html">End-to-End Architecture</a>
+                  <div class="line"></div>
+                </div>
+                <div class="dev_box">
+                  <img src="../img/Group 1000001843.png" alt="menu_logo" />
+                  <a href="../docs/standards_SUBMODULE_DOC_CONVENTION.html">Doc Standards</a>
+                </div>
+              </li>
+            </ul>
+          </li>
+          <li class="first_bar">
+            <a href="#" class="header_hover">Database</a>
+            <ul class="dropdown-menu" style="background-color: #10101e">
+              <li class="first_content_container">
+                <div class="first_content">
+                  <div class="dropdown_img">
+                    <img src="../img/Group 1000001831.png" alt="" />
+                  </div>
+                  <div class="dropdown_content">
+                    <p>VaultDB HUB</p>
+                    <p>
+                      Train, Test and deploy and manage your models with
+                      integrated Governance, Risk and Controls.
+                    </p>
+                  </div>
+                </div>
+                <div class="dropdown_btns">
+                  <a href="../database/index.html" class="dropdown_btn">VaultDB Database IOT Platform</a>
+                  <a href="../database/index.html" class="dropdown_btn">Websites and mobile Apps</a>
+                  <a href="https://docs.vaultdb.ai/hub/datahub" class="dropdown_btn">VaultDB Data Hub</a>
+                </div>
+                <div class="line"></div>
+              </li>
+              <li>
+                <div class="second_content second">
+                  <div class="dropdown_img">
+                    <img src="../img/Group 1000001832.png" alt="" />
+                  </div>
+                  <div class="dropdown_content">
+                    <p>VaultDB Compute</p>
+                    <p>
+                      Scalable cloud resources for distributed model execution.
+                    </p>
+                  </div>
+                  <div class="line_bottom">
+                    <div class="line"></div>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="second_content third_content">
+                  <div class="dropdown_img">
+                    <img src="../img/Group 1000001793.png" alt="" />
+                  </div>
+                  <div class="dropdown_content">
+                    <p>VaultDB Actions</p>
+                    <p class="para_1">
+                      CI/CD for compute intensive and analytical pipelines.
+                    </p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#" class="header_hover">AI Marketplace</a>
+            <ul class="dropdown-menu" style="background-color: #10101e; width: 30rem;">
+              <div class="p-4">
+                <li class="p-2"><a href="../marketplace/index.html"><i
+                      class="fa-solid fa-store me-2 text-purple"></i>Browse All</a></li>
+                <li class="p-2"><a href="../marketplace/skills.html"><i
+                      class="fa-solid fa-wand-magic-sparkles me-2 text-purple"></i>Skills</a></li>
+                <li class="p-2"><a href="../marketplace/mcp-servers.html"><i
+                      class="fa-solid fa-server me-2 text-purple"></i>MCP Servers</a></li>
+                <li class="p-2"><a href="../marketplace/plugins.html"><i
+                      class="fa-solid fa-plug me-2 text-purple"></i>Plugins</a></li>
+              </div>
+            </ul>
+          </li>
+          <li><a href="../about.html" class="header_hover">About Us</a></li>
+
+          <li>
+            <a href="../contact.html" class="contact_btn">Contact Us</a>
+          </li>
+        </ul>
+        <div class="header_icons">
+<i class="fa-solid fa-bars text-white fs-1 menu"></i>
+</div>
+</header>
+<!-- Nav Bar End -->
+<!-- Mobile sidebar=========================== -->
+<div class="side_accordian">
+<div class="menu_accordian">
+<div class="mobile_nav" style="background-color: var(--main-color)">
+<div class="logo">
+<img alt="" src="../img/logo.png"/>
+<a class="f-2" href="../index.html">VaultDB.ai</a>
+</div>
+<i class="fa-solid fa-xmark text-white fs-1 close_icon"></i>
+</div>
+<div class="link">
+<p class="dropdown_link dropdown_bar">Developers</p>
+<ul class="sub_menu dropdown">
+<a href="../docs/index.html">
+<div class="dev_nav">
+<div class="dev_nav_box">
+<div class="dev_nav_img">
+<img alt="" src="../img/Group 1000001838.png"/>
+</div>
+<div class="dev_para">Documentation Home</div>
+</div>
+</div>
+</a>
+</ul>
+<div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
+<ul class="sub_menu dropdown">
+<a href="../docs/ARCHITECTURE.html">
+<div class="dev_nav">
+<div class="dev_nav_box">
+<div class="dev_nav_img image">
+<img alt="" src="../img/Group 1000001840.png"/>
+</div>
+<div class="dev_para">System Architecture</div>
+</div>
+</div>
+</a>
+</ul>
+<div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
+<ul class="sub_menu dropdown">
+<a href="../docs/technology_system_architecture.html">
+<div class="dev_nav">
+<div class="dev_nav_box">
+<div class="dev_nav_img image">
+<img alt="" src="../img/Group 1000001843.png"/>
+</div>
+<div class="dev_para">End-to-End Architecture</div>
+</div>
+</div>
+</a>
+</ul>
+<div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
+<ul class="sub_menu dropdown">
+<a href="../docs/standards_SUBMODULE_DOC_CONVENTION.html">
+<div class="dev_nav">
+<div class="dev_nav_box">
+<div class="dev_nav_img image">
+<img alt="" src="../img/Group 1000001843.png"/>
+</div>
+<div class="dev_para">Doc Standards</div>
+</div>
+</div>
+</a>
+</ul>
+<div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
+</div>
+<div class="link">
+<p class="dropdown_link dropdown_bar">Database</p>
+<ul class="sub_menu dropdown">
+<div class="first_menu pb-5">
+<div class="content">
+<div class="first_img">
+<img alt="" src="../img/Group 1000001831.png"/>
+</div>
+<div class="first_menu_content">VaultDB HUB</div>
+</div>
+<div class="bottom_para">
+                  Train, Test and deploy and manage your models with
+                  integrated Governance, Risk and Controls. Control data your
+                  models are training on for Bias and compliance.
+                </div>
+<div class="first_btns">
+           <a class="contact_btn first_btn" href="../database/index.html">
+            VaultDB Database
+           </a>
+           <a class="contact_btn first_btn" href="../database/index.html">
+            VaultDB Applications
+           </a>
+<a class="dropdown_btn" href="https://docs.vaultdb.ai/hub/datahub">VaultDB Data Hub</a>
+</div>
+</div>
+</ul>
+<div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
+<ul class="sub_menu dropdown">
+<div class="second_menu first_menu mt-5">
+<div class="content">
+<div class="second_img first_img">
+<img alt="" src="../img/Group 1000001832.png"/>
+</div>
+<div class="first_menu_content">VaultDB Compute</div>
+</div>
+<div class="bottom_para">
+                  Train and Run your models across cloud providers on cheapest
+                  and unlimited resources.
+                </div>
+</div>
+</ul>
+<div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
+<ul class="sub_menu dropdown">
+<div class="second_menu first_menu">
+<div class="content">
+<div class="second_img first_img">
+<img alt="" src="../img/Frame.png"/>
+</div>
+<div class="first_menu_content">
+                    VaultDB Actions (DevOps)
+                  </div>
+</div>
+<div class="bottom_para">
+                  Train and Run your models across cloud providers on cheapest
+                  and unlimited resources.
+                </div>
+</div>
+</ul>
+<div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
+</div>
+<div class="link">
+<p class="dropdown_link dropdown_bar">AI Marketplace</p>
+<ul class="sub_menu dropdown">
+<a href="../marketplace/index.html">
+<div class="dev_nav">
+<div class="dev_nav_box">
+<div class="dev_nav_img image">
+<i class="fa-solid fa-store text-purple fs-4" style="padding: 0.5rem;"></i>
+</div>
+<div class="dev_para">Browse All</div>
+</div>
+</div>
+</a>
+</ul>
+<div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
+<ul class="sub_menu dropdown">
+<a href="../marketplace/skills.html">
+<div class="dev_nav">
+<div class="dev_nav_box">
+<div class="dev_nav_img image">
+<i class="fa-solid fa-wand-magic-sparkles text-purple fs-4" style="padding: 0.5rem;"></i>
+</div>
+<div class="dev_para">Skills</div>
+</div>
+</div>
+</a>
+</ul>
+<div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
+<ul class="sub_menu dropdown">
+<a href="../marketplace/mcp-servers.html">
+<div class="dev_nav">
+<div class="dev_nav_box">
+<div class="dev_nav_img image">
+<i class="fa-solid fa-server text-purple fs-4" style="padding: 0.5rem;"></i>
+</div>
+<div class="dev_para">MCP Servers</div>
+</div>
+</div>
+</a>
+</ul>
+<div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
+<ul class="sub_menu dropdown">
+<a href="../marketplace/plugins.html">
+<div class="dev_nav">
+<div class="dev_nav_box">
+<div class="dev_nav_img image">
+<i class="fa-solid fa-plug text-purple fs-4" style="padding: 0.5rem;"></i>
+</div>
+<div class="dev_para">Plugins</div>
+</div>
+</div>
+</a>
+</ul>
+<div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
+</div>
+<!--div class="link">
+              <p class="dropdown_link dropdown_bar">Services</p>
+              <ul class="sub_menu dropdown">
+                <div class="dev_nav service_nav">
+                  <div class="dev_nav_box service_nav_box">
+                    <div class="dev_nav_img image service_nav_img">
+                      <img src="../img/Group 1000001846.png" alt="" />
+                    </div>
+                    <div class="dev_para service_para">UX / UI Design</div>
+                  </div>
+                </div>
+              </ul>
+              <div
+                class="line line_navbar"
+                style="position: relative; bottom: 0; left: 0"
+              ></div>
+              <ul class="sub_menu dropdown">
+                <div class="dev_nav service_nav">
+                  <div class="dev_nav_box service_nav_box">
+                    <div class="dev_nav_img image service_nav_img">
+                      <img src="../img/Group 1000001847.png" alt="" />
+                    </div>
+                    <div class="dev_para service_para">Web Development</div>
+                  </div>
+                </div>
+              </ul>
+              <div
+                class="line line_navbar"
+                style="position: relative; bottom: 0; left: 0"
+              ></div>
+              <ul class="sub_menu dropdown">
+                <div class="dev_nav service_nav">
+                  <div class="dev_nav_box service_nav_box">
+                    <div class="dev_nav_img image service_nav_img">
+                      <img src="../img/Group 1000001797.png" alt="" />
+                    </div>
+                    <div class="dev_para service_para">App Development</div>
+                  </div>
+                </div>
+              </ul>
+              <div
+                class="line line_navbar"
+                style="position: relative; bottom: 0; left: 0"
+              ></div>
+              <ul class="sub_menu dropdown">
+                <div class="dev_nav service_nav">
+                  <div class="dev_nav_box service_nav_box">
+                    <div class="dev_nav_img image service_nav_img">
+                      <img src="../img/Group 1000001844.png" alt="" />
+                    </div>
+                    <div class="dev_para service_para">Consulting</div>
+                  </div>
+                </div>
+                <div class="service_p" style="color: var(--border-color)">
+                  Contact us for Cloud and model (deterministic or mathematical)
+                  development.
+                </div>
+              </ul>
+              <div
+                class="line line_navbar"
+                style="position: relative; bottom: 0; left: 0"
+              ></div>
+            </div-->
+<div class="link" style="border: 0; outline: 0">
+<a class="dropdown_link" href="../about.html" style="font-size: 20px">About Us</a>
+<div class="middle" style="border: 0">
+<a class="contact_btn" href="../contact.html">Contact Us</a>
+</div>
+</div>
+</div>
+</div>
+
+            <div class="container doc-wrapper">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="side_accordian doc-nav"><ul class="nav flex-column">
+        <li class="nav-item">
+            <a class="nav-link  " href="ARCHITECTURE.html">
+                <i class="fa-solid fa-house me-2"></i> Architecture
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="Global_Actuarial_Ingestion_Strategy.html">
+                <i class="fa-solid fa-house me-2"></i> Global Actuarial Ingestion Strategy
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="KRONOS-APPROVAL-VIEWER-PLAN.html">
+                <i class="fa-solid fa-house me-2"></i> Kronos Approval Viewer Plan
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="KRONOS-BUILD-PLAN.html">
+                <i class="fa-solid fa-house me-2"></i> Kronos Build Plan
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link active " href="KRONOS-CHATBOT-PLAN.html">
+                <i class="fa-solid fa-house me-2"></i> Kronos Chatbot Plan
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="RESEARCH-AGENT-ARCHITECTURE.html">
+                <i class="fa-solid fa-house me-2"></i> Research Agent Architecture
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="TODO.html">
+                <i class="fa-solid fa-house me-2"></i> Todo
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="index.html">
+                <i class="fa-solid fa-house me-2"></i> Index
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="marketin-ideas.html">
+                <i class="fa-solid fa-house me-2"></i> Marketin Ideas
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="project_regulatory_data_plan.html">
+                <i class="fa-solid fa-house me-2"></i> Project Regulatory Data Plan
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  ps-4" href="standards_SUBMODULE_DOC_CONVENTION.html">
+                <i class="fa-solid fa-file-lines me-2"></i> Submodule Doc Convention
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  ps-4" href="technology_system_architecture.html">
+                <i class="fa-solid fa-code me-2"></i> System Architecture
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="system-context.html">
+                <i class="fa-solid fa-brain me-2"></i> System Context
+            </a>
+        </li>
+        </ul></div>
+                    </div>
+                    <div class="col-lg-9 doc-content">
+                        <nav aria-label="breadcrumb" class="mb-5">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="#">Platform</a></li>
+                                <li class="breadcrumb-item active">Kronos-Chatbot-Plan <span class="persona-badge">index</span></li>
+                            </ol>
+                        </nav>
+                        <h1 id="kronos-re-ai-chatbot-workflow-engine-plan">KRONOS Re — AI Chatbot &amp; Workflow Engine Plan</h1>
+<p><strong>Date:</strong> 2026-03-28
+<strong>Updated:</strong> 2026-03-28 — Process isolation model added (JupyterHub-style)
+<strong>Status:</strong> Design / Pre-implementation
+<strong>Author:</strong> AI-drafted; human architect to review and approve</p>
+<hr />
+<h2 id="1-overview">1. Overview</h2>
+<p>Add an AI chatbot to the KRONOS Re dashboard, built on the <strong>Anthropic Claude SDK</strong>, that:</p>
+<ol>
+<li>Lets users converse naturally to build KRONOS Re workflows (valuation runs, ALM snapshots, risk computations, report generation)</li>
+<li>Supports a <strong>per-user plugin/skill system</strong> installed from GitHub</li>
+<li>Gives each user an <strong>isolated workspace folder</strong> <em>and an isolated OS process</em> — JupyterHub-style</li>
+<li>Renders the proposed workflow as a <strong>visual DAG for human review and approval</strong></li>
+<li>On approval, serialises the workflow to <strong>structured JSON</strong> and submits it to a new <code>WorkflowManager</code> task in <code>vaultdb.core</code></li>
+<li><code>WorkflowManager</code> verifies approval in the database before executing any step — enforcing the BMA human-in-the-loop mandate</li>
+</ol>
+<hr />
+<h2 id="2-process-isolation-model-jupyterhub-style">2. Process Isolation Model (JupyterHub-style)</h2>
+<h3 id="21-why-process-isolation">2.1 Why process isolation</h3>
+<p>Running all users in the same process is a significant security risk:</p>
+<table>
+<thead>
+<tr>
+<th>Without isolation</th>
+<th>With process isolation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Any bug in user-installed skill can crash all users</td>
+<td>Crash is contained to one process</td>
+</tr>
+<tr>
+<td>Skills can read <code>os.environ</code> and get <code>AUTH_CLIENT_SECRET</code>, <code>ANTHROPIC_API_KEY</code>, etc.</td>
+<td>Child process env is stripped and rebuilt from allowlist only</td>
+</tr>
+<tr>
+<td>A skill can call <code>os.listdir("/workspaces")</code> and read other users' files</td>
+<td>CWD is set to user workspace; path traversal blocked at hub</td>
+</tr>
+<tr>
+<td>One user's CPU-bound skill blocks all other users' LLM calls</td>
+<td>Each process has its own GIL, CPU limits, and async event loop</td>
+</tr>
+<tr>
+<td>Memory leak in one session leaks across all sessions</td>
+<td>Process is recycled when session ends</td>
+</tr>
+</tbody>
+</table>
+<h3 id="22-architecture-three-tier-mirrors-jupyterhub-exactly">2.2 Architecture — three-tier (mirrors JupyterHub exactly)</h3>
+<pre><code>Browser (Dash UI on port 8050)
+        │  HTTPS
+        ▼
+┌───────────────────────────────────────────────────────────────────────┐
+│  KRONOS ChatHub   (port 8060)                                         │
+│  dashboard/chatbot/hub.py                                             │
+│                                                                       │
+│  • Authenticates users via vaultdb_session cookie (same OAuth)        │
+│  • Manages UserProcess lifecycle (spawn / idle-timeout / kill)        │
+│  • Routes /chatbot/* requests to the correct UserProcess port         │
+│  • Writes UserProcessRecord to DB (pid, port, status, user_id)        │
+│  • Streams SSE responses back to the browser                          │
+│  • NEVER passes WORKFLOW_APPROVAL_SECRET or DB creds to user process  │
+└──────────────────┬────────────────────────────────────────────────────┘
+                   │  HTTP proxy to dynamic port
+                   │  (httpx AsyncClient, internal only)
+                   ▼
+┌──────────────────────────────────────────────────────────────────────┐
+│  UserProcess  (one per logged-in user, port 9100–9999)               │
+│  dashboard/chatbot/user_server.py                                    │
+│                                                                       │
+│  Spawned by hub via subprocess.Popen with:                           │
+│    env = {                                                            │
+│      &quot;ANTHROPIC_API_KEY&quot;:  &lt;from hub at spawn time only&gt;,            │
+│      &quot;USER_ID&quot;:            &lt;OIDC sub&gt;,                               │
+│      &quot;WORKSPACE_ROOT&quot;:     &lt;path to this user's workspace only&gt;,     │
+│      &quot;HUB_API_URL&quot;:        &quot;http://127.0.0.1:8060/_hub/api&quot;,         │
+│      &quot;HUB_INTERNAL_TOKEN&quot;: &lt;per-spawn signed token&gt;,                 │
+│      &quot;VAULTDB_API_URL&quot;:    &lt;KRONOS API URL&gt;,                         │
+│      &quot;PORT&quot;:               &lt;assigned port&gt;,                          │
+│      # Nothing else — PATH, HOME, and PYTHONPATH only                │
+│    }                                                                  │
+│    cwd = workspaces/{user_id}/                                        │
+│    close_fds = True   (no inherited file descriptors)                │
+│    start_new_session = True  (new process group, new session)        │
+│                                                                       │
+│  Runs: uvicorn dashboard.chatbot.user_server:app --port $PORT        │
+│                                                                       │
+│  Exposes:                                                             │
+│    POST /message          ← Claude SDK call with tools               │
+│    GET  /workflow/{id}    ← read workflow from user workspace        │
+│    GET  /skills           ← list user's installed skills             │
+│    POST /skills/install   ← git clone + pip install to user dir      │
+│                                                                       │
+│  Has NO access to:                                                    │
+│    • Other users' workspaces                                         │
+│    • DB credentials (reads data only via Hub API proxy)              │
+│    • WORKFLOW_APPROVAL_SECRET (cannot forge approval tokens)          │
+│    • AUTH_CLIENT_SECRET                                               │
+│    • Redis credentials directly (workflow submission via Hub API)     │
+└──────────────────────────────────────────────────────────────────────┘
+                   │
+                   │  Hub API (internal, token-authenticated)
+                   ▼
+┌──────────────────────────────────────────────────────────────────────┐
+│  Hub internal API  /_hub/api/*  (only reachable from localhost)      │
+│                                                                       │
+│  POST /_hub/api/workflow/submit   ← UserProcess submits workflow     │
+│  POST /_hub/api/workflow/approve  ← (hub handles; user can't forge)  │
+│  GET  /_hub/api/data/{endpoint}   ← proxied read-only KRONOS data    │
+└──────────────────────────────────────────────────────────────────────┘
+                   │
+                   ▼
+        vaultdb.workflow.manager  (Celery task)
+        vaultdb.core DB  (DuckLake)
+</code></pre>
+<h3 id="23-environment-variable-allowlist">2.3 Environment variable allowlist</h3>
+<p>The hub uses a strict allowlist when spawning each <code>UserProcess</code>. Nothing from the hub's own environment is inherited:</p>
+<pre><code class="language-python"># dashboard/chatbot/hub.py
+
+CHILD_ENV_ALLOWLIST = {
+    # Mandatory — identity and workspace
+    &quot;USER_ID&quot;,
+    &quot;WORKSPACE_ROOT&quot;,       # set to workspaces/{user_id}/ — NOT the parent dir
+    &quot;PORT&quot;,
+
+    # Anthropic SDK — read-only API key, no write side-effects
+    &quot;ANTHROPIC_API_KEY&quot;,
+
+    # Internal hub API — per-spawn HMAC token, scoped to this user+session
+    &quot;HUB_API_URL&quot;,
+    &quot;HUB_INTERNAL_TOKEN&quot;,
+
+    # KRONOS read API — read-only calls only; approval goes through hub
+    &quot;VAULTDB_API_URL&quot;,
+
+    # Python runtime — minimal
+    &quot;PATH&quot;,
+    &quot;HOME&quot;,                 # set to workspaces/{user_id}/
+    &quot;PYTHONPATH&quot;,           # set to user's site-packages + module src dirs
+    &quot;LANG&quot;,
+    &quot;LC_ALL&quot;,
+}
+
+# The following NEVER appear in child env:
+CHILD_ENV_DENY = {
+    &quot;WORKFLOW_APPROVAL_SECRET&quot;,  # cannot forge approval tokens
+    &quot;AUTH_CLIENT_ID&quot;,
+    &quot;AUTH_CLIENT_SECRET&quot;,
+    &quot;SERVICE_BROKER_URL&quot;,        # no direct Redis access
+    &quot;AWS_ACCESS_KEY_ID&quot;,
+    &quot;AWS_SECRET_ACCESS_KEY&quot;,
+    &quot;CATALOG_DATA_PATH&quot;,         # no direct DuckLake writes
+    &quot;commitlog_directory&quot;,
+    &quot;SUPERVISOR_USER&quot;,
+    &quot;SUPERVISOR_PASSWORD&quot;,
+}
+</code></pre>
+<h3 id="24-process-lifecycle">2.4 Process lifecycle</h3>
+<pre><code>User visits /chatbot page
+        │
+        ▼
+Hub checks UserProcessRecord for user_id
+        │
+   ┌────┴──────────────────────────┐
+   │ Process already alive?        │ Process dead / never started?
+   │ Update last_active timestamp  │ Spawn new UserProcess
+   └────────────┬──────────────────┘
+                │
+                ▼
+Hub proxies request to UserProcess port
+        │
+        ▼
+Response streamed back to browser
+
+─────── Idle timeout (default 30 min) ──────────────────────────────────
+Hub background task polls UserProcessRecord.last_active
+If idle &gt; IDLE_TIMEOUT: send SIGTERM to process
+                         wait 5s
+                         if still alive: SIGKILL
+                         Update status = STOPPED
+                         Release port back to pool
+
+─────── User logout ─────────────────────────────────────────────────────
+Hub: SIGTERM → UserProcess immediately
+     status = STOPPED
+     All workspace data persists (only process is killed, not files)
+</code></pre>
+<h3 id="25-resource-limits-per-process">2.5 Resource limits per process</h3>
+<p>Applied in the child process immediately after <code>fork()</code> via <code>preexec_fn</code>:</p>
+<pre><code class="language-python">import resource
+
+def _child_resource_limits():
+    &quot;&quot;&quot;Called in child before exec — applies per-user resource caps.&quot;&quot;&quot;
+    # Max CPU time: 10 minutes per task (prevents infinite loops in skills)
+    resource.setrlimit(resource.RLIMIT_CPU, (600, 600))
+    # Max virtual memory: 2 GB (prevents memory-bomb skills)
+    resource.setrlimit(resource.RLIMIT_AS, (2 * 1024**3, 2 * 1024**3))
+    # Max open file descriptors: 256 (prevents fd exhaustion)
+    resource.setrlimit(resource.RLIMIT_NOFILE, (256, 256))
+    # Max child processes: 16 (prevents fork bomb in skills)
+    resource.setrlimit(resource.RLIMIT_NPROC, (16, 16))
+    # Disable core dumps
+    resource.setrlimit(resource.RLIMIT_CORE, (0, 0))
+</code></pre>
+<h3 id="26-workspace-path-guard">2.6 Workspace path guard</h3>
+<p>The <code>UserProcess</code> enforces that all file operations stay within its assigned workspace:</p>
+<pre><code class="language-python"># dashboard/chatbot/workspace.py  (runs inside UserProcess)
+
+WORKSPACE_ROOT = Path(os.environ[&quot;WORKSPACE_ROOT&quot;]).resolve()
+
+def safe_path(relative: str) -&gt; Path:
+    &quot;&quot;&quot;Resolve a user-supplied path and assert it stays inside workspace.&quot;&quot;&quot;
+    resolved = (WORKSPACE_ROOT / relative).resolve()
+    if not str(resolved).startswith(str(WORKSPACE_ROOT)):
+        raise PermissionError(f&quot;Path traversal blocked: {relative!r}&quot;)
+    return resolved
+</code></pre>
+<p><code>..</code> traversal, symlink attacks, and absolute paths supplied by user/Claude are all blocked here.</p>
+<h3 id="27-hub-internal-token">2.7 Hub internal token</h3>
+<p>Each spawned process gets a short-lived HMAC token scoped to <code>(user_id, session_id)</code>. The hub verifies this on every <code>/_hub/api/*</code> call:</p>
+<pre><code class="language-python">hub_token = HMAC-SHA256(
+    key = HUB_INTERNAL_SECRET,         # never leaves the hub process
+    msg = f&quot;{user_id}:{session_id}:{spawn_timestamp}&quot;
+)
+# expires after IDLE_TIMEOUT + 5 min
+</code></pre>
+<p>A <code>UserProcess</code> can only call hub API endpoints on behalf of its own <code>user_id</code>. It cannot impersonate another user or access another user's data through the hub proxy.</p>
+<hr />
+<h2 id="3-updated-component-map">3. Updated Component Map</h2>
+<pre><code>Browser (Dash UI — port 8050)
+        │  HTTPS
+        ▼
+┌───────────────────────────────────────────────────────────────┐
+│  KRONOS Dashboard  (dashboard/server.py — port 8050)          │
+│  Dash pages + KRONOS FastAPI router                           │
+│                                                               │
+│  /chatbot page: chat panel + DAG viewer                       │
+│  Calls ChatHub at port 8060 for all chatbot operations        │
+└──────────────────────┬────────────────────────────────────────┘
+                       │ HTTP (same host, internal)
+                       ▼
+┌──────────────────────────────────────────────────────────────┐
+│  ChatHub  (dashboard/chatbot/hub.py — port 8060)             │
+│  Manages process pool, routes to correct UserProcess          │
+└──────────┬───────────────────────────────────────────────────┘
+           │  subprocess.Popen (cleaned env, new session)
+           ▼
+┌──────────────────────────────────────────────────────────────┐
+│  UserProcess  (dashboard/chatbot/user_server.py)             │
+│  One per user · port 9100–9999 · cwd=workspaces/{user_id}/   │
+│  ONLY has: ANTHROPIC_API_KEY, USER_ID, WORKSPACE_ROOT,       │
+│            HUB_INTERNAL_TOKEN, VAULTDB_API_URL               │
+│                                                              │
+│  ┌──────────────────────────────────────────────────────┐   │
+│  │  Claude SDK engine.py                                │   │
+│  │  tools.py (read-only KRONOS + workspace ops)         │   │
+│  │  skill_manager.py (installs to user site-packages)   │   │
+│  │  workflow_builder.py (emits workflow JSON)           │   │
+│  └──────────────────────────────────────────────────────┘   │
+│           │ propose_workflow tool call                       │
+│           ▼                                                  │
+│  POST /_hub/api/workflow/submit   (via hub internal API)     │
+└──────────────────────────────────────────────────────────────┘
+           │  Hub validates, signs, writes to DB
+           ▼
+┌──────────────────────────────────────────────────────────────┐
+│  vaultdb.workflow.manager  (Celery task in core)             │
+│  WorkflowRun, WorkflowApproval, WorkflowStep (DuckLake)      │
+└──────────────────────────────────────────────────────────────┘
+           │
+           │  delegates to KRONOS domain tasks
+           ▼
+   vaultdb_liability / vaultdb_alm / vaultdb_valuation /
+   vaultdb_risk / vaultdb_reporting / …
+</code></pre>
+<hr />
+<h2 id="4-new-files-updated-for-process-isolation">4. New Files (updated for process isolation)</h2>
+<hr />
+<h2 id="3-workflow-json-schema">3. Workflow JSON Schema</h2>
+<p>Every proposed and approved workflow is stored as a single JSON document.</p>
+<pre><code class="language-jsonc">{
+  &quot;workflow_id&quot;: &quot;WF-20260328-abc123&quot;,
+  &quot;name&quot;: &quot;TED Q1 2026 — Full Valuation &amp; BSCR&quot;,
+  &quot;description&quot;: &quot;Full actuarial loop: assumptions → projection → ALM → valuation → BSCR → reports&quot;,
+  &quot;created_by&quot;: &quot;actuary@kronos.re&quot;,
+  &quot;created_at&quot;: &quot;2026-03-28T14:30:00Z&quot;,
+  &quot;block_id&quot;: &quot;TED-FA-2026&quot;,
+  &quot;status&quot;: &quot;PENDING_APPROVAL&quot;,            // DRAFT | PENDING_APPROVAL | APPROVED | REJECTED | RUNNING | COMPLETE | FAILED
+
+  &quot;approval&quot;: {
+    &quot;required&quot;: true,
+    &quot;approved_by&quot;: null,
+    &quot;approved_at&quot;: null,
+    &quot;rejection_reason&quot;: null,
+    &quot;approval_token&quot;: &quot;tok_xxxx&quot;           // signed token stored in WorkflowApproval table
+  },
+
+  &quot;steps&quot;: [
+    {
+      &quot;step_id&quot;: &quot;step_001&quot;,
+      &quot;name&quot;: &quot;Load Actuarial Assumptions&quot;,
+      &quot;module&quot;: &quot;vaultdb_assumptions&quot;,
+      &quot;task&quot;: &quot;vaultdb_assumptions.tables.load_built_in_tables&quot;,
+      &quot;params&quot;: {},
+      &quot;depends_on&quot;: [],
+      &quot;timeout_seconds&quot;: 30,
+      &quot;on_failure&quot;: &quot;abort&quot;                // abort | skip | continue
+    },
+    {
+      &quot;step_id&quot;: &quot;step_002&quot;,
+      &quot;name&quot;: &quot;Project Liability Cash Flows (NY7_1)&quot;,
+      &quot;module&quot;: &quot;vaultdb_liability&quot;,
+      &quot;task&quot;: &quot;vaultdb_liability.tasks.project_liability_cash_flows&quot;,
+      &quot;params&quot;: {
+        &quot;block_id&quot;: &quot;TED-FA-2026&quot;,
+        &quot;assumption_set&quot;: &quot;TED_BASE_STAT&quot;,
+        &quot;scenario_id&quot;: &quot;NY7_1&quot;
+      },
+      &quot;depends_on&quot;: [&quot;step_001&quot;],
+      &quot;timeout_seconds&quot;: 120,
+      &quot;on_failure&quot;: &quot;abort&quot;
+    },
+    {
+      &quot;step_id&quot;: &quot;step_003&quot;,
+      &quot;name&quot;: &quot;Compute ALM Snapshot&quot;,
+      &quot;module&quot;: &quot;vaultdb_alm&quot;,
+      &quot;task&quot;: &quot;vaultdb_alm.tasks.compute_alm_snapshot&quot;,
+      &quot;params&quot;: { &quot;block_id&quot;: &quot;TED-FA-2026&quot; },
+      &quot;depends_on&quot;: [&quot;step_002&quot;],
+      &quot;timeout_seconds&quot;: 60,
+      &quot;on_failure&quot;: &quot;abort&quot;
+    },
+    {
+      &quot;step_id&quot;: &quot;step_004&quot;,
+      &quot;name&quot;: &quot;Run Full Valuation&quot;,
+      &quot;module&quot;: &quot;vaultdb_valuation&quot;,
+      &quot;task&quot;: &quot;vaultdb_valuation.tasks.run_full_valuation&quot;,
+      &quot;params&quot;: {
+        &quot;block_id&quot;: &quot;TED-FA-2026&quot;,
+        &quot;assumption_set&quot;: &quot;TED_BASE_STAT&quot;,
+        &quot;scenario_id&quot;: &quot;NY7_1&quot;,
+        &quot;valuation_rate&quot;: 0.045
+      },
+      &quot;depends_on&quot;: [&quot;step_002&quot;, &quot;step_003&quot;],
+      &quot;timeout_seconds&quot;: 180,
+      &quot;on_failure&quot;: &quot;abort&quot;
+    },
+    {
+      &quot;step_id&quot;: &quot;step_005&quot;,
+      &quot;name&quot;: &quot;Compute BSCR &amp; Stress Tests&quot;,
+      &quot;module&quot;: &quot;vaultdb_risk&quot;,
+      &quot;task&quot;: &quot;vaultdb_risk.engine.compute_risk&quot;,
+      &quot;params&quot;: { &quot;valuation_run_id&quot;: &quot;$step_004.result.run_id&quot; },
+      &quot;depends_on&quot;: [&quot;step_004&quot;],
+      &quot;timeout_seconds&quot;: 120,
+      &quot;on_failure&quot;: &quot;abort&quot;
+    },
+    {
+      &quot;step_id&quot;: &quot;step_006&quot;,
+      &quot;name&quot;: &quot;Generate Regulatory Reports&quot;,
+      &quot;module&quot;: &quot;vaultdb_reporting&quot;,
+      &quot;task&quot;: &quot;vaultdb_reporting.tasks.generate_all_reports&quot;,
+      &quot;params&quot;: {
+        &quot;valuation_run_id&quot;: &quot;$step_004.result.run_id&quot;,
+        &quot;risk_run_id&quot;: &quot;$step_005.result.run_id&quot;
+      },
+      &quot;depends_on&quot;: [&quot;step_004&quot;, &quot;step_005&quot;],
+      &quot;timeout_seconds&quot;: 60,
+      &quot;on_failure&quot;: &quot;continue&quot;
+    }
+  ],
+
+  &quot;context&quot;: {
+    &quot;conversation_id&quot;: &quot;conv_xxxx&quot;,
+    &quot;generated_by&quot;: &quot;claude-sonnet-4-6&quot;,
+    &quot;plugin_versions&quot;: {
+      &quot;kronos-core-plugin&quot;: &quot;1.0.0&quot;
+    }
+  }
+}
+</code></pre>
+<p><strong>Step result interpolation:</strong> <code>$step_004.result.run_id</code> is resolved at execution time by <code>WorkflowManager</code> from the stored results of prior steps.</p>
+<hr />
+<h2 id="4-claude-sdk-conversation-engine">4. Claude SDK Conversation Engine</h2>
+<h3 id="41-model-and-configuration">4.1 Model and configuration</h3>
+<pre><code class="language-python"># dashboard/chatbot/engine.py
+import anthropic
+
+CLIENT = anthropic.Anthropic()  # uses ANTHROPIC_API_KEY from env
+
+SYSTEM_PROMPT = &quot;&quot;&quot;
+You are KRONOS Assistant — an AI actuary and ALM analyst embedded in the
+KRONOS Re platform. Your job is to help users build, review, and execute
+actuarial workflows on the TED-FA-2026 demo block (and live blocks).
+
+You have access to tools that introspect installed KRONOS modules, read
+model data, and propose workflow steps. When you have gathered enough
+information, use the `propose_workflow` tool to produce a structured
+workflow for the user to review and approve.
+
+Rules:
+- Never execute tasks directly — only propose workflows
+- Always explain your reasoning before proposing a step
+- Ask for clarification if the user's goal is ambiguous
+- Reference actual data (current BSCR ratio, duration gap, etc.) when available
+- Flag any regulatory implications (BMA, NAIC) proactively
+&quot;&quot;&quot;
+
+MODEL = &quot;claude-sonnet-4-6&quot;
+MAX_TOKENS = 8096
+</code></pre>
+<h3 id="42-tool-definitions-function-calling">4.2 Tool definitions (function calling)</h3>
+<p>The engine exposes these tools to Claude:</p>
+<table>
+<thead>
+<tr>
+<th>Tool name</th>
+<th>Description</th>
+<th>Maps to</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>list_modules</code></td>
+<td>List all installed KRONOS modules and their available tasks</td>
+<td>Module introspection</td>
+</tr>
+<tr>
+<td><code>get_latest_run</code></td>
+<td>Get latest valuation/risk/ALM run for a block</td>
+<td>KRONOS API</td>
+</tr>
+<tr>
+<td><code>get_solvency_snapshot</code></td>
+<td>Get current BSCR ratio, duration gap, VaR</td>
+<td><code>/api/v1/kronos/risk/solvency/{block_id}</code></td>
+</tr>
+<tr>
+<td><code>get_policy_summary</code></td>
+<td>Get liability portfolio summary</td>
+<td><code>/api/v1/kronos/liability/policies/{block_id}/summary</code></td>
+</tr>
+<tr>
+<td><code>get_alm_snapshot</code></td>
+<td>Get current ALM snapshot</td>
+<td><code>/api/v1/kronos/alm/snapshots/{block_id}/latest</code></td>
+</tr>
+<tr>
+<td><code>read_workspace_file</code></td>
+<td>Read a file from the user's workspace</td>
+<td>User workspace</td>
+</tr>
+<tr>
+<td><code>write_workspace_file</code></td>
+<td>Write a file to the user's workspace</td>
+<td>User workspace</td>
+</tr>
+<tr>
+<td><code>list_workspace_files</code></td>
+<td>List files in user's workspace</td>
+<td>User workspace</td>
+</tr>
+<tr>
+<td><code>propose_workflow</code></td>
+<td>Emit a structured workflow JSON for user review</td>
+<td>WorkflowBuilder</td>
+</tr>
+<tr>
+<td><code>get_workflow_status</code></td>
+<td>Get execution status of a submitted workflow</td>
+<td>WorkflowManager</td>
+</tr>
+<tr>
+<td><code>call_skill_tool</code></td>
+<td>Call a tool registered by an installed skill</td>
+<td>SkillManager</td>
+</tr>
+</tbody>
+</table>
+<h3 id="43-conversation-loop">4.3 Conversation loop</h3>
+<pre><code>User message
+    │
+    ▼
+engine.chat(session_id, user_message)
+    │
+    ├─ Load conversation history from ConversationSession model
+    ├─ Append user message
+    ├─ Call Claude SDK (messages.create with tools)
+    │
+    ├─ If response contains tool_use blocks:
+    │      ├─ Execute each tool (read-only KRONOS API calls, workspace ops)
+    │      ├─ If tool = propose_workflow → save WorkflowRun(status=DRAFT) to DB
+    │      └─ Append tool_result blocks, call Claude again
+    │
+    ├─ Extract final text response
+    ├─ Persist updated history to ConversationSession
+    └─ Return {assistant_text, proposed_workflow_id?}
+</code></pre>
+<h3 id="44-extended-thinking">4.4 Extended thinking</h3>
+<p>For complex tasks (scenario selection, BSCR interpretation), use Claude's extended thinking:</p>
+<pre><code class="language-python">response = client.messages.create(
+    model=MODEL,
+    max_tokens=16000,
+    thinking={&quot;type&quot;: &quot;enabled&quot;, &quot;budget_tokens&quot;: 8000},
+    tools=KRONOS_TOOLS,
+    messages=history,
+)
+</code></pre>
+<hr />
+<h2 id="5-plugin-skill-system">5. Plugin / Skill System</h2>
+<h3 id="51-skill-manifest-kronos-skilltoml">5.1 Skill manifest (<code>kronos-skill.toml</code>)</h3>
+<p>Every skill is a Python package with this manifest at its root:</p>
+<pre><code class="language-toml">[skill]
+id = &quot;kronos-skill-stress-tester&quot;
+name = &quot;Advanced Stress Tester&quot;
+version = &quot;1.2.0&quot;
+description = &quot;Adds BMA-prescribed and custom stress scenarios to KRONOS workflows&quot;
+author = &quot;github.com/acme/kronos-skill-stress-tester&quot;
+min_kronos_version = &quot;1.0.0&quot;
+
+[[tools]]
+name = &quot;run_custom_stress&quot;
+description = &quot;Run a user-defined stress scenario against any block&quot;
+input_schema = { scenario_name = &quot;string&quot;, shift_bps = &quot;integer&quot;, block_id = &quot;string&quot; }
+entrypoint = &quot;kronos_skill_stress_tester.tools:run_custom_stress&quot;
+
+[[tools]]
+name = &quot;list_stress_scenarios&quot;
+description = &quot;List all available stress scenario templates&quot;
+input_schema = {}
+entrypoint = &quot;kronos_skill_stress_tester.tools:list_scenarios&quot;
+</code></pre>
+<h3 id="52-installation-flow">5.2 Installation flow</h3>
+<pre><code>User: &quot;Install skill from https://github.com/acme/kronos-skill-stress-tester&quot;
+    │
+    ▼
+POST /chatbot/skills/install  { url: &quot;https://github.com/acme/...&quot; }
+    │
+    ▼
+SkillManager.install(user_id, github_url)
+    ├─ Clone repo to workspaces/{user_id}/skills/kronos-skill-stress-tester/
+    ├─ Validate kronos-skill.toml exists and is valid
+    ├─ pip install --target workspaces/{user_id}/site-packages/ .
+    ├─ Load manifest and register tools in UserSkill model
+    └─ Return skill metadata
+</code></pre>
+<h3 id="53-skill-isolation">5.3 Skill isolation</h3>
+<ul>
+<li>Each user's skills install into <code>workspaces/{user_id}/site-packages/</code></li>
+<li><code>sys.path</code> is temporarily modified per-request to include the user's site-packages</li>
+<li>Skills run in the same process but cannot access other users' workspaces</li>
+<li>Skills may only call KRONOS read API and <code>propose_workflow</code> — they cannot directly write to the database</li>
+</ul>
+<h3 id="54-security-constraints">5.4 Security constraints</h3>
+<ul>
+<li><strong>Only <code>github.com</code> URLs</strong> are permitted for install</li>
+<li>Manifest is validated before any code runs</li>
+<li>Tool entrypoints are imported dynamically; no <code>exec()</code> or shell commands</li>
+<li>Skills are sandboxed by user workspace — no cross-user file access</li>
+<li>Skill tools are called through the KRONOS tool router, not directly</li>
+</ul>
+<hr />
+<h2 id="6-user-workspace">6. User Workspace</h2>
+<pre><code>workspaces/
+└── {user_id}/                         ← one folder per authenticated user
+    ├── conversations/
+    │   └── {conversation_id}.json     ← full message history (persisted)
+    ├── workflows/
+    │   └── {workflow_id}.json         ← proposed/approved workflow JSON
+    ├── skills/
+    │   └── kronos-skill-xxx/          ← cloned skill repos
+    ├── site-packages/                 ← user-scoped pip installs
+    ├── scratch/                       ← user's working files (AI can read/write)
+    └── reports/                       ← downloaded HTML/PDF reports
+</code></pre>
+<p><code>user_id</code> is derived from the OIDC <code>sub</code> claim — same auth token as the dashboard.</p>
+<p>The <code>workspaces/</code> root lives at:
+- <strong>Local dev:</strong> <code>{repo_root}/.aadhya/workspaces/</code>
+- <strong>Production (ECS):</strong> <code>/mnt/commitlog/workspaces/</code> (EFS, shared across containers)</p>
+<hr />
+<h2 id="7-core-module-changes-vaultdbworkflow">7. Core Module Changes — <code>vaultdb.workflow</code></h2>
+<h3 id="71-new-directory-structure-in-core">7.1 New directory structure in <code>core</code></h3>
+<pre><code>core/src/vaultdb/
+└── workflow/
+    ├── __init__.py
+    ├── models.py          ← WorkflowRun, WorkflowStep, WorkflowApproval
+    └── manager.py         ← WorkflowManager task + execute_workflow()
+</code></pre>
+<h3 id="72-data-models">7.2 Data models</h3>
+<pre><code class="language-python"># core/src/vaultdb/workflow/models.py
+
+class WorkflowRun(Model):
+    &quot;&quot;&quot;Persisted workflow — DRAFT through COMPLETE.&quot;&quot;&quot;
+    __table_name__ = &quot;workflow_run&quot;
+
+    workflow_id   = Text(primary_key=True, default=lambda: f&quot;WF-{uuid4().hex[:8]}&quot;)
+    name          = Text(default=&quot;&quot;)
+    description   = Text(default=&quot;&quot;)
+    created_by    = Text(default=&quot;&quot;)          # OIDC sub claim
+    created_at    = DateTime(default=now_utc)
+    block_id      = Text(default=&quot;&quot;)
+    status        = Text(default=&quot;DRAFT&quot;)
+    # DRAFT | PENDING_APPROVAL | APPROVED | REJECTED | RUNNING | COMPLETE | FAILED
+
+    workflow_json = Text(default=&quot;&quot;)          # full JSON blob
+    result_json   = Text(default=&quot;&quot;)          # step results after execution
+    error_message = Text(default=&quot;&quot;)
+    conversation_id = Text(default=&quot;&quot;)        # originating chat session
+
+
+class WorkflowApproval(Model):
+    &quot;&quot;&quot;Immutable approval record — checked by WorkflowManager before execution.&quot;&quot;&quot;
+    __table_name__ = &quot;workflow_approval&quot;
+
+    approval_id   = Text(primary_key=True, default=lambda: f&quot;APR-{uuid4().hex[:8]}&quot;)
+    workflow_id   = Text(default=&quot;&quot;)
+    approved_by   = Text(default=&quot;&quot;)          # OIDC sub of approver
+    approved_at   = DateTime(default=now_utc)
+    approval_token = Text(default=&quot;&quot;)         # HMAC-signed token
+    action        = Text(default=&quot;&quot;)          # APPROVED | REJECTED
+    rejection_reason = Text(default=&quot;&quot;)
+
+
+class WorkflowStep(Model):
+    &quot;&quot;&quot;Per-step execution record written during workflow execution.&quot;&quot;&quot;
+    __table_name__ = &quot;workflow_step&quot;
+
+    step_record_id = Text(primary_key=True, default=lambda: str(uuid4()))
+    workflow_id    = Text(default=&quot;&quot;)
+    step_id        = Text(default=&quot;&quot;)
+    step_name      = Text(default=&quot;&quot;)
+    status         = Text(default=&quot;PENDING&quot;)
+    # PENDING | RUNNING | COMPLETE | FAILED | SKIPPED
+
+    started_at     = DateTime(default=None)
+    completed_at   = DateTime(default=None)
+    result_json    = Text(default=&quot;&quot;)
+    error_message  = Text(default=&quot;&quot;)
+    task_id        = Text(default=&quot;&quot;)         # VaultDB TaskStatus.task_id
+</code></pre>
+<h3 id="73-workflowmanager-task">7.3 WorkflowManager task</h3>
+<pre><code class="language-python"># core/src/vaultdb/workflow/manager.py
+
+@TED.task()
+def submit_workflow(workflow_json: str, submitted_by: str) -&gt; dict:
+    &quot;&quot;&quot;
+    Receive workflow JSON from the chatbot, persist it, and return
+    workflow_id for the UI to poll.
+    Status is set to PENDING_APPROVAL.
+    Does NOT execute — execution requires a separate approve() call.
+    &quot;&quot;&quot;
+
+@TED.task()
+def approve_workflow(workflow_id: str, approved_by: str, approval_token: str) -&gt; dict:
+    &quot;&quot;&quot;
+    Record approval in WorkflowApproval table and transition
+    WorkflowRun to APPROVED. Triggers execute_workflow.
+    &quot;&quot;&quot;
+
+@TED.task()
+def reject_workflow(workflow_id: str, rejected_by: str, reason: str) -&gt; dict:
+    &quot;&quot;&quot;
+    Record rejection in WorkflowApproval table, transition to REJECTED.
+    &quot;&quot;&quot;
+
+@TED.task()
+def execute_workflow(workflow_id: str) -&gt; dict:
+    &quot;&quot;&quot;
+    Execute an APPROVED workflow step by step.
+
+    Safety check:
+        1. Load WorkflowRun — must be status=APPROVED
+        2. Load WorkflowApproval — must exist and be APPROVED
+        3. Verify HMAC approval_token matches server secret
+        4. If any check fails → raise PermissionError, set status=FAILED
+
+    Execution:
+        - Topological sort of steps by depends_on
+        - Execute each step in order (parallel where possible via Celery group)
+        - Resolve $step_xxx.result.field references
+        - Write WorkflowStep record after each step
+        - On completion: set WorkflowRun.status = COMPLETE + result_json
+        - On failure: set status = FAILED + error_message
+    &quot;&quot;&quot;
+
+@TED.task()
+def get_workflow_status(workflow_id: str) -&gt; dict:
+    &quot;&quot;&quot;Poll-friendly status endpoint — returns WorkflowRun + step statuses.&quot;&quot;&quot;
+</code></pre>
+<h3 id="74-approval-token-security">7.4 Approval token security</h3>
+<pre><code>approval_token = HMAC-SHA256(
+    key  = config.WORKFLOW_APPROVAL_SECRET,      # new env var, in Secrets Manager
+    msg  = f&quot;{workflow_id}:{approved_by}:{approved_at_iso}&quot;
+)
+</code></pre>
+<p><code>WorkflowManager.execute_workflow()</code> recomputes the HMAC and rejects execution if it does not match the stored token. This prevents replay attacks and ensures the approval record was written by a legitimate server call, not a direct database edit.</p>
+<hr />
+<h2 id="8-dashboard-integration">8. Dashboard Integration</h2>
+<h3 id="81-new-dash-page-dashboardpageschatbotpy">8.1 New Dash page — <code>dashboard/pages/chatbot.py</code></h3>
+<p><strong>Layout:</strong></p>
+<pre><code>┌──────────────────────────────────────────────────────┐
+│ KRONOS Assistant  [Skills ▾]  [New Chat]  [History ▾]│
+├────────────────────────┬─────────────────────────────┤
+│                        │                             │
+│  Chat messages         │  Workflow DAG               │
+│  (scrollable)          │  (Cytoscape graph)          │
+│                        │                             │
+│  • User               │  [step 1] → [step 2]        │
+│  • Assistant           │      ↘           ↓          │
+│  • Tool call badge     │  [step 3] → [step 4]        │
+│  • Thinking badge      │                             │
+│                        │  Selected: Run Full         │
+│  [type a message...]   │  Valuation                  │
+│  [Send]  [Attach file] │  Params: block_id=TED-FA    │
+│                        │  Timeout: 180s              │
+├────────────────────────┴─────────────────────────────┤
+│  Proposed: &quot;TED Q1 2026 Full Valuation &amp; BSCR&quot;       │
+│  [✓ Approve Workflow]  [✗ Reject]  [✏ Edit JSON]     │
+└──────────────────────────────────────────────────────┘
+</code></pre>
+<p><strong>Key Dash callbacks:</strong>
+- <code>send_message</code> → POST <code>/chatbot/message</code> → update chat + workflow panel
+- <code>approve_workflow</code> → POST <code>/chatbot/workflow/{id}/approve</code> → show confirmation
+- <code>reject_workflow</code> → POST <code>/chatbot/workflow/{id}/reject</code>
+- <code>install_skill</code> → POST <code>/chatbot/skills/install</code>
+- <code>poll_workflow_status</code> → GET status every 3s while workflow is RUNNING</p>
+<h3 id="82-workflow-visualiser">8.2 Workflow visualiser</h3>
+<p>Uses <code>dash-cytoscape</code> for the DAG:
+- Each <code>step</code> → node (label = step name, color = status)
+- Each <code>depends_on</code> edge → directed arrow
+- Node colors: grey=PENDING, blue=RUNNING, green=COMPLETE, red=FAILED
+- Click node → show step detail panel (params, result, error)</p>
+<hr />
+<h2 id="9-new-api-endpoints">9. New API Endpoints</h2>
+<p>Add <code>dashboard/api/chatbot.py</code> to the KRONOS router:</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Path</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST</code></td>
+<td><code>/chatbot/message</code></td>
+<td>Send user message; get assistant reply + optional proposed workflow</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/chatbot/history/{session_id}</code></td>
+<td>Fetch conversation history</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td><code>/chatbot/history/{session_id}</code></td>
+<td>Clear conversation</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/chatbot/workflow/{workflow_id}</code></td>
+<td>Get workflow JSON + step statuses</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>/chatbot/workflow/{workflow_id}/approve</code></td>
+<td>Approve workflow (requires auth)</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>/chatbot/workflow/{workflow_id}/reject</code></td>
+<td>Reject workflow</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/chatbot/workflows</code></td>
+<td>List all workflows for current user</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/chatbot/skills</code></td>
+<td>List installed skills for current user</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>/chatbot/skills/install</code></td>
+<td>Install skill from GitHub</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td><code>/chatbot/skills/{skill_id}</code></td>
+<td>Remove skill</td>
+</tr>
+</tbody>
+</table>
+<p>All endpoints require the <code>Authorization: Bearer</code> header or <code>kronos_session</code> cookie (same auth as the rest of the dashboard).</p>
+<hr />
+<h2 id="10-new-models-dashboardchatbotmodelspy">10. New Models — <code>dashboard/chatbot/models.py</code></h2>
+<p>These live in the <code>dashboard</code> submodule (not core):</p>
+<pre><code class="language-python">class ConversationSession(Model):
+    &quot;&quot;&quot;Persisted chat session for a user.&quot;&quot;&quot;
+    session_id    = Text(primary_key=True, default=session_id_factory)
+    user_id       = Text(default=&quot;&quot;)
+    block_id      = Text(default=&quot;TED-FA-2026&quot;)
+    created_at    = DateTime(default=now_utc)
+    updated_at    = DateTime(default=now_utc)
+    history_json  = Text(default=&quot;[]&quot;)   # full messages array (Anthropic format)
+    active_workflow_id = Text(default=&quot;&quot;)
+
+
+class UserSkill(Model):
+    &quot;&quot;&quot;Installed skill for a user.&quot;&quot;&quot;
+    skill_record_id = Text(primary_key=True, default=lambda: str(uuid4()))
+    user_id       = Text(default=&quot;&quot;)
+    skill_id      = Text(default=&quot;&quot;)     # from kronos-skill.toml [skill].id
+    name          = Text(default=&quot;&quot;)
+    version       = Text(default=&quot;&quot;)
+    github_url    = Text(default=&quot;&quot;)
+    installed_at  = DateTime(default=now_utc)
+    is_active     = Text(default=&quot;true&quot;)
+    manifest_json = Text(default=&quot;&quot;)     # full parsed toml as JSON
+</code></pre>
+<hr />
+<h2 id="11-built-in-kronos-core-plugin">11. Built-in KRONOS Core Plugin</h2>
+<p>A built-in skill (<code>kronos-core-plugin</code>) is pre-installed for every user. It provides the main tools for KRONOS module introspection.</p>
+<p><strong>Tools provided:</strong></p>
+<pre><code class="language-python">KRONOS_CORE_TOOLS = [
+    {
+        &quot;name&quot;: &quot;list_modules&quot;,
+        &quot;description&quot;: &quot;List all installed KRONOS Re modules and the tasks they expose.&quot;,
+        &quot;input_schema&quot;: {&quot;type&quot;: &quot;object&quot;, &quot;properties&quot;: {}, &quot;required&quot;: []},
+    },
+    {
+        &quot;name&quot;: &quot;get_solvency_snapshot&quot;,
+        &quot;description&quot;: &quot;Get the current solvency snapshot (BSCR ratio, duration gap, VaR) for a block.&quot;,
+        &quot;input_schema&quot;: {
+            &quot;type&quot;: &quot;object&quot;,
+            &quot;properties&quot;: {&quot;block_id&quot;: {&quot;type&quot;: &quot;string&quot;}},
+            &quot;required&quot;: [&quot;block_id&quot;],
+        },
+    },
+    {
+        &quot;name&quot;: &quot;get_policy_summary&quot;,
+        &quot;description&quot;: &quot;Get liability portfolio summary (count, total AV, avg age, crediting rate).&quot;,
+        &quot;input_schema&quot;: {
+            &quot;type&quot;: &quot;object&quot;,
+            &quot;properties&quot;: {&quot;block_id&quot;: {&quot;type&quot;: &quot;string&quot;}},
+            &quot;required&quot;: [&quot;block_id&quot;],
+        },
+    },
+    {
+        &quot;name&quot;: &quot;get_alm_snapshot&quot;,
+        &quot;description&quot;: &quot;Get the latest ALM snapshot for a block.&quot;,
+        &quot;input_schema&quot;: {
+            &quot;type&quot;: &quot;object&quot;,
+            &quot;properties&quot;: {&quot;block_id&quot;: {&quot;type&quot;: &quot;string&quot;}},
+            &quot;required&quot;: [&quot;block_id&quot;],
+        },
+    },
+    {
+        &quot;name&quot;: &quot;read_workspace_file&quot;,
+        &quot;description&quot;: &quot;Read a file from the user's workspace. Path is relative to workspace root.&quot;,
+        &quot;input_schema&quot;: {
+            &quot;type&quot;: &quot;object&quot;,
+            &quot;properties&quot;: {&quot;path&quot;: {&quot;type&quot;: &quot;string&quot;}},
+            &quot;required&quot;: [&quot;path&quot;],
+        },
+    },
+    {
+        &quot;name&quot;: &quot;write_workspace_file&quot;,
+        &quot;description&quot;: &quot;Write content to a file in the user's workspace.&quot;,
+        &quot;input_schema&quot;: {
+            &quot;type&quot;: &quot;object&quot;,
+            &quot;properties&quot;: {
+                &quot;path&quot;: {&quot;type&quot;: &quot;string&quot;},
+                &quot;content&quot;: {&quot;type&quot;: &quot;string&quot;},
+            },
+            &quot;required&quot;: [&quot;path&quot;, &quot;content&quot;],
+        },
+    },
+    {
+        &quot;name&quot;: &quot;propose_workflow&quot;,
+        &quot;description&quot;: (
+            &quot;Emit a structured workflow for the user to review and approve. &quot;
+            &quot;Call this only when you have fully defined all steps and their parameters. &quot;
+            &quot;The workflow will appear in the visual DAG panel for human review.&quot;
+        ),
+        &quot;input_schema&quot;: {
+            &quot;type&quot;: &quot;object&quot;,
+            &quot;properties&quot;: {
+                &quot;name&quot;: {&quot;type&quot;: &quot;string&quot;},
+                &quot;description&quot;: {&quot;type&quot;: &quot;string&quot;},
+                &quot;block_id&quot;: {&quot;type&quot;: &quot;string&quot;},
+                &quot;steps&quot;: {
+                    &quot;type&quot;: &quot;array&quot;,
+                    &quot;items&quot;: {
+                        &quot;type&quot;: &quot;object&quot;,
+                        &quot;properties&quot;: {
+                            &quot;step_id&quot;: {&quot;type&quot;: &quot;string&quot;},
+                            &quot;name&quot;: {&quot;type&quot;: &quot;string&quot;},
+                            &quot;task&quot;: {&quot;type&quot;: &quot;string&quot;},
+                            &quot;params&quot;: {&quot;type&quot;: &quot;object&quot;},
+                            &quot;depends_on&quot;: {&quot;type&quot;: &quot;array&quot;, &quot;items&quot;: {&quot;type&quot;: &quot;string&quot;}},
+                            &quot;timeout_seconds&quot;: {&quot;type&quot;: &quot;integer&quot;},
+                            &quot;on_failure&quot;: {&quot;type&quot;: &quot;string&quot;, &quot;enum&quot;: [&quot;abort&quot;, &quot;skip&quot;, &quot;continue&quot;]},
+                        },
+                        &quot;required&quot;: [&quot;step_id&quot;, &quot;name&quot;, &quot;task&quot;, &quot;params&quot;, &quot;depends_on&quot;],
+                    },
+                },
+            },
+            &quot;required&quot;: [&quot;name&quot;, &quot;description&quot;, &quot;block_id&quot;, &quot;steps&quot;],
+        },
+    },
+    {
+        &quot;name&quot;: &quot;get_workflow_status&quot;,
+        &quot;description&quot;: &quot;Get the current execution status of a submitted workflow.&quot;,
+        &quot;input_schema&quot;: {
+            &quot;type&quot;: &quot;object&quot;,
+            &quot;properties&quot;: {&quot;workflow_id&quot;: {&quot;type&quot;: &quot;string&quot;}},
+            &quot;required&quot;: [&quot;workflow_id&quot;],
+        },
+    },
+]
+</code></pre>
+<hr />
+<h2 id="12-execution-safety-approval-gate">12. Execution Safety — Approval Gate</h2>
+<pre><code>                  User clicks &quot;Approve&quot; in UI
+                            │
+                            ▼
+          POST /chatbot/workflow/{id}/approve
+                  (requires valid Bearer token)
+                            │
+                            ▼
+          WorkflowApproval record written to DB
+          approval_token = HMAC(secret, workflow_id + user + timestamp)
+                            │
+                            ▼
+          WorkflowRun.status → APPROVED
+                            │
+                            ▼
+          WorkflowManager.execute_workflow.apply_async(workflow_id)
+                            │
+              ┌─────────────▼──────────────┐
+              │  execute_workflow() runs    │
+              │  in Celery worker           │
+              │                            │
+              │  1. Load WorkflowRun       │
+              │     status must = APPROVED │──── FAIL → abort
+              │                            │
+              │  2. Load WorkflowApproval  │
+              │     must exist + APPROVED  │──── FAIL → abort
+              │                            │
+              │  3. Verify HMAC token      │──── FAIL → abort
+              │                            │
+              │  4. Execute steps in       │
+              │     topological order      │
+              │                            │
+              │  5. Write WorkflowStep     │
+              │     result after each step │
+              └────────────────────────────┘
+</code></pre>
+<p>No code path in <code>execute_workflow</code> bypasses all three checks. Even if an attacker directly calls the Celery task, the HMAC check (using the server-side secret) will prevent execution of an unapproved workflow.</p>
+<hr />
+<h2 id="13-implementation-phases">13. Implementation Phases</h2>
+<h3 id="phase-a-core-models-workflowmanager-week-1">Phase A — Core models &amp; WorkflowManager (Week 1)</h3>
+<ol>
+<li>Create <code>core/src/vaultdb/workflow/models.py</code> — <code>WorkflowRun</code>, <code>WorkflowStep</code>, <code>WorkflowApproval</code></li>
+<li>Create <code>core/src/vaultdb/workflow/manager.py</code> — all 5 tasks (<code>submit</code>, <code>approve</code>, <code>reject</code>, <code>execute</code>, <code>get_status</code>)</li>
+<li>Add <code>WORKFLOW_APPROVAL_SECRET</code> to Secrets Manager / <code>.env</code></li>
+<li>Add <code>core/src/vaultdb/workflow/__init__.py</code></li>
+<li>Register workflow tasks in <code>core/src/vaultdb/tasks.py</code> (via <code>@TED.task()</code>)</li>
+<li>Write unit tests: <code>core/tests/test_workflow.py</code></li>
+</ol>
+<h3 id="phase-b-chatbot-engine-week-2">Phase B — Chatbot engine (Week 2)</h3>
+<ol>
+<li>Create <code>dashboard/chatbot/engine.py</code> — Claude SDK conversation loop with tool use</li>
+<li>Create <code>dashboard/chatbot/tools.py</code> — all KRONOS tool implementations</li>
+<li>Create <code>dashboard/chatbot/workflow_builder.py</code> — parses <code>propose_workflow</code> tool output into <code>WorkflowRun</code> JSON</li>
+<li>Create <code>dashboard/chatbot/workspace.py</code> — per-user workspace CRUD</li>
+<li>Create <code>dashboard/chatbot/models.py</code> — <code>ConversationSession</code>, <code>UserSkill</code></li>
+<li>Add <code>ANTHROPIC_API_KEY</code> to Secrets Manager / <code>.env</code></li>
+<li>Unit tests: <code>dashboard/tests/test_chatbot_engine.py</code></li>
+</ol>
+<h3 id="phase-c-skill-system-week-23">Phase C — Skill system (Week 2–3)</h3>
+<ol>
+<li>Create <code>dashboard/chatbot/skill_manager.py</code> — GitHub clone, validate manifest, pip install</li>
+<li>Define <code>kronos-skill.toml</code> manifest schema and validator</li>
+<li>Create built-in <code>kronos-core-plugin</code> (no install required — auto-loaded)</li>
+<li>Integration test: install a mock skill, verify tools appear in Claude's tool list</li>
+</ol>
+<h3 id="phase-d-api-endpoints-week-3">Phase D — API endpoints (Week 3)</h3>
+<ol>
+<li>Create <code>dashboard/api/chatbot.py</code> — all 11 endpoints</li>
+<li>Wire into <code>dashboard/api/__init__.py</code></li>
+<li>Streaming response support for <code>POST /chatbot/message</code> (SSE for token-by-token output)</li>
+<li>Unit tests: <code>dashboard/tests/test_chatbot_api.py</code></li>
+</ol>
+<h3 id="phase-e-dash-ui-week-34">Phase E — Dash UI (Week 3–4)</h3>
+<ol>
+<li>Create <code>dashboard/pages/chatbot.py</code> — chat panel + workflow DAG</li>
+<li>Add <code>dash-cytoscape</code> to <code>dashboard/requirements.txt</code></li>
+<li>Implement workflow status polling (3s interval while RUNNING)</li>
+<li>Implement skill manager modal (list/install/remove)</li>
+<li>Implement "Edit JSON" modal for power users</li>
+<li>Add nav link in <code>dashboard/app.py</code></li>
+</ol>
+<h3 id="phase-f-infrastructure-supervisor-week-4">Phase F — Infrastructure &amp; Supervisor (Week 4)</h3>
+<ol>
+<li>Add <code>ANTHROPIC_API_KEY</code> to <code>infrastructure/cloudformation/ops-secrets-manager.yaml</code></li>
+<li>Add <code>WORKFLOW_APPROVAL_SECRET</code> to same</li>
+<li>Add both to <code>scripts/aadhya/supervisord.conf</code> env vars</li>
+<li>Add both to <code>infrastructure/docker/Dockerfile.service</code> <code>ENV</code></li>
+<li>Update <code>scripts/aadhya/run_tasks.py</code> to include workflow tasks in TASK_MODULES</li>
+</ol>
+<hr />
+<h2 id="14-new-dependencies">14. New Dependencies</h2>
+<h3 id="dashboardrequirementstxt-additions"><code>dashboard/requirements.txt</code> additions</h3>
+<pre><code>anthropic&gt;=0.40.0        # Claude SDK
+dash-cytoscape&gt;=0.3.0   # workflow DAG visualiser
+toml&gt;=0.10.2             # skill manifest parsing
+gitpython&gt;=3.1.0         # GitHub skill clone
+</code></pre>
+<h3 id="core-extras-optional-install-group-workflow"><code>core</code> extras (optional install group <code>[workflow]</code>)</h3>
+<pre><code># No new deps — workflow module only uses existing vaultdb.data + vaultdb.compute
+</code></pre>
+<h3 id="environment-variables-new">Environment variables (new)</h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Where</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ANTHROPIC_API_KEY</code></td>
+<td>Secrets Manager → env</td>
+<td>Claude SDK authentication</td>
+</tr>
+<tr>
+<td><code>WORKFLOW_APPROVAL_SECRET</code></td>
+<td>Secrets Manager → env</td>
+<td>HMAC signing for approval tokens</td>
+</tr>
+<tr>
+<td><code>WORKSPACE_ROOT</code></td>
+<td>ECS env / <code>.env</code></td>
+<td>Base path for user workspaces (default: <code>/mnt/commitlog/workspaces</code> in prod, <code>.aadhya/workspaces</code> in dev)</td>
+</tr>
+<tr>
+<td><code>SKILL_GITHUB_ALLOWLIST</code></td>
+<td>optional</td>
+<td>Comma-separated list of allowed GitHub orgs (blank = any github.com)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="15-file-inventory">15. File Inventory</h2>
+<p>All new files to be created:</p>
+<pre><code>core/src/vaultdb/workflow/
+├── __init__.py
+├── models.py               WorkflowRun, WorkflowStep, WorkflowApproval
+└── manager.py              submit_workflow, approve_workflow, reject_workflow,
+                            execute_workflow, get_workflow_status
+
+core/tests/
+└── test_workflow.py        unit + integration tests for workflow models + manager
+
+dashboard/chatbot/
+├── __init__.py
+├── engine.py               Claude SDK conversation loop
+├── tools.py                KRONOS tool implementations
+├── workflow_builder.py     propose_workflow → WorkflowRun JSON
+├── workspace.py            per-user workspace CRUD
+├── skill_manager.py        GitHub install/load/remove
+└── models.py               ConversationSession, UserSkill
+
+dashboard/api/
+└── chatbot.py              11 FastAPI endpoints
+
+dashboard/pages/
+└── chatbot.py              Dash page (chat + DAG + approval UI)
+
+dashboard/tests/
+├── test_chatbot_engine.py
+├── test_chatbot_api.py
+└── test_workflow_builder.py
+</code></pre>
+<hr />
+<h2 id="16-open-questions">16. Open Questions</h2>
+<ol>
+<li><strong>Streaming vs batch responses</strong> — Should the chat API stream tokens via SSE, or return complete responses? SSE is better UX but adds complexity to the Dash callback architecture.</li>
+<li><strong>Conversation persistence scope</strong> — How long are conversations retained? Per session? 30 days? Tied to workflow lifetime?</li>
+<li><strong>Skill sandboxing depth</strong> — Is process-level isolation (separate subprocess per skill) needed, or is the import-time path isolation sufficient?</li>
+<li><strong>Multi-step approval</strong> — Some workflows may require two approvers (actuary + CIO). Should <code>WorkflowApproval</code> support a <code>min_approvals: int</code> field?</li>
+<li><strong>Workflow versioning</strong> — If a user edits the JSON before approving, should it create a new <code>workflow_id</code> or version the existing one?</li>
+<li><strong>Skill marketplace</strong> — Long term: build a curated GitHub-hosted index of vetted skills (like a KRONOS skill registry)?</li>
+<li><strong>Audit log</strong> — All <code>WorkflowApproval</code> records are immutable by design. Should conversation history also be immutable (append-only) for BMA audit purposes?</li>
+</ol>
+<hr />
+<p><em>Plan created: 2026-03-28 | AI-drafted; human architect and security review required before Phase A implementation.</em></p>
+                    </div>
+                </div>
+            </div>
+            <!-- footer section ===========================================-->
+<div class="container_body">
+<div class="container_inside">
+<section class="footer_section">
+<div class="footer mt-5" data-aos="fade-left" data-aos-duration="2000">
+<div class="left">
+<img alt="" src="../img/mainlogo.png">
+<a class="footer_logo" href="#">VaultDB.ai</a>
+</img></div>
+<div class="right" style="margin-bottom: 10px">
+<a href="#">
+<i class="fa-brands fa-github"></i>
+</a>
+<a href="#">
+<i class="fa-brands fa-youtube"></i>
+</a>
+<a href="#">
+<i class="fa-brands fa-facebook"></i>
+</a>
+<a href="#">
+<i class="fa-brands fa-twitter"></i>
+</a>
+<a href="#">
+<i class="fa-brands fa-instagram"></i>
+</a>
+<a href="#">
+<i class="fa-brands fa-linkedin"></i>
+</a>
+</div>
+</div>
+<div>
+<div class="row mb-5">
+<div class="line mb-5"></div>
+<div class="col-md-4 col-sm-12 col-lg-4">
+<h5 class="bottom_left">
+                VaultDB.ai @ 2026. All rights reserved.
+              </h5>
+</div>
+<div class="col-md-8 col-sm-12 col-lg-8 bottom_right">
+<a href="../index.html">VaultDB.ai</a>
+<a href="../contact.html">Contact Us</a>
+<a href="../about.html">About Us</a>
+<a href="#">Privacy Policy</a>
+<a href="#">Terms and Conditions</a>
+</div>
+</div>
+</div>
+<div class="footer_box">
+<img alt="" class="footer_img" src="../img/Rectangle 9.png">
+</img></div>
+</section>
+</div>
+</div>
+<script crossorigin="anonymous" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+  </script>
+<script src="../js/index.js"></script>
+</body>
+</html>
+            

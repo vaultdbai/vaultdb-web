@@ -483,32 +483,14 @@
         </li>
         
         <li class="nav-item">
-            <a class="nav-link  ps-4" href="compliance_approval_integration.html">
-                <i class="fa-solid fa-shield-halved me-2"></i> Approval Integration
+            <a class="nav-link active " href="bond_curves_and_loaders.html">
+                <i class="fa-solid fa-house me-2"></i> Bond Curves And Loaders
             </a>
         </li>
         
         <li class="nav-item">
-            <a class="nav-link active " href="index.html">
-                <i class="fa-solid fa-house me-2"></i> Index
-            </a>
-        </li>
-        
-        <li class="nav-item">
-            <a class="nav-link  ps-4" href="technology_api_reference.html">
-                <i class="fa-solid fa-code me-2"></i> Api Reference
-            </a>
-        </li>
-        
-        <li class="nav-item">
-            <a class="nav-link  ps-4" href="technology_chatbot_engine.html">
-                <i class="fa-solid fa-code me-2"></i> Chatbot Engine
-            </a>
-        </li>
-        
-        <li class="nav-item">
-            <a class="nav-link  ps-4" href="technology_chathub.html">
-                <i class="fa-solid fa-code me-2"></i> Chathub
+            <a class="nav-link  " href="market_overview.html">
+                <i class="fa-solid fa-house me-2"></i> Market Overview
             </a>
         </li>
         
@@ -523,139 +505,475 @@
                         <nav aria-label="breadcrumb" class="mb-5">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="../../../index.html">Home</a></li>
-                                <li class="breadcrumb-item"><a href="#">dashboard</a></li>
-                                <li class="breadcrumb-item active">Index <span class="persona-badge">index</span></li>
+                                <li class="breadcrumb-item"><a href="#">market</a></li>
+                                <li class="breadcrumb-item active">Bond Curves And Loaders <span class="persona-badge">index</span></li>
                             </ol>
                         </nav>
-                        <h1 id="kronos-re-dashboard">KRONOS Re Dashboard</h1>
-<p>The KRONOS Re Dashboard is the primary user interface for the platform. It is a Python Dash application backed by a FastAPI router, serving actuaries, CIOs, risk officers, and regulators.</p>
-<h2 id="platform-role">Platform Role</h2>
-<pre class="mermaid">graph LR
-    subgraph &quot;User-Facing&quot;
-        DASH[&quot;KRONOS Dashboard<br/>(Port 8050)<br/>Application UI&quot;]
-        WEB[&quot;vaultdb.ai<br/>Marketing Website&quot;]
-    end
+                        <h1 id="bond-market-curves-data-loaders">Bond Market Curves &amp; Data Loaders</h1>
+<blockquote>
+<p><strong>Module:</strong> <code>vaultdb_market</code><br />
+<strong>Path:</strong> <code>market/src/vaultdb_market/tasks/</code><br />
+<strong>Updated:</strong> 2026-04-01</p>
+</blockquote>
+<hr />
+<h2 id="overview">Overview</h2>
+<p>The bond market data subsystem provides:</p>
+<ol>
+<li><strong>Data Loaders</strong> — fetch rates and spreads from free public APIs and FRED into <code>SimpleQuote</code> records</li>
+<li><strong>Curve Definitions</strong> — ORM-backed <code>YieldCurve</code> and <code>OASSpreadCurve</code> records bootstrapped from those quotes</li>
+<li><strong>Daily Save Orchestrator</strong> — a single scheduled entry-point that runs all loaders and refreshes all spread curves</li>
+<li><strong>Programmatic Builder</strong> — <code>YieldCurveBuilder</code> for in-memory curve construction without database round-trips</li>
+</ol>
+<hr />
+<h2 id="curve-architecture">Curve Architecture</h2>
+<p>Each bond market segment uses a two-layer curve model:</p>
+<pre><code>Base Yield Curve  (YieldCurve ORM record)
+    └── bootstrapped from quoted deposits + swaps
+    └── produces ql.YieldTermStructureHandle
 
-    subgraph &quot;Backend&quot;
-        API[&quot;KRONOS FastAPI Router&quot;]
-        CORE[&quot;VaultDB Core API<br/>(Port 8000)&quot;]
-        HUB[&quot;ChatHub<br/>(Port 8060)&quot;]
-    end
-
-    DASH --> API
-    DASH --> HUB
-    API --> CORE
-    WEB -.->|docs only| DASH
-</pre>
-<ul>
-<li><strong>Dashboard</strong> is where all KRONOS Re features are accessed: chatbot, workflow approval, ALM analysis, risk, trading, and reporting.</li>
-<li><strong>vaultdb-web</strong> is the public marketing site only.</li>
-</ul>
-<h2 id="architecture">Architecture</h2>
+OAS Spread Curve  (OASSpreadCurve ORM record)
+    └── wraps base curve + flat spread (decimal)
+    └── uses ql.ZeroSpreadedTermStructure
+    └── spread updated daily from ICE BofA OAS index quotes
+</code></pre>
+<hr />
+<h2 id="curve-definitions">Curve Definitions</h2>
+<h3 id="base-yield-curves-yieldcurve">Base Yield Curves (<code>YieldCurve</code>)</h3>
 <table>
 <thead>
 <tr>
-<th>Component</th>
-<th>Technology</th>
-<th>Port</th>
-<th>Purpose</th>
+<th>Name</th>
+<th>Currency</th>
+<th>Short End</th>
+<th>Long End</th>
+<th>Floating Index</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>Dash UI</strong></td>
-<td>Plotly Dash + Bootstrap</td>
-<td>8050 (WSGI)</td>
-<td>Multi-page analytical frontend</td>
+<td><code>UST_SPOT</code></td>
+<td>USD</td>
+<td>3M / 6M / 1Y deposits</td>
+<td>2Y–30Y CMT swaps</td>
+<td>SOFR</td>
 </tr>
 <tr>
-<td><strong>KRONOS API</strong></td>
-<td>FastAPI</td>
-<td>8050 (ASGI)</td>
-<td>REST endpoints for all domain operations</td>
+<td><code>SOFR_SWAP</code></td>
+<td>USD</td>
+<td>SOFR overnight (NY Fed)</td>
+<td>1Y–30Y OIS swaps</td>
+<td>SOFR</td>
 </tr>
 <tr>
-<td><strong>ChatHub</strong></td>
-<td>FastAPI</td>
-<td>8060</td>
-<td>JupyterHub-style per-user chatbot process manager</td>
-</tr>
-<tr>
-<td><strong>UserProcess</strong></td>
-<td>FastAPI + Claude SDK</td>
-<td>9100-9999</td>
-<td>Isolated per-user AI conversation servers</td>
+<td><code>EUR_EURIBOR</code></td>
+<td>EUR</td>
+<td>Euribor 1/3/6/12M</td>
+<td>2Y–30Y EUR OIS swaps</td>
+<td>Euribor</td>
 </tr>
 </tbody>
 </table>
-<h2 id="pages">Pages</h2>
+<h3 id="oas-spread-curves-oasspreadcurve">OAS Spread Curves (<code>OASSpreadCurve</code>)</h3>
 <table>
 <thead>
 <tr>
-<th>Page</th>
-<th>Path</th>
-<th>Audience</th>
+<th>Name</th>
+<th>Base Curve</th>
+<th>Initial Spread</th>
+<th>Segment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CORP_IG</code></td>
+<td><code>UST_SPOT</code></td>
+<td>120 bps</td>
+<td>US Investment Grade Corporate</td>
+</tr>
+<tr>
+<td><code>CORP_HY</code></td>
+<td><code>UST_SPOT</code></td>
+<td>400 bps</td>
+<td>US High Yield Corporate</td>
+</tr>
+<tr>
+<td><code>MBS_AGENCY</code></td>
+<td><code>SOFR_SWAP</code></td>
+<td>35 bps</td>
+<td>Agency MBS (Fannie/Freddie)</td>
+</tr>
+<tr>
+<td><code>MBS_NONAGENCY</code></td>
+<td><code>UST_SPOT</code></td>
+<td>150 bps</td>
+<td>Non-Agency MBS</td>
+</tr>
+<tr>
+<td><code>EUR_CORP_IG</code></td>
+<td><code>EUR_EURIBOR</code></td>
+<td>100 bps</td>
+<td>EUR IG Corporate</td>
+</tr>
+<tr>
+<td><code>EM_SOVEREIGN_IG</code></td>
+<td><code>UST_SPOT</code></td>
+<td>180 bps</td>
+<td>EM Investment Grade Sovereign</td>
+</tr>
+<tr>
+<td><code>EM_SOVEREIGN_HY</code></td>
+<td><code>UST_SPOT</code></td>
+<td>500 bps</td>
+<td>EM High Yield Sovereign</td>
+</tr>
+<tr>
+<td><code>EM_CORP_USD</code></td>
+<td><code>UST_SPOT</code></td>
+<td>250 bps</td>
+<td>EM USD Corporate</td>
+</tr>
+<tr>
+<td><code>EM_CORP_USD_HY</code></td>
+<td><code>UST_SPOT</code></td>
+<td>600 bps</td>
+<td>EM USD HY Corporate</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Spreads are updated daily from the latest <code>SimpleQuote</code> observations after each data load.</p>
+</blockquote>
+<hr />
+<h2 id="data-loaders">Data Loaders</h2>
+<h3 id="load_corp_bondsrun"><code>load_corp_bonds.run()</code></h3>
+<p><strong>US Corporate Bonds → <code>UST_SPOT</code> + <code>CORP_IG</code> / <code>CORP_HY</code></strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Data</th>
+<th>API Key</th>
+<th>Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>treasury.gov</td>
+<td>Daily CMT par yield curve</td>
+<td>None</td>
+<td>Daily</td>
+</tr>
+<tr>
+<td>FRED</td>
+<td>ICE BofA Corp OAS (AAA→CCC)</td>
+<td>Required</td>
+<td>Daily</td>
+</tr>
+</tbody>
+</table>
+<p>FRED series loaded:</p>
+<pre><code class="language-python">FRED_CORP_OAS = {
+    &quot;CORP_OAS_IG&quot;:  &quot;BAMLC0A0CMEY&quot;,    # All IG OAS
+    &quot;CORP_OAS_BBB&quot;: &quot;BAMLC0A4CBBBEY&quot;,  # BBB OAS
+    &quot;CORP_OAS_HY&quot;:  &quot;BAMLH0A0HYM2EY&quot;,  # HY Master II OAS
+    # ... + AAA, AA, A, BB, B, CCC
+}
+</code></pre>
+<hr />
+<h3 id="load_mbsrun"><code>load_mbs.run()</code></h3>
+<p><strong>MBS → <code>SOFR_SWAP</code> + <code>MBS_AGENCY</code> / <code>MBS_NONAGENCY</code></strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Data</th>
+<th>API Key</th>
+<th>Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NY Fed</td>
+<td>SOFR overnight rate</td>
+<td>None</td>
+<td>Daily</td>
+</tr>
+<tr>
+<td>FRED</td>
+<td>SOFR OIS swap rates (1Y–30Y)</td>
+<td>Required</td>
+<td>Daily</td>
+</tr>
+<tr>
+<td>FRED</td>
+<td>ICE BofA MBS OAS</td>
+<td>Required</td>
+<td>Daily</td>
+</tr>
+</tbody>
+</table>
+<p>FRED series: <code>ICERATES1100USD{1Y,2Y,3Y,5Y,7Y,10Y,30Y}</code>, <code>BAMLMBS0A0CMBS</code></p>
+<hr />
+<h3 id="load_eur_bondsrun"><code>load_eur_bonds.run()</code></h3>
+<p><strong>EUR-denominated Bonds → <code>EUR_EURIBOR</code> + <code>EUR_CORP_IG</code></strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Data</th>
+<th>API Key</th>
+<th>Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ECB SDW</td>
+<td>AAA eurozone govt yield curve</td>
+<td>None</td>
+<td>Monthly</td>
+</tr>
+<tr>
+<td>FRED</td>
+<td>Euribor 1/3/6/12M</td>
+<td>Required</td>
+<td>Daily</td>
+</tr>
+<tr>
+<td>FRED</td>
+<td>EUR OIS swap rates (1Y–30Y)</td>
+<td>Required</td>
+<td>Daily</td>
+</tr>
+</tbody>
+</table>
+<p>ECB free API endpoint:</p>
+<pre><code>https://data-api.ecb.europa.eu/service/data/YC/
+  B.U2.EUR.4F.G_N_A.SV_C_YM.SR_{tenor}?format=csvdata
+</code></pre>
+<p>Tenors: <code>1Y</code>, <code>2Y</code>, <code>3Y</code>, <code>5Y</code>, <code>7Y</code>, <code>10Y</code>, <code>20Y</code>, <code>30Y</code></p>
+<hr />
+<h3 id="load_em_bondsrun"><code>load_em_bonds.run()</code></h3>
+<p><strong>Emerging Market USD Bonds → <code>UST_SPOT</code> (base) + EM OAS curves</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Data</th>
+<th>API Key</th>
+<th>Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>treasury.gov</td>
+<td>US Treasury CMT (base curve)</td>
+<td>None</td>
+<td>Daily</td>
+</tr>
+<tr>
+<td>World Bank</td>
+<td>Sovereign risk premium by country</td>
+<td>None</td>
+<td>Annual</td>
+</tr>
+<tr>
+<td>FRED</td>
+<td>ICE BofA EM OAS (IG, HY, total)</td>
+<td>Required</td>
+<td>Daily</td>
+</tr>
+</tbody>
+</table>
+<p>World Bank indicator: <code>FR.INR.RISK</code> (risk premium on lending)<br />
+Countries: BRA, MEX, ZAF, TUR, IDN, IND, CHN, COL, PER, POL</p>
+<p>FRED series: <code>BAMLEMCBPIOAS</code>, <code>BAMLEMHBHYCRPIOAS</code>, <code>BAMLEMIBHGCRPIOAS</code></p>
+<hr />
+<h2 id="daily-save-orchestrator">Daily Save Orchestrator</h2>
+<p><strong><code>daily_save.run()</code></strong> — the primary Celery/cron entry-point for end-of-day market data ingestion.</p>
+<pre><code class="language-python">from vaultdb_market.tasks.daily_save import run_today
+
+# Run all loaders for today
+results = run_today(fred_api_key=&quot;YOUR_KEY&quot;)
+# Returns: {&quot;valuation_date&quot;: &quot;2026-04-01&quot;, &quot;ust_spot_2026&quot;: 13, ..., &quot;total_rows&quot;: 847}
+</code></pre>
+<h3 id="execution-order">Execution order</h3>
+<pre><code>1. load_corp_bonds   → UST_SPOT rates + CORP OAS indices
+2. load_sofr         → SOFR overnight + SOFR averages
+3. load_mbs          → SOFR + MBS OAS
+4. load_eur_bonds    → ECB govt curve + Euribor + EUR swaps
+5. load_em_bonds     → Treasury base + World Bank + EM OAS
+6. _update_all_oas_curves → refresh all OASSpreadCurve.spread from latest quotes
+</code></pre>
+<h3 id="celery-beat-schedule-example">Celery beat schedule (example)</h3>
+<pre><code class="language-python">app.conf.beat_schedule[&quot;daily-market-save&quot;] = {
+    &quot;task&quot;: &quot;vaultdb_market.celery.daily_market_save&quot;,
+    &quot;schedule&quot;: crontab(minute=30, hour=18, day_of_week=&quot;1-5&quot;),  # 6:30 PM ET, Mon–Fri
+}
+</code></pre>
+<hr />
+<h2 id="programmatic-curve-builder">Programmatic Curve Builder</h2>
+<p>For in-memory curve construction (no DB, no quotes needed):</p>
+<pre><code class="language-python">from vaultdb_market.curve_builder import YieldCurveBuilder, bootstrap_from_rates
+
+# Fluent API
+handle = (
+    YieldCurveBuilder()
+    .add_deposit(1,  0.0530)   # 1M deposit
+    .add_deposit(3,  0.0525)   # 3M deposit
+    .add_deposit(6,  0.0512)   # 6M deposit
+    .add_future(1,   94.72)    # 1st IMM futures price
+    .add_future(2,   94.95)    # 2nd IMM futures price
+    .add_swap(24,    0.0485)   # 2Y swap
+    .add_swap(60,    0.0462)   # 5Y swap
+    .add_swap(120,   0.0448)   # 10Y swap
+    .add_swap(360,   0.0435)   # 30Y swap
+    .build(interpolation=&quot;LOG_LINEAR&quot;)
+)
+
+# Simple dict API
+handle = bootstrap_from_rates(
+    deposits={1: 0.053, 3: 0.052, 6: 0.051},
+    futures={1: 94.72, 2: 94.95},
+    swaps={24: 0.048, 60: 0.046, 120: 0.044, 240: 0.043, 360: 0.042},
+)
+
+# Inject into MarketEnvironment (bypasses DB lookup)
+market.load_curve_from_builder(&quot;MY_CUSTOM_CURVE&quot;, handle)
+</code></pre>
+<hr />
+<h2 id="marketenvironment-curve-api"><code>MarketEnvironment</code> Curve API</h2>
+<pre><code class="language-python">from vaultdb_asset.market_environment import MarketEnvironment
+
+market = MarketEnvironment()
+
+# Load all bond curves from DB in one shot (warms cache)
+status = market.load_all_bond_curves()
+
+# Get curve by bond segment
+handle = market.get_curve_for_segment(&quot;CORP_IG&quot;)    # UST_SPOT + IG OAS
+handle = market.get_curve_for_segment(&quot;MBS_AGENCY&quot;) # SOFR_SWAP + MBS OAS
+handle = market.get_curve_for_segment(&quot;EM_HY&quot;)      # UST_SPOT + EM HY OAS
+handle = market.get_curve_for_segment(&quot;EUR_IG&quot;)     # EUR_EURIBOR + IG OAS
+
+# Load a specific OASSpreadCurve from DB
+handle = market.load_oas_curve_from_db(&quot;CORP_HY&quot;)
+
+# Get spread-adjusted discount factors as torch tensor
+import torch
+yf = torch.tensor([1.0, 2.0, 5.0, 10.0], dtype=torch.float64)
+dfs = market.get_spread_adjusted_discount_factors(&quot;UST_SPOT&quot;, 0.015, yf)
+# → tensor of DFs with 150bps spread applied
+</code></pre>
+<h3 id="segment-curve-mapping">Segment → Curve mapping</h3>
+<table>
+<thead>
+<tr>
+<th><code>get_curve_for_segment()</code> key</th>
+<th>Resolved curve</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>UST</code></td>
+<td><code>UST_SPOT</code></td>
+</tr>
+<tr>
+<td><code>CORP_IG</code>, <code>CORP_BBB</code></td>
+<td><code>CORP_IG</code></td>
+</tr>
+<tr>
+<td><code>CORP_HY</code></td>
+<td><code>CORP_HY</code></td>
+</tr>
+<tr>
+<td><code>MBS_AGENCY</code></td>
+<td><code>MBS_AGENCY</code></td>
+</tr>
+<tr>
+<td><code>MBS_NONAGENCY</code></td>
+<td><code>MBS_NONAGENCY</code></td>
+</tr>
+<tr>
+<td><code>EUR</code>, <code>EUR_IG</code></td>
+<td><code>EUR_EURIBOR</code> / <code>EUR_CORP_IG</code></td>
+</tr>
+<tr>
+<td><code>EM_IG</code></td>
+<td><code>EM_SOVEREIGN_IG</code></td>
+</tr>
+<tr>
+<td><code>EM_HY</code></td>
+<td><code>EM_SOVEREIGN_HY</code></td>
+</tr>
+<tr>
+<td><code>EM_CORP</code></td>
+<td><code>EM_CORP_USD</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="fred-series-registry-data_sourcespy">FRED Series Registry (<code>data_sources.py</code>)</h2>
+<pre><code class="language-python">from vaultdb_market.data_sources import (
+    FRED_CORP_OAS,    # ICE BofA US Corp OAS (AAA, AA, A, BBB, IG, BB, B, CCC, HY)
+    FRED_MBS_OAS,     # ICE BofA Agency MBS OAS
+    FRED_EURIBOR,     # Euribor 1M / 3M / 6M / 12M
+    FRED_EUR_SWAPS,   # ICE EUR OIS swaps 1Y–30Y
+    FRED_EM_SPREADS,  # ICE BofA EM OAS (total, IG, HY)
+)
+</code></pre>
+<p>Get a free FRED API key at: <a href="https://fred.stlouisfed.org/docs/api/">https://fred.stlouisfed.org/docs/api/</a></p>
+<hr />
+<h2 id="related-files">Related Files</h2>
+<table>
+<thead>
+<tr>
+<th>File</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>AI Chatbot</td>
-<td><code>/chatbot</code></td>
-<td>All users</td>
-<td>Conversational AI for building workflows</td>
+<td><a href="../src/vaultdb_market/curve_builder.py"><code>curve_builder.py</code></a></td>
+<td><code>YieldCurveBuilder</code>, <code>bootstrap_from_rates</code>, <code>make_*_helper</code> factories</td>
 </tr>
 <tr>
-<td>Workflow Viewer</td>
-<td><code>/workflow?id=</code></td>
-<td>Actuaries, CIO</td>
-<td>Dedicated workflow inspection and approval</td>
+<td><a href="../src/vaultdb_market/curves.py"><code>curves.py</code></a></td>
+<td><code>YieldCurve</code>, <code>OASSpreadCurve</code>, <code>DiscountCurve</code> ORM models with <code>.calculate()</code></td>
 </tr>
 <tr>
-<td>Solvency Overview</td>
-<td><code>/</code></td>
-<td>PE partners, CRO</td>
-<td>Portfolio dashboard</td>
+<td><a href="../src/vaultdb_market/data_sources.py"><code>data_sources.py</code></a></td>
+<td>All FRED series IDs, NY Fed, ECB, Treasury URL registry</td>
 </tr>
 <tr>
-<td>Liability Portfolio</td>
-<td><code>/liability</code></td>
-<td>Actuaries</td>
-<td>Cash flow projections and reserves</td>
+<td><a href="../src/vaultdb_market/loaders.py"><code>loaders.py</code></a></td>
+<td>Raw fetch functions (FRED, NY Fed, CBOE, Treasury, ECB, World Bank)</td>
 </tr>
 <tr>
-<td>ALM Analysis</td>
-<td><code>/alm</code></td>
-<td>ALM committee, CIO</td>
-<td>Duration gap, KRD, spread analytics</td>
+<td><a href="../src/vaultdb_market/tasks/load_corp_bonds.py"><code>tasks/load_corp_bonds.py</code></a></td>
+<td>US Corp loader + UST_SPOT / CORP curve setup</td>
 </tr>
 <tr>
-<td>Trading &amp; Hedge Book</td>
-<td><code>/trading</code></td>
-<td>CIO, traders</td>
-<td>Hedge recommendations and positions</td>
+<td><a href="../src/vaultdb_market/tasks/load_mbs.py"><code>tasks/load_mbs.py</code></a></td>
+<td>MBS loader + SOFR_SWAP / MBS curve setup</td>
 </tr>
 <tr>
-<td>Risk (BSCR)</td>
-<td><code>/risk</code></td>
-<td>CRO, BMA</td>
-<td>Regulatory capital and stress testing</td>
+<td><a href="../src/vaultdb_market/tasks/load_eur_bonds.py"><code>tasks/load_eur_bonds.py</code></a></td>
+<td>EUR loader + ECB curve + EUR_EURIBOR setup</td>
 </tr>
 <tr>
-<td>Reports</td>
-<td><code>/reports</code></td>
-<td>Regulators, auditors</td>
-<td>GAAP/STAT/BSCR report generation</td>
+<td><a href="../src/vaultdb_market/tasks/load_em_bonds.py"><code>tasks/load_em_bonds.py</code></a></td>
+<td>EM loader + World Bank + EM OAS curve setup</td>
+</tr>
+<tr>
+<td><a href="../src/vaultdb_market/tasks/daily_save.py"><code>tasks/daily_save.py</code></a></td>
+<td>Daily orchestrator — runs all loaders + refreshes OAS spreads</td>
+</tr>
+<tr>
+<td><a href="../src/vaultdb_market/tasks/load_all.py"><code>tasks/load_all.py</code></a></td>
+<td>Legacy master loader (SOFR, Treasury, CBOE + bond curves)</td>
 </tr>
 </tbody>
 </table>
-<h2 id="documentation-index">Documentation Index</h2>
-<ul>
-<li><a href="technology/chathub.md">ChatHub Architecture</a> — Per-user process management and security model</li>
-<li><a href="technology/chatbot_engine.md">Chatbot Engine</a> — Claude SDK integration, tools, and workflow proposal</li>
-<li><a href="technology/api_reference.md">API Reference</a> — Complete KRONOS REST API endpoint reference</li>
-<li><a href="compliance/approval_integration.md">Approval Integration</a> — How the dashboard integrates with the core approval engine</li>
-</ul>
                     </div>
                 </div>
             </div>

@@ -477,38 +477,98 @@
                     <div class="col-lg-3">
                         <div class="side_accordian doc-nav"><ul class="nav flex-column">
         <li class="nav-item">
-            <a class="nav-link  " href="README.html">
-                <i class="fa-solid fa-house me-2"></i> Readme
+            <a class="nav-link  " href="AUTHENTICATION_GUIDE.html">
+                <i class="fa-solid fa-house me-2"></i> Authentication Guide
             </a>
         </li>
         
         <li class="nav-item">
-            <a class="nav-link  ps-4" href="compliance_approval_integration.html">
-                <i class="fa-solid fa-shield-halved me-2"></i> Approval Integration
+            <a class="nav-link  " href="CODEOWNERS_SETUP.html">
+                <i class="fa-solid fa-house me-2"></i> Codeowners Setup
             </a>
         </li>
         
         <li class="nav-item">
-            <a class="nav-link active " href="index.html">
+            <a class="nav-link  " href="abstract.html">
+                <i class="fa-solid fa-house me-2"></i> Abstract
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  ps-4" href="compliance_approval_controls.html">
+                <i class="fa-solid fa-shield-halved me-2"></i> Approval Controls
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="ducklake.html">
+                <i class="fa-solid fa-house me-2"></i> Ducklake
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="ducklake_evaluation.html">
+                <i class="fa-solid fa-house me-2"></i> Ducklake Evaluation
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="glittery-brewing-riddle.html">
+                <i class="fa-solid fa-house me-2"></i> Glittery Brewing Riddle
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="implementation-plan-unified-runners.html">
+                <i class="fa-solid fa-house me-2"></i> Implementation Plan Unified Runners
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="index.html">
                 <i class="fa-solid fa-house me-2"></i> Index
             </a>
         </li>
         
         <li class="nav-item">
-            <a class="nav-link  ps-4" href="technology_api_reference.html">
-                <i class="fa-solid fa-code me-2"></i> Api Reference
+            <a class="nav-link  " href="logger_usage.html">
+                <i class="fa-solid fa-house me-2"></i> Logger Usage
             </a>
         </li>
         
         <li class="nav-item">
-            <a class="nav-link  ps-4" href="technology_chatbot_engine.html">
-                <i class="fa-solid fa-code me-2"></i> Chatbot Engine
+            <a class="nav-link active " href="oauth2_authentication_guide.html">
+                <i class="fa-solid fa-house me-2"></i> Oauth2 Authentication Guide
             </a>
         </li>
         
         <li class="nav-item">
-            <a class="nav-link  ps-4" href="technology_chathub.html">
-                <i class="fa-solid fa-code me-2"></i> Chathub
+            <a class="nav-link  " href="task_runners_integration_guide.html">
+                <i class="fa-solid fa-house me-2"></i> Task Runners Integration Guide
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="task_scheduling.html">
+                <i class="fa-solid fa-house me-2"></i> Task Scheduling
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  ps-4" href="technology_approval.html">
+                <i class="fa-solid fa-code me-2"></i> Approval
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  ps-4" href="technology_workflow.html">
+                <i class="fa-solid fa-code me-2"></i> Workflow
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="workflow-approval.html">
+                <i class="fa-solid fa-house me-2"></i> Workflow Approval
             </a>
         </li>
         
@@ -523,138 +583,355 @@
                         <nav aria-label="breadcrumb" class="mb-5">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="../../../index.html">Home</a></li>
-                                <li class="breadcrumb-item"><a href="#">dashboard</a></li>
-                                <li class="breadcrumb-item active">Index <span class="persona-badge">index</span></li>
+                                <li class="breadcrumb-item"><a href="#">core</a></li>
+                                <li class="breadcrumb-item active">Oauth2 Authentication Guide <span class="persona-badge">index</span></li>
                             </ol>
                         </nav>
-                        <h1 id="kronos-re-dashboard">KRONOS Re Dashboard</h1>
-<p>The KRONOS Re Dashboard is the primary user interface for the platform. It is a Python Dash application backed by a FastAPI router, serving actuaries, CIOs, risk officers, and regulators.</p>
-<h2 id="platform-role">Platform Role</h2>
-<pre class="mermaid">graph LR
-    subgraph &quot;User-Facing&quot;
-        DASH[&quot;KRONOS Dashboard<br/>(Port 8050)<br/>Application UI&quot;]
-        WEB[&quot;vaultdb.ai<br/>Marketing Website&quot;]
-    end
-
-    subgraph &quot;Backend&quot;
-        API[&quot;KRONOS FastAPI Router&quot;]
-        CORE[&quot;VaultDB Core API<br/>(Port 8000)&quot;]
-        HUB[&quot;ChatHub<br/>(Port 8060)&quot;]
-    end
-
-    DASH --> API
-    DASH --> HUB
-    API --> CORE
-    WEB -.->|docs only| DASH
-</pre>
+                        <h1 id="oidc-and-github-authentication-guide">OIDC and GitHub Authentication Guide</h1>
+<h2 id="overview">Overview</h2>
+<p>VaultDB supports OpenID Connect (OIDC) and GitHub authentication. This allows users to connect with any OIDC provider (Google, Microsoft, Okta, etc.) and automatically manage AWS credentials when providers return AWS access keys or via Cognito Identity Pools.</p>
+<h2 id="features">Features</h2>
 <ul>
-<li><strong>Dashboard</strong> is where all KRONOS Re features are accessed: chatbot, workflow approval, ALM analysis, risk, trading, and reporting.</li>
-<li><strong>vaultdb-web</strong> is the public marketing site only.</li>
+<li><strong>OIDC Authorization Code Flow</strong>: Standard OIDC authentication</li>
+<li><strong>Identity Bridging</strong>: Automatically swap identity tokens for AWS temporary credentials</li>
+<li><strong>Token Refresh</strong>: Automatic token refresh using refresh tokens</li>
+<li><strong>AWS Credential Management</strong>: Automatically creates AWS profiles when authentication returns AWS credentials</li>
+<li><strong>Flexible Authentication</strong>: Supports authorization code, direct tokens, or AWS credentials</li>
+<li><strong>S3 Integration</strong>: Seamless S3 access using authenticated AWS credentials</li>
 </ul>
-<h2 id="architecture">Architecture</h2>
+<h2 id="quick-start">Quick Start</h2>
+<h3 id="1-configure-oidc-provider">1. Configure OIDC Provider</h3>
+<p>Set the following environment variables:</p>
+<pre><code class="language-bash">export AUTH_CLIENT_ID=&quot;your-client-id&quot;
+export AUTH_CLIENT_SECRET=&quot;your-client-secret&quot;
+export AUTH_AUTHORIZATION_URL=&quot;https://oauth.provider.com/authorize&quot;
+export AUTH_TOKEN_URL=&quot;https://oauth.provider.com/token&quot;
+export AUTH_REDIRECT_URI=&quot;http://localhost:8080/callback&quot;
+export AUTH_SCOPE=&quot;openid profile email&quot;
+export AUTH_AWS_PROFILE=&quot;vaultdb-auth&quot;  # Optional
+</code></pre>
+<h3 id="2-basic-usage-with-authorization-code-flow">2. Basic Usage with Authorization Code Flow</h3>
+<pre><code class="language-python">from vaultdb.core import Application, AuthType
+from vaultdb.auth import Authenticator
+
+# Step 1: Initialize authenticator with config from environment
+authenticator = Authenticator()
+
+# Step 2: Get authorization URL for user to visit
+auth_url = authenticator.get_authorization_url()
+print(f&quot;Visit this URL to authenticate: {auth_url}&quot;)
+
+# Step 3: Handle callback and connect
+# (Simplification: Authenticator can handle the local browser flow automatically)
+Application.connect(
+    catalog=&quot;my_database&quot;,
+    role=&quot;vaultdb&quot;,
+    auth=AuthType.OIDC
+)
+</code></pre>
+<h3 id="3-github-usage">3. GitHub Usage</h3>
+<pre><code class="language-python">from vaultdb.core import Application, AuthType
+
+Application.connect(
+    catalog=&quot;my_database&quot;,
+    role=&quot;vaultdb&quot;,
+    auth_token=&quot;gho_your_github_token&quot;,
+    auth=AuthType.GITHUB
+)
+</code></pre>
+<h3 id="4-direct-aws-credentials">4. Direct AWS Credentials</h3>
+<p>If your provider returns AWS credentials directly:</p>
+<pre><code class="language-python">Application.connect(
+    catalog=&quot;my_database&quot;,
+    role=&quot;vaultdb&quot;,
+    auth=AuthType.OIDC,
+    oauth2_aws_access_key_id=&quot;AKIAIOSFODNN7EXAMPLE&quot;,
+    oauth2_aws_secret_access_key=&quot;wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY&quot;,
+    oauth2_aws_session_token=&quot;session-token&quot;,  # Optional
+)
+</code></pre>
+<h2 id="detailed-usage">Detailed Usage</h2>
+<h3 id="authenticator-class">Authenticator Class</h3>
+<p>The <code>Authenticator</code> class (in <code>vaultdb.auth</code>) provides full control over OIDC authentication:</p>
+<pre><code class="language-python">from vaultdb.auth import Authenticator
+
+authenticator = Authenticator(
+    client_id=&quot;your-client-id&quot;,
+    client_secret=&quot;your-client-secret&quot;,
+    authorization_url=&quot;https://oauth.provider.com/authorize&quot;,
+    token_url=&quot;https://oauth.provider.com/token&quot;,
+    redirect_uri=&quot;http://localhost:8080/callback&quot;,
+    scope=&quot;openid profile email&quot;,
+    bucket=&quot;your-s3-bucket&quot;,
+    aws_region=&quot;us-east-1&quot;,
+    user_identity_pool_id=&quot;us-east-1:xxxx-xxxx&quot;, # For AWS bridging
+)
+</code></pre>
+<h3 id="getting-authorization-url">Getting Authorization URL</h3>
+<pre><code class="language-python"># Generate URL with random state (recommended)
+auth_url = authenticator.get_authorization_url()
+
+# Or with custom state for CSRF protection
+auth_url = authenticator.get_authorization_url(state=&quot;my-custom-state&quot;)
+</code></pre>
+<h3 id="authenticating">Authenticating</h3>
+<pre><code class="language-python"># Method 1: Authorization code exchange
+authenticator.authenticate(authorization_code=&quot;code-from-provider&quot;)
+
+# Method 2: Direct access token (Bridges to AWS if identity pool configured)
+authenticator.authenticate(auth_token=&quot;access-token&quot;)
+
+# Method 3: Direct AWS credentials
+authenticator.authenticate(
+    aws_access_key_id=&quot;AKIA...&quot;,
+    aws_secret_access_key=&quot;...&quot;,
+    aws_session_token=&quot;...&quot;
+)
+</code></pre>
+<h3 id="aws-profile-creation">AWS Profile Creation</h3>
+<p>When authentication returns AWS credentials, the authenticator automatically creates an AWS profile in <code>~/.aws/credentials</code>:</p>
+<pre><code class="language-python"># The profile can then be used by boto3 and AWS CLI:
+import boto3
+session = boto3.Session(profile_name=&quot;vaultdb-auth&quot;)
+s3_client = session.client(&quot;s3&quot;)
+</code></pre>
+<h3 id="s3-file-download">S3 File Download</h3>
+<pre><code class="language-python"># Download file from S3 using authenticated credentials
+authenticator.download_file(
+    s3_key=&quot;path/to/file.txt&quot;,
+    local_path=&quot;/local/path/to/file.txt&quot;
+)
+</code></pre>
+<h3 id="duckdb-secrets">DuckDB Secrets</h3>
+<p>The authenticator can create DuckDB secrets for S3 access:</p>
+<pre><code class="language-python">import duckdb
+
+connection = duckdb.connect(&quot;:memory:&quot;)
+authenticator.create_secrets(connection)
+# Now DuckDB can access S3 using the AWS credentials
+</code></pre>
+<h2 id="integration-examples">Integration Examples</h2>
+<h2 id="integration-examples_1">Integration Examples</h2>
+<h3 id="web-application-integration">Web Application Integration</h3>
+<pre><code class="language-python">from flask import Flask, redirect, request
+from vaultdb.core import Application, AuthType
+from vaultdb.auth import Authenticator
+
+app = Flask(__name__)
+
+# Initialize authenticator
+authenticator = Authenticator()
+
+@app.route(&quot;/login&quot;)
+def login():
+    &quot;&quot;&quot;Redirect user to OAuth provider.&quot;&quot;&quot;
+    auth_url = authenticator.get_authorization_url()
+    return redirect(auth_url)
+
+@app.route(&quot;/callback&quot;)
+def callback():
+    &quot;&quot;&quot;Handle OAuth callback.&quot;&quot;&quot;
+    code = request.args.get(&quot;code&quot;)
+
+    # Connect to VaultDB with OIDC
+    Application.connect(
+        catalog=&quot;my_database&quot;,
+        role=&quot;vaultdb&quot;,
+        auth=AuthType.OIDC,
+        oauth2_authorization_code=code,
+    )
+
+    return &quot;Authentication successful!&quot;
+</code></pre>
+<h3 id="command-line-application">Command-Line Application</h3>
+<pre><code class="language-python">import webbrowser
+from vaultdb.core import Application, AuthType
+from vaultdb.auth import Authenticator
+
+# Initialize authenticator
+authenticator = Authenticator()
+
+# This will launch the browser and start a local server to capture the code
+Application.connect(
+    catalog=&quot;my_database&quot;,
+    role=&quot;vaultdb&quot;,
+    auth=AuthType.OIDC
+)
+</code></pre>
+<h2 id="configuration">Configuration</h2>
+<h3 id="environment-variables">Environment Variables</h3>
 <table>
 <thead>
 <tr>
-<th>Component</th>
-<th>Technology</th>
-<th>Port</th>
-<th>Purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Dash UI</strong></td>
-<td>Plotly Dash + Bootstrap</td>
-<td>8050 (WSGI)</td>
-<td>Multi-page analytical frontend</td>
-</tr>
-<tr>
-<td><strong>KRONOS API</strong></td>
-<td>FastAPI</td>
-<td>8050 (ASGI)</td>
-<td>REST endpoints for all domain operations</td>
-</tr>
-<tr>
-<td><strong>ChatHub</strong></td>
-<td>FastAPI</td>
-<td>8060</td>
-<td>JupyterHub-style per-user chatbot process manager</td>
-</tr>
-<tr>
-<td><strong>UserProcess</strong></td>
-<td>FastAPI + Claude SDK</td>
-<td>9100-9999</td>
-<td>Isolated per-user AI conversation servers</td>
-</tr>
-</tbody>
-</table>
-<h2 id="pages">Pages</h2>
-<table>
-<thead>
-<tr>
-<th>Page</th>
-<th>Path</th>
-<th>Audience</th>
+<th>Variable</th>
 <th>Description</th>
+<th>Required</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>AI Chatbot</td>
-<td><code>/chatbot</code></td>
-<td>All users</td>
-<td>Conversational AI for building workflows</td>
+<td><code>AUTH_CLIENT_ID</code></td>
+<td>Client ID</td>
+<td>Yes</td>
 </tr>
 <tr>
-<td>Workflow Viewer</td>
-<td><code>/workflow?id=</code></td>
-<td>Actuaries, CIO</td>
-<td>Dedicated workflow inspection and approval</td>
+<td><code>AUTH_CLIENT_SECRET</code></td>
+<td>Client Secret</td>
+<td>Yes</td>
 </tr>
 <tr>
-<td>Solvency Overview</td>
-<td><code>/</code></td>
-<td>PE partners, CRO</td>
-<td>Portfolio dashboard</td>
+<td><code>AUTH_AUTHORIZATION_URL</code></td>
+<td>Authorization endpoint</td>
+<td>Yes</td>
 </tr>
 <tr>
-<td>Liability Portfolio</td>
-<td><code>/liability</code></td>
-<td>Actuaries</td>
-<td>Cash flow projections and reserves</td>
+<td><code>AUTH_TOKEN_URL</code></td>
+<td>Token endpoint</td>
+<td>Yes</td>
 </tr>
 <tr>
-<td>ALM Analysis</td>
-<td><code>/alm</code></td>
-<td>ALM committee, CIO</td>
-<td>Duration gap, KRD, spread analytics</td>
+<td><code>AUTH_REDIRECT_URI</code></td>
+<td>Redirect URI</td>
+<td>Yes</td>
 </tr>
 <tr>
-<td>Trading &amp; Hedge Book</td>
-<td><code>/trading</code></td>
-<td>CIO, traders</td>
-<td>Hedge recommendations and positions</td>
+<td><code>AUTH_SCOPE</code></td>
+<td>Scopes (default: "openid profile email")</td>
+<td>No</td>
 </tr>
 <tr>
-<td>Risk (BSCR)</td>
-<td><code>/risk</code></td>
-<td>CRO, BMA</td>
-<td>Regulatory capital and stress testing</td>
+<td><code>AUTH_AWS_PROFILE</code></td>
+<td>AWS profile name (default: "vaultdb-auth")</td>
+<td>No</td>
 </tr>
 <tr>
-<td>Reports</td>
-<td><code>/reports</code></td>
-<td>Regulators, auditors</td>
-<td>GAAP/STAT/BSCR report generation</td>
+<td><code>AWS_DEFAULT_REGION</code></td>
+<td>AWS region (default: "us-east-1")</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>USER_BUCKET</code></td>
+<td>S3 bucket name</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>USER_IDENTITY_POOL_ID</code></td>
+<td>Cognito Identity Pool for bridging</td>
+<td>No</td>
 </tr>
 </tbody>
 </table>
-<h2 id="documentation-index">Documentation Index</h2>
+<h2 id="oidc-provider-examples">OIDC Provider Examples</h2>
+<h3 id="google">Google</h3>
+<pre><code class="language-python">authenticator = Authenticator(
+    client_id=&quot;your-google-client-id&quot;,
+    client_secret=&quot;your-google-client-secret&quot;,
+    authorization_url=&quot;https://accounts.google.com/o/oauth2/v2/auth&quot;,
+    token_url=&quot;https://oauth2.googleapis.com/token&quot;,
+    redirect_uri=&quot;http://localhost:8080/callback&quot;,
+)
+</code></pre>
+<h3 id="microsoft-azure-ad-entra-id">Microsoft Azure AD (Entra ID)</h3>
+<pre><code class="language-python">authenticator = Authenticator(
+    client_id=&quot;your-azure-client-id&quot;,
+    client_secret=&quot;your-azure-client-secret&quot;,
+    authorization_url=&quot;https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize&quot;,
+    token_url=&quot;https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token&quot;,
+    redirect_uri=&quot;http://localhost:8080/callback&quot;,
+)
+</code></pre>
+<h3 id="okta">Okta</h3>
+<pre><code class="language-python">authenticator = Authenticator(
+    client_id=&quot;your-okta-client-id&quot;,
+    authorization_url=&quot;https://{yourOktaDomain}/oauth2/default/v1/authorize&quot;,
+    token_url=&quot;https://{yourOktaDomain}/oauth2/default/v1/token&quot;,
+    redirect_uri=&quot;http://localhost:8080/callback&quot;,
+)
+</code></pre>
+<h2 id="aws-credentials-from-oauth">AWS Credentials from OAuth</h2>
+<p>Some OAuth providers return AWS credentials directly in the token response. The authenticator automatically:</p>
+<ol>
+<li>Extracts AWS credentials from the token response</li>
+<li>Creates an AWS profile</li>
+<li>Stores credentials in settings for boto3 clients</li>
+<li>Enables S3 access and job submission to AWS</li>
+</ol>
+<h3 id="token-response-format">Token Response Format</h3>
+<p>The authenticator looks for AWS credentials in these formats:</p>
+<pre><code class="language-json">{
+  &quot;access_token&quot;: &quot;...&quot;,
+  &quot;aws_credentials&quot;: {
+    &quot;access_key_id&quot;: &quot;AKIAIOSFODNN7EXAMPLE&quot;,
+    &quot;secret_access_key&quot;: &quot;wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY&quot;,
+    &quot;session_token&quot;: &quot;session-token&quot;
+  }
+}
+</code></pre>
+<p>Or:</p>
+<pre><code class="language-json">{
+  &quot;access_token&quot;: &quot;...&quot;,
+  &quot;aws&quot;: {
+    &quot;AccessKeyId&quot;: &quot;AKIAIOSFODNN7EXAMPLE&quot;,
+    &quot;SecretAccessKey&quot;: &quot;wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY&quot;,
+    &quot;SessionToken&quot;: &quot;session-token&quot;
+  }
+}
+</code></pre>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="common-issues">Common Issues</h3>
+<ol>
+<li><strong>"OAuth token exchange failed"</strong></li>
+<li>Verify client_id, client_secret, and redirect_uri match provider configuration</li>
+<li>Check that authorization code hasn't expired (usually expires quickly)</li>
+<li>
+<p>Ensure token_url is correct</p>
+</li>
+<li>
+<p><strong>"No refresh token available"</strong></p>
+</li>
+<li>Some providers require specific scopes to get refresh tokens</li>
+<li>
+<p>Check provider documentation for refresh token requirements</p>
+</li>
+<li>
+<p><strong>AWS profile not created</strong></p>
+</li>
+<li>Verify AWS credentials were returned by OAuth provider</li>
+<li>Check file permissions on <code>~/.aws/</code> directory</li>
+<li>
+<p>Ensure <code>~/.aws/credentials</code> is writable</p>
+</li>
+<li>
+<p><strong>S3 access fails</strong></p>
+</li>
+<li>Verify AWS credentials are valid</li>
+<li>Check IAM permissions for S3 access</li>
+<li>Ensure bucket name is correct</li>
+</ol>
+<h3 id="debugging">Debugging</h3>
+<p>Enable debug logging:</p>
+<pre><code class="language-python">import logging
+logging.basicConfig(level=logging.DEBUG)
+</code></pre>
+<h2 id="security-considerations">Security Considerations</h2>
+<ol>
+<li><strong>Client Secret</strong>: Never commit client secrets to version control. Use environment variables.</li>
+<li><strong>Redirect URI</strong>: Always use HTTPS in production.</li>
+<li><strong>State Parameter</strong>: Always use state parameter for CSRF protection.</li>
+<li><strong>AWS Credentials</strong>: AWS profiles are created with 600 permissions.</li>
+</ol>
+<h2 id="testing">Testing</h2>
+<p>See <code>tests/auth/test_authenticator.py</code> for comprehensive test examples.</p>
+<p>Run tests:</p>
+<pre><code class="language-bash">python -m pytest tests/auth/test_oauth2.py -v
+</code></pre>
+<h2 id="api-reference">API Reference</h2>
+<p>See <code>src/vaultdb/auth/authenticator.py</code> for complete API documentation.</p>
+<h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="technology/chathub.md">ChatHub Architecture</a> — Per-user process management and security model</li>
-<li><a href="technology/chatbot_engine.md">Chatbot Engine</a> — Claude SDK integration, tools, and workflow proposal</li>
-<li><a href="technology/api_reference.md">API Reference</a> — Complete KRONOS REST API endpoint reference</li>
-<li><a href="compliance/approval_integration.md">Approval Integration</a> — How the dashboard integrates with the core approval engine</li>
+<li><a href="AUTHENTICATION_GUIDE.md">Main Authentication Guide</a></li>
+<li><a href="task_runners_integration_guide.md">Task Runners Integration Guide</a></li>
+<li><a href="data_module_usage_guide.md">Data Module Usage Guide</a></li>
 </ul>
                     </div>
                 </div>

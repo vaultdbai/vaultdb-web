@@ -779,7 +779,7 @@
             
         <div class="mp-stat">
             <i class="fa-solid fa-wand-magic-sparkles"></i>
-            <span class="count">17</span>
+            <span class="count">19</span>
             <span class="label">Skills</span>
         </div>
         
@@ -791,7 +791,7 @@
         
         <div class="mp-stat">
             <i class="fa-solid fa-plug"></i>
-            <span class="count">15</span>
+            <span class="count">17</span>
             <span class="label">Plugins</span>
         </div>
         
@@ -806,7 +806,7 @@
                 <i class="fa-solid fa-wand-magic-sparkles"></i>
                 <h3>Skills</h3>
                 <p>Reusable Claude Code instructions for actuarial workflows</p>
-                <span class="mp-cat-count">17 skills available</span>
+                <span class="mp-cat-count">19 skills available</span>
             </a>
         </div>
         
@@ -824,7 +824,7 @@
                 <i class="fa-solid fa-plug"></i>
                 <h3>Plugins</h3>
                 <p>KRONOS chatbot integrations and workflow extensions</p>
-                <span class="mp-cat-count">15 plugins available</span>
+                <span class="mp-cat-count">17 plugins available</span>
             </a>
         </div>
         
@@ -973,6 +973,32 @@
     </div>
     
     <div class="col-lg-4 col-md-6 mb-4 mp-item"
+         data-name="research agent"
+         data-desc="extensible research agent for discovering and downloading insurance documents, prospectuses, sec filings, and regulatory data."
+         data-tags="research,prospectus,sec-edgar,serff,naic,insurance,regulatory,crawler,document-discovery">
+        <div class="mp-card">
+            <div class="mp-card-header">
+                <i class="fa-solid fa-magnifying-glass-chart"></i>
+                <h4>Research Agent</h4>
+                <span class="mp-version">v1.0.0</span>
+                <span class="mp-featured">Featured</span>
+            </div>
+            <p class="mp-card-desc">Extensible research agent for discovering and downloading insurance documents, prospectuses, SEC filings, and regulatory data.</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">research</span><span class="mp-card-tag">prospectus</span><span class="mp-card-tag">sec-edgar</span><span class="mp-card-tag">serff</span><span class="mp-card-tag">naic</span><span class="mp-card-tag">insurance</span><span class="mp-card-tag">regulatory</span><span class="mp-card-tag">crawler</span><span class="mp-card-tag">document-discovery</span></div>
+            <div class="mp-card-meta">
+                <span><i class="fa-solid fa-user"></i>VaultDB</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>core, ingestion, assumptions, liability, valuation, scenario</span>
+            </div>
+            <div class="mp-install">
+                <code>vaultdb-skills add https://github.com/vaultdbai/skills --skill research</code>
+                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-4 mp-item"
          data-name="financial quant modeling"
          data-desc="elite quantitative finance engineer with expertise across derivatives pricing, structured products (abs/mbs/cmbs/clo/cds), arbitrage, hedging, and regulatory capital (rwa/rac/tier 1). builds production-grade pricing engines in python and c++ using pytorch tensors for performance. implements full instrument, quote, curve, and vol-surface infrastructure with unit tests and market data loaders. deep knowledge of greeks, intex, and private equity analytics.
 "
@@ -993,6 +1019,32 @@
             </div>
             <div class="mp-install">
                 <code>vaultdb-skills add https://github.com/vaultdbai/skills --skill quant-modeling</code>
+                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-4 mp-item"
+         data-name="kronos intelligence"
+         data-desc="intelligent data sampling, inforce generation, census cleaning, prospectus analysis, and workflow builder for insurance profitability modeling."
+         data-tags="intelligence,inforce,prospectus,data-sampling,census-cleaning,workflow,profitability,ollama">
+        <div class="mp-card">
+            <div class="mp-card-header">
+                <i class="fa-solid fa-brain"></i>
+                <h4>KRONOS Intelligence</h4>
+                <span class="mp-version">v1.0.0</span>
+                <span class="mp-featured">Featured</span>
+            </div>
+            <p class="mp-card-desc">Intelligent data sampling, inforce generation, census cleaning, prospectus analysis, and workflow builder for insurance profitability modeling.</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">intelligence</span><span class="mp-card-tag">inforce</span><span class="mp-card-tag">prospectus</span><span class="mp-card-tag">data-sampling</span><span class="mp-card-tag">census-cleaning</span><span class="mp-card-tag">workflow</span><span class="mp-card-tag">profitability</span><span class="mp-card-tag">ollama</span></div>
+            <div class="mp-card-meta">
+                <span><i class="fa-solid fa-user"></i>VaultDB</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>all</span>
+            </div>
+            <div class="mp-install">
+                <code>vaultdb-skills add https://github.com/vaultdbai/skills --skill kronos-intelligence</code>
                 <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
                     <i class="fa-solid fa-copy"></i>
                 </button>
@@ -1079,24 +1131,24 @@
     </div>
     
     <div class="col-lg-4 col-md-6 mb-4 mp-item"
-         data-name="insurance browser"
-         data-desc="intelligent web browser agent for discovering and downloading insurance prospectuses, sec filings, and regulatory documents."
-         data-tags="browser,insurance,prospectus,sec-edgar,web-crawling,documents">
+         data-name="kronos intelligence"
+         data-desc="ollama-powered data sampling, intelligent inforce generation, census cleaning, prospectus analysis, and workflow suggestion engine."
+         data-tags="intelligence,inforce,prospectus,data-sampling,census-cleaning,workflow,ollama,profitability">
         <div class="mp-card">
             <div class="mp-card-header">
-                <i class="fa-solid fa-globe"></i>
-                <h4>Insurance Browser</h4>
+                <i class="fa-solid fa-brain"></i>
+                <h4>KRONOS Intelligence</h4>
                 <span class="mp-version">v1.0.0</span>
                 <span class="mp-featured">Featured</span>
             </div>
-            <p class="mp-card-desc">Intelligent web browser agent for discovering and downloading insurance prospectuses, SEC filings, and regulatory documents.</p>
-            <div class="mp-card-tags"><span class="mp-card-tag">browser</span><span class="mp-card-tag">insurance</span><span class="mp-card-tag">prospectus</span><span class="mp-card-tag">sec-edgar</span><span class="mp-card-tag">web-crawling</span><span class="mp-card-tag">documents</span></div>
+            <p class="mp-card-desc">Ollama-powered data sampling, intelligent inforce generation, census cleaning, prospectus analysis, and workflow suggestion engine.</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">intelligence</span><span class="mp-card-tag">inforce</span><span class="mp-card-tag">prospectus</span><span class="mp-card-tag">data-sampling</span><span class="mp-card-tag">census-cleaning</span><span class="mp-card-tag">workflow</span><span class="mp-card-tag">ollama</span><span class="mp-card-tag">profitability</span></div>
             <div class="mp-card-meta">
                 <span><i class="fa-solid fa-user"></i>VaultDB</span>
-                <span><i class="fa-solid fa-puzzle-piece"></i>ingestion, assumptions, liability</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>all</span>
             </div>
             <div class="mp-install">
-                <code>claude mcp add insurance-browser -- python /vaultdb/marketplace/mcp-servers/servers/insurance-browser/server.py</code>
+                <code>claude mcp add kronos-intelligence -- python /vaultdb/marketplace/mcp-servers/servers/kronos-intelligence/server.py</code>
                 <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
                     <i class="fa-solid fa-copy"></i>
                 </button>
@@ -1403,6 +1455,58 @@
             </div>
             <div class="mp-install">
                 <code>claude plugin install reporting</code>
+                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-4 mp-item"
+         data-name="kronos intelligence"
+         data-desc="intelligent data sampling, inforce generation, census cleaning, prospectus analysis, and dynamic workflow builder for insurance profitability modeling."
+         data-tags="intelligence,inforce,prospectus,data-sampling,census-cleaning,workflow,profitability,ollama">
+        <div class="mp-card">
+            <div class="mp-card-header">
+                <i class="fa-solid fa-brain"></i>
+                <h4>KRONOS Intelligence</h4>
+                <span class="mp-version">v1.0.0</span>
+                <span class="mp-featured">Featured</span>
+            </div>
+            <p class="mp-card-desc">Intelligent data sampling, inforce generation, census cleaning, prospectus analysis, and dynamic workflow builder for insurance profitability modeling.</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">intelligence</span><span class="mp-card-tag">inforce</span><span class="mp-card-tag">prospectus</span><span class="mp-card-tag">data-sampling</span><span class="mp-card-tag">census-cleaning</span><span class="mp-card-tag">workflow</span><span class="mp-card-tag">profitability</span><span class="mp-card-tag">ollama</span></div>
+            <div class="mp-card-meta">
+                <span><i class="fa-solid fa-user"></i>VaultDB</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>all</span>
+            </div>
+            <div class="mp-install">
+                <code>claude plugin install kronos-intelligence</code>
+                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-4 mp-item"
+         data-name="research agent"
+         data-desc="extensible research agent for discovering and downloading insurance documents, prospectuses, sec filings, and regulatory data."
+         data-tags="research,prospectus,sec-edgar,serff,naic,insurance,crawler,regulatory,ollama">
+        <div class="mp-card">
+            <div class="mp-card-header">
+                <i class="fa-solid fa-magnifying-glass-chart"></i>
+                <h4>Research Agent</h4>
+                <span class="mp-version">v1.0.0</span>
+                <span class="mp-featured">Featured</span>
+            </div>
+            <p class="mp-card-desc">Extensible research agent for discovering and downloading insurance documents, prospectuses, SEC filings, and regulatory data.</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">research</span><span class="mp-card-tag">prospectus</span><span class="mp-card-tag">sec-edgar</span><span class="mp-card-tag">serff</span><span class="mp-card-tag">naic</span><span class="mp-card-tag">insurance</span><span class="mp-card-tag">crawler</span><span class="mp-card-tag">regulatory</span><span class="mp-card-tag">ollama</span></div>
+            <div class="mp-card-meta">
+                <span><i class="fa-solid fa-user"></i>VaultDB</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>core, assumptions, scenario</span>
+            </div>
+            <div class="mp-install">
+                <code>claude plugin install research</code>
                 <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
                     <i class="fa-solid fa-copy"></i>
                 </button>

@@ -791,23 +791,25 @@
         <div class="mp-tags">
             <button class="mp-tag-btn active" data-tag="all">All</button>
 <button class="mp-tag-btn" data-tag="analytics">analytics</button>
-<button class="mp-tag-btn" data-tag="browser">browser</button>
+<button class="mp-tag-btn" data-tag="census-cleaning">census-cleaning</button>
 <button class="mp-tag-btn" data-tag="curves">curves</button>
 <button class="mp-tag-btn" data-tag="data">data</button>
-<button class="mp-tag-btn" data-tag="documents">documents</button>
+<button class="mp-tag-btn" data-tag="data-sampling">data-sampling</button>
 <button class="mp-tag-btn" data-tag="duckdb">duckdb</button>
 <button class="mp-tag-btn" data-tag="esg">esg</button>
-<button class="mp-tag-btn" data-tag="insurance">insurance</button>
+<button class="mp-tag-btn" data-tag="inforce">inforce</button>
+<button class="mp-tag-btn" data-tag="intelligence">intelligence</button>
 <button class="mp-tag-btn" data-tag="market">market</button>
 <button class="mp-tag-btn" data-tag="monte-carlo">monte-carlo</button>
+<button class="mp-tag-btn" data-tag="ollama">ollama</button>
+<button class="mp-tag-btn" data-tag="profitability">profitability</button>
 <button class="mp-tag-btn" data-tag="prospectus">prospectus</button>
 <button class="mp-tag-btn" data-tag="rates">rates</button>
 <button class="mp-tag-btn" data-tag="scenario">scenario</button>
-<button class="mp-tag-btn" data-tag="sec-edgar">sec-edgar</button>
 <button class="mp-tag-btn" data-tag="simulation">simulation</button>
 <button class="mp-tag-btn" data-tag="spreads">spreads</button>
 <button class="mp-tag-btn" data-tag="sql">sql</button>
-<button class="mp-tag-btn" data-tag="web-crawling">web-crawling</button>
+<button class="mp-tag-btn" data-tag="workflow">workflow</button>
 
         </div>
     </div>
@@ -842,24 +844,24 @@
     </div>
     
     <div class="col-lg-4 col-md-6 mb-4 mp-item"
-         data-name="insurance browser"
-         data-desc="intelligent web browser agent for discovering and downloading insurance prospectuses, sec filings, and regulatory documents."
-         data-tags="browser,insurance,prospectus,sec-edgar,web-crawling,documents">
+         data-name="kronos intelligence"
+         data-desc="ollama-powered data sampling, intelligent inforce generation, census cleaning, prospectus analysis, and workflow suggestion engine."
+         data-tags="intelligence,inforce,prospectus,data-sampling,census-cleaning,workflow,ollama,profitability">
         <div class="mp-card">
             <div class="mp-card-header">
-                <i class="fa-solid fa-globe"></i>
-                <h4>Insurance Browser</h4>
+                <i class="fa-solid fa-brain"></i>
+                <h4>KRONOS Intelligence</h4>
                 <span class="mp-version">v1.0.0</span>
                 <span class="mp-featured">Featured</span>
             </div>
-            <p class="mp-card-desc">Intelligent web browser agent for discovering and downloading insurance prospectuses, SEC filings, and regulatory documents.</p>
-            <div class="mp-card-tags"><span class="mp-card-tag">browser</span><span class="mp-card-tag">insurance</span><span class="mp-card-tag">prospectus</span><span class="mp-card-tag">sec-edgar</span><span class="mp-card-tag">web-crawling</span><span class="mp-card-tag">documents</span></div>
+            <p class="mp-card-desc">Ollama-powered data sampling, intelligent inforce generation, census cleaning, prospectus analysis, and workflow suggestion engine.</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">intelligence</span><span class="mp-card-tag">inforce</span><span class="mp-card-tag">prospectus</span><span class="mp-card-tag">data-sampling</span><span class="mp-card-tag">census-cleaning</span><span class="mp-card-tag">workflow</span><span class="mp-card-tag">ollama</span><span class="mp-card-tag">profitability</span></div>
             <div class="mp-card-meta">
                 <span><i class="fa-solid fa-user"></i>VaultDB</span>
-                <span><i class="fa-solid fa-puzzle-piece"></i>ingestion, assumptions, liability</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>all</span>
             </div>
             <div class="mp-install">
-                <code>claude mcp add insurance-browser -- python /vaultdb/marketplace/mcp-servers/servers/insurance-browser/server.py</code>
+                <code>claude mcp add kronos-intelligence -- python /vaultdb/marketplace/mcp-servers/servers/kronos-intelligence/server.py</code>
                 <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
                     <i class="fa-solid fa-copy"></i>
                 </button>

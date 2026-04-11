@@ -531,13 +531,13 @@
         </li>
         
         <li class="nav-item">
-            <a class="nav-link  " href="project_regulatory_data_plan.html">
+            <a class="nav-link active " href="project_regulatory_data_plan.html">
                 <i class="fa-solid fa-house me-2"></i> Project Regulatory Data Plan
             </a>
         </li>
         
         <li class="nav-item">
-            <a class="nav-link active ps-4" href="standards_SUBMODULE_DOC_CONVENTION.html">
+            <a class="nav-link  ps-4" href="standards_SUBMODULE_DOC_CONVENTION.html">
                 <i class="fa-solid fa-file-lines me-2"></i> Submodule Doc Convention
             </a>
         </li>
@@ -560,61 +560,63 @@
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
                                 <li class="breadcrumb-item"><a href="#">Platform</a></li>
-                                <li class="breadcrumb-item active">Submodule Doc Convention <span class="persona-badge">standards</span></li>
+                                <li class="breadcrumb-item active">Project Regulatory Data Plan <span class="persona-badge">index</span></li>
                             </ol>
                         </nav>
-                        <h1 id="vaultdb-submodule-documentation-standard">VaultDB Submodule Documentation Standard</h1>
-<p>To ensure a consistent, Docusaurus-style experience on the <code>vaultdb.ai</code> portal, all submodules must adhere to the following documentation structure.</p>
-<h2 id="1-directory-structure">1. Directory Structure</h2>
-<p>Every submodule MUST contain a <code>docs/</code> directory at its root:</p>
-<pre><code class="language-text">docs/
-├── index.md             # Functional Mission &amp; Executive Summary
-├── actuarial/           # PERSONA: Actuaries &amp; Quantitative Researchers
-│   ├── methodology.md   # Mathematical formulas, regulatory logic, and basis
-│   └── assumptions.md   # How domain-specific assumptions (e.g. lapse) are applied
-├── technology/          # PERSONA: Developers &amp; Data Engineers
-│   ├── architecture.md  # API design, task flow (TED), and DuckLake schema
-│   └── deployment.md    # Scaling, timeouts, and resource requirements
-├── compliance/          # PERSONA: Auditors &amp; Risk Officers
-│   ├── explainability.md # AI decision audit trails and data lineage
-│   └── controls.md       # HMAC approval gates and sign-off policies
-└── external/            # PUBLIC-FACING docs (published to vaultdb.ai)
-    └── README.md         # External developer guide → becomes index.html
-</code></pre>
-<h3 id="external-documentation-docsexternal">External Documentation (<code>docs/external/</code>)</h3>
-<p>The <code>external/</code> subfolder contains documentation intended for <strong>public consumption</strong> on vaultdb.ai. Key rules:</p>
+                        <hr />
+<p>name: Insurance Browser — Regulatory Data Sources Plan
+description: Plan to add NAIC FDR, SERFF SFA, State DOI, IIPRC, and NAIC Company Search to the insurance-browser MCP server
+type: project
+originSessionId: b4897a52-b12f-462e-8f10-faaff8eca479</p>
+<hr />
+<h2 id="plan-add-regulatory-data-sources-to-insurance-browser">Plan: Add Regulatory Data Sources to Insurance-Browser</h2>
+<p><strong>Status:</strong> Planned, not yet implemented<br />
+<strong>Date:</strong> 2026-04-10<br />
+<strong>Target:</strong> <code>/vaultdb/marketplace/mcp-servers/servers/insurance-browser/server.py</code></p>
+<h3 id="priority-order">Priority Order</h3>
+<p><strong>Phase 1: SERFF Filing Access (SFA)</strong> — Highest ROI
+- 2 new tools: <code>browse_serff</code>, <code>hunt_serff_filings</code>
+- Navigate <code>filingaccess.serff.com/sfa/home/{state}</code> via Playwright
+- Covers FIA/MYGA rate/form filings that SEC EDGAR doesn't have
+- ~600 lines, medium complexity
+- Storage: <code>prospectuses/{Company}/SERFF_Filings/{State}/</code>
+- Save <code>serff_index.json</code> per company with tracking numbers, dates, status</p>
+<p><strong>Phase 2: IIPRC (Interstate Insurance Product Regulation Commission)</strong>
+- 1 new tool: <code>browse_iiprc</code>
+- Single filing covers 47 member jurisdictions
+- ~200 lines, low complexity</p>
+<p><strong>Phase 3: State DOI Direct Portals</strong> — Top 6 states
+- 1 new tool: <code>browse_state_doi</code> + per-state adapter classes
+- Target: TX, NY, FL, CA, CT, IA (major annuity domicile states)
+- FL uses custom portal (floir.com/IRFS), others use SERFF or bespoke
+- ~500 lines, medium-hard complexity</p>
+<p><strong>Phase 4: NAIC Financial Data</strong>
+- 2 new tools: <code>browse_naic_company</code> (free public search), <code>import_naic_fdr</code> (paid CSV import)
+- Free: basic company info, RBC ratio, surplus from NAIC Company Search
+- Paid: parse manually-downloaded FDR CSV exports into <code>StatReport</code> model
+- Storage: <code>prospectuses/{Company}/NAIC_Financial/</code>
+- ~300 lines, low-medium complexity</p>
+<p><strong>Phase 5: Orchestration</strong>
+- 1 new tool: <code>hunt_regulatory</code> — calls Phases 1-4 in order, deduplicates
+- Update <code>hunt_company</code>/<code>hunt_all</code> with <code>include_regulatory=True</code> flag
+- ~150 lines, low complexity</p>
+<h3 id="key-architecture-decisions">Key Architecture Decisions</h3>
 <ul>
-<li><code>README.md</code> in <code>external/</code> is converted to <code>index.html</code> by <code>build_docs.py</code>.</li>
-<li><strong>Never expose</strong> internal file paths, class names, environment variables, ports, or secret configuration.</li>
-<li><strong>Focus on capabilities</strong> — what the module does, not internal implementation details.</li>
-<li><strong>Use Mermaid diagrams</strong> — <code>build_docs.py</code> converts them to SVG images when <code>mmdc</code> is available, or falls back to client-side rendering.</li>
-<li>Each submodule's CLAUDE.md should include instructions for generating correct external documentation.</li>
+<li>Reuse Playwright (already in stack) for SERFF/DOI JS-heavy portals</li>
+<li>Reuse Gemma 4 <code>_LLMAdvisor</code> for document verification</li>
+<li>Add <code>COMPANY_DOMICILE</code> mapping and <code>STATE_DOI_CONFIGS</code> to company database</li>
+<li>Health Transparency deprioritized (medical rates, not annuity products, files up to 1TB)</li>
+<li>Retire skeleton <code>scripts/vaultdb_ingestion_agents/download_serff_naic.py</code> after Phase 1</li>
+<li>Split server.py into server.py + regulatory.py if it exceeds ~5000 lines</li>
 </ul>
-<h2 id="2-persona-requirements">2. Persona Requirements</h2>
-<h3 id="a-actuars-methodology">A. Actuars (Methodology)</h3>
+<h3 id="risks">Risks</h3>
 <ul>
-<li><strong>Content</strong>: Focus on the "Math and Mandates".</li>
-<li><strong>Requirements</strong>: Use LaTeX for formulas, detail the statutory vs. GAAP differences, and explain the QuantLib configuration used.</li>
-<li><strong>Audit</strong>: Must link to source regulatory documents where applicable.</li>
+<li>SERFF may block automation → respectful rate-limiting + CAPTCHA detection</li>
+<li>State DOI layouts change → Gemma 4 adapts better than brittle selectors</li>
+<li>NAIC FDR is paid ($600+/schedule) → focus on free Company Search first</li>
 </ul>
-<h3 id="b-technology-architecture">B. Technology (Architecture)</h3>
-<ul>
-<li><strong>Content</strong>: Focus on the "Pip and Payload".</li>
-<li><strong>Requirements</strong>: Mermaid sequence diagrams for async tasks, detailed field-level descriptions for Parquet outputs, and API endpoint signatures.</li>
-<li><strong>Audit</strong>: Must include performance benchmarks and error-handling strategies.</li>
-</ul>
-<h3 id="c-compliance-auditors">C. Compliance (Auditors)</h3>
-<ul>
-<li><strong>Content</strong>: Focus on "Provenance and Permissions".</li>
-<li><strong>Requirements</strong>: Documentation of the <code>ApprovalRecord</code> created for specific actions, logs for AI-proposed changes, and role-based access control (RBAC) details.</li>
-</ul>
-<h2 id="3-build-process">3. Build Process</h2>
-<p>Documentation is automatically converted to HTML and hosted on the static <code>vaultdb-web</code> site via the global <code>build_docs.py</code> script. </p>
-<ul>
-<li><strong>Sidebar</strong>: The built-in script generates a navigation sidebar based on the folder structure.</li>
-<li><strong>Header/Footer</strong>: Site-wide branding is injected automatically.</li>
-<li><strong>Mermaid</strong>: Diagrams are rendered using a CDN-based Mermaid.js injector.</li>
-</ul>
+<p><strong>Why:</strong> SEC EDGAR only covers registered products (VA, RILA). FIA/MYGA products are filed at state level via SERFF — this is a major gap in the current insurance-browser's coverage.</p>
+<p><strong>How to apply:</strong> When starting implementation, begin with Phase 1 (SERFF SFA) as it has the highest ROI and lowest friction. Each phase is independent and can be shipped incrementally.</p>
                     </div>
                 </div>
             </div>

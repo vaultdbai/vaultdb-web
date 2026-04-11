@@ -841,22 +841,28 @@
 <button class="mp-tag-btn" data-tag="cashflow-matching">cashflow-matching</button>
 <button class="mp-tag-btn" data-tag="cds">cds</button>
 <button class="mp-tag-btn" data-tag="census">census</button>
+<button class="mp-tag-btn" data-tag="census-cleaning">census-cleaning</button>
 <button class="mp-tag-btn" data-tag="compliance">compliance</button>
 <button class="mp-tag-btn" data-tag="compute">compute</button>
 <button class="mp-tag-btn" data-tag="core">core</button>
+<button class="mp-tag-btn" data-tag="crawler">crawler</button>
 <button class="mp-tag-btn" data-tag="curves">curves</button>
 <button class="mp-tag-btn" data-tag="dag">dag</button>
 <button class="mp-tag-btn" data-tag="data-modeling">data-modeling</button>
 <button class="mp-tag-btn" data-tag="data-quality">data-quality</button>
+<button class="mp-tag-btn" data-tag="data-sampling">data-sampling</button>
 <button class="mp-tag-btn" data-tag="duration">duration</button>
 <button class="mp-tag-btn" data-tag="economic-balance-sheet">economic-balance-sheet</button>
 <button class="mp-tag-btn" data-tag="embedded-value">embedded-value</button>
 <button class="mp-tag-btn" data-tag="greeks">greeks</button>
 <button class="mp-tag-btn" data-tag="hedging">hedging</button>
 <button class="mp-tag-btn" data-tag="import">import</button>
+<button class="mp-tag-btn" data-tag="inforce">inforce</button>
 <button class="mp-tag-btn" data-tag="infrastructure">infrastructure</button>
 <button class="mp-tag-btn" data-tag="ingestion">ingestion</button>
 <button class="mp-tag-btn" data-tag="instruments">instruments</button>
+<button class="mp-tag-btn" data-tag="insurance">insurance</button>
+<button class="mp-tag-btn" data-tag="intelligence">intelligence</button>
 <button class="mp-tag-btn" data-tag="interest-rates">interest-rates</button>
 <button class="mp-tag-btn" data-tag="lapse">lapse</button>
 <button class="mp-tag-btn" data-tag="liability">liability</button>
@@ -864,18 +870,25 @@
 <button class="mp-tag-btn" data-tag="mortality">mortality</button>
 <button class="mp-tag-btn" data-tag="naic">naic</button>
 <button class="mp-tag-btn" data-tag="normalization">normalization</button>
+<button class="mp-tag-btn" data-tag="ollama">ollama</button>
 <button class="mp-tag-btn" data-tag="options">options</button>
 <button class="mp-tag-btn" data-tag="orm">orm</button>
 <button class="mp-tag-btn" data-tag="pipeline">pipeline</button>
 <button class="mp-tag-btn" data-tag="position">position</button>
 <button class="mp-tag-btn" data-tag="pricing">pricing</button>
+<button class="mp-tag-btn" data-tag="profitability">profitability</button>
+<button class="mp-tag-btn" data-tag="prospectus">prospectus</button>
 <button class="mp-tag-btn" data-tag="pytorch">pytorch</button>
 <button class="mp-tag-btn" data-tag="quantlib">quantlib</button>
 <button class="mp-tag-btn" data-tag="recommendation">recommendation</button>
+<button class="mp-tag-btn" data-tag="regulatory">regulatory</button>
 <button class="mp-tag-btn" data-tag="reporting">reporting</button>
+<button class="mp-tag-btn" data-tag="research">research</button>
 <button class="mp-tag-btn" data-tag="reserves">reserves</button>
 <button class="mp-tag-btn" data-tag="risk">risk</button>
 <button class="mp-tag-btn" data-tag="scenarios">scenarios</button>
+<button class="mp-tag-btn" data-tag="sec-edgar">sec-edgar</button>
+<button class="mp-tag-btn" data-tag="serff">serff</button>
 <button class="mp-tag-btn" data-tag="solvency">solvency</button>
 <button class="mp-tag-btn" data-tag="spread">spread</button>
 <button class="mp-tag-btn" data-tag="statutory">statutory</button>
@@ -1008,6 +1021,32 @@
     </div>
     
     <div class="col-lg-4 col-md-6 mb-4 mp-item"
+         data-name="kronos intelligence"
+         data-desc="intelligent data sampling, inforce generation, census cleaning, prospectus analysis, and dynamic workflow builder for insurance profitability modeling."
+         data-tags="intelligence,inforce,prospectus,data-sampling,census-cleaning,workflow,profitability,ollama">
+        <div class="mp-card">
+            <div class="mp-card-header">
+                <i class="fa-solid fa-brain"></i>
+                <h4>KRONOS Intelligence</h4>
+                <span class="mp-version">v1.0.0</span>
+                <span class="mp-featured">Featured</span>
+            </div>
+            <p class="mp-card-desc">Intelligent data sampling, inforce generation, census cleaning, prospectus analysis, and dynamic workflow builder for insurance profitability modeling.</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">intelligence</span><span class="mp-card-tag">inforce</span><span class="mp-card-tag">prospectus</span><span class="mp-card-tag">data-sampling</span><span class="mp-card-tag">census-cleaning</span><span class="mp-card-tag">workflow</span><span class="mp-card-tag">profitability</span><span class="mp-card-tag">ollama</span></div>
+            <div class="mp-card-meta">
+                <span><i class="fa-solid fa-user"></i>VaultDB</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>all</span>
+            </div>
+            <div class="mp-install">
+                <code>claude plugin install kronos-intelligence</code>
+                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-4 mp-item"
          data-name="liability modeling"
          data-desc="annuity and life insurance liability modeling — policy records, cohort projection, stat/gaap reserve engines, dac amortization (ldti), and lfpb computation. supports fa, fia, myga, va, spia, and traditional life products.
 "
@@ -1084,6 +1123,32 @@
             </div>
             <div class="mp-install">
                 <code>claude plugin install reporting</code>
+                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-4 mp-item"
+         data-name="research agent"
+         data-desc="extensible research agent for discovering and downloading insurance documents, prospectuses, sec filings, and regulatory data."
+         data-tags="research,prospectus,sec-edgar,serff,naic,insurance,crawler,regulatory,ollama">
+        <div class="mp-card">
+            <div class="mp-card-header">
+                <i class="fa-solid fa-magnifying-glass-chart"></i>
+                <h4>Research Agent</h4>
+                <span class="mp-version">v1.0.0</span>
+                <span class="mp-featured">Featured</span>
+            </div>
+            <p class="mp-card-desc">Extensible research agent for discovering and downloading insurance documents, prospectuses, SEC filings, and regulatory data.</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">research</span><span class="mp-card-tag">prospectus</span><span class="mp-card-tag">sec-edgar</span><span class="mp-card-tag">serff</span><span class="mp-card-tag">naic</span><span class="mp-card-tag">insurance</span><span class="mp-card-tag">crawler</span><span class="mp-card-tag">regulatory</span><span class="mp-card-tag">ollama</span></div>
+            <div class="mp-card-meta">
+                <span><i class="fa-solid fa-user"></i>VaultDB</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>core, assumptions, scenario</span>
+            </div>
+            <div class="mp-install">
+                <code>claude plugin install research</code>
                 <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
                     <i class="fa-solid fa-copy"></i>
                 </button>

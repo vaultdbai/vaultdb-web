@@ -818,7 +818,10 @@
 <button class="mp-tag-btn" data-tag="cashflow-matching">cashflow-matching</button>
 <button class="mp-tag-btn" data-tag="ceding-carrier">ceding-carrier</button>
 <button class="mp-tag-btn" data-tag="census">census</button>
+<button class="mp-tag-btn" data-tag="census-cleaning">census-cleaning</button>
+<button class="mp-tag-btn" data-tag="crawler">crawler</button>
 <button class="mp-tag-btn" data-tag="data">data</button>
+<button class="mp-tag-btn" data-tag="data-sampling">data-sampling</button>
 <button class="mp-tag-btn" data-tag="derivatives">derivatives</button>
 <button class="mp-tag-btn" data-tag="document-discovery">document-discovery</button>
 <button class="mp-tag-btn" data-tag="duckdb">duckdb</button>
@@ -831,9 +834,11 @@
 <button class="mp-tag-btn" data-tag="fixed-annuity">fixed-annuity</button>
 <button class="mp-tag-btn" data-tag="gaap">gaap</button>
 <button class="mp-tag-btn" data-tag="hedging">hedging</button>
+<button class="mp-tag-btn" data-tag="inforce">inforce</button>
 <button class="mp-tag-btn" data-tag="ingestion">ingestion</button>
 <button class="mp-tag-btn" data-tag="instruments">instruments</button>
 <button class="mp-tag-btn" data-tag="insurance">insurance</button>
+<button class="mp-tag-btn" data-tag="intelligence">intelligence</button>
 <button class="mp-tag-btn" data-tag="interest-rates">interest-rates</button>
 <button class="mp-tag-btn" data-tag="ir-derivatives">ir-derivatives</button>
 <button class="mp-tag-btn" data-tag="lapse">lapse</button>
@@ -842,14 +847,17 @@
 <button class="mp-tag-btn" data-tag="lifecycle">lifecycle</button>
 <button class="mp-tag-btn" data-tag="market">market</button>
 <button class="mp-tag-btn" data-tag="mortality">mortality</button>
+<button class="mp-tag-btn" data-tag="naic">naic</button>
 <button class="mp-tag-btn" data-tag="normalization">normalization</button>
 <button class="mp-tag-btn" data-tag="ny7">ny7</button>
+<button class="mp-tag-btn" data-tag="ollama">ollama</button>
 <button class="mp-tag-btn" data-tag="orchestration">orchestration</button>
 <button class="mp-tag-btn" data-tag="parquet">parquet</button>
 <button class="mp-tag-btn" data-tag="pipeline">pipeline</button>
 <button class="mp-tag-btn" data-tag="portfolio">portfolio</button>
 <button class="mp-tag-btn" data-tag="pricing">pricing</button>
 <button class="mp-tag-btn" data-tag="pricing-engine">pricing-engine</button>
+<button class="mp-tag-btn" data-tag="profitability">profitability</button>
 <button class="mp-tag-btn" data-tag="prospectus">prospectus</button>
 <button class="mp-tag-btn" data-tag="python">python</button>
 <button class="mp-tag-btn" data-tag="pytorch">pytorch</button>
@@ -858,10 +866,12 @@
 <button class="mp-tag-btn" data-tag="refactoring">refactoring</button>
 <button class="mp-tag-btn" data-tag="regulatory">regulatory</button>
 <button class="mp-tag-btn" data-tag="reporting">reporting</button>
+<button class="mp-tag-btn" data-tag="research">research</button>
 <button class="mp-tag-btn" data-tag="reserves">reserves</button>
 <button class="mp-tag-btn" data-tag="risk">risk</button>
 <button class="mp-tag-btn" data-tag="scenario">scenario</button>
 <button class="mp-tag-btn" data-tag="sec-edgar">sec-edgar</button>
+<button class="mp-tag-btn" data-tag="serff">serff</button>
 <button class="mp-tag-btn" data-tag="solvency">solvency</button>
 <button class="mp-tag-btn" data-tag="sql">sql</button>
 <button class="mp-tag-btn" data-tag="stat">stat</button>
@@ -880,6 +890,7 @@
 <button class="mp-tag-btn" data-tag="vol-surface">vol-surface</button>
 <button class="mp-tag-btn" data-tag="volatility">volatility</button>
 <button class="mp-tag-btn" data-tag="web-browsing">web-browsing</button>
+<button class="mp-tag-btn" data-tag="workflow">workflow</button>
 <button class="mp-tag-btn" data-tag="yield-curve">yield-curve</button>
 <button class="mp-tag-btn" data-tag="yield-curves">yield-curves</button>
 
@@ -996,6 +1007,32 @@
     </div>
     
     <div class="col-lg-4 col-md-6 mb-4 mp-item"
+         data-name="kronos intelligence"
+         data-desc="intelligent data sampling, inforce generation, census cleaning, prospectus analysis, and workflow builder for insurance profitability modeling."
+         data-tags="intelligence,inforce,prospectus,data-sampling,census-cleaning,workflow,profitability,ollama">
+        <div class="mp-card">
+            <div class="mp-card-header">
+                <i class="fa-solid fa-brain"></i>
+                <h4>KRONOS Intelligence</h4>
+                <span class="mp-version">v1.0.0</span>
+                <span class="mp-featured">Featured</span>
+            </div>
+            <p class="mp-card-desc">Intelligent data sampling, inforce generation, census cleaning, prospectus analysis, and workflow builder for insurance profitability modeling.</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">intelligence</span><span class="mp-card-tag">inforce</span><span class="mp-card-tag">prospectus</span><span class="mp-card-tag">data-sampling</span><span class="mp-card-tag">census-cleaning</span><span class="mp-card-tag">workflow</span><span class="mp-card-tag">profitability</span><span class="mp-card-tag">ollama</span></div>
+            <div class="mp-card-meta">
+                <span><i class="fa-solid fa-user"></i>VaultDB</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>all</span>
+            </div>
+            <div class="mp-install">
+                <code>vaultdb-skills add https://github.com/vaultdbai/skills --skill kronos-intelligence</code>
+                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-4 mp-item"
          data-name="liability modeling"
          data-desc="annuity and life insurance liability modeling — cashflow projection basics, fa/fia/myga/va products, stat/gaap reserves, dac amortization (ldti), lfpb computation, and stochastic discount rate modeling."
          data-tags="liability,annuity,cashflow,gaap,stat,reserves,ldti">
@@ -1014,6 +1051,32 @@
             </div>
             <div class="mp-install">
                 <code>vaultdb-skills add https://github.com/vaultdbai/skills --skill liability</code>
+                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-4 mp-item"
+         data-name="research agent"
+         data-desc="extensible research agent for discovering and downloading insurance documents, prospectuses, sec filings, and regulatory data."
+         data-tags="research,prospectus,sec-edgar,serff,naic,insurance,regulatory,crawler,document-discovery">
+        <div class="mp-card">
+            <div class="mp-card-header">
+                <i class="fa-solid fa-magnifying-glass-chart"></i>
+                <h4>Research Agent</h4>
+                <span class="mp-version">v1.0.0</span>
+                <span class="mp-featured">Featured</span>
+            </div>
+            <p class="mp-card-desc">Extensible research agent for discovering and downloading insurance documents, prospectuses, SEC filings, and regulatory data.</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">research</span><span class="mp-card-tag">prospectus</span><span class="mp-card-tag">sec-edgar</span><span class="mp-card-tag">serff</span><span class="mp-card-tag">naic</span><span class="mp-card-tag">insurance</span><span class="mp-card-tag">regulatory</span><span class="mp-card-tag">crawler</span><span class="mp-card-tag">document-discovery</span></div>
+            <div class="mp-card-meta">
+                <span><i class="fa-solid fa-user"></i>VaultDB</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>core, ingestion, assumptions, liability, valuation, scenario</span>
+            </div>
+            <div class="mp-install">
+                <code>vaultdb-skills add https://github.com/vaultdbai/skills --skill research</code>
                 <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
                     <i class="fa-solid fa-copy"></i>
                 </button>

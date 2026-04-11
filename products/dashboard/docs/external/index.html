@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dashboard — Readme</title>
+    <style>
+        :root { --bg: #0a0a1a; --fg: #f5f5f5; --muted: #a896b7; --accent: #a044ff; }
+        body { background: var(--bg); color: var(--fg); font-family: 'DM Sans', system-ui, sans-serif;
+               font-size: 16px; line-height: 1.8; max-width: 900px; margin: 0 auto; padding: 2rem; }
+        h1 { font-size: 2.8rem; font-weight: 800; margin-top: 0; }
+        h2 { font-size: 2rem; border-bottom: 1px solid rgba(168,150,183,0.2); padding-bottom: 0.5rem; margin-top: 3rem; }
+        h3 { font-size: 1.4rem; color: var(--accent); }
+        a { color: var(--accent); }
+        code { background: #131326; padding: 2px 6px; border-radius: 4px; font-size: 0.9em; }
+        pre { background: #131326; padding: 1.5rem; border-radius: 12px; overflow-x: auto; }
+        pre code { background: none; padding: 0; }
+        table { border-collapse: collapse; width: 100%; margin: 1.5rem 0; }
+        th { background: #131326; padding: 0.8rem 1rem; text-align: left; font-weight: 600; }
+        td { padding: 0.8rem 1rem; border-top: 1px solid rgba(168,150,183,0.15); }
+        .mermaid-diagram { margin: 2rem 0; text-align: center; }
+        .mermaid-diagram img { max-width: 100%; border-radius: 12px; }
+        .mermaid { background: transparent; }
+    </style>
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true, theme: 'dark', fontFamily: 'DM Sans' });
+    </script>
+</head>
+<body>
+    <h1 id="kronos-re-dashboard-user-developer-guide">KRONOS Re Dashboard — User &amp; Developer Guide</h1>
+<p>The KRONOS Re Dashboard is the primary interface for the AI-native Bermuda reinsurance sidecar platform. It provides actuaries, CIOs, risk officers, and regulators with real-time analytics, AI-assisted workflow management, and regulatory reporting.</p>
+<h2 id="platform-overview">Platform Overview</h2>
+<pre class="mermaid">graph TD
+    subgraph &quot;KRONOS Re Dashboard&quot;
+        CHAT[&quot;AI Chatbot<br/>Conversational workflow builder&quot;]
+        ALM_PAGE[&quot;ALM Analysis<br/>Duration gap, KRD, spreads&quot;]
+        RISK_PAGE[&quot;Risk & Capital<br/>BSCR, VaR, stress tests&quot;]
+        TRADE_PAGE[&quot;Trading<br/>Hedge recommendations&quot;]
+        RPT_PAGE[&quot;Reports<br/>GAAP, STAT, BSCR filings&quot;]
+        LIAB_PAGE[&quot;Liability<br/>Cash flows, reserves&quot;]
+    end
+
+    subgraph &quot;AI Assistant&quot;
+        HUB[&quot;ChatHub<br/>Process Manager&quot;]
+        ENGINE[&quot;Claude SDK<br/>Conversation Engine&quot;]
+    end
+
+    subgraph &quot;Backend&quot;
+        API[&quot;KRONOS REST API&quot;]
+        CORE[&quot;VaultDB Core&quot;]
+    end
+
+    CHAT --> HUB
+    HUB --> ENGINE
+    ALM_PAGE --> API
+    RISK_PAGE --> API
+    TRADE_PAGE --> API
+    RPT_PAGE --> API
+    LIAB_PAGE --> API
+    API --> CORE
+</pre>
+<h2 id="key-features">Key Features</h2>
+<h3 id="ai-chatbot">AI Chatbot</h3>
+<p>The KRONOS AI assistant helps users build and manage actuarial workflows through natural conversation:</p>
+<ul>
+<li><strong>Explore modules</strong> — Ask "What can KRONOS do?" to discover available capabilities</li>
+<li><strong>Propose workflows</strong> — Describe what you need; the AI builds a multi-step pipeline</li>
+<li><strong>Review DAGs</strong> — Visualize workflow steps as a directed acyclic graph</li>
+<li><strong>Approve and execute</strong> — Human approval required before any execution</li>
+</ul>
+<pre class="mermaid">flowchart LR
+    ASK[&quot;Ask a question&quot;] --> AI[&quot;AI explores modules&quot;]
+    AI --> PROPOSE[&quot;AI proposes workflow&quot;]
+    PROPOSE --> REVIEW[&quot;Human reviews DAG&quot;]
+    REVIEW --> APPROVE[&quot;Human approves&quot;]
+    APPROVE --> EXECUTE[&quot;Steps execute&quot;]
+    EXECUTE --> RESULTS[&quot;View results&quot;]
+</pre>
+<h3 id="workflow-approval">Workflow Approval</h3>
+<p>Every AI-proposed workflow requires human approval before execution:</p>
+<ul>
+<li><strong>Policy enforcement</strong> — Configurable rules for role requirements, review time, and separation of duties</li>
+<li><strong>Cryptographic signing</strong> — HMAC-SHA256 tokens bind approvals to approver identity</li>
+<li><strong>Audit trail</strong> — Full record of who approved what, when, and why</li>
+<li><strong>Revocation</strong> — Approvals can be revoked at any time</li>
+</ul>
+<h3 id="alm-analysis">ALM Analysis</h3>
+<p>Real-time asset-liability management analytics:</p>
+<ul>
+<li>Duration gap analysis (asset vs. liability modified duration)</li>
+<li>Key-rate duration (KRD) profiles across tenor buckets</li>
+<li>Cash flow matching reports</li>
+<li>Spread analysis (asset yield vs. liability cost-of-funds)</li>
+<li>Rebalancing alerts when gaps exceed thresholds</li>
+</ul>
+<h3 id="risk-capital">Risk &amp; Capital</h3>
+<p>Regulatory capital computation and stress testing:</p>
+<ul>
+<li>BSCR (Bermuda Solvency Capital Requirement) by risk module (C1-C8)</li>
+<li>VaR/CVaR at configurable confidence and horizon</li>
+<li>Prescribed stress test scenarios</li>
+<li>PE partner solvency dashboard</li>
+</ul>
+<h3 id="trading-hedging">Trading &amp; Hedging</h3>
+<p>AI-drafted hedge recommendations with human CIO approval:</p>
+<ul>
+<li>Hedging strategy templates by product type</li>
+<li>Pre-trade impact simulation</li>
+<li>Position tracking with live Greeks</li>
+<li>GAAP ASC 815 hedge effectiveness testing</li>
+</ul>
+<h3 id="regulatory-reporting">Regulatory Reporting</h3>
+<p>Automated report generation with human actuary sign-off:</p>
+<ul>
+<li>GAAP reporting (ASC 944, ASC 820)</li>
+<li>STAT reporting (NAIC Life Annual Statement)</li>
+<li>BSCR filing (BMA quarterly/annual)</li>
+<li>Draft memo generation (AI drafts, human signs)</li>
+</ul>
+<h2 id="architecture">Architecture</h2>
+<h3 id="technology-stack">Technology Stack</h3>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Technology</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Frontend</td>
+<td>Plotly Dash + Bootstrap + dash-ag-grid</td>
+</tr>
+<tr>
+<td>API</td>
+<td>FastAPI (mounted on same server)</td>
+</tr>
+<tr>
+<td>AI Engine</td>
+<td>Anthropic Claude SDK (claude-sonnet-4-6)</td>
+</tr>
+<tr>
+<td>Process Manager</td>
+<td>ChatHub (JupyterHub-style)</td>
+</tr>
+<tr>
+<td>Authentication</td>
+<td>OAuth2/OIDC</td>
+</tr>
+<tr>
+<td>Data</td>
+<td>DuckLake (DuckDB + Parquet on S3)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="service-ports">Service Ports</h3>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>Port</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dashboard + API</td>
+<td>8050</td>
+<td>http://localhost:8050</td>
+</tr>
+<tr>
+<td>ChatHub</td>
+<td>8060</td>
+<td>Internal only</td>
+</tr>
+<tr>
+<td>UserProcesses</td>
+<td>9100-9999</td>
+<td>Internal only</td>
+</tr>
+</tbody>
+</table>
+<h3 id="security-model">Security Model</h3>
+<ul>
+<li><strong>Per-user isolation</strong> — Each user gets their own AI process with resource limits</li>
+<li><strong>Environment stripping</strong> — AI processes never receive approval secrets or database credentials</li>
+<li><strong>Token verification</strong> — All inter-service communication uses HMAC tokens</li>
+<li><strong>Path traversal protection</strong> — All file operations validate paths stay within user workspace</li>
+<li><strong>OAuth2</strong> — All API endpoints require authentication</li>
+</ul>
+<h2 id="getting-started">Getting Started</h2>
+<h3 id="quick-start">Quick Start</h3>
+<pre><code class="language-bash"># Start all services (requires Redis)
+./scripts/aadhya/start.sh start
+
+# Dashboard available at http://localhost:8050
+# API docs at http://localhost:8050/api/docs
+</code></pre>
+<h3 id="pages">Pages</h3>
+<table>
+<thead>
+<tr>
+<th>Page</th>
+<th>URL</th>
+<th>Audience</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AI Chatbot</td>
+<td><code>/chatbot</code></td>
+<td>All users</td>
+</tr>
+<tr>
+<td>Workflow Viewer</td>
+<td><code>/workflow?id={id}</code></td>
+<td>Actuaries, CIO</td>
+</tr>
+<tr>
+<td>Solvency Overview</td>
+<td><code>/</code></td>
+<td>PE partners, CRO</td>
+</tr>
+<tr>
+<td>Liability</td>
+<td><code>/liability</code></td>
+<td>Actuaries</td>
+</tr>
+<tr>
+<td>ALM</td>
+<td><code>/alm</code></td>
+<td>ALM committee</td>
+</tr>
+<tr>
+<td>Trading</td>
+<td><code>/trading</code></td>
+<td>CIO, traders</td>
+</tr>
+<tr>
+<td>Risk</td>
+<td><code>/risk</code></td>
+<td>CRO, BMA</td>
+</tr>
+<tr>
+<td>Reports</td>
+<td><code>/reports</code></td>
+<td>Regulators</td>
+</tr>
+</tbody>
+</table>
+<h2 id="rest-api">REST API</h2>
+<p>All endpoints are under <code>/api/v1/kronos</code>. Key endpoint groups:</p>
+<ul>
+<li><code>/chatbot</code> — AI conversation and workflow management</li>
+<li><code>/approvals</code> — Approval creation, revocation, and audit trail</li>
+<li><code>/alm</code> — ALM snapshots and analytics</li>
+<li><code>/risk</code> — BSCR and stress testing</li>
+<li><code>/trading</code> — Hedge recommendations and positions</li>
+<li><code>/reporting</code> — Report generation and retrieval</li>
+<li><code>/liability</code> — Cash flow projections</li>
+<li><code>/ingestion</code> — Census data upload</li>
+</ul>
+<p>Authentication via OAuth2 bearer token or session cookie.</p>
+</body>
+</html>

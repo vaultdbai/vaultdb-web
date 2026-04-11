@@ -537,7 +537,7 @@
         </li>
         
         <li class="nav-item">
-            <a class="nav-link active ps-4" href="standards_SUBMODULE_DOC_CONVENTION.html">
+            <a class="nav-link  ps-4" href="standards_SUBMODULE_DOC_CONVENTION.html">
                 <i class="fa-solid fa-file-lines me-2"></i> Submodule Doc Convention
             </a>
         </li>
@@ -549,7 +549,7 @@
         </li>
         
         <li class="nav-item">
-            <a class="nav-link  " href="system-context.html">
+            <a class="nav-link active " href="system-context.html">
                 <i class="fa-solid fa-brain me-2"></i> System Context
             </a>
         </li>
@@ -560,61 +560,40 @@
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
                                 <li class="breadcrumb-item"><a href="#">Platform</a></li>
-                                <li class="breadcrumb-item active">Submodule Doc Convention <span class="persona-badge">standards</span></li>
+                                <li class="breadcrumb-item active">System-Context <span class="persona-badge">system-context</span></li>
                             </ol>
                         </nav>
-                        <h1 id="vaultdb-submodule-documentation-standard">VaultDB Submodule Documentation Standard</h1>
-<p>To ensure a consistent, Docusaurus-style experience on the <code>vaultdb.ai</code> portal, all submodules must adhere to the following documentation structure.</p>
-<h2 id="1-directory-structure">1. Directory Structure</h2>
-<p>Every submodule MUST contain a <code>docs/</code> directory at its root:</p>
-<pre><code class="language-text">docs/
-├── index.md             # Functional Mission &amp; Executive Summary
-├── actuarial/           # PERSONA: Actuaries &amp; Quantitative Researchers
-│   ├── methodology.md   # Mathematical formulas, regulatory logic, and basis
-│   └── assumptions.md   # How domain-specific assumptions (e.g. lapse) are applied
-├── technology/          # PERSONA: Developers &amp; Data Engineers
-│   ├── architecture.md  # API design, task flow (TED), and DuckLake schema
-│   └── deployment.md    # Scaling, timeouts, and resource requirements
-├── compliance/          # PERSONA: Auditors &amp; Risk Officers
-│   ├── explainability.md # AI decision audit trails and data lineage
-│   └── controls.md       # HMAC approval gates and sign-off policies
-└── external/            # PUBLIC-FACING docs (published to vaultdb.ai)
-    └── README.md         # External developer guide → becomes index.html
-</code></pre>
-<h3 id="external-documentation-docsexternal">External Documentation (<code>docs/external/</code>)</h3>
-<p>The <code>external/</code> subfolder contains documentation intended for <strong>public consumption</strong> on vaultdb.ai. Key rules:</p>
+                        <h1 id="vaultdb-system-context-root">VaultDB System Context (Root)</h1>
+<h2 id="functional-purpose">Functional Purpose</h2>
+<p>VaultDB is an AI-native financial orchestration platform for the Bermuda insurance/reinsurance industry, specialized in capturing the "Complexity Tax" through algorithmic efficiency and regulatory precision.</p>
+<h2 id="documentation-architecture-standards">Documentation Architecture Standards</h2>
+<p>As mandated by the BMA (Bermuda Monetary Authority) and platform policy, all modules must implement a structured documentation hierarchy. This ensures explainability for human fiduciaries and precision for AI agents.</p>
+<h3 id="1-mandatory-folder-submoduledocs">1. Mandatory Folder: <code>&lt;submodule&gt;/docs/</code></h3>
+<p>No functional change is allowed without corresponding documentation in the following categories:</p>
 <ul>
-<li><code>README.md</code> in <code>external/</code> is converted to <code>index.html</code> by <code>build_docs.py</code>.</li>
-<li><strong>Never expose</strong> internal file paths, class names, environment variables, ports, or secret configuration.</li>
-<li><strong>Focus on capabilities</strong> — what the module does, not internal implementation details.</li>
-<li><strong>Use Mermaid diagrams</strong> — <code>build_docs.py</code> converts them to SVG images when <code>mmdc</code> is available, or falls back to client-side rendering.</li>
-<li>Each submodule's CLAUDE.md should include instructions for generating correct external documentation.</li>
+<li><strong>Executive Summary (<code>index.md</code>)</strong>: The functional mission statement.</li>
+<li><strong>Actuarial Methodology (<code>actuarial/</code>)</strong>: </li>
+<li>Persona: Chief Actuary, Regulators.</li>
+<li>Requirement: LaTeX formulas, statutory/GAAP basis, and QuantLib settings.</li>
+<li><strong>Technical Architecture (<code>technology/</code>)</strong>: </li>
+<li>Persona: Developers, DevOps.</li>
+<li>Requirement: Mermaid diagrams, DuckDB/Parquet schemas, and API signatures.</li>
+<li><strong>Compliance &amp; Explainability (<code>compliance/</code>)</strong>: </li>
+<li>Persona: Internal Audit, Chief Risk Officer.</li>
+<li>Requirement: AuditRecord logs, HMAC approval policies, and AI explainability traces.</li>
 </ul>
-<h2 id="2-persona-requirements">2. Persona Requirements</h2>
-<h3 id="a-actuars-methodology">A. Actuars (Methodology)</h3>
+<h3 id="2-documentation-portal-vaultdbai">2. Documentation Portal (vaultdb.ai)</h3>
+<p>The <code>build_docs.py</code> script automatically processes these folders into the public-facing portal hosted under <code>vaultdb-web/</code>.</p>
 <ul>
-<li><strong>Content</strong>: Focus on the "Math and Mandates".</li>
-<li><strong>Requirements</strong>: Use LaTeX for formulas, detail the statutory vs. GAAP differences, and explain the QuantLib configuration used.</li>
-<li><strong>Audit</strong>: Must link to source regulatory documents where applicable.</li>
+<li>Platform-wide docs -&gt; <code>vaultdb-web/docs/</code></li>
+<li>Module-specific docs -&gt; <code>vaultdb-web/products/&lt;name&gt;/docs/</code></li>
 </ul>
-<h3 id="b-technology-architecture">B. Technology (Architecture)</h3>
-<ul>
-<li><strong>Content</strong>: Focus on the "Pip and Payload".</li>
-<li><strong>Requirements</strong>: Mermaid sequence diagrams for async tasks, detailed field-level descriptions for Parquet outputs, and API endpoint signatures.</li>
-<li><strong>Audit</strong>: Must include performance benchmarks and error-handling strategies.</li>
-</ul>
-<h3 id="c-compliance-auditors">C. Compliance (Auditors)</h3>
-<ul>
-<li><strong>Content</strong>: Focus on "Provenance and Permissions".</li>
-<li><strong>Requirements</strong>: Documentation of the <code>ApprovalRecord</code> created for specific actions, logs for AI-proposed changes, and role-based access control (RBAC) details.</li>
-</ul>
-<h2 id="3-build-process">3. Build Process</h2>
-<p>Documentation is automatically converted to HTML and hosted on the static <code>vaultdb-web</code> site via the global <code>build_docs.py</code> script. </p>
-<ul>
-<li><strong>Sidebar</strong>: The built-in script generates a navigation sidebar based on the folder structure.</li>
-<li><strong>Header/Footer</strong>: Site-wide branding is injected automatically.</li>
-<li><strong>Mermaid</strong>: Diagrams are rendered using a CDN-based Mermaid.js injector.</li>
-</ul>
+<h3 id="3-ai-agent-guidelines">3. AI Agent Guidelines</h3>
+<p>When generating or refactoring code:
+1. Always check the module's <code>system-context.md</code>.
+2. Update the corresponding <code>docs/technology/</code> file with sequence diagrams if a new workflow is added.
+3. Update <code>docs/actuarial/</code> if a mathematical formula or basis is changed.
+4. Ensure the <code>docs/compliance/</code> section reflects any changes to human-in-the-loop approval gates.</p>
                     </div>
                 </div>
             </div>

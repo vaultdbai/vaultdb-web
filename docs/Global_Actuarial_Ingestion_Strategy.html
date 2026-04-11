@@ -483,7 +483,7 @@
         </li>
         
         <li class="nav-item">
-            <a class="nav-link  " href="Global_Actuarial_Ingestion_Strategy.html">
+            <a class="nav-link active " href="Global_Actuarial_Ingestion_Strategy.html">
                 <i class="fa-solid fa-house me-2"></i> Global Actuarial Ingestion Strategy
             </a>
         </li>
@@ -537,7 +537,7 @@
         </li>
         
         <li class="nav-item">
-            <a class="nav-link active ps-4" href="standards_SUBMODULE_DOC_CONVENTION.html">
+            <a class="nav-link  ps-4" href="standards_SUBMODULE_DOC_CONVENTION.html">
                 <i class="fa-solid fa-file-lines me-2"></i> Submodule Doc Convention
             </a>
         </li>
@@ -560,61 +560,40 @@
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
                                 <li class="breadcrumb-item"><a href="#">Platform</a></li>
-                                <li class="breadcrumb-item active">Submodule Doc Convention <span class="persona-badge">standards</span></li>
+                                <li class="breadcrumb-item active">Global Actuarial Ingestion Strategy <span class="persona-badge">index</span></li>
                             </ol>
                         </nav>
-                        <h1 id="vaultdb-submodule-documentation-standard">VaultDB Submodule Documentation Standard</h1>
-<p>To ensure a consistent, Docusaurus-style experience on the <code>vaultdb.ai</code> portal, all submodules must adhere to the following documentation structure.</p>
-<h2 id="1-directory-structure">1. Directory Structure</h2>
-<p>Every submodule MUST contain a <code>docs/</code> directory at its root:</p>
-<pre><code class="language-text">docs/
-├── index.md             # Functional Mission &amp; Executive Summary
-├── actuarial/           # PERSONA: Actuaries &amp; Quantitative Researchers
-│   ├── methodology.md   # Mathematical formulas, regulatory logic, and basis
-│   └── assumptions.md   # How domain-specific assumptions (e.g. lapse) are applied
-├── technology/          # PERSONA: Developers &amp; Data Engineers
-│   ├── architecture.md  # API design, task flow (TED), and DuckLake schema
-│   └── deployment.md    # Scaling, timeouts, and resource requirements
-├── compliance/          # PERSONA: Auditors &amp; Risk Officers
-│   ├── explainability.md # AI decision audit trails and data lineage
-│   └── controls.md       # HMAC approval gates and sign-off policies
-└── external/            # PUBLIC-FACING docs (published to vaultdb.ai)
-    └── README.md         # External developer guide → becomes index.html
-</code></pre>
-<h3 id="external-documentation-docsexternal">External Documentation (<code>docs/external/</code>)</h3>
-<p>The <code>external/</code> subfolder contains documentation intended for <strong>public consumption</strong> on vaultdb.ai. Key rules:</p>
-<ul>
-<li><code>README.md</code> in <code>external/</code> is converted to <code>index.html</code> by <code>build_docs.py</code>.</li>
-<li><strong>Never expose</strong> internal file paths, class names, environment variables, ports, or secret configuration.</li>
-<li><strong>Focus on capabilities</strong> — what the module does, not internal implementation details.</li>
-<li><strong>Use Mermaid diagrams</strong> — <code>build_docs.py</code> converts them to SVG images when <code>mmdc</code> is available, or falls back to client-side rendering.</li>
-<li>Each submodule's CLAUDE.md should include instructions for generating correct external documentation.</li>
-</ul>
-<h2 id="2-persona-requirements">2. Persona Requirements</h2>
-<h3 id="a-actuars-methodology">A. Actuars (Methodology)</h3>
-<ul>
-<li><strong>Content</strong>: Focus on the "Math and Mandates".</li>
-<li><strong>Requirements</strong>: Use LaTeX for formulas, detail the statutory vs. GAAP differences, and explain the QuantLib configuration used.</li>
-<li><strong>Audit</strong>: Must link to source regulatory documents where applicable.</li>
-</ul>
-<h3 id="b-technology-architecture">B. Technology (Architecture)</h3>
-<ul>
-<li><strong>Content</strong>: Focus on the "Pip and Payload".</li>
-<li><strong>Requirements</strong>: Mermaid sequence diagrams for async tasks, detailed field-level descriptions for Parquet outputs, and API endpoint signatures.</li>
-<li><strong>Audit</strong>: Must include performance benchmarks and error-handling strategies.</li>
-</ul>
-<h3 id="c-compliance-auditors">C. Compliance (Auditors)</h3>
-<ul>
-<li><strong>Content</strong>: Focus on "Provenance and Permissions".</li>
-<li><strong>Requirements</strong>: Documentation of the <code>ApprovalRecord</code> created for specific actions, logs for AI-proposed changes, and role-based access control (RBAC) details.</li>
-</ul>
-<h2 id="3-build-process">3. Build Process</h2>
-<p>Documentation is automatically converted to HTML and hosted on the static <code>vaultdb-web</code> site via the global <code>build_docs.py</code> script. </p>
-<ul>
-<li><strong>Sidebar</strong>: The built-in script generates a navigation sidebar based on the folder structure.</li>
-<li><strong>Header/Footer</strong>: Site-wide branding is injected automatically.</li>
-<li><strong>Mermaid</strong>: Diagrams are rendered using a CDN-based Mermaid.js injector.</li>
-</ul>
+                        <h1 id="kronos-re-actuarial-data-ingestion-targets">KRONOS Re: Actuarial Data Ingestion Targets</h1>
+<h2 id="global-regulatory-corporate-data-matrix">Global Regulatory &amp; Corporate Data Matrix</h2>
+<p>To construct the ultimate stochastic ALM and Assumption models, we must scrape specific documents from the exact endpoints where insurers lodge their product definitions and capital requirements. Actuarial product data exists across three distinct layers: Securities, State Insurance, and Offshore Reinsurance.</p>
+<h3 id="1-us-securities-filings-sec-edgar">1. US Securities Filings (SEC EDGAR)</h3>
+<p><strong>Target Market:</strong> Variable Annuities (VAs), Registered Index-Linked Annuities (RILAs), Variable Universal Life (VUL).<br />
+<strong>URL Source:</strong> <code>https://data.sec.gov/submissions/CIK[...].json</code> (API) | <code>https://www.sec.gov/edgar/searchedgar/companysearch</code>
+<strong>Key Target Forms:</strong>
+*   <strong>Form N-4 &amp; N-6:</strong> Core prospectuses for VAs and VULs containing precise fee tables and GLWB guarantees.
+*   <strong>Form S-1 &amp; S-3:</strong> Core prospectuses for RILAs and MYGAs involving downside tail risk.
+*   <strong>Form 424B2 / 424B3 / 497:</strong> Mandatory pricing supplements releasing the live declared "Cap Rates", "Participation Rates", and "Option Budgets".</p>
+<h3 id="2-us-state-insurance-regulators-naic-serff">2. US State Insurance Regulators (NAIC SERFF)</h3>
+<p><strong>Target Market:</strong> Traditional Fixed, Fixed Indexed Annuities (FIAs), Whole Life. (Exempt from SEC registration).<br />
+<strong>URL Source:</strong> <code>https://serff.com</code> | Individual State DOIs (e.g., Texas DOI, NY DFS Public Tracking).<br />
+<strong>Key Target Forms:</strong>
+*   <strong>Actuarial Memorandum:</strong> The most valuable internal document detailing the exact assumption matrices (lapse arrays, expected margins, mortality).
+*   <strong>Policy Forms / Specimen Contracts:</strong> Defines Surrender Charge penalties and MVA (Market Value Adjustment) schedules.</p>
+<h3 id="3-offshore-reinsurance-regulators-bermuda-bma-cayman-cima">3. Offshore Reinsurance Regulators (Bermuda BMA &amp; Cayman CIMA)</h3>
+<p><strong>Target Market:</strong> Block Life Reinsurance Entities (Athene Life Re, Fortitude Re, Venerable).<br />
+<strong>URL Source:</strong> <code>https://www.bma.bm/public-reports/financial-condition-report</code><br />
+<strong>Key Target Forms:</strong>
+*   <strong>Financial Condition Report (FCR):</strong> A mandatory BMA public disclosure mapping offshore block acquisition assumptions, risk profiles, and capital reserve limits against the Bermuda Solvency Capital Requirement (BSCR).</p>
+<h3 id="4-european-regulators-solvency-ii-regime">4. European Regulators (Solvency II Regime)</h3>
+<p><strong>Target Market:</strong> UK and European Parents of US life cos (Legal &amp; General, Prudential plc).<br />
+<strong>URL Source:</strong> UK Companies House | EIOPA Registers | EU Corporate Sites.<br />
+<strong>Key Target Forms:</strong>
+*   <strong>Solvency and Financial Condition Report (SFCR):</strong> Details Solvency II's Best Estimate Liabilities (BEL) curves and Risk Margins.</p>
+<h3 id="5-corporate-intermediary-portals">5. Corporate Intermediary Portals</h3>
+<p><strong>Target Market:</strong> Current declared and consumer-facing literature.<br />
+<strong>URL Source:</strong> Public <code>/annuities/prospectuses/</code> domains (e.g., Athene, Prudential, Corebridge).<br />
+<strong>Key Target Forms:</strong>
+*   <strong>Corporate Agent Guides &amp; Brochures:</strong> Glossy PDFs and weekly excel rate sheets required to calibrate real-time pricing grids.</p>
                     </div>
                 </div>
             </div>

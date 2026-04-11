@@ -525,7 +525,7 @@
         </li>
         
         <li class="nav-item">
-            <a class="nav-link  " href="marketin-ideas.html">
+            <a class="nav-link active " href="marketin-ideas.html">
                 <i class="fa-solid fa-house me-2"></i> Marketin Ideas
             </a>
         </li>
@@ -537,7 +537,7 @@
         </li>
         
         <li class="nav-item">
-            <a class="nav-link active ps-4" href="standards_SUBMODULE_DOC_CONVENTION.html">
+            <a class="nav-link  ps-4" href="standards_SUBMODULE_DOC_CONVENTION.html">
                 <i class="fa-solid fa-file-lines me-2"></i> Submodule Doc Convention
             </a>
         </li>
@@ -560,61 +560,28 @@
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
                                 <li class="breadcrumb-item"><a href="#">Platform</a></li>
-                                <li class="breadcrumb-item active">Submodule Doc Convention <span class="persona-badge">standards</span></li>
+                                <li class="breadcrumb-item active">Marketin-Ideas <span class="persona-badge">index</span></li>
                             </ol>
                         </nav>
-                        <h1 id="vaultdb-submodule-documentation-standard">VaultDB Submodule Documentation Standard</h1>
-<p>To ensure a consistent, Docusaurus-style experience on the <code>vaultdb.ai</code> portal, all submodules must adhere to the following documentation structure.</p>
-<h2 id="1-directory-structure">1. Directory Structure</h2>
-<p>Every submodule MUST contain a <code>docs/</code> directory at its root:</p>
-<pre><code class="language-text">docs/
-├── index.md             # Functional Mission &amp; Executive Summary
-├── actuarial/           # PERSONA: Actuaries &amp; Quantitative Researchers
-│   ├── methodology.md   # Mathematical formulas, regulatory logic, and basis
-│   └── assumptions.md   # How domain-specific assumptions (e.g. lapse) are applied
-├── technology/          # PERSONA: Developers &amp; Data Engineers
-│   ├── architecture.md  # API design, task flow (TED), and DuckLake schema
-│   └── deployment.md    # Scaling, timeouts, and resource requirements
-├── compliance/          # PERSONA: Auditors &amp; Risk Officers
-│   ├── explainability.md # AI decision audit trails and data lineage
-│   └── controls.md       # HMAC approval gates and sign-off policies
-└── external/            # PUBLIC-FACING docs (published to vaultdb.ai)
-    └── README.md         # External developer guide → becomes index.html
-</code></pre>
-<h3 id="external-documentation-docsexternal">External Documentation (<code>docs/external/</code>)</h3>
-<p>The <code>external/</code> subfolder contains documentation intended for <strong>public consumption</strong> on vaultdb.ai. Key rules:</p>
-<ul>
-<li><code>README.md</code> in <code>external/</code> is converted to <code>index.html</code> by <code>build_docs.py</code>.</li>
-<li><strong>Never expose</strong> internal file paths, class names, environment variables, ports, or secret configuration.</li>
-<li><strong>Focus on capabilities</strong> — what the module does, not internal implementation details.</li>
-<li><strong>Use Mermaid diagrams</strong> — <code>build_docs.py</code> converts them to SVG images when <code>mmdc</code> is available, or falls back to client-side rendering.</li>
-<li>Each submodule's CLAUDE.md should include instructions for generating correct external documentation.</li>
-</ul>
-<h2 id="2-persona-requirements">2. Persona Requirements</h2>
-<h3 id="a-actuars-methodology">A. Actuars (Methodology)</h3>
-<ul>
-<li><strong>Content</strong>: Focus on the "Math and Mandates".</li>
-<li><strong>Requirements</strong>: Use LaTeX for formulas, detail the statutory vs. GAAP differences, and explain the QuantLib configuration used.</li>
-<li><strong>Audit</strong>: Must link to source regulatory documents where applicable.</li>
-</ul>
-<h3 id="b-technology-architecture">B. Technology (Architecture)</h3>
-<ul>
-<li><strong>Content</strong>: Focus on the "Pip and Payload".</li>
-<li><strong>Requirements</strong>: Mermaid sequence diagrams for async tasks, detailed field-level descriptions for Parquet outputs, and API endpoint signatures.</li>
-<li><strong>Audit</strong>: Must include performance benchmarks and error-handling strategies.</li>
-</ul>
-<h3 id="c-compliance-auditors">C. Compliance (Auditors)</h3>
-<ul>
-<li><strong>Content</strong>: Focus on "Provenance and Permissions".</li>
-<li><strong>Requirements</strong>: Documentation of the <code>ApprovalRecord</code> created for specific actions, logs for AI-proposed changes, and role-based access control (RBAC) details.</li>
-</ul>
-<h2 id="3-build-process">3. Build Process</h2>
-<p>Documentation is automatically converted to HTML and hosted on the static <code>vaultdb-web</code> site via the global <code>build_docs.py</code> script. </p>
-<ul>
-<li><strong>Sidebar</strong>: The built-in script generates a navigation sidebar based on the folder structure.</li>
-<li><strong>Header/Footer</strong>: Site-wide branding is injected automatically.</li>
-<li><strong>Mermaid</strong>: Diagrams are rendered using a CDN-based Mermaid.js injector.</li>
-</ul>
+                        <p>Yes, there is a very strong strategic point to proposing <strong>KRONOS Re</strong> even if a block of business is already reinsured. In the industry, this is often handled through a process called <strong>retrocession</strong>, but for a platform like KRONOS, the "point" is usually centered on <strong>arbitrage</strong> and <strong>efficiency</strong>.</p>
+<p>Here is why you should still propose the system to a carrier or reinsurer who already has coverage:</p>
+<h3 id="1-capturing-the-complexity-tax-arbitrage">1. Capturing the "Complexity Tax" Arbitrage</h3>
+<p>As noted in your KRONOS strategy, traditional reinsurers often charge a <strong>50–100 basis point "Complexity Tax."</strong> * <strong>The Opportunity:</strong> If a carrier’s current reinsurer is using manual ALM and "sluggish regulatory reporting," they are likely holding <strong>overly conservative capital buffers</strong>. 
+* <strong>The Proposal:</strong> You can propose that KRONOS Re takes over the block (via a novation or by being the new reinsurer when a treaty is recaptured) because your AI-native platform can model the risk more precisely. By reducing the "Uncertainty Buffer," you can offer the carrier better terms or a higher profit commission than their current "legacy" reinsurer.</p>
+<h3 id="2-acting-as-a-retrocessionaire-reinsurance-for-reinsurers">2. Acting as a Retrocessionaire (Reinsurance for Reinsurers)</h3>
+<p>If you propose to the <strong>existing reinsurer</strong> rather than the original carrier, you are proposing a <strong>Retrocession</strong> deal.
+* <strong>Why they would say yes:</strong> Even big reinsurers (like Munich Re or Swiss Re) sometimes reach their "retention limit" or want to offload specific risks to free up their own capital. 
+* <strong>The KRONOS Edge:</strong> You aren't just taking the risk; you are providing them with the <strong>"Digital Chief Actuary" dashboard</strong>. They get to offload the risk <em>and</em> they get access to your real-time Greeks and stochastic modeling to better monitor their remaining portfolio.</p>
+<h3 id="3-treaty-recapture-and-replacement">3. Treaty "Recapture" and Replacement</h3>
+<p>Reinsurance treaties are not always permanent. Many have "recapture" clauses that allow the original carrier to take the business back after a certain period (e.g., 10 years).
+* <strong>The Proposal:</strong> You propose KRONOS as the <em>next</em> destination. By showing off your end-to-end system and sample inforce loaders now, you position KRONOS as the obvious choice for when the current treaty expires or if the carrier decides to move the block to a more transparent, lower-cost provider.</p>
+<h3 id="4-the-sidecar-capacity-play">4. The Sidecar "Capacity" Play</h3>
+<p>KRONOS is designed as a <strong>Bermuda Sidecar</strong>. Often, sidecars don't replace the main reinsurer; they sit alongside them to provide <strong>additional capacity</strong>.
+* <strong>The Proposal:</strong> "We know you have [Reinsurer X] for the bulk of this block, but KRONOS Re can act as a sidecar for the top 20% of the risk. Our AI-driven pricing allows us to be more surgical with the 'tail risk' that your main reinsurer might be overcharging you for."</p>
+<h3 id="5-superior-transparency-for-pe-partners">5. Superior Transparency for PE Partners</h3>
+<p>If the "them" in your question is a <strong>Private Equity partner</strong>, they are often frustrated by the "black box" nature of traditional reinsurance. 
+* <strong>The Point:</strong> Proposing a block that is <em>already</em> reinsured serves as a perfect <strong>benchmark</strong>. You can say: <em>"Company X is currently paying 80bps in fees for this block. With our system, we can run it for 30bps and give you a real-time view of the assets. We can effectively 'refinance' this insurance risk."</em></p>
+<p><strong>Summary for your pitch:</strong> Don't view existing reinsurance as a "closed door." View it as a <strong>price to beat</strong>. If you can prove your system handles the ALM-to-Reporting loop more efficiently, you are proposing a way for them to "refinance" their risk at a lower cost of capital.</p>
                     </div>
                 </div>
             </div>

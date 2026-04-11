@@ -1,157 +1,995 @@
-<!DOCTYPE html>
+
+            <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>KRONOS Re: End-to-End Architecture</title>
-<meta name="robots" content="noindex, nofollow"/>
+<title>Kronos Re: The AI-Native Bermuda Sidecar</title>
+<meta content="noindex," name="“robots”" nofollow”=""/>
+<meta content="noindex," follow”="" name="“robots”"/>
+<meta content="index," name="“robots”" nofollow”=""/>
+<meta content="VaultDB.ai: Secure Inprocess database and cloud DataHub for IOT and Modeling" property="”og:title”">
+<meta content="Secure Inprocess database and cloud DataHub for IOT and Modeling" property="”og:description”">
+<meta content="Database, DataHub, IO, AI Modeling" property="”og:type”">
+<meta content="img/v-logo.png" property="”og:image”"/>
+<meta content="http://vaultdb.ai" property="”og:url”"/>
+<meta content="VaultDB.ai" property="”og:site_name”"/>
+<!--meta name+" keywords" content=" keywords go here"/-->
 <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" rel="stylesheet"/>
 <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" referrerpolicy="no-referrer" rel="stylesheet"/>
+<!-- favicon -->
 <link href="../img/v-logo.png" rel="icon" type="image/png"/>
+<!-- animation  -->
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
 <link href="../css/style.css" rel="stylesheet"/>
-</head>
+</meta></meta></meta>
+    <style>
+        html { font-size: 10px !important; }
+        body { font-size: 1.6rem !important; background: var(--main-color) !important; color: #f5f5f5; }
+
+        .doc-wrapper { margin-top: 15vh; margin-bottom: 5vh; min-height: 80vh; }
+        .doc-nav { border-right: 1px solid rgba(168, 150, 183, 0.2); height: 100%; padding-right: 2rem; }
+        .doc-nav .nav-link {
+            color: #A896B7; border-radius: 12px; margin-bottom: 8px; transition: 0.3s;
+            font-size: 1.6rem; padding: 1.4rem 2rem; border: 1px solid transparent;
+        }
+        .doc-nav .nav-link:hover { background: rgba(160, 68, 255, 0.1); color: var(--purple-color); transform: translateX(8px); }
+        .doc-nav .nav-link.active { background: var(--purple-color); color: #fff !important; font-weight: 700; box-shadow: 0 12px 24px rgba(160, 68, 255, 0.4); }
+
+        .doc-content { padding-left: 6rem; max-width: 1000px; }
+        .doc-content h1, .doc-content h2, .doc-content h3 { font-family: var(--plus-font-family); color: #fff; margin-top: 4.5rem; }
+        .doc-content h1 { font-size: 5.2rem; font-weight: 800; margin-top: 0; margin-bottom: 4rem; letter-spacing: -0.03em; }
+        .doc-content h2 { font-size: 3.6rem; border-bottom: 2px solid rgba(168, 150, 183, 0.15); padding-bottom: 1.5rem; }
+        .doc-content h3 { font-size: 2.8rem; color: var(--purple-color); }
+
+        .doc-content p, .doc-content li { font-size: 1.8rem; line-height: 2.0; color: #d0c4db; margin-bottom: 2.8rem; }
+        .doc-content code { background: #0b0b1a; padding: 4px 10px; border-radius: 8px; color: #f8f8f2; border: 1px solid rgba(255,255,255,0.1); }
+        .doc-content pre { padding: 3.5rem; border-radius: 20px; box-shadow: 0 30px 60px rgba(0,0,0,0.5); }
+
+        .persona-badge { font-size: 0.9rem; text-transform: uppercase; padding: 6px 16px; border-radius: 99px; background: rgba(160, 68, 255, 0.25); border: 1px solid var(--purple-color); color: #fff; margin-left: 20px; }
+
+        .breadcrumb-item a { color: var(--purple-color); font-size: 1.6rem; text-decoration: none; }
+        .breadcrumb-item.active { color: #666; font-size: 1.6rem; }
+
+        .doc-content table { border-radius: 16px; overflow: hidden; border: 1px solid rgba(168, 150, 183, 0.3); }
+        .doc-content th { background: #131326; padding: 2rem; font-size: 1.7rem; color: #fff; }
+        .doc-content td { padding: 2rem; border-top: 1px solid rgba(168, 150, 183, 0.1); font-size: 1.7rem; }
+
+        .mermaid-diagram { margin: 3rem 0; text-align: center; }
+        .mermaid-diagram img { max-width: 100%; border-radius: 16px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+        .mermaid { background: transparent; }
+    </style>
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true, theme: 'dark', fontFamily: 'DM Sans' });
+    </script>
+    </head>
 <body style="overflow: hidden !important">
 <div class="container_body">
 <div class="container_inside">
+<!-- Nav Bar start Lg  -->
 <header class="header">
 <div class="logo">
 <img alt="" src="../img/mainlogo.png"/>
 <a href="../index.html">VaultDB.ai</a>
 </div>
 <ul class="menu_bar">
-<li>
-<a href="#" class="header_hover">KRONOS Modules</a>
-<ul class="dropdown-menu" style="background-color: #10101e; width: 60rem;">
-<div class="row p-4">
-<div class="col-md-4">
-<li class="p-2"><a href="../products/asset/docs/index.html"><i class="fa-solid fa-cube me-2 text-purple"></i>Asset</a></li>
-<li class="p-2"><a href="../products/market/docs/index.html"><i class="fa-solid fa-chart-line me-2 text-purple"></i>Market</a></li>
-<li class="p-2"><a href="../products/liability/docs/index.html"><i class="fa-solid fa-file-invoice-dollar me-2 text-purple"></i>Liability</a></li>
-<li class="p-2"><a href="../products/assumptions/docs/index.html"><i class="fa-solid fa-table me-2 text-purple"></i>Assumptions</a></li>
-<li class="p-2"><a href="../products/scenario/docs/index.html"><i class="fa-solid fa-shuffle me-2 text-purple"></i>Scenario</a></li>
-</div>
-<div class="col-md-4">
-<li class="p-2"><a href="../products/valuation/docs/index.html"><i class="fa-solid fa-calculator me-2 text-purple"></i>Valuation</a></li>
-<li class="p-2"><a href="../products/alm/docs/index.html"><i class="fa-solid fa-scale-balanced me-2 text-purple"></i>ALM</a></li>
-<li class="p-2"><a href="../products/trading/docs/index.html"><i class="fa-solid fa-arrow-right-arrow-left me-2 text-purple"></i>Trading</a></li>
-<li class="p-2"><a href="../products/risk/docs/index.html"><i class="fa-solid fa-shield-halved me-2 text-purple"></i>Risk</a></li>
-<li class="p-2"><a href="../products/reporting/docs/index.html"><i class="fa-solid fa-file-lines me-2 text-purple"></i>Reporting</a></li>
-</div>
-<div class="col-md-4">
-<li class="p-2"><a href="../products/ingestion/docs/index.html"><i class="fa-solid fa-upload me-2 text-purple"></i>Ingestion</a></li>
-<li class="p-2"><a href="../products/dashboard/docs/index.html"><i class="fa-solid fa-gauge-high me-2 text-purple"></i>Dashboard</a></li>
-<li class="p-2"><a href="../products/core/docs/index.html"><i class="fa-solid fa-microchip me-2 text-purple"></i>Core Platform</a></li>
-</div>
-</div>
-</ul>
-</li>
-<li class="second_bar">
-<a href="#" class="header_hover">Developers</a>
-<ul class="dev_menu" style="background-color: #10101e">
-<li>
-<div class="dev_box">
-<img src="../img/Group 1000001838.png" alt="menu_logo" class="first_dev_img"/>
-<a href="index.html">Documentation Home</a>
-<div class="line" style="width: 100%"></div>
-</div>
-<div class="dev_box">
-<img src="../img/Group 1000001840.png" alt="menu_logo"/>
-<a href="ARCHITECTURE.html">System Architecture</a>
-<div class="line"></div>
-</div>
-<div class="dev_box">
-<img src="../img/Group 1000001843.png" alt="menu_logo"/>
-<a href="technology_system_architecture.html">End-to-End Architecture</a>
-<div class="line"></div>
-</div>
-<div class="dev_box">
-<img src="../img/Group 1000001843.png" alt="menu_logo"/>
-<a href="standards_SUBMODULE_DOC_CONVENTION.html">Doc Standards</a>
-</div>
-</li>
-</ul>
-</li>
-<li><a href="../about.html" class="header_hover">About Us</a></li>
-<li><a href="../contact.html" class="contact_btn">Contact Us</a></li>
-</ul>
-<div class="header_icons">
+          <li>
+            <a href="#" class="header_hover">KRONOS Modules</a>
+            <ul class="dropdown-menu" style="background-color: #10101e; width: 60rem;">
+              <div class="row p-4">
+                <div class="col-md-4">
+                  <li class="p-2"><a href="../products/asset/docs/index.html"><i
+                        class="fa-solid fa-cube me-2 text-purple"></i>Asset</a></li>
+                  <li class="p-2"><a href="../products/market/docs/index.html"><i
+                        class="fa-solid fa-chart-line me-2 text-purple"></i>Market</a></li>
+                  <li class="p-2"><a href="../products/liability/docs/index.html"><i
+                        class="fa-solid fa-file-invoice-dollar me-2 text-purple"></i>Liability</a></li>
+                  <li class="p-2"><a href="../products/assumptions/docs/index.html"><i
+                        class="fa-solid fa-table me-2 text-purple"></i>Assumptions</a></li>
+                  <li class="p-2"><a href="../products/scenario/docs/index.html"><i
+                        class="fa-solid fa-shuffle me-2 text-purple"></i>Scenario</a></li>
+                </div>
+                <div class="col-md-4">
+                  <li class="p-2"><a href="../products/valuation/docs/index.html"><i
+                        class="fa-solid fa-calculator me-2 text-purple"></i>Valuation</a></li>
+                  <li class="p-2"><a href="../products/alm/docs/index.html"><i
+                        class="fa-solid fa-scale-balanced me-2 text-purple"></i>ALM</a></li>
+                  <li class="p-2"><a href="../products/trading/docs/index.html"><i
+                        class="fa-solid fa-arrow-right-arrow-left me-2 text-purple"></i>Trading</a></li>
+                  <li class="p-2"><a href="../products/risk/docs/index.html"><i
+                        class="fa-solid fa-shield-halved me-2 text-purple"></i>Risk</a></li>
+                  <li class="p-2"><a href="../products/reporting/docs/index.html"><i
+                        class="fa-solid fa-file-lines me-2 text-purple"></i>Reporting</a></li>
+                </div>
+                <div class="col-md-4">
+                  <li class="p-2"><a href="../products/ingestion/docs/index.html"><i
+                        class="fa-solid fa-upload me-2 text-purple"></i>Ingestion</a></li>
+                  <li class="p-2"><a href="../products/dashboard/docs/index.html"><i
+                        class="fa-solid fa-gauge-high me-2 text-purple"></i>Dashboard</a></li>
+                  <li class="p-2"><a href="../products/core/docs/index.html"><i
+                        class="fa-solid fa-microchip me-2 text-purple"></i>Core Platform</a></li>
+                </div>
+              </div>
+            </ul>
+          </li>
+          <li class="second_bar">
+            <a href="#" class="header_hover">Developers</a>
+            <ul class="dev_menu" style="background-color: #10101e">
+              <li>
+                <div class="dev_box">
+                  <img src="../img/Group 1000001838.png" alt="menu_logo" class="first_dev_img" />
+                  <a href="../docs/index.html">Documentation Home</a>
+                  <div class="line" style="width: 100%"></div>
+                </div>
+                <div class="dev_box">
+                  <img src="../img/Group 1000001840.png" alt="menu_logo" />
+                  <a href="../docs/ARCHITECTURE.html">System Architecture</a>
+                  <div class="line"></div>
+                </div>
+                <div class="dev_box">
+                  <img src="../img/Group 1000001843.png" alt="menu_logo" />
+                  <a href="../docs/technology_system_architecture.html">End-to-End Architecture</a>
+                  <div class="line"></div>
+                </div>
+                <div class="dev_box">
+                  <img src="../img/Group 1000001843.png" alt="menu_logo" />
+                  <a href="../docs/standards_SUBMODULE_DOC_CONVENTION.html">Doc Standards</a>
+                </div>
+              </li>
+            </ul>
+          </li>
+          <li class="first_bar">
+            <a href="#" class="header_hover">Database</a>
+            <ul class="dropdown-menu" style="background-color: #10101e">
+              <li class="first_content_container">
+                <div class="first_content">
+                  <div class="dropdown_img">
+                    <img src="../img/Group 1000001831.png" alt="" />
+                  </div>
+                  <div class="dropdown_content">
+                    <p>VaultDB HUB</p>
+                    <p>
+                      Train, Test and deploy and manage your models with
+                      integrated Governance, Risk and Controls.
+                    </p>
+                  </div>
+                </div>
+                <div class="dropdown_btns">
+                  <a href="../database/index.html" class="dropdown_btn">VaultDB Database IOT Platform</a>
+                  <a href="../database/index.html" class="dropdown_btn">Websites and mobile Apps</a>
+                  <a href="https://docs.vaultdb.ai/hub/datahub" class="dropdown_btn">VaultDB Data Hub</a>
+                </div>
+                <div class="line"></div>
+              </li>
+              <li>
+                <div class="second_content second">
+                  <div class="dropdown_img">
+                    <img src="../img/Group 1000001832.png" alt="" />
+                  </div>
+                  <div class="dropdown_content">
+                    <p>VaultDB Compute</p>
+                    <p>
+                      Scalable cloud resources for distributed model execution.
+                    </p>
+                  </div>
+                  <div class="line_bottom">
+                    <div class="line"></div>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="second_content third_content">
+                  <div class="dropdown_img">
+                    <img src="../img/Group 1000001793.png" alt="" />
+                  </div>
+                  <div class="dropdown_content">
+                    <p>VaultDB Actions</p>
+                    <p class="para_1">
+                      CI/CD for compute intensive and analytical pipelines.
+                    </p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#" class="header_hover">AI Marketplace</a>
+            <ul class="dropdown-menu" style="background-color: #10101e; width: 30rem;">
+              <div class="p-4">
+                <li class="p-2"><a href="../marketplace/index.html"><i
+                      class="fa-solid fa-store me-2 text-purple"></i>Browse All</a></li>
+                <li class="p-2"><a href="../marketplace/skills.html"><i
+                      class="fa-solid fa-wand-magic-sparkles me-2 text-purple"></i>Skills</a></li>
+                <li class="p-2"><a href="../marketplace/mcp-servers.html"><i
+                      class="fa-solid fa-server me-2 text-purple"></i>MCP Servers</a></li>
+                <li class="p-2"><a href="../marketplace/plugins.html"><i
+                      class="fa-solid fa-plug me-2 text-purple"></i>Plugins</a></li>
+              </div>
+            </ul>
+          </li>
+          <li><a href="../about.html" class="header_hover">About Us</a></li>
+
+          <li>
+            <a href="../contact.html" class="contact_btn">Contact Us</a>
+          </li>
+        </ul>
+        <div class="header_icons">
 <i class="fa-solid fa-bars text-white fs-1 menu"></i>
 </div>
 </header>
-
-<div class="container" style="margin-top: 5%; margin-bottom: 10%;">
-<div class="row justify-content-center">
-<div class="col-lg-10">
-<div style="margin-bottom: 3rem;">
-<a href="../index.html" style="color: var(--purple-color); text-decoration: none;">&larr; Back to Home</a>
+<!-- Nav Bar End -->
+<!-- Mobile sidebar=========================== -->
+<div class="side_accordian">
+<div class="menu_accordian">
+<div class="mobile_nav" style="background-color: var(--main-color)">
+<div class="logo">
+<img alt="" src="../img/logo.png"/>
+<a class="f-2" href="../index.html">VaultDB.ai</a>
 </div>
-
-<h1 class="text-white mb-4">End-to-End Architecture</h1>
-<div class="line" style="margin-bottom: 2rem;"></div>
-<div style="color: var(--para-color); font-size: 1.1rem; line-height: 1.8;">
-<h3 class="text-white mb-3">Deployment Topology</h3>
-<p>KRONOS Re runs as a set of supervised services orchestrated by systemd/supervisord:</p>
-<ul>
-<li><strong>KRONOS Dashboard</strong> (port 8050) &mdash; Dash application serving the primary UI</li>
-<li><strong>KRONOS API</strong> (port 8000) &mdash; FastAPI router for task execution and data access</li>
-<li><strong>ChatHub</strong> (port 8060) &mdash; Per-user AI chatbot process manager</li>
-<li><strong>User Servers</strong> (ports 9100-9999) &mdash; Isolated Claude SDK conversation loops</li>
+<i class="fa-solid fa-xmark text-white fs-1 close_icon"></i>
+</div>
+<div class="link">
+<p class="dropdown_link dropdown_bar">Developers</p>
+<ul class="sub_menu dropdown">
+<a href="../docs/index.html">
+<div class="dev_nav">
+<div class="dev_nav_box">
+<div class="dev_nav_img">
+<img alt="" src="../img/Group 1000001838.png"/>
+</div>
+<div class="dev_para">Documentation Home</div>
+</div>
+</div>
+</a>
 </ul>
-
-<h3 class="text-white mt-4 mb-3">Module Dependency Graph</h3>
-<p>All modules depend on <strong>Core</strong> for data access, authentication, and compute orchestration. The dependency flow is:</p>
-<p style="font-family: monospace; color: var(--white-color);">
-Ingestion &rarr; Market + Assumptions &rarr; Asset + Liability &rarr; Scenario &rarr; Valuation + ALM &rarr; Trading &rarr; Risk &rarr; Reporting &rarr; Dashboard
-</p>
-
-<h3 class="text-white mt-4 mb-3">Compute Engines</h3>
-<p>Computationally intensive operations (cash flow projection, Monte Carlo simulation, portfolio pricing) use PyTorch tensors for GPU-accelerated vectorization. The <code>TorchMixin</code> base class provides device management, discount factor generation, survival chain computation, and automatic differentiation for sensitivity analysis.</p>
-
-<h3 class="text-white mt-4 mb-3">Interest Rate Models</h3>
-<p>The platform implements two stochastic interest rate models for liability valuation:</p>
-<ul>
-<li><strong>Hull-White 1F</strong> &mdash; Mean-reverting short rate model with exact OU discretization</li>
-<li><strong>Heath-Jarrow-Morton (HJM)</strong> &mdash; Multi-factor forward rate model with no-arbitrage drift constraint</li>
+<div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
+<ul class="sub_menu dropdown">
+<a href="../docs/ARCHITECTURE.html">
+<div class="dev_nav">
+<div class="dev_nav_box">
+<div class="dev_nav_img image">
+<img alt="" src="../img/Group 1000001840.png"/>
+</div>
+<div class="dev_para">System Architecture</div>
+</div>
+</div>
+</a>
 </ul>
-<p>Both produce PyTorch discount factor tensors of shape <code>(n_scenarios, n_periods)</code> for vectorized present-value computation across the liability portfolio.</p>
+<div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
+<ul class="sub_menu dropdown">
+<a href="../docs/technology_system_architecture.html">
+<div class="dev_nav">
+<div class="dev_nav_box">
+<div class="dev_nav_img image">
+<img alt="" src="../img/Group 1000001843.png"/>
+</div>
+<div class="dev_para">End-to-End Architecture</div>
+</div>
+</div>
+</a>
+</ul>
+<div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
+<ul class="sub_menu dropdown">
+<a href="../docs/standards_SUBMODULE_DOC_CONVENTION.html">
+<div class="dev_nav">
+<div class="dev_nav_box">
+<div class="dev_nav_img image">
+<img alt="" src="../img/Group 1000001843.png"/>
+</div>
+<div class="dev_para">Doc Standards</div>
+</div>
+</div>
+</a>
+</ul>
+<div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
+</div>
+<div class="link">
+<p class="dropdown_link dropdown_bar">Database</p>
+<ul class="sub_menu dropdown">
+<div class="first_menu pb-5">
+<div class="content">
+<div class="first_img">
+<img alt="" src="../img/Group 1000001831.png"/>
+</div>
+<div class="first_menu_content">VaultDB HUB</div>
+</div>
+<div class="bottom_para">
+                  Train, Test and deploy and manage your models with
+                  integrated Governance, Risk and Controls. Control data your
+                  models are training on for Bias and compliance.
+                </div>
+<div class="first_btns">
+           <a class="contact_btn first_btn" href="../database/index.html">
+            VaultDB Database
+           </a>
+           <a class="contact_btn first_btn" href="../database/index.html">
+            VaultDB Applications
+           </a>
+<a class="dropdown_btn" href="https://docs.vaultdb.ai/hub/datahub">VaultDB Data Hub</a>
+</div>
+</div>
+</ul>
+<div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
+<ul class="sub_menu dropdown">
+<div class="second_menu first_menu mt-5">
+<div class="content">
+<div class="second_img first_img">
+<img alt="" src="../img/Group 1000001832.png"/>
+</div>
+<div class="first_menu_content">VaultDB Compute</div>
+</div>
+<div class="bottom_para">
+                  Train and Run your models across cloud providers on cheapest
+                  and unlimited resources.
+                </div>
+</div>
+</ul>
+<div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
+<ul class="sub_menu dropdown">
+<div class="second_menu first_menu">
+<div class="content">
+<div class="second_img first_img">
+<img alt="" src="../img/Frame.png"/>
+</div>
+<div class="first_menu_content">
+                    VaultDB Actions (DevOps)
+                  </div>
+</div>
+<div class="bottom_para">
+                  Train and Run your models across cloud providers on cheapest
+                  and unlimited resources.
+                </div>
+</div>
+</ul>
+<div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
+</div>
+<div class="link">
+<p class="dropdown_link dropdown_bar">AI Marketplace</p>
+<ul class="sub_menu dropdown">
+<a href="../marketplace/index.html">
+<div class="dev_nav">
+<div class="dev_nav_box">
+<div class="dev_nav_img image">
+<i class="fa-solid fa-store text-purple fs-4" style="padding: 0.5rem;"></i>
+</div>
+<div class="dev_para">Browse All</div>
+</div>
+</div>
+</a>
+</ul>
+<div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
+<ul class="sub_menu dropdown">
+<a href="../marketplace/skills.html">
+<div class="dev_nav">
+<div class="dev_nav_box">
+<div class="dev_nav_img image">
+<i class="fa-solid fa-wand-magic-sparkles text-purple fs-4" style="padding: 0.5rem;"></i>
+</div>
+<div class="dev_para">Skills</div>
+</div>
+</div>
+</a>
+</ul>
+<div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
+<ul class="sub_menu dropdown">
+<a href="../marketplace/mcp-servers.html">
+<div class="dev_nav">
+<div class="dev_nav_box">
+<div class="dev_nav_img image">
+<i class="fa-solid fa-server text-purple fs-4" style="padding: 0.5rem;"></i>
+</div>
+<div class="dev_para">MCP Servers</div>
+</div>
+</div>
+</a>
+</ul>
+<div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
+<ul class="sub_menu dropdown">
+<a href="../marketplace/plugins.html">
+<div class="dev_nav">
+<div class="dev_nav_box">
+<div class="dev_nav_img image">
+<i class="fa-solid fa-plug text-purple fs-4" style="padding: 0.5rem;"></i>
+</div>
+<div class="dev_para">Plugins</div>
+</div>
+</div>
+</a>
+</ul>
+<div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
+</div>
+<!--div class="link">
+              <p class="dropdown_link dropdown_bar">Services</p>
+              <ul class="sub_menu dropdown">
+                <div class="dev_nav service_nav">
+                  <div class="dev_nav_box service_nav_box">
+                    <div class="dev_nav_img image service_nav_img">
+                      <img src="../img/Group 1000001846.png" alt="" />
+                    </div>
+                    <div class="dev_para service_para">UX / UI Design</div>
+                  </div>
+                </div>
+              </ul>
+              <div
+                class="line line_navbar"
+                style="position: relative; bottom: 0; left: 0"
+              ></div>
+              <ul class="sub_menu dropdown">
+                <div class="dev_nav service_nav">
+                  <div class="dev_nav_box service_nav_box">
+                    <div class="dev_nav_img image service_nav_img">
+                      <img src="../img/Group 1000001847.png" alt="" />
+                    </div>
+                    <div class="dev_para service_para">Web Development</div>
+                  </div>
+                </div>
+              </ul>
+              <div
+                class="line line_navbar"
+                style="position: relative; bottom: 0; left: 0"
+              ></div>
+              <ul class="sub_menu dropdown">
+                <div class="dev_nav service_nav">
+                  <div class="dev_nav_box service_nav_box">
+                    <div class="dev_nav_img image service_nav_img">
+                      <img src="../img/Group 1000001797.png" alt="" />
+                    </div>
+                    <div class="dev_para service_para">App Development</div>
+                  </div>
+                </div>
+              </ul>
+              <div
+                class="line line_navbar"
+                style="position: relative; bottom: 0; left: 0"
+              ></div>
+              <ul class="sub_menu dropdown">
+                <div class="dev_nav service_nav">
+                  <div class="dev_nav_box service_nav_box">
+                    <div class="dev_nav_img image service_nav_img">
+                      <img src="../img/Group 1000001844.png" alt="" />
+                    </div>
+                    <div class="dev_para service_para">Consulting</div>
+                  </div>
+                </div>
+                <div class="service_p" style="color: var(--border-color)">
+                  Contact us for Cloud and model (deterministic or mathematical)
+                  development.
+                </div>
+              </ul>
+              <div
+                class="line line_navbar"
+                style="position: relative; bottom: 0; left: 0"
+              ></div>
+            </div-->
+<div class="link" style="border: 0; outline: 0">
+<a class="dropdown_link" href="../about.html" style="font-size: 20px">About Us</a>
+<div class="middle" style="border: 0">
+<a class="contact_btn" href="../contact.html">Contact Us</a>
+</div>
+</div>
+</div>
 </div>
 
-</div>
-</div>
-</div>
+            <div class="container doc-wrapper">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="side_accordian doc-nav"><ul class="nav flex-column">
+        <li class="nav-item">
+            <a class="nav-link  " href="ARCHITECTURE.html">
+                <i class="fa-solid fa-house me-2"></i> Architecture
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="Global_Actuarial_Ingestion_Strategy.html">
+                <i class="fa-solid fa-house me-2"></i> Global Actuarial Ingestion Strategy
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="KRONOS-APPROVAL-VIEWER-PLAN.html">
+                <i class="fa-solid fa-house me-2"></i> Kronos Approval Viewer Plan
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="KRONOS-BUILD-PLAN.html">
+                <i class="fa-solid fa-house me-2"></i> Kronos Build Plan
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="KRONOS-CHATBOT-PLAN.html">
+                <i class="fa-solid fa-house me-2"></i> Kronos Chatbot Plan
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="RESEARCH-AGENT-ARCHITECTURE.html">
+                <i class="fa-solid fa-house me-2"></i> Research Agent Architecture
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="TODO.html">
+                <i class="fa-solid fa-house me-2"></i> Todo
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="index.html">
+                <i class="fa-solid fa-house me-2"></i> Index
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="marketin-ideas.html">
+                <i class="fa-solid fa-house me-2"></i> Marketin Ideas
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="project_regulatory_data_plan.html">
+                <i class="fa-solid fa-house me-2"></i> Project Regulatory Data Plan
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  ps-4" href="standards_SUBMODULE_DOC_CONVENTION.html">
+                <i class="fa-solid fa-file-lines me-2"></i> Submodule Doc Convention
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link active ps-4" href="technology_system_architecture.html">
+                <i class="fa-solid fa-code me-2"></i> System Architecture
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="system-context.html">
+                <i class="fa-solid fa-brain me-2"></i> System Context
+            </a>
+        </li>
+        </ul></div>
+                    </div>
+                    <div class="col-lg-9 doc-content">
+                        <nav aria-label="breadcrumb" class="mb-5">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="#">Platform</a></li>
+                                <li class="breadcrumb-item active">System Architecture <span class="persona-badge">technology</span></li>
+                            </ol>
+                        </nav>
+                        <h1 id="kronos-re-system-architecture">KRONOS Re — System Architecture</h1>
+<p>This document provides a complete end-to-end view of how the KRONOS Re platform components interconnect, from user interaction through AI-assisted workflow creation to regulatory report generation.</p>
+<h2 id="system-overview">System Overview</h2>
+<pre class="mermaid">graph TD
+    subgraph &quot;User Layer&quot;
+        BROWSER[&quot;Browser&quot;]
+    end
 
-</div></div>
+    subgraph &quot;Frontend (Port 8050)&quot;
+        DASH[&quot;Dash UI<br/>(Multi-page App)&quot;]
+        KRONOS_API[&quot;KRONOS REST API<br/>(FastAPI Router)&quot;]
+    end
 
+    subgraph &quot;ChatHub (Port 8060)&quot;
+        HUB[&quot;Process Manager&quot;]
+        PROXY[&quot;Request Proxy&quot;]
+    end
+
+    subgraph &quot;UserProcesses (9100-9999)&quot;
+        UP1[&quot;User A<br/>ChatEngine + Claude SDK&quot;]
+        UP2[&quot;User B<br/>ChatEngine + Claude SDK&quot;]
+    end
+
+    subgraph &quot;VaultDB Core (Port 8000)&quot;
+        CORE_API[&quot;Core FastAPI&quot;]
+        TED[&quot;TED Dispatcher&quot;]
+        WF_MGR[&quot;Workflow Manager&quot;]
+        APPROVAL[&quot;Approval Engine&quot;]
+        AUTH[&quot;Authentication&quot;]
+    end
+
+    subgraph &quot;Compute Runners&quot;
+        CELERY[&quot;Celery Workers<br/>(Redis)&quot;]
+        BATCH[&quot;AWS Batch<br/>(Fargate)&quot;]
+        LAMBDA[&quot;AWS Lambda&quot;]
+    end
+
+    subgraph &quot;Domain Modules&quot;
+        LIABILITY[&quot;Liability&quot;]
+        ALM_MOD[&quot;ALM&quot;]
+        RISK_MOD[&quot;Risk&quot;]
+        TRADING_MOD[&quot;Trading&quot;]
+        SCENARIO[&quot;Scenario&quot;]
+        VALUATION[&quot;Valuation&quot;]
+        REPORTING[&quot;Reporting&quot;]
+        ASSUMPTIONS[&quot;Assumptions&quot;]
+        INGESTION[&quot;Ingestion&quot;]
+    end
+
+    subgraph &quot;Storage&quot;
+        DUCKLAKE[(&quot;DuckLake<br/>DuckDB + Parquet&quot;)]
+        S3[(&quot;S3&quot;)]
+        REDIS[(&quot;Redis&quot;)]
+    end
+
+    BROWSER --> DASH
+    BROWSER --> KRONOS_API
+    DASH --> KRONOS_API
+    KRONOS_API -->|chatbot requests| HUB
+    HUB --> PROXY
+    PROXY --> UP1
+    PROXY --> UP2
+    UP1 -->|Anthropic API| CLAUDE[&quot;Claude API&quot;]
+    UP2 -->|Anthropic API| CLAUDE
+
+    KRONOS_API --> CORE_API
+    HUB -->|submit/approve/execute| WF_MGR
+    WF_MGR --> APPROVAL
+    WF_MGR --> TED
+
+    TED --> CELERY
+    TED --> BATCH
+    TED --> LAMBDA
+
+    CELERY --> LIABILITY
+    CELERY --> ALM_MOD
+    CELERY --> RISK_MOD
+    CELERY --> TRADING_MOD
+
+    LIABILITY --> DUCKLAKE
+    ALM_MOD --> DUCKLAKE
+    RISK_MOD --> DUCKLAKE
+    DUCKLAKE --> S3
+    CELERY --> REDIS
+</pre>
+<h2 id="request-flow-chat-message-to-workflow-execution">Request Flow: Chat Message to Workflow Execution</h2>
+<p>This is the complete path from a user typing a message to workflow results:</p>
+<pre class="mermaid">sequenceDiagram
+    participant USER as Actuary (Browser)
+    participant DASH as Dashboard (8050)
+    participant HUB as ChatHub (8060)
+    participant UP as UserProcess (9100)
+    participant CLAUDE as Claude API
+    participant CORE as VaultDB Core
+    participant WORKER as Celery Worker
+
+    rect rgb(30, 30, 60)
+        Note over USER,CLAUDE: Phase 1: AI Conversation
+        USER->>DASH: &quot;Run Q1 valuation for TED-FA-2026&quot;
+        DASH->>HUB: POST /chatbot/{user}/message
+        HUB->>HUB: Spawn UserProcess if needed
+        HUB->>UP: Forward (X-Hub-Token)
+        UP->>CLAUDE: messages.create(tools=TOOL_DEFINITIONS)
+        CLAUDE-->>UP: tool_use: list_modules
+        UP->>UP: dispatch_tool(&quot;list_modules&quot;)
+        UP->>CLAUDE: tool_result: {modules: ...}
+        CLAUDE-->>UP: tool_use: propose_workflow
+        UP->>HUB: POST /_hub/api/workflows/submit
+        HUB->>CORE: submit_workflow(definition)
+        CORE-->>HUB: WorkflowRun (PENDING_APPROVAL)
+        HUB-->>UP: {workflow_id, status}
+        UP->>CLAUDE: tool_result: {workflow_id}
+        CLAUDE-->>UP: end_turn: &quot;I've proposed a workflow...&quot;
+        UP-->>HUB: MessageResponse
+        HUB-->>DASH: JSON response
+        DASH-->>USER: Show DAG + Approve button
+    end
+
+    rect rgb(30, 60, 30)
+        Note over USER,CORE: Phase 2: Human Approval
+        USER->>DASH: Open /workflow?id=abc
+        DASH->>DASH: Record viewer_opened_at
+        USER->>USER: Review DAG, steps, assumptions
+        USER->>DASH: Click &quot;Approve&quot; + review notes
+        DASH->>HUB: POST /approvals
+        HUB->>CORE: PolicyEnforcer.enforce(context)
+        CORE-->>HUB: passed=True
+        HUB->>CORE: create_approval() → HMAC token
+        CORE-->>HUB: ApprovalRecord
+        HUB-->>DASH: 200 OK
+        DASH-->>USER: &quot;Approved&quot; badge
+    end
+
+    rect rgb(60, 30, 30)
+        Note over USER,WORKER: Phase 3: Execution
+        USER->>DASH: Click &quot;Execute&quot;
+        DASH->>HUB: POST /workflows/{id}/execute
+        HUB->>CORE: execute_workflow(id)
+        CORE->>CORE: Triple-gate: exists? valid? HMAC OK?
+        CORE->>CORE: Topological sort steps
+        loop Each step in DAG order
+            CORE->>WORKER: _call_task(step.task, kwargs)
+            WORKER->>WORKER: Execute domain computation
+            WORKER-->>CORE: Step result
+            CORE->>CORE: Resolve $step_xxx refs for next step
+        end
+        CORE-->>HUB: WorkflowRun (DONE)
+        HUB-->>DASH: Updated workflow
+        DASH-->>USER: Show results
+    end
+</pre>
+<h2 id="component-interconnection-map">Component Interconnection Map</h2>
+<h3 id="how-core-connects-to-dashboard">How Core Connects to Dashboard</h3>
+<pre class="mermaid">flowchart LR
+    subgraph &quot;Dashboard&quot;
+        PAGES[&quot;Dash Pages&quot;]
+        API_ROUTES[&quot;API Routers&quot;]
+        CHATHUB[&quot;ChatHub&quot;]
+        COMPONENTS[&quot;UI Components&quot;]
+    end
+
+    subgraph &quot;Core&quot;
+        WORKFLOW[&quot;vaultdb.workflow&quot;]
+        APPROVAL[&quot;vaultdb.approval&quot;]
+        COMPUTE[&quot;vaultdb.compute (TED)&quot;]
+        DATA[&quot;vaultdb.data (DuckLake)&quot;]
+        AUTH[&quot;vaultdb.auth&quot;]
+        WEB[&quot;vaultdb.web&quot;]
+    end
+
+    API_ROUTES -->|import| AUTH
+    API_ROUTES -->|httpx proxy| CHATHUB
+    CHATHUB -->|submit_workflow| WORKFLOW
+    CHATHUB -->|create_approval| APPROVAL
+    CHATHUB -->|execute_workflow| WORKFLOW
+    WORKFLOW -->|verify_approval| APPROVAL
+    WORKFLOW -->|_call_task| COMPUTE
+    COMPUTE -->|persist results| DATA
+    PAGES -->|REST calls| API_ROUTES
+    COMPONENTS -->|REST calls| API_ROUTES
+</pre>
+<h3 id="how-domain-modules-connect">How Domain Modules Connect</h3>
+<pre class="mermaid">graph TD
+    CORE[&quot;core&quot;] --> |all modules depend on| DEPS[&quot;Data Layer + TED + Config&quot;]
+
+    MARKET[&quot;market<br/>Curves, Vol Surfaces&quot;] --> ASSET[&quot;asset<br/>Pricing Engines&quot;]
+    MARKET --> SCENARIO[&quot;scenario<br/>ESG Paths&quot;]
+    MARKET --> VALUATION[&quot;valuation<br/>Portfolio MTM&quot;]
+
+    ASSUMPTIONS[&quot;assumptions<br/>Mortality, Lapse&quot;] --> LIABILITY[&quot;liability<br/>Cash Flows, Reserves&quot;]
+    ASSUMPTIONS --> ALM[&quot;alm<br/>Gap, NII, EVE&quot;]
+
+    INGESTION[&quot;ingestion<br/>Census Data&quot;] --> LIABILITY
+
+    LIABILITY --> ALM
+    LIABILITY --> VALUATION
+    ASSET --> VALUATION
+    SCENARIO --> ALM
+    SCENARIO --> RISK[&quot;risk<br/>BSCR, VaR&quot;]
+
+    ALM --> TRADING[&quot;trading<br/>Hedge Recommendations&quot;]
+    ALM --> RISK
+    VALUATION --> RISK
+    VALUATION --> REPORTING[&quot;reporting<br/>GAAP, STAT, BSCR&quot;]
+    RISK --> REPORTING
+    TRADING --> REPORTING
+</pre>
+<h2 id="security-architecture">Security Architecture</h2>
+<h3 id="trust-boundaries">Trust Boundaries</h3>
+<pre class="mermaid">flowchart TD
+    subgraph &quot;Trusted Zone (has secrets)&quot;
+        HUB[&quot;ChatHub&quot;]
+        CORE[&quot;VaultDB Core&quot;]
+        SECRETS[&quot;APPROVAL_SECRET<br/>AWS Keys<br/>DB Credentials&quot;]
+    end
+
+    subgraph &quot;Semi-Trusted Zone (limited access)&quot;
+        DASH[&quot;Dashboard Server&quot;]
+        WORKERS[&quot;Celery Workers&quot;]
+    end
+
+    subgraph &quot;Untrusted Zone (no secrets)&quot;
+        UP[&quot;UserProcesses<br/>(AI + Claude SDK)&quot;]
+        BROWSER[&quot;User Browser&quot;]
+    end
+
+    HUB ---|full access| SECRETS
+    CORE ---|full access| SECRETS
+    DASH ---|OAuth tokens only| HUB
+    WORKERS ---|task context only| CORE
+    UP -.-|DENIED| SECRETS
+    BROWSER -.-|DENIED| SECRETS
+    HUB -->|stripped env| UP
+</pre>
+<h3 id="approval-token-flow">Approval Token Flow</h3>
+<pre class="mermaid">flowchart LR
+    A[&quot;Human clicks Approve&quot;] --> B[&quot;PolicyEnforcer<br/>checks 6 rules&quot;]
+    B -->|passed| C[&quot;HMAC-SHA256<br/>generate token&quot;]
+    C --> D[&quot;Persist<br/>ApprovalRecord&quot;]
+    D --> E[&quot;Human clicks Execute&quot;]
+    E --> F[&quot;Triple Gate<br/>1. Exists?<br/>2. Valid?<br/>3. HMAC OK?&quot;]
+    F -->|all pass| G[&quot;Execute DAG&quot;]
+    F -->|any fail| H[&quot;DENIED&quot;]
+</pre>
+<h2 id="ted-end-to-end-pipeline">TED End-to-End Pipeline</h2>
+<p>The complete KRONOS Re operational loop (the "TED" demo):</p>
+<pre class="mermaid">flowchart TD
+    INGEST[&quot;1. INGEST<br/>Census data normalization&quot;]
+    MARKET[&quot;2. MARKET<br/>Load SOFR curve, vol surface&quot;]
+    SCENARIO_GEN[&quot;3. SCENARIO<br/>Generate NY7 + stochastic paths&quot;]
+    VALUE[&quot;4. VALUE<br/>Price assets + project liabilities&quot;]
+    ALM_COMPUTE[&quot;5. ALM<br/>Duration gap, KRD, spreads&quot;]
+    HEDGE[&quot;6. HEDGE<br/>AI drafts recommendations<br/>🧑 CIO approves&quot;]
+    RISK_COMPUTE[&quot;7. RISK<br/>BSCR, VaR, stress tests&quot;]
+    REPORT[&quot;8. REPORT<br/>GAAP/STAT/BSCR filings<br/>🧑 Actuary signs&quot;]
+
+    INGEST --> MARKET
+    MARKET --> SCENARIO_GEN
+    SCENARIO_GEN --> VALUE
+    VALUE --> ALM_COMPUTE
+    ALM_COMPUTE --> HEDGE
+    HEDGE --> RISK_COMPUTE
+    RISK_COMPUTE --> REPORT
+
+    style HEDGE fill:#2d1a4e,stroke:#a044ff
+    style REPORT fill:#2d1a4e,stroke:#a044ff
+</pre>
+<h2 id="data-flow">Data Flow</h2>
+<pre class="mermaid">flowchart LR
+    subgraph &quot;Input&quot;
+        CENSUS[&quot;Census Files<br/>(CSV/Excel)&quot;]
+        MKT_DATA[&quot;Market Data<br/>(SOFR, Vol)&quot;]
+        SOA[&quot;SOA Tables<br/>(Mortality)&quot;]
+    end
+
+    subgraph &quot;Processing&quot;
+        NORM[&quot;Normalize<br/>(ingestion)&quot;]
+        PROJ[&quot;Project<br/>(liability)&quot;]
+        PRICE[&quot;Price<br/>(asset)&quot;]
+        MATCH[&quot;Match<br/>(alm)&quot;]
+    end
+
+    subgraph &quot;Output&quot;
+        DASH_OUT[&quot;Dashboard<br/>Visualizations&quot;]
+        REPORTS_OUT[&quot;Regulatory<br/>Reports&quot;]
+        AUDIT[&quot;Audit<br/>Trail&quot;]
+    end
+
+    CENSUS --> NORM
+    MKT_DATA --> PRICE
+    SOA --> PROJ
+    NORM --> PROJ
+    PRICE --> MATCH
+    PROJ --> MATCH
+    MATCH --> DASH_OUT
+    MATCH --> REPORTS_OUT
+    MATCH --> AUDIT
+</pre>
+<h2 id="service-topology">Service Topology</h2>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>Port</th>
+<th>Process</th>
+<th>Manager</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>KRONOS Dashboard + API</td>
+<td>8050</td>
+<td>uvicorn</td>
+<td>supervisord</td>
+</tr>
+<tr>
+<td>VaultDB Core API</td>
+<td>8000</td>
+<td>uvicorn</td>
+<td>supervisord</td>
+</tr>
+<tr>
+<td>ChatHub</td>
+<td>8060</td>
+<td>uvicorn</td>
+<td>supervisord</td>
+</tr>
+<tr>
+<td>UserProcess (per user)</td>
+<td>9100-9999</td>
+<td>uvicorn</td>
+<td>ChatHub</td>
+</tr>
+<tr>
+<td>Celery Worker</td>
+<td>—</td>
+<td>celery worker</td>
+<td>supervisord</td>
+</tr>
+<tr>
+<td>Celery Beat</td>
+<td>—</td>
+<td>celery beat</td>
+<td>supervisord</td>
+</tr>
+<tr>
+<td>Flower (Celery UI)</td>
+<td>5555</td>
+<td>flower</td>
+<td>supervisord</td>
+</tr>
+<tr>
+<td>Redis</td>
+<td>6379</td>
+<td>redis-server</td>
+<td>supervisord</td>
+</tr>
+<tr>
+<td>Supervisor RPC</td>
+<td>9001</td>
+<td>supervisord</td>
+<td>system</td>
+</tr>
+</tbody>
+</table>
+                    </div>
+                </div>
+            </div>
+            <!-- footer section ===========================================-->
 <div class="container_body">
 <div class="container_inside">
 <section class="footer_section">
-<div class="footer mt-5">
+<div class="footer mt-5" data-aos="fade-left" data-aos-duration="2000">
 <div class="left">
-<img alt="" src="../img/mainlogo.png"/>
-<a class="footer_logo" href="../index.html">VaultDB.ai</a>
+<img alt="" src="../img/mainlogo.png">
+<a class="footer_logo" href="#">VaultDB.ai</a>
+</img></div>
+<div class="right" style="margin-bottom: 10px">
+<a href="#">
+<i class="fa-brands fa-github"></i>
+</a>
+<a href="#">
+<i class="fa-brands fa-youtube"></i>
+</a>
+<a href="#">
+<i class="fa-brands fa-facebook"></i>
+</a>
+<a href="#">
+<i class="fa-brands fa-twitter"></i>
+</a>
+<a href="#">
+<i class="fa-brands fa-instagram"></i>
+</a>
+<a href="#">
+<i class="fa-brands fa-linkedin"></i>
+</a>
 </div>
 </div>
 <div>
 <div class="row mb-5">
 <div class="line mb-5"></div>
 <div class="col-md-4 col-sm-12 col-lg-4">
-<h5 class="bottom_left">VaultDB.ai @ 2026. All rights reserved.</h5>
+<h5 class="bottom_left">
+                VaultDB.ai @ 2026. All rights reserved.
+              </h5>
 </div>
 <div class="col-md-8 col-sm-12 col-lg-8 bottom_right">
 <a href="../index.html">VaultDB.ai</a>
 <a href="../contact.html">Contact Us</a>
 <a href="../about.html">About Us</a>
+<a href="#">Privacy Policy</a>
+<a href="#">Terms and Conditions</a>
 </div>
 </div>
 </div>
+<div class="footer_box">
+<img alt="" class="footer_img" src="../img/Rectangle 9.png">
+</img></div>
 </section>
 </div>
 </div>
-
 <script crossorigin="anonymous" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>AOS.init();</script>
+<script>
+    AOS.init();
+  </script>
 <script src="../js/index.js"></script>
 </body>
 </html>
+            

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>core — Readme</title>
+    <style>
+        :root { --bg: #0a0a1a; --fg: #f5f5f5; --muted: #a896b7; --accent: #a044ff; }
+        body { background: var(--bg); color: var(--fg); font-family: 'DM Sans', system-ui, sans-serif;
+               font-size: 16px; line-height: 1.8; max-width: 900px; margin: 0 auto; padding: 2rem; }
+        h1 { font-size: 2.8rem; font-weight: 800; margin-top: 0; }
+        h2 { font-size: 2rem; border-bottom: 1px solid rgba(168,150,183,0.2); padding-bottom: 0.5rem; margin-top: 3rem; }
+        h3 { font-size: 1.4rem; color: var(--accent); }
+        a { color: var(--accent); }
+        code { background: #131326; padding: 2px 6px; border-radius: 4px; font-size: 0.9em; }
+        pre { background: #131326; padding: 1.5rem; border-radius: 12px; overflow-x: auto; }
+        pre code { background: none; padding: 0; }
+        table { border-collapse: collapse; width: 100%; margin: 1.5rem 0; }
+        th { background: #131326; padding: 0.8rem 1rem; text-align: left; font-weight: 600; }
+        td { padding: 0.8rem 1rem; border-top: 1px solid rgba(168,150,183,0.15); }
+        .mermaid-diagram { margin: 2rem 0; text-align: center; }
+        .mermaid-diagram img { max-width: 100%; border-radius: 12px; }
+        .mermaid { background: transparent; }
+    </style>
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true, theme: 'dark', fontFamily: 'DM Sans' });
+    </script>
+</head>
+<body>
+    <h1 id="vaultdb-core-developer-documentation">VaultDB Core — Developer Documentation</h1>
+<p>VaultDB Core is the foundational infrastructure layer of the KRONOS Re platform. It provides data orchestration, task execution, authentication, and API services that all domain modules build upon.</p>
+<h2 id="platform-overview">Platform Overview</h2>
+<pre class="mermaid">graph TD
+    subgraph &quot;VaultDB Core&quot;
+        DATA[&quot;Data Layer<br/>DuckLake ORM + Virtual Forks&quot;]
+        TED[&quot;Task Execution Dispatcher (TED)<br/>Celery | AWS Batch | Lambda&quot;]
+        AUTH[&quot;Authentication<br/>OIDC | GitHub | AWS Cognito&quot;]
+        API[&quot;FastAPI Web Layer<br/>REST API + OAuth2&quot;]
+        WF[&quot;Workflow Engine<br/>DAG-based pipeline execution&quot;]
+        APR[&quot;Approval Engine<br/>HMAC-SHA256 cryptographic signatures&quot;]
+    end
+
+    subgraph &quot;Domain Modules&quot;
+        direction LR
+        MOD1[&quot;Liability&quot;]
+        MOD2[&quot;ALM&quot;]
+        MOD3[&quot;Risk&quot;]
+        MOD4[&quot;Trading&quot;]
+        MOD5[&quot;Reporting&quot;]
+    end
+
+    MOD1 --> DATA
+    MOD1 --> TED
+    MOD2 --> DATA
+    MOD3 --> TED
+    MOD4 --> API
+    MOD5 --> DATA
+</pre>
+<h2 id="key-capabilities">Key Capabilities</h2>
+<h3 id="data-layer-ducklake-orm">Data Layer — DuckLake ORM</h3>
+<p>VaultDB uses DuckLake (DuckDB-backed, Parquet on S3) for persistent storage with an ORM-like interface:</p>
+<ul>
+<li><strong>Model classes</strong> map Python objects to DuckLake tables with typed columns</li>
+<li><strong>Virtual Forks</strong> provide isolated sandbox schemas (<code>sandbox_&lt;role&gt;</code>) that overlay production data via SQL pushdown</li>
+<li><strong>Inherited reads</strong> merge sandbox overrides with production data transparently</li>
+<li><strong>Time-series models</strong> support point-in-time historical queries on DuckLake versions</li>
+</ul>
+<h3 id="task-execution-dispatcher-ted">Task Execution Dispatcher (TED)</h3>
+<p>TED provides a unified task interface that routes computation to the appropriate backend:</p>
+<table>
+<thead>
+<tr>
+<th>Runner</th>
+<th>Backend</th>
+<th>Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>LOCAL</code></td>
+<td>In-process</td>
+<td>Development and testing</td>
+</tr>
+<tr>
+<td><code>SERVICE</code></td>
+<td>Celery + Redis</td>
+<td>Async background jobs</td>
+</tr>
+<tr>
+<td><code>BATCH</code></td>
+<td>AWS Batch (Fargate)</td>
+<td>Long-running computations, GPU workloads</td>
+</tr>
+<tr>
+<td><code>FUNCTION</code></td>
+<td>AWS Lambda</td>
+<td>Event-driven, short-lived tasks</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-python">from vaultdb._state import TED
+
+@TED.task()
+def compute_reserves(block_id: str, basis: str) -&gt; dict:
+    # Runs on whichever backend is configured
+    ...
+
+# Submit asynchronously
+result = compute_reserves.apply_async(kwargs={&quot;block_id&quot;: &quot;TED-FA-2026&quot;, &quot;basis&quot;: &quot;STAT&quot;})
+status = result.status   # SUBMITTED, STARTED, SUCCESS, FAILURE
+value = result.get(timeout=60)
+</code></pre>
+<h3 id="workflow-engine">Workflow Engine</h3>
+<p>The workflow engine manages multi-step computational pipelines:</p>
+<ol>
+<li><strong>AI proposes</strong> a workflow as a JSON definition (steps with dependencies)</li>
+<li><strong>Human reviews</strong> the workflow DAG in the dashboard</li>
+<li><strong>Human approves</strong> with a cryptographically signed approval record</li>
+<li><strong>Engine executes</strong> steps in topological order, resolving inter-step references</li>
+</ol>
+<pre class="mermaid">stateDiagram-v2
+    [*] --> PENDING_APPROVAL: Workflow proposed
+    PENDING_APPROVAL --> APPROVED: Human approval
+    PENDING_APPROVAL --> REJECTED: Human rejection
+    APPROVED --> RUNNING: Execution started
+    RUNNING --> DONE: All steps complete
+    RUNNING --> FAILED: Step failure
+</pre>
+<h3 id="approval-engine">Approval Engine</h3>
+<p>Every material action requires a cryptographically verified human approval:</p>
+<ul>
+<li><strong>HMAC-SHA256 tokens</strong> bind approvals to specific subjects and approver identities</li>
+<li><strong>Versioned keys</strong> support seamless key rotation</li>
+<li><strong>Policy rules</strong> enforce separation of duties, role requirements, review time minimums</li>
+<li><strong>Immutable audit trail</strong> captures full OIDC claims, IP address, and review notes</li>
+</ul>
+<h3 id="authentication">Authentication</h3>
+<p>Multi-provider authentication with role-based access control:</p>
+<ul>
+<li><strong>OIDC</strong>: AWS Cognito, Azure Entra ID, Auth0, Okta</li>
+<li><strong>GitHub</strong>: OAuth2 with opaque token support</li>
+<li><strong>AWS Bridge</strong>: OIDC tokens exchange for AWS credentials via Cognito Identity Pools</li>
+<li><strong>RBAC</strong>: Role extraction from JWT claims (groups, roles, Keycloak realm_access)</li>
+</ul>
+<h3 id="web-api">Web API</h3>
+<p>FastAPI application with:</p>
+<ul>
+<li>OAuth2/OIDC login flow</li>
+<li>Task submission and status polling endpoints</li>
+<li>Scheduled task management</li>
+<li>Bearer token and session cookie authentication</li>
+</ul>
+<h2 id="getting-started">Getting Started</h2>
+<h3 id="installation">Installation</h3>
+<pre><code class="language-bash">pip install vaultdb.core
+</code></pre>
+<h3 id="configuration">Configuration</h3>
+<p>All configuration flows through <code>vaultdb.config</code>:</p>
+<pre><code class="language-python">from vaultdb import config
+
+# Configuration is loaded from:
+# 1. ./vaultdb_config.py (project-local)
+# 2. ~/.vaultdb/vaultdb_config.py (user-global)
+# 3. Environment variables (highest priority)
+</code></pre>
+<h3 id="running-the-api-server">Running the API Server</h3>
+<pre><code class="language-bash"># Development mode
+export DEBUG=true
+python -m vaultdb.web  # http://localhost:8000
+
+# Production
+uvicorn vaultdb.web:app --host 0.0.0.0 --port 8000
+</code></pre>
+<h2 id="architecture-standards">Architecture Standards</h2>
+<ul>
+<li><strong>Python 3.12+</strong> with strict typing (<code>disallow_untyped_defs = True</code>)</li>
+<li><strong>Ruff</strong> for formatting and linting (160 char line limit)</li>
+<li><strong>MyPy</strong> for static type checking</li>
+<li><strong>Pytest</strong> with &gt;90% coverage target</li>
+<li><strong>Vectorization first</strong> — Arrow/DuckDB compute over Python loops</li>
+</ul>
+</body>
+</html>

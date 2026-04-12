@@ -105,8 +105,8 @@
     { label: 'VaultDB.ai', href: 'index.html' },
     { label: 'Contact Us', href: 'contact.html' },
     { label: 'About Us',   href: 'about.html' },
-    { label: 'Privacy Policy', href: '#' },
-    { label: 'Terms and Conditions', href: '#' }
+    { label: 'Privacy Policy', href: 'privacy.html' },
+    { label: 'Terms and Conditions', href: 'terms.html' }
   ];
 
   var SOCIALS = ['github', 'youtube', 'facebook', 'twitter', 'instagram', 'linkedin'];

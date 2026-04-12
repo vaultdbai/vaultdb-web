@@ -6,16 +6,16 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Kronos Re: The AI-Native Bermuda Sidecar</title>
-<meta content="noindex," name="“robots”" nofollow”=""/>
-<meta content="noindex," follow”="" name="“robots”"/>
-<meta content="index," name="“robots”" nofollow”=""/>
-<meta content="VaultDB.ai: Secure Inprocess database and cloud DataHub for IOT and Modeling" property="”og:title”">
-<meta content="Secure Inprocess database and cloud DataHub for IOT and Modeling" property="”og:description”">
-<meta content="Database, DataHub, IO, AI Modeling" property="”og:type”">
-<meta content="img/v-logo.png" property="”og:image”"/>
-<meta content="http://vaultdb.ai" property="”og:url”"/>
-<meta content="VaultDB.ai" property="”og:site_name”"/>
-<!--meta name+" keywords" content=" keywords go here"/-->
+<meta content="noindex," name=""robots"" nofollow"=""/>
+<meta content="noindex," follow"="" name=""robots""/>
+<meta content="index," name=""robots"" nofollow"=""/>
+<meta content="VaultDB.ai: Secure Inprocess database and cloud DataHub for IOT and Modeling" property="og:title">
+<meta content="Secure Inprocess database and cloud DataHub for IOT and Modeling" property="og:description">
+<meta content="Database, DataHub, IO, AI Modeling" property="og:type">
+<meta content="img/v-logo.png" property="og:image"/>
+<meta content="http://vaultdb.ai" property="og:url"/>
+<meta content="VaultDB.ai" property="og:site_name"/>
+
 <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" rel="stylesheet"/>
 <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" referrerpolicy="no-referrer" rel="stylesheet"/>
 <!-- favicon -->
@@ -23,7 +23,7 @@
 <!-- animation  -->
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
 <link href="../../../css/style.css" rel="stylesheet"/>
-</meta></meta></meta>
+
     <style>
         html { font-size: 10px !important; }
         body { font-size: 1.6rem !important; background: var(--main-color) !important; color: #f5f5f5; }
@@ -68,409 +68,12 @@
 <body style="overflow: hidden !important">
 <div class="container_body">
 <div class="container_inside">
-<!-- Nav Bar start Lg  -->
-<header class="header">
-<div class="logo">
-<img alt="" src="../../../img/mainlogo.png"/>
-<a href="../../../index.html">VaultDB.ai</a>
-</div>
-<ul class="menu_bar">
-          <li>
-            <a href="#" class="header_hover">KRONOS Modules</a>
-            <ul class="dropdown-menu" style="background-color: #10101e; width: 60rem;">
-              <div class="row p-4">
-                <div class="col-md-4">
-                  <li class="p-2"><a href="../../../products/asset/docs/index.html"><i
-                        class="fa-solid fa-cube me-2 text-purple"></i>Asset</a></li>
-                  <li class="p-2"><a href="../../../products/market/docs/index.html"><i
-                        class="fa-solid fa-chart-line me-2 text-purple"></i>Market</a></li>
-                  <li class="p-2"><a href="../../../products/liability/docs/index.html"><i
-                        class="fa-solid fa-file-invoice-dollar me-2 text-purple"></i>Liability</a></li>
-                  <li class="p-2"><a href="../../../products/assumptions/docs/index.html"><i
-                        class="fa-solid fa-table me-2 text-purple"></i>Assumptions</a></li>
-                  <li class="p-2"><a href="../../../products/scenario/docs/index.html"><i
-                        class="fa-solid fa-shuffle me-2 text-purple"></i>Scenario</a></li>
-                </div>
-                <div class="col-md-4">
-                  <li class="p-2"><a href="../../../products/valuation/docs/index.html"><i
-                        class="fa-solid fa-calculator me-2 text-purple"></i>Valuation</a></li>
-                  <li class="p-2"><a href="../../../products/alm/docs/index.html"><i
-                        class="fa-solid fa-scale-balanced me-2 text-purple"></i>ALM</a></li>
-                  <li class="p-2"><a href="../../../products/trading/docs/index.html"><i
-                        class="fa-solid fa-arrow-right-arrow-left me-2 text-purple"></i>Trading</a></li>
-                  <li class="p-2"><a href="../../../products/risk/docs/index.html"><i
-                        class="fa-solid fa-shield-halved me-2 text-purple"></i>Risk</a></li>
-                  <li class="p-2"><a href="../../../products/reporting/docs/index.html"><i
-                        class="fa-solid fa-file-lines me-2 text-purple"></i>Reporting</a></li>
-                </div>
-                <div class="col-md-4">
-                  <li class="p-2"><a href="../../../products/ingestion/docs/index.html"><i
-                        class="fa-solid fa-upload me-2 text-purple"></i>Ingestion</a></li>
-                  <li class="p-2"><a href="../../../products/dashboard/docs/index.html"><i
-                        class="fa-solid fa-gauge-high me-2 text-purple"></i>Dashboard</a></li>
-                  <li class="p-2"><a href="../../../products/core/docs/index.html"><i
-                        class="fa-solid fa-microchip me-2 text-purple"></i>Core Platform</a></li>
-                </div>
-              </div>
-            </ul>
-          </li>
-          <li class="second_bar">
-            <a href="#" class="header_hover">Developers</a>
-            <ul class="dev_menu" style="background-color: #10101e">
-              <li>
-                <div class="dev_box">
-                  <img src="../../../img/Group 1000001838.png" alt="menu_logo" class="first_dev_img" />
-                  <a href="../../../docs/index.html">Documentation Home</a>
-                  <div class="line" style="width: 100%"></div>
-                </div>
-                <div class="dev_box">
-                  <img src="../../../img/Group 1000001840.png" alt="menu_logo" />
-                  <a href="../../../docs/ARCHITECTURE.html">System Architecture</a>
-                  <div class="line"></div>
-                </div>
-                <div class="dev_box">
-                  <img src="../../../img/Group 1000001843.png" alt="menu_logo" />
-                  <a href="../../../docs/technology_system_architecture.html">End-to-End Architecture</a>
-                  <div class="line"></div>
-                </div>
-                <div class="dev_box">
-                  <img src="../../../img/Group 1000001843.png" alt="menu_logo" />
-                  <a href="../../../docs/standards_SUBMODULE_DOC_CONVENTION.html">Doc Standards</a>
-                </div>
-              </li>
-            </ul>
-          </li>
-          <li class="first_bar">
-            <a href="#" class="header_hover">Database</a>
-            <ul class="dropdown-menu" style="background-color: #10101e">
-              <li class="first_content_container">
-                <div class="first_content">
-                  <div class="dropdown_img">
-                    <img src="../../../img/Group 1000001831.png" alt="" />
-                  </div>
-                  <div class="dropdown_content">
-                    <p>VaultDB HUB</p>
-                    <p>
-                      Train, Test and deploy and manage your models with
-                      integrated Governance, Risk and Controls.
-                    </p>
-                  </div>
-                </div>
-                <div class="dropdown_btns">
-                  <a href="../../../database/index.html" class="dropdown_btn">VaultDB Database IOT Platform</a>
-                  <a href="../../../database/index.html" class="dropdown_btn">Websites and mobile Apps</a>
-                  <a href="https://docs.vaultdb.ai/hub/datahub" class="dropdown_btn">VaultDB Data Hub</a>
-                </div>
-                <div class="line"></div>
-              </li>
-              <li>
-                <div class="second_content second">
-                  <div class="dropdown_img">
-                    <img src="../../../img/Group 1000001832.png" alt="" />
-                  </div>
-                  <div class="dropdown_content">
-                    <p>VaultDB Compute</p>
-                    <p>
-                      Scalable cloud resources for distributed model execution.
-                    </p>
-                  </div>
-                  <div class="line_bottom">
-                    <div class="line"></div>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div class="second_content third_content">
-                  <div class="dropdown_img">
-                    <img src="../../../img/Group 1000001793.png" alt="" />
-                  </div>
-                  <div class="dropdown_content">
-                    <p>VaultDB Actions</p>
-                    <p class="para_1">
-                      CI/CD for compute intensive and analytical pipelines.
-                    </p>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="#" class="header_hover">AI Marketplace</a>
-            <ul class="dropdown-menu" style="background-color: #10101e; width: 30rem;">
-              <div class="p-4">
-                <li class="p-2"><a href="../../../marketplace/index.html"><i
-                      class="fa-solid fa-store me-2 text-purple"></i>Browse All</a></li>
-                <li class="p-2"><a href="../../../marketplace/skills.html"><i
-                      class="fa-solid fa-wand-magic-sparkles me-2 text-purple"></i>Skills</a></li>
-                <li class="p-2"><a href="../../../marketplace/mcp-servers.html"><i
-                      class="fa-solid fa-server me-2 text-purple"></i>MCP Servers</a></li>
-                <li class="p-2"><a href="../../../marketplace/plugins.html"><i
-                      class="fa-solid fa-plug me-2 text-purple"></i>Plugins</a></li>
-              </div>
-            </ul>
-          </li>
-          <li><a href="../../../about.html" class="header_hover">About Us</a></li>
-
-          <li>
-            <a href="../../../contact.html" class="contact_btn">Contact Us</a>
-          </li>
-        </ul>
-        <div class="header_icons">
-<i class="fa-solid fa-bars text-white fs-1 menu"></i>
-</div>
-</header>
+<!-- Navigation (injected by js/nav.js) -->
+<div id="vdb-header"></div>
 <!-- Nav Bar End -->
-<!-- Mobile sidebar=========================== -->
-<div class="side_accordian">
-<div class="menu_accordian">
-<div class="mobile_nav" style="background-color: var(--main-color)">
-<div class="logo">
-<img alt="" src="../../../img/logo.png"/>
-<a class="f-2" href="../../../index.html">VaultDB.ai</a>
-</div>
-<i class="fa-solid fa-xmark text-white fs-1 close_icon"></i>
-</div>
-<div class="link">
-<p class="dropdown_link dropdown_bar">Developers</p>
-<ul class="sub_menu dropdown">
-<a href="../../../docs/index.html">
-<div class="dev_nav">
-<div class="dev_nav_box">
-<div class="dev_nav_img">
-<img alt="" src="../../../img/Group 1000001838.png"/>
-</div>
-<div class="dev_para">Documentation Home</div>
-</div>
-</div>
-</a>
-</ul>
-<div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
-<ul class="sub_menu dropdown">
-<a href="../../../docs/ARCHITECTURE.html">
-<div class="dev_nav">
-<div class="dev_nav_box">
-<div class="dev_nav_img image">
-<img alt="" src="../../../img/Group 1000001840.png"/>
-</div>
-<div class="dev_para">System Architecture</div>
-</div>
-</div>
-</a>
-</ul>
-<div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
-<ul class="sub_menu dropdown">
-<a href="../../../docs/technology_system_architecture.html">
-<div class="dev_nav">
-<div class="dev_nav_box">
-<div class="dev_nav_img image">
-<img alt="" src="../../../img/Group 1000001843.png"/>
-</div>
-<div class="dev_para">End-to-End Architecture</div>
-</div>
-</div>
-</a>
-</ul>
-<div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
-<ul class="sub_menu dropdown">
-<a href="../../../docs/standards_SUBMODULE_DOC_CONVENTION.html">
-<div class="dev_nav">
-<div class="dev_nav_box">
-<div class="dev_nav_img image">
-<img alt="" src="../../../img/Group 1000001843.png"/>
-</div>
-<div class="dev_para">Doc Standards</div>
-</div>
-</div>
-</a>
-</ul>
-<div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
-</div>
-<div class="link">
-<p class="dropdown_link dropdown_bar">Database</p>
-<ul class="sub_menu dropdown">
-<div class="first_menu pb-5">
-<div class="content">
-<div class="first_img">
-<img alt="" src="../../../img/Group 1000001831.png"/>
-</div>
-<div class="first_menu_content">VaultDB HUB</div>
-</div>
-<div class="bottom_para">
-                  Train, Test and deploy and manage your models with
-                  integrated Governance, Risk and Controls. Control data your
-                  models are training on for Bias and compliance.
-                </div>
-<div class="first_btns">
-           <a class="contact_btn first_btn" href="../../../database/index.html">
-            VaultDB Database
-           </a>
-           <a class="contact_btn first_btn" href="../../../database/index.html">
-            VaultDB Applications
-           </a>
-<a class="dropdown_btn" href="https://docs.vaultdb.ai/hub/datahub">VaultDB Data Hub</a>
-</div>
-</div>
-</ul>
-<div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
-<ul class="sub_menu dropdown">
-<div class="second_menu first_menu mt-5">
-<div class="content">
-<div class="second_img first_img">
-<img alt="" src="../../../img/Group 1000001832.png"/>
-</div>
-<div class="first_menu_content">VaultDB Compute</div>
-</div>
-<div class="bottom_para">
-                  Train and Run your models across cloud providers on cheapest
-                  and unlimited resources.
-                </div>
-</div>
-</ul>
-<div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
-<ul class="sub_menu dropdown">
-<div class="second_menu first_menu">
-<div class="content">
-<div class="second_img first_img">
-<img alt="" src="../../../img/Frame.png"/>
-</div>
-<div class="first_menu_content">
-                    VaultDB Actions (DevOps)
-                  </div>
-</div>
-<div class="bottom_para">
-                  Train and Run your models across cloud providers on cheapest
-                  and unlimited resources.
-                </div>
-</div>
-</ul>
-<div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
-</div>
-<div class="link">
-<p class="dropdown_link dropdown_bar">AI Marketplace</p>
-<ul class="sub_menu dropdown">
-<a href="../../../marketplace/index.html">
-<div class="dev_nav">
-<div class="dev_nav_box">
-<div class="dev_nav_img image">
-<i class="fa-solid fa-store text-purple fs-4" style="padding: 0.5rem;"></i>
-</div>
-<div class="dev_para">Browse All</div>
-</div>
-</div>
-</a>
-</ul>
-<div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
-<ul class="sub_menu dropdown">
-<a href="../../../marketplace/skills.html">
-<div class="dev_nav">
-<div class="dev_nav_box">
-<div class="dev_nav_img image">
-<i class="fa-solid fa-wand-magic-sparkles text-purple fs-4" style="padding: 0.5rem;"></i>
-</div>
-<div class="dev_para">Skills</div>
-</div>
-</div>
-</a>
-</ul>
-<div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
-<ul class="sub_menu dropdown">
-<a href="../../../marketplace/mcp-servers.html">
-<div class="dev_nav">
-<div class="dev_nav_box">
-<div class="dev_nav_img image">
-<i class="fa-solid fa-server text-purple fs-4" style="padding: 0.5rem;"></i>
-</div>
-<div class="dev_para">MCP Servers</div>
-</div>
-</div>
-</a>
-</ul>
-<div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
-<ul class="sub_menu dropdown">
-<a href="../../../marketplace/plugins.html">
-<div class="dev_nav">
-<div class="dev_nav_box">
-<div class="dev_nav_img image">
-<i class="fa-solid fa-plug text-purple fs-4" style="padding: 0.5rem;"></i>
-</div>
-<div class="dev_para">Plugins</div>
-</div>
-</div>
-</a>
-</ul>
-<div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
-</div>
-<!--div class="link">
-              <p class="dropdown_link dropdown_bar">Services</p>
-              <ul class="sub_menu dropdown">
-                <div class="dev_nav service_nav">
-                  <div class="dev_nav_box service_nav_box">
-                    <div class="dev_nav_img image service_nav_img">
-                      <img src="../../../img/Group 1000001846.png" alt="" />
-                    </div>
-                    <div class="dev_para service_para">UX / UI Design</div>
-                  </div>
-                </div>
-              </ul>
-              <div
-                class="line line_navbar"
-                style="position: relative; bottom: 0; left: 0"
-              ></div>
-              <ul class="sub_menu dropdown">
-                <div class="dev_nav service_nav">
-                  <div class="dev_nav_box service_nav_box">
-                    <div class="dev_nav_img image service_nav_img">
-                      <img src="../../../img/Group 1000001847.png" alt="" />
-                    </div>
-                    <div class="dev_para service_para">Web Development</div>
-                  </div>
-                </div>
-              </ul>
-              <div
-                class="line line_navbar"
-                style="position: relative; bottom: 0; left: 0"
-              ></div>
-              <ul class="sub_menu dropdown">
-                <div class="dev_nav service_nav">
-                  <div class="dev_nav_box service_nav_box">
-                    <div class="dev_nav_img image service_nav_img">
-                      <img src="../../../img/Group 1000001797.png" alt="" />
-                    </div>
-                    <div class="dev_para service_para">App Development</div>
-                  </div>
-                </div>
-              </ul>
-              <div
-                class="line line_navbar"
-                style="position: relative; bottom: 0; left: 0"
-              ></div>
-              <ul class="sub_menu dropdown">
-                <div class="dev_nav service_nav">
-                  <div class="dev_nav_box service_nav_box">
-                    <div class="dev_nav_img image service_nav_img">
-                      <img src="../../../img/Group 1000001844.png" alt="" />
-                    </div>
-                    <div class="dev_para service_para">Consulting</div>
-                  </div>
-                </div>
-                <div class="service_p" style="color: var(--border-color)">
-                  Contact us for Cloud and model (deterministic or mathematical)
-                  development.
-                </div>
-              </ul>
-              <div
-                class="line line_navbar"
-                style="position: relative; bottom: 0; left: 0"
-              ></div>
-            </div-->
-<div class="link" style="border: 0; outline: 0">
-<a class="dropdown_link" href="../../../about.html" style="font-size: 20px">About Us</a>
-<div class="middle" style="border: 0">
-<a class="contact_btn" href="../../../contact.html">Contact Us</a>
-</div>
-</div>
-</div>
-</div>
+<!-- Mobile sidebar (injected by js/nav.js) -->
+<div id="vdb-sidebar"></div>
+
 
             <div class="container doc-wrapper">
                 <div class="row">
@@ -503,14 +106,14 @@
                                 <li class="breadcrumb-item active">Asset Overview <span class="persona-badge">index</span></li>
                             </ol>
                         </nav>
-                        <h1 id="asset-overview-pricing-engines-valuation">Asset Overview — Pricing Engines &amp; Valuation</h1>
+                        <h1 id="asset-overview-pricing-engines-valuation">Asset Overview � Pricing Engines &amp; Valuation</h1>
 <h2 id="architecture">Architecture</h2>
 <p><code>vaultdb.asset</code> is the pricing and valuation domain package in the VaultDB ecosystem. It consumes instruments and market data from <code>vaultdb.market</code>, applies QuantLib and PyTorch-based pricing engines, and persists results as <code>TimeSeriesModel</code> records.</p>
 <h3 id="dual-pricing-paths">Dual Pricing Paths</h3>
 <p>Every engine implements two pricing paths:</p>
 <ul>
-<li><strong><code>price_single()</code></strong> — QuantLib for single-instrument correctness and reference validation</li>
-<li><strong><code>price_bulk()</code></strong> — PyTorch tensors for vectorized batch pricing with GPU support</li>
+<li><strong><code>price_single()</code></strong> � QuantLib for single-instrument correctness and reference validation</li>
+<li><strong><code>price_bulk()</code></strong> � PyTorch tensors for vectorized batch pricing with GPU support</li>
 </ul>
 <p>The <code>price()</code> dispatcher automatically selects the optimal path based on input count.</p>
 <h3 id="torchautograd-for-greeks"><code>torch.autograd</code> for Greeks</h3>
@@ -520,23 +123,23 @@
 <hr />
 <h2 id="module-structure">Module Structure</h2>
 <pre><code>src/vaultdb_asset/
-├── __init__.py              # Public API exports + version
-├── device.py                # CPU/GPU device management singleton
-├── market_environment.py    # Bridges QuantLib curves/surfaces → PyTorch tensors
-├── results.py               # ValuationResult TimeSeriesModel for persistence
-├── cashflows.py             # Shared cashflow schedule → padded tensor matrices
-├── tasks.py                 # price_portfolio() / price_instrument() orchestration
-└── engines/
-    ├── __init__.py          # Re-exports all engines
-    ├── base.py              # PricingEngine ABC + TorchMixin (autograd, normal CDF/PDF)
-    ├── bond.py              # Fixed/Floating/Zero-Coupon — QL DiscountingBond + torch DCF
-    ├── swap.py              # Vanilla IRS/OIS — QL VanillaSwap + torch leg NPV
-    ├── option.py            # European/American — QL AnalyticEuropean + torch Black-Scholes
-    ├── capfloor.py          # Caps/Floors — QL BlackCapFloor + torch Black76
-    ├── swaption.py          # European Swaptions — QL BlackSwaption + torch Black76
-    ├── fx_forward.py        # FX Forwards — covered interest-rate parity vectorized
-    ├── cds.py               # CDS — QL MidPointCds + torch hazard rate model
-    └── fra.py               # FRA — forward rate NPV vectorized
++-- __init__.py              # Public API exports + version
++-- device.py                # CPU/GPU device management singleton
++-- market_environment.py    # Bridges QuantLib curves/surfaces ? PyTorch tensors
++-- results.py               # ValuationResult TimeSeriesModel for persistence
++-- cashflows.py             # Shared cashflow schedule ? padded tensor matrices
++-- tasks.py                 # price_portfolio() / price_instrument() orchestration
++-- engines/
+    +-- __init__.py          # Re-exports all engines
+    +-- base.py              # PricingEngine ABC + TorchMixin (autograd, normal CDF/PDF)
+    +-- bond.py              # Fixed/Floating/Zero-Coupon � QL DiscountingBond + torch DCF
+    +-- swap.py              # Vanilla IRS/OIS � QL VanillaSwap + torch leg NPV
+    +-- option.py            # European/American � QL AnalyticEuropean + torch Black-Scholes
+    +-- capfloor.py          # Caps/Floors � QL BlackCapFloor + torch Black76
+    +-- swaption.py          # European Swaptions � QL BlackSwaption + torch Black76
+    +-- fx_forward.py        # FX Forwards � covered interest-rate parity vectorized
+    +-- cds.py               # CDS � QL MidPointCds + torch hazard rate model
+    +-- fra.py               # FRA � forward rate NPV vectorized
 </code></pre>
 <hr />
 <h2 id="dependencies">Dependencies</h2>
@@ -623,7 +226,7 @@
 </tbody>
 </table>
 <h3 id="valuation-result-resultspy">Valuation Result (<code>results.py</code>)</h3>
-<p><code>ValuationResult(TimeSeriesModel)</code> — persists pricing outputs per instrument per valuation date.</p>
+<p><code>ValuationResult(TimeSeriesModel)</code> � persists pricing outputs per instrument per valuation date.</p>
 <p><strong>Primary keys:</strong> <code>(valuation_date, symbol, engine)</code></p>
 <p><strong>Columns:</strong> <code>npv</code>, <code>clean_price</code>, <code>dirty_price</code>, <code>accrued_interest</code>, <code>duration</code>, <code>modified_duration</code>, <code>convexity</code>, <code>dv01</code>, <code>delta</code>, <code>gamma</code>, <code>vega</code>, <code>theta</code>, <code>rho</code>, <code>cs01</code></p>
 <h3 id="cashflows-cashflowspy">Cashflows (<code>cashflows.py</code>)</h3>
@@ -655,8 +258,8 @@
 <h2 id="pricing-engines">Pricing Engines</h2>
 <h3 id="base-classes-enginesbasepy">Base Classes (<code>engines/base.py</code>)</h3>
 <ul>
-<li><strong><code>PricingEngine</code></strong> — Abstract base with <code>price_single()</code>, <code>price_bulk()</code>, and <code>price()</code> dispatcher</li>
-<li><strong><code>TorchMixin</code></strong> — Shared tensor utilities: <code>_to_tensor()</code>, <code>_scalar_tensor()</code>, <code>_compute_greeks_via_autograd()</code>, <code>_normal_cdf()</code>, <code>_normal_pdf()</code></li>
+<li><strong><code>PricingEngine</code></strong> � Abstract base with <code>price_single()</code>, <code>price_bulk()</code>, and <code>price()</code> dispatcher</li>
+<li><strong><code>TorchMixin</code></strong> � Shared tensor utilities: <code>_to_tensor()</code>, <code>_scalar_tensor()</code>, <code>_compute_greeks_via_autograd()</code>, <code>_normal_cdf()</code>, <code>_normal_pdf()</code></li>
 </ul>
 <h3 id="bond-engine-enginesbondpy">Bond Engine (<code>engines/bond.py</code>)</h3>
 <table>
@@ -671,17 +274,17 @@
 <tr>
 <td>Fixed-Rate</td>
 <td><code>FixedRateBond</code> + <code>DiscountingBondEngine</code></td>
-<td>Cashflow matrix × discount factor tensor</td>
+<td>Cashflow matrix � discount factor tensor</td>
 </tr>
 <tr>
 <td>Zero-Coupon</td>
 <td><code>ZeroCouponBond</code> + <code>DiscountingBondEngine</code></td>
-<td><code>face × df(maturity)</code></td>
+<td><code>face � df(maturity)</code></td>
 </tr>
 <tr>
 <td>Floating</td>
 <td>Via QL index</td>
-<td>Forward rate tensor × accrual × df</td>
+<td>Forward rate tensor � accrual � df</td>
 </tr>
 <tr>
 <td>Greeks</td>
@@ -691,12 +294,12 @@
 </tbody>
 </table>
 <p><strong>Bulk math (fixed bonds):</strong></p>
-<pre><code>cf_amounts:  (N, max_cf)   — coupon + principal at maturity
-yf:          (N, max_cf)   — year fractions to payment
-df_shifted:  (N, max_cf)   — discount_factor × exp(-shift × yf)
-NPV = sum(cf_amounts × df_shifted × mask, dim=1)
-duration = -(1/NPV) × dNPV/d(shift)    # via autograd
-convexity = (1/NPV) × d²NPV/d(shift)²  # second backward pass
+<pre><code>cf_amounts:  (N, max_cf)   � coupon + principal at maturity
+yf:          (N, max_cf)   � year fractions to payment
+df_shifted:  (N, max_cf)   � discount_factor � exp(-shift � yf)
+NPV = sum(cf_amounts � df_shifted � mask, dim=1)
+duration = -(1/NPV) � dNPV/d(shift)    # via autograd
+convexity = (1/NPV) � d�NPV/d(shift)�  # second backward pass
 </code></pre>
 <h3 id="swap-engine-enginesswappy">Swap Engine (<code>engines/swap.py</code>)</h3>
 <table>
@@ -709,11 +312,11 @@ convexity = (1/NPV) × d²NPV/d(shift)²  # second backward pass
 <tbody>
 <tr>
 <td>Fixed</td>
-<td><code>notional × fixed_rate × accrual × df</code> summed per period</td>
+<td><code>notional � fixed_rate � accrual � df</code> summed per period</td>
 </tr>
 <tr>
 <td>Floating</td>
-<td><code>notional × forward_rate × accrual × df</code> summed per period</td>
+<td><code>notional � forward_rate � accrual � df</code> summed per period</td>
 </tr>
 <tr>
 <td>NPV</td>
@@ -727,36 +330,36 @@ convexity = (1/NPV) × d²NPV/d(shift)²  # second backward pass
 </table>
 <h3 id="option-engine-enginesoptionpy">Option Engine (<code>engines/option.py</code>)</h3>
 <p>Vectorized Black-Scholes for European options:</p>
-<pre><code>d1 = (log(S/K) + (r + 0.5σ²)T) / (σ√T)
-d2 = d1 - σ√T
-call = S·N(d1) - K·e^(-rT)·N(d2)
-put  = K·e^(-rT)·N(-d2) - S·N(-d1)
+<pre><code>d1 = (log(S/K) + (r + 0.5s�)T) / (svT)
+d2 = d1 - svT
+call = S�N(d1) - K�e^(-rT)�N(d2)
+put  = K�e^(-rT)�N(-d2) - S�N(-d1)
 </code></pre>
 <p>All Greeks (delta, gamma, vega, theta, rho) via <code>torch.autograd</code> on <code>S</code>, <code>sigma</code>, <code>r</code>, <code>T</code>. American options fall back to QuantLib binomial in <code>price_single()</code>.</p>
 <h3 id="capfloor-engine-enginescapfloorpy">Cap/Floor Engine (<code>engines/capfloor.py</code>)</h3>
 <p>Each caplet/floorlet priced as a Black76 call/put on the forward rate:</p>
-<pre><code>caplet = df × accrual × notional × Black76(F, K, σ, T_option)
+<pre><code>caplet = df � accrual � notional � Black76(F, K, s, T_option)
 </code></pre>
 <p>Vectorized across all caplets of all instruments simultaneously.</p>
 <h3 id="swaption-engine-enginesswaptionpy">Swaption Engine (<code>engines/swaption.py</code>)</h3>
 <p>Black76 on the forward swap rate:</p>
-<pre><code>NPV = notional × annuity_factor × Black76(forward_swap_rate, K, σ, T_exercise)
+<pre><code>NPV = notional � annuity_factor � Black76(forward_swap_rate, K, s, T_exercise)
 </code></pre>
 <h3 id="fx-forward-engine-enginesfx_forwardpy">FX Forward Engine (<code>engines/fx_forward.py</code>)</h3>
 <p>Covered interest-rate parity:</p>
-<pre><code>NPV = notional × (implied_forward - contract_rate) × df_domestic
+<pre><code>NPV = notional � (implied_forward - contract_rate) � df_domestic
 </code></pre>
 <h3 id="cds-engine-enginescdspy">CDS Engine (<code>engines/cds.py</code>)</h3>
 <p>Flat hazard rate model:</p>
 <pre><code>h = spread / (1 - recovery)
-survival(t) = exp(-h × t)
-premium_leg = Σ(spread × notional × accrual × df × survival)
-protection_leg = Σ(notional × (1-R) × default_prob × df)
+survival(t) = exp(-h � t)
+premium_leg = S(spread � notional � accrual � df � survival)
+protection_leg = S(notional � (1-R) � default_prob � df)
 NPV_buyer = protection_leg - premium_leg
 CS01 via autograd on spread input
 </code></pre>
 <h3 id="fra-engine-enginesfrapy">FRA Engine (<code>engines/fra.py</code>)</h3>
-<pre><code>NPV = notional × (forward_rate - contract_rate) × accrual × df(end)
+<pre><code>NPV = notional � (forward_rate - contract_rate) � accrual � df(end)
 </code></pre>
 <hr />
 <h2 id="task-orchestration-taskspy">Task Orchestration (<code>tasks.py</code>)</h2>
@@ -807,65 +410,15 @@ results = price_portfolio(symbols=large_portfolio, curve_name=&quot;USD_SOFR&quo
                     </div>
                 </div>
             </div>
-            <!-- footer section ===========================================-->
-<div class="container_body">
-<div class="container_inside">
-<section class="footer_section">
-<div class="footer mt-5" data-aos="fade-left" data-aos-duration="2000">
-<div class="left">
-<img alt="" src="../../../img/mainlogo.png">
-<a class="footer_logo" href="#">VaultDB.ai</a>
-</img></div>
-<div class="right" style="margin-bottom: 10px">
-<a href="#">
-<i class="fa-brands fa-github"></i>
-</a>
-<a href="#">
-<i class="fa-brands fa-youtube"></i>
-</a>
-<a href="#">
-<i class="fa-brands fa-facebook"></i>
-</a>
-<a href="#">
-<i class="fa-brands fa-twitter"></i>
-</a>
-<a href="#">
-<i class="fa-brands fa-instagram"></i>
-</a>
-<a href="#">
-<i class="fa-brands fa-linkedin"></i>
-</a>
-</div>
-</div>
-<div>
-<div class="row mb-5">
-<div class="line mb-5"></div>
-<div class="col-md-4 col-sm-12 col-lg-4">
-<h5 class="bottom_left">
-                VaultDB.ai @ 2026. All rights reserved.
-              </h5>
-</div>
-<div class="col-md-8 col-sm-12 col-lg-8 bottom_right">
-<a href="../../../index.html">VaultDB.ai</a>
-<a href="../../../contact.html">Contact Us</a>
-<a href="../../../about.html">About Us</a>
-<a href="#">Privacy Policy</a>
-<a href="#">Terms and Conditions</a>
-</div>
-</div>
-</div>
-<div class="footer_box">
-<img alt="" class="footer_img" src="../../../img/Rectangle 9.png">
-</img></div>
-</section>
-</div>
-</div>
+            <!-- Footer (injected by js/nav.js) -->
+<div id="vdb-footer"></div>
 <script crossorigin="anonymous" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
     AOS.init();
   </script>
 <script src="../../../js/index.js"></script>
+<script src="../../../js/nav.js"></script>
 </body>
 </html>
             

@@ -209,7 +209,7 @@
         '</div>' +
         '<div class="vdb-chat-header-text">' +
           '<h4>VaultDB AI Assistant</h4>' +
-          '<span>Powered by Gemini</span>' +
+          '<span>Digital Chief Actuary</span>' +
         '</div>' +
       '</div>' +
       /* Iframe container */

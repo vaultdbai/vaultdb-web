@@ -1,26 +1,15 @@
 
             <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Kronos Re: The AI-Native Bermuda Sidecar</title>
-<meta content="noindex," name=""robots"" nofollow"=""/>
-<meta content="noindex," follow"="" name=""robots""/>
-<meta content="index," name=""robots"" nofollow"=""/>
-<meta content="VaultDB.ai: Secure Inprocess database and cloud DataHub for IOT and Modeling" property="og:title">
-<meta content="Secure Inprocess database and cloud DataHub for IOT and Modeling" property="og:description">
-<meta content="Database, DataHub, IO, AI Modeling" property="og:type">
-<meta content="img/v-logo.png" property="og:image"/>
-<meta content="http://vaultdb.ai" property="og:url"/>
-<meta content="VaultDB.ai" property="og:site_name"/>
-
+<title>KRONOS Re: dashboard Documentation - Approval Integration</title>
+<meta content="noindex, nofollow" name="robots"/>
+<meta name="vdb-context" content="You are viewing the dashboard documentation: Approval Integration. Category: compliance."/>
 <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" rel="stylesheet"/>
 <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" referrerpolicy="no-referrer" rel="stylesheet"/>
-<!-- favicon -->
 <link href="../../../img/v-logo.png" rel="icon" type="image/png"/>
-<!-- animation  -->
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
 <link href="../../../css/style.css" rel="stylesheet"/>
 
@@ -70,21 +59,12 @@
 <div class="container_inside">
 <!-- Navigation (injected by js/nav.js) -->
 <div id="vdb-header"></div>
-<!-- Nav Bar End -->
-<!-- Mobile sidebar (injected by js/nav.js) -->
 <div id="vdb-sidebar"></div>
-
 
             <div class="container doc-wrapper">
                 <div class="row">
                     <div class="col-lg-3">
                         <div class="side_accordian doc-nav"><ul class="nav flex-column">
-        <li class="nav-item">
-            <a class="nav-link  " href="README.html">
-                <i class="fa-solid fa-house me-2"></i> Readme
-            </a>
-        </li>
-        
         <li class="nav-item">
             <a class="nav-link active ps-4" href="compliance_approval_integration.html">
                 <i class="fa-solid fa-shield-halved me-2"></i> Approval Integration
@@ -94,6 +74,12 @@
         <li class="nav-item">
             <a class="nav-link  " href="index.html">
                 <i class="fa-solid fa-house me-2"></i> Index
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="README.html">
+                <i class="fa-solid fa-house me-2"></i> Readme
             </a>
         </li>
         
@@ -130,34 +116,11 @@
                                 <li class="breadcrumb-item active">Approval Integration <span class="persona-badge">compliance</span></li>
                             </ol>
                         </nav>
-                        <h1 id="approval-integration-dashboard-controls">Approval Integration � Dashboard Controls</h1>
+                        <h1 id="approval-integration-dashboard-controls">Approval Integration — Dashboard Controls</h1>
 <p>This document describes how the KRONOS Dashboard integrates with the core approval engine to enforce human-in-the-loop governance.</p>
 <h2 id="approval-panel-component">Approval Panel Component</h2>
 <p>The reusable <code>ApprovalPanel</code> component (<code>components/approval_panel.py</code>) is embedded in the workflow viewer and can be added to any page that requires approvals.</p>
-<pre class="mermaid">flowchart TD
-    subgraph &quot;Pre-Approval View&quot;
-        NAME[&quot;Approver Name Input<br/>(auto-filled from OIDC)&quot;]
-        NOTES[&quot;Notes Textarea&quot;]
-        TIMER[&quot;Countdown Timer<br/>(MinReviewTimeRule)&quot;]
-        CHECK[&quot;Confirmation Checkbox&quot;]
-        BTN[&quot;Approve / Reject Buttons&quot;]
-    end
-
-    subgraph &quot;Post-Approval View&quot;
-        BADGE[&quot;Approved Badge&quot;]
-        INFO[&quot;Approver, Timestamp, Token Suffix&quot;]
-        REVOKE[&quot;Revoke Button&quot;]
-    end
-
-    NAME --> CHECK
-    NOTES --> CHECK
-    TIMER -->|elapsed| CHECK
-    CHECK -->|checked| BTN
-    BTN -->|POST /approvals| POLICY[&quot;PolicyEnforcer&quot;]
-    POLICY -->|passed| RECORD[&quot;ApprovalRecord Created&quot;]
-    POLICY -->|failed| VIOLATIONS[&quot;Inline Violation Messages&quot;]
-    RECORD --> BADGE
-</pre>
+<div class="mermaid-diagram"><img src="diagram_1.svg" alt="Architecture Diagram 1" style="max-width:100%;height:auto;" /></div>
 <h3 id="panel-states">Panel States</h3>
 <p><strong>No existing approval:</strong>
 - Displays approver name input (pre-filled from OIDC claims)
@@ -177,22 +140,17 @@
 <h3 id="minreviewtimerule-integration">MinReviewTimeRule Integration</h3>
 <p>When the page loads:
 1. The server records <code>viewer_opened_at</code> in a server-side session store.
-2. This timestamp is unforgeable � the client cannot manipulate it.
+2. This timestamp is unforgeable — the client cannot manipulate it.
 3. When the user clicks Approve, the policy engine compares <code>viewer_opened_at</code> to <code>request_time</code>.
 4. If insufficient time has elapsed, a countdown timer is displayed.</p>
 <h3 id="live-updates">Live Updates</h3>
 <p>While a workflow is <code>RUNNING</code> or <code>APPROVED</code>, the page polls for updates every few seconds:
-- DAG node colors update as steps progress (PENDING ? RUNNING ? DONE/FAILED)
+- DAG node colors update as steps progress (PENDING → RUNNING → DONE/FAILED)
 - Step inspector shows current results
 - Status badge updates</p>
 <h3 id="dag-visualization">DAG Visualization</h3>
 <p>Workflows are rendered as directed acyclic graphs using <code>dash-cytoscape</code> with <code>dagre</code> layout:</p>
-<pre class="mermaid">graph LR
-    A[&quot;step_001<br/>Project Cash Flows<br/>?? DONE&quot;] --> B[&quot;step_002<br/>Price Assets<br/>?? RUNNING&quot;]
-    A --> C[&quot;step_003<br/>Compute Reserves<br/>? PENDING&quot;]
-    B --> D[&quot;step_004<br/>ALM Snapshot<br/>? PENDING&quot;]
-    C --> D
-</pre>
+<div class="mermaid-diagram"><img src="diagram_2.svg" alt="Architecture Diagram 2" style="max-width:100%;height:auto;" /></div>
 <p>Clicking a node opens the step inspector showing:
 - Step name, task path, status
 - Input kwargs (with resolved references)
@@ -202,7 +160,7 @@
 <h2 id="chatbot-page-approval-flow">Chatbot Page Approval Flow</h2>
 <p>The chatbot page (<code>/chatbot</code>) includes inline workflow approval:</p>
 <ol>
-<li>AI proposes a workflow ? appears in "Proposed Workflow" card</li>
+<li>AI proposes a workflow → appears in "Proposed Workflow" card</li>
 <li>Card shows status badge, workflow name, description</li>
 <li>Cytoscape DAG rendered inline</li>
 <li>Step details on node click</li>
@@ -210,53 +168,7 @@
 <li>Approve, Reject, Execute buttons with confirmation modal</li>
 </ol>
 <h2 id="end-to-end-approval-sequence">End-to-End Approval Sequence</h2>
-<pre class="mermaid">sequenceDiagram
-    participant USER as Actuary
-    participant DASH as Dashboard (8050)
-    participant HUB as ChatHub (8060)
-    participant CORE as VaultDB Core
-
-    Note over USER: Working in chatbot
-
-    USER->>DASH: &quot;Run Q1 valuation&quot;
-    DASH->>HUB: POST /chatbot/{user_id}/message
-    HUB->>HUB: ChatEngine ? Claude SDK ? propose_workflow tool
-    HUB->>CORE: submit_workflow()
-    CORE-->>HUB: WorkflowRun (PENDING_APPROVAL)
-    HUB-->>DASH: {reply, proposed_workflows}
-    DASH-->>USER: Show DAG + Approve button
-
-    USER->>DASH: Open /workflow?id=abc
-    DASH->>DASH: Record viewer_opened_at (server-side)
-
-    USER->>USER: Review steps, assumptions, costs
-
-    USER->>DASH: Click &quot;Approve&quot; + notes
-    DASH->>DASH: Build ApprovalContext
-    DASH->>HUB: POST /approvals
-    HUB->>CORE: PolicyEnforcer.enforce(context)
-
-    alt Violations
-        CORE-->>HUB: {passed: false, violations: [...]}
-        HUB-->>DASH: 403 + violations
-        DASH-->>USER: Show inline errors
-    else Passed
-        CORE->>CORE: create_approval() ? HMAC token
-        CORE-->>HUB: ApprovalRecord
-        HUB->>CORE: WorkflowRun.status = APPROVED
-        HUB-->>DASH: 200 OK
-        DASH-->>USER: &quot;Approved&quot; badge
-    end
-
-    USER->>DASH: Click &quot;Execute&quot;
-    DASH->>HUB: POST /workflows/{id}/execute
-    HUB->>CORE: execute_workflow(id)
-    CORE->>CORE: Triple-gate verification
-    CORE->>CORE: Execute steps in DAG order
-    CORE-->>HUB: WorkflowRun (DONE/FAILED)
-    HUB-->>DASH: Updated workflow
-    DASH-->>USER: Show results
-</pre>
+<div class="mermaid-diagram"><img src="diagram_3.svg" alt="Architecture Diagram 3" style="max-width:100%;height:auto;" /></div>
 <h2 id="approval-status-colors">Approval Status Colors</h2>
 <table>
 <thead>
@@ -302,14 +214,13 @@
                     </div>
                 </div>
             </div>
-            <!-- Footer (injected by js/nav.js) -->
+            
+</div></div>
+<!-- Footer (injected by js/nav.js) -->
 <div id="vdb-footer"></div>
 <script crossorigin="anonymous" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-    AOS.init();
-  </script>
-<script src="../../../js/index.js"></script>
+<script>AOS.init();</script>
 <script src="../../../js/nav.js"></script>
 </body>
 </html>

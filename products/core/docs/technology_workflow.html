@@ -1,26 +1,15 @@
 
             <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Kronos Re: The AI-Native Bermuda Sidecar</title>
-<meta content="noindex," name=""robots"" nofollow"=""/>
-<meta content="noindex," follow"="" name=""robots""/>
-<meta content="index," name=""robots"" nofollow"=""/>
-<meta content="VaultDB.ai: Secure Inprocess database and cloud DataHub for IOT and Modeling" property="og:title">
-<meta content="Secure Inprocess database and cloud DataHub for IOT and Modeling" property="og:description">
-<meta content="Database, DataHub, IO, AI Modeling" property="og:type">
-<meta content="img/v-logo.png" property="og:image"/>
-<meta content="http://vaultdb.ai" property="og:url"/>
-<meta content="VaultDB.ai" property="og:site_name"/>
-
+<title>KRONOS Re: core Documentation - Workflow</title>
+<meta content="noindex, nofollow" name="robots"/>
+<meta name="vdb-context" content="You are viewing the core documentation: Workflow. Category: technology."/>
 <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" rel="stylesheet"/>
 <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" referrerpolicy="no-referrer" rel="stylesheet"/>
-<!-- favicon -->
 <link href="../../../img/v-logo.png" rel="icon" type="image/png"/>
-<!-- animation  -->
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
 <link href="../../../css/style.css" rel="stylesheet"/>
 
@@ -70,15 +59,18 @@
 <div class="container_inside">
 <!-- Navigation (injected by js/nav.js) -->
 <div id="vdb-header"></div>
-<!-- Nav Bar End -->
-<!-- Mobile sidebar (injected by js/nav.js) -->
 <div id="vdb-sidebar"></div>
-
 
             <div class="container doc-wrapper">
                 <div class="row">
                     <div class="col-lg-3">
                         <div class="side_accordian doc-nav"><ul class="nav flex-column">
+        <li class="nav-item">
+            <a class="nav-link  " href="abstract.html">
+                <i class="fa-solid fa-house me-2"></i> Abstract
+            </a>
+        </li>
+        
         <li class="nav-item">
             <a class="nav-link  " href="AUTHENTICATION_GUIDE.html">
                 <i class="fa-solid fa-house me-2"></i> Authentication Guide
@@ -88,12 +80,6 @@
         <li class="nav-item">
             <a class="nav-link  " href="CODEOWNERS_SETUP.html">
                 <i class="fa-solid fa-house me-2"></i> Codeowners Setup
-            </a>
-        </li>
-        
-        <li class="nav-item">
-            <a class="nav-link  " href="abstract.html">
-                <i class="fa-solid fa-house me-2"></i> Abstract
             </a>
         </li>
         
@@ -112,6 +98,12 @@
         <li class="nav-item">
             <a class="nav-link  " href="ducklake_evaluation.html">
                 <i class="fa-solid fa-house me-2"></i> Ducklake Evaluation
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="extraction_module.html">
+                <i class="fa-solid fa-house me-2"></i> Extraction Module
             </a>
         </li>
         
@@ -190,22 +182,12 @@
                                 <li class="breadcrumb-item active">Workflow <span class="persona-badge">technology</span></li>
                             </ol>
                         </nav>
-                        <h1 id="workflow-system-architecture-design">Workflow System — Architecture &amp; Design</h1>
+                        <h1 id="workflow-system-architecture-design">Workflow System â€” Architecture &amp; Design</h1>
 <p>The VaultDB workflow system enables AI-proposed multi-step computational pipelines that require human approval before execution. This document covers the full lifecycle from proposal to execution.</p>
 <h2 id="overview">Overview</h2>
 <p>When the KRONOS AI chatbot proposes a workflow (e.g., "Q1 2026 Valuation Pipeline"), it defines a directed acyclic graph (DAG) of steps. Each step maps to a TED task in a domain submodule. The workflow must be reviewed and approved by a human before any step executes.</p>
 <h2 id="lifecycle-state-machine">Lifecycle State Machine</h2>
-<pre class="mermaid">stateDiagram-v2
-    [*] --> PENDING_APPROVAL: AI proposes workflow
-    PENDING_APPROVAL --> APPROVED: Human approves (HMAC token created)
-    PENDING_APPROVAL --> REJECTED: Human rejects
-    APPROVED --> RUNNING: execute_workflow() called
-    RUNNING --> DONE: All steps complete
-    RUNNING --> FAILED: Step fails (on_failure=abort)
-    REJECTED --> [*]
-    DONE --> [*]
-    FAILED --> [*]
-</pre>
+<div class="mermaid-diagram"><img src="diagram_1.svg" alt="Architecture Diagram 1" style="max-width:100%;height:auto;" /></div>
 <h2 id="data-models">Data Models</h2>
 <h3 id="workflowrun">WorkflowRun</h3>
 <p>The top-level record representing one proposed workflow. Stored in the <code>workflow_run</code> DuckLake table.</p>
@@ -377,7 +359,7 @@
 </code></pre>
 <h3 id="step-reference-syntax">Step Reference Syntax</h3>
 <p>Steps can reference results from previous steps using the <code>$step_xxx.result.field</code> syntax. The workflow manager resolves these at execution time:</p>
-<pre><code>&quot;$step_001.result.run_id&quot;  ?  resolves to the value of step_001's result[&quot;run_id&quot;]
+<pre><code>&quot;$step_001.result.run_id&quot;  â†’  resolves to the value of step_001's result[&quot;run_id&quot;]
 </code></pre>
 <h2 id="ted-task-functions">TED Task Functions</h2>
 <h3 id="submit_workflow">submit_workflow</h3>
@@ -388,21 +370,7 @@
 <p>Lists <code>WorkflowRun</code> records for a user, newest first (default limit: 20).</p>
 <h3 id="execute_workflow">execute_workflow</h3>
 <p>The critical function. Performs the <strong>triple-gate approval check</strong> before running any step:</p>
-<pre class="mermaid">flowchart TD
-    START[&quot;execute_workflow(workflow_id)&quot;] --> GATE1
-    GATE1{&quot;Gate 1: ApprovalRecord exists?&quot;} -->|No| FAIL1[&quot;WorkflowApprovalError&quot;]
-    GATE1 -->|Yes| GATE2
-    GATE2{&quot;Gate 2: is_valid == True?&quot;} -->|No| FAIL2[&quot;WorkflowApprovalError&quot;]
-    GATE2 -->|Yes| GATE3
-    GATE3{&quot;Gate 3: HMAC token verifies?&quot;} -->|No| FAIL3[&quot;WorkflowApprovalError&quot;]
-    GATE3 -->|Yes| TOPO[&quot;Topological sort steps&quot;]
-    TOPO --> EXEC[&quot;Execute steps in DAG order&quot;]
-    EXEC --> RESOLVE[&quot;Resolve $step_xxx refs&quot;]
-    RESOLVE --> CALL[&quot;_call_task(dotted_name, kwargs)&quot;]
-    CALL --> NEXT{&quot;More steps?&quot;}
-    NEXT -->|Yes| EXEC
-    NEXT -->|No| DONE[&quot;WorkflowRun.status = DONE&quot;]
-</pre>
+<div class="mermaid-diagram"><img src="diagram_2.svg" alt="Architecture Diagram 2" style="max-width:100%;height:auto;" /></div>
 <h3 id="execution-model">Execution Model</h3>
 <ol>
 <li>Steps are run <strong>in-process</strong> in topological order (Kahn's algorithm).</li>
@@ -419,7 +387,7 @@
 <li>The <code>ApprovalRecord</code> is created by ChatHub after the actuary clicks "Approve" in the dashboard.</li>
 <li>The HMAC token binds the approval to: <code>approval_id</code>, <code>subject_id</code>, <code>subject_type</code>, <code>approver_id</code>, <code>approver_email</code>, <code>approved_at</code>.</li>
 <li>UserProcesses never receive the <code>WORKFLOW_APPROVAL_SECRET</code>, so they cannot forge tokens.</li>
-<li>The triple-gate is checked at execution time, not at approval time — a revoked approval blocks execution even if it was previously approved.</li>
+<li>The triple-gate is checked at execution time, not at approval time â€” a revoked approval blocks execution even if it was previously approved.</li>
 </ul>
 <h2 id="integration-points">Integration Points</h2>
 <table>
@@ -455,14 +423,13 @@
                     </div>
                 </div>
             </div>
-            <!-- Footer (injected by js/nav.js) -->
+            
+</div></div>
+<!-- Footer (injected by js/nav.js) -->
 <div id="vdb-footer"></div>
 <script crossorigin="anonymous" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-    AOS.init();
-  </script>
-<script src="../../../js/index.js"></script>
+<script>AOS.init();</script>
 <script src="../../../js/nav.js"></script>
 </body>
 </html>

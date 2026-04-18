@@ -1,26 +1,15 @@
 
             <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Kronos Re: The AI-Native Bermuda Sidecar</title>
-<meta content="noindex," name=""robots"" nofollow"=""/>
-<meta content="noindex," follow"="" name=""robots""/>
-<meta content="index," name=""robots"" nofollow"=""/>
-<meta content="VaultDB.ai: Secure Inprocess database and cloud DataHub for IOT and Modeling" property="og:title">
-<meta content="Secure Inprocess database and cloud DataHub for IOT and Modeling" property="og:description">
-<meta content="Database, DataHub, IO, AI Modeling" property="og:type">
-<meta content="img/v-logo.png" property="og:image"/>
-<meta content="http://vaultdb.ai" property="og:url"/>
-<meta content="VaultDB.ai" property="og:site_name"/>
-
+<title>KRONOS Re: Platform Documentation - Project Regulatory Data Plan</title>
+<meta content="noindex, nofollow" name="robots"/>
+<meta name="vdb-context" content="You are viewing the Platform documentation: Project Regulatory Data Plan. Category: index."/>
 <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" rel="stylesheet"/>
 <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" referrerpolicy="no-referrer" rel="stylesheet"/>
-<!-- favicon -->
 <link href="../img/v-logo.png" rel="icon" type="image/png"/>
-<!-- animation  -->
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
 <link href="../css/style.css" rel="stylesheet"/>
 
@@ -70,10 +59,7 @@
 <div class="container_inside">
 <!-- Navigation (injected by js/nav.js) -->
 <div id="vdb-header"></div>
-<!-- Nav Bar End -->
-<!-- Mobile sidebar (injected by js/nav.js) -->
 <div id="vdb-sidebar"></div>
-
 
             <div class="container doc-wrapper">
                 <div class="row">
@@ -88,6 +74,12 @@
         <li class="nav-item">
             <a class="nav-link  " href="Global_Actuarial_Ingestion_Strategy.html">
                 <i class="fa-solid fa-house me-2"></i> Global Actuarial Ingestion Strategy
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="index.html">
+                <i class="fa-solid fa-house me-2"></i> Index
             </a>
         </li>
         
@@ -110,24 +102,6 @@
         </li>
         
         <li class="nav-item">
-            <a class="nav-link  " href="RESEARCH-AGENT-ARCHITECTURE.html">
-                <i class="fa-solid fa-house me-2"></i> Research Agent Architecture
-            </a>
-        </li>
-        
-        <li class="nav-item">
-            <a class="nav-link  " href="TODO.html">
-                <i class="fa-solid fa-house me-2"></i> Todo
-            </a>
-        </li>
-        
-        <li class="nav-item">
-            <a class="nav-link  " href="index.html">
-                <i class="fa-solid fa-house me-2"></i> Index
-            </a>
-        </li>
-        
-        <li class="nav-item">
             <a class="nav-link  " href="marketin-ideas.html">
                 <i class="fa-solid fa-house me-2"></i> Marketin Ideas
             </a>
@@ -140,6 +114,18 @@
         </li>
         
         <li class="nav-item">
+            <a class="nav-link  ps-4" href="prospectuses_allianz_life_deep_analysis.html">
+                <i class="fa-solid fa-file-lines me-2"></i> Allianz Life Deep Analysis
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="RESEARCH-AGENT-ARCHITECTURE.html">
+                <i class="fa-solid fa-house me-2"></i> Research Agent Architecture
+            </a>
+        </li>
+        
+        <li class="nav-item">
             <a class="nav-link  ps-4" href="standards_SUBMODULE_DOC_CONVENTION.html">
                 <i class="fa-solid fa-file-lines me-2"></i> Submodule Doc Convention
             </a>
@@ -148,6 +134,12 @@
         <li class="nav-item">
             <a class="nav-link  ps-4" href="technology_system_architecture.html">
                 <i class="fa-solid fa-code me-2"></i> System Architecture
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="TODO.html">
+                <i class="fa-solid fa-house me-2"></i> Todo
             </a>
         </li>
         
@@ -167,7 +159,7 @@
                             </ol>
                         </nav>
                         <hr />
-<p>name: Insurance Browser — Regulatory Data Sources Plan
+<p>name: Insurance Browser â€” Regulatory Data Sources Plan
 description: Plan to add NAIC FDR, SERFF SFA, State DOI, IIPRC, and NAIC Company Search to the insurance-browser MCP server
 type: project
 originSessionId: b4897a52-b12f-462e-8f10-faaff8eca479</p>
@@ -177,7 +169,7 @@ originSessionId: b4897a52-b12f-462e-8f10-faaff8eca479</p>
 <strong>Date:</strong> 2026-04-10<br />
 <strong>Target:</strong> <code>/vaultdb/marketplace/mcp-servers/servers/insurance-browser/server.py</code></p>
 <h3 id="priority-order">Priority Order</h3>
-<p><strong>Phase 1: SERFF Filing Access (SFA)</strong> — Highest ROI
+<p><strong>Phase 1: SERFF Filing Access (SFA)</strong> â€” Highest ROI
 - 2 new tools: <code>browse_serff</code>, <code>hunt_serff_filings</code>
 - Navigate <code>filingaccess.serff.com/sfa/home/{state}</code> via Playwright
 - Covers FIA/MYGA rate/form filings that SEC EDGAR doesn't have
@@ -188,7 +180,7 @@ originSessionId: b4897a52-b12f-462e-8f10-faaff8eca479</p>
 - 1 new tool: <code>browse_iiprc</code>
 - Single filing covers 47 member jurisdictions
 - ~200 lines, low complexity</p>
-<p><strong>Phase 3: State DOI Direct Portals</strong> — Top 6 states
+<p><strong>Phase 3: State DOI Direct Portals</strong> â€” Top 6 states
 - 1 new tool: <code>browse_state_doi</code> + per-state adapter classes
 - Target: TX, NY, FL, CA, CT, IA (major annuity domicile states)
 - FL uses custom portal (floir.com/IRFS), others use SERFF or bespoke
@@ -200,7 +192,7 @@ originSessionId: b4897a52-b12f-462e-8f10-faaff8eca479</p>
 - Storage: <code>prospectuses/{Company}/NAIC_Financial/</code>
 - ~300 lines, low-medium complexity</p>
 <p><strong>Phase 5: Orchestration</strong>
-- 1 new tool: <code>hunt_regulatory</code> — calls Phases 1-4 in order, deduplicates
+- 1 new tool: <code>hunt_regulatory</code> â€” calls Phases 1-4 in order, deduplicates
 - Update <code>hunt_company</code>/<code>hunt_all</code> with <code>include_regulatory=True</code> flag
 - ~150 lines, low complexity</p>
 <h3 id="key-architecture-decisions">Key Architecture Decisions</h3>
@@ -214,23 +206,22 @@ originSessionId: b4897a52-b12f-462e-8f10-faaff8eca479</p>
 </ul>
 <h3 id="risks">Risks</h3>
 <ul>
-<li>SERFF may block automation ? respectful rate-limiting + CAPTCHA detection</li>
-<li>State DOI layouts change ? Gemma 4 adapts better than brittle selectors</li>
-<li>NAIC FDR is paid ($600+/schedule) ? focus on free Company Search first</li>
+<li>SERFF may block automation â†’ respectful rate-limiting + CAPTCHA detection</li>
+<li>State DOI layouts change â†’ Gemma 4 adapts better than brittle selectors</li>
+<li>NAIC FDR is paid ($600+/schedule) â†’ focus on free Company Search first</li>
 </ul>
-<p><strong>Why:</strong> SEC EDGAR only covers registered products (VA, RILA). FIA/MYGA products are filed at state level via SERFF — this is a major gap in the current insurance-browser's coverage.</p>
+<p><strong>Why:</strong> SEC EDGAR only covers registered products (VA, RILA). FIA/MYGA products are filed at state level via SERFF â€” this is a major gap in the current insurance-browser's coverage.</p>
 <p><strong>How to apply:</strong> When starting implementation, begin with Phase 1 (SERFF SFA) as it has the highest ROI and lowest friction. Each phase is independent and can be shipped incrementally.</p>
                     </div>
                 </div>
             </div>
-            <!-- Footer (injected by js/nav.js) -->
+            
+</div></div>
+<!-- Footer (injected by js/nav.js) -->
 <div id="vdb-footer"></div>
 <script crossorigin="anonymous" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-    AOS.init();
-  </script>
-<script src="../js/index.js"></script>
+<script>AOS.init();</script>
 <script src="../js/nav.js"></script>
 </body>
 </html>

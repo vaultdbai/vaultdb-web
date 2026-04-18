@@ -1,26 +1,15 @@
 
             <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Kronos Re: The AI-Native Bermuda Sidecar</title>
-<meta content="noindex," name=""robots"" nofollow"=""/>
-<meta content="noindex," follow"="" name=""robots""/>
-<meta content="index," name=""robots"" nofollow"=""/>
-<meta content="VaultDB.ai: Secure Inprocess database and cloud DataHub for IOT and Modeling" property="og:title">
-<meta content="Secure Inprocess database and cloud DataHub for IOT and Modeling" property="og:description">
-<meta content="Database, DataHub, IO, AI Modeling" property="og:type">
-<meta content="img/v-logo.png" property="og:image"/>
-<meta content="http://vaultdb.ai" property="og:url"/>
-<meta content="VaultDB.ai" property="og:site_name"/>
-
+<title>KRONOS Re: market Documentation - Bond Curves And Loaders</title>
+<meta content="noindex, nofollow" name="robots"/>
+<meta name="vdb-context" content="You are viewing the market documentation: Bond Curves And Loaders. Category: index."/>
 <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" rel="stylesheet"/>
 <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" referrerpolicy="no-referrer" rel="stylesheet"/>
-<!-- favicon -->
 <link href="../../../img/v-logo.png" rel="icon" type="image/png"/>
-<!-- animation  -->
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
 <link href="../../../css/style.css" rel="stylesheet"/>
 
@@ -70,21 +59,12 @@
 <div class="container_inside">
 <!-- Navigation (injected by js/nav.js) -->
 <div id="vdb-header"></div>
-<!-- Nav Bar End -->
-<!-- Mobile sidebar (injected by js/nav.js) -->
 <div id="vdb-sidebar"></div>
-
 
             <div class="container doc-wrapper">
                 <div class="row">
                     <div class="col-lg-3">
                         <div class="side_accordian doc-nav"><ul class="nav flex-column">
-        <li class="nav-item">
-            <a class="nav-link  " href="README.html">
-                <i class="fa-solid fa-house me-2"></i> Readme
-            </a>
-        </li>
-        
         <li class="nav-item">
             <a class="nav-link active " href="bond_curves_and_loaders.html">
                 <i class="fa-solid fa-house me-2"></i> Bond Curves And Loaders
@@ -94,6 +74,12 @@
         <li class="nav-item">
             <a class="nav-link  " href="market_overview.html">
                 <i class="fa-solid fa-house me-2"></i> Market Overview
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="README.html">
+                <i class="fa-solid fa-house me-2"></i> Readme
             </a>
         </li>
         
@@ -122,22 +108,22 @@
 <h2 id="overview">Overview</h2>
 <p>The bond market data subsystem provides:</p>
 <ol>
-<li><strong>Data Loaders</strong> � fetch rates and spreads from free public APIs and FRED into <code>SimpleQuote</code> records</li>
-<li><strong>Curve Definitions</strong> � ORM-backed <code>YieldCurve</code> and <code>OASSpreadCurve</code> records bootstrapped from those quotes</li>
-<li><strong>Daily Save Orchestrator</strong> � a single scheduled entry-point that runs all loaders and refreshes all spread curves</li>
-<li><strong>Programmatic Builder</strong> � <code>YieldCurveBuilder</code> for in-memory curve construction without database round-trips</li>
+<li><strong>Data Loaders</strong> — fetch rates and spreads from free public APIs and FRED into <code>SimpleQuote</code> records</li>
+<li><strong>Curve Definitions</strong> — ORM-backed <code>YieldCurve</code> and <code>OASSpreadCurve</code> records bootstrapped from those quotes</li>
+<li><strong>Daily Save Orchestrator</strong> — a single scheduled entry-point that runs all loaders and refreshes all spread curves</li>
+<li><strong>Programmatic Builder</strong> — <code>YieldCurveBuilder</code> for in-memory curve construction without database round-trips</li>
 </ol>
 <hr />
 <h2 id="curve-architecture">Curve Architecture</h2>
 <p>Each bond market segment uses a two-layer curve model:</p>
 <pre><code>Base Yield Curve  (YieldCurve ORM record)
-    +-- bootstrapped from quoted deposits + swaps
-    +-- produces ql.YieldTermStructureHandle
+    └── bootstrapped from quoted deposits + swaps
+    └── produces ql.YieldTermStructureHandle
 
 OAS Spread Curve  (OASSpreadCurve ORM record)
-    +-- wraps base curve + flat spread (decimal)
-    +-- uses ql.ZeroSpreadedTermStructure
-    +-- spread updated daily from ICE BofA OAS index quotes
+    └── wraps base curve + flat spread (decimal)
+    └── uses ql.ZeroSpreadedTermStructure
+    └── spread updated daily from ICE BofA OAS index quotes
 </code></pre>
 <hr />
 <h2 id="curve-definitions">Curve Definitions</h2>
@@ -157,21 +143,21 @@ OAS Spread Curve  (OASSpreadCurve ORM record)
 <td><code>UST_SPOT</code></td>
 <td>USD</td>
 <td>3M / 6M / 1Y deposits</td>
-<td>2Y�30Y CMT swaps</td>
+<td>2Y–30Y CMT swaps</td>
 <td>SOFR</td>
 </tr>
 <tr>
 <td><code>SOFR_SWAP</code></td>
 <td>USD</td>
 <td>SOFR overnight (NY Fed)</td>
-<td>1Y�30Y OIS swaps</td>
+<td>1Y–30Y OIS swaps</td>
 <td>SOFR</td>
 </tr>
 <tr>
 <td><code>EUR_EURIBOR</code></td>
 <td>EUR</td>
 <td>Euribor 1/3/6/12M</td>
-<td>2Y�30Y EUR OIS swaps</td>
+<td>2Y–30Y EUR OIS swaps</td>
 <td>Euribor</td>
 </tr>
 </tbody>
@@ -249,7 +235,7 @@ OAS Spread Curve  (OASSpreadCurve ORM record)
 <hr />
 <h2 id="data-loaders">Data Loaders</h2>
 <h3 id="load_corp_bondsrun"><code>load_corp_bonds.run()</code></h3>
-<p><strong>US Corporate Bonds ? <code>UST_SPOT</code> + <code>CORP_IG</code> / <code>CORP_HY</code></strong></p>
+<p><strong>US Corporate Bonds → <code>UST_SPOT</code> + <code>CORP_IG</code> / <code>CORP_HY</code></strong></p>
 <table>
 <thead>
 <tr>
@@ -268,7 +254,7 @@ OAS Spread Curve  (OASSpreadCurve ORM record)
 </tr>
 <tr>
 <td>FRED</td>
-<td>ICE BofA Corp OAS (AAA?CCC)</td>
+<td>ICE BofA Corp OAS (AAA→CCC)</td>
 <td>Required</td>
 <td>Daily</td>
 </tr>
@@ -284,7 +270,7 @@ OAS Spread Curve  (OASSpreadCurve ORM record)
 </code></pre>
 <hr />
 <h3 id="load_mbsrun"><code>load_mbs.run()</code></h3>
-<p><strong>MBS ? <code>SOFR_SWAP</code> + <code>MBS_AGENCY</code> / <code>MBS_NONAGENCY</code></strong></p>
+<p><strong>MBS → <code>SOFR_SWAP</code> + <code>MBS_AGENCY</code> / <code>MBS_NONAGENCY</code></strong></p>
 <table>
 <thead>
 <tr>
@@ -303,7 +289,7 @@ OAS Spread Curve  (OASSpreadCurve ORM record)
 </tr>
 <tr>
 <td>FRED</td>
-<td>SOFR OIS swap rates (1Y�30Y)</td>
+<td>SOFR OIS swap rates (1Y–30Y)</td>
 <td>Required</td>
 <td>Daily</td>
 </tr>
@@ -318,7 +304,7 @@ OAS Spread Curve  (OASSpreadCurve ORM record)
 <p>FRED series: <code>ICERATES1100USD{1Y,2Y,3Y,5Y,7Y,10Y,30Y}</code>, <code>BAMLMBS0A0CMBS</code></p>
 <hr />
 <h3 id="load_eur_bondsrun"><code>load_eur_bonds.run()</code></h3>
-<p><strong>EUR-denominated Bonds ? <code>EUR_EURIBOR</code> + <code>EUR_CORP_IG</code></strong></p>
+<p><strong>EUR-denominated Bonds → <code>EUR_EURIBOR</code> + <code>EUR_CORP_IG</code></strong></p>
 <table>
 <thead>
 <tr>
@@ -343,7 +329,7 @@ OAS Spread Curve  (OASSpreadCurve ORM record)
 </tr>
 <tr>
 <td>FRED</td>
-<td>EUR OIS swap rates (1Y�30Y)</td>
+<td>EUR OIS swap rates (1Y–30Y)</td>
 <td>Required</td>
 <td>Daily</td>
 </tr>
@@ -356,7 +342,7 @@ OAS Spread Curve  (OASSpreadCurve ORM record)
 <p>Tenors: <code>1Y</code>, <code>2Y</code>, <code>3Y</code>, <code>5Y</code>, <code>7Y</code>, <code>10Y</code>, <code>20Y</code>, <code>30Y</code></p>
 <hr />
 <h3 id="load_em_bondsrun"><code>load_em_bonds.run()</code></h3>
-<p><strong>Emerging Market USD Bonds ? <code>UST_SPOT</code> (base) + EM OAS curves</strong></p>
+<p><strong>Emerging Market USD Bonds → <code>UST_SPOT</code> (base) + EM OAS curves</strong></p>
 <table>
 <thead>
 <tr>
@@ -392,7 +378,7 @@ Countries: BRA, MEX, ZAF, TUR, IDN, IND, CHN, COL, PER, POL</p>
 <p>FRED series: <code>BAMLEMCBPIOAS</code>, <code>BAMLEMHBHYCRPIOAS</code>, <code>BAMLEMIBHGCRPIOAS</code></p>
 <hr />
 <h2 id="daily-save-orchestrator">Daily Save Orchestrator</h2>
-<p><strong><code>daily_save.run()</code></strong> � the primary Celery/cron entry-point for end-of-day market data ingestion.</p>
+<p><strong><code>daily_save.run()</code></strong> — the primary Celery/cron entry-point for end-of-day market data ingestion.</p>
 <pre><code class="language-python">from vaultdb_market.tasks.daily_save import run_today
 
 # Run all loaders for today
@@ -400,17 +386,17 @@ results = run_today(fred_api_key=&quot;YOUR_KEY&quot;)
 # Returns: {&quot;valuation_date&quot;: &quot;2026-04-01&quot;, &quot;ust_spot_2026&quot;: 13, ..., &quot;total_rows&quot;: 847}
 </code></pre>
 <h3 id="execution-order">Execution order</h3>
-<pre><code>1. load_corp_bonds   ? UST_SPOT rates + CORP OAS indices
-2. load_sofr         ? SOFR overnight + SOFR averages
-3. load_mbs          ? SOFR + MBS OAS
-4. load_eur_bonds    ? ECB govt curve + Euribor + EUR swaps
-5. load_em_bonds     ? Treasury base + World Bank + EM OAS
-6. _update_all_oas_curves ? refresh all OASSpreadCurve.spread from latest quotes
+<pre><code>1. load_corp_bonds   → UST_SPOT rates + CORP OAS indices
+2. load_sofr         → SOFR overnight + SOFR averages
+3. load_mbs          → SOFR + MBS OAS
+4. load_eur_bonds    → ECB govt curve + Euribor + EUR swaps
+5. load_em_bonds     → Treasury base + World Bank + EM OAS
+6. _update_all_oas_curves → refresh all OASSpreadCurve.spread from latest quotes
 </code></pre>
 <h3 id="celery-beat-schedule-example">Celery beat schedule (example)</h3>
 <pre><code class="language-python">app.conf.beat_schedule[&quot;daily-market-save&quot;] = {
     &quot;task&quot;: &quot;vaultdb_market.celery.daily_market_save&quot;,
-    &quot;schedule&quot;: crontab(minute=30, hour=18, day_of_week=&quot;1-5&quot;),  # 6:30 PM ET, Mon�Fri
+    &quot;schedule&quot;: crontab(minute=30, hour=18, day_of_week=&quot;1-5&quot;),  # 6:30 PM ET, Mon–Fri
 }
 </code></pre>
 <hr />
@@ -465,9 +451,9 @@ handle = market.load_oas_curve_from_db(&quot;CORP_HY&quot;)
 import torch
 yf = torch.tensor([1.0, 2.0, 5.0, 10.0], dtype=torch.float64)
 dfs = market.get_spread_adjusted_discount_factors(&quot;UST_SPOT&quot;, 0.015, yf)
-# ? tensor of DFs with 150bps spread applied
+# → tensor of DFs with 150bps spread applied
 </code></pre>
-<h3 id="segment-curve-mapping">Segment ? Curve mapping</h3>
+<h3 id="segment-curve-mapping">Segment → Curve mapping</h3>
 <table>
 <thead>
 <tr>
@@ -520,7 +506,7 @@ dfs = market.get_spread_adjusted_discount_factors(&quot;UST_SPOT&quot;, 0.015, y
     FRED_CORP_OAS,    # ICE BofA US Corp OAS (AAA, AA, A, BBB, IG, BB, B, CCC, HY)
     FRED_MBS_OAS,     # ICE BofA Agency MBS OAS
     FRED_EURIBOR,     # Euribor 1M / 3M / 6M / 12M
-    FRED_EUR_SWAPS,   # ICE EUR OIS swaps 1Y�30Y
+    FRED_EUR_SWAPS,   # ICE EUR OIS swaps 1Y–30Y
     FRED_EM_SPREADS,  # ICE BofA EM OAS (total, IG, HY)
 )
 </code></pre>
@@ -569,7 +555,7 @@ dfs = market.get_spread_adjusted_discount_factors(&quot;UST_SPOT&quot;, 0.015, y
 </tr>
 <tr>
 <td><a href="../src/vaultdb_market/tasks/daily_save.py"><code>tasks/daily_save.py</code></a></td>
-<td>Daily orchestrator � runs all loaders + refreshes OAS spreads</td>
+<td>Daily orchestrator — runs all loaders + refreshes OAS spreads</td>
 </tr>
 <tr>
 <td><a href="../src/vaultdb_market/tasks/load_all.py"><code>tasks/load_all.py</code></a></td>
@@ -580,14 +566,13 @@ dfs = market.get_spread_adjusted_discount_factors(&quot;UST_SPOT&quot;, 0.015, y
                     </div>
                 </div>
             </div>
-            <!-- Footer (injected by js/nav.js) -->
+            
+</div></div>
+<!-- Footer (injected by js/nav.js) -->
 <div id="vdb-footer"></div>
 <script crossorigin="anonymous" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-    AOS.init();
-  </script>
-<script src="../../../js/index.js"></script>
+<script>AOS.init();</script>
 <script src="../../../js/nav.js"></script>
 </body>
 </html>

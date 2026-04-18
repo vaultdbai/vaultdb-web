@@ -1,26 +1,15 @@
 
             <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Kronos Re: The AI-Native Bermuda Sidecar</title>
-<meta content="noindex," name=""robots"" nofollow"=""/>
-<meta content="noindex," follow"="" name=""robots""/>
-<meta content="index," name=""robots"" nofollow"=""/>
-<meta content="VaultDB.ai: Secure Inprocess database and cloud DataHub for IOT and Modeling" property="og:title">
-<meta content="Secure Inprocess database and cloud DataHub for IOT and Modeling" property="og:description">
-<meta content="Database, DataHub, IO, AI Modeling" property="og:type">
-<meta content="img/v-logo.png" property="og:image"/>
-<meta content="http://vaultdb.ai" property="og:url"/>
-<meta content="VaultDB.ai" property="og:site_name"/>
-
+<title>KRONOS Re: core Documentation - System-Context</title>
+<meta content="noindex, nofollow" name="robots"/>
+<meta name="vdb-context" content="You are viewing the core documentation: System-Context. Category: system-context."/>
 <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" rel="stylesheet"/>
 <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" referrerpolicy="no-referrer" rel="stylesheet"/>
-<!-- favicon -->
 <link href="../../../img/v-logo.png" rel="icon" type="image/png"/>
-<!-- animation  -->
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
 <link href="../../../css/style.css" rel="stylesheet"/>
 
@@ -70,15 +59,18 @@
 <div class="container_inside">
 <!-- Navigation (injected by js/nav.js) -->
 <div id="vdb-header"></div>
-<!-- Nav Bar End -->
-<!-- Mobile sidebar (injected by js/nav.js) -->
 <div id="vdb-sidebar"></div>
-
 
             <div class="container doc-wrapper">
                 <div class="row">
                     <div class="col-lg-3">
                         <div class="side_accordian doc-nav"><ul class="nav flex-column">
+        <li class="nav-item">
+            <a class="nav-link  " href="abstract.html">
+                <i class="fa-solid fa-house me-2"></i> Abstract
+            </a>
+        </li>
+        
         <li class="nav-item">
             <a class="nav-link  " href="AUTHENTICATION_GUIDE.html">
                 <i class="fa-solid fa-house me-2"></i> Authentication Guide
@@ -88,12 +80,6 @@
         <li class="nav-item">
             <a class="nav-link  " href="CODEOWNERS_SETUP.html">
                 <i class="fa-solid fa-house me-2"></i> Codeowners Setup
-            </a>
-        </li>
-        
-        <li class="nav-item">
-            <a class="nav-link  " href="abstract.html">
-                <i class="fa-solid fa-house me-2"></i> Abstract
             </a>
         </li>
         
@@ -112,6 +98,12 @@
         <li class="nav-item">
             <a class="nav-link  " href="ducklake_evaluation.html">
                 <i class="fa-solid fa-house me-2"></i> Ducklake Evaluation
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="extraction_module.html">
+                <i class="fa-solid fa-house me-2"></i> Extraction Module
             </a>
         </li>
         
@@ -213,8 +205,8 @@ VaultDB is an advanced data orchestration and execution layer designed for high-
 <li><code>/src/vaultdb/</code>: Base package.<ul>
 <li><code>core.py</code>: Application class for connection management (DuckLake attach, S3 secrets).</li>
 <li><code>data/</code>: Data layer (DuckLake/Inheritance).<ul>
-<li><code>catalog.py</code>: <code>DuckLakeCatalogManager</code> — manages DuckDB/DuckLake connection, sandbox schemas, and data I/O.</li>
-<li><code>reader.py</code>: <code>InheritedReader</code> — merge-and-override reads across main?sandbox hierarchy via SQL pushdown.</li>
+<li><code>catalog.py</code>: <code>DuckLakeCatalogManager</code> â€” manages DuckDB/DuckLake connection, sandbox schemas, and data I/O.</li>
+<li><code>reader.py</code>: <code>InheritedReader</code> â€” merge-and-override reads across mainâ†’sandbox hierarchy via SQL pushdown.</li>
 <li><code>timemachine.py</code>: Point-in-time historical queries on DuckLake versions/timestamps.</li>
 <li><code>model.py</code>: ORM-like <code>Model</code> base class mapping Python objects to DuckLake tables; inherits from main snapshots.</li>
 <li><code>columns.py</code> / <code>usertype.py</code>: Column descriptors and user-defined types with Arrow schema mapping.</li>
@@ -225,17 +217,17 @@ VaultDB is an advanced data orchestration and execution layer designed for high-
 <li><code>service/</code>: Celery task runner service.</li>
 <li><code>scheduler/</code>: Business calendars and task scheduling.</li>
 <li><code>cache/</code>: Redis-based caching.</li>
-<li><code>auth/</code>: Authentication — <code>AuthType.BASIC</code>, <code>AuthType.OIDC</code>, <code>AuthType.GITHUB</code>. OIDC yields AWS credentials for S3 access.</li>
+<li><code>auth/</code>: Authentication â€” <code>AuthType.BASIC</code>, <code>AuthType.OIDC</code>, <code>AuthType.GITHUB</code>. OIDC yields AWS credentials for S3 access.</li>
 <li><code>web/</code>: FastAPI app.</li>
 <li><code>crawler/</code>: Intelligent web crawling with multi-provider LLM support.<ul>
-<li><code>advisor.py</code>: <code>BaseLLMAdvisor</code> — multi-backend LLM abstraction (Ollama, OpenAI, Claude, Bedrock, Gemini, transformers).</li>
-<li><code>config.py</code>: <code>CrawlerConfig</code> — configuration dataclass with env var overrides for all LLM providers.</li>
-<li><code>http.py</code>: <code>HttpClient</code> — session management, rate limiting, UA rotation.</li>
+<li><code>advisor.py</code>: <code>BaseLLMAdvisor</code> â€” multi-backend LLM abstraction (Ollama, OpenAI, Claude, Bedrock, Gemini, transformers).</li>
+<li><code>config.py</code>: <code>CrawlerConfig</code> â€” configuration dataclass with env var overrides for all LLM providers.</li>
+<li><code>http.py</code>: <code>HttpClient</code> â€” session management, rate limiting, UA rotation.</li>
 <li><code>browser.py</code>: Playwright browser helpers (launch, overlays, dropdowns, iframes, accordions).</li>
-<li><code>links.py</code>: <code>LinkClassifier</code> — link classification with scoring and optional LLM integration.</li>
-<li><code>search.py</code>: <code>WebSearcher</code> — Google and DuckDuckGo HTML scraping.</li>
+<li><code>links.py</code>: <code>LinkClassifier</code> â€” link classification with scoring and optional LLM integration.</li>
+<li><code>search.py</code>: <code>WebSearcher</code> â€” Google and DuckDuckGo HTML scraping.</li>
 <li><code>content.py</code>: Content validation, text extraction, junk detection, PDF/HTML handling.</li>
-<li><code>files.py</code>: <code>FileManager</code> — document saving, deduplication, content hashing.</li>
+<li><code>files.py</code>: <code>FileManager</code> â€” document saving, deduplication, content hashing.</li>
 </ul>
 </li>
 <li><code>workflow/</code>: Workflow orchestration with triple-gate approval.</li>
@@ -251,7 +243,7 @@ VaultDB is an advanced data orchestration and execution layer designed for high-
 <hr />
 <h2 id="crawler-llm-architecture">Crawler LLM Architecture</h2>
 <p>The <code>crawler/</code> package provides a pluggable multi-provider LLM layer via
-<code>BaseLLMAdvisor</code>.  All backends are <strong>lazily initialised</strong> — no API call
+<code>BaseLLMAdvisor</code>.  All backends are <strong>lazily initialised</strong> â€” no API call
 is made until <code>generate()</code> or <code>available</code> is first invoked.</p>
 <h3 id="supported-backends">Supported Backends</h3>
 <table>
@@ -302,8 +294,8 @@ is made until <code>generate()</code> or <code>available</code> is first invoked
 </tr>
 <tr>
 <td><code>none</code></td>
-<td>—</td>
-<td>—</td>
+<td>â€”</td>
+<td>â€”</td>
 <td>No</td>
 </tr>
 </tbody>
@@ -328,17 +320,17 @@ pip install &quot;vaultdb.core[crawler-llm]&quot;           # All commercial pro
 <li>Understand the call graph and data flow between <code>crawler/</code>, <code>data/</code>, <code>compute/</code>, and <code>workflow/</code> packages.</li>
 </ul>
 </li>
-<li>When working on the <code>crawler/</code> package, understand the <code>BaseLLMAdvisor</code> multi-provider architecture — all backends share the same <code>generate()</code> / <code>generate_with_vision()</code> interface and JSON parsing pipeline.</li>
+<li>When working on the <code>crawler/</code> package, understand the <code>BaseLLMAdvisor</code> multi-provider architecture â€” all backends share the same <code>generate()</code> / <code>generate_with_vision()</code> interface and JSON parsing pipeline.</li>
 </ul>
 <h3 id="for-antigravity">For Antigravity</h3>
 <ul>
 <li>Analyze the repository structure based on the <strong>Project Map</strong>. Use this context to maintain architectural alignment during complex refactors.</li>
 <li><strong>Use Graphify graphs as your primary navigation aid.</strong> Before performing any multi-file refactor or cross-module analysis, generate a knowledge graph using <code>/graphify</code> on the target directories. The graph communities map directly to architectural boundaries:<ul>
-<li><code>data/</code> community ? DuckLake/Arrow data layer</li>
-<li><code>compute/</code> community ? TED task dispatch</li>
-<li><code>crawler/</code> community ? web crawling + LLM advisor layer</li>
-<li><code>workflow/</code> + <code>approval/</code> community ? orchestration + triple-gate security</li>
-<li><code>web/</code> + <code>service/</code> community ? FastAPI + Celery surface area</li>
+<li><code>data/</code> community â†’ DuckLake/Arrow data layer</li>
+<li><code>compute/</code> community â†’ TED task dispatch</li>
+<li><code>crawler/</code> community â†’ web crawling + LLM advisor layer</li>
+<li><code>workflow/</code> + <code>approval/</code> community â†’ orchestration + triple-gate security</li>
+<li><code>web/</code> + <code>service/</code> community â†’ FastAPI + Celery surface area</li>
 </ul>
 </li>
 <li>When the graph shows edges crossing community boundaries, treat those as high-risk change points that require extra test coverage.</li>
@@ -352,13 +344,13 @@ pip install &quot;vaultdb.core[crawler-llm]&quot;           # All commercial pro
 <hr />
 <h2 id="behavioral-guardrails-no-go-zones">Behavioral Guardrails (No-Go Zones)</h2>
 <ul>
-<li><strong>Strict Configuration</strong>: <strong>NEVER</strong> use <code>os.getenv</code> or <code>os.environ</code> directly in business logic. All parameters must be mapped in <code>src/vaultdb/config.py</code> and accessed via <code>vaultdb.config</code>. <em>(Exception: <code>crawler/config.py</code> uses <code>os.environ.get</code> in dataclass defaults for crawler-specific LLM settings — this is intentional and scoped.)</em></li>
+<li><strong>Strict Configuration</strong>: <strong>NEVER</strong> use <code>os.getenv</code> or <code>os.environ</code> directly in business logic. All parameters must be mapped in <code>src/vaultdb/config.py</code> and accessed via <code>vaultdb.config</code>. <em>(Exception: <code>crawler/config.py</code> uses <code>os.environ.get</code> in dataclass defaults for crawler-specific LLM settings â€” this is intentional and scoped.)</em></li>
 <li><strong>No Prints</strong>: <strong>NEVER</strong> use <code>print()</code>. Use the internal logger: <code>logger = get_logger(config.LOGGER_*)</code>.</li>
 <li><strong>Vectorization First</strong>: Prefer <code>pyarrow</code> compute kernels or DuckDB SQL over iterative Python loops for any data manipulation.</li>
 <li><strong>Interface Consistency</strong>: New runners must implement the <code>Runner</code> interface to remain compatible with the <code>TED</code> (Task Execution Dispatcher) singleton.</li>
 <li><strong>Sandbox Isolation</strong>: ALWAYS use user-specific schemas (<code>sandbox_&lt;role&gt;</code>) for any non-production writes.</li>
 <li><strong>Pristine Workspace</strong>: Always clean up temporary execution scripts or scratch files (<code>/tmp/*.py</code>) immediately after verification.</li>
-<li><strong>LLM Backend Isolation</strong>: Never hard-code a specific LLM provider in business logic. Always go through <code>BaseLLMAdvisor.generate()</code> — the backend is selected by config, not by the caller.</li>
+<li><strong>LLM Backend Isolation</strong>: Never hard-code a specific LLM provider in business logic. Always go through <code>BaseLLMAdvisor.generate()</code> â€” the backend is selected by config, not by the caller.</li>
 </ul>
 <hr />
 <h2 id="workflow-commands">Workflow Commands</h2>
@@ -375,10 +367,10 @@ pip install &quot;vaultdb.core[crawler-llm]&quot;           # All commercial pro
 <li><strong>Line Length</strong>: Strict <strong>160 character</strong> limit.</li>
 <li><strong>Quotes</strong>: Use double quotes (<code>"</code>) for all string literals.</li>
 <li><strong>Imports</strong>: Single-line imports only (forced via ruff).</li>
-<li><strong>Typing</strong>: Mandatory type hints everywhere — see detailed rules below.</li>
+<li><strong>Typing</strong>: Mandatory type hints everywhere â€” see detailed rules below.</li>
 <li><strong>Logging</strong>: Use <code>get_logger(config.LOGGER_*)</code>. Use f-strings for clarity.</li>
 </ul>
-<h3 id="typing-standards-strict-no-exceptions">Typing Standards (Strict — No Exceptions)</h3>
+<h3 id="typing-standards-strict-no-exceptions">Typing Standards (Strict â€” No Exceptions)</h3>
 <blockquote>
 <p>MyPy is configured with <code>disallow_untyped_defs = True</code>. ALL code must pass <code>mypy src/</code> without errors.</p>
 </blockquote>
@@ -391,7 +383,7 @@ pip install &quot;vaultdb.core[crawler-llm]&quot;           # All commercial pro
 def process(self, table: str, limit: int = 100) -&gt; list[dict[str, Any]]: ...
 async def fetch(self, key: str) -&gt; bytes | None: ...
 
-# WRONG — missing return type and parameter type
+# WRONG â€” missing return type and parameter type
 def process(self, table, limit=100): ...
 </code></pre>
 <p><strong>Variables</strong>
@@ -402,7 +394,7 @@ TIMEOUT: int = 30
 _cache: dict[str, bytes] = {}
 result: list[str] = []
 
-# WRONG — unannotated module var and ambiguous local
+# WRONG â€” unannotated module var and ambiguous local
 TIMEOUT = 30
 result = []
 </code></pre>
@@ -464,14 +456,13 @@ python -m vaultdb.web          # http://localhost:8000
                     </div>
                 </div>
             </div>
-            <!-- Footer (injected by js/nav.js) -->
+            
+</div></div>
+<!-- Footer (injected by js/nav.js) -->
 <div id="vdb-footer"></div>
 <script crossorigin="anonymous" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-    AOS.init();
-  </script>
-<script src="../../../js/index.js"></script>
+<script>AOS.init();</script>
 <script src="../../../js/nav.js"></script>
 </body>
 </html>

@@ -1,26 +1,15 @@
 
             <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Kronos Re: The AI-Native Bermuda Sidecar</title>
-<meta content="noindex," name=""robots"" nofollow"=""/>
-<meta content="noindex," follow"="" name=""robots""/>
-<meta content="index," name=""robots"" nofollow"=""/>
-<meta content="VaultDB.ai: Secure Inprocess database and cloud DataHub for IOT and Modeling" property="og:title">
-<meta content="Secure Inprocess database and cloud DataHub for IOT and Modeling" property="og:description">
-<meta content="Database, DataHub, IO, AI Modeling" property="og:type">
-<meta content="img/v-logo.png" property="og:image"/>
-<meta content="http://vaultdb.ai" property="og:url"/>
-<meta content="VaultDB.ai" property="og:site_name"/>
-
+<title>KRONOS Re: asset Documentation - System-Context</title>
+<meta content="noindex, nofollow" name="robots"/>
+<meta name="vdb-context" content="You are viewing the asset documentation: System-Context. Category: system-context."/>
 <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" rel="stylesheet"/>
 <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" referrerpolicy="no-referrer" rel="stylesheet"/>
-<!-- favicon -->
 <link href="../../../img/v-logo.png" rel="icon" type="image/png"/>
-<!-- animation  -->
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
 <link href="../../../css/style.css" rel="stylesheet"/>
 
@@ -70,24 +59,21 @@
 <div class="container_inside">
 <!-- Navigation (injected by js/nav.js) -->
 <div id="vdb-header"></div>
-<!-- Nav Bar End -->
-<!-- Mobile sidebar (injected by js/nav.js) -->
 <div id="vdb-sidebar"></div>
-
 
             <div class="container doc-wrapper">
                 <div class="row">
                     <div class="col-lg-3">
                         <div class="side_accordian doc-nav"><ul class="nav flex-column">
         <li class="nav-item">
-            <a class="nav-link  " href="README.html">
-                <i class="fa-solid fa-house me-2"></i> Readme
+            <a class="nav-link  " href="asset_overview.html">
+                <i class="fa-solid fa-house me-2"></i> Asset Overview
             </a>
         </li>
         
         <li class="nav-item">
-            <a class="nav-link  " href="asset_overview.html">
-                <i class="fa-solid fa-house me-2"></i> Asset Overview
+            <a class="nav-link  " href="README.html">
+                <i class="fa-solid fa-house me-2"></i> Readme
             </a>
         </li>
         
@@ -118,21 +104,21 @@ Before suggesting any code, verify it aligns with the standards below.</p>
 <li><strong>Language</strong>: Python 3.12+ (Strict typing: <code>disallow_untyped_defs = True</code>)</li>
 <li><strong>Data Layer</strong>: DuckLake/DuckDB via <code>vaultdb.data.Model</code> and <code>vaultdb.data.TimeSeriesModel</code></li>
 <li><strong>Core Dependency</strong>: <code>vaultdb.core&gt;=3.18.0</code></li>
-<li><strong>Market Dependency</strong>: <code>vaultdb.market&gt;=0.1.0</code> — for quotes, curves, vol surfaces, instruments</li>
-<li><strong>QuantLib</strong>: <code>QuantLib&gt;=1.33</code> — reference pricing engines, curve bootstrapping</li>
-<li><strong>PyTorch</strong>: <code>torch&gt;=2.0.0</code> — vectorized bulk pricing, <code>torch.autograd</code> for Greeks, GPU support</li>
+<li><strong>Market Dependency</strong>: <code>vaultdb.market&gt;=0.1.0</code> â€” for quotes, curves, vol surfaces, instruments</li>
+<li><strong>QuantLib</strong>: <code>QuantLib&gt;=1.33</code> â€” reference pricing engines, curve bootstrapping</li>
+<li><strong>PyTorch</strong>: <code>torch&gt;=2.0.0</code> â€” vectorized bulk pricing, <code>torch.autograd</code> for Greeks, GPU support</li>
 <li><strong>Tooling</strong>: Ruff (160 char limit), MyPy, Pytest</li>
 </ul>
 <h2 id="project-map">Project Map</h2>
 <ul>
 <li><code>/src/vaultdb_asset/</code>: Base package.<ul>
-<li><code>device.py</code> — CPU/GPU device management</li>
-<li><code>market_environment.py</code> — QuantLib ? PyTorch tensor bridge</li>
-<li><code>results.py</code> — <code>ValuationResult</code> TimeSeriesModel</li>
-<li><code>cashflows.py</code> — Shared cashflow schedule ? padded tensor matrices</li>
-<li><code>tasks.py</code> — Portfolio/instrument pricing orchestration</li>
-<li><code>engines/</code> — All pricing engines (bond, swap, option, capfloor, swaption, fx_forward, cds, fra)</li>
-<li><code>engines/base.py</code> — <code>PricingEngine</code> ABC + <code>TorchMixin</code> (autograd, normal CDF/PDF)</li>
+<li><code>device.py</code> â€” CPU/GPU device management</li>
+<li><code>market_environment.py</code> â€” QuantLib â†’ PyTorch tensor bridge</li>
+<li><code>results.py</code> â€” <code>ValuationResult</code> TimeSeriesModel</li>
+<li><code>cashflows.py</code> â€” Shared cashflow schedule â†’ padded tensor matrices</li>
+<li><code>tasks.py</code> â€” Portfolio/instrument pricing orchestration</li>
+<li><code>engines/</code> â€” All pricing engines (bond, swap, option, capfloor, swaption, fx_forward, cds, fra)</li>
+<li><code>engines/base.py</code> â€” <code>PricingEngine</code> ABC + <code>TorchMixin</code> (autograd, normal CDF/PDF)</li>
 </ul>
 </li>
 <li><code>/tests/</code>: Unit and integration tests.</li>
@@ -152,7 +138,7 @@ Before suggesting any code, verify it aligns with the standards below.</p>
 <li><strong>Strict Configuration</strong>: <strong>NEVER</strong> use <code>os.getenv</code> or <code>os.environ</code> directly. Use <code>vaultdb.config</code>.</li>
 <li><strong>No Prints</strong>: <strong>NEVER</strong> use <code>print()</code>. Use <code>vaultdb.logger</code>.</li>
 <li><strong>No Peewee</strong>: <strong>NEVER</strong> import from <code>peewee</code>. Use <code>vaultdb.data</code> column types.</li>
-<li><strong>Market Data Here</strong>: DO NOT define quote models, curves, or instruments in this repo — those belong in <code>vaultdb.market</code>.</li>
+<li><strong>Market Data Here</strong>: DO NOT define quote models, curves, or instruments in this repo â€” those belong in <code>vaultdb.market</code>.</li>
 <li><strong>Pristine Workspace</strong>: Clean up temporary files immediately.</li>
 <li><strong>Documentation</strong>: <strong>ALWAYS</strong> update <code>/docs/asset_overview.md</code> when adding, modifying, or removing modules, engines, public API, or architectural decisions. Keep documentation in sync with the code at all times. After any structural change, verify that the docs reflect the current state.</li>
 </ul>
@@ -165,7 +151,7 @@ Before suggesting any code, verify it aligns with the standards below.</p>
 <li><strong>Testing</strong>: <code>pytest</code> + <code>unittest.mock</code>. &gt;90% coverage. Mock external services.</li>
 </ul>
 <h3 id="pythonpath">PYTHONPATH</h3>
-<p><strong>Devcontainer:</strong> set automatically — just run <code>pytest tests/</code>.</p>
+<p><strong>Devcontainer:</strong> set automatically â€” just run <code>pytest tests/</code>.</p>
 <p><strong>Standalone</strong> (replace <code>$REPO_ROOT</code> with the parent directory containing all submodules):</p>
 <pre><code class="language-bash">export PYTHONPATH=&quot;$REPO_ROOT/core/src:$REPO_ROOT/market/src:$REPO_ROOT/asset/src&quot;
 </code></pre>
@@ -178,14 +164,13 @@ python -m pytest -v --cov=src/vaultdb_asset
                     </div>
                 </div>
             </div>
-            <!-- Footer (injected by js/nav.js) -->
+            
+</div></div>
+<!-- Footer (injected by js/nav.js) -->
 <div id="vdb-footer"></div>
 <script crossorigin="anonymous" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-    AOS.init();
-  </script>
-<script src="../../../js/index.js"></script>
+<script>AOS.init();</script>
 <script src="../../../js/nav.js"></script>
 </body>
 </html>

@@ -1,0 +1,260 @@
+
+            <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>KRONOS Re: core Documentation - Extraction Module</title>
+<meta content="noindex, nofollow" name="robots"/>
+<meta name="vdb-context" content="You are viewing the core documentation: Extraction Module. Category: index."/>
+<link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" rel="stylesheet"/>
+<link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" referrerpolicy="no-referrer" rel="stylesheet"/>
+<link href="../../../img/v-logo.png" rel="icon" type="image/png"/>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+<link href="../../../css/style.css" rel="stylesheet"/>
+
+    <style>
+        html { font-size: 10px !important; }
+        body { font-size: 1.6rem !important; background: var(--main-color) !important; color: #f5f5f5; }
+
+        .doc-wrapper { margin-top: 15vh; margin-bottom: 5vh; min-height: 80vh; }
+        .doc-nav { border-right: 1px solid rgba(168, 150, 183, 0.2); height: 100%; padding-right: 2rem; }
+        .doc-nav .nav-link {
+            color: #A896B7; border-radius: 12px; margin-bottom: 8px; transition: 0.3s;
+            font-size: 1.6rem; padding: 1.4rem 2rem; border: 1px solid transparent;
+        }
+        .doc-nav .nav-link:hover { background: rgba(160, 68, 255, 0.1); color: var(--purple-color); transform: translateX(8px); }
+        .doc-nav .nav-link.active { background: var(--purple-color); color: #fff !important; font-weight: 700; box-shadow: 0 12px 24px rgba(160, 68, 255, 0.4); }
+
+        .doc-content { padding-left: 6rem; max-width: 1000px; }
+        .doc-content h1, .doc-content h2, .doc-content h3 { font-family: var(--plus-font-family); color: #fff; margin-top: 4.5rem; }
+        .doc-content h1 { font-size: 5.2rem; font-weight: 800; margin-top: 0; margin-bottom: 4rem; letter-spacing: -0.03em; }
+        .doc-content h2 { font-size: 3.6rem; border-bottom: 2px solid rgba(168, 150, 183, 0.15); padding-bottom: 1.5rem; }
+        .doc-content h3 { font-size: 2.8rem; color: var(--purple-color); }
+
+        .doc-content p, .doc-content li { font-size: 1.8rem; line-height: 2.0; color: #d0c4db; margin-bottom: 2.8rem; }
+        .doc-content code { background: #0b0b1a; padding: 4px 10px; border-radius: 8px; color: #f8f8f2; border: 1px solid rgba(255,255,255,0.1); }
+        .doc-content pre { padding: 3.5rem; border-radius: 20px; box-shadow: 0 30px 60px rgba(0,0,0,0.5); }
+
+        .persona-badge { font-size: 0.9rem; text-transform: uppercase; padding: 6px 16px; border-radius: 99px; background: rgba(160, 68, 255, 0.25); border: 1px solid var(--purple-color); color: #fff; margin-left: 20px; }
+
+        .breadcrumb-item a { color: var(--purple-color); font-size: 1.6rem; text-decoration: none; }
+        .breadcrumb-item.active { color: #666; font-size: 1.6rem; }
+
+        .doc-content table { border-radius: 16px; overflow: hidden; border: 1px solid rgba(168, 150, 183, 0.3); }
+        .doc-content th { background: #131326; padding: 2rem; font-size: 1.7rem; color: #fff; }
+        .doc-content td { padding: 2rem; border-top: 1px solid rgba(168, 150, 183, 0.1); font-size: 1.7rem; }
+
+        .mermaid-diagram { margin: 3rem 0; text-align: center; }
+        .mermaid-diagram img { max-width: 100%; border-radius: 16px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+        .mermaid { background: transparent; }
+    </style>
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true, theme: 'dark', fontFamily: 'DM Sans' });
+    </script>
+    </head>
+<body style="overflow: hidden !important">
+<div class="container_body">
+<div class="container_inside">
+<!-- Navigation (injected by js/nav.js) -->
+<div id="vdb-header"></div>
+<div id="vdb-sidebar"></div>
+
+            <div class="container doc-wrapper">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="side_accordian doc-nav"><ul class="nav flex-column">
+        <li class="nav-item">
+            <a class="nav-link  " href="abstract.html">
+                <i class="fa-solid fa-house me-2"></i> Abstract
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="AUTHENTICATION_GUIDE.html">
+                <i class="fa-solid fa-house me-2"></i> Authentication Guide
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="CODEOWNERS_SETUP.html">
+                <i class="fa-solid fa-house me-2"></i> Codeowners Setup
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  ps-4" href="compliance_approval_controls.html">
+                <i class="fa-solid fa-shield-halved me-2"></i> Approval Controls
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="ducklake.html">
+                <i class="fa-solid fa-house me-2"></i> Ducklake
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="ducklake_evaluation.html">
+                <i class="fa-solid fa-house me-2"></i> Ducklake Evaluation
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link active " href="extraction_module.html">
+                <i class="fa-solid fa-house me-2"></i> Extraction Module
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="glittery-brewing-riddle.html">
+                <i class="fa-solid fa-house me-2"></i> Glittery Brewing Riddle
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="implementation-plan-unified-runners.html">
+                <i class="fa-solid fa-house me-2"></i> Implementation Plan Unified Runners
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="index.html">
+                <i class="fa-solid fa-house me-2"></i> Index
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="logger_usage.html">
+                <i class="fa-solid fa-house me-2"></i> Logger Usage
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="oauth2_authentication_guide.html">
+                <i class="fa-solid fa-house me-2"></i> Oauth2 Authentication Guide
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="task_runners_integration_guide.html">
+                <i class="fa-solid fa-house me-2"></i> Task Runners Integration Guide
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="task_scheduling.html">
+                <i class="fa-solid fa-house me-2"></i> Task Scheduling
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  ps-4" href="technology_approval.html">
+                <i class="fa-solid fa-code me-2"></i> Approval
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  ps-4" href="technology_workflow.html">
+                <i class="fa-solid fa-code me-2"></i> Workflow
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="workflow-approval.html">
+                <i class="fa-solid fa-house me-2"></i> Workflow Approval
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="system-context.html">
+                <i class="fa-solid fa-brain me-2"></i> System Context
+            </a>
+        </li>
+        </ul></div>
+                    </div>
+                    <div class="col-lg-9 doc-content">
+                        <nav aria-label="breadcrumb" class="mb-5">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="../../../index.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="#">core</a></li>
+                                <li class="breadcrumb-item active">Extraction Module <span class="persona-badge">index</span></li>
+                            </ol>
+                        </nav>
+                        <h1 id="vaultdb-core-extraction-module-architecture">VaultDB Core Extraction Module Architecture</h1>
+<p>The <code>vaultdb/extraction</code> module orchestrates the process of extracting, interpreting, and structuring complex actuarial and financial data from raw documents (PDFs, HTML, TXT). Instead of simple regex or heuristics, it uses advanced LLM workflows combined with a tiered prompt architecture, schema validation, and intelligent document parsing.</p>
+<h2 id="key-components">Key Components</h2>
+<h3 id="1-extractionadvisor-advisorpy">1. <code>ExtractionAdvisor</code> (<code>advisor.py</code>)</h3>
+<p>This is the core orchestrator. It extends <code>BaseLLMAdvisor</code> (from the crawler) and manages the full end-to-end extraction pipeline:
+- <strong>Token Budgeting:</strong> Assembles document text and table chunks so they fit precisely within the LLM's context window.
+- <strong>Prompt Execution:</strong> Merges the user/system prompts with document variables and executes the LLM calls.
+- <strong>Resilience:</strong> Implements retry logic and exponential backoff for robustness against LLM API timeouts or empty responses.
+- <strong>Dependency Flow:</strong> Exposes <code>extract_batch()</code> which topologically sorts prompts by their dependencies, feeding the output of upstream extractions (e.g., getting a "Product Catalog" first) into the variables of downstream prompts.
+- <strong>Backend Swapping:</strong> Dynamically chooses providers (Gemini, Anthropic, Ollama, Bedrock, etc.) based on the prompt's <code>preferred_backend</code> or fallback logic.</p>
+<h3 id="2-document-parser-parserspy">2. Document Parser (<code>parsers.py</code>)</h3>
+<p>Converts raw binaries and plain text into structured <code>Document</code> objects containing easily readable tables and chunked text.
+- <strong>PDF Parsing:</strong> Relies primarily on PyMuPDF (<code>fitz</code>) for layout-aware text extraction and table identification.
+- <strong>HTML Parsing:</strong> Leverages BeautifulSoup with rules specific to regulatory filings and corporate content.
+- Gracefully drops back to raw ASCII text scanning if optional dependencies aren't met, ensuring the pipeline never fully fails.</p>
+<h3 id="3-prompt-registry-promptspy">3. Prompt Registry (<code>prompts.py</code>)</h3>
+<p>Prompts are defined as first-class Python classes inheriting from <code>BaseExtractionPrompt</code>. They encompass standard components:
+- System and User prompts.
+- <strong>Tiers &amp; Focus:</strong>
+  - <em>Tier 1:</em> Product Structure (Catalogs, surrender schedules, indexing strategies).
+  - <em>Tier 2:</em> Actuarial Assumptions (Lapse rates, mortality inferences).
+  - <em>Tier 3:</em> Regulatory/Financial Data (SEC Summaries).
+- <strong>Target Filtering:</strong> Defines which file types/folders (e.g. <code>['FIA', 'VA']</code>) to feed the prompt.</p>
+<h3 id="4-schemas-and-validation-schemaspy">4. Schemas and Validation (<code>schemas.py</code>)</h3>
+<p>Because LLMs return wildly varying outputs, the engine strictly enforces structured JSON returns.
+- Validates structural soundness (required keys, nested dict shapes).
+- Outputs explicit warnings for data that fails to meet schema constraints without completely dropping the result, adhering to a "keep what is useful" philosophy.</p>
+<h3 id="5-persistence-resultspy-and-taskspy">5. Persistence (<code>results.py</code> and <code>tasks.py</code>)</h3>
+<ul>
+<li>Extraction results are saved to <code>.json</code> files.</li>
+<li>If a prompt has <code>produces_csv = True</code> (e.g., surrender charge schedules or withdrawal tables), it dynamically flattens the JSON response and exports analytical <code>.csv</code> files ready for direct downstream use in actuarial models or DataFrame ingest.</li>
+<li>Task wrappers (<code>tasks.py</code>) like <code>extract_carrier</code> expose async-ready entrypoints for the broader task engine (e.g. Celery).</li>
+</ul>
+<h2 id="high-level-workflow">High-Level Workflow</h2>
+<ol>
+<li>A task starts for an insurance <strong>Carrier</strong>.</li>
+<li><strong>Parser</strong> globs all relevant PDFs/HTML in the input directory and structures them into context-aware chunks.</li>
+<li>The <strong>Advisor</strong> collects the Prompt Registry's active prompts for that carrier/product type.</li>
+<li>Execution runs sequentially along the dependency graph (e.g., Tier 1 first, then Tier 2).</li>
+<li>For each prompt, the LLM processes the generated prompt alongside the document chunk, returning JSON.</li>
+<li><strong>Schema Validation</strong> checks the JSON.</li>
+<li>Results are persisted to directories matching <code>prospectuses/docs/prospectuses/&lt;carrier&gt;</code> with structured <code>.json</code> and flat <code>.csv</code> artifacts.</li>
+</ol>
+<h2 id="cli-usage">CLI Usage</h2>
+<p>The extraction module includes a fully functional CLI built in at <code>vaultdb.extraction.cli</code>. It is designed to run batch extractions, test single prompts computationally, and inspect module status seamlessly. Local models like <code>ollama</code> are the strict zero-config default.</p>
+<pre><code class="language-powershell"># Run a specific extraction for a carrier using the default local provider (Ollama)
+python -m vaultdb.extraction.cli carrier &quot;Jackson_National&quot;
+
+# Test a single prompt using an explicit cloud provider (e.g. Gemini)
+python -m vaultdb.extraction.cli single &quot;Jackson_National&quot; 1.3 --backend gemini --api-key &quot;AIzaSy...&quot;
+
+# Explicitly override the input/output paths on the fly without relying on configurations
+python -m vaultdb.extraction.cli carrier &quot;Jackson_National&quot; \
+    --input-dir &quot;d:\sandbox\jackson_raw_docs&quot; \
+    --output-dir &quot;d:\sandbox\jackson_extracted_data&quot;
+</code></pre>
+<h2 id="configuration">Configuration</h2>
+<p>The Extraction module pulls parameters directly from the central <code>vaultdb.config</code> namespace. You can configure behavior dynamically on deployment using environment variables or by mapping them into <code>vaultdb_config.py</code>:
+- <code>LLM_BACKEND</code> -&gt; <code>c.llm_backend</code>
+- <code>PROSPECTUS_DIR</code> -&gt; <code>c.prospectus_dir</code>
+- <code>EXTRACTION_OUTPUT_DIR</code> -&gt; <code>c.extraction_output_dir</code>
+- <code>EXTRACTION_MAX_TOKENS_PER_CHUNK</code> -&gt; <code>c.extraction_max_tokens_per_chunk</code></p>
+                    </div>
+                </div>
+            </div>
+            
+</div></div>
+<!-- Footer (injected by js/nav.js) -->
+<div id="vdb-footer"></div>
+<script crossorigin="anonymous" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>AOS.init();</script>
+<script src="../../../js/nav.js"></script>
+</body>
+</html>
+            

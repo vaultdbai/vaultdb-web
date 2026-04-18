@@ -1,26 +1,15 @@
 
             <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Kronos Re: The AI-Native Bermuda Sidecar</title>
-<meta content="noindex," name=""robots"" nofollow"=""/>
-<meta content="noindex," follow"="" name=""robots""/>
-<meta content="index," name=""robots"" nofollow"=""/>
-<meta content="VaultDB.ai: Secure Inprocess database and cloud DataHub for IOT and Modeling" property="og:title">
-<meta content="Secure Inprocess database and cloud DataHub for IOT and Modeling" property="og:description">
-<meta content="Database, DataHub, IO, AI Modeling" property="og:type">
-<meta content="img/v-logo.png" property="og:image"/>
-<meta content="http://vaultdb.ai" property="og:url"/>
-<meta content="VaultDB.ai" property="og:site_name"/>
-
+<title>KRONOS Re: asset Documentation - Asset Overview</title>
+<meta content="noindex, nofollow" name="robots"/>
+<meta name="vdb-context" content="You are viewing the asset documentation: Asset Overview. Category: index."/>
 <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" rel="stylesheet"/>
 <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" referrerpolicy="no-referrer" rel="stylesheet"/>
-<!-- favicon -->
 <link href="../../../img/v-logo.png" rel="icon" type="image/png"/>
-<!-- animation  -->
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
 <link href="../../../css/style.css" rel="stylesheet"/>
 
@@ -70,24 +59,21 @@
 <div class="container_inside">
 <!-- Navigation (injected by js/nav.js) -->
 <div id="vdb-header"></div>
-<!-- Nav Bar End -->
-<!-- Mobile sidebar (injected by js/nav.js) -->
 <div id="vdb-sidebar"></div>
-
 
             <div class="container doc-wrapper">
                 <div class="row">
                     <div class="col-lg-3">
                         <div class="side_accordian doc-nav"><ul class="nav flex-column">
         <li class="nav-item">
-            <a class="nav-link  " href="README.html">
-                <i class="fa-solid fa-house me-2"></i> Readme
+            <a class="nav-link active " href="asset_overview.html">
+                <i class="fa-solid fa-house me-2"></i> Asset Overview
             </a>
         </li>
         
         <li class="nav-item">
-            <a class="nav-link active " href="asset_overview.html">
-                <i class="fa-solid fa-house me-2"></i> Asset Overview
+            <a class="nav-link  " href="README.html">
+                <i class="fa-solid fa-house me-2"></i> Readme
             </a>
         </li>
         
@@ -106,14 +92,14 @@
                                 <li class="breadcrumb-item active">Asset Overview <span class="persona-badge">index</span></li>
                             </ol>
                         </nav>
-                        <h1 id="asset-overview-pricing-engines-valuation">Asset Overview — Pricing Engines &amp; Valuation</h1>
+                        <h1 id="asset-overview-pricing-engines-valuation">Asset Overview â€” Pricing Engines &amp; Valuation</h1>
 <h2 id="architecture">Architecture</h2>
 <p><code>vaultdb.asset</code> is the pricing and valuation domain package in the VaultDB ecosystem. It consumes instruments and market data from <code>vaultdb.market</code>, applies QuantLib and PyTorch-based pricing engines, and persists results as <code>TimeSeriesModel</code> records.</p>
 <h3 id="dual-pricing-paths">Dual Pricing Paths</h3>
 <p>Every engine implements two pricing paths:</p>
 <ul>
-<li><strong><code>price_single()</code></strong> — QuantLib for single-instrument correctness and reference validation</li>
-<li><strong><code>price_bulk()</code></strong> — PyTorch tensors for vectorized batch pricing with GPU support</li>
+<li><strong><code>price_single()</code></strong> â€” QuantLib for single-instrument correctness and reference validation</li>
+<li><strong><code>price_bulk()</code></strong> â€” PyTorch tensors for vectorized batch pricing with GPU support</li>
 </ul>
 <p>The <code>price()</code> dispatcher automatically selects the optimal path based on input count.</p>
 <h3 id="torchautograd-for-greeks"><code>torch.autograd</code> for Greeks</h3>
@@ -123,23 +109,23 @@
 <hr />
 <h2 id="module-structure">Module Structure</h2>
 <pre><code>src/vaultdb_asset/
-+-- __init__.py              # Public API exports + version
-+-- device.py                # CPU/GPU device management singleton
-+-- market_environment.py    # Bridges QuantLib curves/surfaces ? PyTorch tensors
-+-- results.py               # ValuationResult TimeSeriesModel for persistence
-+-- cashflows.py             # Shared cashflow schedule ? padded tensor matrices
-+-- tasks.py                 # price_portfolio() / price_instrument() orchestration
-+-- engines/
-    +-- __init__.py          # Re-exports all engines
-    +-- base.py              # PricingEngine ABC + TorchMixin (autograd, normal CDF/PDF)
-    +-- bond.py              # Fixed/Floating/Zero-Coupon — QL DiscountingBond + torch DCF
-    +-- swap.py              # Vanilla IRS/OIS — QL VanillaSwap + torch leg NPV
-    +-- option.py            # European/American — QL AnalyticEuropean + torch Black-Scholes
-    +-- capfloor.py          # Caps/Floors — QL BlackCapFloor + torch Black76
-    +-- swaption.py          # European Swaptions — QL BlackSwaption + torch Black76
-    +-- fx_forward.py        # FX Forwards — covered interest-rate parity vectorized
-    +-- cds.py               # CDS — QL MidPointCds + torch hazard rate model
-    +-- fra.py               # FRA — forward rate NPV vectorized
+â”œâ”€â”€ __init__.py              # Public API exports + version
+â”œâ”€â”€ device.py                # CPU/GPU device management singleton
+â”œâ”€â”€ market_environment.py    # Bridges QuantLib curves/surfaces â†’ PyTorch tensors
+â”œâ”€â”€ results.py               # ValuationResult TimeSeriesModel for persistence
+â”œâ”€â”€ cashflows.py             # Shared cashflow schedule â†’ padded tensor matrices
+â”œâ”€â”€ tasks.py                 # price_portfolio() / price_instrument() orchestration
+â””â”€â”€ engines/
+    â”œâ”€â”€ __init__.py          # Re-exports all engines
+    â”œâ”€â”€ base.py              # PricingEngine ABC + TorchMixin (autograd, normal CDF/PDF)
+    â”œâ”€â”€ bond.py              # Fixed/Floating/Zero-Coupon â€” QL DiscountingBond + torch DCF
+    â”œâ”€â”€ swap.py              # Vanilla IRS/OIS â€” QL VanillaSwap + torch leg NPV
+    â”œâ”€â”€ option.py            # European/American â€” QL AnalyticEuropean + torch Black-Scholes
+    â”œâ”€â”€ capfloor.py          # Caps/Floors â€” QL BlackCapFloor + torch Black76
+    â”œâ”€â”€ swaption.py          # European Swaptions â€” QL BlackSwaption + torch Black76
+    â”œâ”€â”€ fx_forward.py        # FX Forwards â€” covered interest-rate parity vectorized
+    â”œâ”€â”€ cds.py               # CDS â€” QL MidPointCds + torch hazard rate model
+    â””â”€â”€ fra.py               # FRA â€” forward rate NPV vectorized
 </code></pre>
 <hr />
 <h2 id="dependencies">Dependencies</h2>
@@ -226,7 +212,7 @@
 </tbody>
 </table>
 <h3 id="valuation-result-resultspy">Valuation Result (<code>results.py</code>)</h3>
-<p><code>ValuationResult(TimeSeriesModel)</code> — persists pricing outputs per instrument per valuation date.</p>
+<p><code>ValuationResult(TimeSeriesModel)</code> â€” persists pricing outputs per instrument per valuation date.</p>
 <p><strong>Primary keys:</strong> <code>(valuation_date, symbol, engine)</code></p>
 <p><strong>Columns:</strong> <code>npv</code>, <code>clean_price</code>, <code>dirty_price</code>, <code>accrued_interest</code>, <code>duration</code>, <code>modified_duration</code>, <code>convexity</code>, <code>dv01</code>, <code>delta</code>, <code>gamma</code>, <code>vega</code>, <code>theta</code>, <code>rho</code>, <code>cs01</code></p>
 <h3 id="cashflows-cashflowspy">Cashflows (<code>cashflows.py</code>)</h3>
@@ -258,8 +244,8 @@
 <h2 id="pricing-engines">Pricing Engines</h2>
 <h3 id="base-classes-enginesbasepy">Base Classes (<code>engines/base.py</code>)</h3>
 <ul>
-<li><strong><code>PricingEngine</code></strong> — Abstract base with <code>price_single()</code>, <code>price_bulk()</code>, and <code>price()</code> dispatcher</li>
-<li><strong><code>TorchMixin</code></strong> — Shared tensor utilities: <code>_to_tensor()</code>, <code>_scalar_tensor()</code>, <code>_compute_greeks_via_autograd()</code>, <code>_normal_cdf()</code>, <code>_normal_pdf()</code></li>
+<li><strong><code>PricingEngine</code></strong> â€” Abstract base with <code>price_single()</code>, <code>price_bulk()</code>, and <code>price()</code> dispatcher</li>
+<li><strong><code>TorchMixin</code></strong> â€” Shared tensor utilities: <code>_to_tensor()</code>, <code>_scalar_tensor()</code>, <code>_compute_greeks_via_autograd()</code>, <code>_normal_cdf()</code>, <code>_normal_pdf()</code></li>
 </ul>
 <h3 id="bond-engine-enginesbondpy">Bond Engine (<code>engines/bond.py</code>)</h3>
 <table>
@@ -274,17 +260,17 @@
 <tr>
 <td>Fixed-Rate</td>
 <td><code>FixedRateBond</code> + <code>DiscountingBondEngine</code></td>
-<td>Cashflow matrix × discount factor tensor</td>
+<td>Cashflow matrix Ã— discount factor tensor</td>
 </tr>
 <tr>
 <td>Zero-Coupon</td>
 <td><code>ZeroCouponBond</code> + <code>DiscountingBondEngine</code></td>
-<td><code>face × df(maturity)</code></td>
+<td><code>face Ã— df(maturity)</code></td>
 </tr>
 <tr>
 <td>Floating</td>
 <td>Via QL index</td>
-<td>Forward rate tensor × accrual × df</td>
+<td>Forward rate tensor Ã— accrual Ã— df</td>
 </tr>
 <tr>
 <td>Greeks</td>
@@ -294,12 +280,12 @@
 </tbody>
 </table>
 <p><strong>Bulk math (fixed bonds):</strong></p>
-<pre><code>cf_amounts:  (N, max_cf)   — coupon + principal at maturity
-yf:          (N, max_cf)   — year fractions to payment
-df_shifted:  (N, max_cf)   — discount_factor × exp(-shift × yf)
-NPV = sum(cf_amounts × df_shifted × mask, dim=1)
-duration = -(1/NPV) × dNPV/d(shift)    # via autograd
-convexity = (1/NPV) × d²NPV/d(shift)²  # second backward pass
+<pre><code>cf_amounts:  (N, max_cf)   â€” coupon + principal at maturity
+yf:          (N, max_cf)   â€” year fractions to payment
+df_shifted:  (N, max_cf)   â€” discount_factor Ã— exp(-shift Ã— yf)
+NPV = sum(cf_amounts Ã— df_shifted Ã— mask, dim=1)
+duration = -(1/NPV) Ã— dNPV/d(shift)    # via autograd
+convexity = (1/NPV) Ã— dÂ²NPV/d(shift)Â²  # second backward pass
 </code></pre>
 <h3 id="swap-engine-enginesswappy">Swap Engine (<code>engines/swap.py</code>)</h3>
 <table>
@@ -312,11 +298,11 @@ convexity = (1/NPV) × d²NPV/d(shift)²  # second backward pass
 <tbody>
 <tr>
 <td>Fixed</td>
-<td><code>notional × fixed_rate × accrual × df</code> summed per period</td>
+<td><code>notional Ã— fixed_rate Ã— accrual Ã— df</code> summed per period</td>
 </tr>
 <tr>
 <td>Floating</td>
-<td><code>notional × forward_rate × accrual × df</code> summed per period</td>
+<td><code>notional Ã— forward_rate Ã— accrual Ã— df</code> summed per period</td>
 </tr>
 <tr>
 <td>NPV</td>
@@ -330,36 +316,36 @@ convexity = (1/NPV) × d²NPV/d(shift)²  # second backward pass
 </table>
 <h3 id="option-engine-enginesoptionpy">Option Engine (<code>engines/option.py</code>)</h3>
 <p>Vectorized Black-Scholes for European options:</p>
-<pre><code>d1 = (log(S/K) + (r + 0.5s²)T) / (svT)
-d2 = d1 - svT
-call = S·N(d1) - K·e^(-rT)·N(d2)
-put  = K·e^(-rT)·N(-d2) - S·N(-d1)
+<pre><code>d1 = (log(S/K) + (r + 0.5ÏƒÂ²)T) / (ÏƒâˆšT)
+d2 = d1 - ÏƒâˆšT
+call = SÂ·N(d1) - KÂ·e^(-rT)Â·N(d2)
+put  = KÂ·e^(-rT)Â·N(-d2) - SÂ·N(-d1)
 </code></pre>
 <p>All Greeks (delta, gamma, vega, theta, rho) via <code>torch.autograd</code> on <code>S</code>, <code>sigma</code>, <code>r</code>, <code>T</code>. American options fall back to QuantLib binomial in <code>price_single()</code>.</p>
 <h3 id="capfloor-engine-enginescapfloorpy">Cap/Floor Engine (<code>engines/capfloor.py</code>)</h3>
 <p>Each caplet/floorlet priced as a Black76 call/put on the forward rate:</p>
-<pre><code>caplet = df × accrual × notional × Black76(F, K, s, T_option)
+<pre><code>caplet = df Ã— accrual Ã— notional Ã— Black76(F, K, Ïƒ, T_option)
 </code></pre>
 <p>Vectorized across all caplets of all instruments simultaneously.</p>
 <h3 id="swaption-engine-enginesswaptionpy">Swaption Engine (<code>engines/swaption.py</code>)</h3>
 <p>Black76 on the forward swap rate:</p>
-<pre><code>NPV = notional × annuity_factor × Black76(forward_swap_rate, K, s, T_exercise)
+<pre><code>NPV = notional Ã— annuity_factor Ã— Black76(forward_swap_rate, K, Ïƒ, T_exercise)
 </code></pre>
 <h3 id="fx-forward-engine-enginesfx_forwardpy">FX Forward Engine (<code>engines/fx_forward.py</code>)</h3>
 <p>Covered interest-rate parity:</p>
-<pre><code>NPV = notional × (implied_forward - contract_rate) × df_domestic
+<pre><code>NPV = notional Ã— (implied_forward - contract_rate) Ã— df_domestic
 </code></pre>
 <h3 id="cds-engine-enginescdspy">CDS Engine (<code>engines/cds.py</code>)</h3>
 <p>Flat hazard rate model:</p>
 <pre><code>h = spread / (1 - recovery)
-survival(t) = exp(-h × t)
-premium_leg = S(spread × notional × accrual × df × survival)
-protection_leg = S(notional × (1-R) × default_prob × df)
+survival(t) = exp(-h Ã— t)
+premium_leg = Î£(spread Ã— notional Ã— accrual Ã— df Ã— survival)
+protection_leg = Î£(notional Ã— (1-R) Ã— default_prob Ã— df)
 NPV_buyer = protection_leg - premium_leg
 CS01 via autograd on spread input
 </code></pre>
 <h3 id="fra-engine-enginesfrapy">FRA Engine (<code>engines/fra.py</code>)</h3>
-<pre><code>NPV = notional × (forward_rate - contract_rate) × accrual × df(end)
+<pre><code>NPV = notional Ã— (forward_rate - contract_rate) Ã— accrual Ã— df(end)
 </code></pre>
 <hr />
 <h2 id="task-orchestration-taskspy">Task Orchestration (<code>tasks.py</code>)</h2>
@@ -410,14 +396,13 @@ results = price_portfolio(symbols=large_portfolio, curve_name=&quot;USD_SOFR&quo
                     </div>
                 </div>
             </div>
-            <!-- Footer (injected by js/nav.js) -->
+            
+</div></div>
+<!-- Footer (injected by js/nav.js) -->
 <div id="vdb-footer"></div>
 <script crossorigin="anonymous" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-    AOS.init();
-  </script>
-<script src="../../../js/index.js"></script>
+<script>AOS.init();</script>
 <script src="../../../js/nav.js"></script>
 </body>
 </html>

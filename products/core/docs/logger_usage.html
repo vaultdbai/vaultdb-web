@@ -1,26 +1,15 @@
 
             <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Kronos Re: The AI-Native Bermuda Sidecar</title>
-<meta content="noindex," name=""robots"" nofollow"=""/>
-<meta content="noindex," follow"="" name=""robots""/>
-<meta content="index," name=""robots"" nofollow"=""/>
-<meta content="VaultDB.ai: Secure Inprocess database and cloud DataHub for IOT and Modeling" property="og:title">
-<meta content="Secure Inprocess database and cloud DataHub for IOT and Modeling" property="og:description">
-<meta content="Database, DataHub, IO, AI Modeling" property="og:type">
-<meta content="img/v-logo.png" property="og:image"/>
-<meta content="http://vaultdb.ai" property="og:url"/>
-<meta content="VaultDB.ai" property="og:site_name"/>
-
+<title>KRONOS Re: core Documentation - Logger Usage</title>
+<meta content="noindex, nofollow" name="robots"/>
+<meta name="vdb-context" content="You are viewing the core documentation: Logger Usage. Category: index."/>
 <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" rel="stylesheet"/>
 <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" referrerpolicy="no-referrer" rel="stylesheet"/>
-<!-- favicon -->
 <link href="../../../img/v-logo.png" rel="icon" type="image/png"/>
-<!-- animation  -->
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
 <link href="../../../css/style.css" rel="stylesheet"/>
 
@@ -70,15 +59,18 @@
 <div class="container_inside">
 <!-- Navigation (injected by js/nav.js) -->
 <div id="vdb-header"></div>
-<!-- Nav Bar End -->
-<!-- Mobile sidebar (injected by js/nav.js) -->
 <div id="vdb-sidebar"></div>
-
 
             <div class="container doc-wrapper">
                 <div class="row">
                     <div class="col-lg-3">
                         <div class="side_accordian doc-nav"><ul class="nav flex-column">
+        <li class="nav-item">
+            <a class="nav-link  " href="abstract.html">
+                <i class="fa-solid fa-house me-2"></i> Abstract
+            </a>
+        </li>
+        
         <li class="nav-item">
             <a class="nav-link  " href="AUTHENTICATION_GUIDE.html">
                 <i class="fa-solid fa-house me-2"></i> Authentication Guide
@@ -88,12 +80,6 @@
         <li class="nav-item">
             <a class="nav-link  " href="CODEOWNERS_SETUP.html">
                 <i class="fa-solid fa-house me-2"></i> Codeowners Setup
-            </a>
-        </li>
-        
-        <li class="nav-item">
-            <a class="nav-link  " href="abstract.html">
-                <i class="fa-solid fa-house me-2"></i> Abstract
             </a>
         </li>
         
@@ -112,6 +98,12 @@
         <li class="nav-item">
             <a class="nav-link  " href="ducklake_evaluation.html">
                 <i class="fa-solid fa-house me-2"></i> Ducklake Evaluation
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="extraction_module.html">
+                <i class="fa-solid fa-house me-2"></i> Extraction Module
             </a>
         </li>
         
@@ -192,7 +184,7 @@
                         </nav>
                         <h1 id="ac-logger-package-usage-guide">AC Logger Package Usage Guide</h1>
 <p>The AC Logger package provides comprehensive logging functionality with support for both local filesystem and AWS CloudWatch logging, featuring nested log file management and environment-based configuration.</p>
-<h2 id="quick-start">?? Quick Start</h2>
+<h2 id="quick-start">🚀 Quick Start</h2>
 <h3 id="basic-usage">Basic Usage</h3>
 <pre><code class="language-python">import os
 from vaultdb.logger import get_logger
@@ -222,7 +214,7 @@ export ENABLE_CLOUDWATCH=&quot;false&quot;          # Enable CloudWatch logging
 export CLOUDWATCH_LOG_GROUP=&quot;my-app-logs&quot; # CloudWatch log group
 export AWS_REGION=&quot;us-east-1&quot;             # AWS region
 </code></pre>
-<h2 id="nested-log-files">?? Nested Log Files</h2>
+<h2 id="nested-log-files">📁 Nested Log Files</h2>
 <p>One of the key features is the ability to create nested log files with a stack-based approach:</p>
 <h3 id="manual-file-management">Manual File Management</h3>
 <pre><code class="language-python">logger = get_logger(&quot;my_app&quot;)
@@ -266,7 +258,7 @@ with logger.nested_log_file(&quot;user_session.log&quot;, &quot;sessions&quot;):
 # Automatically back to main log
 logger.info(&quot;Application ready for next user&quot;)
 </code></pre>
-<h2 id="operation-logging">?? Operation Logging</h2>
+<h2 id="operation-logging">🔄 Operation Logging</h2>
 <p>Track operations with automatic start/end logging:</p>
 <pre><code class="language-python">logger = get_logger(&quot;my_app&quot;)
 
@@ -284,7 +276,7 @@ try:
 except ValueError:
     logger.error(&quot;Operation failed as expected&quot;)
 </code></pre>
-<h2 id="cloudwatch-integration">?? CloudWatch Integration</h2>
+<h2 id="cloudwatch-integration">☁️ CloudWatch Integration</h2>
 <h3 id="setup">Setup</h3>
 <ol>
 <li>Install boto3: <code>pip install boto3</code></li>
@@ -315,7 +307,7 @@ logger.error(&quot;Critical error occurred&quot;)
 # Ensure CloudWatch gets the logs
 logger.flush()
 </code></pre>
-<h2 id="advanced-configuration">??? Advanced Configuration</h2>
+<h2 id="advanced-configuration">🛠️ Advanced Configuration</h2>
 <h3 id="development-setup">Development Setup</h3>
 <pre><code class="language-python">from vaultdb.logger.utils import create_development_logger
 
@@ -360,7 +352,7 @@ config = LoggerConfig(
 
 logger = get_logger(&quot;custom_app&quot;, config)
 </code></pre>
-<h2 id="monitoring-and-debugging">?? Monitoring and Debugging</h2>
+<h2 id="monitoring-and-debugging">📊 Monitoring and Debugging</h2>
 <h3 id="get-logger-information">Get Logger Information</h3>
 <pre><code class="language-python"># Current configuration
 config_info = logger.get_config_info()
@@ -397,21 +389,21 @@ print(f&quot;Total loggers: {stats['total_loggers']}&quot;)
 for name, info in stats[&quot;loggers&quot;].items():
     print(f&quot;Logger {name}: {info}&quot;)
 </code></pre>
-<h2 id="file-organization">??? File Organization</h2>
+<h2 id="file-organization">🏗️ File Organization</h2>
 <p>The logger creates organized file structures:</p>
 <pre><code>logs/
-+-- my_app.log                    # Main application log
-+-- my_app.log.1                  # Rotated backup
-+-- operations/
-�   +-- data_processing.log       # Operation-specific logs
-�   +-- details/
-�       +-- detailed_analysis.log # Nested operation logs
-+-- sessions/
-    +-- user_session.log          # Session logs
-    +-- transactions/
-        +-- transaction.log       # Transaction logs
+├── my_app.log                    # Main application log
+├── my_app.log.1                  # Rotated backup
+├── operations/
+│   ├── data_processing.log       # Operation-specific logs
+│   └── details/
+│       └── detailed_analysis.log # Nested operation logs
+└── sessions/
+    ├── user_session.log          # Session logs
+    └── transactions/
+        └── transaction.log       # Transaction logs
 </code></pre>
-<h2 id="best-practices">?? Best Practices</h2>
+<h2 id="best-practices">⚠️ Best Practices</h2>
 <h3 id="1-use-environment-variables">1. Use Environment Variables</h3>
 <pre><code class="language-python"># Good: Environment-based configuration
 logger = get_logger(&quot;my_app&quot;)  # Uses LOG_PATH, LOG_LEVEL, etc.
@@ -458,14 +450,14 @@ try:
 finally:
     logger.close()  # Important for CloudWatch
 </code></pre>
-<h2 id="testing">?? Testing</h2>
+<h2 id="testing">🧪 Testing</h2>
 <p>The logger package includes comprehensive tests. Run them with:</p>
 <pre><code class="language-bash">python -m pytest tests/ac/test_logger.py -v
 </code></pre>
 <p>Or run the examples:</p>
 <pre><code class="language-bash">python -m src.vaultdb.logger.examples
 </code></pre>
-<h2 id="troubleshooting">?? Troubleshooting</h2>
+<h2 id="troubleshooting">🔧 Troubleshooting</h2>
 <h3 id="common-issues">Common Issues</h3>
 <ol>
 <li><strong>"LOG_PATH not set"</strong></li>
@@ -503,14 +495,13 @@ finally:
                     </div>
                 </div>
             </div>
-            <!-- Footer (injected by js/nav.js) -->
+            
+</div></div>
+<!-- Footer (injected by js/nav.js) -->
 <div id="vdb-footer"></div>
 <script crossorigin="anonymous" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-    AOS.init();
-  </script>
-<script src="../../../js/index.js"></script>
+<script>AOS.init();</script>
 <script src="../../../js/nav.js"></script>
 </body>
 </html>

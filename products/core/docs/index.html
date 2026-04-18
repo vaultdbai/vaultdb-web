@@ -1,26 +1,15 @@
 
             <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Kronos Re: The AI-Native Bermuda Sidecar</title>
-<meta content="noindex," name=""robots"" nofollow"=""/>
-<meta content="noindex," follow"="" name=""robots""/>
-<meta content="index," name=""robots"" nofollow"=""/>
-<meta content="VaultDB.ai: Secure Inprocess database and cloud DataHub for IOT and Modeling" property="og:title">
-<meta content="Secure Inprocess database and cloud DataHub for IOT and Modeling" property="og:description">
-<meta content="Database, DataHub, IO, AI Modeling" property="og:type">
-<meta content="img/v-logo.png" property="og:image"/>
-<meta content="http://vaultdb.ai" property="og:url"/>
-<meta content="VaultDB.ai" property="og:site_name"/>
-
+<title>KRONOS Re: core Documentation - Index</title>
+<meta content="noindex, nofollow" name="robots"/>
+<meta name="vdb-context" content="You are viewing the core documentation: Index. Category: index."/>
 <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" rel="stylesheet"/>
 <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" referrerpolicy="no-referrer" rel="stylesheet"/>
-<!-- favicon -->
 <link href="../../../img/v-logo.png" rel="icon" type="image/png"/>
-<!-- animation  -->
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
 <link href="../../../css/style.css" rel="stylesheet"/>
 
@@ -70,15 +59,18 @@
 <div class="container_inside">
 <!-- Navigation (injected by js/nav.js) -->
 <div id="vdb-header"></div>
-<!-- Nav Bar End -->
-<!-- Mobile sidebar (injected by js/nav.js) -->
 <div id="vdb-sidebar"></div>
-
 
             <div class="container doc-wrapper">
                 <div class="row">
                     <div class="col-lg-3">
                         <div class="side_accordian doc-nav"><ul class="nav flex-column">
+        <li class="nav-item">
+            <a class="nav-link  " href="abstract.html">
+                <i class="fa-solid fa-house me-2"></i> Abstract
+            </a>
+        </li>
+        
         <li class="nav-item">
             <a class="nav-link  " href="AUTHENTICATION_GUIDE.html">
                 <i class="fa-solid fa-house me-2"></i> Authentication Guide
@@ -88,12 +80,6 @@
         <li class="nav-item">
             <a class="nav-link  " href="CODEOWNERS_SETUP.html">
                 <i class="fa-solid fa-house me-2"></i> Codeowners Setup
-            </a>
-        </li>
-        
-        <li class="nav-item">
-            <a class="nav-link  " href="abstract.html">
-                <i class="fa-solid fa-house me-2"></i> Abstract
             </a>
         </li>
         
@@ -112,6 +98,12 @@
         <li class="nav-item">
             <a class="nav-link  " href="ducklake_evaluation.html">
                 <i class="fa-solid fa-house me-2"></i> Ducklake Evaluation
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="extraction_module.html">
+                <i class="fa-solid fa-house me-2"></i> Extraction Module
             </a>
         </li>
         
@@ -210,7 +202,7 @@
 <tr>
 <td><strong>Compute</strong></td>
 <td><code>vaultdb.compute</code></td>
-<td>TED (Task Execution Dispatcher) — routes tasks to Celery, AWS Batch, or Lambda</td>
+<td>TED (Task Execution Dispatcher) â€” routes tasks to Celery, AWS Batch, or Lambda</td>
 </tr>
 <tr>
 <td><strong>Workflow</strong></td>
@@ -289,34 +281,33 @@
 </pre>
 <h2 id="key-design-principles">Key Design Principles</h2>
 <ol>
-<li><strong>Strict Typing</strong> — MyPy <code>disallow_untyped_defs = True</code>. Every function, parameter, and return type is annotated.</li>
-<li><strong>Vectorization First</strong> — Arrow/DuckDB compute kernels over Python loops.</li>
-<li><strong>Configuration Authority</strong> — All config flows through <code>vaultdb.config</code>. No <code>os.getenv</code> in business logic.</li>
-<li><strong>Sandbox Isolation</strong> — User-specific schemas (<code>sandbox_&lt;role&gt;</code>) for non-production writes.</li>
-<li><strong>Human-in-the-Loop</strong> — Every material action requires a cryptographically verified human approval.</li>
+<li><strong>Strict Typing</strong> â€” MyPy <code>disallow_untyped_defs = True</code>. Every function, parameter, and return type is annotated.</li>
+<li><strong>Vectorization First</strong> â€” Arrow/DuckDB compute kernels over Python loops.</li>
+<li><strong>Configuration Authority</strong> â€” All config flows through <code>vaultdb.config</code>. No <code>os.getenv</code> in business logic.</li>
+<li><strong>Sandbox Isolation</strong> â€” User-specific schemas (<code>sandbox_&lt;role&gt;</code>) for non-production writes.</li>
+<li><strong>Human-in-the-Loop</strong> â€” Every material action requires a cryptographically verified human approval.</li>
 </ol>
 <h2 id="documentation-index">Documentation Index</h2>
 <ul>
-<li><a href="technology/workflow.md">Workflow System</a> — AI-proposed workflow lifecycle and DAG execution</li>
-<li><a href="technology/approval.md">Approval Engine</a> — HMAC-based approval with policy enforcement</li>
-<li><a href="ducklake.md">DuckLake Data Layer</a> — ORM, virtual forks, inherited reads</li>
-<li><a href="task_runners_integration_guide.md">Task Execution (TED)</a> — Unified task dispatch across runners</li>
-<li><a href="AUTHENTICATION_GUIDE.md">Authentication</a> — Multi-provider auth with RBAC</li>
-<li><a href="task_scheduling.md">Task Scheduling</a> — Periodic tasks and business calendars</li>
-<li><a href="logger_usage.md">Logging</a> — Structured logging and CloudWatch integration</li>
-<li><a href="compliance/approval_controls.md">Compliance Controls</a> — Audit trails and policy rules</li>
+<li><a href="technology/workflow.md">Workflow System</a> â€” AI-proposed workflow lifecycle and DAG execution</li>
+<li><a href="technology/approval.md">Approval Engine</a> â€” HMAC-based approval with policy enforcement</li>
+<li><a href="ducklake.md">DuckLake Data Layer</a> â€” ORM, virtual forks, inherited reads</li>
+<li><a href="task_runners_integration_guide.md">Task Execution (TED)</a> â€” Unified task dispatch across runners</li>
+<li><a href="AUTHENTICATION_GUIDE.md">Authentication</a> â€” Multi-provider auth with RBAC</li>
+<li><a href="task_scheduling.md">Task Scheduling</a> â€” Periodic tasks and business calendars</li>
+<li><a href="logger_usage.md">Logging</a> â€” Structured logging and CloudWatch integration</li>
+<li><a href="compliance/approval_controls.md">Compliance Controls</a> â€” Audit trails and policy rules</li>
 </ul>
                     </div>
                 </div>
             </div>
-            <!-- Footer (injected by js/nav.js) -->
+            
+</div></div>
+<!-- Footer (injected by js/nav.js) -->
 <div id="vdb-footer"></div>
 <script crossorigin="anonymous" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-    AOS.init();
-  </script>
-<script src="../../../js/index.js"></script>
+<script>AOS.init();</script>
 <script src="../../../js/nav.js"></script>
 </body>
 </html>

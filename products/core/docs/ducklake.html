@@ -1,26 +1,15 @@
 
             <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Kronos Re: The AI-Native Bermuda Sidecar</title>
-<meta content="noindex," name=""robots"" nofollow"=""/>
-<meta content="noindex," follow"="" name=""robots""/>
-<meta content="index," name=""robots"" nofollow"=""/>
-<meta content="VaultDB.ai: Secure Inprocess database and cloud DataHub for IOT and Modeling" property="og:title">
-<meta content="Secure Inprocess database and cloud DataHub for IOT and Modeling" property="og:description">
-<meta content="Database, DataHub, IO, AI Modeling" property="og:type">
-<meta content="img/v-logo.png" property="og:image"/>
-<meta content="http://vaultdb.ai" property="og:url"/>
-<meta content="VaultDB.ai" property="og:site_name"/>
-
+<title>KRONOS Re: core Documentation - Ducklake</title>
+<meta content="noindex, nofollow" name="robots"/>
+<meta name="vdb-context" content="You are viewing the core documentation: Ducklake. Category: index."/>
 <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" rel="stylesheet"/>
 <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" referrerpolicy="no-referrer" rel="stylesheet"/>
-<!-- favicon -->
 <link href="../../../img/v-logo.png" rel="icon" type="image/png"/>
-<!-- animation  -->
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
 <link href="../../../css/style.css" rel="stylesheet"/>
 
@@ -70,15 +59,18 @@
 <div class="container_inside">
 <!-- Navigation (injected by js/nav.js) -->
 <div id="vdb-header"></div>
-<!-- Nav Bar End -->
-<!-- Mobile sidebar (injected by js/nav.js) -->
 <div id="vdb-sidebar"></div>
-
 
             <div class="container doc-wrapper">
                 <div class="row">
                     <div class="col-lg-3">
                         <div class="side_accordian doc-nav"><ul class="nav flex-column">
+        <li class="nav-item">
+            <a class="nav-link  " href="abstract.html">
+                <i class="fa-solid fa-house me-2"></i> Abstract
+            </a>
+        </li>
+        
         <li class="nav-item">
             <a class="nav-link  " href="AUTHENTICATION_GUIDE.html">
                 <i class="fa-solid fa-house me-2"></i> Authentication Guide
@@ -88,12 +80,6 @@
         <li class="nav-item">
             <a class="nav-link  " href="CODEOWNERS_SETUP.html">
                 <i class="fa-solid fa-house me-2"></i> Codeowners Setup
-            </a>
-        </li>
-        
-        <li class="nav-item">
-            <a class="nav-link  " href="abstract.html">
-                <i class="fa-solid fa-house me-2"></i> Abstract
             </a>
         </li>
         
@@ -112,6 +98,12 @@
         <li class="nav-item">
             <a class="nav-link  " href="ducklake_evaluation.html">
                 <i class="fa-solid fa-house me-2"></i> Ducklake Evaluation
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="extraction_module.html">
+                <i class="fa-solid fa-house me-2"></i> Extraction Module
             </a>
         </li>
         
@@ -190,7 +182,7 @@
                                 <li class="breadcrumb-item active">Ducklake <span class="persona-badge">index</span></li>
                             </ol>
                         </nav>
-                        <h1 id="ducklake-framework-data-inheritance-sandbox-model">DuckLake Framework — Data Inheritance &amp; Sandbox Model</h1>
+                        <h1 id="ducklake-framework-data-inheritance-sandbox-model">DuckLake Framework â€” Data Inheritance &amp; Sandbox Model</h1>
 <p><code>DuckLake</code> is a sandbox-first data inheritance framework built on <strong>DuckDB</strong>. It provides a low-level ORM and inherited reader to effortlessly manage overlapping <code>production</code> and <code>user</code> state without managing complex database servers or clusters.</p>
 <h2 id="core-concepts">Core Concepts</h2>
 <p>In financial or data-heavy applications, production data must remain pristine. Every user/analyst gets a <strong>Virtual Fork</strong> (a sandbox schema). The framework transparently overlays the sandbox on top of the <code>main</code> schema using vectorized SQL pushdown.</p>
@@ -225,7 +217,7 @@ class Trade(Model):
     instrument = Text()
     quantity = Float()
 
-# Connect to a catalog — all models resolve their catalog automatically
+# Connect to a catalog â€” all models resolve their catalog automatically
 Application.connect(catalogs={&quot;default&quot;: &quot;prod.ducklake&quot;})
 </code></pre>
 <h3 id="writing-data-saving-deltas">Writing Data (Saving Deltas)</h3>
@@ -270,7 +262,7 @@ old_data = Trade.search(timestamp=yesterday)
 version_data = Trade.search(version=10)
 </code></pre>
 <h2 id="publishing-sharing-schema">Publishing &amp; Sharing Schema</h2>
-<p>The <code>publish_schema</code> method exports a <strong>schema-only</strong> <code>.ducklake</code> file — all table and column definitions, zero row data. This is how admin users and CI/CD pipelines distribute a canonical schema so that other environments can <code>connect()</code> and immediately have every table structure ready without calling <code>sync_model()</code> on each model.</p>
+<p>The <code>publish_schema</code> method exports a <strong>schema-only</strong> <code>.ducklake</code> file â€” all table and column definitions, zero row data. This is how admin users and CI/CD pipelines distribute a canonical schema so that other environments can <code>connect()</code> and immediately have every table structure ready without calling <code>sync_model()</code> on each model.</p>
 <pre><code class="language-python">from vaultdb.core import Application
 
 # 1. Connect and create all tables (admin / build pipeline)
@@ -281,7 +273,7 @@ Application.create_tables()
 Application.publish_schema(&quot;s3://prod-bucket/schema/prod.ducklake&quot;)
 
 # 3. Other environments download the schema file on connect()
-#    and get all table structures for free — no sync_model() needed.
+#    and get all table structures for free â€” no sync_model() needed.
 Application.connect(catalogs={&quot;default&quot;: &quot;s3://prod-bucket/schema/prod.ducklake&quot;})
 </code></pre>
 <p>You can also call it directly on a <code>DuckLakeCatalogManager</code>:</p>
@@ -298,7 +290,7 @@ Application.connect(catalogs={&quot;default&quot;: &quot;s3://prod-bucket/schema
 - No inlined row data
 - No Parquet data file references
 - No snapshot history</p>
-<p>The output file is typically a few KB — small enough to commit to version control.</p>
+<p>The output file is typically a few KB â€” small enough to commit to version control.</p>
 <h3 id="supported-destinations">Supported destinations</h3>
 <table>
 <thead>
@@ -341,14 +333,13 @@ with MutationContext(mutator):
                     </div>
                 </div>
             </div>
-            <!-- Footer (injected by js/nav.js) -->
+            
+</div></div>
+<!-- Footer (injected by js/nav.js) -->
 <div id="vdb-footer"></div>
 <script crossorigin="anonymous" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-    AOS.init();
-  </script>
-<script src="../../../js/index.js"></script>
+<script>AOS.init();</script>
 <script src="../../../js/nav.js"></script>
 </body>
 </html>

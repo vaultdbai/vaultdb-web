@@ -1,26 +1,15 @@
 
             <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Kronos Re: The AI-Native Bermuda Sidecar</title>
-<meta content="noindex," name=""robots"" nofollow"=""/>
-<meta content="noindex," follow"="" name=""robots""/>
-<meta content="index," name=""robots"" nofollow"=""/>
-<meta content="VaultDB.ai: Secure Inprocess database and cloud DataHub for IOT and Modeling" property="og:title">
-<meta content="Secure Inprocess database and cloud DataHub for IOT and Modeling" property="og:description">
-<meta content="Database, DataHub, IO, AI Modeling" property="og:type">
-<meta content="img/v-logo.png" property="og:image"/>
-<meta content="http://vaultdb.ai" property="og:url"/>
-<meta content="VaultDB.ai" property="og:site_name"/>
-
+<title>KRONOS Re: core Documentation - Workflow-Approval</title>
+<meta content="noindex, nofollow" name="robots"/>
+<meta name="vdb-context" content="You are viewing the core documentation: Workflow-Approval. Category: index."/>
 <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" rel="stylesheet"/>
 <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" referrerpolicy="no-referrer" rel="stylesheet"/>
-<!-- favicon -->
 <link href="../../../img/v-logo.png" rel="icon" type="image/png"/>
-<!-- animation  -->
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
 <link href="../../../css/style.css" rel="stylesheet"/>
 
@@ -70,15 +59,18 @@
 <div class="container_inside">
 <!-- Navigation (injected by js/nav.js) -->
 <div id="vdb-header"></div>
-<!-- Nav Bar End -->
-<!-- Mobile sidebar (injected by js/nav.js) -->
 <div id="vdb-sidebar"></div>
-
 
             <div class="container doc-wrapper">
                 <div class="row">
                     <div class="col-lg-3">
                         <div class="side_accordian doc-nav"><ul class="nav flex-column">
+        <li class="nav-item">
+            <a class="nav-link  " href="abstract.html">
+                <i class="fa-solid fa-house me-2"></i> Abstract
+            </a>
+        </li>
+        
         <li class="nav-item">
             <a class="nav-link  " href="AUTHENTICATION_GUIDE.html">
                 <i class="fa-solid fa-house me-2"></i> Authentication Guide
@@ -88,12 +80,6 @@
         <li class="nav-item">
             <a class="nav-link  " href="CODEOWNERS_SETUP.html">
                 <i class="fa-solid fa-house me-2"></i> Codeowners Setup
-            </a>
-        </li>
-        
-        <li class="nav-item">
-            <a class="nav-link  " href="abstract.html">
-                <i class="fa-solid fa-house me-2"></i> Abstract
             </a>
         </li>
         
@@ -112,6 +98,12 @@
         <li class="nav-item">
             <a class="nav-link  " href="ducklake_evaluation.html">
                 <i class="fa-solid fa-house me-2"></i> Ducklake Evaluation
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="extraction_module.html">
+                <i class="fa-solid fa-house me-2"></i> Extraction Module
             </a>
         </li>
         
@@ -203,31 +195,7 @@
 <li><strong>Verification</strong>: When <code>execute_workflow</code> is called, the system re-calculates the HMAC and compares it against the stored record. If they don't match, execution is blocked.</li>
 </ol>
 <h2 id="sequence-diagram">Sequence Diagram</h2>
-<pre class="mermaid">sequenceDiagram
-    participant User as Dash UI (User)
-    participant DashAPI as Dashboard API (Proxy)
-    participant Hub as ChatHub (Port 8060)
-    participant UP as UserProcess (AI)
-    participant Core as VaultDB Core (DuckDB/TED)
-
-    UP->>Hub: POST /_hub/api/workflows/submit
-    Hub->>Core: WorkflowManager.submit_workflow()
-    Core-->>Hub: Created WorkflowRun (PENDING_APPROVAL)
-
-    User->>DashAPI: POST /chatbot/workflows/{id}/approve
-    DashAPI->>Hub: POST /_hub/api/workflows/approve
-    Note right of Hub: Hub holds APPROVAL_SECRET
-    Hub->>Core: approval.create_approval(workflow_id)
-    Core-->>Hub: ApprovalRecord (HMAC Token generated)
-    Hub->>Core: Update WorkflowRun status = APPROVED
-
-    User->>DashAPI: POST /chatbot/workflows/{id}/execute
-    DashAPI->>Hub: POST /_hub/api/workflows/{id}/execute
-    Hub->>Core: WorkflowManager.execute_workflow()
-    Core->>Core: vaultdb.approval.verify_approval()
-    Note right of Core: Recalculate & match HMAC token
-    Core->>Core: Run DAG Steps (TED Tasks)
-</pre>
+<div class="mermaid-diagram"><img src="diagram_1.svg" alt="Architecture Diagram 1" style="max-width:100%;height:auto;" /></div>
 <h2 id="security-guarantees">Security Guarantees</h2>
 <ul>
 <li><strong>Secret Isolation</strong>: The <code>WORKFLOW_APPROVAL_SECRET</code> is never exposed to the AI <code>UserProcess</code>. Even if the AI is compromised, it cannot forge an approval.</li>
@@ -243,14 +211,13 @@
                     </div>
                 </div>
             </div>
-            <!-- Footer (injected by js/nav.js) -->
+            
+</div></div>
+<!-- Footer (injected by js/nav.js) -->
 <div id="vdb-footer"></div>
 <script crossorigin="anonymous" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-    AOS.init();
-  </script>
-<script src="../../../js/index.js"></script>
+<script>AOS.init();</script>
 <script src="../../../js/nav.js"></script>
 </body>
 </html>

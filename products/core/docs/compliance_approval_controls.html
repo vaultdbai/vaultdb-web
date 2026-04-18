@@ -1,26 +1,15 @@
 
             <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Kronos Re: The AI-Native Bermuda Sidecar</title>
-<meta content="noindex," name=""robots"" nofollow"=""/>
-<meta content="noindex," follow"="" name=""robots""/>
-<meta content="index," name=""robots"" nofollow"=""/>
-<meta content="VaultDB.ai: Secure Inprocess database and cloud DataHub for IOT and Modeling" property="og:title">
-<meta content="Secure Inprocess database and cloud DataHub for IOT and Modeling" property="og:description">
-<meta content="Database, DataHub, IO, AI Modeling" property="og:type">
-<meta content="img/v-logo.png" property="og:image"/>
-<meta content="http://vaultdb.ai" property="og:url"/>
-<meta content="VaultDB.ai" property="og:site_name"/>
-
+<title>KRONOS Re: core Documentation - Approval Controls</title>
+<meta content="noindex, nofollow" name="robots"/>
+<meta name="vdb-context" content="You are viewing the core documentation: Approval Controls. Category: compliance."/>
 <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" rel="stylesheet"/>
 <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" referrerpolicy="no-referrer" rel="stylesheet"/>
-<!-- favicon -->
 <link href="../../../img/v-logo.png" rel="icon" type="image/png"/>
-<!-- animation  -->
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
 <link href="../../../css/style.css" rel="stylesheet"/>
 
@@ -70,15 +59,18 @@
 <div class="container_inside">
 <!-- Navigation (injected by js/nav.js) -->
 <div id="vdb-header"></div>
-<!-- Nav Bar End -->
-<!-- Mobile sidebar (injected by js/nav.js) -->
 <div id="vdb-sidebar"></div>
-
 
             <div class="container doc-wrapper">
                 <div class="row">
                     <div class="col-lg-3">
                         <div class="side_accordian doc-nav"><ul class="nav flex-column">
+        <li class="nav-item">
+            <a class="nav-link  " href="abstract.html">
+                <i class="fa-solid fa-house me-2"></i> Abstract
+            </a>
+        </li>
+        
         <li class="nav-item">
             <a class="nav-link  " href="AUTHENTICATION_GUIDE.html">
                 <i class="fa-solid fa-house me-2"></i> Authentication Guide
@@ -88,12 +80,6 @@
         <li class="nav-item">
             <a class="nav-link  " href="CODEOWNERS_SETUP.html">
                 <i class="fa-solid fa-house me-2"></i> Codeowners Setup
-            </a>
-        </li>
-        
-        <li class="nav-item">
-            <a class="nav-link  " href="abstract.html">
-                <i class="fa-solid fa-house me-2"></i> Abstract
             </a>
         </li>
         
@@ -112,6 +98,12 @@
         <li class="nav-item">
             <a class="nav-link  " href="ducklake_evaluation.html">
                 <i class="fa-solid fa-house me-2"></i> Ducklake Evaluation
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="extraction_module.html">
+                <i class="fa-solid fa-house me-2"></i> Extraction Module
             </a>
         </li>
         
@@ -196,8 +188,8 @@
 <h3 id="principle-ai-proposes-human-disposes">Principle: AI Proposes, Human Disposes</h3>
 <p>Every material action in the KRONOS Re platform follows a two-step pattern:</p>
 <ol>
-<li><strong>AI drafts</strong> — The chatbot proposes a workflow, report, or trade recommendation.</li>
-<li><strong>Human approves</strong> — A qualified actuary, CIO, or compliance officer reviews and cryptographically signs.</li>
+<li><strong>AI drafts</strong> â€” The chatbot proposes a workflow, report, or trade recommendation.</li>
+<li><strong>Human approves</strong> â€” A qualified actuary, CIO, or compliance officer reviews and cryptographically signs.</li>
 </ol>
 <p>No AI-proposed action can execute without a verified human approval. This is enforced cryptographically, not just procedurally.</p>
 <h2 id="audit-trail-structure">Audit Trail Structure</h2>
@@ -260,23 +252,9 @@
 <li>Key material (actual secret bytes) is <strong>never</strong> stored in the database. Only the integer <code>key_version</code> is persisted.</li>
 </ul>
 <h2 id="subject-types">Subject Types</h2>
-<pre class="mermaid">graph LR
-    WORKFLOW[&quot;WORKFLOW<br/>AI-proposed pipelines&quot;]
-    REPORT[&quot;REPORT<br/>GAAP/STAT/BSCR filings&quot;]
-    TRADE[&quot;TRADE<br/>Hedge recommendations&quot;]
-    ASSUMPTION[&quot;ASSUMPTION_SET<br/>Mortality, lapse tables&quot;]
-    DATA[&quot;DATA_BATCH<br/>Census ingestion batches&quot;]
-    POLICY[&quot;POLICY<br/>Configuration changes&quot;]
-
-    WORKFLOW --> APPROVAL[&quot;ApprovalRecord&quot;]
-    REPORT --> APPROVAL
-    TRADE --> APPROVAL
-    ASSUMPTION --> APPROVAL
-    DATA --> APPROVAL
-    POLICY --> APPROVAL
-</pre>
+<div class="mermaid-diagram"><img src="diagram_1.svg" alt="Architecture Diagram 1" style="max-width:100%;height:auto;" /></div>
 <p>Each subject type can have its own <code>ApprovalPolicy</code> with different rule configurations.</p>
-<h2 id="policy-rules-compliance-mapping">Policy Rules — Compliance Mapping</h2>
+<h2 id="policy-rules-compliance-mapping">Policy Rules â€” Compliance Mapping</h2>
 <table>
 <thead>
 <tr>
@@ -321,29 +299,12 @@
 <h2 id="cryptographic-guarantees">Cryptographic Guarantees</h2>
 <h3 id="what-hmac-sha256-proves">What HMAC-SHA256 Proves</h3>
 <ol>
-<li><strong>Integrity</strong> — The approval record has not been tampered with since creation.</li>
-<li><strong>Binding</strong> — The token is mathematically bound to the specific <code>approval_id</code>, <code>subject_id</code>, <code>approver_id</code>, <code>approver_email</code>, and <code>approved_at</code> timestamp.</li>
-<li><strong>Non-forgeability</strong> — Without the secret key, no entity (including the AI) can create a valid token.</li>
+<li><strong>Integrity</strong> â€” The approval record has not been tampered with since creation.</li>
+<li><strong>Binding</strong> â€” The token is mathematically bound to the specific <code>approval_id</code>, <code>subject_id</code>, <code>approver_id</code>, <code>approver_email</code>, and <code>approved_at</code> timestamp.</li>
+<li><strong>Non-forgeability</strong> â€” Without the secret key, no entity (including the AI) can create a valid token.</li>
 </ol>
 <h3 id="key-isolation">Key Isolation</h3>
-<pre class="mermaid">flowchart TD
-    subgraph &quot;Trusted Zone&quot;
-        HUB[&quot;ChatHub (Port 8060)&quot;]
-        SECRET[&quot;WORKFLOW_APPROVAL_SECRET&quot;]
-    end
-
-    subgraph &quot;Untrusted Zone&quot;
-        UP[&quot;UserProcess (Port 9100-9999)&quot;]
-        AI[&quot;Claude SDK Engine&quot;]
-    end
-
-    HUB -->|has access| SECRET
-    UP -.->|DENIED| SECRET
-    AI -.->|DENIED| SECRET
-
-    HUB -->|spawns with stripped env| UP
-    UP -->|tool calls| AI
-</pre>
+<div class="mermaid-diagram"><img src="diagram_2.svg" alt="Architecture Diagram 2" style="max-width:100%;height:auto;" /></div>
 <p>The <code>WORKFLOW_APPROVAL_SECRET</code> (and versioned keys) are held exclusively by ChatHub. UserProcesses are spawned with a stripped environment that explicitly denies access to approval secrets, AWS keys, and database URLs.</p>
 <h3 id="key-rotation">Key Rotation</h3>
 <p>The versioned key system allows seamless rotation:</p>
@@ -423,14 +384,13 @@ get_audit_trail()
                     </div>
                 </div>
             </div>
-            <!-- Footer (injected by js/nav.js) -->
+            
+</div></div>
+<!-- Footer (injected by js/nav.js) -->
 <div id="vdb-footer"></div>
 <script crossorigin="anonymous" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-    AOS.init();
-  </script>
-<script src="../../../js/index.js"></script>
+<script>AOS.init();</script>
 <script src="../../../js/nav.js"></script>
 </body>
 </html>

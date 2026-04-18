@@ -1,26 +1,15 @@
 
             <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Kronos Re: The AI-Native Bermuda Sidecar</title>
-<meta content="noindex," name=""robots"" nofollow"=""/>
-<meta content="noindex," follow"="" name=""robots""/>
-<meta content="index," name=""robots"" nofollow"=""/>
-<meta content="VaultDB.ai: Secure Inprocess database and cloud DataHub for IOT and Modeling" property="og:title">
-<meta content="Secure Inprocess database and cloud DataHub for IOT and Modeling" property="og:description">
-<meta content="Database, DataHub, IO, AI Modeling" property="og:type">
-<meta content="img/v-logo.png" property="og:image"/>
-<meta content="http://vaultdb.ai" property="og:url"/>
-<meta content="VaultDB.ai" property="og:site_name"/>
-
+<title>KRONOS Re: dashboard Documentation - Chatbot Engine</title>
+<meta content="noindex, nofollow" name="robots"/>
+<meta name="vdb-context" content="You are viewing the dashboard documentation: Chatbot Engine. Category: technology."/>
 <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" rel="stylesheet"/>
 <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" referrerpolicy="no-referrer" rel="stylesheet"/>
-<!-- favicon -->
 <link href="../../../img/v-logo.png" rel="icon" type="image/png"/>
-<!-- animation  -->
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
 <link href="../../../css/style.css" rel="stylesheet"/>
 
@@ -70,21 +59,12 @@
 <div class="container_inside">
 <!-- Navigation (injected by js/nav.js) -->
 <div id="vdb-header"></div>
-<!-- Nav Bar End -->
-<!-- Mobile sidebar (injected by js/nav.js) -->
 <div id="vdb-sidebar"></div>
-
 
             <div class="container doc-wrapper">
                 <div class="row">
                     <div class="col-lg-3">
                         <div class="side_accordian doc-nav"><ul class="nav flex-column">
-        <li class="nav-item">
-            <a class="nav-link  " href="README.html">
-                <i class="fa-solid fa-house me-2"></i> Readme
-            </a>
-        </li>
-        
         <li class="nav-item">
             <a class="nav-link  ps-4" href="compliance_approval_integration.html">
                 <i class="fa-solid fa-shield-halved me-2"></i> Approval Integration
@@ -94,6 +74,12 @@
         <li class="nav-item">
             <a class="nav-link  " href="index.html">
                 <i class="fa-solid fa-house me-2"></i> Index
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="README.html">
+                <i class="fa-solid fa-house me-2"></i> Readme
             </a>
         </li>
         
@@ -130,19 +116,10 @@
                                 <li class="breadcrumb-item active">Chatbot Engine <span class="persona-badge">technology</span></li>
                             </ol>
                         </nav>
-                        <h1 id="chatbot-engine-claude-sdk-integration">Chatbot Engine — Claude SDK Integration</h1>
+                        <h1 id="chatbot-engine-claude-sdk-integration">Chatbot Engine â€” Claude SDK Integration</h1>
 <p>The KRONOS AI chatbot runs inside each UserProcess as a <code>ChatEngine</code> instance. It uses the Anthropic Claude SDK to power conversational interactions with actuaries and CIOs.</p>
 <h2 id="engine-architecture">Engine Architecture</h2>
-<pre class="mermaid">flowchart TD
-    USER[&quot;User Message&quot;] --> ENGINE[&quot;ChatEngine&quot;]
-    ENGINE --> CLAUDE[&quot;Anthropic API<br/>claude-sonnet-4-6&quot;]
-    CLAUDE -->|end_turn| REPLY[&quot;Text Reply&quot;]
-    CLAUDE -->|tool_use| DISPATCH[&quot;dispatch_tool()&quot;]
-    DISPATCH --> TOOLS[&quot;Tool Implementations&quot;]
-    TOOLS --> RESULTS[&quot;Tool Results&quot;]
-    RESULTS --> ENGINE
-    ENGINE -->|loop max 20 iterations| CLAUDE
-</pre>
+<div class="mermaid-diagram"><img src="diagram_1.svg" alt="Architecture Diagram 1" style="max-width:100%;height:auto;" /></div>
 <h2 id="chatengine-configuration">ChatEngine Configuration</h2>
 <pre><code class="language-python">ChatEngine(
     user_id=&quot;user-alice&quot;,
@@ -156,35 +133,10 @@
 <p>The engine instructs Claude to:
 - Describe available KRONOS modules (liability, ALM, trading, risk, valuation, etc.)
 - Use tools to explore data before proposing actions
-- Propose workflows (not execute directly) — the human approves first
+- Propose workflows (not execute directly) â€” the human approves first
 - Structure workflow steps with proper dependencies</p>
 <h2 id="conversation-loop">Conversation Loop</h2>
-<pre class="mermaid">sequenceDiagram
-    participant USER as User
-    participant ENGINE as ChatEngine
-    participant CLAUDE as Claude API
-    participant TOOLS as Tool Dispatch
-
-    USER->>ENGINE: send(&quot;Run Q1 valuation&quot;)
-    ENGINE->>ENGINE: Append to history
-
-    ENGINE->>CLAUDE: messages.create(tools=TOOL_DEFINITIONS)
-    CLAUDE-->>ENGINE: tool_use: list_modules
-
-    ENGINE->>TOOLS: dispatch_tool(&quot;list_modules&quot;, {})
-    TOOLS-->>ENGINE: {modules: {...}}
-
-    ENGINE->>CLAUDE: messages.create(tool_results)
-    CLAUDE-->>ENGINE: tool_use: propose_workflow
-
-    ENGINE->>TOOLS: dispatch_tool(&quot;propose_workflow&quot;, {name, steps})
-    TOOLS-->>ENGINE: {workflow_id, status}
-
-    ENGINE->>CLAUDE: messages.create(tool_results)
-    CLAUDE-->>ENGINE: end_turn: &quot;I've proposed a workflow...&quot;
-
-    ENGINE-->>USER: MessageResponse(reply, proposed_workflows)
-</pre>
+<div class="mermaid-diagram"><img src="diagram_2.svg" alt="Architecture Diagram 2" style="max-width:100%;height:auto;" /></div>
 <h2 id="available-tools">Available Tools</h2>
 <p>The AI has access to these tools via <code>TOOL_DEFINITIONS</code>:</p>
 <h3 id="discovery-tools">Discovery Tools</h3>
@@ -200,7 +152,7 @@
 <tbody>
 <tr>
 <td><code>list_modules</code></td>
-<td>—</td>
+<td>â€”</td>
 <td>Available KRONOS modules with task counts</td>
 <td>Discover what the platform can do</td>
 </tr>
@@ -231,7 +183,7 @@
 </tr>
 <tr>
 <td><code>list_workflows</code></td>
-<td>—</td>
+<td>â€”</td>
 <td>Recent workflows</td>
 <td>Check existing workflow history</td>
 </tr>
@@ -293,7 +245,7 @@
 </tr>
 <tr>
 <td><code>list_skills</code></td>
-<td>—</td>
+<td>â€”</td>
 <td>Installed skills</td>
 <td>Check what's installed</td>
 </tr>
@@ -302,7 +254,7 @@
 <h3 id="tool-dispatch">Tool Dispatch</h3>
 <p>All tools are dispatched via <code>dispatch_tool(tool_name, tool_input, user_id, block_id)</code>:</p>
 <ul>
-<li><code>user_id</code> and <code>block_id</code> are automatically injected — the AI never sees them as parameters.</li>
+<li><code>user_id</code> and <code>block_id</code> are automatically injected â€” the AI never sees them as parameters.</li>
 <li>Module tasks are resolved via <code>_MODULE_REGISTRY</code> which maps module names to their task modules.</li>
 <li>Results are returned as JSON strings to the conversation loop.</li>
 </ul>
@@ -359,21 +311,21 @@
 <h2 id="workspace-system">Workspace System</h2>
 <p>Each user gets an isolated workspace:</p>
 <pre><code>{WORKSPACE_ROOT}/{user_id}/
-    workflows/     — Saved workflow JSON files
-    data/          — User-uploaded or exported data
-    reports/       — Generated report HTML
-    .venv/         — Isolated Python virtualenv
-    .skills/       — Cloned skill repositories
+    workflows/     â€” Saved workflow JSON files
+    data/          â€” User-uploaded or exported data
+    reports/       â€” Generated report HTML
+    .venv/         â€” Isolated Python virtualenv
+    .skills/       â€” Cloned skill repositories
 </code></pre>
 <p><strong>Path traversal protection:</strong> All file operations go through <code>safe_path(user_id, *parts)</code> which resolves the path and raises <code>PermissionError</code> if it escapes the user's workspace.</p>
 <h2 id="skill-manager">Skill Manager</h2>
 <p>Users can install GitHub-hosted skills (plugins) that extend the chatbot:</p>
 <ol>
-<li><strong>Validation</strong> — Only <code>github.com</code> repos accepted. Optional allowlist via <code>SKILL_GITHUB_ALLOWLIST</code>.</li>
-<li><strong>Clone</strong> — <code>git clone</code> into <code>{workspace}/.skills/{skill_name}/</code>.</li>
-<li><strong>Manifest</strong> — Parses <code>kronos-skill.toml</code> for name, version, entry_point.</li>
-<li><strong>Install</strong> — <code>pip install --editable</code> into user's isolated virtualenv.</li>
-<li><strong>Register</strong> — If the skill declares a <code>visualizer_subject_type</code>, it's registered in the <code>SKILL_REGISTRY</code> for custom rendering.</li>
+<li><strong>Validation</strong> â€” Only <code>github.com</code> repos accepted. Optional allowlist via <code>SKILL_GITHUB_ALLOWLIST</code>.</li>
+<li><strong>Clone</strong> â€” <code>git clone</code> into <code>{workspace}/.skills/{skill_name}/</code>.</li>
+<li><strong>Manifest</strong> â€” Parses <code>kronos-skill.toml</code> for name, version, entry_point.</li>
+<li><strong>Install</strong> â€” <code>pip install --editable</code> into user's isolated virtualenv.</li>
+<li><strong>Register</strong> â€” If the skill declares a <code>visualizer_subject_type</code>, it's registered in the <code>SKILL_REGISTRY</code> for custom rendering.</li>
 </ol>
 <h3 id="skill-manifest">Skill Manifest</h3>
 <pre><code class="language-toml">[skill]
@@ -388,14 +340,13 @@ label = &quot;BSCR Risk Waterfall&quot;
                     </div>
                 </div>
             </div>
-            <!-- Footer (injected by js/nav.js) -->
+            
+</div></div>
+<!-- Footer (injected by js/nav.js) -->
 <div id="vdb-footer"></div>
 <script crossorigin="anonymous" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-    AOS.init();
-  </script>
-<script src="../../../js/index.js"></script>
+<script>AOS.init();</script>
 <script src="../../../js/nav.js"></script>
 </body>
 </html>

@@ -17,8 +17,8 @@
   'use strict';
 
   /* ---------- Configuration ------------------------------------------- */
-  // TODO: Replace with your actual Cloud Run URL after deploying from AI Studio
-  var CHATBOT_URL = 'https://vaultdb-ai-app.web.app';
+  // Actual Cloud Run URL from AI Studio deployment
+  var CHATBOT_URL = 'https://kronos-re-chatbot-84478811006.us-west1.run.app';
 
   /* ---------- Page context map ---------------------------------------- */
   // Maps URL path segments to page-specific context strings.
@@ -211,15 +211,6 @@
           '<h4>VaultDB AI Assistant</h4>' +
           '<span>Powered by Gemini</span>' +
         '</div>' +
-      '</div>' +
-      /* Disclaimer */
-      '<div class="vdb-chat-disclaimer">' +
-        '<p>' +
-          '<i class="fa-solid fa-triangle-exclamation"></i>' +
-          '<span>AI-generated responses may be inaccurate. This assistant is for ' +
-          'general informational purposes only and does not constitute financial, ' +
-          'actuarial, or legal advice.</span>' +
-        '</p>' +
       '</div>' +
       /* Iframe container */
       '<div class="vdb-chat-iframe-wrap">' +

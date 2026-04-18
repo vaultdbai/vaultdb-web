@@ -1,0 +1,579 @@
+
+            <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>KRONOS Re: Platform Documentation - Allianz Life Deep Analysis</title>
+<meta content="noindex, nofollow" name="robots"/>
+<meta name="vdb-context" content="You are viewing the Platform documentation: Allianz Life Deep Analysis. Category: prospectuses."/>
+<link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" rel="stylesheet"/>
+<link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" referrerpolicy="no-referrer" rel="stylesheet"/>
+<link href="../img/v-logo.png" rel="icon" type="image/png"/>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+<link href="../css/style.css" rel="stylesheet"/>
+
+    <style>
+        html { font-size: 10px !important; }
+        body { font-size: 1.6rem !important; background: var(--main-color) !important; color: #f5f5f5; }
+
+        .doc-wrapper { margin-top: 15vh; margin-bottom: 5vh; min-height: 80vh; }
+        .doc-nav { border-right: 1px solid rgba(168, 150, 183, 0.2); height: 100%; padding-right: 2rem; }
+        .doc-nav .nav-link {
+            color: #A896B7; border-radius: 12px; margin-bottom: 8px; transition: 0.3s;
+            font-size: 1.6rem; padding: 1.4rem 2rem; border: 1px solid transparent;
+        }
+        .doc-nav .nav-link:hover { background: rgba(160, 68, 255, 0.1); color: var(--purple-color); transform: translateX(8px); }
+        .doc-nav .nav-link.active { background: var(--purple-color); color: #fff !important; font-weight: 700; box-shadow: 0 12px 24px rgba(160, 68, 255, 0.4); }
+
+        .doc-content { padding-left: 6rem; max-width: 1000px; }
+        .doc-content h1, .doc-content h2, .doc-content h3 { font-family: var(--plus-font-family); color: #fff; margin-top: 4.5rem; }
+        .doc-content h1 { font-size: 5.2rem; font-weight: 800; margin-top: 0; margin-bottom: 4rem; letter-spacing: -0.03em; }
+        .doc-content h2 { font-size: 3.6rem; border-bottom: 2px solid rgba(168, 150, 183, 0.15); padding-bottom: 1.5rem; }
+        .doc-content h3 { font-size: 2.8rem; color: var(--purple-color); }
+
+        .doc-content p, .doc-content li { font-size: 1.8rem; line-height: 2.0; color: #d0c4db; margin-bottom: 2.8rem; }
+        .doc-content code { background: #0b0b1a; padding: 4px 10px; border-radius: 8px; color: #f8f8f2; border: 1px solid rgba(255,255,255,0.1); }
+        .doc-content pre { padding: 3.5rem; border-radius: 20px; box-shadow: 0 30px 60px rgba(0,0,0,0.5); }
+
+        .persona-badge { font-size: 0.9rem; text-transform: uppercase; padding: 6px 16px; border-radius: 99px; background: rgba(160, 68, 255, 0.25); border: 1px solid var(--purple-color); color: #fff; margin-left: 20px; }
+
+        .breadcrumb-item a { color: var(--purple-color); font-size: 1.6rem; text-decoration: none; }
+        .breadcrumb-item.active { color: #666; font-size: 1.6rem; }
+
+        .doc-content table { border-radius: 16px; overflow: hidden; border: 1px solid rgba(168, 150, 183, 0.3); }
+        .doc-content th { background: #131326; padding: 2rem; font-size: 1.7rem; color: #fff; }
+        .doc-content td { padding: 2rem; border-top: 1px solid rgba(168, 150, 183, 0.1); font-size: 1.7rem; }
+
+        .mermaid-diagram { margin: 3rem 0; text-align: center; }
+        .mermaid-diagram img { max-width: 100%; border-radius: 16px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+        .mermaid { background: transparent; }
+    </style>
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true, theme: 'dark', fontFamily: 'DM Sans' });
+    </script>
+    </head>
+<body style="overflow: hidden !important">
+<div class="container_body">
+<div class="container_inside">
+<!-- Navigation (injected by js/nav.js) -->
+<div id="vdb-header"></div>
+<div id="vdb-sidebar"></div>
+
+            <div class="container doc-wrapper">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="side_accordian doc-nav"><ul class="nav flex-column">
+        <li class="nav-item">
+            <a class="nav-link  " href="ARCHITECTURE.html">
+                <i class="fa-solid fa-house me-2"></i> Architecture
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="Global_Actuarial_Ingestion_Strategy.html">
+                <i class="fa-solid fa-house me-2"></i> Global Actuarial Ingestion Strategy
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="index.html">
+                <i class="fa-solid fa-house me-2"></i> Index
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="KRONOS-APPROVAL-VIEWER-PLAN.html">
+                <i class="fa-solid fa-house me-2"></i> Kronos Approval Viewer Plan
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="KRONOS-BUILD-PLAN.html">
+                <i class="fa-solid fa-house me-2"></i> Kronos Build Plan
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="KRONOS-CHATBOT-PLAN.html">
+                <i class="fa-solid fa-house me-2"></i> Kronos Chatbot Plan
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="marketin-ideas.html">
+                <i class="fa-solid fa-house me-2"></i> Marketin Ideas
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="project_regulatory_data_plan.html">
+                <i class="fa-solid fa-house me-2"></i> Project Regulatory Data Plan
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link active ps-4" href="prospectuses_allianz_life_deep_analysis.html">
+                <i class="fa-solid fa-file-lines me-2"></i> Allianz Life Deep Analysis
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="RESEARCH-AGENT-ARCHITECTURE.html">
+                <i class="fa-solid fa-house me-2"></i> Research Agent Architecture
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  ps-4" href="standards_SUBMODULE_DOC_CONVENTION.html">
+                <i class="fa-solid fa-file-lines me-2"></i> Submodule Doc Convention
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  ps-4" href="technology_system_architecture.html">
+                <i class="fa-solid fa-code me-2"></i> System Architecture
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="TODO.html">
+                <i class="fa-solid fa-house me-2"></i> Todo
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="system-context.html">
+                <i class="fa-solid fa-brain me-2"></i> System Context
+            </a>
+        </li>
+        </ul></div>
+                    </div>
+                    <div class="col-lg-9 doc-content">
+                        <nav aria-label="breadcrumb" class="mb-5">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="#">Platform</a></li>
+                                <li class="breadcrumb-item active">Allianz Life Deep Analysis <span class="persona-badge">prospectuses</span></li>
+                            </ol>
+                        </nav>
+                        <h1 id="allianz-life-insurance-company-of-north-america-deep-prospectus-analysis">Allianz Life Insurance Company of North America — Deep Prospectus Analysis</h1>
+<p><strong>Analysis Date:</strong> 2026-04-17
+<strong>Sources:</strong> 39 prospectus/brochure PDFs (25 FIA, 11 VA, 3 Unclassified)
+<strong>Extraction Pipeline:</strong> KRONOS 18-prompt library (Gemini backend)</p>
+<hr />
+<h2 id="1-product-catalog-summary">1. Product Catalog Summary</h2>
+<p>Allianz Life offers three product families relevant to reinsurance modeling:</p>
+<h3 id="11-fixed-indexed-annuities-fia-primary-block">1.1 Fixed Indexed Annuities (FIA) — Primary Block</h3>
+<table>
+<thead>
+<tr>
+<th>Product</th>
+<th>Code</th>
+<th>Surrender Period</th>
+<th>Min Premium</th>
+<th>GLWB</th>
+<th>GMDB</th>
+<th>MVA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Allianz 360 Annuity</td>
+<td>CB54370-3 / AG54370</td>
+<td>10 yr</td>
+<td>$20,000</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Allianz 365i Annuity</td>
+<td>AG55012</td>
+<td>10 yr</td>
+<td>$20,000</td>
+<td>No</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Allianz 222 Annuity</td>
+<td>CB95352-1 / M-7246</td>
+<td>10 yr</td>
+<td>$20,000</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Allianz Accum. Advantage</td>
+<td>AAA-001 / M-7269</td>
+<td>10 yr</td>
+<td>$20,000</td>
+<td>No</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Allianz Accum. Advantage+</td>
+<td>M-8060</td>
+<td>10 yr</td>
+<td>$20,000</td>
+<td>No</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Allianz Accum. Advantage 7</td>
+<td>M-8013</td>
+<td>7 yr</td>
+<td>$20,000</td>
+<td>No</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Allianz Benefit Control</td>
+<td>ABC-001 / ABC-020</td>
+<td>10 yr</td>
+<td>$20,000</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<h3 id="12-rila-variable-annuity-allianz-index-advantage-nf">1.2 RILA / Variable Annuity — Allianz Index Advantage NF</h3>
+<ul>
+<li><strong>Structure:</strong> Buffer/Floor with 1-year terms</li>
+<li><strong>Buffer levels:</strong> 10% and 100% (principal protection)</li>
+<li><strong>Floor option:</strong> -10% floor</li>
+<li><strong>Indices:</strong> S&amp;P 500, Russell 2000, Nasdaq-100, EURO STOXX 50</li>
+<li><strong>Interim value:</strong> Daily formula calculation</li>
+</ul>
+<h3 id="13-variable-annuities-legacy-block">1.3 Variable Annuities — Legacy Block</h3>
+<ul>
+<li><strong>Allianz Vision</strong> and <strong>Index Advantage Income</strong> VA contracts</li>
+<li>SEC-registered, separate account structure</li>
+<li>Income benefit riders available (Income Protector)</li>
+</ul>
+<hr />
+<h2 id="2-surrender-charge-matrix">2. Surrender Charge Matrix</h2>
+<p><strong>Primary schedule (7-year, used for Accum. Advantage 7):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Charge %</td>
+<td>8.5</td>
+<td>8.0</td>
+<td>7.0</td>
+<td>6.0</td>
+<td>5.0</td>
+<td>4.0</td>
+<td>0.0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Extended 10-year schedule (used for 360, 222, Benefit Control):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Charge %</td>
+<td>9.0</td>
+<td>9.0</td>
+<td>8.0</td>
+<td>7.0</td>
+<td>6.0</td>
+<td>5.0</td>
+<td>4.0</td>
+<td>3.0</td>
+<td>2.0</td>
+<td>0.0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Free withdrawal:</strong> 10% of total purchase payments annually; RMD withdrawals free.
+<strong>Waivers:</strong> Nursing home waiver available; no terminal illness waiver extracted.</p>
+<hr />
+<h2 id="3-crediting-strategy-parameters">3. Crediting Strategy Parameters</h2>
+<h3 id="31-monthly-sum-cap">3.1 Monthly Sum (Cap)</h3>
+<ul>
+<li><strong>Indices:</strong> S&amp;P 500, Nasdaq-100, Russell 2000, EURO STOXX 50, Blended Index</li>
+<li><strong>Guaranteed minimum cap:</strong> 0.50% per month</li>
+<li><strong>Participation rate:</strong> 100% (guaranteed)</li>
+<li><strong>Floor:</strong> 0% (no negative crediting)</li>
+<li><strong>Spread:</strong> 0%</li>
+</ul>
+<h3 id="32-annual-point-to-point-cap">3.2 Annual Point-to-Point (Cap)</h3>
+<ul>
+<li><strong>Indices:</strong> Same as above</li>
+<li><strong>Guaranteed minimum cap:</strong> 0.25% annual</li>
+<li><strong>Participation rate:</strong> 100% (guaranteed)</li>
+<li><strong>Floor:</strong> 0%</li>
+</ul>
+<h3 id="33-monthly-average-participation-rate">3.3 Monthly Average (Participation Rate)</h3>
+<ul>
+<li><strong>Indices:</strong> Same as above</li>
+<li><strong>Guaranteed minimum participation rate:</strong> 5%</li>
+<li><strong>No cap specified</strong> (uncapped with participation rate lever)</li>
+<li><strong>Floor:</strong> 0%</li>
+</ul>
+<h3 id="34-crediting-mechanics">3.4 Crediting Mechanics</h3>
+<ul>
+<li><strong>Negative index credit treatment:</strong> Floor at zero</li>
+<li><strong>Vesting:</strong> At term end only</li>
+<li><strong>Early withdrawal:</strong> Index credit forfeited (unvested)</li>
+</ul>
+<hr />
+<h2 id="4-glwb-rider-signature-withdrawal-benefit">4. GLWB Rider — Signature Withdrawal Benefit</h2>
+<ul>
+<li><strong>Type:</strong> GLWB (Guaranteed Lifetime Withdrawal Benefit)</li>
+<li><strong>Charge basis:</strong> Benefit base</li>
+<li><strong>Income base initial value:</strong> Purchase payment</li>
+<li><strong>Rollup:</strong> 7% compound for up to 10 years (deferral bonus)</li>
+<li><strong>Step-up:</strong> Not explicitly extracted</li>
+<li><strong>Excess withdrawal:</strong> Proportional reduction to benefit base</li>
+<li><strong>AV = $0 treatment:</strong> Income continues (rider acts as guarantee)</li>
+</ul>
+<h3 id="glwb-rider-fees">GLWB Rider Fees</h3>
+<table>
+<thead>
+<tr>
+<th>Rider</th>
+<th>Annual Charge</th>
+<th>Charge Basis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>360 Benefit</td>
+<td>0.95%</td>
+<td>Accumulation value</td>
+</tr>
+<tr>
+<td>Core Income Benefit</td>
+<td>1.25%</td>
+<td>AV + guaranteed minimum value</td>
+</tr>
+<tr>
+<td>Flexible Withdrawal Benefit</td>
+<td>0.10% (monthly)</td>
+<td>Accumulation value</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="5-death-benefit-structure">5. Death Benefit Structure</h2>
+<ul>
+<li><strong>Standard DB:</strong> Greater of AV and premium paid</li>
+<li><strong>Surrender charges apply to DB:</strong> Yes</li>
+<li><strong>MVA applies to DB:</strong> Yes</li>
+<li><strong>Enhanced rider:</strong> Maximum Anniversary Value Death Benefit (0.20% annual charge)</li>
+<li><strong>Spousal continuation:</strong> Available</li>
+<li><strong>Non-spouse options:</strong> Lump sum or annuity payments over 5+ years</li>
+</ul>
+<hr />
+<h2 id="6-rila-segment-parameters-index-advantage-nf">6. RILA Segment Parameters (Index Advantage NF)</h2>
+<h3 id="10-buffer-strategies">10% Buffer Strategies</h3>
+<table>
+<thead>
+<tr>
+<th>Index</th>
+<th>Cap</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S&amp;P 500</td>
+<td>16.75%</td>
+</tr>
+<tr>
+<td>Russell 2000</td>
+<td>16.50%</td>
+</tr>
+<tr>
+<td>Nasdaq-100</td>
+<td>16.50%</td>
+</tr>
+<tr>
+<td>EURO STOXX 50</td>
+<td>28.50%</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-10-floor-strategies">-10% Floor Strategies</h3>
+<table>
+<thead>
+<tr>
+<th>Index</th>
+<th>Cap</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S&amp;P 500</td>
+<td>15.25%</td>
+</tr>
+<tr>
+<td>Russell 2000</td>
+<td>14.25%</td>
+</tr>
+<tr>
+<td>Nasdaq-100</td>
+<td>13.50%</td>
+</tr>
+<tr>
+<td>EURO STOXX 50</td>
+<td>28.00%</td>
+</tr>
+</tbody>
+</table>
+<h3 id="100-buffer-principal-protection">100% Buffer (Principal Protection)</h3>
+<table>
+<thead>
+<tr>
+<th>Index</th>
+<th>Cap</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S&amp;P 500</td>
+<td>5.60%</td>
+</tr>
+<tr>
+<td>Russell 2000</td>
+<td>5.60%</td>
+</tr>
+<tr>
+<td>Nasdaq-100</td>
+<td>5.60%</td>
+</tr>
+<tr>
+<td>EURO STOXX 50</td>
+<td>7.50%</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="7-expense-assumptions-extracted">7. Expense Assumptions (Extracted)</h2>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Upfront commission (FIA)</td>
+<td>7.0% of premium</td>
+</tr>
+<tr>
+<td>Per-policy annual admin</td>
+<td>$50</td>
+</tr>
+<tr>
+<td>Expense inflation</td>
+<td>2.5%</td>
+</tr>
+<tr>
+<td>Avg state premium tax</td>
+<td>1.75%</td>
+</tr>
+<tr>
+<td>DAC tax</td>
+<td>1.75%</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="8-mortality-references">8. Mortality References</h2>
+<ul>
+<li><strong>Annuitant mortality (statutory):</strong> NAIC Standard Valuation Law for SPIA</li>
+<li><strong>Death benefit reserving:</strong> SOA VBT 2015 with MP-2021 projection</li>
+<li><strong>Income rider longevity:</strong> SOA 2012 IAM Basic with Scale G2</li>
+<li><strong>BMA best estimate:</strong> SOA VBT 2015 with carrier-specific A/E ratio (1.0)</li>
+</ul>
+<hr />
+<h2 id="9-risk-factor-summary">9. Risk Factor Summary</h2>
+<ul>
+<li><strong>Interest rate risk:</strong> Daily Adjustment negatively affected by rate decreases; cap increases lag rate increases</li>
+<li><strong>Derivatives used:</strong> Futures, options, swap agreements (for hedging index crediting obligations)</li>
+<li><strong>Longevity risk:</strong> GLWB and Signature Withdrawal Benefit create lifetime income guarantees</li>
+<li><strong>Lapse risk:</strong> Loans and withdrawals reduce AV and may cause policy lapse</li>
+</ul>
+<hr />
+<h2 id="10-scenario-parameters">10. Scenario Parameters</h2>
+<ul>
+<li><strong>NY7 deterministic:</strong> 7 standard NAIC scenarios (Level, Gradual Rise, Pop-Up, Gradual Decline, Pop-Down, Up-Down, Down-Up)</li>
+<li><strong>Hull-White calibration:</strong> Mean reversion = 0.03, volatility = 0.8%</li>
+<li><strong>Stochastic parameters:</strong> 1,000 paths, 30-year horizon, equity return 8% / vol 18%, credit spread 150bps / vol 50bps</li>
+<li><strong>BSCR stress:</strong> IR ±200bps, equity -35%, mass lapse 40%</li>
+</ul>
+<hr />
+<h2 id="11-modeling-implications-for-kronos">11. Modeling Implications for KRONOS</h2>
+<h3 id="fia-block">FIA Block</h3>
+<ul>
+<li>Must model <strong>monthly sum crediting</strong> with monthly caps (0.50% guaranteed min)</li>
+<li>Must model <strong>annual point-to-point</strong> with annual caps (0.25% guaranteed min)</li>
+<li><strong>Option budget</strong> drives insurer's cost of index crediting (~2% of AV)</li>
+<li><strong>GLWB rider</strong> creates tail risk: income continues when AV = $0</li>
+<li><strong>7% rollup</strong> compounds benefit base during deferral — creates in-the-money GLWB exposure</li>
+</ul>
+<h3 id="rila-block">RILA Block</h3>
+<ul>
+<li>Buffer/floor structure requires <strong>option replication</strong> pricing</li>
+<li>10% buffer = insurer absorbs first 10% of loss → embedded put spread</li>
+<li>-10% floor = policyholder bears loss beyond 10% → capped downside</li>
+<li>100% buffer = full principal protection → priced via lower caps (5.6%)</li>
+</ul>
+<h3 id="alm-considerations">ALM Considerations</h3>
+<ul>
+<li><strong>Long duration liabilities</strong> (10-year surrender + lifetime GLWB) vs. typical 5-7yr asset portfolio</li>
+<li><strong>Negative convexity</strong> from FIA: policyholders stay in rising markets (low lapse), leave in falling markets</li>
+<li><strong>MVA</strong> provides partial interest rate hedge on surrenders during rising rate environment</li>
+<li><strong>Dynamic lapse modeling</strong> critical: spread between crediting rate and market determines lapse behavior</li>
+</ul>
+                    </div>
+                </div>
+            </div>
+            
+</div></div>
+<!-- Footer (injected by js/nav.js) -->
+<div id="vdb-footer"></div>
+<script crossorigin="anonymous" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>AOS.init();</script>
+<script src="../js/nav.js"></script>
+</body>
+</html>
+            

@@ -31,35 +31,7 @@
     <h1 id="kronos-re-dashboard-user-developer-guide">KRONOS Re Dashboard — User &amp; Developer Guide</h1>
 <p>The KRONOS Re Dashboard is the primary interface for the AI-native Bermuda reinsurance sidecar platform. It provides actuaries, CIOs, risk officers, and regulators with real-time analytics, AI-assisted workflow management, and regulatory reporting.</p>
 <h2 id="platform-overview">Platform Overview</h2>
-<pre class="mermaid">graph TD
-    subgraph &quot;KRONOS Re Dashboard&quot;
-        CHAT[&quot;AI Chatbot<br/>Conversational workflow builder&quot;]
-        ALM_PAGE[&quot;ALM Analysis<br/>Duration gap, KRD, spreads&quot;]
-        RISK_PAGE[&quot;Risk & Capital<br/>BSCR, VaR, stress tests&quot;]
-        TRADE_PAGE[&quot;Trading<br/>Hedge recommendations&quot;]
-        RPT_PAGE[&quot;Reports<br/>GAAP, STAT, BSCR filings&quot;]
-        LIAB_PAGE[&quot;Liability<br/>Cash flows, reserves&quot;]
-    end
-
-    subgraph &quot;AI Assistant&quot;
-        HUB[&quot;ChatHub<br/>Process Manager&quot;]
-        ENGINE[&quot;Claude SDK<br/>Conversation Engine&quot;]
-    end
-
-    subgraph &quot;Backend&quot;
-        API[&quot;KRONOS REST API&quot;]
-        CORE[&quot;VaultDB Core&quot;]
-    end
-
-    CHAT --> HUB
-    HUB --> ENGINE
-    ALM_PAGE --> API
-    RISK_PAGE --> API
-    TRADE_PAGE --> API
-    RPT_PAGE --> API
-    LIAB_PAGE --> API
-    API --> CORE
-</pre>
+<div class="mermaid-diagram"><img src="diagram_1.svg" alt="Architecture Diagram 1" style="max-width:100%;height:auto;" /></div>
 <h2 id="key-features">Key Features</h2>
 <h3 id="ai-chatbot">AI Chatbot</h3>
 <p>The KRONOS AI assistant helps users build and manage actuarial workflows through natural conversation:</p>
@@ -69,14 +41,7 @@
 <li><strong>Review DAGs</strong> — Visualize workflow steps as a directed acyclic graph</li>
 <li><strong>Approve and execute</strong> — Human approval required before any execution</li>
 </ul>
-<pre class="mermaid">flowchart LR
-    ASK[&quot;Ask a question&quot;] --> AI[&quot;AI explores modules&quot;]
-    AI --> PROPOSE[&quot;AI proposes workflow&quot;]
-    PROPOSE --> REVIEW[&quot;Human reviews DAG&quot;]
-    REVIEW --> APPROVE[&quot;Human approves&quot;]
-    APPROVE --> EXECUTE[&quot;Steps execute&quot;]
-    EXECUTE --> RESULTS[&quot;View results&quot;]
-</pre>
+<div class="mermaid-diagram"><img src="diagram_2.svg" alt="Architecture Diagram 2" style="max-width:100%;height:auto;" /></div>
 <h3 id="workflow-approval">Workflow Approval</h3>
 <p>Every AI-proposed workflow requires human approval before execution:</p>
 <ul>

@@ -1,26 +1,15 @@
 
             <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Kronos Re: The AI-Native Bermuda Sidecar</title>
-<meta content="noindex," name=""robots"" nofollow"=""/>
-<meta content="noindex," follow"="" name=""robots""/>
-<meta content="index," name=""robots"" nofollow"=""/>
-<meta content="VaultDB.ai: Secure Inprocess database and cloud DataHub for IOT and Modeling" property="og:title">
-<meta content="Secure Inprocess database and cloud DataHub for IOT and Modeling" property="og:description">
-<meta content="Database, DataHub, IO, AI Modeling" property="og:type">
-<meta content="img/v-logo.png" property="og:image"/>
-<meta content="http://vaultdb.ai" property="og:url"/>
-<meta content="VaultDB.ai" property="og:site_name"/>
-
+<title>KRONOS Re: dashboard Documentation - Chathub</title>
+<meta content="noindex, nofollow" name="robots"/>
+<meta name="vdb-context" content="You are viewing the dashboard documentation: Chathub. Category: technology."/>
 <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" rel="stylesheet"/>
 <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" referrerpolicy="no-referrer" rel="stylesheet"/>
-<!-- favicon -->
 <link href="../../../img/v-logo.png" rel="icon" type="image/png"/>
-<!-- animation  -->
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
 <link href="../../../css/style.css" rel="stylesheet"/>
 
@@ -70,21 +59,12 @@
 <div class="container_inside">
 <!-- Navigation (injected by js/nav.js) -->
 <div id="vdb-header"></div>
-<!-- Nav Bar End -->
-<!-- Mobile sidebar (injected by js/nav.js) -->
 <div id="vdb-sidebar"></div>
-
 
             <div class="container doc-wrapper">
                 <div class="row">
                     <div class="col-lg-3">
                         <div class="side_accordian doc-nav"><ul class="nav flex-column">
-        <li class="nav-item">
-            <a class="nav-link  " href="README.html">
-                <i class="fa-solid fa-house me-2"></i> Readme
-            </a>
-        </li>
-        
         <li class="nav-item">
             <a class="nav-link  ps-4" href="compliance_approval_integration.html">
                 <i class="fa-solid fa-shield-halved me-2"></i> Approval Integration
@@ -94,6 +74,12 @@
         <li class="nav-item">
             <a class="nav-link  " href="index.html">
                 <i class="fa-solid fa-house me-2"></i> Index
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="README.html">
+                <i class="fa-solid fa-house me-2"></i> Readme
             </a>
         </li>
         
@@ -130,15 +116,15 @@
                                 <li class="breadcrumb-item active">Chathub <span class="persona-badge">technology</span></li>
                             </ol>
                         </nav>
-                        <h1 id="chathub-architecture-design">ChatHub — Architecture &amp; Design</h1>
+                        <h1 id="chathub-architecture-design">ChatHub â€” Architecture &amp; Design</h1>
 <p>ChatHub is a JupyterHub-style process manager that spawns isolated per-user chatbot servers. It runs on port 8060 and is managed by supervisord as <code>kronos-chathub</code>.</p>
 <h2 id="why-per-user-processes">Why Per-User Processes?</h2>
 <p>Each user gets their own FastAPI server (UserProcess) running on a unique port (9100-9999). This provides:</p>
 <ol>
-<li><strong>Memory isolation</strong> — One user's conversation history cannot leak to another.</li>
-<li><strong>Resource limits</strong> — CPU (600s), memory (2GB), file descriptors (256), processes (16) enforced per user via <code>preexec_fn</code>.</li>
-<li><strong>Secret isolation</strong> — UserProcesses receive only allowlisted environment variables. Approval secrets, AWS keys, and database URLs are stripped.</li>
-<li><strong>Fault isolation</strong> — A crashed UserProcess does not affect other users.</li>
+<li><strong>Memory isolation</strong> â€” One user's conversation history cannot leak to another.</li>
+<li><strong>Resource limits</strong> â€” CPU (600s), memory (2GB), file descriptors (256), processes (16) enforced per user via <code>preexec_fn</code>.</li>
+<li><strong>Secret isolation</strong> â€” UserProcesses receive only allowlisted environment variables. Approval secrets, AWS keys, and database URLs are stripped.</li>
+<li><strong>Fault isolation</strong> â€” A crashed UserProcess does not affect other users.</li>
 </ol>
 <h2 id="architecture">Architecture</h2>
 <pre class="mermaid">graph TD
@@ -174,38 +160,7 @@
     REAPER -->|SIGTERM after 30min idle| UP1
 </pre>
 <h2 id="process-lifecycle">Process Lifecycle</h2>
-<pre class="mermaid">sequenceDiagram
-    participant UI as Dashboard
-    participant HUB as ChatHub
-    participant UP as UserProcess
-    participant API as Anthropic API
-
-    UI->>HUB: POST /chatbot/{user_id}/message
-
-    alt No process for user
-        HUB->>HUB: _next_free_port() ? 9100
-        HUB->>UP: subprocess.Popen(user_server.py, port=9100)
-        HUB->>UP: Poll /healthz (up to 10s)
-        UP-->>HUB: 200 OK
-    end
-
-    HUB->>UP: Forward request (X-Hub-Token header)
-    UP->>UP: _verify_hub_token()
-    UP->>API: messages.create(model, tools, messages)
-    API-->>UP: Response (tool_use or end_turn)
-
-    loop Tool use iterations (max 20)
-        UP->>UP: dispatch_tool(name, input)
-        UP->>API: messages.create(..., tool_results)
-        API-->>UP: Next response
-    end
-
-    UP-->>HUB: MessageResponse
-    HUB-->>UI: JSON response
-
-    Note over HUB: Reaper checks every 60s
-    Note over HUB: Kill after 30min idle
-</pre>
+<div class="mermaid-diagram"><img src="diagram_2.svg" alt="Architecture Diagram 2" style="max-width:100%;height:auto;" /></div>
 <h2 id="security-model">Security Model</h2>
 <h3 id="environment-isolation">Environment Isolation</h3>
 <p>When spawning a UserProcess, ChatHub strips the environment to an explicit allowlist:</p>
@@ -399,7 +354,7 @@
 </tr>
 <tr>
 <td><code>ANTHROPIC_API_KEY</code></td>
-<td>—</td>
+<td>â€”</td>
 <td>Claude API key (forwarded to children)</td>
 </tr>
 <tr>
@@ -409,7 +364,7 @@
 </tr>
 <tr>
 <td><code>SKILL_GITHUB_ALLOWLIST</code></td>
-<td>—</td>
+<td>â€”</td>
 <td>Comma-separated allowed GitHub repos for skill install</td>
 </tr>
 </tbody>
@@ -417,14 +372,13 @@
                     </div>
                 </div>
             </div>
-            <!-- Footer (injected by js/nav.js) -->
+            
+</div></div>
+<!-- Footer (injected by js/nav.js) -->
 <div id="vdb-footer"></div>
 <script crossorigin="anonymous" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-    AOS.init();
-  </script>
-<script src="../../../js/index.js"></script>
+<script>AOS.init();</script>
 <script src="../../../js/nav.js"></script>
 </body>
 </html>

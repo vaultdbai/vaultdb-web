@@ -1,26 +1,15 @@
 
             <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Kronos Re: The AI-Native Bermuda Sidecar</title>
-<meta content="noindex," name=""robots"" nofollow"=""/>
-<meta content="noindex," follow"="" name=""robots""/>
-<meta content="index," name=""robots"" nofollow"=""/>
-<meta content="VaultDB.ai: Secure Inprocess database and cloud DataHub for IOT and Modeling" property="og:title">
-<meta content="Secure Inprocess database and cloud DataHub for IOT and Modeling" property="og:description">
-<meta content="Database, DataHub, IO, AI Modeling" property="og:type">
-<meta content="img/v-logo.png" property="og:image"/>
-<meta content="http://vaultdb.ai" property="og:url"/>
-<meta content="VaultDB.ai" property="og:site_name"/>
-
+<title>KRONOS Re: market Documentation - System-Context</title>
+<meta content="noindex, nofollow" name="robots"/>
+<meta name="vdb-context" content="You are viewing the market documentation: System-Context. Category: system-context."/>
 <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" rel="stylesheet"/>
 <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" referrerpolicy="no-referrer" rel="stylesheet"/>
-<!-- favicon -->
 <link href="../../../img/v-logo.png" rel="icon" type="image/png"/>
-<!-- animation  -->
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
 <link href="../../../css/style.css" rel="stylesheet"/>
 
@@ -70,21 +59,12 @@
 <div class="container_inside">
 <!-- Navigation (injected by js/nav.js) -->
 <div id="vdb-header"></div>
-<!-- Nav Bar End -->
-<!-- Mobile sidebar (injected by js/nav.js) -->
 <div id="vdb-sidebar"></div>
-
 
             <div class="container doc-wrapper">
                 <div class="row">
                     <div class="col-lg-3">
                         <div class="side_accordian doc-nav"><ul class="nav flex-column">
-        <li class="nav-item">
-            <a class="nav-link  " href="README.html">
-                <i class="fa-solid fa-house me-2"></i> Readme
-            </a>
-        </li>
-        
         <li class="nav-item">
             <a class="nav-link  " href="bond_curves_and_loaders.html">
                 <i class="fa-solid fa-house me-2"></i> Bond Curves And Loaders
@@ -94,6 +74,12 @@
         <li class="nav-item">
             <a class="nav-link  " href="market_overview.html">
                 <i class="fa-solid fa-house me-2"></i> Market Overview
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="README.html">
+                <i class="fa-solid fa-house me-2"></i> Readme
             </a>
         </li>
         
@@ -118,23 +104,23 @@ Before suggesting any code, verify it aligns with the standards below.</p>
 <h1 id="system-context-vaultdb-market">System Context: VaultDB Market</h1>
 <p><strong>Package Mission</strong>
 <code>vaultdb.market</code> provides market data, market objects, and financial instrument definitions for the VaultDB platform. It manages quotes (rates, prices, vol data), yield curves, discount curves, volatility surfaces, and static instrument reference data. All QuantLib integration for market object construction lives here.</p>
-<p><strong>This package does NOT contain</strong>: pricing engines, valuations, or analytics — those belong in <code>vaultdb.asset</code>.</p>
+<p><strong>This package does NOT contain</strong>: pricing engines, valuations, or analytics â€” those belong in <code>vaultdb.asset</code>.</p>
 <h2 id="tech-stack">Tech Stack</h2>
 <ul>
 <li><strong>Language</strong>: Python 3.12+ (Strict typing: <code>disallow_untyped_defs = True</code>)</li>
 <li><strong>Data Layer</strong>: DuckLake/DuckDB via <code>vaultdb.data.Model</code> and <code>vaultdb.data.TimeSeriesModel</code></li>
-<li><strong>Core Dependency</strong>: <code>vaultdb.core&gt;=3.18.0</code> — provides Model, TimeSeriesModel, settings, config, logger</li>
-<li><strong>QuantLib</strong>: <code>QuantLib&gt;=1.33</code> — for constructing yield curves, vol surfaces, quote handles</li>
-<li><strong>Data Loading</strong>: <code>requests</code>, <code>pandas</code> — for fetching from FRED, NY Fed, CBOE, Treasury</li>
+<li><strong>Core Dependency</strong>: <code>vaultdb.core&gt;=3.18.0</code> â€” provides Model, TimeSeriesModel, settings, config, logger</li>
+<li><strong>QuantLib</strong>: <code>QuantLib&gt;=1.33</code> â€” for constructing yield curves, vol surfaces, quote handles</li>
+<li><strong>Data Loading</strong>: <code>requests</code>, <code>pandas</code> â€” for fetching from FRED, NY Fed, CBOE, Treasury</li>
 <li><strong>Tooling</strong>: Ruff (Formatter/Linter, 160 char limit), MyPy, Pytest</li>
 </ul>
 <h2 id="project-map">Project Map</h2>
 <ul>
 <li><code>/src/vaultdb_market/</code>: Base package.<ul>
-<li><code>models.py</code>: <code>Quote</code>, <code>SimpleQuote</code> — <strong>TimeSeriesModel</strong> (daily-changing market data).</li>
-<li><code>curves.py</code>: <code>YieldCurve</code>, <code>YieldCurvePoint</code>, <code>DiscountCurve</code>, <code>DiscountCurvePoint</code> — <strong>Model</strong> (static definitions).</li>
+<li><code>models.py</code>: <code>Quote</code>, <code>SimpleQuote</code> â€” <strong>TimeSeriesModel</strong> (daily-changing market data).</li>
+<li><code>curves.py</code>: <code>YieldCurve</code>, <code>YieldCurvePoint</code>, <code>DiscountCurve</code>, <code>DiscountCurvePoint</code> â€” <strong>Model</strong> (static definitions).</li>
 <li><code>volatility.py</code>: <code>VolatilitySurface</code>, <code>VolatilityPoint</code> (<strong>Model</strong>), <code>VolatilityQuote</code> (<strong>TimeSeriesModel</strong>).</li>
-<li><code>instruments.py</code>: <code>Instrument</code> (abstract), <code>Bond</code>, <code>Swap</code>, <code>Option</code>, <code>CapFloor</code>, <code>Swaption</code>, <code>FxForward</code>, <code>CreditDefaultSwap</code>, <code>ForwardRateAgreement</code> — <strong>Model</strong> (static reference data).</li>
+<li><code>instruments.py</code>: <code>Instrument</code> (abstract), <code>Bond</code>, <code>Swap</code>, <code>Option</code>, <code>CapFloor</code>, <code>Swaption</code>, <code>FxForward</code>, <code>CreditDefaultSwap</code>, <code>ForwardRateAgreement</code> â€” <strong>Model</strong> (static reference data).</li>
 <li><code>quantlib_utils.py</code>: QuantLib enums and factory functions (calendars, day counters, conventions, frequencies, valuation date helpers).</li>
 <li><code>data_sources.py</code>: Central registry of FRED series IDs, NY Fed endpoints, CBOE URLs, Treasury URLs.</li>
 <li><code>loaders.py</code>: Reusable data loader functions (FRED, NY Fed, CBOE, Treasury).</li>
@@ -156,20 +142,20 @@ Before suggesting any code, verify it aligns with the standards below.</p>
 </thead>
 <tbody>
 <tr>
-<td><code>Quote</code> — prices every day</td>
-<td><code>YieldCurve</code> — definition is constant</td>
+<td><code>Quote</code> â€” prices every day</td>
+<td><code>YieldCurve</code> â€” definition is constant</td>
 </tr>
 <tr>
-<td><code>SimpleQuote</code> — prices every day</td>
-<td><code>DiscountCurve</code> — definition is constant</td>
+<td><code>SimpleQuote</code> â€” prices every day</td>
+<td><code>DiscountCurve</code> â€” definition is constant</td>
 </tr>
 <tr>
-<td><code>VolatilityQuote</code> — vols daily</td>
-<td><code>VolatilitySurface</code> — grid is static</td>
+<td><code>VolatilityQuote</code> â€” vols daily</td>
+<td><code>VolatilitySurface</code> â€” grid is static</td>
 </tr>
 <tr>
 <td></td>
-<td>All instruments — contracts don't change</td>
+<td>All instruments â€” contracts don't change</td>
 </tr>
 </tbody>
 </table>
@@ -220,7 +206,7 @@ ref_date = settings.sync_ql_evaluation_date()
 </ul>
 <h3 id="pythonpath-configuration">PYTHONPATH Configuration</h3>
 <p>This submodule depends on <code>vaultdb.core</code>.</p>
-<p><strong>Devcontainer:</strong> set automatically — just run <code>pytest tests/</code>.</p>
+<p><strong>Devcontainer:</strong> set automatically â€” just run <code>pytest tests/</code>.</p>
 <p><strong>Standalone</strong> (replace <code>$REPO_ROOT</code> with the parent directory containing all submodules):</p>
 <pre><code class="language-bash">export PYTHONPATH=&quot;$REPO_ROOT/core/src:$REPO_ROOT/market/src&quot;
 </code></pre>
@@ -243,14 +229,13 @@ python -m pytest tests/test_models.py -v
                     </div>
                 </div>
             </div>
-            <!-- Footer (injected by js/nav.js) -->
+            
+</div></div>
+<!-- Footer (injected by js/nav.js) -->
 <div id="vdb-footer"></div>
 <script crossorigin="anonymous" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-    AOS.init();
-  </script>
-<script src="../../../js/index.js"></script>
+<script>AOS.init();</script>
 <script src="../../../js/nav.js"></script>
 </body>
 </html>

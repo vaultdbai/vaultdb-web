@@ -1,26 +1,15 @@
 
             <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Kronos Re: The AI-Native Bermuda Sidecar</title>
-<meta content="noindex," name=""robots"" nofollow"=""/>
-<meta content="noindex," follow"="" name=""robots""/>
-<meta content="index," name=""robots"" nofollow"=""/>
-<meta content="VaultDB.ai: Secure Inprocess database and cloud DataHub for IOT and Modeling" property="og:title">
-<meta content="Secure Inprocess database and cloud DataHub for IOT and Modeling" property="og:description">
-<meta content="Database, DataHub, IO, AI Modeling" property="og:type">
-<meta content="img/v-logo.png" property="og:image"/>
-<meta content="http://vaultdb.ai" property="og:url"/>
-<meta content="VaultDB.ai" property="og:site_name"/>
-
+<title>KRONOS Re: vaultdb-web Documentation - System-Context</title>
+<meta content="noindex, nofollow" name="robots"/>
+<meta name="vdb-context" content="You are viewing the vaultdb-web documentation: System-Context. Category: system-context."/>
 <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" rel="stylesheet"/>
 <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" referrerpolicy="no-referrer" rel="stylesheet"/>
-<!-- favicon -->
 <link href="../../../img/v-logo.png" rel="icon" type="image/png"/>
-<!-- animation  -->
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
 <link href="../../../css/style.css" rel="stylesheet"/>
 
@@ -70,10 +59,7 @@
 <div class="container_inside">
 <!-- Navigation (injected by js/nav.js) -->
 <div id="vdb-header"></div>
-<!-- Nav Bar End -->
-<!-- Mobile sidebar (injected by js/nav.js) -->
 <div id="vdb-sidebar"></div>
-
 
             <div class="container doc-wrapper">
                 <div class="row">
@@ -99,7 +85,7 @@
 Before suggesting any code, verify it aligns with the standards below.</p>
 <h1 id="system-context-vaultdbai-static-website">System Context: VaultDB.ai Static Website</h1>
 <p><strong>Repository Mission</strong>
-<code>vaultdb-web</code> is the <strong>static website</strong> for <a href="https://vaultdb.ai">vaultdb.ai</a>. It contains product documentation, company information, and marketing pages for VaultDB and its financial domain ecosystem. The site must be <strong>fully static</strong> � it can be served from any location (local filesystem, S3, GitHub Pages, Nginx, Apache) without requiring a web server, build step, or backend process.</p>
+<code>vaultdb-web</code> is the <strong>static website</strong> for <a href="https://vaultdb.ai">vaultdb.ai</a>. It contains product documentation, company information, and marketing pages for VaultDB and its financial domain ecosystem. The site must be <strong>fully static</strong> — it can be served from any location (local filesystem, S3, GitHub Pages, Nginx, Apache) without requiring a web server, build step, or backend process.</p>
 <p><strong>Opening <code>index.html</code> directly in a browser must work.</strong></p>
 <h2 id="architecture-pure-static-html">Architecture: Pure Static HTML</h2>
 <p>This is <strong>NOT</strong> a framework-based application. There is no React, Next.js, Vite, or any build tool.</p>
@@ -151,37 +137,37 @@ Before suggesting any code, verify it aligns with the standards below.</p>
 </table>
 <h2 id="project-map">Project Map</h2>
 <pre><code>vaultdb-web/
-+-- index.html              � Homepage (main landing page)
-+-- about.html              � About Us page
-+-- contact.html            � Contact Us page
-+-- error.html              � Error / 404 page
-+-- formsubmit.html         � Form submission handler
-+-- welcome_template.html   � Welcome email template
-+-- css/
-�   +-- style.css           � Homepage styles
-�   +-- about.css           � About page styles
-�   +-- contact.css         � Contact page styles
-�   +-- form.css            � Form styles
-+-- js/
-�   +-- index.js            � Homepage interactions
-�   +-- about..js           � About page interactions
-�   +-- contact.js          � Contact page interactions
-+-- img/
-    +-- mainlogo.png        � Primary logo
-    +-- v-logo.png          � Favicon / OG image
-    +-- ...                 � All other static assets
+├── index.html              — Homepage (main landing page)
+├── about.html              — About Us page
+├── contact.html            — Contact Us page
+├── error.html              — Error / 404 page
+├── formsubmit.html         — Form submission handler
+├── welcome_template.html   — Welcome email template
+├── css/
+│   ├── style.css           — Homepage styles
+│   ├── about.css           — About page styles
+│   ├── contact.css         — Contact page styles
+│   └── form.css            — Form styles
+├── js/
+│   ├── index.js            — Homepage interactions
+│   ├── about..js           — About page interactions
+│   └── contact.js          — Contact page interactions
+└── img/
+    ├── mainlogo.png        — Primary logo
+    ├── v-logo.png          — Favicon / OG image
+    └── ...                 — All other static assets
 </code></pre>
 <hr />
 <h2 id="critical-rules">CRITICAL RULES</h2>
 <h3 id="1-all-paths-must-be-relative">1. All Paths MUST Be Relative</h3>
 <p><strong>NEVER</strong> use absolute paths, root-relative paths, or protocol-relative URLs for local assets.</p>
-<pre><code class="language-html">&lt;!-- CORRECT � relative paths --&gt;
+<pre><code class="language-html">&lt;!-- CORRECT — relative paths --&gt;
 &lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot; /&gt;
 &lt;img src=&quot;img/mainlogo.png&quot; alt=&quot;VaultDB&quot; /&gt;
 &lt;a href=&quot;about.html&quot;&gt;About Us&lt;/a&gt;
 &lt;script src=&quot;js/index.js&quot;&gt;&lt;/script&gt;
 
-&lt;!-- WRONG � absolute or root-relative paths --&gt;
+&lt;!-- WRONG — absolute or root-relative paths --&gt;
 &lt;link rel=&quot;stylesheet&quot; href=&quot;/css/style.css&quot; /&gt;
 &lt;img src=&quot;/img/mainlogo.png&quot; alt=&quot;VaultDB&quot; /&gt;
 &lt;a href=&quot;/about.html&quot;&gt;About Us&lt;/a&gt;
@@ -195,14 +181,14 @@ Before suggesting any code, verify it aligns with the standards below.</p>
 <li><strong>NO</strong> <code>npm</code>, <code>node_modules</code>, <code>package.json</code>, <code>webpack</code>, <code>vite</code>, or any build tooling</li>
 <li><strong>NO</strong> TypeScript, JSX, SCSS, LESS, or any transpiled language</li>
 <li><strong>NO</strong> <code>npm run build</code>, <code>npm run dev</code>, or any compilation step</li>
-<li>The files in this repo ARE the final output � what you see is what gets deployed</li>
+<li>The files in this repo ARE the final output — what you see is what gets deployed</li>
 </ul>
 <h3 id="3-no-server-side-dependencies">3. No Server-Side Dependencies</h3>
 <ul>
 <li><strong>NO</strong> server-side rendering, API routes, or dynamic endpoints</li>
 <li><strong>NO</strong> <code>.env</code> files for runtime configuration</li>
 <li><strong>NO</strong> database connections or backend proxy</li>
-<li>External links (e.g., <code>https://docs.vaultdb.ai</code>) are fine � they point to separate services</li>
+<li>External links (e.g., <code>https://docs.vaultdb.ai</code>) are fine — they point to separate services</li>
 </ul>
 <h3 id="4-cdn-dependencies-only">4. CDN Dependencies Only</h3>
 <p>Third-party libraries are loaded from CDNs with integrity hashes:
@@ -212,8 +198,8 @@ Before suggesting any code, verify it aligns with the standards below.</p>
 <p><strong>DO NOT</strong> add new CDN dependencies without good reason. If a library is needed, prefer CDN-hosted with <code>integrity</code> and <code>crossorigin</code> attributes.</p>
 <h3 id="5-static-content-only">5. Static Content Only</h3>
 <p>All content is hardcoded in HTML. There is no CMS, no API-fetched content, no dynamic rendering.
-- Product descriptions, FAQ answers, team bios � all inline in HTML
-- Images � all pre-generated and stored in <code>img/</code>
+- Product descriptions, FAQ answers, team bios — all inline in HTML
+- Images — all pre-generated and stored in <code>img/</code>
 - No JavaScript-driven content loading (no <code>fetch()</code> to load page sections)</p>
 <hr />
 <h2 id="coding-standards">Coding Standards</h2>
@@ -233,8 +219,8 @@ Before suggesting any code, verify it aligns with the standards below.</p>
 </ul>
 <h3 id="javascript">JavaScript</h3>
 <ul>
-<li>Vanilla JS only � no jQuery, no React, no framework</li>
-<li>Minimal JS � used only for accordion toggles, mobile menu, and scroll animations</li>
+<li>Vanilla JS only — no jQuery, no React, no framework</li>
+<li>Minimal JS — used only for accordion toggles, mobile menu, and scroll animations</li>
 <li>No ES module imports (plain <code>&lt;script src="..."&gt;</code> tags)</li>
 </ul>
 <h3 id="images">Images</h3>
@@ -242,7 +228,7 @@ Before suggesting any code, verify it aligns with the standards below.</p>
 <li>Use PNG for logos and UI elements</li>
 <li>Use SVG for icons and simple graphics where possible</li>
 <li>Compress images before committing (keep file sizes reasonable)</li>
-<li>All images in <code>img/</code> directory � no subdirectories</li>
+<li>All images in <code>img/</code> directory — no subdirectories</li>
 </ul>
 <hr />
 <h2 id="page-descriptions">Page Descriptions</h2>
@@ -280,11 +266,11 @@ Before suggesting any code, verify it aligns with the standards below.</p>
 <hr />
 <h2 id="deployment">Deployment</h2>
 <p>The site can be deployed by simply copying all files to any static hosting:</p>
-<pre><code class="language-bash"># GitHub Pages � just push to gh-pages branch
-# S3 � sync the directory
+<pre><code class="language-bash"># GitHub Pages — just push to gh-pages branch
+# S3 — sync the directory
 aws s3 sync . s3://vaultdb-website/ --exclude &quot;.git/*&quot; --exclude &quot;*.md&quot;
 
-# Local preview � just open in browser
+# Local preview — just open in browser
 # Windows:
 start index.html
 # Mac:
@@ -296,14 +282,13 @@ xdg-open index.html
                     </div>
                 </div>
             </div>
-            <!-- Footer (injected by js/nav.js) -->
+            
+</div></div>
+<!-- Footer (injected by js/nav.js) -->
 <div id="vdb-footer"></div>
 <script crossorigin="anonymous" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-    AOS.init();
-  </script>
-<script src="../../../js/index.js"></script>
+<script>AOS.init();</script>
 <script src="../../../js/nav.js"></script>
 </body>
 </html>

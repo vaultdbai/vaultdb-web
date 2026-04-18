@@ -42,22 +42,11 @@ jobs:
             [ -d ./docs ] && cp -r ./docs ./dist/
             [ -d ./products ] && cp -r ./products ./dist/
 
-      - uses: vitorsgomes/s3-rm-action@master
-        name: cleanup s3 folder awsquickstart
-        with:
-          args: --recursive
+      - name: Sync to S3
+        shell: bash
         env:
-          AWS_S3_BUCKET: ${{ secrets.AWS_BUCKET }}
           AWS_ACCESS_KEY_ID: ${{ secrets.S3_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.S3_KEY }}
           AWS_REGION: ${{ secrets.AWS_REGION }}
-          PATH_TO_DELETE: '/'
-
-      - uses: shallwefootball/s3-upload-action@master
-        name: Upload S3
-        id: S3
-        with:
-          aws_key_id: ${{ secrets.S3_ID }}
-          aws_secret_access_key: ${{ secrets.S3_KEY}}
-          aws_bucket: ${{ secrets.AWS_BUCKET }}
-          source_dir: 'dist'
+        run: |
+          aws s3 sync ./dist/ s3://${{ secrets.AWS_BUCKET }}/ --delete

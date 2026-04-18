@@ -1,0 +1,211 @@
+/* =========================================================================
+ * VaultDB.ai — Gemini Chatbot Widget
+ * =========================================================================
+ * Floating chat bubble + panel that embeds an AI Studio Cloud Run app.
+ * Matches the VaultDB dark theme.  No build step.  Pure CSS.
+ * ======================================================================= */
+
+/* ---------- Floating trigger button ----------------------------------- */
+#vdb-chat-trigger {
+  position: fixed;
+  bottom: 2.4rem;
+  right: 2.4rem;
+  z-index: 9998;
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(135deg, #A044FF 0%, #7B2FCC 100%);
+  box-shadow:
+    0 4px 24px rgba(160, 68, 255, 0.45),
+    0 0 0 0 rgba(160, 68, 255, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.3s ease;
+  animation: vdb-pulse 2.5s infinite;
+}
+
+#vdb-chat-trigger:hover {
+  transform: scale(1.1);
+  box-shadow:
+    0 6px 32px rgba(160, 68, 255, 0.6),
+    0 0 0 6px rgba(160, 68, 255, 0.15);
+}
+
+#vdb-chat-trigger i {
+  font-size: 26px;
+  color: #fff;
+  transition: transform 0.35s ease;
+}
+
+/* Icon swap: robot ↔ close */
+#vdb-chat-trigger.open i.fa-robot  { display: none; }
+#vdb-chat-trigger i.fa-xmark       { display: none; }
+#vdb-chat-trigger.open i.fa-xmark  { display: inline; }
+
+@keyframes vdb-pulse {
+  0%   { box-shadow: 0 4px 24px rgba(160, 68, 255, 0.45), 0 0 0 0 rgba(160, 68, 255, 0.4); }
+  70%  { box-shadow: 0 4px 24px rgba(160, 68, 255, 0.45), 0 0 0 14px rgba(160, 68, 255, 0); }
+  100% { box-shadow: 0 4px 24px rgba(160, 68, 255, 0.45), 0 0 0 0 rgba(160, 68, 255, 0); }
+}
+
+/* ---------- Chat panel ------------------------------------------------ */
+#vdb-chat-panel {
+  position: fixed;
+  bottom: 7rem;
+  right: 2.4rem;
+  z-index: 9999;
+  width: 400px;
+  max-width: calc(100vw - 2rem);
+  height: 600px;
+  max-height: calc(100vh - 10rem);
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+  /* Glassmorphism */
+  background: rgba(16, 16, 30, 0.95);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(160, 68, 255, 0.25);
+  box-shadow:
+    0 24px 64px rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(160, 68, 255, 0.12) inset;
+
+  /* Hidden by default */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px) scale(0.96);
+  transition: opacity 0.3s ease,
+              visibility 0.3s ease,
+              transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+#vdb-chat-panel.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+/* ---------- Panel header ---------------------------------------------- */
+.vdb-chat-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  background: linear-gradient(135deg, rgba(160, 68, 255, 0.15) 0%, rgba(123, 47, 204, 0.08) 100%);
+  border-bottom: 1px solid rgba(160, 68, 255, 0.2);
+  flex-shrink: 0;
+}
+
+.vdb-chat-header-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #A044FF, #7B2FCC);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.vdb-chat-header-text h4 {
+  margin: 0;
+  font-family: 'Oxanium', 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #F5EBFF;
+  letter-spacing: 0.3px;
+}
+
+.vdb-chat-header-text span {
+  font-size: 12px;
+  color: #A896B7;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.vdb-chat-header-text span::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #44cc77;
+  display: inline-block;
+  animation: vdb-blink 1.8s infinite;
+}
+
+@keyframes vdb-blink {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.4; }
+}
+
+/* ---------- Disclaimer banner ----------------------------------------- */
+.vdb-chat-disclaimer {
+  padding: 10px 16px;
+  background: rgba(255, 183, 77, 0.08);
+  border-bottom: 1px solid rgba(255, 183, 77, 0.15);
+  flex-shrink: 0;
+}
+
+.vdb-chat-disclaimer p {
+  margin: 0;
+  font-size: 11.5px;
+  line-height: 1.55;
+  color: #c9a86c;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.vdb-chat-disclaimer i {
+  margin-top: 2px;
+  color: #ffb74d;
+  flex-shrink: 0;
+  font-size: 13px;
+}
+
+/* ---------- Iframe container ------------------------------------------ */
+.vdb-chat-iframe-wrap {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  background: #0a0a14;
+}
+
+.vdb-chat-iframe-wrap iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: #0a0a14;
+}
+
+/* ---------- Responsive ------------------------------------------------ */
+@media (max-width: 480px) {
+  #vdb-chat-panel {
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    max-height: 100vh;
+    border-radius: 0;
+  }
+
+  #vdb-chat-trigger {
+    bottom: 1.6rem;
+    right: 1.6rem;
+    width: 56px;
+    height: 56px;
+  }
+
+  #vdb-chat-trigger i {
+    font-size: 22px;
+  }
+}

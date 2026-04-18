@@ -367,6 +367,11 @@
     if (footerEl)  footerEl.innerHTML  = renderFooter();
 
     bindNavEvents();
+
+    /* --- Auto-load chatbot widget on every page --- */
+    var chatScript = document.createElement('script');
+    chatScript.src = P('js/chatbot.js');
+    document.body.appendChild(chatScript);
   }
 
   /* Run on DOMContentLoaded or immediately if already loaded */

@@ -8,11 +8,11 @@
   font-family: "DM Sans", sans-serif;
 }
 :root {
-  --main-color: #10101e;
-  --para-color: #a896b7;
+  --main-color: var(--main-color);
+  --para-color: var(--para-color);
   --white-color: #f5ebff;
-  --purple-color: #a044ff;
-  --border-color: #a896b7;
+  --purple-color: var(--purple-color);
+  --border-color: var(--para-color);
 
   /* fonts */
   --plus-font-family: "Plus Jakarta Sans", sans-serif;
@@ -35,7 +35,7 @@ li {
 }
 a {
   text-decoration: none;
-  color: white;
+  color: var(--white-color);
   display: inline-block;
 }
 .header {
@@ -60,7 +60,7 @@ a {
   /* object-position:top; */
 }
 .logo a {
-  color: #fff;
+  color: var(--white-color);
   font-family: "Oxanium", sans-serif;
   /* font-size: 29.991px; */
   font-size: 2.5rem;
@@ -79,7 +79,7 @@ a {
   position: relative;
 }
 .header ul li a {
-  color: #fff;
+  color: var(--white-color);
   text-align: center;
   /* body/small */
   font-size: 16px;
@@ -93,7 +93,7 @@ a {
 }
 
 .header ul li a {
-  color: #fff;
+  color: var(--white-color);
   text-align: center;
   /* body/small */
   font-size: 16px;
@@ -121,7 +121,7 @@ a {
   gap: 10px;
   font-size: 16px;
   border-radius: 20px;
-  background: linear-gradient(90deg, #6a3093 0%, #a044ff 100%);
+  background: linear-gradient(90deg, #6a3093 0%, var(--purple-color) 100%);
   box-shadow: 5px 5px 10px 0px rgba(158, 67, 250, 0.2);
   cursor: pointer;
 }
@@ -166,7 +166,7 @@ a {
 }
 
 .dropdown_img {
-  background-color: white;
+  background: var(--card-bg);
   align-self: flex-start;
   width: 40px;
   height: 40px;
@@ -180,7 +180,7 @@ a {
 }
 
 .dropdown_content {
-  color: #fff;
+  color: var(--white-color);
   margin-left: 1.6rem;
 }
 
@@ -192,7 +192,7 @@ a {
   letter-spacing: 0.5px;
 }
 .dropdown_content p:nth-child(2) {
-  color: var(--gray-purple, #a896b7);
+  color: var(--gray-purple, var(--para-color));
   font-size: 1.2rem;
   font-style: normal;
   width: 52rem;
@@ -243,11 +243,11 @@ a {
   position: relative;
 }
 .second_content:hover {
-  background: linear-gradient(90deg, #6a3093 0%, #a044ff 100%) !important;
+  background: linear-gradient(90deg, #6a3093 0%, var(--purple-color) 100%) !important;
   box-shadow: 5px 5px 10px 0px rgba(158, 67, 250, 0.2);
 }
 .third_content:hover {
-  background: linear-gradient(90deg, #6a3093 0%, #a044ff 100%) !important;
+  background: linear-gradient(90deg, #6a3093 0%, var(--purple-color) 100%) !important;
   box-shadow: 5px 5px 10px 0px rgba(158, 67, 250, 0.2);
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
@@ -300,7 +300,7 @@ a {
 }
 
 .dev_menu .dev_box:hover {
-  background: linear-gradient(90deg, #6a3093 0%, #a044ff 100%);
+  background: linear-gradient(90deg, #6a3093 0%, var(--purple-color) 100%);
   box-shadow: 5px 5px 10px 0px rgba(158, 67, 250, 0.2);
 }
 .dev_box {
@@ -359,7 +359,7 @@ a {
 }
 
 .service_menu .service_box p {
-  color: var(--gray-purple, #a896b7);
+  color: var(--gray-purple, var(--para-color));
   font-family: "DM Sans";
   font-size: 13px;
   font-style: normal;
@@ -440,7 +440,7 @@ a {
     box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.25);
     /* backdrop-filter: blur(100px); */
     transition: 0.4s;
-    color: white;
+    color: var(--white-color);
     overflow-y: scroll;
     z-index: 999 !important;
     background-color: var(--main-color);
@@ -481,7 +481,7 @@ a {
     align-items: center;
   }
   .first_img {
-    background-color: white;
+    background: var(--card-bg);
   }
 
   .first_img img {
@@ -504,7 +504,7 @@ a {
   .bottom_para {
     margin-top: 10px;
     /* font-size:15px; */
-    color: var(--Gray-purple, #a896b7);
+    color: var(--Gray-purple, var(--para-color));
     font-size: 13px;
     font-style: normal;
     font-weight: 400;
@@ -541,7 +541,7 @@ a {
     min-width: 100vw !important;
     box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.25);
     transition: 0.4s;
-    color: white;
+    color: var(--white-color);
   }
   /* bottom_border show and hide in navbar */
   .line_navbar {
@@ -560,7 +560,7 @@ a {
     margin-bottom: 2rem;
   }
   .dev_nav_img img {
-    background-color: #fff;
+    background: var(--card-bg);
     border-radius: 5px;
   }
   .dev_para {
@@ -610,7 +610,7 @@ a {
 /* contact section */
 
 .contact_section {
-  color: white;
+  color: var(--white-color);
   width: 100%;
   min-height: 100vh;
   display: flex;
@@ -672,19 +672,19 @@ a {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: -1;
-  background: linear-gradient(to bottom right, #9b42f4 0%, rgba(0, 0, 0, 0) 50%)
+  background: linear-gradient(to bottom right, var(--purple-color) 0%, rgba(0, 0, 0, 0) 50%)
       bottom right / 50% 50% no-repeat,
-    linear-gradient(to bottom left, #9b42f4 0%, rgba(0, 0, 0, 0) 50%) bottom
+    linear-gradient(to bottom left, var(--purple-color) 0%, rgba(0, 0, 0, 0) 50%) bottom
       left / 50% 50% no-repeat,
-    linear-gradient(to top left, #9b42f4 0%, rgba(0, 0, 0, 0) 50%) top left /
+    linear-gradient(to top left, var(--purple-color) 0%, rgba(0, 0, 0, 0) 50%) top left /
       50% 50% no-repeat,
-    linear-gradient(to top right, #9b42f4 0%, rgba(0, 0, 0, 0) 50%) top right /
+    linear-gradient(to top right, var(--purple-color) 0%, rgba(0, 0, 0, 0) 50%) top right /
       50% 50% no-repeat;
   filter: blur(110px);
 }
 
 .contact-email {
-  color: var(--purple-color, #a044ff);
+  color: var(--purple-color, var(--purple-color));
   text-decoration: underline;
   font-weight: 600;
   transition: color 0.3s ease;
@@ -754,11 +754,11 @@ a {
   font-size: 1.3rem;
   border-radius: 8px;
   border: 1px solid var(--glass-border, #312a36);
-  background: var(--gray-purple, #a896b7);
+  background: var(--gray-purple, var(--para-color));
   box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.25);
 }
 .input_group .input:focus {
-  background: var(--gray-purple, #a896b7);
+  background: var(--gray-purple, var(--para-color));
   width: 100%;
   box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.25);
 }
@@ -768,7 +768,7 @@ p {
 }
 .error {
   font-size: 1.4rem;
-  color: #fff;
+  color: var(--white-color);
   letter-spacing: 2px;
   margin: 0.2rem 0.2rem;
   /* display: none; */
@@ -790,7 +790,7 @@ p {
   padding: 10px;
   border-radius: 8px;
   border: 1px solid #c2c6cc;
-  background: var(--gray-purple, #a896b7);
+  background: var(--gray-purple, var(--para-color));
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -825,13 +825,13 @@ p {
   color: var(--white-color);
   outline: 0;
   border: 0;
-  background: var(--gradient, linear-gradient(90deg, #6a3093 0%, #a044ff 100%));
+  background: var(--gradient, linear-gradient(90deg, #6a3093 0%, var(--purple-color) 100%));
 }
 
 /* modal box================ */
 .mymodal {
   background-color: var(--main-color);
-  color: #fff;
+  color: var(--white-color);
 }
 
 .modal-title {
@@ -936,13 +936,13 @@ p {
   right: 10%;
   transform: translate(-50%, -50%);
   z-index: -1;
-  background: linear-gradient(to bottom right, #9b42f4 0%, rgba(0, 0, 0, 0) 50%)
+  background: linear-gradient(to bottom right, var(--purple-color) 0%, rgba(0, 0, 0, 0) 50%)
       bottom right / 50% 50% no-repeat,
-    linear-gradient(to bottom left, #9b42f4 0%, rgba(0, 0, 0, 0) 50%) bottom
+    linear-gradient(to bottom left, var(--purple-color) 0%, rgba(0, 0, 0, 0) 50%) bottom
       left / 50% 50% no-repeat,
-    linear-gradient(to top left, #9b42f4 0%, rgba(0, 0, 0, 0) 50%) top left /
+    linear-gradient(to top left, var(--purple-color) 0%, rgba(0, 0, 0, 0) 50%) top left /
       50% 50% no-repeat,
-    linear-gradient(to top right, #9b42f4 0%, rgba(0, 0, 0, 0) 50%) top right /
+    linear-gradient(to top right, var(--purple-color) 0%, rgba(0, 0, 0, 0) 50%) top right /
       50% 50% no-repeat;
   filter: blur(108px);
 }

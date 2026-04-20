@@ -21,7 +21,7 @@
         font-family: var(--plus-font-family, 'Plus Jakarta Sans', sans-serif);
         font-size: 4.8rem;
         font-weight: 800;
-        color: #fff;
+        color: var(--heading-color);
         letter-spacing: -0.03em;
         margin-bottom: 1.5rem;
     }
@@ -50,7 +50,7 @@
     .mp-stat .count {
         font-size: 3.6rem;
         font-weight: 800;
-        color: #fff;
+        color: var(--heading-color);
         display: block;
         line-height: 1;
     }
@@ -69,8 +69,8 @@
     }
     .mp-cat-card {
         display: block;
-        background: rgba(16, 16, 30, 0.6);
-        border: 1px solid rgba(168, 150, 183, 0.15);
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
         border-radius: 20px;
         padding: 4rem 3rem;
         text-align: center;
@@ -79,7 +79,7 @@
         height: 100%;
     }
     .mp-cat-card:hover {
-        border-color: var(--purple-color, #A044FF);
+        border-color: var(--purple-color);
         transform: translateY(-6px);
         box-shadow: 0 20px 40px rgba(160, 68, 255, 0.2);
         text-decoration: none;
@@ -93,7 +93,7 @@
     .mp-cat-card h3 {
         font-size: 2.4rem;
         font-weight: 700;
-        color: #fff;
+        color: var(--heading-color);
         margin-bottom: 1rem;
     }
     .mp-cat-card p {
@@ -118,20 +118,20 @@
         width: 100%;
         padding: 1.4rem 2rem;
         font-size: 1.6rem;
-        background: rgba(16, 16, 30, 0.8);
-        border: 1px solid rgba(168, 150, 183, 0.2);
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
         border-radius: 12px;
-        color: #fff;
+        color: var(--heading-color);
         outline: none;
         transition: border-color 0.3s;
         margin-bottom: 2rem;
         font-family: inherit;
     }
     .mp-search:focus {
-        border-color: var(--purple-color, #A044FF);
+        border-color: var(--purple-color);
     }
     .mp-search::placeholder {
-        color: rgba(168, 150, 183, 0.5);
+        color: var(--para-color);
     }
     .mp-tags {
         display: flex;
@@ -141,7 +141,7 @@
     .mp-tag-btn {
         padding: 0.6rem 1.4rem;
         font-size: 1.3rem;
-        border: 1px solid rgba(168, 150, 183, 0.25);
+        border: 1px solid var(--border-color);
         border-radius: 99px;
         background: transparent;
         color: var(--para-color, #A896B7);
@@ -151,8 +151,8 @@
     }
     .mp-tag-btn:hover, .mp-tag-btn.active {
         background: var(--purple-color, #A044FF);
-        border-color: var(--purple-color, #A044FF);
-        color: #fff;
+        border-color: var(--purple-color);
+        color: var(--heading-color);
     }
 
     /* Item Cards */
@@ -162,8 +162,8 @@
         padding: 0 2rem 8rem;
     }
     .mp-card {
-        background: rgba(16, 16, 30, 0.6);
-        border: 1px solid rgba(168, 150, 183, 0.12);
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
         border-radius: 16px;
         padding: 2.5rem;
         transition: all 0.35s ease;
@@ -172,7 +172,7 @@
         flex-direction: column;
     }
     .mp-card:hover {
-        border-color: var(--purple-color, #A044FF);
+        border-color: var(--purple-color);
         transform: translateY(-4px);
         box-shadow: 0 16px 32px rgba(160, 68, 255, 0.15);
     }
@@ -189,15 +189,15 @@
     .mp-card-header h4 {
         font-size: 1.8rem;
         font-weight: 700;
-        color: #fff;
+        color: var(--heading-color);
         margin: 0;
         flex: 1;
     }
     .mp-version {
         font-size: 1.1rem;
         padding: 0.3rem 0.8rem;
-        background: rgba(160, 68, 255, 0.15);
-        border: 1px solid rgba(160, 68, 255, 0.3);
+        background: rgba(139, 92, 246, 0.1);
+        border: 1px solid var(--purple-color);
         border-radius: 6px;
         color: var(--purple-color, #A044FF);
         white-space: nowrap;
@@ -218,7 +218,7 @@
     .mp-card-tag {
         font-size: 1.1rem;
         padding: 0.3rem 0.8rem;
-        border: 1px solid rgba(168, 150, 183, 0.2);
+        border: 1px solid var(--border-color);
         border-radius: 6px;
         color: var(--para-color, #A896B7);
     }
@@ -226,18 +226,18 @@
         display: flex;
         gap: 1.5rem;
         font-size: 1.2rem;
-        color: rgba(168, 150, 183, 0.6);
+        color: var(--para-color);
         margin-bottom: 1.5rem;
     }
     .mp-card-meta i {
         margin-right: 0.4rem;
-        color: rgba(168, 150, 183, 0.4);
+        color: var(--para-color);
     }
     .mp-install {
         display: flex;
         align-items: center;
-        background: rgba(11, 11, 26, 0.8);
-        border: 1px solid rgba(168, 150, 183, 0.1);
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
         border-radius: 10px;
         padding: 1rem 1.2rem;
         margin-top: auto;
@@ -245,7 +245,7 @@
     .mp-install code {
         flex: 1;
         font-size: 1.2rem;
-        color: #d0c4db;
+        color: var(--para-color);
         overflow-x: auto;
         white-space: nowrap;
         font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
@@ -287,7 +287,7 @@
         font-family: var(--plus-font-family, 'Plus Jakarta Sans', sans-serif);
         font-size: 4rem;
         font-weight: 800;
-        color: #fff;
+        color: var(--heading-color);
         margin-bottom: 1rem;
     }
     .mp-section-header p {
@@ -308,7 +308,7 @@
     /* Setup prerequisite banner */
     .mp-setup-banner {
         background: rgba(160, 68, 255, 0.08);
-        border: 1px solid rgba(160, 68, 255, 0.25);
+        border: 1px solid var(--purple-color);
         border-radius: 14px;
         padding: 2rem 2.5rem;
         margin-bottom: 3rem;
@@ -365,7 +365,7 @@
 
     <section class="mp-hero">
         <h1>AI Marketplace</h1>
-        <p>Curated skills, MCP servers, and plugins for KRONOS Re — the AI-native reinsurance platform.</p>
+        <p>Curated skills, MCP servers, and plugins for KRONOS Re Â— the AI-native reinsurance platform.</p>
         <div class="mp-stats">
             
         <div class="mp-stat">
@@ -424,7 +424,7 @@
 
     <!-- Featured Items -->
     <div class="mp-grid">
-        <h2 style="color: #fff; font-size: 2.8rem; font-weight: 700; margin-bottom: 3rem;
+        <h2 style="color: var(--heading-color); font-size: 2.8rem; font-weight: 700; margin-bottom: 3rem;
                    font-family: var(--plus-font-family, 'Plus Jakarta Sans', sans-serif);">
             <i class="fa-solid fa-star" style="color: var(--purple-color, #A044FF); margin-right: 1rem;"></i>
             Featured
@@ -433,7 +433,7 @@
             
     <div class="col-lg-4 col-md-6 mb-4 mp-item"
          data-name="liability modeling"
-         data-desc="annuity and life insurance liability modeling — cashflow projection basics, fa/fia/myga/va products, stat/gaap reserves, dac amortization (ldti), lfpb computation, and stochastic discount rate modeling."
+         data-desc="annuity and life insurance liability modeling Â— cashflow projection basics, fa/fia/myga/va products, stat/gaap reserves, dac amortization (ldti), lfpb computation, and stochastic discount rate modeling."
          data-tags="liability,annuity,cashflow,gaap,stat,reserves,ldti">
         <div class="mp-card">
             <div class="mp-card-header">
@@ -442,7 +442,7 @@
                 <span class="mp-version">v1.0.0</span>
                 <span class="mp-featured">Featured</span>
             </div>
-            <p class="mp-card-desc">Annuity and life insurance liability modeling — cashflow projection basics, FA/FIA/MYGA/VA products, STAT/GAAP reserves, DAC amortization (LDTI), LFPB computation, and stochastic discount rate modeling.</p>
+            <p class="mp-card-desc">Annuity and life insurance liability modeling Â— cashflow projection basics, FA/FIA/MYGA/VA products, STAT/GAAP reserves, DAC amortization (LDTI), LFPB computation, and stochastic discount rate modeling.</p>
             <div class="mp-card-tags"><span class="mp-card-tag">liability</span><span class="mp-card-tag">annuity</span><span class="mp-card-tag">cashflow</span><span class="mp-card-tag">gaap</span><span class="mp-card-tag">stat</span><span class="mp-card-tag">reserves</span><span class="mp-card-tag">ldti</span></div>
             <div class="mp-card-meta">
                 <span><i class="fa-solid fa-user"></i>VaultDB</span>
@@ -459,7 +459,7 @@
     
     <div class="col-lg-4 col-md-6 mb-4 mp-item"
          data-name="risk & capital analytics"
-         data-desc="portfolio risk analytics (var/cvar, stress testing, attribution) and regulatory solvency capital computation — bma bscr c1-c8 modules, solvency dashboard, and prescribed stress scenarios."
+         data-desc="portfolio risk analytics (var/cvar, stress testing, attribution) and regulatory solvency capital computation Â— bma bscr c1-c8 modules, solvency dashboard, and prescribed stress scenarios."
          data-tags="risk,bscr,solvency,capital,var,stress-testing">
         <div class="mp-card">
             <div class="mp-card-header">
@@ -468,7 +468,7 @@
                 <span class="mp-version">v1.0.0</span>
                 <span class="mp-featured">Featured</span>
             </div>
-            <p class="mp-card-desc">Portfolio risk analytics (VaR/CVaR, stress testing, attribution) and regulatory solvency capital computation — BMA BSCR C1-C8 modules, solvency dashboard, and prescribed stress scenarios.</p>
+            <p class="mp-card-desc">Portfolio risk analytics (VaR/CVaR, stress testing, attribution) and regulatory solvency capital computation Â— BMA BSCR C1-C8 modules, solvency dashboard, and prescribed stress scenarios.</p>
             <div class="mp-card-tags"><span class="mp-card-tag">risk</span><span class="mp-card-tag">bscr</span><span class="mp-card-tag">solvency</span><span class="mp-card-tag">capital</span><span class="mp-card-tag">var</span><span class="mp-card-tag">stress-testing</span></div>
             <div class="mp-card-meta">
                 <span><i class="fa-solid fa-user"></i>VaultDB</span>
@@ -619,7 +619,7 @@
     
     <div class="col-lg-4 col-md-6 mb-4 mp-item"
          data-name="duckdb analyst"
-         data-desc="high-performance data analysis and sql queries using duckdb — large datasets, parquet files, complex sql transformations, and kronos re data exploration."
+         data-desc="high-performance data analysis and sql queries using duckdb Â— large datasets, parquet files, complex sql transformations, and kronos re data exploration."
          data-tags="duckdb,sql,analytics,data,parquet">
         <div class="mp-card">
             <div class="mp-card-header">
@@ -628,7 +628,7 @@
                 <span class="mp-version">v1.0.0</span>
                 <span class="mp-featured">Featured</span>
             </div>
-            <p class="mp-card-desc">High-performance data analysis and SQL queries using DuckDB — large datasets, Parquet files, complex SQL transformations, and KRONOS Re data exploration.</p>
+            <p class="mp-card-desc">High-performance data analysis and SQL queries using DuckDB Â— large datasets, Parquet files, complex SQL transformations, and KRONOS Re data exploration.</p>
             <div class="mp-card-tags"><span class="mp-card-tag">duckdb</span><span class="mp-card-tag">sql</span><span class="mp-card-tag">analytics</span><span class="mp-card-tag">data</span><span class="mp-card-tag">parquet</span></div>
             <div class="mp-card-meta">
                 <span><i class="fa-solid fa-user"></i>VaultDB</span>
@@ -671,7 +671,7 @@
     
     <div class="col-lg-4 col-md-6 mb-4 mp-item"
          data-name="scenario engine"
-         data-desc="generate economic scenarios — risk-neutral and real-world paths for interest rates, equity, and credit."
+         data-desc="generate economic scenarios Â— risk-neutral and real-world paths for interest rates, equity, and credit."
          data-tags="scenario,esg,simulation,monte-carlo">
         <div class="mp-card">
             <div class="mp-card-header">
@@ -680,7 +680,7 @@
                 <span class="mp-version">v1.0.0</span>
                 <span class="mp-featured">Featured</span>
             </div>
-            <p class="mp-card-desc">Generate economic scenarios — risk-neutral and real-world paths for interest rates, equity, and credit.</p>
+            <p class="mp-card-desc">Generate economic scenarios Â— risk-neutral and real-world paths for interest rates, equity, and credit.</p>
             <div class="mp-card-tags"><span class="mp-card-tag">scenario</span><span class="mp-card-tag">esg</span><span class="mp-card-tag">simulation</span><span class="mp-card-tag">monte-carlo</span></div>
             <div class="mp-card-meta">
                 <span><i class="fa-solid fa-user"></i>VaultDB</span>
@@ -749,7 +749,7 @@
     
     <div class="col-lg-4 col-md-6 mb-4 mp-item"
          data-name="core framework"
-         data-desc="core vaultdb framework — data modeling, orm, crud, transactions, compute, scheduling, caching, authentication, web api, logging, configuration, and infrastructure patterns. provides the foundational skills for building any vaultdb application.
+         data-desc="core vaultdb framework Â— data modeling, orm, crud, transactions, compute, scheduling, caching, authentication, web api, logging, configuration, and infrastructure patterns. provides the foundational skills for building any vaultdb application.
 "
          data-tags="core,orm,data-modeling,compute,authentication,infrastructure">
         <div class="mp-card">
@@ -759,7 +759,7 @@
                 <span class="mp-version">v1.0.0</span>
                 <span class="mp-featured">Featured</span>
             </div>
-            <p class="mp-card-desc">Core VaultDB framework — data modeling, ORM, CRUD, transactions, compute, scheduling, caching, authentication, web API, logging, configuration, and infrastructure patterns. Provides the foundational skills for building any VaultDB application.
+            <p class="mp-card-desc">Core VaultDB framework Â— data modeling, ORM, CRUD, transactions, compute, scheduling, caching, authentication, web API, logging, configuration, and infrastructure patterns. Provides the foundational skills for building any VaultDB application.
 </p>
             <div class="mp-card-tags"><span class="mp-card-tag">core</span><span class="mp-card-tag">orm</span><span class="mp-card-tag">data-modeling</span><span class="mp-card-tag">compute</span><span class="mp-card-tag">authentication</span><span class="mp-card-tag">infrastructure</span></div>
             <div class="mp-card-meta">
@@ -805,7 +805,7 @@
     
     <div class="col-lg-4 col-md-6 mb-4 mp-item"
          data-name="asset pricing"
-         data-desc="asset pricing engines for all instrument types — bonds, swaps, options, caps/floors, swaptions, cds, fx forwards, equity structures, exotic options, and trs. marketenvironment bridges quantlib curves and pytorch tensors.
+         data-desc="asset pricing engines for all instrument types Â— bonds, swaps, options, caps/floors, swaptions, cds, fx forwards, equity structures, exotic options, and trs. marketenvironment bridges quantlib curves and pytorch tensors.
 "
          data-tags="pricing,bonds,swaps,options,cds,quantlib,pytorch">
         <div class="mp-card">
@@ -815,7 +815,7 @@
                 <span class="mp-version">v1.0.0</span>
                 <span class="mp-featured">Featured</span>
             </div>
-            <p class="mp-card-desc">Asset pricing engines for all instrument types — bonds, swaps, options, caps/floors, swaptions, CDS, FX forwards, equity structures, exotic options, and TRS. MarketEnvironment bridges QuantLib curves and PyTorch tensors.
+            <p class="mp-card-desc">Asset pricing engines for all instrument types Â— bonds, swaps, options, caps/floors, swaptions, CDS, FX forwards, equity structures, exotic options, and TRS. MarketEnvironment bridges QuantLib curves and PyTorch tensors.
 </p>
             <div class="mp-card-tags"><span class="mp-card-tag">pricing</span><span class="mp-card-tag">bonds</span><span class="mp-card-tag">swaps</span><span class="mp-card-tag">options</span><span class="mp-card-tag">cds</span><span class="mp-card-tag">quantlib</span><span class="mp-card-tag">pytorch</span></div>
             <div class="mp-card-meta">
@@ -833,7 +833,7 @@
     
     <div class="col-lg-4 col-md-6 mb-4 mp-item"
          data-name="liability modeling"
-         data-desc="annuity and life insurance liability modeling — policy records, cohort projection, stat/gaap reserve engines, dac amortization (ldti), and lfpb computation. supports fa, fia, myga, va, spia, and traditional life products.
+         data-desc="annuity and life insurance liability modeling Â— policy records, cohort projection, stat/gaap reserve engines, dac amortization (ldti), and lfpb computation. supports fa, fia, myga, va, spia, and traditional life products.
 "
          data-tags="liability,annuity,reserves,GAAP,statutory,LDTI,FIA,MYGA">
         <div class="mp-card">
@@ -843,7 +843,7 @@
                 <span class="mp-version">v1.0.0</span>
                 <span class="mp-featured">Featured</span>
             </div>
-            <p class="mp-card-desc">Annuity and life insurance liability modeling — policy records, cohort projection, STAT/GAAP reserve engines, DAC amortization (LDTI), and LFPB computation. Supports FA, FIA, MYGA, VA, SPIA, and traditional life products.
+            <p class="mp-card-desc">Annuity and life insurance liability modeling Â— policy records, cohort projection, STAT/GAAP reserve engines, DAC amortization (LDTI), and LFPB computation. Supports FA, FIA, MYGA, VA, SPIA, and traditional life products.
 </p>
             <div class="mp-card-tags"><span class="mp-card-tag">liability</span><span class="mp-card-tag">annuity</span><span class="mp-card-tag">reserves</span><span class="mp-card-tag">GAAP</span><span class="mp-card-tag">statutory</span><span class="mp-card-tag">LDTI</span><span class="mp-card-tag">FIA</span><span class="mp-card-tag">MYGA</span></div>
             <div class="mp-card-meta">
@@ -861,7 +861,7 @@
     
     <div class="col-lg-4 col-md-6 mb-4 mp-item"
          data-name="actuarial assumptions"
-         data-desc="versioned actuarial assumption library — mortality tables (soa vbt 2015, cso 2017), lapse rate tables with dynamic adjustment, surrender charge schedules, expense assumptions, crediting rate assumptions, behavioral assumptions, and named assumptionset bundles.
+         data-desc="versioned actuarial assumption library Â— mortality tables (soa vbt 2015, cso 2017), lapse rate tables with dynamic adjustment, surrender charge schedules, expense assumptions, crediting rate assumptions, behavioral assumptions, and named assumptionset bundles.
 "
          data-tags="actuarial,mortality,lapse,assumptions,VBT2015,CSO2017">
         <div class="mp-card">
@@ -871,7 +871,7 @@
                 <span class="mp-version">v1.0.0</span>
                 <span class="mp-featured">Featured</span>
             </div>
-            <p class="mp-card-desc">Versioned actuarial assumption library — mortality tables (SOA VBT 2015, CSO 2017), lapse rate tables with dynamic adjustment, surrender charge schedules, expense assumptions, crediting rate assumptions, behavioral assumptions, and named AssumptionSet bundles.
+            <p class="mp-card-desc">Versioned actuarial assumption library Â— mortality tables (SOA VBT 2015, CSO 2017), lapse rate tables with dynamic adjustment, surrender charge schedules, expense assumptions, crediting rate assumptions, behavioral assumptions, and named AssumptionSet bundles.
 </p>
             <div class="mp-card-tags"><span class="mp-card-tag">actuarial</span><span class="mp-card-tag">mortality</span><span class="mp-card-tag">lapse</span><span class="mp-card-tag">assumptions</span><span class="mp-card-tag">VBT2015</span><span class="mp-card-tag">CSO2017</span></div>
             <div class="mp-card-meta">
@@ -889,7 +889,7 @@
     
     <div class="col-lg-4 col-md-6 mb-4 mp-item"
          data-name="scenario generation"
-         data-desc="interest rate and economic scenario generation — naic ny7 deterministic scenarios for c3 phase i / vm-21, hull-white stochastic esg paths, equity index paths, and credit spread scenarios for bscr capital calculation.
+         data-desc="interest rate and economic scenario generation Â— naic ny7 deterministic scenarios for c3 phase i / vm-21, hull-white stochastic esg paths, equity index paths, and credit spread scenarios for bscr capital calculation.
 "
          data-tags="scenarios,NY7,ESG,interest-rates,stochastic,C3,VM-21">
         <div class="mp-card">
@@ -899,7 +899,7 @@
                 <span class="mp-version">v1.0.0</span>
                 <span class="mp-featured">Featured</span>
             </div>
-            <p class="mp-card-desc">Interest rate and economic scenario generation — NAIC NY7 deterministic scenarios for C3 Phase I / VM-21, Hull-White stochastic ESG paths, equity index paths, and credit spread scenarios for BSCR capital calculation.
+            <p class="mp-card-desc">Interest rate and economic scenario generation Â— NAIC NY7 deterministic scenarios for C3 Phase I / VM-21, Hull-White stochastic ESG paths, equity index paths, and credit spread scenarios for BSCR capital calculation.
 </p>
             <div class="mp-card-tags"><span class="mp-card-tag">scenarios</span><span class="mp-card-tag">NY7</span><span class="mp-card-tag">ESG</span><span class="mp-card-tag">interest-rates</span><span class="mp-card-tag">stochastic</span><span class="mp-card-tag">C3</span><span class="mp-card-tag">VM-21</span></div>
             <div class="mp-card-meta">
@@ -917,7 +917,7 @@
     
     <div class="col-lg-4 col-md-6 mb-4 mp-item"
          data-name="asset-liability management"
-         data-desc="asset-liability management analysis engine — duration gap, dv01 gap, key-rate exposure, cashflow matching, spread analysis by asset class, rebalancing alerts, and alm policy enforcement. runs across all ny7 scenarios for c3 compliance.
+         data-desc="asset-liability management analysis engine Â— duration gap, dv01 gap, key-rate exposure, cashflow matching, spread analysis by asset class, rebalancing alerts, and alm policy enforcement. runs across all ny7 scenarios for c3 compliance.
 "
          data-tags="alm,duration,hedging,DV01,spread,C3,cashflow-matching">
         <div class="mp-card">
@@ -927,7 +927,7 @@
                 <span class="mp-version">v1.0.0</span>
                 <span class="mp-featured">Featured</span>
             </div>
-            <p class="mp-card-desc">Asset-liability management analysis engine — duration gap, DV01 gap, key-rate exposure, cashflow matching, spread analysis by asset class, rebalancing alerts, and ALM policy enforcement. Runs across all NY7 scenarios for C3 compliance.
+            <p class="mp-card-desc">Asset-liability management analysis engine Â— duration gap, DV01 gap, key-rate exposure, cashflow matching, spread analysis by asset class, rebalancing alerts, and ALM policy enforcement. Runs across all NY7 scenarios for C3 compliance.
 </p>
             <div class="mp-card-tags"><span class="mp-card-tag">alm</span><span class="mp-card-tag">duration</span><span class="mp-card-tag">hedging</span><span class="mp-card-tag">DV01</span><span class="mp-card-tag">spread</span><span class="mp-card-tag">C3</span><span class="mp-card-tag">cashflow-matching</span></div>
             <div class="mp-card-meta">
@@ -945,7 +945,7 @@
     
     <div class="col-lg-4 col-md-6 mb-4 mp-item"
          data-name="risk & solvency"
-         data-desc="capital computation and solvency analytics — bma bscr (c1-c8 risk modules), var/cvar via historical simulation or monte carlo, stress testing, and real-time solvency dashboard (green/amber/red traffic lights).
+         data-desc="capital computation and solvency analytics Â— bma bscr (c1-c8 risk modules), var/cvar via historical simulation or monte carlo, stress testing, and real-time solvency dashboard (green/amber/red traffic lights).
 "
          data-tags="risk,BSCR,capital,VaR,stress-test,solvency,BMA,ECR">
         <div class="mp-card">
@@ -955,7 +955,7 @@
                 <span class="mp-version">v1.0.0</span>
                 <span class="mp-featured">Featured</span>
             </div>
-            <p class="mp-card-desc">Capital computation and solvency analytics — BMA BSCR (C1-C8 risk modules), VaR/CVaR via historical simulation or Monte Carlo, stress testing, and real-time solvency dashboard (GREEN/AMBER/RED traffic lights).
+            <p class="mp-card-desc">Capital computation and solvency analytics Â— BMA BSCR (C1-C8 risk modules), VaR/CVaR via historical simulation or Monte Carlo, stress testing, and real-time solvency dashboard (GREEN/AMBER/RED traffic lights).
 </p>
             <div class="mp-card-tags"><span class="mp-card-tag">risk</span><span class="mp-card-tag">BSCR</span><span class="mp-card-tag">capital</span><span class="mp-card-tag">VaR</span><span class="mp-card-tag">stress-test</span><span class="mp-card-tag">solvency</span><span class="mp-card-tag">BMA</span><span class="mp-card-tag">ECR</span></div>
             <div class="mp-card-meta">
@@ -973,7 +973,7 @@
     
     <div class="col-lg-4 col-md-6 mb-4 mp-item"
          data-name="valuation engine"
-         data-desc="full valuation orchestration — coordinates liability projection, stat/gaap reserve calculation, alm snapshot, embedded value, and vif computation in a single call. produces the economic balance sheet summary (valuationrun) and source-of-change attribution waterfall between periods.
+         data-desc="full valuation orchestration Â— coordinates liability projection, stat/gaap reserve calculation, alm snapshot, embedded value, and vif computation in a single call. produces the economic balance sheet summary (valuationrun) and source-of-change attribution waterfall between periods.
 "
          data-tags="valuation,reserves,embedded-value,attribution,economic-balance-sheet">
         <div class="mp-card">
@@ -983,7 +983,7 @@
                 <span class="mp-version">v1.0.0</span>
                 <span class="mp-featured">Featured</span>
             </div>
-            <p class="mp-card-desc">Full valuation orchestration — coordinates liability projection, STAT/GAAP reserve calculation, ALM snapshot, embedded value, and VIF computation in a single call. Produces the economic balance sheet summary (ValuationRun) and source-of-change attribution waterfall between periods.
+            <p class="mp-card-desc">Full valuation orchestration Â— coordinates liability projection, STAT/GAAP reserve calculation, ALM snapshot, embedded value, and VIF computation in a single call. Produces the economic balance sheet summary (ValuationRun) and source-of-change attribution waterfall between periods.
 </p>
             <div class="mp-card-tags"><span class="mp-card-tag">valuation</span><span class="mp-card-tag">reserves</span><span class="mp-card-tag">embedded-value</span><span class="mp-card-tag">attribution</span><span class="mp-card-tag">economic-balance-sheet</span></div>
             <div class="mp-card-meta">
@@ -1001,7 +1001,7 @@
     
     <div class="col-lg-4 col-md-6 mb-4 mp-item"
          data-name="regulatory reporting"
-         data-desc="regulatory report generation — gaap (ldti/asc 944 lfpb, dac, mrb), statutory (sap reserve, rbc ratio, avr/imr), bermuda bscr capital reports, actuarial draft memorandum generation, and immutable audit trail logging.
+         data-desc="regulatory report generation Â— gaap (ldti/asc 944 lfpb, dac, mrb), statutory (sap reserve, rbc ratio, avr/imr), bermuda bscr capital reports, actuarial draft memorandum generation, and immutable audit trail logging.
 "
          data-tags="reporting,GAAP,statutory,BSCR,actuarial-memo,audit,LDTI,RBC">
         <div class="mp-card">
@@ -1011,7 +1011,7 @@
                 <span class="mp-version">v1.0.0</span>
                 <span class="mp-featured">Featured</span>
             </div>
-            <p class="mp-card-desc">Regulatory report generation — GAAP (LDTI/ASC 944 LFPB, DAC, MRB), Statutory (SAP reserve, RBC ratio, AVR/IMR), Bermuda BSCR capital reports, actuarial draft memorandum generation, and immutable audit trail logging.
+            <p class="mp-card-desc">Regulatory report generation Â— GAAP (LDTI/ASC 944 LFPB, DAC, MRB), Statutory (SAP reserve, RBC ratio, AVR/IMR), Bermuda BSCR capital reports, actuarial draft memorandum generation, and immutable audit trail logging.
 </p>
             <div class="mp-card-tags"><span class="mp-card-tag">reporting</span><span class="mp-card-tag">GAAP</span><span class="mp-card-tag">statutory</span><span class="mp-card-tag">BSCR</span><span class="mp-card-tag">actuarial-memo</span><span class="mp-card-tag">audit</span><span class="mp-card-tag">LDTI</span><span class="mp-card-tag">RBC</span></div>
             <div class="mp-card-meta">

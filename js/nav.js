@@ -128,7 +128,7 @@
     /* --- KRONOS Modules mega-menu --- */
     h += '<li>';
     h += '<a href="#" class="header_hover">KRONOS Modules</a>';
-    h += '<ul class="dropdown-menu" style="background-color: #10101e; width: 60rem;">';
+    h += '<ul class="dropdown-menu" style="background-color: var(--nav-bg); width: 60rem;">';
     h += '<div class="row p-4">';
     for (var ci = 0; ci < KRONOS_MODULES.length; ci++) {
       h += '<div class="col-md-4">';
@@ -143,7 +143,7 @@
     /* --- Developers dropdown --- */
     h += '<li class="second_bar">';
     h += '<a href="#" class="header_hover">Developers</a>';
-    h += '<ul class="dev_menu" style="background-color: #10101e"><li>';
+    h += '<ul class="dev_menu" style="background-color: var(--nav-bg)"><li>';
     for (var di = 0; di < DEV_ITEMS.length; di++) {
       var d = DEV_ITEMS[di];
       h += '<div class="dev_box">';
@@ -157,7 +157,7 @@
     /* --- Database dropdown --- */
     h += '<li class="first_bar">';
     h += '<a href="#" class="header_hover">Database</a>';
-    h += '<ul class="dropdown-menu" style="background-color: #10101e">';
+    h += '<ul class="dropdown-menu" style="background-color: var(--nav-bg)">';
     // First section with buttons
     var dbFirst = DATABASE_SECTIONS[0];
     h += '<li class="first_content_container"><div class="first_content">';
@@ -185,13 +185,19 @@
     /* --- AI Marketplace dropdown --- */
     h += '<li>';
     h += '<a href="#" class="header_hover">AI Marketplace</a>';
-    h += '<ul class="dropdown-menu" style="background-color: #10101e; width: 30rem;">';
+    h += '<ul class="dropdown-menu" style="background-color: var(--nav-bg); width: 30rem;">';
     h += '<div class="p-4">';
     for (var mi = 0; mi < MARKETPLACE_ITEMS.length; mi++) {
       var mp = MARKETPLACE_ITEMS[mi];
       h += '<li class="p-2"><a href="' + P(mp.href) + '"><i class="' + mp.icon + ' me-2 text-purple"></i>' + mp.label + '</a></li>';
     }
     h += '</div></ul></li>';
+
+    /* --- Theme Toggle --- */
+    h += '<li style="margin-right: 15px;">';
+    h += '<a href="#" id="theme-toggle" class="header_hover" style="border: 1px solid var(--border-color); border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: var(--card-bg); color: var(--white-color); transition: 0.3s;">';
+    h += '<i class="fa-solid fa-moon"></i>';
+    h += '</a></li>';
 
     /* --- Contact Us CTA --- */
     h += '<li><a href="' + P('contact.html') + '" class="contact_btn">Contact Us</a></li>';
@@ -367,6 +373,37 @@
     if (footerEl)  footerEl.innerHTML  = renderFooter();
 
     bindNavEvents();
+
+    /* --- Theme Manager (Brahma Aesthetic) --- */
+    var themeToggleBtn = document.getElementById('theme-toggle');
+    var isDark = true; // Default Brahma aesthetic is dark
+    
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+      isDark = false;
+    }
+    var storedTheme = localStorage.getItem('vdb-theme');
+    if (storedTheme) {
+      isDark = (storedTheme === 'dark');
+    }
+    
+    document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+    
+    function updateThemeIcon(dark) {
+      if(themeToggleBtn) {
+        themeToggleBtn.innerHTML = dark ? '<i class="fa-solid fa-sun px-0"></i>' : '<i class="fa-solid fa-moon px-0"></i>';
+      }
+    }
+    updateThemeIcon(isDark);
+
+    if (themeToggleBtn) {
+      themeToggleBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        isDark = !isDark;
+        document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+        localStorage.setItem('vdb-theme', isDark ? 'dark' : 'light');
+        updateThemeIcon(isDark);
+      });
+    }
 
     /* --- Auto-load chatbot widget on every page --- */
     var chatScript = document.createElement('script');

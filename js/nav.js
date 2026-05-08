@@ -95,10 +95,10 @@
   ];
 
   var MARKETPLACE_ITEMS = [
-    { label: 'Browse All',   icon: 'fa-solid fa-store',                href: 'marketplace/index.html' },
-    { label: 'Skills',       icon: 'fa-solid fa-wand-magic-sparkles',  href: 'marketplace/skills.html' },
-    { label: 'MCP Servers',  icon: 'fa-solid fa-server',               href: 'marketplace/mcp-servers.html' },
-    { label: 'Plugins',      icon: 'fa-solid fa-plug',                 href: 'marketplace/plugins.html' }
+    { label: 'Browse All',        icon: 'fa-solid fa-store',                href: 'marketplace/index.html' },
+    { label: 'Plugins',           icon: 'fa-solid fa-plug',                 href: 'marketplace/plugins.html' },
+    { label: 'Actuarial Skills',  icon: 'fa-solid fa-calculator',           href: 'marketplace/actuarial.html' },
+    { label: 'MCP Servers',       icon: 'fa-solid fa-server',               href: 'marketplace/mcp-servers.html' }
   ];
 
   var FOOTER_LINKS = [

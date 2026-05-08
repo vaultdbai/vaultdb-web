@@ -139,7 +139,15 @@
       'extensions that add new capabilities to the KRONOS Re platform.',
 
     'mcp-servers': 'You are on the MCP Servers marketplace page. MCP (Model Context ' +
-      'Protocol) servers connect AI agents to external tools and data sources.'
+      'Protocol) servers connect AI agents to external tools and data sources.',
+
+    'actuarial': 'You are on the Actuarial Skills marketplace page. This page lists 21 ' +
+      'GPU-first actuarial modeling skills for KRONOS Re — covering Bayesian Inference, ' +
+      'Markov multi-state models, Claims Reserving (Chain Ladder / BF), Mortality & Lee-Carter, ' +
+      'Asset Pricing & Black-Scholes, Capital Modeling (Solvency II SCR), Cash Flow Profit Testing, ' +
+      'Pensions & DB valuation, Reinsurance treaty modeling, Forecasting & ESG scenarios, and more. ' +
+      'Every skill uses PyTorch tensors on CUDA — no NumPy loops. Batch sizes are 1M+ scenarios. ' +
+      'Help users find the right actuarial skill and explain the GPU-first PyTorch patterns used.'
   };
 
   /* ---------- Detect page context ------------------------------------- */

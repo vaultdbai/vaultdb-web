@@ -365,57 +365,46 @@
 
     <section class="mp-hero">
         <h1>AI Marketplace</h1>
-        <p>Curated skills, MCP servers, and plugins for KRONOS Re — the AI-native reinsurance platform.</p>
+        <p>Curated plugins and actuarial skills for KRONOS Re &mdash; the AI-native reinsurance platform.</p>
         <div class="mp-stats">
             
         <div class="mp-stat">
-            <i class="fa-solid fa-wand-magic-sparkles"></i>
-            <span class="count">18</span>
-            <span class="label">Skills</span>
-        </div>
-        
-        <div class="mp-stat">
-            <i class="fa-solid fa-server"></i>
-            <span class="count">4</span>
-            <span class="label">MCP Servers</span>
-        </div>
-        
-        <div class="mp-stat">
             <i class="fa-solid fa-plug"></i>
-            <span class="count">17</span>
+            <span class="count">45</span>
             <span class="label">Plugins</span>
         </div>
-        
+        <div class="mp-stat">
+            <i class="fa-solid fa-calculator"></i>
+            <span class="count">21</span>
+            <span class="label">Actuarial Skills</span>
+        </div>
+        <div class="mp-stat">
+            <i class="fa-brands fa-python"></i>
+            <span class="count">100%</span>
+            <span class="label">GPU-First</span>
+        </div>
+    
         </div>
     </section>
 
     <section class="mp-categories">
-        <div class="row">
+        <div class="row justify-content-center">
             
-        <div class="col-lg-4 col-md-6 mb-4">
-            <a href="skills.html" class="mp-cat-card">
-                <i class="fa-solid fa-wand-magic-sparkles"></i>
-                <h3>Skills</h3>
-                <p>Reusable Claude Code instructions for actuarial workflows</p>
-                <span class="mp-cat-count">18 skills available</span>
-            </a>
-        </div>
-        
-        <div class="col-lg-4 col-md-6 mb-4">
-            <a href="mcp-servers.html" class="mp-cat-card">
-                <i class="fa-solid fa-server"></i>
-                <h3>MCP Servers</h3>
-                <p>Tools and data access via Model Context Protocol</p>
-                <span class="mp-cat-count">4 mcp servers available</span>
-            </a>
-        </div>
-        
-        <div class="col-lg-4 col-md-6 mb-4">
+        <div class="col-lg-6 col-md-6 mb-4">
             <a href="plugins.html" class="mp-cat-card">
                 <i class="fa-solid fa-plug"></i>
                 <h3>Plugins</h3>
-                <p>KRONOS chatbot integrations and workflow extensions</p>
-                <span class="mp-cat-count">17 plugins available</span>
+                <p>KRONOS Re chatbot integrations and workflow extensions</p>
+                <span class="mp-cat-count">45 plugins available</span>
+            </a>
+        </div>
+        
+        <div class="col-lg-6 col-md-6 mb-4">
+            <a href="actuarial.html" class="mp-cat-card">
+                <i class="fa-solid fa-calculator"></i>
+                <h3>Actuarial Skills</h3>
+                <p>GPU-first PyTorch actuarial modeling skills â€” mortality, reserving, capital, ALM, and more</p>
+                <span class="mp-cat-count">21 actuarial skills available</span>
             </a>
         </div>
         
@@ -432,65 +421,13 @@
         <div class="row">
             
     <div class="col-lg-4 col-md-6 mb-4 mp-item"
-         data-name="liability modeling"
-         data-desc="annuity and life insurance liability modeling — cashflow projection basics, fa/fia/myga/va products, stat/gaap reserves, dac amortization (ldti), lfpb computation, and stochastic discount rate modeling."
-         data-tags="liability,annuity,cashflow,gaap,stat,reserves,ldti">
-        <div class="mp-card">
-            <div class="mp-card-header">
-                <i class="fa-solid fa-file-contract"></i>
-                <h4>Liability Modeling</h4>
-                <span class="mp-version">v1.0.0</span>
-                <span class="mp-featured">Featured</span>
-            </div>
-            <p class="mp-card-desc">Annuity and life insurance liability modeling — cashflow projection basics, FA/FIA/MYGA/VA products, STAT/GAAP reserves, DAC amortization (LDTI), LFPB computation, and stochastic discount rate modeling.</p>
-            <div class="mp-card-tags"><span class="mp-card-tag">liability</span><span class="mp-card-tag">annuity</span><span class="mp-card-tag">cashflow</span><span class="mp-card-tag">gaap</span><span class="mp-card-tag">stat</span><span class="mp-card-tag">reserves</span><span class="mp-card-tag">ldti</span></div>
-            <div class="mp-card-meta">
-                <span><i class="fa-solid fa-user"></i>VaultDB</span>
-                <span><i class="fa-solid fa-puzzle-piece"></i>liability, assumptions, scenario, alm, valuation</span>
-            </div>
-            <div class="mp-install">
-                <code>vaultdb-skills add https://github.com/vaultdbai/skills --skill liability</code>
-                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
-                    <i class="fa-solid fa-copy"></i>
-                </button>
-            </div>
-        </div>
-    </div>
-    
-    <div class="col-lg-4 col-md-6 mb-4 mp-item"
-         data-name="risk & capital analytics"
-         data-desc="portfolio risk analytics (var/cvar, stress testing, attribution) and regulatory solvency capital computation — bma bscr c1-c8 modules, solvency dashboard, and prescribed stress scenarios."
-         data-tags="risk,bscr,solvency,capital,var,stress-testing">
-        <div class="mp-card">
-            <div class="mp-card-header">
-                <i class="fa-solid fa-shield-halved"></i>
-                <h4>Risk & Capital Analytics</h4>
-                <span class="mp-version">v1.0.0</span>
-                <span class="mp-featured">Featured</span>
-            </div>
-            <p class="mp-card-desc">Portfolio risk analytics (VaR/CVaR, stress testing, attribution) and regulatory solvency capital computation — BMA BSCR C1-C8 modules, solvency dashboard, and prescribed stress scenarios.</p>
-            <div class="mp-card-tags"><span class="mp-card-tag">risk</span><span class="mp-card-tag">bscr</span><span class="mp-card-tag">solvency</span><span class="mp-card-tag">capital</span><span class="mp-card-tag">var</span><span class="mp-card-tag">stress-testing</span></div>
-            <div class="mp-card-meta">
-                <span><i class="fa-solid fa-user"></i>VaultDB</span>
-                <span><i class="fa-solid fa-puzzle-piece"></i>risk, valuation, alm, reporting</span>
-            </div>
-            <div class="mp-install">
-                <code>vaultdb-skills add https://github.com/vaultdbai/skills --skill risk</code>
-                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
-                    <i class="fa-solid fa-copy"></i>
-                </button>
-            </div>
-        </div>
-    </div>
-    
-    <div class="col-lg-4 col-md-6 mb-4 mp-item"
-         data-name="actuarial tables"
+         data-name="actuarial-tables"
          data-desc="mortality, lapse, and surrender table lookup with interpolation for soa, cia, and bma prescribed tables."
          data-tags="actuarial,mortality,lapse,tables">
         <div class="mp-card">
             <div class="mp-card-header">
                 <i class="fa-solid fa-table"></i>
-                <h4>Actuarial Tables</h4>
+                <h4>actuarial-tables</h4>
                 <span class="mp-version">v1.0.0</span>
                 <span class="mp-featured">Featured</span>
             </div>
@@ -501,7 +438,7 @@
                 <span><i class="fa-solid fa-puzzle-piece"></i>assumptions, liability, valuation</span>
             </div>
             <div class="mp-install">
-                <code>vaultdb-skills add https://github.com/vaultdbai/skills --skill actuarial-tables</code>
+                <code>claude plugin install actuarial-tables</code>
                 <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
                     <i class="fa-solid fa-copy"></i>
                 </button>
@@ -510,425 +447,17 @@
     </div>
     
     <div class="col-lg-4 col-md-6 mb-4 mp-item"
-         data-name="valuation actuary"
-         data-desc="expert valuation actuary specializing in fia, rila, va, and fixed income annuities (myga/spda/spia/dia). deep command of us statutory (sap/rbc), us gaap (ldti/asc 944), and bermuda (bscr/ebs) regulatory frameworks, including stochastic reserve, ag49, ag43/c3p2, and cnsf requirements.
-"
-         data-tags="valuation,actuarial,FIA,RILA,variable-annuity,fixed-annuity,bermuda,BSCR,statutory,LDTI,stochastic,AG49,AG43">
-        <div class="mp-card">
-            <div class="mp-card-header">
-                <i class="fa-solid fa-calculator"></i>
-                <h4>Valuation Actuary</h4>
-                <span class="mp-version">v1.0.0</span>
-                <span class="mp-featured">Featured</span>
-            </div>
-            <p class="mp-card-desc">Expert valuation actuary specializing in FIA, RILA, VA, and fixed income annuities (MYGA/SPDA/SPIA/DIA). Deep command of US statutory (SAP/RBC), US GAAP (LDTI/ASC 944), and Bermuda (BSCR/EBS) regulatory frameworks, including stochastic reserve, AG49, AG43/C3P2, and CNSF requirements.
-</p>
-            <div class="mp-card-tags"><span class="mp-card-tag">valuation</span><span class="mp-card-tag">actuarial</span><span class="mp-card-tag">FIA</span><span class="mp-card-tag">RILA</span><span class="mp-card-tag">variable-annuity</span><span class="mp-card-tag">fixed-annuity</span><span class="mp-card-tag">bermuda</span><span class="mp-card-tag">BSCR</span><span class="mp-card-tag">statutory</span><span class="mp-card-tag">LDTI</span><span class="mp-card-tag">stochastic</span><span class="mp-card-tag">AG49</span><span class="mp-card-tag">AG43</span></div>
-            <div class="mp-card-meta">
-                <span><i class="fa-solid fa-user"></i>VaultDB</span>
-                <span><i class="fa-solid fa-puzzle-piece"></i>cashflow-modeling, actuarial-tables, regulatory-report, risk-analysis, portfolio-review</span>
-            </div>
-            <div class="mp-install">
-                <code>vaultdb-skills add https://github.com/vaultdbai/skills --skill valuation-actuary</code>
-                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
-                    <i class="fa-solid fa-copy"></i>
-                </button>
-            </div>
-        </div>
-    </div>
-    
-    <div class="col-lg-4 col-md-6 mb-4 mp-item"
-         data-name="research agent"
-         data-desc="extensible research agent for discovering and downloading insurance documents, prospectuses, sec filings, and regulatory data."
-         data-tags="research,prospectus,sec-edgar,serff,naic,insurance,regulatory,crawler,document-discovery">
-        <div class="mp-card">
-            <div class="mp-card-header">
-                <i class="fa-solid fa-magnifying-glass-chart"></i>
-                <h4>Research Agent</h4>
-                <span class="mp-version">v1.0.0</span>
-                <span class="mp-featured">Featured</span>
-            </div>
-            <p class="mp-card-desc">Extensible research agent for discovering and downloading insurance documents, prospectuses, SEC filings, and regulatory data.</p>
-            <div class="mp-card-tags"><span class="mp-card-tag">research</span><span class="mp-card-tag">prospectus</span><span class="mp-card-tag">sec-edgar</span><span class="mp-card-tag">serff</span><span class="mp-card-tag">naic</span><span class="mp-card-tag">insurance</span><span class="mp-card-tag">regulatory</span><span class="mp-card-tag">crawler</span><span class="mp-card-tag">document-discovery</span></div>
-            <div class="mp-card-meta">
-                <span><i class="fa-solid fa-user"></i>VaultDB</span>
-                <span><i class="fa-solid fa-puzzle-piece"></i>core, ingestion, assumptions, liability, valuation, scenario</span>
-            </div>
-            <div class="mp-install">
-                <code>vaultdb-skills add https://github.com/vaultdbai/skills --skill research</code>
-                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
-                    <i class="fa-solid fa-copy"></i>
-                </button>
-            </div>
-        </div>
-    </div>
-    
-    <div class="col-lg-4 col-md-6 mb-4 mp-item"
-         data-name="financial quant modeling"
-         data-desc="elite quantitative finance engineer with expertise across derivatives pricing, structured products (abs/mbs/cmbs/clo/cds), arbitrage, hedging, and regulatory capital (rwa/rac/tier 1). builds production-grade pricing engines in python and c++ using pytorch tensors for performance. implements full instrument, quote, curve, and vol-surface infrastructure with unit tests and market data loaders. deep knowledge of greeks, intex, and private equity analytics.
-"
-         data-tags="quant,derivatives,structured-products,ABS,MBS,CMBS,CLO,CDS,pricing-engine,Greeks,hedging,arbitrage,pytorch,RWA,tier1-capital,INTEX,financial-engineering,vol-surface,yield-curve">
-        <div class="mp-card">
-            <div class="mp-card-header">
-                <i class="fa-solid fa-chart-line"></i>
-                <h4>Financial Quant Modeling</h4>
-                <span class="mp-version">v1.0.0</span>
-                <span class="mp-featured">Featured</span>
-            </div>
-            <p class="mp-card-desc">Elite quantitative finance engineer with expertise across derivatives pricing, structured products (ABS/MBS/CMBS/CLO/CDS), arbitrage, hedging, and regulatory capital (RWA/RaC/Tier 1). Builds production-grade pricing engines in Python and C++ using PyTorch tensors for performance. Implements full instrument, quote, curve, and vol-surface infrastructure with unit tests and market data loaders. Deep knowledge of Greeks, INTEX, and private equity analytics.
-</p>
-            <div class="mp-card-tags"><span class="mp-card-tag">quant</span><span class="mp-card-tag">derivatives</span><span class="mp-card-tag">structured-products</span><span class="mp-card-tag">ABS</span><span class="mp-card-tag">MBS</span><span class="mp-card-tag">CMBS</span><span class="mp-card-tag">CLO</span><span class="mp-card-tag">CDS</span><span class="mp-card-tag">pricing-engine</span><span class="mp-card-tag">Greeks</span><span class="mp-card-tag">hedging</span><span class="mp-card-tag">arbitrage</span><span class="mp-card-tag">pytorch</span><span class="mp-card-tag">RWA</span><span class="mp-card-tag">tier1-capital</span><span class="mp-card-tag">INTEX</span><span class="mp-card-tag">financial-engineering</span><span class="mp-card-tag">vol-surface</span><span class="mp-card-tag">yield-curve</span></div>
-            <div class="mp-card-meta">
-                <span><i class="fa-solid fa-user"></i>VaultDB</span>
-                <span><i class="fa-solid fa-puzzle-piece"></i>valuation, risk, market, asset, alm, trading, reporting</span>
-            </div>
-            <div class="mp-install">
-                <code>vaultdb-skills add https://github.com/vaultdbai/skills --skill quant-modeling</code>
-                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
-                    <i class="fa-solid fa-copy"></i>
-                </button>
-            </div>
-        </div>
-    </div>
-    
-    <div class="col-lg-4 col-md-6 mb-4 mp-item"
-         data-name="kronos intelligence"
-         data-desc="intelligent data sampling, inforce generation, census cleaning, prospectus analysis, and workflow builder for insurance profitability modeling."
-         data-tags="intelligence,inforce,prospectus,data-sampling,census-cleaning,workflow,profitability,ollama">
-        <div class="mp-card">
-            <div class="mp-card-header">
-                <i class="fa-solid fa-brain"></i>
-                <h4>KRONOS Intelligence</h4>
-                <span class="mp-version">v1.0.0</span>
-                <span class="mp-featured">Featured</span>
-            </div>
-            <p class="mp-card-desc">Intelligent data sampling, inforce generation, census cleaning, prospectus analysis, and workflow builder for insurance profitability modeling.</p>
-            <div class="mp-card-tags"><span class="mp-card-tag">intelligence</span><span class="mp-card-tag">inforce</span><span class="mp-card-tag">prospectus</span><span class="mp-card-tag">data-sampling</span><span class="mp-card-tag">census-cleaning</span><span class="mp-card-tag">workflow</span><span class="mp-card-tag">profitability</span><span class="mp-card-tag">ollama</span></div>
-            <div class="mp-card-meta">
-                <span><i class="fa-solid fa-user"></i>VaultDB</span>
-                <span><i class="fa-solid fa-puzzle-piece"></i>all</span>
-            </div>
-            <div class="mp-install">
-                <code>vaultdb-skills add https://github.com/vaultdbai/skills --skill kronos-intelligence</code>
-                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
-                    <i class="fa-solid fa-copy"></i>
-                </button>
-            </div>
-        </div>
-    </div>
-    
-    <div class="col-lg-4 col-md-6 mb-4 mp-item"
-         data-name="duckdb analyst"
-         data-desc="high-performance data analysis and sql queries using duckdb — large datasets, parquet files, complex sql transformations, and kronos re data exploration."
-         data-tags="duckdb,sql,analytics,data,parquet">
-        <div class="mp-card">
-            <div class="mp-card-header">
-                <i class="fa-solid fa-database"></i>
-                <h4>DuckDB Analyst</h4>
-                <span class="mp-version">v1.0.0</span>
-                <span class="mp-featured">Featured</span>
-            </div>
-            <p class="mp-card-desc">High-performance data analysis and SQL queries using DuckDB — large datasets, Parquet files, complex SQL transformations, and KRONOS Re data exploration.</p>
-            <div class="mp-card-tags"><span class="mp-card-tag">duckdb</span><span class="mp-card-tag">sql</span><span class="mp-card-tag">analytics</span><span class="mp-card-tag">data</span><span class="mp-card-tag">parquet</span></div>
-            <div class="mp-card-meta">
-                <span><i class="fa-solid fa-user"></i>VaultDB</span>
-                <span><i class="fa-solid fa-puzzle-piece"></i>all</span>
-            </div>
-            <div class="mp-install">
-                <code>vaultdb-skills add https://github.com/vaultdbai/skills --skill duckdb-analyst</code>
-                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
-                    <i class="fa-solid fa-copy"></i>
-                </button>
-            </div>
-        </div>
-    </div>
-    
-    <div class="col-lg-4 col-md-6 mb-4 mp-item"
-         data-name="duckdb analytics"
-         data-desc="query actuarial and financial data stored in duckdb/ducklake with sql and natural language."
-         data-tags="analytics,sql,duckdb,data">
-        <div class="mp-card">
-            <div class="mp-card-header">
-                <i class="fa-solid fa-database"></i>
-                <h4>DuckDB Analytics</h4>
-                <span class="mp-version">v1.0.0</span>
-                <span class="mp-featured">Featured</span>
-            </div>
-            <p class="mp-card-desc">Query actuarial and financial data stored in DuckDB/DuckLake with SQL and natural language.</p>
-            <div class="mp-card-tags"><span class="mp-card-tag">analytics</span><span class="mp-card-tag">sql</span><span class="mp-card-tag">duckdb</span><span class="mp-card-tag">data</span></div>
-            <div class="mp-card-meta">
-                <span><i class="fa-solid fa-user"></i>VaultDB</span>
-                <span><i class="fa-solid fa-puzzle-piece"></i>core, assumptions, liability, valuation</span>
-            </div>
-            <div class="mp-install">
-                <code>claude mcp add duckdb-analytics -- python d:\Aayushi\aadhya\marketplace\mcp-servers\servers\duckdb-analytics\server.py</code>
-                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
-                    <i class="fa-solid fa-copy"></i>
-                </button>
-            </div>
-        </div>
-    </div>
-    
-    <div class="col-lg-4 col-md-6 mb-4 mp-item"
-         data-name="scenario engine"
-         data-desc="generate economic scenarios — risk-neutral and real-world paths for interest rates, equity, and credit."
-         data-tags="scenario,esg,simulation,monte-carlo">
-        <div class="mp-card">
-            <div class="mp-card-header">
-                <i class="fa-solid fa-shuffle"></i>
-                <h4>Scenario Engine</h4>
-                <span class="mp-version">v1.0.0</span>
-                <span class="mp-featured">Featured</span>
-            </div>
-            <p class="mp-card-desc">Generate economic scenarios — risk-neutral and real-world paths for interest rates, equity, and credit.</p>
-            <div class="mp-card-tags"><span class="mp-card-tag">scenario</span><span class="mp-card-tag">esg</span><span class="mp-card-tag">simulation</span><span class="mp-card-tag">monte-carlo</span></div>
-            <div class="mp-card-meta">
-                <span><i class="fa-solid fa-user"></i>VaultDB</span>
-                <span><i class="fa-solid fa-puzzle-piece"></i>scenario, valuation, risk, alm</span>
-            </div>
-            <div class="mp-install">
-                <code>claude mcp add scenario-engine -- python d:\Aayushi\aadhya\marketplace\mcp-servers\servers\scenario-engine\server.py</code>
-                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
-                    <i class="fa-solid fa-copy"></i>
-                </button>
-            </div>
-        </div>
-    </div>
-    
-    <div class="col-lg-4 col-md-6 mb-4 mp-item"
-         data-name="kronos intelligence"
-         data-desc="ollama-powered data sampling, intelligent inforce generation, census cleaning, prospectus analysis, and workflow suggestion engine."
-         data-tags="intelligence,inforce,prospectus,data-sampling,census-cleaning,workflow,ollama,profitability">
-        <div class="mp-card">
-            <div class="mp-card-header">
-                <i class="fa-solid fa-brain"></i>
-                <h4>KRONOS Intelligence</h4>
-                <span class="mp-version">v1.0.0</span>
-                <span class="mp-featured">Featured</span>
-            </div>
-            <p class="mp-card-desc">Ollama-powered data sampling, intelligent inforce generation, census cleaning, prospectus analysis, and workflow suggestion engine.</p>
-            <div class="mp-card-tags"><span class="mp-card-tag">intelligence</span><span class="mp-card-tag">inforce</span><span class="mp-card-tag">prospectus</span><span class="mp-card-tag">data-sampling</span><span class="mp-card-tag">census-cleaning</span><span class="mp-card-tag">workflow</span><span class="mp-card-tag">ollama</span><span class="mp-card-tag">profitability</span></div>
-            <div class="mp-card-meta">
-                <span><i class="fa-solid fa-user"></i>VaultDB</span>
-                <span><i class="fa-solid fa-puzzle-piece"></i>all</span>
-            </div>
-            <div class="mp-install">
-                <code>claude mcp add kronos-intelligence -- python d:\Aayushi\aadhya\marketplace\mcp-servers\servers\kronos-intelligence\server.py</code>
-                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
-                    <i class="fa-solid fa-copy"></i>
-                </button>
-            </div>
-        </div>
-    </div>
-    
-    <div class="col-lg-4 col-md-6 mb-4 mp-item"
-         data-name="workflow builder"
-         data-desc="visual dag workflow builder for multi-step actuarial pipelines with approval gates."
-         data-tags="workflow,automation,pipeline,dag">
-        <div class="mp-card">
-            <div class="mp-card-header">
-                <i class="fa-solid fa-diagram-project"></i>
-                <h4>Workflow Builder</h4>
-                <span class="mp-version">v1.0.0</span>
-                <span class="mp-featured">Featured</span>
-            </div>
-            <p class="mp-card-desc">Visual DAG workflow builder for multi-step actuarial pipelines with approval gates.</p>
-            <div class="mp-card-tags"><span class="mp-card-tag">workflow</span><span class="mp-card-tag">automation</span><span class="mp-card-tag">pipeline</span><span class="mp-card-tag">dag</span></div>
-            <div class="mp-card-meta">
-                <span><i class="fa-solid fa-user"></i>VaultDB</span>
-                <span><i class="fa-solid fa-puzzle-piece"></i>core, dashboard, valuation</span>
-            </div>
-            <div class="mp-install">
-                <code>claude plugin install kronos-workflow</code>
-                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
-                    <i class="fa-solid fa-copy"></i>
-                </button>
-            </div>
-        </div>
-    </div>
-    
-    <div class="col-lg-4 col-md-6 mb-4 mp-item"
-         data-name="core framework"
-         data-desc="core vaultdb framework — data modeling, orm, crud, transactions, compute, scheduling, caching, authentication, web api, logging, configuration, and infrastructure patterns. provides the foundational skills for building any vaultdb application.
-"
-         data-tags="core,orm,data-modeling,compute,authentication,infrastructure">
-        <div class="mp-card">
-            <div class="mp-card-header">
-                <i class="fa-solid fa-database"></i>
-                <h4>Core Framework</h4>
-                <span class="mp-version">v1.0.0</span>
-                <span class="mp-featured">Featured</span>
-            </div>
-            <p class="mp-card-desc">Core VaultDB framework — data modeling, ORM, CRUD, transactions, compute, scheduling, caching, authentication, web API, logging, configuration, and infrastructure patterns. Provides the foundational skills for building any VaultDB application.
-</p>
-            <div class="mp-card-tags"><span class="mp-card-tag">core</span><span class="mp-card-tag">orm</span><span class="mp-card-tag">data-modeling</span><span class="mp-card-tag">compute</span><span class="mp-card-tag">authentication</span><span class="mp-card-tag">infrastructure</span></div>
-            <div class="mp-card-meta">
-                <span><i class="fa-solid fa-user"></i>VaultDB</span>
-                <span><i class="fa-solid fa-puzzle-piece"></i>all</span>
-            </div>
-            <div class="mp-install">
-                <code>claude plugin install core</code>
-                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
-                    <i class="fa-solid fa-copy"></i>
-                </button>
-            </div>
-        </div>
-    </div>
-    
-    <div class="col-lg-4 col-md-6 mb-4 mp-item"
-         data-name="market data"
-         data-desc="market data, instruments, yield curves, volatility surfaces, quantlib integration, and yfinance loaders. the foundational market data layer for all pricing engines.
-"
-         data-tags="market,curves,instruments,quantlib,volatility,yfinance">
-        <div class="mp-card">
-            <div class="mp-card-header">
-                <i class="fa-solid fa-chart-candlestick"></i>
-                <h4>Market Data</h4>
-                <span class="mp-version">v1.0.0</span>
-                <span class="mp-featured">Featured</span>
-            </div>
-            <p class="mp-card-desc">Market data, instruments, yield curves, volatility surfaces, QuantLib integration, and YFinance loaders. The foundational market data layer for all pricing engines.
-</p>
-            <div class="mp-card-tags"><span class="mp-card-tag">market</span><span class="mp-card-tag">curves</span><span class="mp-card-tag">instruments</span><span class="mp-card-tag">quantlib</span><span class="mp-card-tag">volatility</span><span class="mp-card-tag">yfinance</span></div>
-            <div class="mp-card-meta">
-                <span><i class="fa-solid fa-user"></i>VaultDB</span>
-                <span><i class="fa-solid fa-puzzle-piece"></i>asset, alm, valuation</span>
-            </div>
-            <div class="mp-install">
-                <code>claude plugin install market</code>
-                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
-                    <i class="fa-solid fa-copy"></i>
-                </button>
-            </div>
-        </div>
-    </div>
-    
-    <div class="col-lg-4 col-md-6 mb-4 mp-item"
-         data-name="asset pricing"
-         data-desc="asset pricing engines for all instrument types — bonds, swaps, options, caps/floors, swaptions, cds, fx forwards, equity structures, exotic options, and trs. marketenvironment bridges quantlib curves and pytorch tensors.
-"
-         data-tags="pricing,bonds,swaps,options,cds,quantlib,pytorch">
-        <div class="mp-card">
-            <div class="mp-card-header">
-                <i class="fa-solid fa-coins"></i>
-                <h4>Asset Pricing</h4>
-                <span class="mp-version">v1.0.0</span>
-                <span class="mp-featured">Featured</span>
-            </div>
-            <p class="mp-card-desc">Asset pricing engines for all instrument types — bonds, swaps, options, caps/floors, swaptions, CDS, FX forwards, equity structures, exotic options, and TRS. MarketEnvironment bridges QuantLib curves and PyTorch tensors.
-</p>
-            <div class="mp-card-tags"><span class="mp-card-tag">pricing</span><span class="mp-card-tag">bonds</span><span class="mp-card-tag">swaps</span><span class="mp-card-tag">options</span><span class="mp-card-tag">cds</span><span class="mp-card-tag">quantlib</span><span class="mp-card-tag">pytorch</span></div>
-            <div class="mp-card-meta">
-                <span><i class="fa-solid fa-user"></i>VaultDB</span>
-                <span><i class="fa-solid fa-puzzle-piece"></i>market, alm, valuation</span>
-            </div>
-            <div class="mp-install">
-                <code>claude plugin install asset</code>
-                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
-                    <i class="fa-solid fa-copy"></i>
-                </button>
-            </div>
-        </div>
-    </div>
-    
-    <div class="col-lg-4 col-md-6 mb-4 mp-item"
-         data-name="liability modeling"
-         data-desc="annuity and life insurance liability modeling — policy records, cohort projection, stat/gaap reserve engines, dac amortization (ldti), and lfpb computation. supports fa, fia, myga, va, spia, and traditional life products.
-"
-         data-tags="liability,annuity,reserves,GAAP,statutory,LDTI,FIA,MYGA">
-        <div class="mp-card">
-            <div class="mp-card-header">
-                <i class="fa-solid fa-shield-halved"></i>
-                <h4>Liability Modeling</h4>
-                <span class="mp-version">v1.0.0</span>
-                <span class="mp-featured">Featured</span>
-            </div>
-            <p class="mp-card-desc">Annuity and life insurance liability modeling — policy records, cohort projection, STAT/GAAP reserve engines, DAC amortization (LDTI), and LFPB computation. Supports FA, FIA, MYGA, VA, SPIA, and traditional life products.
-</p>
-            <div class="mp-card-tags"><span class="mp-card-tag">liability</span><span class="mp-card-tag">annuity</span><span class="mp-card-tag">reserves</span><span class="mp-card-tag">GAAP</span><span class="mp-card-tag">statutory</span><span class="mp-card-tag">LDTI</span><span class="mp-card-tag">FIA</span><span class="mp-card-tag">MYGA</span></div>
-            <div class="mp-card-meta">
-                <span><i class="fa-solid fa-user"></i>VaultDB</span>
-                <span><i class="fa-solid fa-puzzle-piece"></i>assumptions, scenario, alm, valuation</span>
-            </div>
-            <div class="mp-install">
-                <code>claude plugin install liability</code>
-                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
-                    <i class="fa-solid fa-copy"></i>
-                </button>
-            </div>
-        </div>
-    </div>
-    
-    <div class="col-lg-4 col-md-6 mb-4 mp-item"
-         data-name="actuarial assumptions"
-         data-desc="versioned actuarial assumption library — mortality tables (soa vbt 2015, cso 2017), lapse rate tables with dynamic adjustment, surrender charge schedules, expense assumptions, crediting rate assumptions, behavioral assumptions, and named assumptionset bundles.
-"
-         data-tags="actuarial,mortality,lapse,assumptions,VBT2015,CSO2017">
-        <div class="mp-card">
-            <div class="mp-card-header">
-                <i class="fa-solid fa-table-list"></i>
-                <h4>Actuarial Assumptions</h4>
-                <span class="mp-version">v1.0.0</span>
-                <span class="mp-featured">Featured</span>
-            </div>
-            <p class="mp-card-desc">Versioned actuarial assumption library — mortality tables (SOA VBT 2015, CSO 2017), lapse rate tables with dynamic adjustment, surrender charge schedules, expense assumptions, crediting rate assumptions, behavioral assumptions, and named AssumptionSet bundles.
-</p>
-            <div class="mp-card-tags"><span class="mp-card-tag">actuarial</span><span class="mp-card-tag">mortality</span><span class="mp-card-tag">lapse</span><span class="mp-card-tag">assumptions</span><span class="mp-card-tag">VBT2015</span><span class="mp-card-tag">CSO2017</span></div>
-            <div class="mp-card-meta">
-                <span><i class="fa-solid fa-user"></i>VaultDB</span>
-                <span><i class="fa-solid fa-puzzle-piece"></i>liability, alm, valuation</span>
-            </div>
-            <div class="mp-install">
-                <code>claude plugin install assumptions</code>
-                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
-                    <i class="fa-solid fa-copy"></i>
-                </button>
-            </div>
-        </div>
-    </div>
-    
-    <div class="col-lg-4 col-md-6 mb-4 mp-item"
-         data-name="scenario generation"
-         data-desc="interest rate and economic scenario generation — naic ny7 deterministic scenarios for c3 phase i / vm-21, hull-white stochastic esg paths, equity index paths, and credit spread scenarios for bscr capital calculation.
-"
-         data-tags="scenarios,NY7,ESG,interest-rates,stochastic,C3,VM-21">
-        <div class="mp-card">
-            <div class="mp-card-header">
-                <i class="fa-solid fa-wave-sine"></i>
-                <h4>Scenario Generation</h4>
-                <span class="mp-version">v1.0.0</span>
-                <span class="mp-featured">Featured</span>
-            </div>
-            <p class="mp-card-desc">Interest rate and economic scenario generation — NAIC NY7 deterministic scenarios for C3 Phase I / VM-21, Hull-White stochastic ESG paths, equity index paths, and credit spread scenarios for BSCR capital calculation.
-</p>
-            <div class="mp-card-tags"><span class="mp-card-tag">scenarios</span><span class="mp-card-tag">NY7</span><span class="mp-card-tag">ESG</span><span class="mp-card-tag">interest-rates</span><span class="mp-card-tag">stochastic</span><span class="mp-card-tag">C3</span><span class="mp-card-tag">VM-21</span></div>
-            <div class="mp-card-meta">
-                <span><i class="fa-solid fa-user"></i>VaultDB</span>
-                <span><i class="fa-solid fa-puzzle-piece"></i>liability, alm, risk</span>
-            </div>
-            <div class="mp-install">
-                <code>claude plugin install scenario</code>
-                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
-                    <i class="fa-solid fa-copy"></i>
-                </button>
-            </div>
-        </div>
-    </div>
-    
-    <div class="col-lg-4 col-md-6 mb-4 mp-item"
-         data-name="asset-liability management"
-         data-desc="asset-liability management analysis engine — duration gap, dv01 gap, key-rate exposure, cashflow matching, spread analysis by asset class, rebalancing alerts, and alm policy enforcement. runs across all ny7 scenarios for c3 compliance.
-"
+         data-name="alm"
+         data-desc="asset-liability management analysis engine â€” duration gap, dv01 gap, key-rate exposure, cashflow matching, spread analysis by asset class, rebalancing alerts, and alm policy enforcement. runs across all ny7 scenarios for c3 compliance."
          data-tags="alm,duration,hedging,DV01,spread,C3,cashflow-matching">
         <div class="mp-card">
             <div class="mp-card-header">
                 <i class="fa-solid fa-scale-balanced"></i>
-                <h4>Asset-Liability Management</h4>
+                <h4>alm</h4>
                 <span class="mp-version">v1.0.0</span>
                 <span class="mp-featured">Featured</span>
             </div>
-            <p class="mp-card-desc">Asset-liability management analysis engine — duration gap, DV01 gap, key-rate exposure, cashflow matching, spread analysis by asset class, rebalancing alerts, and ALM policy enforcement. Runs across all NY7 scenarios for C3 compliance.
-</p>
+            <p class="mp-card-desc">Asset-liability management analysis engine â€” duration gap, DV01 gap, key-rate exposure, cashflow matching, spread analysis by asset class, rebalancing alerts, and ALM policy enforcement. Runs across all NY7 scenarios for C3 compliance.</p>
             <div class="mp-card-tags"><span class="mp-card-tag">alm</span><span class="mp-card-tag">duration</span><span class="mp-card-tag">hedging</span><span class="mp-card-tag">DV01</span><span class="mp-card-tag">spread</span><span class="mp-card-tag">C3</span><span class="mp-card-tag">cashflow-matching</span></div>
             <div class="mp-card-meta">
                 <span><i class="fa-solid fa-user"></i>VaultDB</span>
@@ -944,26 +473,24 @@
     </div>
     
     <div class="col-lg-4 col-md-6 mb-4 mp-item"
-         data-name="risk & solvency"
-         data-desc="capital computation and solvency analytics — bma bscr (c1-c8 risk modules), var/cvar via historical simulation or monte carlo, stress testing, and real-time solvency dashboard (green/amber/red traffic lights).
-"
-         data-tags="risk,BSCR,capital,VaR,stress-test,solvency,BMA,ECR">
+         data-name="asset"
+         data-desc="asset pricing engines for all instrument types â€” bonds, swaps, options, caps/floors, swaptions, cds, fx forwards, equity structures, exotic options, and trs. marketenvironment bridges quantlib curves and pytorch tensors."
+         data-tags="pricing,bonds,swaps,options,cds,quantlib,pytorch">
         <div class="mp-card">
             <div class="mp-card-header">
-                <i class="fa-solid fa-circle-exclamation"></i>
-                <h4>Risk & Solvency</h4>
+                <i class="fa-solid fa-coins"></i>
+                <h4>asset</h4>
                 <span class="mp-version">v1.0.0</span>
                 <span class="mp-featured">Featured</span>
             </div>
-            <p class="mp-card-desc">Capital computation and solvency analytics — BMA BSCR (C1-C8 risk modules), VaR/CVaR via historical simulation or Monte Carlo, stress testing, and real-time solvency dashboard (GREEN/AMBER/RED traffic lights).
-</p>
-            <div class="mp-card-tags"><span class="mp-card-tag">risk</span><span class="mp-card-tag">BSCR</span><span class="mp-card-tag">capital</span><span class="mp-card-tag">VaR</span><span class="mp-card-tag">stress-test</span><span class="mp-card-tag">solvency</span><span class="mp-card-tag">BMA</span><span class="mp-card-tag">ECR</span></div>
+            <p class="mp-card-desc">Asset pricing engines for all instrument types â€” bonds, swaps, options, caps/floors, swaptions, CDS, FX forwards, equity structures, exotic options, and TRS. MarketEnvironment bridges QuantLib curves and PyTorch tensors.</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">pricing</span><span class="mp-card-tag">bonds</span><span class="mp-card-tag">swaps</span><span class="mp-card-tag">options</span><span class="mp-card-tag">cds</span><span class="mp-card-tag">quantlib</span><span class="mp-card-tag">pytorch</span></div>
             <div class="mp-card-meta">
                 <span><i class="fa-solid fa-user"></i>VaultDB</span>
-                <span><i class="fa-solid fa-puzzle-piece"></i>valuation, alm, reporting</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>market, alm, valuation</span>
             </div>
             <div class="mp-install">
-                <code>claude plugin install risk</code>
+                <code>claude plugin install asset</code>
                 <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
                     <i class="fa-solid fa-copy"></i>
                 </button>
@@ -972,26 +499,24 @@
     </div>
     
     <div class="col-lg-4 col-md-6 mb-4 mp-item"
-         data-name="valuation engine"
-         data-desc="full valuation orchestration — coordinates liability projection, stat/gaap reserve calculation, alm snapshot, embedded value, and vif computation in a single call. produces the economic balance sheet summary (valuationrun) and source-of-change attribution waterfall between periods.
-"
-         data-tags="valuation,reserves,embedded-value,attribution,economic-balance-sheet">
+         data-name="assumptions"
+         data-desc="versioned actuarial assumption library â€” mortality tables (soa vbt 2015, cso 2017), lapse rate tables with dynamic adjustment, surrender charge schedules, expense assumptions, crediting rate assumptions, behavioral assumptions, and named assumptionset bundles."
+         data-tags="actuarial,mortality,lapse,assumptions,VBT2015,CSO2017">
         <div class="mp-card">
             <div class="mp-card-header">
-                <i class="fa-solid fa-calculator"></i>
-                <h4>Valuation Engine</h4>
+                <i class="fa-solid fa-table-list"></i>
+                <h4>assumptions</h4>
                 <span class="mp-version">v1.0.0</span>
                 <span class="mp-featured">Featured</span>
             </div>
-            <p class="mp-card-desc">Full valuation orchestration — coordinates liability projection, STAT/GAAP reserve calculation, ALM snapshot, embedded value, and VIF computation in a single call. Produces the economic balance sheet summary (ValuationRun) and source-of-change attribution waterfall between periods.
-</p>
-            <div class="mp-card-tags"><span class="mp-card-tag">valuation</span><span class="mp-card-tag">reserves</span><span class="mp-card-tag">embedded-value</span><span class="mp-card-tag">attribution</span><span class="mp-card-tag">economic-balance-sheet</span></div>
+            <p class="mp-card-desc">Versioned actuarial assumption library â€” mortality tables (SOA VBT 2015, CSO 2017), lapse rate tables with dynamic adjustment, surrender charge schedules, expense assumptions, crediting rate assumptions, behavioral assumptions, and named AssumptionSet bundles.</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">actuarial</span><span class="mp-card-tag">mortality</span><span class="mp-card-tag">lapse</span><span class="mp-card-tag">assumptions</span><span class="mp-card-tag">VBT2015</span><span class="mp-card-tag">CSO2017</span></div>
             <div class="mp-card-meta">
                 <span><i class="fa-solid fa-user"></i>VaultDB</span>
-                <span><i class="fa-solid fa-puzzle-piece"></i>liability, alm, risk, reporting</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>liability, alm, valuation</span>
             </div>
             <div class="mp-install">
-                <code>claude plugin install valuation</code>
+                <code>claude plugin install assumptions</code>
                 <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
                     <i class="fa-solid fa-copy"></i>
                 </button>
@@ -1000,26 +525,24 @@
     </div>
     
     <div class="col-lg-4 col-md-6 mb-4 mp-item"
-         data-name="regulatory reporting"
-         data-desc="regulatory report generation — gaap (ldti/asc 944 lfpb, dac, mrb), statutory (sap reserve, rbc ratio, avr/imr), bermuda bscr capital reports, actuarial draft memorandum generation, and immutable audit trail logging.
-"
-         data-tags="reporting,GAAP,statutory,BSCR,actuarial-memo,audit,LDTI,RBC">
+         data-name="core"
+         data-desc="core vaultdb framework â€” data modeling, orm, crud, transactions, compute, scheduling, caching, authentication, web api, logging, configuration, and infrastructure patterns. provides the foundational skills for building any vaultdb application."
+         data-tags="core,orm,data-modeling,compute,authentication,infrastructure">
         <div class="mp-card">
             <div class="mp-card-header">
-                <i class="fa-solid fa-file-contract"></i>
-                <h4>Regulatory Reporting</h4>
+                <i class="fa-solid fa-database"></i>
+                <h4>core</h4>
                 <span class="mp-version">v1.0.0</span>
                 <span class="mp-featured">Featured</span>
             </div>
-            <p class="mp-card-desc">Regulatory report generation — GAAP (LDTI/ASC 944 LFPB, DAC, MRB), Statutory (SAP reserve, RBC ratio, AVR/IMR), Bermuda BSCR capital reports, actuarial draft memorandum generation, and immutable audit trail logging.
-</p>
-            <div class="mp-card-tags"><span class="mp-card-tag">reporting</span><span class="mp-card-tag">GAAP</span><span class="mp-card-tag">statutory</span><span class="mp-card-tag">BSCR</span><span class="mp-card-tag">actuarial-memo</span><span class="mp-card-tag">audit</span><span class="mp-card-tag">LDTI</span><span class="mp-card-tag">RBC</span></div>
+            <p class="mp-card-desc">Core VaultDB framework â€” data modeling, ORM, CRUD, transactions, compute, scheduling, caching, authentication, web API, logging, configuration, and infrastructure patterns. Provides the foundational skills for building any VaultDB application.</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">core</span><span class="mp-card-tag">orm</span><span class="mp-card-tag">data-modeling</span><span class="mp-card-tag">compute</span><span class="mp-card-tag">authentication</span><span class="mp-card-tag">infrastructure</span></div>
             <div class="mp-card-meta">
                 <span><i class="fa-solid fa-user"></i>VaultDB</span>
-                <span><i class="fa-solid fa-puzzle-piece"></i>valuation, risk, liability</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>all</span>
             </div>
             <div class="mp-install">
-                <code>claude plugin install reporting</code>
+                <code>claude plugin install core</code>
                 <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
                     <i class="fa-solid fa-copy"></i>
                 </button>
@@ -1028,13 +551,39 @@
     </div>
     
     <div class="col-lg-4 col-md-6 mb-4 mp-item"
-         data-name="kronos intelligence"
+         data-name="duckdb-analyst"
+         data-desc="high-performance data analysis and sql queries using duckdb â€” large datasets, parquet files, complex sql transformations, and kronos re data exploration."
+         data-tags="duckdb,sql,analytics,data,parquet">
+        <div class="mp-card">
+            <div class="mp-card-header">
+                <i class="fa-solid fa-database"></i>
+                <h4>duckdb-analyst</h4>
+                <span class="mp-version">v1.0.0</span>
+                <span class="mp-featured">Featured</span>
+            </div>
+            <p class="mp-card-desc">High-performance data analysis and SQL queries using DuckDB â€” large datasets, Parquet files, complex SQL transformations, and KRONOS Re data exploration.</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">duckdb</span><span class="mp-card-tag">sql</span><span class="mp-card-tag">analytics</span><span class="mp-card-tag">data</span><span class="mp-card-tag">parquet</span></div>
+            <div class="mp-card-meta">
+                <span><i class="fa-solid fa-user"></i>VaultDB</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>all</span>
+            </div>
+            <div class="mp-install">
+                <code>claude plugin install duckdb-analyst</code>
+                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-4 mp-item"
+         data-name="kronos-intelligence"
          data-desc="intelligent data sampling, inforce generation, census cleaning, prospectus analysis, and dynamic workflow builder for insurance profitability modeling."
          data-tags="intelligence,inforce,prospectus,data-sampling,census-cleaning,workflow,profitability,ollama">
         <div class="mp-card">
             <div class="mp-card-header">
                 <i class="fa-solid fa-brain"></i>
-                <h4>KRONOS Intelligence</h4>
+                <h4>kronos-intelligence</h4>
                 <span class="mp-version">v1.0.0</span>
                 <span class="mp-featured">Featured</span>
             </div>
@@ -1054,13 +603,143 @@
     </div>
     
     <div class="col-lg-4 col-md-6 mb-4 mp-item"
-         data-name="research agent"
+         data-name="kronos-workflow"
+         data-desc="visual dag workflow builder for multi-step actuarial pipelines with approval gates."
+         data-tags="workflow,automation,pipeline,dag">
+        <div class="mp-card">
+            <div class="mp-card-header">
+                <i class="fa-solid fa-diagram-project"></i>
+                <h4>kronos-workflow</h4>
+                <span class="mp-version">v1.0.0</span>
+                <span class="mp-featured">Featured</span>
+            </div>
+            <p class="mp-card-desc">Visual DAG workflow builder for multi-step actuarial pipelines with approval gates.</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">workflow</span><span class="mp-card-tag">automation</span><span class="mp-card-tag">pipeline</span><span class="mp-card-tag">dag</span></div>
+            <div class="mp-card-meta">
+                <span><i class="fa-solid fa-user"></i>VaultDB</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>core, dashboard, valuation</span>
+            </div>
+            <div class="mp-install">
+                <code>claude plugin install kronos-workflow</code>
+                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-4 mp-item"
+         data-name="liability"
+         data-desc="annuity and life insurance liability modeling â€” policy records, cohort projection, stat/gaap reserve engines, dac amortization (ldti), and lfpb computation. supports fa, fia, myga, va, spia, and traditional life products."
+         data-tags="liability,annuity,reserves,GAAP,statutory,LDTI,FIA,MYGA">
+        <div class="mp-card">
+            <div class="mp-card-header">
+                <i class="fa-solid fa-shield-halved"></i>
+                <h4>liability</h4>
+                <span class="mp-version">v1.0.0</span>
+                <span class="mp-featured">Featured</span>
+            </div>
+            <p class="mp-card-desc">Annuity and life insurance liability modeling â€” policy records, cohort projection, STAT/GAAP reserve engines, DAC amortization (LDTI), and LFPB computation. Supports FA, FIA, MYGA, VA, SPIA, and traditional life products.</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">liability</span><span class="mp-card-tag">annuity</span><span class="mp-card-tag">reserves</span><span class="mp-card-tag">GAAP</span><span class="mp-card-tag">statutory</span><span class="mp-card-tag">LDTI</span><span class="mp-card-tag">FIA</span><span class="mp-card-tag">MYGA</span></div>
+            <div class="mp-card-meta">
+                <span><i class="fa-solid fa-user"></i>VaultDB</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>assumptions, scenario, alm, valuation</span>
+            </div>
+            <div class="mp-install">
+                <code>claude plugin install liability</code>
+                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-4 mp-item"
+         data-name="market"
+         data-desc="market data, instruments, yield curves, volatility surfaces, quantlib integration, and yfinance loaders. the foundational market data layer for all pricing engines."
+         data-tags="market,curves,instruments,quantlib,volatility,yfinance">
+        <div class="mp-card">
+            <div class="mp-card-header">
+                <i class="fa-solid fa-chart-candlestick"></i>
+                <h4>market</h4>
+                <span class="mp-version">v1.0.0</span>
+                <span class="mp-featured">Featured</span>
+            </div>
+            <p class="mp-card-desc">Market data, instruments, yield curves, volatility surfaces, QuantLib integration, and YFinance loaders. The foundational market data layer for all pricing engines.</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">market</span><span class="mp-card-tag">curves</span><span class="mp-card-tag">instruments</span><span class="mp-card-tag">quantlib</span><span class="mp-card-tag">volatility</span><span class="mp-card-tag">yfinance</span></div>
+            <div class="mp-card-meta">
+                <span><i class="fa-solid fa-user"></i>VaultDB</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>asset, alm, valuation</span>
+            </div>
+            <div class="mp-install">
+                <code>claude plugin install market</code>
+                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-4 mp-item"
+         data-name="quant-modeling"
+         data-desc="elite quantitative finance engineer with expertise across derivatives pricing, structured products (abs/mbs/cmbs/clo/cds), arbitrage, hedging, and regulatory capital (rwa/rac/tier 1). builds production-grade pricing engines in python and c++ using pytorch tensors for performance. implements full instrument, quote, curve, and vol-surface infrastructure with unit tests and market data loaders. deep knowledge of greeks, intex, and private equity analytics."
+         data-tags="quant,derivatives,structured-products,ABS,MBS,CMBS,CLO,CDS,pricing-engine,Greeks,hedging,arbitrage,pytorch,RWA,tier1-capital,INTEX,financial-engineering,vol-surface,yield-curve">
+        <div class="mp-card">
+            <div class="mp-card-header">
+                <i class="fa-solid fa-chart-line"></i>
+                <h4>quant-modeling</h4>
+                <span class="mp-version">v1.0.0</span>
+                <span class="mp-featured">Featured</span>
+            </div>
+            <p class="mp-card-desc">Elite quantitative finance engineer with expertise across derivatives pricing, structured products (ABS/MBS/CMBS/CLO/CDS), arbitrage, hedging, and regulatory capital (RWA/RaC/Tier 1). Builds production-grade pricing engines in Python and C++ using PyTorch tensors for performance. Implements full instrument, quote, curve, and vol-surface infrastructure with unit tests and market data loaders. Deep knowledge of Greeks, INTEX, and private equity analytics.</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">quant</span><span class="mp-card-tag">derivatives</span><span class="mp-card-tag">structured-products</span><span class="mp-card-tag">ABS</span><span class="mp-card-tag">MBS</span><span class="mp-card-tag">CMBS</span><span class="mp-card-tag">CLO</span><span class="mp-card-tag">CDS</span><span class="mp-card-tag">pricing-engine</span><span class="mp-card-tag">Greeks</span><span class="mp-card-tag">hedging</span><span class="mp-card-tag">arbitrage</span><span class="mp-card-tag">pytorch</span><span class="mp-card-tag">RWA</span><span class="mp-card-tag">tier1-capital</span><span class="mp-card-tag">INTEX</span><span class="mp-card-tag">financial-engineering</span><span class="mp-card-tag">vol-surface</span><span class="mp-card-tag">yield-curve</span></div>
+            <div class="mp-card-meta">
+                <span><i class="fa-solid fa-user"></i>VaultDB</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>valuation, risk, market, asset, alm, trading, reporting</span>
+            </div>
+            <div class="mp-install">
+                <code>claude plugin install quant-modeling</code>
+                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-4 mp-item"
+         data-name="reporting"
+         data-desc="regulatory report generation â€” gaap (ldti/asc 944 lfpb, dac, mrb), statutory (sap reserve, rbc ratio, avr/imr), bermuda bscr capital reports, actuarial draft memorandum generation, and immutable audit trail logging."
+         data-tags="reporting,GAAP,statutory,BSCR,actuarial-memo,audit,LDTI,RBC">
+        <div class="mp-card">
+            <div class="mp-card-header">
+                <i class="fa-solid fa-file-contract"></i>
+                <h4>reporting</h4>
+                <span class="mp-version">v1.0.0</span>
+                <span class="mp-featured">Featured</span>
+            </div>
+            <p class="mp-card-desc">Regulatory report generation â€” GAAP (LDTI/ASC 944 LFPB, DAC, MRB), Statutory (SAP reserve, RBC ratio, AVR/IMR), Bermuda BSCR capital reports, actuarial draft memorandum generation, and immutable audit trail logging.</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">reporting</span><span class="mp-card-tag">GAAP</span><span class="mp-card-tag">statutory</span><span class="mp-card-tag">BSCR</span><span class="mp-card-tag">actuarial-memo</span><span class="mp-card-tag">audit</span><span class="mp-card-tag">LDTI</span><span class="mp-card-tag">RBC</span></div>
+            <div class="mp-card-meta">
+                <span><i class="fa-solid fa-user"></i>VaultDB</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>valuation, risk, liability</span>
+            </div>
+            <div class="mp-install">
+                <code>claude plugin install reporting</code>
+                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-4 mp-item"
+         data-name="research"
          data-desc="extensible research agent for discovering and downloading insurance documents, prospectuses, sec filings, and regulatory data."
          data-tags="research,prospectus,sec-edgar,serff,naic,insurance,crawler,regulatory,ollama">
         <div class="mp-card">
             <div class="mp-card-header">
                 <i class="fa-solid fa-magnifying-glass-chart"></i>
-                <h4>Research Agent</h4>
+                <h4>research</h4>
                 <span class="mp-version">v1.0.0</span>
                 <span class="mp-featured">Featured</span>
             </div>
@@ -1072,6 +751,334 @@
             </div>
             <div class="mp-install">
                 <code>claude plugin install research</code>
+                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-4 mp-item"
+         data-name="risk"
+         data-desc="capital computation and solvency analytics â€” bma bscr (c1-c8 risk modules), var/cvar via historical simulation or monte carlo, stress testing, and real-time solvency dashboard (green/amber/red traffic lights)."
+         data-tags="risk,BSCR,capital,VaR,stress-test,solvency,BMA,ECR">
+        <div class="mp-card">
+            <div class="mp-card-header">
+                <i class="fa-solid fa-circle-exclamation"></i>
+                <h4>risk</h4>
+                <span class="mp-version">v1.0.0</span>
+                <span class="mp-featured">Featured</span>
+            </div>
+            <p class="mp-card-desc">Capital computation and solvency analytics â€” BMA BSCR (C1-C8 risk modules), VaR/CVaR via historical simulation or Monte Carlo, stress testing, and real-time solvency dashboard (GREEN/AMBER/RED traffic lights).</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">risk</span><span class="mp-card-tag">BSCR</span><span class="mp-card-tag">capital</span><span class="mp-card-tag">VaR</span><span class="mp-card-tag">stress-test</span><span class="mp-card-tag">solvency</span><span class="mp-card-tag">BMA</span><span class="mp-card-tag">ECR</span></div>
+            <div class="mp-card-meta">
+                <span><i class="fa-solid fa-user"></i>VaultDB</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>valuation, alm, reporting</span>
+            </div>
+            <div class="mp-install">
+                <code>claude plugin install risk</code>
+                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-4 mp-item"
+         data-name="scenario"
+         data-desc="interest rate and economic scenario generation â€” naic ny7 deterministic scenarios for c3 phase i / vm-21, hull-white stochastic esg paths, equity index paths, and credit spread scenarios for bscr capital calculation."
+         data-tags="scenarios,NY7,ESG,interest-rates,stochastic,C3,VM-21">
+        <div class="mp-card">
+            <div class="mp-card-header">
+                <i class="fa-solid fa-wave-sine"></i>
+                <h4>scenario</h4>
+                <span class="mp-version">v1.0.0</span>
+                <span class="mp-featured">Featured</span>
+            </div>
+            <p class="mp-card-desc">Interest rate and economic scenario generation â€” NAIC NY7 deterministic scenarios for C3 Phase I / VM-21, Hull-White stochastic ESG paths, equity index paths, and credit spread scenarios for BSCR capital calculation.</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">scenarios</span><span class="mp-card-tag">NY7</span><span class="mp-card-tag">ESG</span><span class="mp-card-tag">interest-rates</span><span class="mp-card-tag">stochastic</span><span class="mp-card-tag">C3</span><span class="mp-card-tag">VM-21</span></div>
+            <div class="mp-card-meta">
+                <span><i class="fa-solid fa-user"></i>VaultDB</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>liability, alm, risk</span>
+            </div>
+            <div class="mp-install">
+                <code>claude plugin install scenario</code>
+                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-4 mp-item"
+         data-name="valuation"
+         data-desc="full valuation orchestration â€” coordinates liability projection, stat/gaap reserve calculation, alm snapshot, embedded value, and vif computation in a single call. produces the economic balance sheet summary (valuationrun) and source-of-change attribution waterfall between periods."
+         data-tags="valuation,reserves,embedded-value,attribution,economic-balance-sheet">
+        <div class="mp-card">
+            <div class="mp-card-header">
+                <i class="fa-solid fa-calculator"></i>
+                <h4>valuation</h4>
+                <span class="mp-version">v1.0.0</span>
+                <span class="mp-featured">Featured</span>
+            </div>
+            <p class="mp-card-desc">Full valuation orchestration â€” coordinates liability projection, STAT/GAAP reserve calculation, ALM snapshot, embedded value, and VIF computation in a single call. Produces the economic balance sheet summary (ValuationRun) and source-of-change attribution waterfall between periods.</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">valuation</span><span class="mp-card-tag">reserves</span><span class="mp-card-tag">embedded-value</span><span class="mp-card-tag">attribution</span><span class="mp-card-tag">economic-balance-sheet</span></div>
+            <div class="mp-card-meta">
+                <span><i class="fa-solid fa-user"></i>VaultDB</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>liability, alm, risk, reporting</span>
+            </div>
+            <div class="mp-install">
+                <code>claude plugin install valuation</code>
+                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-4 mp-item"
+         data-name="valuation-actuary"
+         data-desc="expert valuation actuary specializing in fia, rila, va, and fixed income annuities (myga/spda/spia/dia). deep command of us statutory (sap/rbc), us gaap (ldti/asc 944), and bermuda (bscr/ebs) regulatory frameworks, including stochastic reserve, ag49, ag43/c3p2, and cnsf requirements."
+         data-tags="valuation,actuarial,FIA,RILA,variable-annuity,fixed-annuity,bermuda,BSCR,statutory,LDTI,stochastic,AG49,AG43">
+        <div class="mp-card">
+            <div class="mp-card-header">
+                <i class="fa-solid fa-calculator"></i>
+                <h4>valuation-actuary</h4>
+                <span class="mp-version">v1.0.0</span>
+                <span class="mp-featured">Featured</span>
+            </div>
+            <p class="mp-card-desc">Expert valuation actuary specializing in FIA, RILA, VA, and fixed income annuities (MYGA/SPDA/SPIA/DIA). Deep command of US statutory (SAP/RBC), US GAAP (LDTI/ASC 944), and Bermuda (BSCR/EBS) regulatory frameworks, including stochastic reserve, AG49, AG43/C3P2, and CNSF requirements.</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">valuation</span><span class="mp-card-tag">actuarial</span><span class="mp-card-tag">FIA</span><span class="mp-card-tag">RILA</span><span class="mp-card-tag">variable-annuity</span><span class="mp-card-tag">fixed-annuity</span><span class="mp-card-tag">bermuda</span><span class="mp-card-tag">BSCR</span><span class="mp-card-tag">statutory</span><span class="mp-card-tag">LDTI</span><span class="mp-card-tag">stochastic</span><span class="mp-card-tag">AG49</span><span class="mp-card-tag">AG43</span></div>
+            <div class="mp-card-meta">
+                <span><i class="fa-solid fa-user"></i>VaultDB</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>cashflow-modeling, actuarial-tables, regulatory-report, risk-analysis, portfolio-review</span>
+            </div>
+            <div class="mp-install">
+                <code>claude plugin install valuation-actuary</code>
+                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-4 mp-item"
+         data-name="asset pricing & fixed income"
+         data-desc="price 100k+ bonds and 500k options simultaneously as gpu tensors. vasicek rate simulation, nelson-siegel calibration via adam, greeks via autograd.
+"
+         data-tags="bond-pricing,options,black-scholes,yield-curve,duration,derivatives">
+        <div class="mp-card">
+            <div class="mp-card-header">
+                <i class="fa-solid fa-coins"></i>
+                <h4>Asset Pricing & Fixed Income</h4>
+                <span class="mp-version">v1.0.0</span>
+                <span class="mp-featured">Featured</span>
+            </div>
+            <p class="mp-card-desc">Price 100K+ bonds and 500K options simultaneously as GPU tensors. Vasicek rate simulation, Nelson-Siegel calibration via Adam, Greeks via autograd.
+</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">bond-pricing</span><span class="mp-card-tag">options</span><span class="mp-card-tag">black-scholes</span><span class="mp-card-tag">yield-curve</span><span class="mp-card-tag">duration</span><span class="mp-card-tag">derivatives</span></div>
+            <div class="mp-card-meta">
+                <span><i class="fa-solid fa-user"></i>VaultDB Actuarial</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>alm, valuation, risk-capital</span>
+            </div>
+            <div class="mp-install">
+                <code>claude plugin install asset-investment</code>
+                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-4 mp-item"
+         data-name="bayesian inference & estimation"
+         data-desc="bÃ¼hlmann credibility, mle via torch.optim, glm normal equations solved with torch.linalg.solve, bootstrap ci â€” all gpu-vectorized across risk groups.
+"
+         data-tags="bayesian,credibility,glm,mle,bootstrap,regression">
+        <div class="mp-card">
+            <div class="mp-card-header">
+                <i class="fa-solid fa-brain"></i>
+                <h4>Bayesian Inference & Estimation</h4>
+                <span class="mp-version">v1.0.0</span>
+                <span class="mp-featured">Featured</span>
+            </div>
+            <p class="mp-card-desc">BÃ¼hlmann credibility, MLE via torch.optim, GLM normal equations solved with torch.linalg.solve, bootstrap CI â€” all GPU-vectorized across risk groups.
+</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">bayesian</span><span class="mp-card-tag">credibility</span><span class="mp-card-tag">glm</span><span class="mp-card-tag">mle</span><span class="mp-card-tag">bootstrap</span><span class="mp-card-tag">regression</span></div>
+            <div class="mp-card-meta">
+                <span><i class="fa-solid fa-user"></i>VaultDB Actuarial</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>actuarial-statistics, claims-reserving, insurance-math</span>
+            </div>
+            <div class="mp-install">
+                <code>claude plugin install bayesian-inference</code>
+                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-4 mp-item"
+         data-name="capital modeling & solvency"
+         data-desc="solvency ii scr standard formula, gaussian copula aggregation with cholesky decomposition, 1m-scenario var/tvar computation, ep curves â€” all batched on gpu.
+"
+         data-tags="solvency-ii,scr,var,tvar,copula,economic-capital,ruin-theory">
+        <div class="mp-card">
+            <div class="mp-card-header">
+                <i class="fa-solid fa-shield-halved"></i>
+                <h4>Capital Modeling & Solvency</h4>
+                <span class="mp-version">v1.0.0</span>
+                <span class="mp-featured">Featured</span>
+            </div>
+            <p class="mp-card-desc">Solvency II SCR standard formula, Gaussian copula aggregation with Cholesky decomposition, 1M-scenario VaR/TVaR computation, EP curves â€” all batched on GPU.
+</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">solvency-ii</span><span class="mp-card-tag">scr</span><span class="mp-card-tag">var</span><span class="mp-card-tag">tvar</span><span class="mp-card-tag">copula</span><span class="mp-card-tag">economic-capital</span><span class="mp-card-tag">ruin-theory</span></div>
+            <div class="mp-card-meta">
+                <span><i class="fa-solid fa-user"></i>VaultDB Actuarial</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>risk, valuation, reinsurance</span>
+            </div>
+            <div class="mp-install">
+                <code>claude plugin install capital-solvency</code>
+                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-4 mp-item"
+         data-name="cash flow modeling & profit testing"
+         data-desc="full policy projection: survival matrix (n_pol, t), net cash flow tensors, prospective reserve via flip-cumsum-flip pattern, profit testing â€” gpu-vectorized.
+"
+         data-tags="cash-flow,profit-testing,puc,reserve-rollforward,dcf">
+        <div class="mp-card">
+            <div class="mp-card-header">
+                <i class="fa-solid fa-money-bill-trend-up"></i>
+                <h4>Cash Flow Modeling & Profit Testing</h4>
+                <span class="mp-version">v1.0.0</span>
+                <span class="mp-featured">Featured</span>
+            </div>
+            <p class="mp-card-desc">Full policy projection: survival matrix (n_pol, T), net cash flow tensors, prospective reserve via flip-cumsum-flip pattern, profit testing â€” GPU-vectorized.
+</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">cash-flow</span><span class="mp-card-tag">profit-testing</span><span class="mp-card-tag">puc</span><span class="mp-card-tag">reserve-rollforward</span><span class="mp-card-tag">dcf</span></div>
+            <div class="mp-card-meta">
+                <span><i class="fa-solid fa-user"></i>VaultDB Actuarial</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>liability, valuation, alm</span>
+            </div>
+            <div class="mp-install">
+                <code>claude plugin install cashflow-modeling</code>
+                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-4 mp-item"
+         data-name="claims reserving & loss modeling"
+         data-desc="chain ladder, bornhuetter-ferguson, odp bootstrap â€” all as gpu tensor operations. aggregate loss monte carlo with 1m+ paths using batched (b, max_n) severity tensors.
+"
+         data-tags="chain-ladder,ibnr,bornhuetter-ferguson,bootstrap,aggregate-loss">
+        <div class="mp-card">
+            <div class="mp-card-header">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <h4>Claims Reserving & Loss Modeling</h4>
+                <span class="mp-version">v1.0.0</span>
+                <span class="mp-featured">Featured</span>
+            </div>
+            <p class="mp-card-desc">Chain Ladder, Bornhuetter-Ferguson, ODP Bootstrap â€” all as GPU tensor operations. Aggregate loss Monte Carlo with 1M+ paths using batched (B, max_N) severity tensors.
+</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">chain-ladder</span><span class="mp-card-tag">ibnr</span><span class="mp-card-tag">bornhuetter-ferguson</span><span class="mp-card-tag">bootstrap</span><span class="mp-card-tag">aggregate-loss</span></div>
+            <div class="mp-card-meta">
+                <span><i class="fa-solid fa-user"></i>VaultDB Actuarial</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>insurance-math, risk-capital, reinsurance</span>
+            </div>
+            <div class="mp-install">
+                <code>claude plugin install claims-reserving</code>
+                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-4 mp-item"
+         data-name="actuarial data analytics & ml"
+         data-desc="frequency-severity neural nets with poisson/gamma loss, trained via torch.optim on gpu. glm baseline, shap via integrated gradients, xgboost lift comparison.
+"
+         data-tags="machine-learning,neural-net,glm,pricing,shap,pytorch">
+        <div class="mp-card">
+            <div class="mp-card-header">
+                <i class="fa-solid fa-microscope"></i>
+                <h4>Actuarial Data Analytics & ML</h4>
+                <span class="mp-version">v1.0.0</span>
+                <span class="mp-featured">Featured</span>
+            </div>
+            <p class="mp-card-desc">Frequency-severity neural nets with Poisson/Gamma loss, trained via torch.optim on GPU. GLM baseline, SHAP via integrated gradients, XGBoost lift comparison.
+</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">machine-learning</span><span class="mp-card-tag">neural-net</span><span class="mp-card-tag">glm</span><span class="mp-card-tag">pricing</span><span class="mp-card-tag">shap</span><span class="mp-card-tag">pytorch</span></div>
+            <div class="mp-card-meta">
+                <span><i class="fa-solid fa-user"></i>VaultDB Actuarial</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>core, insurance-math, claims-reserving</span>
+            </div>
+            <div class="mp-install">
+                <code>claude plugin install data-analytics</code>
+                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-4 mp-item"
+         data-name="markov & multi-state models"
+         data-desc="continuous-time markov chains, generator matrices, torch.linalg.matrix_exp for transition probabilities, batched bmm for cohort projections â€” disability, ltc, and life modeling.
+"
+         data-tags="markov,multi-state,transition-matrix,disability,ltc">
+        <div class="mp-card">
+            <div class="mp-card-header">
+                <i class="fa-solid fa-diagram-project"></i>
+                <h4>Markov & Multi-State Models</h4>
+                <span class="mp-version">v1.0.0</span>
+                <span class="mp-featured">Featured</span>
+            </div>
+            <p class="mp-card-desc">Continuous-time Markov chains, generator matrices, torch.linalg.matrix_exp for transition probabilities, batched bmm for cohort projections â€” disability, LTC, and life modeling.
+</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">markov</span><span class="mp-card-tag">multi-state</span><span class="mp-card-tag">transition-matrix</span><span class="mp-card-tag">disability</span><span class="mp-card-tag">ltc</span></div>
+            <div class="mp-card-meta">
+                <span><i class="fa-solid fa-user"></i>VaultDB Actuarial</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>mortality-life, liability, valuation</span>
+            </div>
+            <div class="mp-install">
+                <code>claude plugin install markov-multistate</code>
+                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-4 mp-item"
+         data-name="mortality, life tables & survival models"
+         data-desc="gompertz-makeham, lee-carter (svd on gpu), survival probability tensors, annuity pv as batched dot products, longevity risk simulation with 10k+ stochastic paths.
+"
+         data-tags="mortality,life-tables,survival,lee-carter,longevity,annuity">
+        <div class="mp-card">
+            <div class="mp-card-header">
+                <i class="fa-solid fa-heart-pulse"></i>
+                <h4>Mortality, Life Tables & Survival Models</h4>
+                <span class="mp-version">v1.0.0</span>
+                <span class="mp-featured">Featured</span>
+            </div>
+            <p class="mp-card-desc">Gompertz-Makeham, Lee-Carter (SVD on GPU), survival probability tensors, annuity PV as batched dot products, longevity risk simulation with 10K+ stochastic paths.
+</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">mortality</span><span class="mp-card-tag">life-tables</span><span class="mp-card-tag">survival</span><span class="mp-card-tag">lee-carter</span><span class="mp-card-tag">longevity</span><span class="mp-card-tag">annuity</span></div>
+            <div class="mp-card-meta">
+                <span><i class="fa-solid fa-user"></i>VaultDB Actuarial</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>pensions-benefits, valuation, liability</span>
+            </div>
+            <div class="mp-install">
+                <code>claude plugin install mortality-life</code>
                 <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
                     <i class="fa-solid fa-copy"></i>
                 </button>

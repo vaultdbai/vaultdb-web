@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>KRONOS Re: Actuarial Skills — AI Marketplace</title>
+<title>KRONOS Re: Actuarial Plugins — AI Marketplace</title>
 <meta content="noindex, nofollow" name="robots"/>
 <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" rel="stylesheet"/>
 <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" referrerpolicy="no-referrer" rel="stylesheet"/>
@@ -369,9 +369,9 @@
         </a>
         <h1>
             <i class="fa-solid fa-calculator" style="color: var(--purple-color, #A044FF); margin-right: 1.5rem;"></i>
-            Actuarial Skills
+            Actuarial Plugins
         </h1>
-        <p>GPU-first PyTorch actuarial modeling skills — mortality, reserving, capital, ALM, and more</p>
+        <p>GPU-first PyTorch actuarial modeling plugins — mortality, reserving, capital, ALM, and more</p>
     </div>
 
     
@@ -381,7 +381,7 @@
                 <i class="fa-solid fa-circle-info"></i>
                 <strong>Before you install</strong>
             </div>
-            <p>Register the actuarial skills marketplace first (one-time setup):</p>
+            <p>Register the actuarial plugins marketplace first (one-time setup):</p>
             <div class="mp-install" style="max-width: 700px;">
                 <code>claude plugin marketplace add vaultdbai/plugins</code>
                 <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy setup command">
@@ -394,17 +394,29 @@
 
     <div class="mp-toolbar">
         <input type="text" id="mp-search" class="mp-search"
-               placeholder="Search actuarial skills..." />
+               placeholder="Search actuarial plugins..." />
         <div class="mp-tags">
             <button class="mp-tag-btn active" data-tag="all">All</button>
+<button class="mp-tag-btn" data-tag="AG43">AG43</button>
+<button class="mp-tag-btn" data-tag="AG49">AG49</button>
+<button class="mp-tag-btn" data-tag="BSCR">BSCR</button>
+<button class="mp-tag-btn" data-tag="CSO2017">CSO2017</button>
+<button class="mp-tag-btn" data-tag="FIA">FIA</button>
+<button class="mp-tag-btn" data-tag="LDTI">LDTI</button>
+<button class="mp-tag-btn" data-tag="RILA">RILA</button>
+<button class="mp-tag-btn" data-tag="VBT2015">VBT2015</button>
+<button class="mp-tag-btn" data-tag="accounting">accounting</button>
+<button class="mp-tag-btn" data-tag="actuarial">actuarial</button>
 <button class="mp-tag-btn" data-tag="actuarial-notation">actuarial-notation</button>
 <button class="mp-tag-btn" data-tag="aggregate-loss">aggregate-loss</button>
 <button class="mp-tag-btn" data-tag="alm">alm</button>
 <button class="mp-tag-btn" data-tag="annuity">annuity</button>
 <button class="mp-tag-btn" data-tag="apv">apv</button>
 <button class="mp-tag-btn" data-tag="asop">asop</button>
+<button class="mp-tag-btn" data-tag="assumptions">assumptions</button>
 <button class="mp-tag-btn" data-tag="audit-trail">audit-trail</button>
 <button class="mp-tag-btn" data-tag="bayesian">bayesian</button>
+<button class="mp-tag-btn" data-tag="bermuda">bermuda</button>
 <button class="mp-tag-btn" data-tag="black-scholes">black-scholes</button>
 <button class="mp-tag-btn" data-tag="bond-pricing">bond-pricing</button>
 <button class="mp-tag-btn" data-tag="bootstrap">bootstrap</button>
@@ -432,8 +444,11 @@
 <button class="mp-tag-btn" data-tag="excess-of-loss">excess-of-loss</button>
 <button class="mp-tag-btn" data-tag="experience-studies">experience-studies</button>
 <button class="mp-tag-btn" data-tag="fair-value">fair-value</button>
+<button class="mp-tag-btn" data-tag="financial-reporting">financial-reporting</button>
+<button class="mp-tag-btn" data-tag="fixed-annuity">fixed-annuity</button>
 <button class="mp-tag-btn" data-tag="forecasting">forecasting</button>
 <button class="mp-tag-btn" data-tag="frequency">frequency</button>
+<button class="mp-tag-btn" data-tag="gaap">gaap</button>
 <button class="mp-tag-btn" data-tag="glm">glm</button>
 <button class="mp-tag-btn" data-tag="governance">governance</button>
 <button class="mp-tag-btn" data-tag="greeks">greeks</button>
@@ -479,13 +494,17 @@
 <button class="mp-tag-btn" data-tag="shap">shap</button>
 <button class="mp-tag-btn" data-tag="solvency-ii">solvency-ii</button>
 <button class="mp-tag-btn" data-tag="statistics">statistics</button>
+<button class="mp-tag-btn" data-tag="statutory">statutory</button>
+<button class="mp-tag-btn" data-tag="stochastic">stochastic</button>
 <button class="mp-tag-btn" data-tag="stop-loss">stop-loss</button>
 <button class="mp-tag-btn" data-tag="survival">survival</button>
+<button class="mp-tag-btn" data-tag="tables">tables</button>
 <button class="mp-tag-btn" data-tag="transition-matrix">transition-matrix</button>
 <button class="mp-tag-btn" data-tag="tvar">tvar</button>
 <button class="mp-tag-btn" data-tag="valuation">valuation</button>
 <button class="mp-tag-btn" data-tag="var">var</button>
 <button class="mp-tag-btn" data-tag="var-model">var-model</button>
+<button class="mp-tag-btn" data-tag="variable-annuity">variable-annuity</button>
 <button class="mp-tag-btn" data-tag="vasicek">vasicek</button>
 <button class="mp-tag-btn" data-tag="yield-curve">yield-curve</button>
 
@@ -712,6 +731,112 @@
             </div>
             <div class="mp-install">
                 <code>claude plugin install mortality-life</code>
+                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-4 mp-item"
+         data-name="actuarial-tables"
+         data-desc="mortality, lapse, and surrender table lookup with interpolation for soa, cia, and bma prescribed tables."
+         data-tags="actuarial,mortality,lapse,tables">
+        <div class="mp-card">
+            <div class="mp-card-header">
+                <i class="fa-solid fa-table"></i>
+                <h4>actuarial-tables</h4>
+                <span class="mp-version">v1.0.0</span>
+                <span class="mp-featured">Featured</span>
+            </div>
+            <p class="mp-card-desc">Mortality, lapse, and surrender table lookup with interpolation for SOA, CIA, and BMA prescribed tables.</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">actuarial</span><span class="mp-card-tag">mortality</span><span class="mp-card-tag">lapse</span><span class="mp-card-tag">tables</span></div>
+            <div class="mp-card-meta">
+                <span><i class="fa-solid fa-user"></i>VaultDB</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>assumptions, liability, valuation</span>
+            </div>
+            <div class="mp-install">
+                <code>claude plugin install actuarial-tables</code>
+                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-4 mp-item"
+         data-name="assumptions"
+         data-desc="versioned actuarial assumption library — mortality tables (soa vbt 2015, cso 2017), lapse rate tables with dynamic adjustment, surrender charge schedules, expense assumptions, crediting rate assumptions, behavioral assumptions, and named assumptionset bundles."
+         data-tags="actuarial,mortality,lapse,assumptions,VBT2015,CSO2017">
+        <div class="mp-card">
+            <div class="mp-card-header">
+                <i class="fa-solid fa-table-list"></i>
+                <h4>assumptions</h4>
+                <span class="mp-version">v1.0.0</span>
+                <span class="mp-featured">Featured</span>
+            </div>
+            <p class="mp-card-desc">Versioned actuarial assumption library — mortality tables (SOA VBT 2015, CSO 2017), lapse rate tables with dynamic adjustment, surrender charge schedules, expense assumptions, crediting rate assumptions, behavioral assumptions, and named AssumptionSet bundles.</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">actuarial</span><span class="mp-card-tag">mortality</span><span class="mp-card-tag">lapse</span><span class="mp-card-tag">assumptions</span><span class="mp-card-tag">VBT2015</span><span class="mp-card-tag">CSO2017</span></div>
+            <div class="mp-card-meta">
+                <span><i class="fa-solid fa-user"></i>VaultDB</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>liability, alm, valuation</span>
+            </div>
+            <div class="mp-install">
+                <code>claude plugin install assumptions</code>
+                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-4 mp-item"
+         data-name="valuation-actuary"
+         data-desc="expert valuation actuary specializing in fia, rila, va, and fixed income annuities (myga/spda/spia/dia). deep command of us statutory (sap/rbc), us gaap (ldti/asc 944), and bermuda (bscr/ebs) regulatory frameworks, including stochastic reserve, ag49, ag43/c3p2, and cnsf requirements."
+         data-tags="valuation,actuarial,FIA,RILA,variable-annuity,fixed-annuity,bermuda,BSCR,statutory,LDTI,stochastic,AG49,AG43">
+        <div class="mp-card">
+            <div class="mp-card-header">
+                <i class="fa-solid fa-calculator"></i>
+                <h4>valuation-actuary</h4>
+                <span class="mp-version">v1.0.0</span>
+                <span class="mp-featured">Featured</span>
+            </div>
+            <p class="mp-card-desc">Expert valuation actuary specializing in FIA, RILA, VA, and fixed income annuities (MYGA/SPDA/SPIA/DIA). Deep command of US statutory (SAP/RBC), US GAAP (LDTI/ASC 944), and Bermuda (BSCR/EBS) regulatory frameworks, including stochastic reserve, AG49, AG43/C3P2, and CNSF requirements.</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">valuation</span><span class="mp-card-tag">actuarial</span><span class="mp-card-tag">FIA</span><span class="mp-card-tag">RILA</span><span class="mp-card-tag">variable-annuity</span><span class="mp-card-tag">fixed-annuity</span><span class="mp-card-tag">bermuda</span><span class="mp-card-tag">BSCR</span><span class="mp-card-tag">statutory</span><span class="mp-card-tag">LDTI</span><span class="mp-card-tag">stochastic</span><span class="mp-card-tag">AG49</span><span class="mp-card-tag">AG43</span></div>
+            <div class="mp-card-meta">
+                <span><i class="fa-solid fa-user"></i>VaultDB</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>cashflow-modeling, actuarial-tables, regulatory-report, risk-analysis, portfolio-review</span>
+            </div>
+            <div class="mp-install">
+                <code>claude plugin install valuation-actuary</code>
+                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-4 mp-item"
+         data-name="accounting basics for actuaries"
+         data-desc="intersection of accounting principles and actuarial science: gaap, ifrs 17, balance sheet, income statement, and reserve movements.
+"
+         data-tags="accounting,gaap,ifrs17,financial-reporting">
+        <div class="mp-card">
+            <div class="mp-card-header">
+                <i class="fa-solid fa-file-invoice-dollar"></i>
+                <h4>Accounting Basics for Actuaries</h4>
+                <span class="mp-version">v1.0.0</span>
+                
+            </div>
+            <p class="mp-card-desc">Intersection of accounting principles and actuarial science: GAAP, IFRS 17, Balance Sheet, Income Statement, and reserve movements.
+</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">accounting</span><span class="mp-card-tag">gaap</span><span class="mp-card-tag">ifrs17</span><span class="mp-card-tag">financial-reporting</span></div>
+            <div class="mp-card-meta">
+                <span><i class="fa-solid fa-user"></i>VaultDB Actuarial</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>reporting, valuation</span>
+            </div>
+            <div class="mp-install">
+                <code>claude plugin install accounting</code>
                 <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
                     <i class="fa-solid fa-copy"></i>
                 </button>
@@ -1086,7 +1211,7 @@
         </div>
         <div class="mp-no-results" id="mp-no-results">
             <i class="fa-solid fa-search" style="font-size: 3rem; display: block; margin-bottom: 1.5rem;"></i>
-            No actuarial skills match your search.
+            No actuarial plugins match your search.
         </div>
     </div>
 

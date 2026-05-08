@@ -426,6 +426,7 @@
 <button class="mp-tag-btn" data-tag="VBT2015">VBT2015</button>
 <button class="mp-tag-btn" data-tag="VM-21">VM-21</button>
 <button class="mp-tag-btn" data-tag="VaR">VaR</button>
+<button class="mp-tag-btn" data-tag="accounting">accounting</button>
 <button class="mp-tag-btn" data-tag="actuarial">actuarial</button>
 <button class="mp-tag-btn" data-tag="actuarial-memo">actuarial-memo</button>
 <button class="mp-tag-btn" data-tag="actuarial-notation">actuarial-notation</button>
@@ -496,9 +497,11 @@
 <button class="mp-tag-btn" data-tag="fair-value">fair-value</button>
 <button class="mp-tag-btn" data-tag="finance">finance</button>
 <button class="mp-tag-btn" data-tag="financial-engineering">financial-engineering</button>
+<button class="mp-tag-btn" data-tag="financial-reporting">financial-reporting</button>
 <button class="mp-tag-btn" data-tag="fixed-annuity">fixed-annuity</button>
 <button class="mp-tag-btn" data-tag="forecasting">forecasting</button>
 <button class="mp-tag-btn" data-tag="frequency">frequency</button>
+<button class="mp-tag-btn" data-tag="gaap">gaap</button>
 <button class="mp-tag-btn" data-tag="glm">glm</button>
 <button class="mp-tag-btn" data-tag="governance">governance</button>
 <button class="mp-tag-btn" data-tag="greeks">greeks</button>
@@ -1273,6 +1276,34 @@
             </div>
             <div class="mp-install">
                 <code>claude plugin install valuation-actuary</code>
+                <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6 mb-4 mp-item"
+         data-name="accounting basics for actuaries"
+         data-desc="intersection of accounting principles and actuarial science: gaap, ifrs 17, balance sheet, income statement, and reserve movements.
+"
+         data-tags="accounting,gaap,ifrs17,financial-reporting">
+        <div class="mp-card">
+            <div class="mp-card-header">
+                <i class="fa-solid fa-file-invoice-dollar"></i>
+                <h4>Accounting Basics for Actuaries</h4>
+                <span class="mp-version">v1.0.0</span>
+                
+            </div>
+            <p class="mp-card-desc">Intersection of accounting principles and actuarial science: GAAP, IFRS 17, Balance Sheet, Income Statement, and reserve movements.
+</p>
+            <div class="mp-card-tags"><span class="mp-card-tag">accounting</span><span class="mp-card-tag">gaap</span><span class="mp-card-tag">ifrs17</span><span class="mp-card-tag">financial-reporting</span></div>
+            <div class="mp-card-meta">
+                <span><i class="fa-solid fa-user"></i>VaultDB Actuarial</span>
+                <span><i class="fa-solid fa-puzzle-piece"></i>reporting, valuation</span>
+            </div>
+            <div class="mp-install">
+                <code>claude plugin install accounting</code>
                 <button class="copy-btn" onclick="copyInstallCmd(this)" title="Copy install command">
                     <i class="fa-solid fa-copy"></i>
                 </button>

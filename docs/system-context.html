@@ -188,7 +188,9 @@
 1. Always check the module's <code>system-context.md</code>.
 2. Update the corresponding <code>docs/technology/</code> file with sequence diagrams if a new workflow is added.
 3. Update <code>docs/actuarial/</code> if a mathematical formula or basis is changed.
-4. Ensure the <code>docs/compliance/</code> section reflects any changes to human-in-the-loop approval gates.</p>
+4. Ensure the <code>docs/compliance/</code> section reflects any changes to human-in-the-loop approval gates.
+5. <strong>Interactive Questioning Gate</strong>: Before starting code changes or deployments, align with the user by asking design/clarifying questions to resolve any ambiguity.
+6. <strong>Cognito Federated Authentication</strong>: Prompt the user to run <code>vaultdb-auth</code> to negotiate OIDC temporary session keys prior to performing any AWS stacked deployments, bucket tasks, or access-restricted actions.</p>
                     </div>
                 </div>
             </div>

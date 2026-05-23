@@ -4,9 +4,9 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>KRONOS Re: core Documentation - Authentication Guide</title>
+<title>KRONOS Re: core Documentation - Task Runner Architecture</title>
 <meta content="noindex, nofollow" name="robots"/>
-<meta name="vdb-context" content="You are viewing the core documentation: Authentication Guide. Category: index."/>
+<meta name="vdb-context" content="You are viewing the core documentation: Task Runner Architecture. Category: index."/>
 <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" rel="stylesheet"/>
 <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" referrerpolicy="no-referrer" rel="stylesheet"/>
 <link href="../../../img/v-logo.png" rel="icon" type="image/png"/>
@@ -66,7 +66,7 @@
                     <div class="col-lg-3">
                         <div class="side_accordian doc-nav"><ul class="nav flex-column">
         <li class="nav-item">
-            <a class="nav-link active " href="AUTHENTICATION_GUIDE.html">
+            <a class="nav-link  " href="AUTHENTICATION_GUIDE.html">
                 <i class="fa-solid fa-house me-2"></i> Authentication Guide
             </a>
         </li>
@@ -108,7 +108,7 @@
         </li>
         
         <li class="nav-item">
-            <a class="nav-link  " href="TASK_RUNNER_ARCHITECTURE.html">
+            <a class="nav-link active " href="TASK_RUNNER_ARCHITECTURE.html">
                 <i class="fa-solid fa-house me-2"></i> Task Runner Architecture
             </a>
         </li>
@@ -221,160 +221,152 @@
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="../../../index.html">Home</a></li>
                                 <li class="breadcrumb-item"><a href="#">core</a></li>
-                                <li class="breadcrumb-item active">Authentication Guide <span class="persona-badge">index</span></li>
+                                <li class="breadcrumb-item active">Task Runner Architecture <span class="persona-badge">index</span></li>
                             </ol>
                         </nav>
-                        <h1 id="vaultdb-authentication-guide">VaultDB Authentication Guide</h1>
-<p>VaultDB supports a unified, provider-agnostic authentication system based on <strong>OpenID Connect (OIDC)</strong> and <strong>GitHub</strong>.</p>
-<h2 id="1-global-configuration">1. Global Configuration</h2>
-<p>You can configure any OIDC-compliant provider using the following environment variables:</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Variable</th>
-<th style="text-align: left;">Description</th>
-<th style="text-align: left;">Example</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><code>AUTH_TYPE</code></td>
-<td style="text-align: left;">Type of authentication</td>
-<td style="text-align: left;"><code>oidc</code>, <code>github</code>, <code>basic</code>, <code>iam_role</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>AUTH_CLIENT_ID</code></td>
-<td style="text-align: left;">Client ID</td>
-<td style="text-align: left;"><code>your-app-id</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>AUTH_CLIENT_SECRET</code></td>
-<td style="text-align: left;">Client Secret</td>
-<td style="text-align: left;"><code>your-secret</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>AUTH_AUTHORIZATION_URL</code></td>
-<td style="text-align: left;">Browser login endpoint</td>
-<td style="text-align: left;"><code>https://login.microsoftonline.com/.../authorize</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>AUTH_TOKEN_URL</code></td>
-<td style="text-align: left;">Token exchange endpoint</td>
-<td style="text-align: left;"><code>https://login.microsoftonline.com/.../token</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>AUTH_REDIRECT_URI</code></td>
-<td style="text-align: left;">Your callback URL</td>
-<td style="text-align: left;"><code>http://localhost:8080/callback</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>AUTH_SCOPE</code></td>
-<td style="text-align: left;">Requested OIDC scopes</td>
-<td style="text-align: left;"><code>openid profile email</code></td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="2-provider-specific-templates">2. Provider Specific Templates</h2>
-<h3 id="a-aws-cognito-oidc-mode">A. AWS Cognito (OIDC Mode)</h3>
-<p>Use the values provided by the <code>infrastructure/cloudformation/cognito-auth.yaml</code> stack outputs.</p>
-<pre><code class="language-bash">export AUTH_TYPE=&quot;oidc&quot;
-export AUTH_CLIENT_ID=&quot;&lt;UserPoolClientId&gt;&quot;
-export AUTH_AUTHORIZATION_URL=&quot;https://&lt;domain&gt;.auth.&lt;region&gt;.amazoncognito.com/oauth2/authorize&quot;
-export AUTH_TOKEN_URL=&quot;https://&lt;domain&gt;.auth.&lt;region&gt;.amazoncognito.com/oauth2/token&quot;
-export AUTH_REDIRECT_URI=&quot;http://localhost:3000/callback&quot;
-</code></pre>
-<h3 id="b-microsoft-entra-id-azure-ad">B. Microsoft Entra ID (Azure AD)</h3>
-<p>Register a "Web" application in Azure Portal and set the redirect URI.</p>
-<pre><code class="language-bash">export AUTH_TYPE=&quot;oidc&quot;
-export AUTH_CLIENT_ID=&quot;00000000-0000-0000-0000-000000000000&quot;
-export AUTH_CLIENT_SECRET=&quot;your-client-secret&quot;
-export AUTH_AUTHORIZATION_URL=&quot;https://login.microsoftonline.com/&lt;tenant&gt;/oauth2/v2.0/authorize&quot;
-export AUTH_TOKEN_URL=&quot;https://login.microsoftonline.com/&lt;tenant&gt;/oauth2/v2.0/token&quot;
-export AUTH_REDIRECT_URI=&quot;http://localhost:8080/callback&quot;
-</code></pre>
-<h3 id="c-github">C. GitHub</h3>
-<pre><code class="language-bash">export AUTH_TYPE=&quot;github&quot;
-# For browser flow:
-export AUTH_CLIENT_ID=&quot;your-github-client-id&quot;
-export AUTH_CLIENT_SECRET=&quot;your-github-client-secret&quot;
-export AUTH_TOKEN_URL=&quot;https://github.com/login/oauth/access_token&quot;
-# Or use a Personal Access Token directly:
-# Application.connect(auth_type=AuthType.GITHUB, auth_token=&quot;gho_...&quot;)
-</code></pre>
-<h3 id="d-auth0-okta">D. Auth0 / Okta</h3>
-<pre><code class="language-bash">export AUTH_TYPE=&quot;oidc&quot;
-export AUTH_CLIENT_ID=&quot;your-client-id&quot;
-export AUTH_AUTHORIZATION_URL=&quot;https://your-tenant.auth0.com/authorize&quot;
-export AUTH_TOKEN_URL=&quot;https://your-tenant.auth0.com/oauth/token&quot;
-</code></pre>
-<hr />
-<h2 id="3-role-based-access-control-rbac">3. Role-Based Access Control (RBAC)</h2>
-<p>Instead of giving everyone the same permissions, you can group users into different roles (e.g., <code>Admin</code> vs <code>User</code>) based on their identity provider groups.</p>
-<h3 id="how-it-works">How it works:</h3>
+                        <h1 id="vaultdb-task-runner-architecture">VaultDB Task Runner Architecture</h1>
+<h2 id="problem-tasks-registered-with-wrong-runner">Problem: Tasks Registered with Wrong Runner</h2>
+<h3 id="the-issue">The Issue</h3>
+<p>When using the FastAPI web interface with <code>runner=local</code>, you may notice that tasks are instances of <code>ServiceTask</code> instead of the base <code>Task</code> class. This happens because:</p>
 <ol>
-<li><strong>Identity Provider</strong>: Configure your provider (Microsoft, Okta, etc.) to include a "groups" or "roles" claim in the ID token.</li>
-<li><strong>AWS Identity Pool</strong>: The <code>infrastructure/cloudformation/cognito-auth.yaml</code> template defines <strong>Rules-based mapping</strong>.</li>
-<li><strong>Dynamic Permissions</strong>: When a user logs in, AWS inspects the claim and automatically assigns them the corresponding IAM Role (<code>VaultDBAdminRole</code> or <code>VaultDBUserRole</code>).</li>
+<li><strong>Task Discovery at Startup</strong>: When FastAPI starts, <code>discover_tasks()</code> imports all <code>*_tasks.py</code> files</li>
+<li><strong>TED Proxy Resolution</strong>: Tasks decorated with <code>@TED.task()</code> resolve to the <strong>current runner</strong> at import time</li>
+<li><strong>Default Runner</strong>: The <code>TED</code> proxy uses <code>config.run_type</code> to determine which runner to use (often defaults to "service")</li>
+<li><strong>Task Registration</strong>: Tasks get registered in the <strong>service runner's</strong> task registry</li>
+<li><strong>Separate Registries</strong>: When you request <code>runner=local</code>, it creates a new local runner with an <strong>empty</strong> task registry</li>
 </ol>
-<h3 id="mapping-examples">Mapping Examples:</h3>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Provider</th>
-<th style="text-align: left;">Claim Key</th>
-<th style="text-align: left;">Value Example</th>
-<th style="text-align: left;">Resulting AWS Role</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><strong>Microsoft Entra</strong></td>
-<td style="text-align: left;"><code>roles</code></td>
-<td style="text-align: left;"><code>VaultDB.Admin</code></td>
-<td style="text-align: left;"><code>VaultDBAdminRole</code> (Full Admin / <code>vaultdb</code>)</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Okta</strong></td>
-<td style="text-align: left;"><code>groups</code></td>
-<td style="text-align: left;"><code>DataAdmins</code></td>
-<td style="text-align: left;"><code>VaultDBAdminRole</code> (Full Admin / <code>vaultdb</code>)</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Any</strong></td>
-<td style="text-align: left;">(Default)</td>
-<td style="text-align: left;"><em>Any valid login</em></td>
-<td style="text-align: left;"><code>VaultDBStandardRole</code> (Restricted)</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="4-developer-api-checking-roles">4. Developer API: Checking Roles</h2>
-<p>You can programmatically check the user's role in your application:</p>
-<pre><code class="language-python">from vaultdb.auth import get_authorized_role
-from vaultdb.core import settings
-
-# After Application.connect()
-print(f&quot;Current User Role: {settings.role}&quot;)
+<h3 id="architecture-overview">Architecture Overview</h3>
+<pre><code>┌─────────────────────────────────────────────────────────────┐
+│                    TED (Task Execution Dispatcher)          │
+│                         Proxy Pattern                        │
+└──────────────────────┬──────────────────────────────────────┘
+                       │
+                       ├─&gt; TED.Service  → ServiceRunner → ServiceTask
+                       ├─&gt; TED.Local    → LocalRunner   → Task
+                       ├─&gt; TED.Batch    → BatchRunner   → BatchTask
+                       └─&gt; TED.Function → FunctionRunner→ FunctionTask
+                                │
+                                │ Each has separate task registry
+                                ↓
+                    ┌────────────────────────┐
+                    │   Task Registry        │
+                    │  {                     │
+                    │    &quot;task.name&quot;: Task   │
+                    │  }                     │
+                    └────────────────────────┘
 </code></pre>
-<hr />
-<h2 id="5-verification-security">5. Verification &amp; Security</h2>
+<h2 id="solutions">Solutions</h2>
+<h3 id="solution-1-use-runner-specific-decorators-recommended-for-production">Solution 1: Use Runner-Specific Decorators (Recommended for Production)</h3>
+<p>Explicitly specify which runner(s) should have the task:</p>
+<pre><code class="language-python">from vaultdb._state import TED
+
+# Register with specific runner
+@TED.Service.task(bind=True)
+def my_service_task(self, arg):
+    return f&quot;Running on service: {arg}&quot;
+
+@TED.Local.task(bind=True)
+def my_local_task(self, arg):
+    return f&quot;Running locally: {arg}&quot;
+
+# Register with multiple runners
+@TED.Service.task(bind=True, name=&quot;shared_task&quot;)
+def service_version(self, arg):
+    return f&quot;Service: {arg}&quot;
+
+@TED.Local.task(bind=True, name=&quot;shared_task&quot;)
+def local_version(self, arg):
+    return f&quot;Local: {arg}&quot;
+</code></pre>
+<h3 id="solution-2-cross-register-tasks-current-workaround">Solution 2: Cross-Register Tasks (Current Workaround)</h3>
+<p>Modify the <code>_get_runner</code> function in <code>web/api.py</code> to share task registries:</p>
+<pre><code class="language-python">def _get_runner(runner_type: str) -&gt; Any:
+    &quot;&quot;&quot;Get runner instance and ensure it has discovered tasks.&quot;&quot;&quot;
+    if runner_type.lower() not in runner_map:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=f&quot;Invalid runner type: {runner_type}&quot;,
+        )
+
+    runner = get_runner(runtype=runner_map[runner_type.lower()])
+
+    # If local runner has no tasks, copy from service runner
+    if runner_type.lower() == &quot;local&quot; and not runner.tasks:
+        service_runner = get_runner(runtype=RunType.SERVICE)
+        runner._tasks = service_runner._tasks.copy()
+
+    return runner
+</code></pre>
+<h3 id="solution-3-unified-task-registry-future-enhancement">Solution 3: Unified Task Registry (Future Enhancement)</h3>
+<p>Create a global task registry that all runners can access:</p>
+<pre><code class="language-python"># In vaultdb/compute/registry.py
+class GlobalTaskRegistry:
+    _tasks = {}
+
+    @classmethod
+    def register(cls, name, task):
+        cls._tasks[name] = task
+
+    @classmethod
+    def get_all(cls):
+        return cls._tasks.copy()
+</code></pre>
+<h2 id="current-behavior">Current Behavior</h2>
+<h3 id="when-configrun_type-service-default-in-production">When <code>config.run_type = "service"</code> (default in production)</h3>
 <ul>
-<li><strong>JWKS Fetching</strong>: VaultDB dynamically fetches public keys from the provider's <code>iss</code> URL (OpenID Discovery).</li>
-<li><strong>Caching</strong>: Fetched keys are cached in the <code>commitlog_directory</code> to ensure performance and offline verification stability.</li>
-<li><strong>Audience Check</strong>: The system validates that the token was issued for your configured <code>AUTH_CLIENT_ID</code>.</li>
+<li><code>@TED.task()</code> → Creates <code>ServiceTask</code> instances</li>
+<li>Tasks registered in <code>ServiceRunner._tasks</code></li>
+<li>Local runner has empty registry</li>
 </ul>
-<hr />
-<h2 id="6-development-utility">6. Development Utility</h2>
-<p>For local development or CLI usage with a browser:</p>
-<pre><code class="language-python">from vaultdb.core import Application, AuthType
+<h3 id="when-configrun_type-local-development">When <code>config.run_type = "local"</code> (development)</h3>
+<ul>
+<li><code>@TED.task()</code> → Creates base <code>Task</code> instances  </li>
+<li>Tasks registered in <code>LocalRunner._tasks</code></li>
+<li>Service runner has empty registry</li>
+</ul>
+<h2 id="recommended-practice">Recommended Practice</h2>
+<p>For maximum flexibility, use explicit runner decorators:</p>
+<pre><code class="language-python"># vaultdb/myapp/tasks.py
+from vaultdb._state import TED
 
-Application.connect(
-    auth=AuthType.OIDC,
-    # System will automatically use AUTH_* environment variables
-)
+# This task can run on service runner (Celery)
+@TED.Service.task(bind=True, base=Task)
+def distributed_task(self, data):
+    # Heavy computation that should run on workers
+    return process_data(data)
+
+# This task can run locally (for testing/development)
+@TED.Local.task(bind=True)
+def quick_task(self, value):
+    # Simple task for local execution
+    return value * 2
 </code></pre>
-<p>This will launch your system browser, allow you to login via your chosen provider, and automatically receive the token.</p>
+<h2 id="testing-considerations">Testing Considerations</h2>
+<p>In tests, you may want to override the runner:</p>
+<pre><code class="language-python"># In tests
+from vaultdb._state import _set_current_runner
+from vaultdb.compute.core import Runner
+
+# Force local runner for testing
+local_runner = Runner()
+_set_current_runner(local_runner)
+
+# Now @TED.task() will use local runner
+</code></pre>
+<h2 id="configuration">Configuration</h2>
+<p>Set the default runner via environment variable:</p>
+<pre><code class="language-bash"># For local development
+export run_type=local
+
+# For production with Celery
+export run_type=service
+
+# For AWS Lambda
+export run_type=function
+
+# For AWS Batch
+export run_type=batch
+</code></pre>
                     </div>
                 </div>
             </div>

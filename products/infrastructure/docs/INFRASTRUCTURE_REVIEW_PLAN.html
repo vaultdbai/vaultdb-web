@@ -1,0 +1,606 @@
+
+            <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>KRONOS Re: infrastructure Documentation - Infrastructure Review Plan</title>
+<meta content="noindex, nofollow" name="robots"/>
+<meta name="vdb-context" content="You are viewing the infrastructure documentation: Infrastructure Review Plan. Category: index."/>
+<link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" rel="stylesheet"/>
+<link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" referrerpolicy="no-referrer" rel="stylesheet"/>
+<link href="../../../img/v-logo.png" rel="icon" type="image/png"/>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+<link href="../../../css/style.css" rel="stylesheet"/>
+
+    <style>
+        html { font-size: 10px !important; }
+        body { font-size: 1.6rem !important; background: var(--main-color) !important; color: #f5f5f5; }
+
+        .doc-wrapper { margin-top: 15vh; margin-bottom: 5vh; min-height: 80vh; }
+        .doc-nav { border-right: 1px solid rgba(168, 150, 183, 0.2); height: 100%; padding-right: 2rem; }
+        .doc-nav .nav-link {
+            color: #A896B7; border-radius: 12px; margin-bottom: 8px; transition: 0.3s;
+            font-size: 1.6rem; padding: 1.4rem 2rem; border: 1px solid transparent;
+        }
+        .doc-nav .nav-link:hover { background: rgba(160, 68, 255, 0.1); color: var(--purple-color); transform: translateX(8px); }
+        .doc-nav .nav-link.active { background: var(--purple-color); color: #fff !important; font-weight: 700; box-shadow: 0 12px 24px rgba(160, 68, 255, 0.4); }
+
+        .doc-content { padding-left: 6rem; max-width: 1000px; }
+        .doc-content h1, .doc-content h2, .doc-content h3 { font-family: var(--plus-font-family); color: #fff; margin-top: 4.5rem; }
+        .doc-content h1 { font-size: 5.2rem; font-weight: 800; margin-top: 0; margin-bottom: 4rem; letter-spacing: -0.03em; }
+        .doc-content h2 { font-size: 3.6rem; border-bottom: 2px solid rgba(168, 150, 183, 0.15); padding-bottom: 1.5rem; }
+        .doc-content h3 { font-size: 2.8rem; color: var(--purple-color); }
+
+        .doc-content p, .doc-content li { font-size: 1.8rem; line-height: 2.0; color: #d0c4db; margin-bottom: 2.8rem; }
+        .doc-content code { background: #0b0b1a; padding: 4px 10px; border-radius: 8px; color: #f8f8f2; border: 1px solid rgba(255,255,255,0.1); }
+        .doc-content pre { padding: 3.5rem; border-radius: 20px; box-shadow: 0 30px 60px rgba(0,0,0,0.5); }
+
+        .persona-badge { font-size: 0.9rem; text-transform: uppercase; padding: 6px 16px; border-radius: 99px; background: rgba(160, 68, 255, 0.25); border: 1px solid var(--purple-color); color: #fff; margin-left: 20px; }
+
+        .breadcrumb-item a { color: var(--purple-color); font-size: 1.6rem; text-decoration: none; }
+        .breadcrumb-item.active { color: #666; font-size: 1.6rem; }
+
+        .doc-content table { border-radius: 16px; overflow: hidden; border: 1px solid rgba(168, 150, 183, 0.3); }
+        .doc-content th { background: #131326; padding: 2rem; font-size: 1.7rem; color: #fff; }
+        .doc-content td { padding: 2rem; border-top: 1px solid rgba(168, 150, 183, 0.1); font-size: 1.7rem; }
+
+        .mermaid-diagram { margin: 3rem 0; text-align: center; }
+        .mermaid-diagram img { max-width: 100%; border-radius: 16px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+        .mermaid { background: transparent; }
+    </style>
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true, theme: 'dark', fontFamily: 'DM Sans' });
+    </script>
+    </head>
+<body style="overflow: hidden !important">
+<div class="container_body">
+<div class="container_inside">
+<!-- Navigation (injected by js/nav.js) -->
+<div id="vdb-header"></div>
+<div id="vdb-sidebar"></div>
+
+            <div class="container doc-wrapper">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="side_accordian doc-nav"><ul class="nav flex-column">
+        <li class="nav-item">
+            <a class="nav-link active " href="INFRASTRUCTURE_REVIEW_PLAN.html">
+                <i class="fa-solid fa-house me-2"></i> Infrastructure Review Plan
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="README.html">
+                <i class="fa-solid fa-house me-2"></i> Readme
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="system-context.html">
+                <i class="fa-solid fa-brain me-2"></i> System Context
+            </a>
+        </li>
+        </ul></div>
+                    </div>
+                    <div class="col-lg-9 doc-content">
+                        <nav aria-label="breadcrumb" class="mb-5">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="../../../index.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="#">infrastructure</a></li>
+                                <li class="breadcrumb-item active">Infrastructure Review Plan <span class="persona-badge">index</span></li>
+                            </ol>
+                        </nav>
+                        <h1 id="vaultdb-infrastructure-review-remediation-plan">VaultDB Infrastructure Review &amp; Remediation Plan</h1>
+<p>In-depth review of <code>infrastructure/cloudformation/</code>. Because this stack is
+distributed for "one-click" customer deployment <strong>and</strong> is the target for
+the core End-to-End test plan (<code>core/docs/E2E_TESTING_STRATEGY.md</code>,
+phases P3/P4/P5), it must (a) actually deploy, (b) run the workflow engine,
+and (c) meet least-privilege / cost / ops bars.</p>
+<p><strong>Last reviewed:</strong> 2026-05-16, against a live audit of all 13 templates,
+the master-stack wiring, and the <code>core</code> runtime contracts they must satisfy.</p>
+<h2 id="how-to-read-this">How to read this</h2>
+<p>Two classes of issue, deliberately separated:</p>
+<ul>
+<li><strong>Section 1 — Deploy &amp; Runtime Blockers (Phase 0).</strong> The stack does not
+  deploy as scripted, and even if forced through, the workflow subsystem
+  is non-functional. These must be fixed <em>before</em> any E2E phase or
+  hardening work. <strong>None of these were in the previous version of this
+  plan.</strong></li>
+<li><strong>Sections 2–4 — Hardening (Phases 1–3).</strong> Security, cost, and ops
+  improvements. The previous plan's content, <strong>validated and corrected</strong>
+  for three technical hazards that would have broken the stack if executed
+  as originally written.</li>
+</ul>
+<p>Severity: 🔴 CRITICAL (blocks workflow) · 🟠 HIGH (blocks deploy) ·
+🟡 MEDIUM · 🟢 LOW.</p>
+<hr />
+<h2 id="section-1-deploy-runtime-blockers-phase-0">Section 1 — Deploy &amp; Runtime Blockers (Phase 0)</h2>
+<h3 id="11-workflow-approval-hmac-secret-is-provisioned-nowhere">1.1 🔴 Workflow approval HMAC secret is provisioned nowhere</h3>
+<p><strong>Evidence.</strong> <code>core/src/vaultdb/approval/key_store.py</code> resolves the
+approval signing key in this order:
+1. <code>APPROVAL_SECRETS_ARN</code> → a Secrets Manager secret whose JSON <strong>must</strong> be
+   exactly <code>{"current_version": N, "keys": {"1": "&lt;hex&gt;", ...}}</code> (hex =
+   32 random bytes, 64 hex chars), <strong>or</strong>
+2. env <code>APPROVAL_SECRET_CURRENT</code> + <code>APPROVAL_SECRET_V{n}</code>, <strong>or</strong>
+3. legacy <code>APPROVAL_SECRET</code> / <code>WORKFLOW_APPROVAL_SECRET</code>.
+If none resolve → <code>RuntimeError: No approval key configured</code>.</p>
+<p><code>ops-secrets-manager.yaml</code>'s unified secret has only 8 keys
+(<code>supervisor_*</code>, <code>auth_client_*</code>, <code>redis_auth</code>, <code>cognito_client_secret</code>,
+<code>vaultdb_*</code>). <code>ecs-service.yaml</code> injects 8 matching env vars. <strong>No approval
+key anywhere; no <code>APPROVAL_SECRETS_ARN</code> injected into ECS / Lambda /
+Batch.</strong></p>
+<p><strong>Impact.</strong> <code>submit_workflow</code> / <code>execute_workflow</code> (the triple-gate — the
+headline BMA-compliance feature) raise on first call in every deployed
+environment. Blocks E2E phases P2 <code>C-WF.*</code>, P3, P5 workflow cases entirely.</p>
+<p><strong>Fix.</strong>
+- Add a <strong>dedicated</strong> <code>AWS::SecretsManager::Secret</code> (do <strong>not</strong> reuse the
+  unified secret — <code>key_store._load_from_secrets_manager</code> does
+  <code>json.loads</code> and requires the exact <code>{"current_version","keys"}</code> shape;
+  the unified blob's shape would crash it).
+- Shape: <code>{"current_version": 1, "keys": {"1": "&lt;64-hex&gt;"}}</code>.
+- Operator supplies the 32-byte key as a <code>NoEcho</code> parameter
+  (<code>openssl rand -hex 32</code>), consistent with how <code>SupervisorPassword</code> is
+  handled. No default (forces a real value at deploy, like
+  <code>SupervisorPassword</code>).
+- Export <code>${ProjectName}-${Environment}-approval-secret-arn</code>.
+- Inject env <code>APPROVAL_SECRETS_ARN</code> (the ARN, not the value — the app
+  fetches it via boto3) into <strong>ecs-service, lambda-function, and
+  batch-environments</strong> task/job definitions (workflows can execute on any
+  runner).
+- ✅ <strong>No IAM change needed in P0.</strong> <code>iam-roles.yaml</code> already grants
+  <code>secretsmanager:GetSecretValue</code> + <code>DescribeSecret</code> on
+  <code>arn:…:secret:${ProjectName}-${Environment}-*</code>, which already covers a
+  secret named <code>${ProjectName}-${Environment}-approval-secret</code>. Tightening
+  that wildcard is the Section 2.1 hardening job, <strong>not</strong> P0.
+- ⚠️ <strong><code>LambdaStack</code> and <code>BatchStack</code> must gain <code>- SecretsStack</code> in their
+  <code>DependsOn</code>.</strong> They are currently <em>unconditional</em> and do <strong>not</strong> depend
+  on <code>SecretsStack</code>; importing <code>approval-secret-arn</code> without the
+  dependency races stack creation → intermittent deploy failure
+  ("No export named …-approval-secret-arn"). <code>ECSStack.DependsOn</code> already
+  includes <code>SecretsStack</code> (OK). <code>SecretsStack</code> itself is unconditional, so
+  the export is always present for the unconditional Lambda/Batch
+  consumers — only the ordering needs fixing.</p>
+<p><strong>Files:</strong> <code>ops-secrets-manager.yaml</code>, <code>master-stack.yaml</code>,
+<code>ecs-service.yaml</code>, <code>lambda-function.yaml</code>, <code>batch-environments.yaml</code>.</p>
+<h3 id="12-stack-does-not-deploy-as-scripted">1.2 🟠 Stack does not deploy as scripted</h3>
+<p><strong>Evidence.</strong> <code>master-stack.yaml</code> has <strong>no-default</strong> parameters: <code>VpcId</code>,
+<code>PublicSubnet1Id</code>, <code>PublicSubnet2Id</code>, <code>PrivateSubnet1Id</code>,
+<code>PrivateSubnet2Id</code>, <code>SupervisorPassword</code> (plus <code>TemplatesBucketName</code>).
+<code>core/scripts/deploy_infra.sh</code> passes only <code>ProjectName</code>, <code>Environment</code>,
+<code>TemplatesBucketName</code>, <code>AdminEmail</code>, <code>DemoUserEmail</code> → CloudFormation
+rejects: <em>"Parameters: [VpcId, …] must have values."</em>
+<code>infrastructure/CLAUDE.md</code> documents <code>--parameter-overrides
+file://params-dev.json</code>, but <strong>no <code>params-*.json</code> exists</strong> in the repo.</p>
+<p><strong>Impact.</strong> P5 (and any real deploy) cannot start.</p>
+<p><strong>Fix.</strong>
+- Add <code>infrastructure/cloudformation/params-dev.json.example</code> enumerating
+  every required parameter, with inline guidance (incl. the
+  <code>openssl rand -hex 32</code> command for 1.1's key).
+- Update <code>core/scripts/deploy_infra.sh</code> to consume a params file (and fail
+  fast with a clear message if VPC/subnet/secret params are absent).
+- Keep secrets out of any committed file — <code>.example</code> only, real
+  <code>params-dev.json</code> git-ignored.</p>
+<p><strong>Files:</strong> <code>infrastructure/cloudformation/params-dev.json.example</code> (new),
+<code>core/scripts/deploy_infra.sh</code>.</p>
+<h3 id="13-oidc-provider-urls-never-reach-the-app">1.3 🟡 OIDC provider URLs never reach the app</h3>
+<p><strong>Evidence (corrected during implementation).</strong> The original assumption
+was "export the Cognito OAuth URLs." That is <strong>wrong</strong>: <code>cognito-auth.yaml</code>
+is a <strong>placeholder</strong> — it provisions only a Cognito <strong>Identity Pool</strong>
+(OIDC→AWS credential bridge); it has <strong>no User Pool</strong>, and its
+<code>UserPoolId</code> / <code>OAuth2AuthorizeUrl</code> / <code>OAuth2TokenUrl</code> / <code>HostedUIUrl</code>
+outputs are literally the string <code>'N/A'</code>. The real OIDC <strong>provider is
+external</strong> (Google/GitHub/etc. — see the <code>AuthClientId</code> param description
+"OAuth2 Client ID (Google, GitHub, etc.)"). So there is nothing real on
+Cognito to export; the app simply never gets its IdP endpoint URLs (only
+the client id/secret).</p>
+<p><strong>Impact.</strong> OIDC login (E2E P6 manual UI) cannot complete end-to-end.</p>
+<p><strong>Fix (corrected).</strong> Treat the IdP URLs as operator configuration, not
+Cognito-derived:
+- Add params <code>AuthAuthorizationUrl</code>, <code>AuthTokenUrl</code>, <code>AuthUserinfoUrl</code> to
+  <code>master-stack.yaml</code> (defaults may mirror <code>core</code>'s Google defaults) and
+  pass them to <code>ECSStack</code>.
+- In <code>ecs-service.yaml</code> set env <code>AUTH_AUTHORIZATION_URL</code>, <code>AUTH_TOKEN_URL</code>,
+  <code>AUTH_USERINFO_URL</code> from those params, and derive <code>AUTH_REDIRECT_URI</code> as
+  <code>http://${alb-dns}/auth/callback</code> via the existing
+  <code>${ProjectName}-${Environment}-alb-dns</code> export (ECSStack already
+  <code>DependsOn LoadBalancerStack</code>). Env names verified against <code>core</code>
+  <code>config._ENV_MAP</code>: <code>AUTH_AUTHORIZATION_URL</code>, <code>AUTH_TOKEN_URL</code>,
+  <code>AUTH_USERINFO_URL</code>, <code>AUTH_REDIRECT_URI</code>.
+- <strong>No <code>cognito-auth.yaml</code> change</strong> and <strong>no new <code>ECSStack</code> → CognitoStack
+  dependency</strong> (the original plan's step here was based on the wrong
+  premise).</p>
+<p><strong>Files:</strong> <code>master-stack.yaml</code>, <code>ecs-service.yaml</code>.</p>
+<h3 id="14-bring-your-own-vpc-prerequisite-is-undocumented">1.4 🟡 Bring-Your-Own-VPC prerequisite is undocumented</h3>
+<p>The stack consumes an <strong>existing</strong> VPC + 2 public + 2 private subnets;
+it does not create them. Nothing in the deploy script, README, or the E2E
+plan states this. Document it as a hard prerequisite alongside 1.2's
+params file.</p>
+<p><strong>Files:</strong> <code>infrastructure/README.md</code> (prereqs section), params example.</p>
+<h3 id="145-no-admin-deploys-scoped-deploy-role-bootstrap-implemented">1.4.5 🟢 No-admin deploys (scoped deploy role + bootstrap) — IMPLEMENTED</h3>
+<p>The deploy path no longer requires account-admin credentials. A one-time
+<strong>bootstrap</strong> (admin) creates two scoped IAM roles; every deploy after
+that uses them and needs <strong>no admin</strong>.</p>
+<ul>
+<li><strong><code>bootstrap-deploy-role.yaml</code></strong> (new) creates:</li>
+<li><code>${Project}-${Env}-cfn-exec-role</code> — CloudFormation assumes this to
+    create/update/delete the stack. Scoped to the
+    <code>${Project}-${Env}-*</code> namespace (S3, Secrets, IAM roles/policies/
+    instance-profiles all by-prefix), with explicit hard-denies on
+    privilege escalation (<code>iam:CreateUser</code>, <code>iam:CreateAccessKey</code>,
+    <code>iam:UpdateAssumeRolePolicy</code>, <code>iam:*PolicyVersion</code>,
+    <code>organizations:*</code>, <code>account:*</code>). NOT admin.</li>
+<li><code>${Project}-${Env}-deployer-role</code> — operator/CI assumes this before
+    deploying. Permissions: <code>cloudformation:*</code> on the project's stack
+    ARN, <code>iam:PassRole</code> (constrained to <code>cloudformation.amazonaws.com</code>),
+    and <code>s3:*</code> on the templates bucket. No resource-creation rights of
+    its own.</li>
+<li>
+<p><code>${Project}-${Env}-app-boundary</code> — permissions boundary exported
+    (<code>${Project}-${Env}-app-boundary-arn</code>) for <code>iam-roles.yaml</code> to attach
+    to every runtime role in P1 hardening; hard-caps what any app role
+    can ever do regardless of its own policy.</p>
+</li>
+<li>
+<p><strong><code>core/scripts/bootstrap_deploy_role.sh</code></strong> (new) — admin runs <strong>once</strong>
+  per environment: <code>bash core/scripts/bootstrap_deploy_role.sh &lt;project&gt;
+  &lt;env&gt; &lt;region&gt; &lt;deployer-arn&gt;</code>. Prints the two role ARNs.</p>
+</li>
+<li>
+<p><strong><code>core/scripts/deploy_infra.sh</code></strong> (updated) — if <code>DEPLOYER_ROLE_ARN</code> is
+  set it <code>sts:assume-role</code>'s into it (drops admin); if <code>DEPLOY_ROLE_ARN</code>
+  is set it passes <code>--role-arn</code> to <code>cloudformation deploy</code> so CFN itself
+  runs as the scoped exec role. Falls back to caller creds if neither is
+  set (back-compat), with a warning.</p>
+</li>
+</ul>
+<p><strong>Deploy flow (least-privilege):</strong></p>
+<pre><code>admin    : bootstrap_deploy_role.sh    # once, ever, creates the 2 roles
+operator : export DEPLOYER_ROLE_ARN=…  # from bootstrap output
+operator : export DEPLOY_ROLE_ARN=…    # from bootstrap output
+operator : deploy_infra.sh             # NO admin needed
+</code></pre>
+<p><strong>What this does NOT change:</strong> the <code>vaultdb-auth</code> (OIDC → Cognito → S3)
+self-serve path for analysts is unchanged and remains the right tool for
+P4 data-plane E2E. The bootstrap is the only step that needs admin, and
+only the <em>first</em> time.</p>
+<p><strong>Helpers:</strong>
+- <code>core/scripts/assume_deployer.sh</code> — eval-able exports so you can run
+  ad-hoc <code>aws ...</code> commands as the deployer role from your IAM-user shell.
+- <code>core/scripts/teardown_infra.sh</code> — see 1.4.6 below.</p>
+<h3 id="146-teardown-cost-discipline-implemented">1.4.6 🟢 Teardown &amp; cost discipline — IMPLEMENTED</h3>
+<p>The stack has <strong>hourly-billed resources</strong> even when ECS Fargate is scaled
+to 0. After every test session, run teardown to stop the bill.</p>
+<table>
+<thead>
+<tr>
+<th>Resource</th>
+<th>Bills when idle?</th>
+<th>Order-of-magnitude (us-east-1)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ElastiCache Redis</td>
+<td>YES</td>
+<td>~$0.017/hr/node (cache.t3.micro) — biggest sleeper</td>
+</tr>
+<tr>
+<td>Application LB</td>
+<td>YES</td>
+<td>~$0.022/hr + per-LCU</td>
+</tr>
+<tr>
+<td>EFS</td>
+<td>YES (small)</td>
+<td>~$0.30/GB-month (commitlog files only)</td>
+</tr>
+<tr>
+<td>NAT Gateway</td>
+<td>YES</td>
+<td>~$0.045/hr + $0.045/GB processed</td>
+</tr>
+<tr>
+<td>ECS Fargate tasks</td>
+<td>only if Min&gt;0</td>
+<td>default <code>MinCapacity=0</code> → free idle</td>
+</tr>
+<tr>
+<td>Batch / Lambda</td>
+<td>only on run</td>
+<td>Spot-priced; idle = 0</td>
+</tr>
+<tr>
+<td>S3 / ECR storage</td>
+<td>pennies</td>
+<td>persistent — fine to leave</td>
+</tr>
+</tbody>
+</table>
+<p><strong><code>core/scripts/teardown_infra.sh</code></strong> does, in order:
+1. Assumes the deployer role (same flow as <code>deploy_infra.sh</code> — no admin).
+2. <strong>Explicitly empties versioned project S3 buckets</strong> (<code>{project}-{env}-data</code>)
+   via <code>list-object-versions</code> + <code>delete-objects</code> — does NOT trust the
+   stack's <code>S3CleanupLambda</code> (per §4 it can fail silently).
+3. <code>cloudformation delete-stack</code> + <code>wait stack-delete-complete</code>.
+4. Optional flags:
+   - <code>--delete-templates-bucket</code> — also delete the CFN-templates bucket.
+   - <code>--teardown-bootstrap</code> — also delete the bootstrap stack (the
+     deployer + cfn-exec roles themselves; <strong>needs admin</strong> because
+     <code>iam:DeleteRole</code> on those role ARNs is outside the deployer-role's
+     own grant).
+5. <strong>Refuses to run on <code>prod</code></strong> (prod's data bucket has
+   <code>DeletionPolicy: Retain</code> anyway — controlled change-management only).</p>
+<p><strong>Recommended discipline for E2E P5:</strong> deploy → drive test cases →
+<strong><code>bash core/scripts/teardown_infra.sh vaultdb dev us-east-1</code></strong> before
+walking away. Leaving the stack up overnight on dev ≈ Redis + ALB + EFS
++ NAT continuously billing for nothing.</p>
+<h3 id="15-alb-is-http-only-no-443-acm">1.5 🟢 ALB is HTTP-only (no 443 / ACM)</h3>
+<p><code>load-balancer.yaml</code> opens 80/5555/8888 to <code>0.0.0.0/0</code> with no TLS
+listener. Acceptable for E2E; <strong>must not</strong> ship to prod. Note here so the
+hardening track (Section 2) treats transport encryption consistently with
+its KMS ask (2.4).</p>
+<h3 id="16-lambda-handler-run_type-broken-fixed">1.6 🔴 Lambda handler &amp; run_type broken — FIXED</h3>
+<p>Found while reviewing the container path:
+- <code>Dockerfile.lambda</code> <code>CMD ["vaultdb.lambda.handler.task_handler"]</code> and
+  <code>docker/scripts/entrypoint.sh</code> <code>python -m vaultdb.lambda.handler</code> —
+  <strong>no <code>vaultdb.lambda</code> module exists</strong> (<code>lambda</code> is a Python keyword;
+  module is <code>vaultdb.function.handler</code>, callable <code>task_handler</code>). Every
+  Lambda cold-start failed → FUNCTION runner 100% broken in AWS.
+- <code>Dockerfile.lambda</code> set <code>ENV run_type=lambda</code>. <code>config.run_type</code> is now
+  env-mapped (<code>_ENV_MAP</code>), and <code>RunType</code> only accepts
+  <code>service|function|batch|local</code> — <code>lambda</code> is invalid.
+- <strong>Fixed:</strong> <code>Dockerfile.lambda</code> → <code>run_type=function</code> +
+  <code>CMD ["vaultdb.function.handler.task_handler"]</code>; <code>entrypoint.sh</code> →
+  <code>vaultdb.function.handler</code> (and stale <code>start_fastapi</code> fallback
+  <code>vaultdb.web.app:app</code> → <code>vaultdb.web:app</code>).</p>
+<h3 id="17-deployed-images-install-from-pypi-not-local-source">1.7 🟠 Deployed images install from PyPI, not local source</h3>
+<p><code>Dockerfile.{service,lambda,batch-*}</code> run <code>pip install vaultdb.core</code>
+(PyPI). E2E phases that use these images test the <strong>published</strong> package,
+not the working tree. To validate local core changes, rebuild images from
+a local wheel/source. Tracked as the "artifact-under-test" rule in
+<code>core/docs/E2E_TESTING_STRATEGY.md</code> §0.</p>
+<h3 id="18-flower-monitor-is-internet-exposed-with-no-auth">1.8 🔴 Flower (monitor) is internet-exposed with no auth</h3>
+<p><code>service/scripts/start-monitor.sh</code>: <code>MONITOR_BASIC_AUTH</code> defaults empty →
+Flower starts with <strong>no authentication</strong>. <code>load-balancer.yaml</code> publishes
+port 5555 to <code>0.0.0.0/0</code> (monitor target group). Anyone on the internet
+can enumerate tasks (args may contain sensitive data) and <strong>revoke /
+terminate</strong> them. <code>core</code> ships <code>vaultdb/service/flower_auth.py</code>
+(OAuth-protected) which this script does not use.</p>
+<p><strong>Fix.</strong> Refuse to start Flower unauthenticated in any deployed env: wire
+<code>flower_auth</code> (OAuth) <strong>or</strong> require a non-empty <code>MONITOR_BASIC_AUTH</code>;
+and remove 5555 from the public ALB (internal-only, or behind ALB
+auth/OIDC). <strong>Files:</strong> <code>start-monitor.sh</code>, <code>load-balancer.yaml</code>.</p>
+<h3 id="19-jupyter-auth-disabled-on-environmentdev-the-deploy-default">1.9 🔴 Jupyter auth disabled on <code>Environment=dev</code> (the deploy default)</h3>
+<p><code>service/scripts/start-jupyter.sh</code>: when <code>ENVIRONMENT∈{dev,local}</code> with no
+token/password it sets <code>--NotebookApp.token='' --NotebookApp.password=''</code>.
+<code>master-stack.yaml</code> <strong>defaults <code>Environment=dev</code></strong>, and the ALB publishes
+8888 to <code>0.0.0.0/0</code>. With <code>ENABLE_JUPYTER=true</code> on a default deploy this
+is <strong>unauthenticated Jupyter (RCE) open to the internet</strong>. Compounding
+bug: array elements like <code>"--NotebookApp.token='${JUPYTER_TOKEN}'"</code> keep
+the <strong>literal single quotes</strong>, so token/empty handling is broken and
+unpredictable regardless of environment.</p>
+<p><strong>Fix.</strong> Never key auth off <code>dev</code>; require a token/password in every
+deployed env (fail closed if absent); remove the literal quotes; drop
+<code>--NotebookApp.allow_origin='*'</code>; do not ALB-expose 8888 publicly;
+reconsider shipping Jupyter in a production image at all.
+<strong>Files:</strong> <code>start-jupyter.sh</code>, <code>load-balancer.yaml</code>,
+<code>Dockerfile.service</code>.</p>
+<h3 id="110-batch-lambda-images-lack-the-kronos-domain-modules">1.10 🔴 Batch &amp; Lambda images lack the KRONOS domain modules</h3>
+<p><code>Dockerfile.service</code> installs
+<code>vaultdb.{assumptions,liability,scenario,alm,trading,valuation,risk,reporting,ingestion}</code>.
+<code>Dockerfile.batch-cpu/.gpu/.lambda</code> install <strong>only <code>vaultdb.core</code></strong>.
+Workflow steps / TED tasks dispatch domain tasks (e.g.
+<code>valuation.tasks.run</code>), so any Batch or Lambda job running an actuarial
+task fails with <code>ModuleNotFoundError</code>. The BATCH/FUNCTION service types
+can run core test tasks but not the workloads they exist for — breaks
+E2E P5 and real prod batch/lambda.</p>
+<p><strong>Fix.</strong> Install the domain-module set in the batch/lambda images (or a
+shared base image). <strong>Files:</strong> <code>Dockerfile.batch-cpu</code>,
+<code>Dockerfile.batch-gpu</code>, <code>Dockerfile.lambda</code>.</p>
+<h3 id="111-celery-beat-has-no-single-instance-leader-guard">1.11 🟠 Celery Beat has no single-instance / leader guard</h3>
+<p><code>[program:service-beat]</code> runs in <strong>every</strong> ECS replica; the service
+autoscales 0→N. With <code>ENABLE_BEAT=true</code> and &gt;1 task, every scheduled job
+fires once per replica (N× duplicate execution). No leader election.</p>
+<p><strong>Status — RESOLVED (Option B implemented).</strong> Uses <strong>RedBeat</strong>
+(<code>celery-redbeat</code>): the schedule lives in Redis and RedBeat holds a
+distributed lock so exactly one Beat instance is the active scheduler at
+a time, with automatic failover. Beat may run in every autoscaled
+replica — <strong>no <code>MaxCapacity=1</code> pinning required</strong>.</p>
+<p>Changes:
+- <code>Dockerfile.service</code>: <code>pip install … celery-redbeat</code>.
+- <code>start-beat.sh</code>: <code>--scheduler=redbeat.RedBeatScheduler</code>; dropped the
+  file-based <code>--schedule</code> and the singleton contract. RedBeat connects to
+  the Celery broker Redis (<code>broker_url</code> == <code>SERVICE_BROKER_URL</code>) — no
+  <code>core</code> change needed.
+- <code>supervisord.conf</code> <code>[program:service-beat]</code> unchanged (still gated by
+  <code>ENABLE_BEAT</code>); it is now safe under autoscaling.</p>
+<p><strong>Decision rationale:</strong> Option B chosen over A (no extra ECS task; one
+fewer service to size/deploy); RedBeat is the standard Celery solution
+and handles failover natively.</p>
+<hr />
+<h2 id="section-2-security-hardening-validated-corrected">Section 2 — Security Hardening (validated + corrected)</h2>
+<blockquote>
+<p>The previous plan's security items are <strong>valid and retained</strong>. Three
+carried a hidden hazard that would have broken the stack if executed
+verbatim — corrected below.</p>
+</blockquote>
+<h3 id="21-iam-resource-over-permissioning-valid">2.1 IAM <code>Resource: '*'</code> over-permissioning — VALID</h3>
+<p><code>iam-roles.yaml</code> Batch/ECS/ECR statements use <code>Resource: '*'</code>.</p>
+<p>⚠️ <strong>Correction to the original fix.</strong> The original plan said <em>"pass
+<code>ECSClusterArn</code> / <code>BatchQueueArn</code> / <code>ECRRepoArns</code> as parameters into
+<code>iam-roles.yaml</code>."</em> This <strong>inverts the dependency graph</strong> — <code>S3Stack</code>,
+<code>BatchStack</code>, <code>ECSStack</code> all <code>DependsOn IAMRolesStack</code>; making IAM consume
+their ARNs creates a circular nested-stack dependency that will not
+deploy. <strong>Correct approach:</strong> scope by <strong>ARN pattern</strong> using <code>!Sub</code> on the
+already-deterministic names, e.g.
+<code>arn:aws:ecr:${AWS::Region}:${AWS::AccountId}:repository/${ProjectName}-${Environment}-*</code>,
+<code>arn:aws:batch:${AWS::Region}:${AWS::AccountId}:job-queue/${ProjectName}-${Environment}-*</code>.
+No cross-stack ARN passing, no cycle.</p>
+<h3 id="22-efs-access-point-runs-as-root-00-777-valid">2.2 EFS access point runs as root <code>0:0</code> / <code>777</code> — VALID</h3>
+<p><code>vpc-networking.yaml</code> <code>EfsAccessPoint</code> hardcodes <code>Uid:0 Gid:0</code> and <code>777</code>.</p>
+<p>⚠️ <strong>Runtime-UID audit done — the images are inconsistent TODAY.</strong> All
+three mount the same EFS access point for the DuckLake <code>.ducklake</code>
+commitlog, but run as different users:
+- <strong>ECS service:</strong> supervisord (root) drops every program to
+  <code>user=service</code>. Now <strong>pinned to uid/gid 1000</strong> (<code>Dockerfile.service</code>
+  <code>useradd -u 1000</code>) so it aligns with the proposed access-point uid.
+- <strong>Batch (<code>Dockerfile.batch-cpu/.gpu</code>):</strong> no <code>USER</code> → runs as <strong>root
+  (uid 0)</strong>.
+- <strong>Lambda:</strong> runs as the Lambda runtime sandbox user.</p>
+<p>This is a <strong>pre-existing cross-runner corruption risk</strong> (root-owned vs
+1000-owned files on shared EFS), independent of the hardening. The §2.2
+fix is therefore not just "set the access point to 1000" — it must
+<strong>reconcile all three images to the same uid (1000)</strong>: keep ECS as-is
+(done), add a matching non-root user to the Batch images (verify no batch
+job needs root first — GPU/driver paths), and confirm the Lambda EFS
+access-point uid. Apply the access-point <code>1000:1000</code>/<code>755</code> change only
+<strong>after</strong> all images agree, with a post-change <code>/mnt/commitlog</code> write test
+per runner.</p>
+<h3 id="23-s3-delete-permission-vs-immutable-archive-valid-clarified">2.3 S3 delete permission vs. immutable archive — VALID (clarified)</h3>
+<p><code>s3-bucket.yaml</code> grants <code>s3:DeleteObject</code> bucket-wide to execution roles.</p>
+<p>Clarifications:
+- This is the <strong>archive-bucket immutability</strong> concern (TODO #6) and is
+  <strong>distinct from</strong> the approval <strong>signing key</strong> in 1.1 — the previous
+  plan conflated them. 1.1 must be fixed regardless of any Object-Lock
+  work here.
+- ⚠️ <code>ObjectLockEnabled</code> is <strong>creation-time only</strong> and requires bucket
+  versioning; it <strong>cannot</strong> be retrofitted, and is <strong>impossible</strong> on the
+  <code>ExistingDataBucketName</code> reuse path. The fix must therefore be: (a) deny
+  <code>s3:DeleteObject</code> on <code>approval-archive/</code> + <code>production/</code> prefixes via
+  bucket/role policy (works on existing buckets too), and (b) set
+  <code>ObjectLockEnabled: true</code> <strong>only</strong> on the newly-created-bucket branch.</p>
+<h3 id="24-sse-kms-option-valid-optional">2.4 🟢 SSE-KMS option — VALID (optional)</h3>
+<p>Offer <code>SSE-KMS</code> as an opt-in parameter for cryptographic access auditing;
+keep <code>AES256</code> default for cost. Pair with 1.5 (TLS) for a coherent
+encryption posture.</p>
+<hr />
+<h2 id="section-3-cost-vpc-endpoints-valid">Section 3 — Cost: VPC Endpoints (VALID)</h2>
+<p>No S3 Gateway / ECR / Secrets Manager / Logs interface endpoints → all
+private-subnet egress traverses NAT (~$0.045/GB). With DuckLake Parquet +
+ML image pulls this becomes the top bill line. Add S3 <strong>Gateway</strong>
+endpoint (free) + ECR/Secrets/Logs <strong>interface</strong> endpoints.</p>
+<p>⚠️ <strong>Note (BYO-VPC):</strong> because the VPC is customer-supplied (1.4),
+endpoint creation may collide with their existing routing/endpoints. Make
+the endpoint stack <strong>optional</strong> (a <code>CreateVpcEndpoints</code> condition,
+default true) so reuse scenarios can opt out.</p>
+<hr />
+<h2 id="section-4-operational-reliability-valid">Section 4 — Operational Reliability (VALID)</h2>
+<ul>
+<li>ECR <code>imageScanningConfiguration: scanOnPush: true</code>.</li>
+<li><code>S3CleanupLambda</code> custom resource: add a DLQ + bounded retry; it can
+  fail silently on large buckets and wedge stack deletion.</li>
+<li>Add alarms for <code>RunningTaskCount = 0</code> and <code>BatchQueueDepth</code> high
+  (stalled-processing detection); current alarms are CPU/Mem only.</li>
+</ul>
+<h3 id="41-container-hardening-medium-from-docker-review">4.1 Container hardening (MEDIUM, from docker/ review)</h3>
+<ul>
+<li><strong>supervisord fail-closed-too-hard.</strong> <code>supervisord.conf</code> uses
+  <code>%(ENV_SUPERVISOR_USER)s</code> / <code>%(ENV_AUTH_CLIENT_ID)s</code> etc. with no
+  defaults — a single missing secret key makes supervisord <strong>FATAL at
+  config parse</strong> (the whole container dies, no degraded mode). Provide
+  safe defaults or validate required env in <code>entrypoint.sh</code> before
+  exec'ing supervisord, with a clear error.</li>
+<li><strong><code>AWS_PROFILE=${DEPLOYMENT_ENV}</code> anti-pattern.</strong> Points boto3 at a
+  creds-less profile and pins region (<code>production</code>→us-west-2); only works
+  because <code>AWS_REGION</code> env overrides and the task-role chain still
+  resolves. In role-based ECS/Batch/Lambda, do <strong>not</strong> set <code>AWS_PROFILE</code>;
+  rely on the container/task credential provider + <code>AWS_REGION</code>.</li>
+<li><strong><code>test-builds.sh</code>.</strong> Counts the GPU build as <code>FAILED</code> then <code>exit 1</code>
+  even when NVIDIA-absent is expected (CI false negative); the Lambda
+  image <code>help</code>/<code>version</code> checks are meaningless (Lambda RIC entrypoint,
+  not <code>entrypoint.sh</code>). Make GPU optional/skipped; drop the Lambda
+  help/version asserts.</li>
+<li><strong>Jupyter <code>--NotebookApp.allow_origin='*'</code></strong> weakens origin/CSRF — tie
+  to the §1.9 fix.</li>
+</ul>
+<hr />
+<h2 id="section-5-cross-stack-contract-audit-verified-sound-no-action">Section 5 — Cross-Stack Contract Audit (verified SOUND — no action)</h2>
+<p>Recorded so future readers know what was checked:</p>
+<ul>
+<li>All 13 templates parse. Nested-stack orchestration is coherent.</li>
+<li><strong>Every <code>Fn::ImportValue</code> has a matching <code>Export:</code></strong> under the
+  consistent <code>${ProjectName}-${Environment}-&lt;suffix&gt;</code> convention. Spot-
+  verified: <code>redis-endpoint</code>/<code>redis-port</code>, all IAM role ARNs,
+  VPC subnets/SGs, ECR URIs, S3 bucket name/arn, <code>unified-secret-arn</code>,
+  ALB target-group ARNs. <strong>No dangling import found.</strong></li>
+<li>IAM export→import names are internally consistent across
+  lambda/batch/ecs/s3/ops. <code>s3-bucket.yaml</code> intentionally wires the three
+  runner role ARNs into the bucket policy.</li>
+<li><code>master-stack</code> <code>DependsOn</code> ordering respects every producer→consumer
+  <code>ImportValue</code> requirement.</li>
+<li>Endpoint exposure path is wired: ALB SG (80/5555/8888) → TGs
+  (8000/5555/8888) → ECS registers via imported TG ARNs → <code>LoadBalancerDNS</code>
+  output. Visible by design (modulo 1.5 TLS).</li>
+<li>DuckLake env wiring present: <code>CATALOG_DATA_PATH</code>,
+  <code>commitlog_directory=/mnt/commitlog</code>, Redis broker/result/cache URLs —
+  all map to <code>config._ENV_MAP</code>.</li>
+</ul>
+<hr />
+<h2 id="re-sequenced-action-plan">Re-sequenced Action Plan</h2>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Scope</th>
+<th>Gate before next phase</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>P0 — Blockers</strong></td>
+<td>1.1 approval secret · 1.2 deploy params/script · 1.3 OIDC threading · 1.4 BYO-VPC docs · <strong>1.4.5 scoped deploy role + bootstrap</strong> · 1.6 Lambda handler/run_type · 1.7 PyPI artifact rule · 1.8 Flower auth · 1.9 Jupyter auth · 1.10 Batch/Lambda domain modules · 1.11 Beat (RedBeat)</td>
+<td>Stack deploys to a scratch account <strong>with no admin creds (scoped role)</strong>; a workflow submits + executes; OIDC login completes; <strong>no unauthenticated 5555/8888 reachable</strong>; a domain task runs on Batch <strong>and</strong> Lambda</td>
+</tr>
+<tr>
+<td><strong>P1 — Security</strong></td>
+<td>2.1 IAM ARN-pattern scoping · 2.2 EFS uid reconciled across all 3 images · 2.3 S3 delete-deny + Object-Lock-on-new-only · 2.4 SSE-KMS opt-in · 1.5 TLS/443</td>
+<td><code>cfn-lint</code> clean; redeploy green; <code>/mnt/commitlog</code> write test passes per runner</td>
+</tr>
+<tr>
+<td><strong>P2 — Cost</strong></td>
+<td>Section 3 VPC endpoints (optional/conditional)</td>
+<td>NAT bytes drop in CloudWatch; deploy still green on BYO-VPC reuse</td>
+</tr>
+<tr>
+<td><strong>P3 — Ops</strong></td>
+<td>Section 4 ECR scan, S3 cleanup DLQ, stalled alarms, §4.1 container hardening</td>
+<td>Alarms fire in a forced-failure test; supervisord degrades gracefully on missing env</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Rule:</strong> P0 is mandatory and first — it is the only phase that unblocks
+the core E2E plan (P3/P4/P5 there). P1 must complete before any
+production/customer or real-data use. P2/P3 are pre-GA.</p>
+<h2 id="validation-method-per-fix">Validation method (per fix)</h2>
+<ul>
+<li><strong>Static:</strong> <code>cfn-lint cloudformation/*.yaml</code> and
+  <code>aws cloudformation validate-template</code> — <strong>not runnable in the dev
+  container</strong> (no <code>aws</code>/<code>cfn-lint</code>); must run in CI or an AWS-credentialed
+  shell. Add this as a CI gate given "one-click distribution."</li>
+<li><strong>Dynamic:</strong> deploy to a throwaway account/region; per-fix smoke
+  (workflow submit→execute for 1.1; OIDC login for 1.3; <code>/mnt/commitlog</code>
+  write for 2.2; NAT byte delta for §3); <strong>tear down</strong> (cost).</li>
+</ul>
+<h2 id="open-items-to-confirm-at-implementation-do-not-block-planning">Open items to confirm at implementation (do not block planning)</h2>
+<ol>
+<li>Exact <code>AUTH_*</code> env-var names in <code>core</code> <code>config._ENV_MAP</code> for 1.3.</li>
+<li>Container <code>USER</code> in each <code>docker/Dockerfile.*</code> for 2.2.</li>
+<li>Existing <code>secretsmanager:GetSecretValue</code> scope in <code>iam-roles.yaml</code>
+   before scoping it to the new approval-secret ARN (1.1 / 2.1).</li>
+</ol>
+                    </div>
+                </div>
+            </div>
+            
+</div></div>
+<!-- Footer (injected by js/nav.js) -->
+<div id="vdb-footer"></div>
+<script crossorigin="anonymous" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>AOS.init();</script>
+<script src="../../../js/nav.js"></script>
+</body>
+</html>
+            

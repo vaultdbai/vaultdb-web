@@ -101,7 +101,16 @@
                         <h1 id="reporting-data-architecture-technology">Reporting Data Architecture (Technology)</h1>
 <h2 id="pipeline-overview">Pipeline Overview</h2>
 <p>The <code>reporting</code> module leverages async TED tasks to aggregate data from <code>valuation</code> and <code>risk</code> outputs stored in DuckLake.</p>
-<div class="mermaid-diagram"><img src="diagram_1.svg" alt="Architecture Diagram 1" style="max-width:100%;height:auto;" /></div>
+<pre class="mermaid">sequenceDiagram
+    participant Catalog as Core/Catalog
+    participant RepTask as ReportingTask (TED)
+    participant DuckLake as DuckLake (Parquet)
+
+    RepTask->>Catalog: fetch_block_valuation(block_id)
+    Catalog-->>RepTask: Block valuation summary
+    RepTask->>DuckLake: transform_to_bscr_schema()
+    DuckLake-->>RepTask: BSCR-Ready Data
+</pre>
 <h2 id="schema-bscr-reporting-table">Schema: BSCR Reporting Table</h2>
 <table>
 <thead>

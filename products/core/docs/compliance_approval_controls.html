@@ -66,12 +66,6 @@
                     <div class="col-lg-3">
                         <div class="side_accordian doc-nav"><ul class="nav flex-column">
         <li class="nav-item">
-            <a class="nav-link  " href="abstract.html">
-                <i class="fa-solid fa-house me-2"></i> Abstract
-            </a>
-        </li>
-        
-        <li class="nav-item">
             <a class="nav-link  " href="AUTHENTICATION_GUIDE.html">
                 <i class="fa-solid fa-house me-2"></i> Authentication Guide
             </a>
@@ -84,8 +78,56 @@
         </li>
         
         <li class="nav-item">
+            <a class="nav-link  " href="CORE_TEST_READINESS.html">
+                <i class="fa-solid fa-house me-2"></i> Core Test Readiness
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="E2E_TESTING_STRATEGY.html">
+                <i class="fa-solid fa-house me-2"></i> E2E Testing Strategy
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="IMPLEMENTATION_SUMMARY.html">
+                <i class="fa-solid fa-house me-2"></i> Implementation Summary
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="INFRA_DEPLOY_RUNBOOK.html">
+                <i class="fa-solid fa-house me-2"></i> Infra Deploy Runbook
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="PYTHON312_COMPATIBILITY.html">
+                <i class="fa-solid fa-house me-2"></i> Python312 Compatibility
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="TASK_RUNNER_ARCHITECTURE.html">
+                <i class="fa-solid fa-house me-2"></i> Task Runner Architecture
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="abstract.html">
+                <i class="fa-solid fa-house me-2"></i> Abstract
+            </a>
+        </li>
+        
+        <li class="nav-item">
             <a class="nav-link active ps-4" href="compliance_approval_controls.html">
                 <i class="fa-solid fa-shield-halved me-2"></i> Approval Controls
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="core_review_and_test_plan.html">
+                <i class="fa-solid fa-house me-2"></i> Core Review And Test Plan
             </a>
         </li>
         
@@ -252,7 +294,21 @@
 <li>Key material (actual secret bytes) is <strong>never</strong> stored in the database. Only the integer <code>key_version</code> is persisted.</li>
 </ul>
 <h2 id="subject-types">Subject Types</h2>
-<div class="mermaid-diagram"><img src="diagram_1.svg" alt="Architecture Diagram 1" style="max-width:100%;height:auto;" /></div>
+<pre class="mermaid">graph LR
+    WORKFLOW[&quot;WORKFLOW<br/>AI-proposed pipelines&quot;]
+    REPORT[&quot;REPORT<br/>GAAP/STAT/BSCR filings&quot;]
+    TRADE[&quot;TRADE<br/>Hedge recommendations&quot;]
+    ASSUMPTION[&quot;ASSUMPTION_SET<br/>Mortality, lapse tables&quot;]
+    DATA[&quot;DATA_BATCH<br/>Census ingestion batches&quot;]
+    POLICY[&quot;POLICY<br/>Configuration changes&quot;]
+
+    WORKFLOW --> APPROVAL[&quot;ApprovalRecord&quot;]
+    REPORT --> APPROVAL
+    TRADE --> APPROVAL
+    ASSUMPTION --> APPROVAL
+    DATA --> APPROVAL
+    POLICY --> APPROVAL
+</pre>
 <p>Each subject type can have its own <code>ApprovalPolicy</code> with different rule configurations.</p>
 <h2 id="policy-rules-compliance-mapping">Policy Rules — Compliance Mapping</h2>
 <table>
@@ -304,7 +360,24 @@
 <li><strong>Non-forgeability</strong> — Without the secret key, no entity (including the AI) can create a valid token.</li>
 </ol>
 <h3 id="key-isolation">Key Isolation</h3>
-<div class="mermaid-diagram"><img src="diagram_2.svg" alt="Architecture Diagram 2" style="max-width:100%;height:auto;" /></div>
+<pre class="mermaid">flowchart TD
+    subgraph &quot;Trusted Zone&quot;
+        HUB[&quot;ChatHub (Port 8060)&quot;]
+        SECRET[&quot;WORKFLOW_APPROVAL_SECRET&quot;]
+    end
+
+    subgraph &quot;Untrusted Zone&quot;
+        UP[&quot;UserProcess (Port 9100-9999)&quot;]
+        AI[&quot;Claude SDK Engine&quot;]
+    end
+
+    HUB -->|has access| SECRET
+    UP -.->|DENIED| SECRET
+    AI -.->|DENIED| SECRET
+
+    HUB -->|spawns with stripped env| UP
+    UP -->|tool calls| AI
+</pre>
 <p>The <code>WORKFLOW_APPROVAL_SECRET</code> (and versioned keys) are held exclusively by ChatHub. UserProcesses are spawned with a stripped environment that explicitly denies access to approval secrets, AWS keys, and database URLs.</p>
 <h3 id="key-rotation">Key Rotation</h3>
 <p>The versioned key system allows seamless rotation:</p>

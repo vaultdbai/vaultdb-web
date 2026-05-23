@@ -78,12 +78,6 @@
         </li>
         
         <li class="nav-item">
-            <a class="nav-link  " href="index.html">
-                <i class="fa-solid fa-house me-2"></i> Index
-            </a>
-        </li>
-        
-        <li class="nav-item">
             <a class="nav-link  " href="KRONOS-APPROVAL-VIEWER-PLAN.html">
                 <i class="fa-solid fa-house me-2"></i> Kronos Approval Viewer Plan
             </a>
@@ -98,6 +92,24 @@
         <li class="nav-item">
             <a class="nav-link  " href="KRONOS-CHATBOT-PLAN.html">
                 <i class="fa-solid fa-house me-2"></i> Kronos Chatbot Plan
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="RESEARCH-AGENT-ARCHITECTURE.html">
+                <i class="fa-solid fa-house me-2"></i> Research Agent Architecture
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="TODO.html">
+                <i class="fa-solid fa-house me-2"></i> Todo
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="index.html">
+                <i class="fa-solid fa-house me-2"></i> Index
             </a>
         </li>
         
@@ -120,12 +132,6 @@
         </li>
         
         <li class="nav-item">
-            <a class="nav-link  " href="RESEARCH-AGENT-ARCHITECTURE.html">
-                <i class="fa-solid fa-house me-2"></i> Research Agent Architecture
-            </a>
-        </li>
-        
-        <li class="nav-item">
             <a class="nav-link  ps-4" href="standards_SUBMODULE_DOC_CONVENTION.html">
                 <i class="fa-solid fa-file-lines me-2"></i> Submodule Doc Convention
             </a>
@@ -134,12 +140,6 @@
         <li class="nav-item">
             <a class="nav-link active ps-4" href="technology_system_architecture.html">
                 <i class="fa-solid fa-code me-2"></i> System Architecture
-            </a>
-        </li>
-        
-        <li class="nav-item">
-            <a class="nav-link  " href="TODO.html">
-                <i class="fa-solid fa-house me-2"></i> Todo
             </a>
         </li>
         
@@ -161,25 +161,301 @@
                         <h1 id="kronos-re-system-architecture">KRONOS Re — System Architecture</h1>
 <p>This document provides a complete end-to-end view of how the KRONOS Re platform components interconnect, from user interaction through AI-assisted workflow creation to regulatory report generation.</p>
 <h2 id="system-overview">System Overview</h2>
-<div class="mermaid-diagram"><img src="diagram_1.svg" alt="Architecture Diagram 1" style="max-width:100%;height:auto;" /></div>
+<pre class="mermaid">graph TD
+    subgraph &quot;User Layer&quot;
+        BROWSER[&quot;Browser&quot;]
+    end
+
+    subgraph &quot;Frontend (Port 8050)&quot;
+        DASH[&quot;Dash UI<br/>(Multi-page App)&quot;]
+        KRONOS_API[&quot;KRONOS REST API<br/>(FastAPI Router)&quot;]
+    end
+
+    subgraph &quot;ChatHub (Port 8060)&quot;
+        HUB[&quot;Process Manager&quot;]
+        PROXY[&quot;Request Proxy&quot;]
+    end
+
+    subgraph &quot;UserProcesses (9100-9999)&quot;
+        UP1[&quot;User A<br/>ChatEngine + Claude SDK&quot;]
+        UP2[&quot;User B<br/>ChatEngine + Claude SDK&quot;]
+    end
+
+    subgraph &quot;VaultDB Core (Port 8000)&quot;
+        CORE_API[&quot;Core FastAPI&quot;]
+        TED[&quot;TED Dispatcher&quot;]
+        WF_MGR[&quot;Workflow Manager&quot;]
+        APPROVAL[&quot;Approval Engine&quot;]
+        AUTH[&quot;Authentication&quot;]
+    end
+
+    subgraph &quot;Compute Runners&quot;
+        CELERY[&quot;Celery Workers<br/>(Redis)&quot;]
+        BATCH[&quot;AWS Batch<br/>(Fargate)&quot;]
+        LAMBDA[&quot;AWS Lambda&quot;]
+    end
+
+    subgraph &quot;Domain Modules&quot;
+        LIABILITY[&quot;Liability&quot;]
+        ALM_MOD[&quot;ALM&quot;]
+        RISK_MOD[&quot;Risk&quot;]
+        TRADING_MOD[&quot;Trading&quot;]
+        SCENARIO[&quot;Scenario&quot;]
+        VALUATION[&quot;Valuation&quot;]
+        REPORTING[&quot;Reporting&quot;]
+        ASSUMPTIONS[&quot;Assumptions&quot;]
+        INGESTION[&quot;Ingestion&quot;]
+    end
+
+    subgraph &quot;Storage&quot;
+        DUCKLAKE[(&quot;DuckLake<br/>DuckDB + Parquet&quot;)]
+        S3[(&quot;S3&quot;)]
+        REDIS[(&quot;Redis&quot;)]
+    end
+
+    BROWSER --> DASH
+    BROWSER --> KRONOS_API
+    DASH --> KRONOS_API
+    KRONOS_API -->|chatbot requests| HUB
+    HUB --> PROXY
+    PROXY --> UP1
+    PROXY --> UP2
+    UP1 -->|Anthropic API| CLAUDE[&quot;Claude API&quot;]
+    UP2 -->|Anthropic API| CLAUDE
+
+    KRONOS_API --> CORE_API
+    HUB -->|submit/approve/execute| WF_MGR
+    WF_MGR --> APPROVAL
+    WF_MGR --> TED
+
+    TED --> CELERY
+    TED --> BATCH
+    TED --> LAMBDA
+
+    CELERY --> LIABILITY
+    CELERY --> ALM_MOD
+    CELERY --> RISK_MOD
+    CELERY --> TRADING_MOD
+
+    LIABILITY --> DUCKLAKE
+    ALM_MOD --> DUCKLAKE
+    RISK_MOD --> DUCKLAKE
+    DUCKLAKE --> S3
+    CELERY --> REDIS
+</pre>
 <h2 id="request-flow-chat-message-to-workflow-execution">Request Flow: Chat Message to Workflow Execution</h2>
 <p>This is the complete path from a user typing a message to workflow results:</p>
-<div class="mermaid-diagram"><img src="diagram_2.svg" alt="Architecture Diagram 2" style="max-width:100%;height:auto;" /></div>
+<pre class="mermaid">sequenceDiagram
+    participant USER as Actuary (Browser)
+    participant DASH as Dashboard (8050)
+    participant HUB as ChatHub (8060)
+    participant UP as UserProcess (9100)
+    participant CLAUDE as Claude API
+    participant CORE as VaultDB Core
+    participant WORKER as Celery Worker
+
+    rect rgb(30, 30, 60)
+        Note over USER,CLAUDE: Phase 1: AI Conversation
+        USER->>DASH: &quot;Run Q1 valuation for TED-FA-2026&quot;
+        DASH->>HUB: POST /chatbot/{user}/message
+        HUB->>HUB: Spawn UserProcess if needed
+        HUB->>UP: Forward (X-Hub-Token)
+        UP->>CLAUDE: messages.create(tools=TOOL_DEFINITIONS)
+        CLAUDE-->>UP: tool_use: list_modules
+        UP->>UP: dispatch_tool(&quot;list_modules&quot;)
+        UP->>CLAUDE: tool_result: {modules: ...}
+        CLAUDE-->>UP: tool_use: propose_workflow
+        UP->>HUB: POST /_hub/api/workflows/submit
+        HUB->>CORE: submit_workflow(definition)
+        CORE-->>HUB: WorkflowRun (PENDING_APPROVAL)
+        HUB-->>UP: {workflow_id, status}
+        UP->>CLAUDE: tool_result: {workflow_id}
+        CLAUDE-->>UP: end_turn: &quot;I've proposed a workflow...&quot;
+        UP-->>HUB: MessageResponse
+        HUB-->>DASH: JSON response
+        DASH-->>USER: Show DAG + Approve button
+    end
+
+    rect rgb(30, 60, 30)
+        Note over USER,CORE: Phase 2: Human Approval
+        USER->>DASH: Open /workflow?id=abc
+        DASH->>DASH: Record viewer_opened_at
+        USER->>USER: Review DAG, steps, assumptions
+        USER->>DASH: Click &quot;Approve&quot; + review notes
+        DASH->>HUB: POST /approvals
+        HUB->>CORE: PolicyEnforcer.enforce(context)
+        CORE-->>HUB: passed=True
+        HUB->>CORE: create_approval() → HMAC token
+        CORE-->>HUB: ApprovalRecord
+        HUB-->>DASH: 200 OK
+        DASH-->>USER: &quot;Approved&quot; badge
+    end
+
+    rect rgb(60, 30, 30)
+        Note over USER,WORKER: Phase 3: Execution
+        USER->>DASH: Click &quot;Execute&quot;
+        DASH->>HUB: POST /workflows/{id}/execute
+        HUB->>CORE: execute_workflow(id)
+        CORE->>CORE: Triple-gate: exists? valid? HMAC OK?
+        CORE->>CORE: Topological sort steps
+        loop Each step in DAG order
+            CORE->>WORKER: _call_task(step.task, kwargs)
+            WORKER->>WORKER: Execute domain computation
+            WORKER-->>CORE: Step result
+            CORE->>CORE: Resolve $step_xxx refs for next step
+        end
+        CORE-->>HUB: WorkflowRun (DONE)
+        HUB-->>DASH: Updated workflow
+        DASH-->>USER: Show results
+    end
+</pre>
 <h2 id="component-interconnection-map">Component Interconnection Map</h2>
 <h3 id="how-core-connects-to-dashboard">How Core Connects to Dashboard</h3>
-<div class="mermaid-diagram"><img src="diagram_3.svg" alt="Architecture Diagram 3" style="max-width:100%;height:auto;" /></div>
+<pre class="mermaid">flowchart LR
+    subgraph &quot;Dashboard&quot;
+        PAGES[&quot;Dash Pages&quot;]
+        API_ROUTES[&quot;API Routers&quot;]
+        CHATHUB[&quot;ChatHub&quot;]
+        COMPONENTS[&quot;UI Components&quot;]
+    end
+
+    subgraph &quot;Core&quot;
+        WORKFLOW[&quot;vaultdb.workflow&quot;]
+        APPROVAL[&quot;vaultdb.approval&quot;]
+        COMPUTE[&quot;vaultdb.compute (TED)&quot;]
+        DATA[&quot;vaultdb.data (DuckLake)&quot;]
+        AUTH[&quot;vaultdb.auth&quot;]
+        WEB[&quot;vaultdb.web&quot;]
+    end
+
+    API_ROUTES -->|import| AUTH
+    API_ROUTES -->|httpx proxy| CHATHUB
+    CHATHUB -->|submit_workflow| WORKFLOW
+    CHATHUB -->|create_approval| APPROVAL
+    CHATHUB -->|execute_workflow| WORKFLOW
+    WORKFLOW -->|verify_approval| APPROVAL
+    WORKFLOW -->|_call_task| COMPUTE
+    COMPUTE -->|persist results| DATA
+    PAGES -->|REST calls| API_ROUTES
+    COMPONENTS -->|REST calls| API_ROUTES
+</pre>
 <h3 id="how-domain-modules-connect">How Domain Modules Connect</h3>
-<div class="mermaid-diagram"><img src="diagram_4.svg" alt="Architecture Diagram 4" style="max-width:100%;height:auto;" /></div>
+<pre class="mermaid">graph TD
+    CORE[&quot;core&quot;] --> |all modules depend on| DEPS[&quot;Data Layer + TED + Config&quot;]
+
+    MARKET[&quot;market<br/>Curves, Vol Surfaces&quot;] --> ASSET[&quot;asset<br/>Pricing Engines&quot;]
+    MARKET --> SCENARIO[&quot;scenario<br/>ESG Paths&quot;]
+    MARKET --> VALUATION[&quot;valuation<br/>Portfolio MTM&quot;]
+
+    ASSUMPTIONS[&quot;assumptions<br/>Mortality, Lapse&quot;] --> LIABILITY[&quot;liability<br/>Cash Flows, Reserves&quot;]
+    ASSUMPTIONS --> ALM[&quot;alm<br/>Gap, NII, EVE&quot;]
+
+    INGESTION[&quot;ingestion<br/>Census Data&quot;] --> LIABILITY
+
+    LIABILITY --> ALM
+    LIABILITY --> VALUATION
+    ASSET --> VALUATION
+    SCENARIO --> ALM
+    SCENARIO --> RISK[&quot;risk<br/>BSCR, VaR&quot;]
+
+    ALM --> TRADING[&quot;trading<br/>Hedge Recommendations&quot;]
+    ALM --> RISK
+    VALUATION --> RISK
+    VALUATION --> REPORTING[&quot;reporting<br/>GAAP, STAT, BSCR&quot;]
+    RISK --> REPORTING
+    TRADING --> REPORTING
+</pre>
 <h2 id="security-architecture">Security Architecture</h2>
 <h3 id="trust-boundaries">Trust Boundaries</h3>
-<div class="mermaid-diagram"><img src="diagram_5.svg" alt="Architecture Diagram 5" style="max-width:100%;height:auto;" /></div>
+<pre class="mermaid">flowchart TD
+    subgraph &quot;Trusted Zone (has secrets)&quot;
+        HUB[&quot;ChatHub&quot;]
+        CORE[&quot;VaultDB Core&quot;]
+        SECRETS[&quot;APPROVAL_SECRET<br/>AWS Keys<br/>DB Credentials&quot;]
+    end
+
+    subgraph &quot;Semi-Trusted Zone (limited access)&quot;
+        DASH[&quot;Dashboard Server&quot;]
+        WORKERS[&quot;Celery Workers&quot;]
+    end
+
+    subgraph &quot;Untrusted Zone (no secrets)&quot;
+        UP[&quot;UserProcesses<br/>(AI + Claude SDK)&quot;]
+        BROWSER[&quot;User Browser&quot;]
+    end
+
+    HUB ---|full access| SECRETS
+    CORE ---|full access| SECRETS
+    DASH ---|OAuth tokens only| HUB
+    WORKERS ---|task context only| CORE
+    UP -.-|DENIED| SECRETS
+    BROWSER -.-|DENIED| SECRETS
+    HUB -->|stripped env| UP
+</pre>
 <h3 id="approval-token-flow">Approval Token Flow</h3>
-<div class="mermaid-diagram"><img src="diagram_6.svg" alt="Architecture Diagram 6" style="max-width:100%;height:auto;" /></div>
+<pre class="mermaid">flowchart LR
+    A[&quot;Human clicks Approve&quot;] --> B[&quot;PolicyEnforcer<br/>checks 6 rules&quot;]
+    B -->|passed| C[&quot;HMAC-SHA256<br/>generate token&quot;]
+    C --> D[&quot;Persist<br/>ApprovalRecord&quot;]
+    D --> E[&quot;Human clicks Execute&quot;]
+    E --> F[&quot;Triple Gate<br/>1. Exists?<br/>2. Valid?<br/>3. HMAC OK?&quot;]
+    F -->|all pass| G[&quot;Execute DAG&quot;]
+    F -->|any fail| H[&quot;DENIED&quot;]
+</pre>
 <h2 id="ted-end-to-end-pipeline">TED End-to-End Pipeline</h2>
 <p>The complete KRONOS Re operational loop (the "TED" demo):</p>
-<div class="mermaid-diagram"><img src="diagram_7.svg" alt="Architecture Diagram 7" style="max-width:100%;height:auto;" /></div>
+<pre class="mermaid">flowchart TD
+    INGEST[&quot;1. INGEST<br/>Census data normalization&quot;]
+    MARKET[&quot;2. MARKET<br/>Load SOFR curve, vol surface&quot;]
+    SCENARIO_GEN[&quot;3. SCENARIO<br/>Generate NY7 + stochastic paths&quot;]
+    VALUE[&quot;4. VALUE<br/>Price assets + project liabilities&quot;]
+    ALM_COMPUTE[&quot;5. ALM<br/>Duration gap, KRD, spreads&quot;]
+    HEDGE[&quot;6. HEDGE<br/>AI drafts recommendations<br/>🧑 CIO approves&quot;]
+    RISK_COMPUTE[&quot;7. RISK<br/>BSCR, VaR, stress tests&quot;]
+    REPORT[&quot;8. REPORT<br/>GAAP/STAT/BSCR filings<br/>🧑 Actuary signs&quot;]
+
+    INGEST --> MARKET
+    MARKET --> SCENARIO_GEN
+    SCENARIO_GEN --> VALUE
+    VALUE --> ALM_COMPUTE
+    ALM_COMPUTE --> HEDGE
+    HEDGE --> RISK_COMPUTE
+    RISK_COMPUTE --> REPORT
+
+    style HEDGE fill:#2d1a4e,stroke:#a044ff
+    style REPORT fill:#2d1a4e,stroke:#a044ff
+</pre>
 <h2 id="data-flow">Data Flow</h2>
-<div class="mermaid-diagram"><img src="diagram_8.svg" alt="Architecture Diagram 8" style="max-width:100%;height:auto;" /></div>
+<pre class="mermaid">flowchart LR
+    subgraph &quot;Input&quot;
+        CENSUS[&quot;Census Files<br/>(CSV/Excel)&quot;]
+        MKT_DATA[&quot;Market Data<br/>(SOFR, Vol)&quot;]
+        SOA[&quot;SOA Tables<br/>(Mortality)&quot;]
+    end
+
+    subgraph &quot;Processing&quot;
+        NORM[&quot;Normalize<br/>(ingestion)&quot;]
+        PROJ[&quot;Project<br/>(liability)&quot;]
+        PRICE[&quot;Price<br/>(asset)&quot;]
+        MATCH[&quot;Match<br/>(alm)&quot;]
+    end
+
+    subgraph &quot;Output&quot;
+        DASH_OUT[&quot;Dashboard<br/>Visualizations&quot;]
+        REPORTS_OUT[&quot;Regulatory<br/>Reports&quot;]
+        AUDIT[&quot;Audit<br/>Trail&quot;]
+    end
+
+    CENSUS --> NORM
+    MKT_DATA --> PRICE
+    SOA --> PROJ
+    NORM --> PROJ
+    PRICE --> MATCH
+    PROJ --> MATCH
+    MATCH --> DASH_OUT
+    MATCH --> REPORTS_OUT
+    MATCH --> AUDIT
+</pre>
 <h2 id="service-topology">Service Topology</h2>
 <table>
 <thead>

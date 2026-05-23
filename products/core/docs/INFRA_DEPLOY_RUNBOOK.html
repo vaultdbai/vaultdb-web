@@ -1,0 +1,689 @@
+
+            <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>KRONOS Re: core Documentation - Infra Deploy Runbook</title>
+<meta content="noindex, nofollow" name="robots"/>
+<meta name="vdb-context" content="You are viewing the core documentation: Infra Deploy Runbook. Category: index."/>
+<link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" rel="stylesheet"/>
+<link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" referrerpolicy="no-referrer" rel="stylesheet"/>
+<link href="../../../img/v-logo.png" rel="icon" type="image/png"/>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+<link href="../../../css/style.css" rel="stylesheet"/>
+
+    <style>
+        html { font-size: 10px !important; }
+        body { font-size: 1.6rem !important; background: var(--main-color) !important; color: #f5f5f5; }
+
+        .doc-wrapper { margin-top: 15vh; margin-bottom: 5vh; min-height: 80vh; }
+        .doc-nav { border-right: 1px solid rgba(168, 150, 183, 0.2); height: 100%; padding-right: 2rem; }
+        .doc-nav .nav-link {
+            color: #A896B7; border-radius: 12px; margin-bottom: 8px; transition: 0.3s;
+            font-size: 1.6rem; padding: 1.4rem 2rem; border: 1px solid transparent;
+        }
+        .doc-nav .nav-link:hover { background: rgba(160, 68, 255, 0.1); color: var(--purple-color); transform: translateX(8px); }
+        .doc-nav .nav-link.active { background: var(--purple-color); color: #fff !important; font-weight: 700; box-shadow: 0 12px 24px rgba(160, 68, 255, 0.4); }
+
+        .doc-content { padding-left: 6rem; max-width: 1000px; }
+        .doc-content h1, .doc-content h2, .doc-content h3 { font-family: var(--plus-font-family); color: #fff; margin-top: 4.5rem; }
+        .doc-content h1 { font-size: 5.2rem; font-weight: 800; margin-top: 0; margin-bottom: 4rem; letter-spacing: -0.03em; }
+        .doc-content h2 { font-size: 3.6rem; border-bottom: 2px solid rgba(168, 150, 183, 0.15); padding-bottom: 1.5rem; }
+        .doc-content h3 { font-size: 2.8rem; color: var(--purple-color); }
+
+        .doc-content p, .doc-content li { font-size: 1.8rem; line-height: 2.0; color: #d0c4db; margin-bottom: 2.8rem; }
+        .doc-content code { background: #0b0b1a; padding: 4px 10px; border-radius: 8px; color: #f8f8f2; border: 1px solid rgba(255,255,255,0.1); }
+        .doc-content pre { padding: 3.5rem; border-radius: 20px; box-shadow: 0 30px 60px rgba(0,0,0,0.5); }
+
+        .persona-badge { font-size: 0.9rem; text-transform: uppercase; padding: 6px 16px; border-radius: 99px; background: rgba(160, 68, 255, 0.25); border: 1px solid var(--purple-color); color: #fff; margin-left: 20px; }
+
+        .breadcrumb-item a { color: var(--purple-color); font-size: 1.6rem; text-decoration: none; }
+        .breadcrumb-item.active { color: #666; font-size: 1.6rem; }
+
+        .doc-content table { border-radius: 16px; overflow: hidden; border: 1px solid rgba(168, 150, 183, 0.3); }
+        .doc-content th { background: #131326; padding: 2rem; font-size: 1.7rem; color: #fff; }
+        .doc-content td { padding: 2rem; border-top: 1px solid rgba(168, 150, 183, 0.1); font-size: 1.7rem; }
+
+        .mermaid-diagram { margin: 3rem 0; text-align: center; }
+        .mermaid-diagram img { max-width: 100%; border-radius: 16px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+        .mermaid { background: transparent; }
+    </style>
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true, theme: 'dark', fontFamily: 'DM Sans' });
+    </script>
+    </head>
+<body style="overflow: hidden !important">
+<div class="container_body">
+<div class="container_inside">
+<!-- Navigation (injected by js/nav.js) -->
+<div id="vdb-header"></div>
+<div id="vdb-sidebar"></div>
+
+            <div class="container doc-wrapper">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="side_accordian doc-nav"><ul class="nav flex-column">
+        <li class="nav-item">
+            <a class="nav-link  " href="AUTHENTICATION_GUIDE.html">
+                <i class="fa-solid fa-house me-2"></i> Authentication Guide
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="CODEOWNERS_SETUP.html">
+                <i class="fa-solid fa-house me-2"></i> Codeowners Setup
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="CORE_TEST_READINESS.html">
+                <i class="fa-solid fa-house me-2"></i> Core Test Readiness
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="E2E_TESTING_STRATEGY.html">
+                <i class="fa-solid fa-house me-2"></i> E2E Testing Strategy
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="IMPLEMENTATION_SUMMARY.html">
+                <i class="fa-solid fa-house me-2"></i> Implementation Summary
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link active " href="INFRA_DEPLOY_RUNBOOK.html">
+                <i class="fa-solid fa-house me-2"></i> Infra Deploy Runbook
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="PYTHON312_COMPATIBILITY.html">
+                <i class="fa-solid fa-house me-2"></i> Python312 Compatibility
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="TASK_RUNNER_ARCHITECTURE.html">
+                <i class="fa-solid fa-house me-2"></i> Task Runner Architecture
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="abstract.html">
+                <i class="fa-solid fa-house me-2"></i> Abstract
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  ps-4" href="compliance_approval_controls.html">
+                <i class="fa-solid fa-shield-halved me-2"></i> Approval Controls
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="core_review_and_test_plan.html">
+                <i class="fa-solid fa-house me-2"></i> Core Review And Test Plan
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="ducklake.html">
+                <i class="fa-solid fa-house me-2"></i> Ducklake
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="ducklake_evaluation.html">
+                <i class="fa-solid fa-house me-2"></i> Ducklake Evaluation
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="extraction_module.html">
+                <i class="fa-solid fa-house me-2"></i> Extraction Module
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="glittery-brewing-riddle.html">
+                <i class="fa-solid fa-house me-2"></i> Glittery Brewing Riddle
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="implementation-plan-unified-runners.html">
+                <i class="fa-solid fa-house me-2"></i> Implementation Plan Unified Runners
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="index.html">
+                <i class="fa-solid fa-house me-2"></i> Index
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="logger_usage.html">
+                <i class="fa-solid fa-house me-2"></i> Logger Usage
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="oauth2_authentication_guide.html">
+                <i class="fa-solid fa-house me-2"></i> Oauth2 Authentication Guide
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="task_runners_integration_guide.html">
+                <i class="fa-solid fa-house me-2"></i> Task Runners Integration Guide
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="task_scheduling.html">
+                <i class="fa-solid fa-house me-2"></i> Task Scheduling
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  ps-4" href="technology_approval.html">
+                <i class="fa-solid fa-code me-2"></i> Approval
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  ps-4" href="technology_workflow.html">
+                <i class="fa-solid fa-code me-2"></i> Workflow
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="workflow-approval.html">
+                <i class="fa-solid fa-house me-2"></i> Workflow Approval
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="system-context.html">
+                <i class="fa-solid fa-brain me-2"></i> System Context
+            </a>
+        </li>
+        </ul></div>
+                    </div>
+                    <div class="col-lg-9 doc-content">
+                        <nav aria-label="breadcrumb" class="mb-5">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="../../../index.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="#">core</a></li>
+                                <li class="breadcrumb-item active">Infra Deploy Runbook <span class="persona-badge">index</span></li>
+                            </ol>
+                        </nav>
+                        <h1 id="infra-deploy-runbook-cognito-scoped-roles">Infra Deploy Runbook — Cognito + scoped roles</h1>
+<p>A step-by-step you can follow without re-reading the plan docs. Three
+phases: <strong>one-time admin bootstrap</strong>, <strong>dev workflow</strong> (Google login),
+<strong>per-session loop</strong> (deploy → test → tear down).</p>
+<blockquote>
+<p>Background / why each step exists:
+- <code>infrastructure/docs/INFRASTRUCTURE_REVIEW_PLAN.md</code> §1.4.5 + §1.4.6
+- <code>core/docs/E2E_TESTING_STRATEGY.md</code>
+- <code>/vaultdb/CLAUDE.md</code> → "AWS Connectivity &amp; Credentials"</p>
+<p><strong>Always tear down dev/staging stacks before walking away.</strong> The stack
+has hourly-billed resources that keep charging even when ECS is at 0.</p>
+</blockquote>
+<hr />
+<h2 id="how-auth-works-read-this-once">How auth works (read this once)</h2>
+<pre><code>   ┌───────────────────┐       OIDC          ┌─────────────────────┐
+   │  dev's browser    │  ────────────────▶  │  Cognito Identity   │
+   │ (vaultdb-auth)    │   (Google,          │  Pool (in bootstrap │
+   └───────────────────┘   Microsoft Entra,  │  stack)             │
+                           Okta, Auth0, …)   └──────────┬──────────┘
+                                                        │ role mapping by email
+                                          ┌─────────────┴────────────┐
+                                          ▼                          ▼
+                              admin email  →  DEPLOYER role     else → DATA role
+                                          │                          │
+                                          ▼                          ▼
+                                   CloudFormation +              S3 / DuckLake /
+                                   PassRole                      invoke runners
+</code></pre>
+<p>The bootstrap supports ANY combination of <strong>Google</strong> (social shortcut)
+and one <strong>generic OIDC</strong> provider (Microsoft Entra ID, Okta, Auth0,
+Keycloak — anything IAM can register as an OIDC provider). Same admin-
+email allow-list applies across whichever IdPs you configure.</p>
+<p>No IAM users. No static keys. Off-boarding = remove the email from the
+bootstrap template and re-bootstrap.</p>
+<hr />
+<h2 id="phase-1-admin-does-this-once-per-environment">Phase 1 — ADMIN does this ONCE per environment</h2>
+<p>Requires <strong>admin</strong> AWS credentials (the only time admin is ever used).
+Also requires a Google OAuth Client ID — see Phase 1.0.</p>
+<h3 id="10-one-time-configure-your-idp">1.0 — (One-time) configure your IdP</h3>
+<p>Pick ONE or BOTH paths:</p>
+<p><strong>Path A — Google (easiest, no IAM setup):</strong></p>
+<p>In Google Cloud Console → APIs &amp; Services → Credentials:</p>
+<ol>
+<li>Create OAuth Client → <strong>Web application</strong>.</li>
+<li>Authorised redirect URI: <code>https://&lt;your-app-host&gt;/oauth/callback</code>
+   (or <code>http://localhost:&lt;port&gt;/oauth/callback</code> for local dev).</li>
+<li>Save the <strong>Client ID</strong> (looks like <code>1234567890-abc.apps.googleusercontent.com</code>).</li>
+</ol>
+<p><strong>Path B — Any OIDC provider (Microsoft Entra ID, Okta, Auth0, Keycloak, …):</strong></p>
+<p>Admin pre-registers the IdP in IAM as an OIDC provider (one-time, ~30s):</p>
+<pre><code class="language-bash"># Microsoft Entra ID v2.0:
+aws iam create-open-id-connect-provider \
+    --url https://login.microsoftonline.com/&lt;tenant&gt;/v2.0 \
+    --client-id-list &lt;your-app-client-id&gt; \
+    --thumbprint-list &lt;cert-thumbprint&gt;
+
+# Okta:
+aws iam create-open-id-connect-provider \
+    --url https://&lt;your-org&gt;.okta.com \
+    --client-id-list &lt;your-app-client-id&gt; \
+    --thumbprint-list &lt;cert-thumbprint&gt;
+</code></pre>
+<p>Capture <strong>(a)</strong> the resulting OIDC provider ARN, and <strong>(b)</strong> the issuer URL
+without the <code>https://</code> prefix (e.g. <code>login.microsoftonline.com/&lt;tenant&gt;/v2.0</code>
+or <code>acme.okta.com</code>).</p>
+<h3 id="11-bootstrap-cognito-scoped-roles">1.1 — Bootstrap Cognito + scoped roles</h3>
+<pre><code class="language-bash">ACCT=$(aws sts get-caller-identity --query Account --output text)
+
+# Google only:
+bash core/scripts/bootstrap_deploy_role.sh vaultdb dev us-east-1 \
+    --admin-email alice@example.com \
+    --google-client-id 1234567890-abc.apps.googleusercontent.com
+
+# Microsoft Entra only:
+bash core/scripts/bootstrap_deploy_role.sh vaultdb dev us-east-1 \
+    --admin-email alice@example.com \
+    --oidc-provider-arn arn:aws:iam::$ACCT:oidc-provider/login.microsoftonline.com/tenantid/v2.0 \
+    --oidc-issuer-host login.microsoftonline.com/tenantid/v2.0
+
+# Okta + a second admin:
+bash core/scripts/bootstrap_deploy_role.sh vaultdb dev us-east-1 \
+    --admin-email alice@example.com --admin-email-2 bob@example.com \
+    --oidc-provider-arn arn:aws:iam::$ACCT:oidc-provider/acme.okta.com \
+    --oidc-issuer-host acme.okta.com
+
+# Google + Okta (federate both):
+bash core/scripts/bootstrap_deploy_role.sh vaultdb dev us-east-1 \
+    --admin-email alice@example.com \
+    --google-client-id 123-abc.apps.googleusercontent.com \
+    --oidc-provider-arn arn:aws:iam::$ACCT:oidc-provider/acme.okta.com \
+    --oidc-issuer-host acme.okta.com
+
+# Outputs (save these — devs need them):
+#   IdentityPoolId       us-east-1:abcd-...
+#   DataRoleArn          arn:aws:iam::ACCT:role/vaultdb-dev-data-role
+#   DeployerRoleArn      arn:aws:iam::ACCT:role/vaultdb-dev-deployer-role
+#   CfnExecutionRoleArn  arn:aws:iam::ACCT:role/vaultdb-dev-cfn-exec-role
+</code></pre>
+<p>That's it for admin — until you need to add/remove an admin email
+(re-run with the updated list — CloudFormation updates in place) or
+delete the env entirely (<code>teardown_infra.sh --teardown-bootstrap</code>,
+admin-only).</p>
+<hr />
+<h2 id="phase-2-dev-setup-one-time-per-laptop">Phase 2 — DEV setup (one-time per laptop)</h2>
+<pre><code class="language-bash"># 2.1 — Configure VaultDB to use the Identity Pool from Phase 1.1
+# (put this in your .env or shell profile)
+export USER_IDENTITY_POOL_ID=us-east-1:abcd-...
+export aws_region=us-east-1
+export aws_profile=dev
+
+# 2.2 — Verify vaultdb-auth flow works (will open a browser for Google login)
+vaultdb-auth
+
+# 2.3 — Confirm which role you got
+export AWS_PROFILE=dev
+aws sts get-caller-identity
+# If your email is on the admin list: assumed-role/vaultdb-dev-deployer-role/...
+# Otherwise:                          assumed-role/vaultdb-dev-data-role/...
+</code></pre>
+<p>If 2.3 shows the <strong>data-role</strong> when you expected deployer, your email
+isn't on the admin list — ask the admin to add it to <code>AdminEmail2</code>/<code>3</code>
+and re-run bootstrap (idempotent).</p>
+<hr />
+<h2 id="phase-3-per-session-loop-deploy-test-tear-down">Phase 3 — Per-session loop  (DEPLOY → TEST → TEAR DOWN)</h2>
+<h3 id="31-sign-in-every-session">3.1  Sign in (every session)</h3>
+<p><code>vaultdb-auth</code> creds expire after ~1 hour. Re-run any time you get
+expired-credential errors.</p>
+<pre><code class="language-bash">vaultdb-auth                                  # interactive IdP login (Google / Microsoft / Okta / …)
+export AWS_PROFILE=dev
+aws sts get-caller-identity                   # should be deployer role
+</code></pre>
+<h3 id="32-fill-in-the-params-file-first-time-only">3.2  Fill in the params file (first time only)</h3>
+<pre><code class="language-bash">cp infrastructure/cloudformation/params-dev.json.example \
+   infrastructure/cloudformation/params-dev.json     # gitignored — has secrets
+
+# Edit params-dev.json — fill in placeholders flagged by the script:
+#   VpcId / Public+Private Subnet IDs   (BYO existing VPC + 2 public + 2 private)
+#   SupervisorPassword                  (your choice)
+#   ApprovalSecretKey                   → openssl rand -hex 32
+#   AdminEmail, DemoUserEmail
+#   AuthClientId/AuthClientSecret       (the SAME Google client ID + secret)
+</code></pre>
+<h3 id="33-deploy">3.3  DEPLOY</h3>
+<pre><code class="language-bash">bash core/scripts/deploy_infra.sh vaultdb dev us-east-1
+# - Auto-discovers DEPLOY_ROLE_ARN from the bootstrap stack
+# - Validates params-dev.json (fails fast on placeholders)
+# - Uploads templates to s3://vaultdb-dev-templates-us-east-1
+# - cloudformation deploy --role-arn $DEPLOY_ROLE_ARN
+# Wait ~10–20 min for nested stacks to converge.
+</code></pre>
+<p>After it returns CREATE/UPDATE_COMPLETE:</p>
+<pre><code class="language-bash">aws cloudformation describe-stacks \
+    --stack-name vaultdb-dev-stack \
+    --query 'Stacks[0].Outputs' --output table
+# Note: S3BucketName, LoadBalancerDNS, LambdaFunctionName,
+#       CPUSpotJobQueueArn, CPUJobDefinitionArn, ApprovalSecretArn,
+#       IdentityPoolId (same as bootstrap output — sourced via ImportValue)
+</code></pre>
+<h3 id="34-test">3.4  TEST</h3>
+<p>You're still signed in as DEPLOYER. For S3 / DuckLake / data-plane tests,
+you have a choice:</p>
+<ul>
+<li><strong>Stay on deployer creds</strong> — has data-plane perms inherited from cfn-exec</li>
+<li>templates bucket. Fine for quick smoke tests.</li>
+<li><strong>Switch to a separate data-role session</strong> — more realistic; mirrors what
+  an end user gets:
+  <code>bash
+  # Easiest: switch to a non-admin Google account that Cognito maps to DataRole
+  vaultdb-auth   # log in as a non-admin user</code></li>
+</ul>
+<p>Then run whatever E2E phase you're at — see E2E_TESTING_STRATEGY.md:
+- <strong>P3</strong> — Real Redis (broker URL from RedisStack outputs)
+- <strong>P4</strong> — S3 DuckLake (<code>CATALOG_DATA_PATH=s3://vaultdb-dev-data</code>)
+- <strong>P5</strong> — Batch + Lambda (submit a test job to <code>CPUSpotJobQueueArn</code> / Lambda)</p>
+<h3 id="35-tear-down-mandatory-do-this-before-walking-away">3.5  TEAR DOWN  (mandatory — do this before walking away)</h3>
+<blockquote>
+<p>[!NOTE]
+<strong>Automated 1-Hour Self-Destruct (Dev Only):</strong>
+In <code>Environment=dev</code>, the stack deploys a serverless self-destruct mechanism (EventBridge Rule + Lambda). 
+Exactly <strong>1 hour</strong> after deployment, this will automatically empty all ephemeral data buckets and trigger a CloudFormation stack deletion.
+This is a fallback to save money if you forget to run the manual teardown script. 
+To test or terminate early, always run the manual teardown script below.</p>
+</blockquote>
+<pre><code class="language-bash">bash core/scripts/teardown_infra.sh vaultdb dev us-east-1
+# - Empties versioned S3 buckets explicitly (does NOT trust S3CleanupLambda)
+# - cloudformation delete-stack + waits for completion
+# - Refuses to run on prod
+# Confirmation prompt: type &quot;dev&quot; to proceed.
+</code></pre>
+<p>Optional flags:</p>
+<ul>
+<li><code>--delete-templates-bucket</code> — also delete <code>vaultdb-dev-templates-us-east-1</code>
+  (the script-managed bucket, not part of the stack).</li>
+<li><code>--teardown-bootstrap</code> — also delete the <strong>bootstrap stack</strong> (Identity
+  Pool + deployer + cfn-exec roles). <strong>Needs admin creds.</strong> Only do this
+  if you're fully done with the environment; otherwise next deploy needs
+  a re-bootstrap (Phase 1).</li>
+<li><code>--yes</code> — skip the confirmation prompt (for CI / scripted runs).</li>
+</ul>
+<h3 id="36-verify-the-bill-is-going-to-zero">3.6  Verify the bill is going to zero</h3>
+<pre><code class="language-bash">aws cloudformation list-stacks --region us-east-1 \
+    --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE
+# Should NOT list vaultdb-dev-stack.
+
+# Spot-check the hourly-billed resources are gone:
+aws elasticache describe-cache-clusters \
+    --query 'CacheClusters[?starts_with(CacheClusterId,`vaultdb-dev`)].CacheClusterId'
+aws elbv2 describe-load-balancers \
+    --query 'LoadBalancers[?starts_with(LoadBalancerName,`vaultdb-dev`)].LoadBalancerName'
+# Both should return empty arrays.
+</code></pre>
+<p>The bootstrap stack itself is free to leave up (it's just IAM + Cognito —
+no hourly charges). Tear it down only when retiring the environment.</p>
+<hr />
+<h2 id="what-costs-money-and-how-fast">What costs money (and how fast)</h2>
+<p>These keep billing even when ECS Fargate is scaled to 0 — the reason
+teardown matters:</p>
+<table>
+<thead>
+<tr>
+<th>Resource</th>
+<th>Idle bill?</th>
+<th>~Rate (us-east-1)</th>
+<th>Dev note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ElastiCache Redis</td>
+<td><strong>YES</strong></td>
+<td>~$0.016/hr/node (cache.t4g.micro)</td>
+<td>biggest sleeper</td>
+</tr>
+<tr>
+<td>Application LB</td>
+<td><strong>YES</strong></td>
+<td>~$0.022/hr + per-LCU</td>
+<td></td>
+</tr>
+<tr>
+<td>EFS</td>
+<td>yes (small)</td>
+<td>~$0.30/GB-month</td>
+<td></td>
+</tr>
+<tr>
+<td>NAT Gateway</td>
+<td><strong>YES</strong></td>
+<td>~$0.045/hr + $0.045/GB processed</td>
+<td><strong>$0 for dev</strong> (see below)</td>
+</tr>
+<tr>
+<td>VPC endpoints</td>
+<td>YES (opt-in)</td>
+<td>~$0.10/hr (5 × 2 AZ × $0.01)</td>
+<td></td>
+</tr>
+<tr>
+<td>ECS Fargate tasks</td>
+<td>only if Min&gt;0</td>
+<td>default <code>MinCapacity=0</code> → free</td>
+<td></td>
+</tr>
+<tr>
+<td>Batch / Lambda</td>
+<td>only on run</td>
+<td>Spot-priced; idle = 0</td>
+<td></td>
+</tr>
+<tr>
+<td>S3 / ECR storage</td>
+<td>pennies</td>
+<td>persistent — fine to leave</td>
+<td></td>
+</tr>
+<tr>
+<td>Bootstrap stack</td>
+<td><strong>$0</strong></td>
+<td>IAM + Cognito = free at idle</td>
+<td></td>
+</tr>
+<tr>
+<td>Persistent bucket</td>
+<td>pennies</td>
+<td>~$0.023/GB-month (reference data)</td>
+<td>survives teardown</td>
+</tr>
+</tbody>
+</table>
+<p>Leaving the master-stack up for a 24-hour weekend ≈ $1–$3 of nothing
+(more with <code>DeployVpcEndpoints=true</code>, see below).</p>
+<h3 id="dev-gets-0-networking-automatically">Dev gets $0 networking automatically</h3>
+<p>When <code>Environment=dev</code>, ECS Fargate tasks run in <strong>public subnets</strong>
+with <code>AssignPublicIp=ENABLED</code>. Outbound internet goes directly through
+the Internet Gateway (free) — <strong>no NAT Gateway needed</strong>. Savings:
+~$32/month per dev environment.</p>
+<p>This is <strong>automatic</strong> — no parameter to set. Staging and prod always
+use private subnets with <code>AssignPublicIp=DISABLED</code> (requires NAT for
+outbound). Security groups still gate inbound in all environments;
+the public IP is for outbound only (ECR pulls, Secrets Manager,
+external APIs).</p>
+<blockquote>
+<p><strong>Batch stays in private subnets</strong> regardless of environment. AWS
+Batch EC2/SPOT compute doesn't support <code>AssignPublicIp</code>. Batch jobs
+still need NAT or VPC endpoints for outbound. This is fine because
+Batch is idle-cost-free (<code>MinvCpus=0</code>) — NAT only costs money when
+jobs actually run.</p>
+</blockquote>
+<h3 id="the-nat-gateway-question-stagingprod">The NAT Gateway question (staging/prod)</h3>
+<p>NAT lives in your BYO-VPC, not in this stack. Compute in private
+subnets needs <em>some</em> outbound path to:
+- pull ECR images, hit Secrets Manager / CloudWatch Logs / STS,
+- reach <strong>external</strong> APIs (Anthropic, Gemini, OIDC IdP, prospectus
+  crawler targets, OS package mirrors).</p>
+<p>You have three topologies for staging/prod:</p>
+<ol>
+<li>
+<p><strong>NAT only</strong> — simplest, works for everything.
+   ~$32/month idle + per-GB. Recommended for <strong>prod</strong>.</p>
+</li>
+<li>
+<p><strong>VPC endpoints, no NAT</strong> — set <code>DeployVpcEndpoints=true</code> in your
+   params file. Creates 5 interface endpoints (ECR API / DKR / Secrets /
+   Logs / STS) + free S3 gateway. ~$72/month idle for the endpoints.
+   <strong>AWS-only traffic works; external HTTPS breaks.</strong> Anything that
+   calls Anthropic / OIDC IdP / external sites must move to a public
+   subnet (set <code>assignPublicIp=ENABLED</code> on those task definitions) or
+   you keep a small dedicated NAT just for them.</p>
+</li>
+<li>
+<p><strong>No NAT, public subnets, no endpoints</strong> — cheapest ($0 networking).
+   Compute gets public IPs; security groups still gate ingress. Fine
+   for <strong>dev</strong> (this is the default for <code>Environment=dev</code>); security
+   people will hate it for staging/prod.</p>
+</li>
+</ol>
+<p><strong>Recommendation for VaultDB staging:</strong> option 1 (NAT). The endpoint
+cost ($72/mo) actually exceeds the NAT idle cost ($32/mo) at typical
+dev volumes — endpoints only win when you're processing serious data
+through them. Revisit at scale if NAT data charges ever climb.</p>
+<p>If you want option 2, set <code>DeployVpcEndpoints=true</code> AND fill in
+<code>PrivateRouteTable1Id</code>/<code>PrivateRouteTable2Id</code> in <code>params-dev.json</code>
+(skip those and you lose the free S3 gateway endpoint, which makes
+ECR image pulls 10× more expensive — they go via the interface
+endpoint instead of the gateway).</p>
+<h3 id="persistent-reference-data">Persistent reference data</h3>
+<p>The master-stack's data bucket (<code>${project}-${env}-data</code>) is deleted
+on teardown — that's by design (stop the bill). But re-uploading
+census files, DuckLake baselines, and reference datasets every session
+is painful.</p>
+<p>Solution: a <strong>persistent bucket</strong> (<code>${project}-${env}-persistent</code>)
+deployed as a standalone stack. <code>DeletionPolicy: Retain</code> ensures it
+survives even if the stack itself is deleted. Cost: pennies/month.</p>
+<pre><code class="language-bash"># Deploy once per environment (standalone — not part of master stack):
+aws cloudformation deploy \
+    --template-file infrastructure/cloudformation/persistent-data-bucket.yaml \
+    --stack-name vaultdb-dev-persistent-data \
+    --parameter-overrides ProjectName=vaultdb Environment=dev
+
+# Seed it with reference data:
+aws s3 cp kronos_synthetic_census.csv s3://vaultdb-dev-persistent/census/
+aws s3 cp my-ducklake-baseline/ s3://vaultdb-dev-persistent/ducklake/ --recursive
+
+# In your app config, point secondary paths here:
+export PERSISTENT_DATA_PATH=s3://vaultdb-dev-persistent
+</code></pre>
+<p><code>teardown_infra.sh</code> explicitly <strong>does not touch</strong> this bucket — it
+only empties the ephemeral <code>${project}-${env}-data</code> bucket.</p>
+<hr />
+<h2 id="common-gotchas">Common gotchas</h2>
+<ul>
+<li><strong><code>vaultdb-auth</code> gives me DataRole instead of DeployerRole.</strong>
+  Your IdP email isn't in the bootstrap's admin list. Either:</li>
+<li>Sign in with the admin account, OR</li>
+<li>
+<p>Have the admin re-run <code>bootstrap_deploy_role.sh</code> with your email
+    added (idempotent — same command, just <code>--admin-email-2 you@…</code>).</p>
+</li>
+<li>
+<p><strong><code>vaultdb-auth</code> errors with "no Identity Pool".</strong>
+  <code>USER_IDENTITY_POOL_ID</code> env var isn't set or points at a stale pool.
+  Check the bootstrap stack outputs:
+  <code>bash
+  aws cloudformation describe-stacks --stack-name vaultdb-dev-bootstrap \
+      --query "Stacks[0].Outputs[?OutputKey=='IdentityPoolId'].OutputValue"</code></p>
+</li>
+<li>
+<p><strong>OIDC login lands on DataRole even though I'm an admin.</strong>
+  Two likely causes:</p>
+</li>
+<li><strong>Wrong issuer host.</strong> Cognito uses the issuer URL (minus <code>https://</code>)
+    as the role-mapping key. If <code>--oidc-issuer-host</code> doesn't match the
+    <code>iss</code> claim in your IdP's ID token <em>exactly</em>, the rule never fires.
+    Check by decoding your ID token at jwt.io.</li>
+<li>
+<p><strong>Email claim missing.</strong> Some IdPs (Entra "personal Microsoft account"
+    apps) emit <code>preferred_username</code> instead of <code>email</code>. Edit the Claim
+    field in <code>bootstrap-deploy-role.yaml</code>'s <code>RoleMappings.oidc</code> block.</p>
+</li>
+<li>
+<p><strong>Deploy fails with <code>User … not authorized to perform: &lt;action&gt;</code></strong> —
+  the <code>cfn-exec-role</code> is missing that action. It's intentionally
+  scoped; add the action (project-scoped) to
+  <code>infrastructure/cloudformation/bootstrap-deploy-role.yaml</code>, re-run the
+  admin bootstrap (1.1) to update, then retry the deploy. Expect a few
+  of these on the very first deploy in a fresh account.</p>
+</li>
+<li>
+<p><strong>Session expires mid-deploy</strong> — <code>vaultdb-auth</code> issues 1-hour creds.
+  If a CFN deploy takes longer (rare; usually 10–20 min), <code>vaultdb-auth</code>
+  again and rerun <code>deploy_infra.sh</code>. CloudFormation resumes from where
+  it left off.</p>
+</li>
+<li>
+<p><strong>Teardown hangs on stack delete</strong> — usually a non-empty S3 bucket.
+  The script's explicit empty step covers <code>vaultdb-dev-data</code>, but ECR
+  repositories with images, or the templates bucket if writes happened
+  outside the script, will block. CloudFormation will show the failing
+  resource — clear it and rerun teardown.</p>
+</li>
+<li>
+<p><strong><code>vaultdb-auth</code> always wants to open a browser.</strong>
+  Headless / WSL / SSH-only? You can drive the OIDC flow with a device
+  code grant — see <code>core/docs/auth.md</code> (not yet written; same <code>vaultdb-auth</code>
+  binary takes <code>--device</code> once that lands).</p>
+</li>
+<li>
+<p><strong>CI can't log into an IdP interactively.</strong>
+  Use the escape hatch: bootstrap with <code>--extra-deployer-arn &lt;ci-role&gt;</code>
+  (GitHub OIDC role, SSO permission-set role, etc.), and CI uses
+  <code>assume_deployer.sh</code> instead of <code>vaultdb-auth</code>. Cognito stays the
+  primary path; CI is the exception.</p>
+</li>
+</ul>
+<hr />
+<h2 id="quick-command-reference">Quick command reference</h2>
+<pre><code class="language-bash"># Admin (once) — Google example. Replace with --oidc-* for Microsoft/Okta/etc.
+bash core/scripts/bootstrap_deploy_role.sh vaultdb dev us-east-1 \
+     --admin-email alice@example.com \
+     --google-client-id 1234567890-abc.apps.googleusercontent.com
+
+# Dev (each session)
+vaultdb-auth                                              # IdP → Cognito
+export AWS_PROFILE=dev
+
+# Dev (per deploy)
+bash core/scripts/deploy_infra.sh   vaultdb dev us-east-1   # up
+bash core/scripts/teardown_infra.sh vaultdb dev us-east-1   # down — ALWAYS
+</code></pre>
+                    </div>
+                </div>
+            </div>
+            
+</div></div>
+<!-- Footer (injected by js/nav.js) -->
+<div id="vdb-footer"></div>
+<script crossorigin="anonymous" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>AOS.init();</script>
+<script src="../../../js/nav.js"></script>
+</body>
+</html>
+            

@@ -66,6 +66,12 @@
                     <div class="col-lg-3">
                         <div class="side_accordian doc-nav"><ul class="nav flex-column">
         <li class="nav-item">
+            <a class="nav-link  " href="README.html">
+                <i class="fa-solid fa-house me-2"></i> Readme
+            </a>
+        </li>
+        
+        <li class="nav-item">
             <a class="nav-link active ps-4" href="compliance_approval_integration.html">
                 <i class="fa-solid fa-shield-halved me-2"></i> Approval Integration
             </a>
@@ -74,12 +80,6 @@
         <li class="nav-item">
             <a class="nav-link  " href="index.html">
                 <i class="fa-solid fa-house me-2"></i> Index
-            </a>
-        </li>
-        
-        <li class="nav-item">
-            <a class="nav-link  " href="README.html">
-                <i class="fa-solid fa-house me-2"></i> Readme
             </a>
         </li>
         
@@ -120,7 +120,30 @@
 <p>This document describes how the KRONOS Dashboard integrates with the core approval engine to enforce human-in-the-loop governance.</p>
 <h2 id="approval-panel-component">Approval Panel Component</h2>
 <p>The reusable <code>ApprovalPanel</code> component (<code>components/approval_panel.py</code>) is embedded in the workflow viewer and can be added to any page that requires approvals.</p>
-<div class="mermaid-diagram"><img src="diagram_1.svg" alt="Architecture Diagram 1" style="max-width:100%;height:auto;" /></div>
+<pre class="mermaid">flowchart TD
+    subgraph &quot;Pre-Approval View&quot;
+        NAME[&quot;Approver Name Input<br/>(auto-filled from OIDC)&quot;]
+        NOTES[&quot;Notes Textarea&quot;]
+        TIMER[&quot;Countdown Timer<br/>(MinReviewTimeRule)&quot;]
+        CHECK[&quot;Confirmation Checkbox&quot;]
+        BTN[&quot;Approve / Reject Buttons&quot;]
+    end
+
+    subgraph &quot;Post-Approval View&quot;
+        BADGE[&quot;Approved Badge&quot;]
+        INFO[&quot;Approver, Timestamp, Token Suffix&quot;]
+        REVOKE[&quot;Revoke Button&quot;]
+    end
+
+    NAME --> CHECK
+    NOTES --> CHECK
+    TIMER -->|elapsed| CHECK
+    CHECK -->|checked| BTN
+    BTN -->|POST /approvals| POLICY[&quot;PolicyEnforcer&quot;]
+    POLICY -->|passed| RECORD[&quot;ApprovalRecord Created&quot;]
+    POLICY -->|failed| VIOLATIONS[&quot;Inline Violation Messages&quot;]
+    RECORD --> BADGE
+</pre>
 <h3 id="panel-states">Panel States</h3>
 <p><strong>No existing approval:</strong>
 - Displays approver name input (pre-filled from OIDC claims)
@@ -150,7 +173,12 @@
 - Status badge updates</p>
 <h3 id="dag-visualization">DAG Visualization</h3>
 <p>Workflows are rendered as directed acyclic graphs using <code>dash-cytoscape</code> with <code>dagre</code> layout:</p>
-<div class="mermaid-diagram"><img src="diagram_2.svg" alt="Architecture Diagram 2" style="max-width:100%;height:auto;" /></div>
+<pre class="mermaid">graph LR
+    A[&quot;step_001<br/>Project Cash Flows<br/>🟢 DONE&quot;] --> B[&quot;step_002<br/>Price Assets<br/>🔵 RUNNING&quot;]
+    A --> C[&quot;step_003<br/>Compute Reserves<br/>⬜ PENDING&quot;]
+    B --> D[&quot;step_004<br/>ALM Snapshot<br/>⬜ PENDING&quot;]
+    C --> D
+</pre>
 <p>Clicking a node opens the step inspector showing:
 - Step name, task path, status
 - Input kwargs (with resolved references)
@@ -168,7 +196,53 @@
 <li>Approve, Reject, Execute buttons with confirmation modal</li>
 </ol>
 <h2 id="end-to-end-approval-sequence">End-to-End Approval Sequence</h2>
-<div class="mermaid-diagram"><img src="diagram_3.svg" alt="Architecture Diagram 3" style="max-width:100%;height:auto;" /></div>
+<pre class="mermaid">sequenceDiagram
+    participant USER as Actuary
+    participant DASH as Dashboard (8050)
+    participant HUB as ChatHub (8060)
+    participant CORE as VaultDB Core
+
+    Note over USER: Working in chatbot
+
+    USER->>DASH: &quot;Run Q1 valuation&quot;
+    DASH->>HUB: POST /chatbot/{user_id}/message
+    HUB->>HUB: ChatEngine → Claude SDK → propose_workflow tool
+    HUB->>CORE: submit_workflow()
+    CORE-->>HUB: WorkflowRun (PENDING_APPROVAL)
+    HUB-->>DASH: {reply, proposed_workflows}
+    DASH-->>USER: Show DAG + Approve button
+
+    USER->>DASH: Open /workflow?id=abc
+    DASH->>DASH: Record viewer_opened_at (server-side)
+
+    USER->>USER: Review steps, assumptions, costs
+
+    USER->>DASH: Click &quot;Approve&quot; + notes
+    DASH->>DASH: Build ApprovalContext
+    DASH->>HUB: POST /approvals
+    HUB->>CORE: PolicyEnforcer.enforce(context)
+
+    alt Violations
+        CORE-->>HUB: {passed: false, violations: [...]}
+        HUB-->>DASH: 403 + violations
+        DASH-->>USER: Show inline errors
+    else Passed
+        CORE->>CORE: create_approval() → HMAC token
+        CORE-->>HUB: ApprovalRecord
+        HUB->>CORE: WorkflowRun.status = APPROVED
+        HUB-->>DASH: 200 OK
+        DASH-->>USER: &quot;Approved&quot; badge
+    end
+
+    USER->>DASH: Click &quot;Execute&quot;
+    DASH->>HUB: POST /workflows/{id}/execute
+    HUB->>CORE: execute_workflow(id)
+    CORE->>CORE: Triple-gate verification
+    CORE->>CORE: Execute steps in DAG order
+    CORE-->>HUB: WorkflowRun (DONE/FAILED)
+    HUB-->>DASH: Updated workflow
+    DASH-->>USER: Show results
+</pre>
 <h2 id="approval-status-colors">Approval Status Colors</h2>
 <table>
 <thead>

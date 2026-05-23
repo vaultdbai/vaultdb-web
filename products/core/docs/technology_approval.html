@@ -66,12 +66,6 @@
                     <div class="col-lg-3">
                         <div class="side_accordian doc-nav"><ul class="nav flex-column">
         <li class="nav-item">
-            <a class="nav-link  " href="abstract.html">
-                <i class="fa-solid fa-house me-2"></i> Abstract
-            </a>
-        </li>
-        
-        <li class="nav-item">
             <a class="nav-link  " href="AUTHENTICATION_GUIDE.html">
                 <i class="fa-solid fa-house me-2"></i> Authentication Guide
             </a>
@@ -84,8 +78,56 @@
         </li>
         
         <li class="nav-item">
+            <a class="nav-link  " href="CORE_TEST_READINESS.html">
+                <i class="fa-solid fa-house me-2"></i> Core Test Readiness
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="E2E_TESTING_STRATEGY.html">
+                <i class="fa-solid fa-house me-2"></i> E2E Testing Strategy
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="IMPLEMENTATION_SUMMARY.html">
+                <i class="fa-solid fa-house me-2"></i> Implementation Summary
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="INFRA_DEPLOY_RUNBOOK.html">
+                <i class="fa-solid fa-house me-2"></i> Infra Deploy Runbook
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="PYTHON312_COMPATIBILITY.html">
+                <i class="fa-solid fa-house me-2"></i> Python312 Compatibility
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="TASK_RUNNER_ARCHITECTURE.html">
+                <i class="fa-solid fa-house me-2"></i> Task Runner Architecture
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="abstract.html">
+                <i class="fa-solid fa-house me-2"></i> Abstract
+            </a>
+        </li>
+        
+        <li class="nav-item">
             <a class="nav-link  ps-4" href="compliance_approval_controls.html">
                 <i class="fa-solid fa-shield-halved me-2"></i> Approval Controls
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="core_review_and_test_plan.html">
+                <i class="fa-solid fa-house me-2"></i> Core Review And Test Plan
             </a>
         </li>
         
@@ -185,7 +227,39 @@
                         <h1 id="approval-engine-architecture-design">Approval Engine — Architecture &amp; Design</h1>
 <p>The VaultDB approval engine provides cryptographically verified human approvals for any action in the KRONOS Re platform. It enforces the BMA (Bermuda Monetary Authority) mandate that AI-proposed actions require a verified human signature before execution.</p>
 <h2 id="architecture-overview">Architecture Overview</h2>
-<div class="mermaid-diagram"><img src="diagram_1.svg" alt="Architecture Diagram 1" style="max-width:100%;height:auto;" /></div>
+<pre class="mermaid">graph TD
+    subgraph &quot;Dashboard UI&quot;
+        VIEWER[&quot;Workflow Viewer Page&quot;]
+        PANEL[&quot;Approval Panel Component&quot;]
+    end
+
+    subgraph &quot;ChatHub (Port 8060)&quot;
+        HUB_API[&quot;/_hub/api/workflows/approve&quot;]
+    end
+
+    subgraph &quot;Approval Engine (core)&quot;
+        PE[&quot;PolicyEnforcer&quot;]
+        SVC[&quot;Approval Service&quot;]
+        KS[&quot;KeyStore&quot;]
+        RULES[&quot;6 Policy Rules&quot;]
+    end
+
+    subgraph &quot;Storage&quot;
+        AR[(&quot;ApprovalRecord&quot;)]
+        AP[(&quot;ApprovalPolicy&quot;)]
+        AKV[(&quot;ApprovalKeyVersion&quot;)]
+    end
+
+    VIEWER --> PANEL
+    PANEL -->|POST /approve| HUB_API
+    HUB_API --> PE
+    PE --> RULES
+    PE -->|loads| AP
+    PE -->|passed=True| SVC
+    SVC -->|generate HMAC| KS
+    SVC -->|persist| AR
+    KS -->|audit| AKV
+</pre>
 <h2 id="separation-of-concerns">Separation of Concerns</h2>
 <p>The approval system is strictly separated into three layers:</p>
 <table>
@@ -380,7 +454,23 @@
 </code></pre>
 <p>This binds the token cryptographically to the specific approval, subject, approver identity, and timestamp.</p>
 <h3 id="token-generation">Token Generation</h3>
-<div class="mermaid-diagram"><img src="diagram_2.svg" alt="Architecture Diagram 2" style="max-width:100%;height:auto;" /></div>
+<pre class="mermaid">sequenceDiagram
+    participant SVC as Approval Service
+    participant KS as KeyStore
+    participant SM as AWS Secrets Manager
+
+    SVC->>KS: get_current_key()
+    alt Cache fresh (< 300s)
+        KS-->>SVC: (version, key_bytes)
+    else Cache stale
+        KS->>SM: get_secret_value(ARN)
+        SM-->>KS: {current_version, keys}
+        KS-->>SVC: (version, key_bytes)
+    end
+    SVC->>SVC: message = pipe_join(fields)
+    SVC->>SVC: mac = hmac_sha256(key_bytes, message)
+    SVC-->>SVC: token = f&quot;v{version}:{mac.hexdigest()}&quot;
+</pre>
 <h3 id="token-verification">Token Verification</h3>
 <pre><code class="language-python"># 1. Parse version from token prefix
 &quot;v3:a1b2c3...&quot; → version=3, mac=&quot;a1b2c3...&quot;
@@ -453,7 +543,23 @@ class ApprovalContext:
 </code></pre>
 <h3 id="policy-rules">Policy Rules</h3>
 <p>All 6 rules are evaluated independently. A broken rule is treated as a violation (fail-closed).</p>
-<div class="mermaid-diagram"><img src="diagram_3.svg" alt="Architecture Diagram 3" style="max-width:100%;height:auto;" /></div>
+<pre class="mermaid">flowchart LR
+    CTX[&quot;ApprovalContext&quot;] --> PE[&quot;PolicyEnforcer&quot;]
+    PE --> R1[&quot;RequiredRolesRule&quot;]
+    PE --> R2[&quot;RequireNotesRule&quot;]
+    PE --> R3[&quot;MinReviewTimeRule&quot;]
+    PE --> R4[&quot;NoSelfApprovalRule&quot;]
+    PE --> R5[&quot;ExpiryRule&quot;]
+    PE --> R6[&quot;SingleApproverRule&quot;]
+    R1 --> AGG[&quot;Aggregate Violations&quot;]
+    R2 --> AGG
+    R3 --> AGG
+    R4 --> AGG
+    R5 --> AGG
+    R6 --> AGG
+    AGG -->|0 violations| PASS[&quot;passed=True&quot;]
+    AGG -->|1+ violations| FAIL[&quot;passed=False&quot;]
+</pre>
 <table>
 <thead>
 <tr>
@@ -549,7 +655,50 @@ enforcer = PolicyEnforcer(extra_rules=[MyCustomRule()])
 </tbody>
 </table>
 <h2 id="end-to-end-approval-flow">End-to-End Approval Flow</h2>
-<div class="mermaid-diagram"><img src="diagram_4.svg" alt="Architecture Diagram 4" style="max-width:100%;height:auto;" /></div>
+<pre class="mermaid">sequenceDiagram
+    participant AI as AI Chatbot
+    participant HUB as ChatHub
+    participant DB as DuckLake
+    participant USER as Actuary (Browser)
+    participant PE as PolicyEnforcer
+    participant SVC as Approval Service
+    participant KS as KeyStore
+
+    AI->>HUB: propose_workflow(definition)
+    HUB->>DB: submit_workflow() → PENDING_APPROVAL
+
+    USER->>HUB: Open workflow viewer
+    HUB->>DB: Set viewer_opened_at (server timestamp)
+
+    USER->>USER: Review DAG, steps, estimated costs
+    Note over USER: MinReviewTimeRule timer running
+
+    USER->>HUB: Click &quot;Approve&quot; (with notes)
+    HUB->>PE: enforce(ApprovalContext)
+    PE->>PE: Evaluate all 6 rules
+
+    alt Policy violations
+        PE-->>HUB: passed=False, violations=[...]
+        HUB-->>USER: Show violation messages
+    else Policy passed
+        PE-->>HUB: passed=True
+        HUB->>SVC: create_approval(context)
+        SVC->>KS: get_current_key()
+        SVC->>SVC: Generate HMAC token
+        SVC->>DB: Persist ApprovalRecord
+        SVC-->>HUB: ApprovalRecord
+        HUB->>DB: WorkflowRun.status = APPROVED
+        HUB-->>USER: Show &quot;Approved&quot; badge
+    end
+
+    USER->>HUB: Click &quot;Execute&quot;
+    HUB->>DB: execute_workflow(workflow_id)
+    DB->>SVC: verify_approval(workflow_id, &quot;WORKFLOW&quot;)
+    SVC->>KS: get_key_version(token_version)
+    SVC->>SVC: Recalculate HMAC, compare_digest
+    SVC-->>DB: ApprovalRecord (verified)
+    DB->>DB: Execute steps in DAG order
+</pre>
                     </div>
                 </div>
             </div>

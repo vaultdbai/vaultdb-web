@@ -1,0 +1,563 @@
+
+            <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>KRONOS Re: core Documentation - E2E Testing Strategy</title>
+<meta content="noindex, nofollow" name="robots"/>
+<meta name="vdb-context" content="You are viewing the core documentation: E2E Testing Strategy. Category: index."/>
+<link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" rel="stylesheet"/>
+<link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" referrerpolicy="no-referrer" rel="stylesheet"/>
+<link href="../../../img/v-logo.png" rel="icon" type="image/png"/>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+<link href="../../../css/style.css" rel="stylesheet"/>
+
+    <style>
+        html { font-size: 10px !important; }
+        body { font-size: 1.6rem !important; background: var(--main-color) !important; color: #f5f5f5; }
+
+        .doc-wrapper { margin-top: 15vh; margin-bottom: 5vh; min-height: 80vh; }
+        .doc-nav { border-right: 1px solid rgba(168, 150, 183, 0.2); height: 100%; padding-right: 2rem; }
+        .doc-nav .nav-link {
+            color: #A896B7; border-radius: 12px; margin-bottom: 8px; transition: 0.3s;
+            font-size: 1.6rem; padding: 1.4rem 2rem; border: 1px solid transparent;
+        }
+        .doc-nav .nav-link:hover { background: rgba(160, 68, 255, 0.1); color: var(--purple-color); transform: translateX(8px); }
+        .doc-nav .nav-link.active { background: var(--purple-color); color: #fff !important; font-weight: 700; box-shadow: 0 12px 24px rgba(160, 68, 255, 0.4); }
+
+        .doc-content { padding-left: 6rem; max-width: 1000px; }
+        .doc-content h1, .doc-content h2, .doc-content h3 { font-family: var(--plus-font-family); color: #fff; margin-top: 4.5rem; }
+        .doc-content h1 { font-size: 5.2rem; font-weight: 800; margin-top: 0; margin-bottom: 4rem; letter-spacing: -0.03em; }
+        .doc-content h2 { font-size: 3.6rem; border-bottom: 2px solid rgba(168, 150, 183, 0.15); padding-bottom: 1.5rem; }
+        .doc-content h3 { font-size: 2.8rem; color: var(--purple-color); }
+
+        .doc-content p, .doc-content li { font-size: 1.8rem; line-height: 2.0; color: #d0c4db; margin-bottom: 2.8rem; }
+        .doc-content code { background: #0b0b1a; padding: 4px 10px; border-radius: 8px; color: #f8f8f2; border: 1px solid rgba(255,255,255,0.1); }
+        .doc-content pre { padding: 3.5rem; border-radius: 20px; box-shadow: 0 30px 60px rgba(0,0,0,0.5); }
+
+        .persona-badge { font-size: 0.9rem; text-transform: uppercase; padding: 6px 16px; border-radius: 99px; background: rgba(160, 68, 255, 0.25); border: 1px solid var(--purple-color); color: #fff; margin-left: 20px; }
+
+        .breadcrumb-item a { color: var(--purple-color); font-size: 1.6rem; text-decoration: none; }
+        .breadcrumb-item.active { color: #666; font-size: 1.6rem; }
+
+        .doc-content table { border-radius: 16px; overflow: hidden; border: 1px solid rgba(168, 150, 183, 0.3); }
+        .doc-content th { background: #131326; padding: 2rem; font-size: 1.7rem; color: #fff; }
+        .doc-content td { padding: 2rem; border-top: 1px solid rgba(168, 150, 183, 0.1); font-size: 1.7rem; }
+
+        .mermaid-diagram { margin: 3rem 0; text-align: center; }
+        .mermaid-diagram img { max-width: 100%; border-radius: 16px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+        .mermaid { background: transparent; }
+    </style>
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true, theme: 'dark', fontFamily: 'DM Sans' });
+    </script>
+    </head>
+<body style="overflow: hidden !important">
+<div class="container_body">
+<div class="container_inside">
+<!-- Navigation (injected by js/nav.js) -->
+<div id="vdb-header"></div>
+<div id="vdb-sidebar"></div>
+
+            <div class="container doc-wrapper">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="side_accordian doc-nav"><ul class="nav flex-column">
+        <li class="nav-item">
+            <a class="nav-link  " href="AUTHENTICATION_GUIDE.html">
+                <i class="fa-solid fa-house me-2"></i> Authentication Guide
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="CODEOWNERS_SETUP.html">
+                <i class="fa-solid fa-house me-2"></i> Codeowners Setup
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="CORE_TEST_READINESS.html">
+                <i class="fa-solid fa-house me-2"></i> Core Test Readiness
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link active " href="E2E_TESTING_STRATEGY.html">
+                <i class="fa-solid fa-house me-2"></i> E2E Testing Strategy
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="IMPLEMENTATION_SUMMARY.html">
+                <i class="fa-solid fa-house me-2"></i> Implementation Summary
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="INFRA_DEPLOY_RUNBOOK.html">
+                <i class="fa-solid fa-house me-2"></i> Infra Deploy Runbook
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="PYTHON312_COMPATIBILITY.html">
+                <i class="fa-solid fa-house me-2"></i> Python312 Compatibility
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="TASK_RUNNER_ARCHITECTURE.html">
+                <i class="fa-solid fa-house me-2"></i> Task Runner Architecture
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="abstract.html">
+                <i class="fa-solid fa-house me-2"></i> Abstract
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  ps-4" href="compliance_approval_controls.html">
+                <i class="fa-solid fa-shield-halved me-2"></i> Approval Controls
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="core_review_and_test_plan.html">
+                <i class="fa-solid fa-house me-2"></i> Core Review And Test Plan
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="ducklake.html">
+                <i class="fa-solid fa-house me-2"></i> Ducklake
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="ducklake_evaluation.html">
+                <i class="fa-solid fa-house me-2"></i> Ducklake Evaluation
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="extraction_module.html">
+                <i class="fa-solid fa-house me-2"></i> Extraction Module
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="glittery-brewing-riddle.html">
+                <i class="fa-solid fa-house me-2"></i> Glittery Brewing Riddle
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="implementation-plan-unified-runners.html">
+                <i class="fa-solid fa-house me-2"></i> Implementation Plan Unified Runners
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="index.html">
+                <i class="fa-solid fa-house me-2"></i> Index
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="logger_usage.html">
+                <i class="fa-solid fa-house me-2"></i> Logger Usage
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="oauth2_authentication_guide.html">
+                <i class="fa-solid fa-house me-2"></i> Oauth2 Authentication Guide
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="task_runners_integration_guide.html">
+                <i class="fa-solid fa-house me-2"></i> Task Runners Integration Guide
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="task_scheduling.html">
+                <i class="fa-solid fa-house me-2"></i> Task Scheduling
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  ps-4" href="technology_approval.html">
+                <i class="fa-solid fa-code me-2"></i> Approval
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  ps-4" href="technology_workflow.html">
+                <i class="fa-solid fa-code me-2"></i> Workflow
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="workflow-approval.html">
+                <i class="fa-solid fa-house me-2"></i> Workflow Approval
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="system-context.html">
+                <i class="fa-solid fa-brain me-2"></i> System Context
+            </a>
+        </li>
+        </ul></div>
+                    </div>
+                    <div class="col-lg-9 doc-content">
+                        <nav aria-label="breadcrumb" class="mb-5">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="../../../index.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="#">core</a></li>
+                                <li class="breadcrumb-item active">E2E Testing Strategy <span class="persona-badge">index</span></li>
+                            </ol>
+                        </nav>
+                        <h1 id="vaultdb-core-end-to-end-testing-process">VaultDB Core — End-to-End Testing Process</h1>
+<blockquote>
+<p><strong>Purpose.</strong> Validate every <code>core</code> subsystem and all four compute service
+types so other modules (<code>asset</code>, <code>market</code>, <code>liability</code>, …) can depend on
+<code>core</code> with confidence. This is a <strong>process</strong>, not a wish list: phased,
+gated, with owners, entry criteria, evidence, and a final sign-off.</p>
+<p><strong>Last reviewed:</strong> 2026-05-16, against a live audit of the codebase
+(931 passing tests) and the findings in
+<a href="CORE_TEST_READINESS.md"><code>CORE_TEST_READINESS.md</code></a>.</p>
+</blockquote>
+<hr />
+<h2 id="0-ground-truth-read-before-planning-anything">0. Ground truth (read before planning anything)</h2>
+<p>These facts were verified this session and override older assumptions:</p>
+<ol>
+<li><strong>Baseline is healthy.</strong> The unit/integration suite is <strong>931 passed,
+   0 failed</strong> (~73 s, mocks Redis/AWS/S3 internally). There is <strong>no</strong>
+   "27 failing tests" backlog. The single historical failure
+   (<code>test_generate_dispatches_to_gemini</code>) was a test-helper bug and is
+   <strong>already fixed</strong>.</li>
+<li><strong><code>run_type</code> is now wired (RESOLVED — was HIGH).</strong> <code>config._ENV_MAP</code>
+   now maps <code>run_type</code> → <code>("RUN_TYPE", "run_type")</code>. <code>export run_type=local</code>
+   works; <code>runner=local</code> API path no longer 404s. <strong>Side effect:</strong> the env
+   value must be a valid <code>RunType</code> (<code>service|function|batch|local</code>).
+   <code>Dockerfile.lambda</code> previously set <code>run_type=lambda</code> (invalid) — <strong>fixed
+   to <code>function</code></strong>. The Lambda handler also pointed at a non-existent
+   <code>vaultdb.lambda</code> module — <strong>fixed to <code>vaultdb.function.handler</code></strong> (was a
+   hard P0 blocker for the FUNCTION service type; see Phase 0).</li>
+<li><strong>Auth-gate diverges across runners (MEDIUM).</strong> LOCAL <code>send_task</code>
+   rejects a missing <code>auth_token</code> with <code>ValueError</code>; SERVICE / FUNCTION /
+   BATCH do <strong>not</strong> — they dispatch and defer the gate to the worker via
+   task headers. Pinned by <code>tests/compute/test_runner_parity_matrix.py</code>.</li>
+<li><strong>TOCTOU is NOT protected (MEDIUM — TODO #7).</strong> <code>verify_approval</code> runs
+   once before the RUNNING commit with no re-check inside that
+   transaction. A revoke landing in that window is not caught. Pinned by
+   <code>tests/workflow/test_triple_gate_invariants.py</code>. <strong>Any case asserting
+   "execution aborts on concurrent revoke" will FAIL against current
+   code</strong> — see §6, Case W4.</li>
+<li><strong>Immutable approval archive does NOT exist (TODO #6).</strong> S3 Object-Lock
+   archival of <code>ApprovalRecord</code> is unbuilt. Cases that assert it are
+   <strong>deferred</strong>, not run.</li>
+<li><strong>No Docker / LocalStack / MinIO / redis-server in the dev env.</strong> The
+   automation path is <strong>mocked-by-default</strong> (<code>moto</code> + <code>fakeredis</code>, already
+   installed and pinned). LocalStack/MinIO and real cloud are <em>optional
+   higher tiers</em> requiring infra you provide — not the default.</li>
+<li><strong>Artifact-under-test differs by phase.</strong> T0/T1 exercise the <strong>local
+   working tree</strong> (<code>core/src</code>). The deployed images
+   (<code>infrastructure/docker/Dockerfile.{service,lambda,batch-*}</code>) do
+   <code>pip install vaultdb.core</code> from <strong>PyPI</strong> — so T2–T4 test the <em>published</em>
+   package, NOT this session's local fixes, unless the images are rebuilt
+   from a local wheel. Each phase below states its artifact; do not infer
+   local-code coverage from a green T4.</li>
+<li><strong>Shared-EFS uid mismatch across runners (P4/P5 risk).</strong> ECS service
+   runs workloads as <code>service</code> (now pinned uid 1000); Batch runs as
+   <strong>root</strong>; Lambda uses the Lambda sandbox user. All mount the same EFS
+   access point for the DuckLake <code>.ducklake</code> commitlog. Cross-runner
+   ownership conflicts are a corruption risk — tracked in
+   <code>INFRASTRUCTURE_REVIEW_PLAN.md</code> §2.2; P4/P5 must assert commitlog
+   read/write parity across runners, not just within one.</li>
+<li><strong>Container deploy-gates (block P3/P5).</strong> From the <code>docker/</code> review:
+   Flower (5555) and Jupyter (8888) are ALB-exposed with auth that is
+   absent/disabled by default — must be closed before any reachable
+   deploy. Batch/Lambda images install <strong>only <code>vaultdb.core</code></strong>, so they
+   cannot run domain tasks (<code>valuation.tasks.*</code> → <code>ModuleNotFoundError</code>):
+   <strong>P5 cannot test real workloads on Batch/Lambda until the domain
+   modules are added to those images.</strong> Tracked in
+   <code>INFRASTRUCTURE_REVIEW_PLAN.md</code> §1.8–1.11 (P0).</li>
+</ol>
+<hr />
+<h2 id="1-test-tiers-how-e2e-is-layered">1. Test tiers (how "E2E" is layered)</h2>
+<table>
+<thead>
+<tr>
+<th>Tier</th>
+<th>Backends</th>
+<th>Infra</th>
+<th>Speed</th>
+<th>Runs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>T0 Unit/Integration</strong></td>
+<td>in-proc + internal mocks</td>
+<td>none</td>
+<td>~75 s</td>
+<td>every commit / CI</td>
+</tr>
+<tr>
+<td><strong>T1 Mocked E2E</strong></td>
+<td><code>moto</code>, <code>fakeredis</code>, real FastAPI</td>
+<td>none</td>
+<td>minutes</td>
+<td>every PR / CI</td>
+</tr>
+<tr>
+<td><strong>T2 Real Redis</strong></td>
+<td>live Celery + Redis</td>
+<td>Redis URL (you)</td>
+<td>minutes</td>
+<td>pre-release</td>
+</tr>
+<tr>
+<td><strong>T3 Real S3</strong></td>
+<td>S3-backed DuckLake</td>
+<td>AWS creds + bucket (you)</td>
+<td>minutes</td>
+<td>pre-release</td>
+</tr>
+<tr>
+<td><strong>T4 Real AWS</strong></td>
+<td>real Batch + Lambda</td>
+<td><code>deploy_infra.sh</code> (you, $$)</td>
+<td>slow</td>
+<td>release gate only</td>
+</tr>
+<tr>
+<td><strong>T5 Manual UI</strong></td>
+<td>browser OIDC/Dash</td>
+<td>human</td>
+<td>manual</td>
+<td>release gate only</td>
+</tr>
+<tr>
+<td><strong>T6 Production Readiness</strong></td>
+<td>all of the above</td>
+<td>simulated failures &amp; high load</td>
+<td>slow</td>
+<td>final pre-release gate</td>
+</tr>
+</tbody>
+</table>
+<p>T0–T1 are permanent regression guards (automatable here, no infra).
+T2–T6 are release gates requiring infrastructure you provision.</p>
+<hr />
+<h2 id="2-the-gated-process">2. The gated process</h2>
+<p>Phases run <strong>in order</strong>. Each has an <strong>entry gate</strong> (don't start until the
+prior gate is GREEN), an <strong>owner</strong>, and an <strong>exit gate</strong>. A failed exit
+gate <strong>stops the pipeline</strong> — no skipping ahead.</p>
+<pre><code>P0 Capability ─▶ P1 Baseline ─▶ P2 Mocked E2E ─▶ P3 Redis ─▶ P4 S3 ─▶ P5 AWS ─▶ P6 Manual UI ─▶ P7 Sign-off ─▶ P8 Prod Readiness
+   (code)          (T0)           (T1)             (T2)        (T3)     (T4)       (T5)            (doc)            (T6)
+</code></pre>
+<p>Every phase appends evidence to a run log: <code>docs/e2e-runs/&lt;date&gt;/</code>
+(commands, output tails, coverage deltas, screenshots).</p>
+<hr />
+<h3 id="phase-0-capability-discovery-blocker-fix-owner-claude">Phase 0 — Capability discovery &amp; blocker fix  <em>(owner: Claude)</em></h3>
+<p><strong>Entry:</strong> none. <strong>Goal:</strong> stop the plan testing fiction.</p>
+<p>0.1 <strong>Fix Finding #2 (<code>run_type</code> wiring).</strong> Decide one of:
+  - add <code>run_type</code> to <code>config._ENV_MAP</code>, <strong>or</strong>
+  - confirm per-request <code>runner=</code> override fully bypasses <code>config.run_type</code>
+    for task lookup, <strong>or</strong>
+  - correct <code>TEST-LOCAL.md</code> to the real procedure.
+  Re-run the local API submit until <code>runner=local</code> returns 200.</p>
+<p>0.2 <strong>Endpoint/feature inventory.</strong> Probe the live FastAPI router and code
+   for the existence of each feature the old plan assumed. Mark each
+   <strong>EXISTS / ABSENT / PARTIAL</strong>:
+  - <code>/catalog/publish_schema</code> (was Case 5.3.2)
+  - cross-schema isolation 403 at the DuckLake connection layer (5.2.2)
+  - request rate limiting → 429 (5.4.1)
+  - &gt;6 MB payload S3 offload for Batch/Lambda (2.3.2 / 2.4.2)
+  - IAM/metadata credential fallback (5.1.2)
+  - EventBridge schedule deployment (2.5.1)</p>
+<p>0.3 <strong>Triage TODO-gated features:</strong> TODO #6 (immutable archive),
+   TODO #7 (TOCTOU), TODO #8 (single-writer enforcement). Each becomes a
+   <strong>pinned known-gap test</strong> (assert <em>current</em> behavior) — not a
+   pass/fail E2E case — until the TODO is implemented.</p>
+<p><strong>Exit gate:</strong> runner is selectable per request; every downstream case is
+tagged EXISTS or moved to a "Deferred (pending feature)" appendix.</p>
+<hr />
+<h3 id="phase-1-unitintegration-baseline-t0-owner-claude">Phase 1 — Unit/Integration baseline (T0)  <em>(owner: Claude)</em></h3>
+<p><strong>Entry:</strong> P0 green.</p>
+<pre><code class="language-bash">python -m pytest -q --tb=short            # expect ≥ 931 passed, 0 failed
+python -m pytest --cov=vaultdb --cov-report=term   # record coverage
+</code></pre>
+<p>Includes the assets added this session:
+- <code>tests/compute/test_runner_parity_matrix.py</code> (4-runner contract parity)
+- <code>tests/workflow/test_triple_gate_invariants.py</code> (no-bypass / precedence / TOCTOU pin)</p>
+<p><strong>Exit gate:</strong> 0 failures; coverage table recorded; SERVICE coverage
+(currently 37.7 %) and auth (67.5 %) noted as risk — raised opportunistically.</p>
+<hr />
+<h3 id="phase-2-mocked-e2e-t1-no-infra-owner-claude">Phase 2 — Mocked E2E (T1, no infra)  <em>(owner: Claude)</em></h3>
+<p><strong>Entry:</strong> P1 green. Real FastAPI process + <code>moto</code> + <code>fakeredis</code>.</p>
+<ul>
+<li><strong>C-API.1</strong> Boot <code>python -m vaultdb.web</code>; assert <code>/</code> 200 and tasks discovered.</li>
+<li><strong>C-API.2 Auth boundary:</strong> spider <strong>every</strong> router endpoint with no
+  token → assert <strong>401</strong> (no data leak); invalid/expired/malformed token
+  → 401.</li>
+<li><strong>C-RBAC.1</strong> Non-admin <code>DELETE /tasks/&lt;id&gt;</code> → 403; admin → 200.</li>
+<li><strong>C-TED.LOCAL</strong> Sync task → immediate <code>SUCCESS</code>; raising task →
+  traceback captured in result state.</li>
+<li><strong>C-TED.SERVICE</strong> <code>fakeredis</code> broker + eager mode: submit → poll
+  <code>PENDING→RUNNING→SUCCESS</code>; revoke a sleeping task → <code>REVOKED</code>.</li>
+<li><strong>C-TED.BATCH / .FUNCTION</strong> <code>moto</code>: submit → assert exact AWS payload;
+  <code>AsyncResult.state</code> polls mocked job lifecycle.</li>
+<li><strong>C-TED.PARITY</strong> Same logical task across all 4 runners → identical
+  result contract (extends the existing parity matrix end-to-end).</li>
+<li><strong>C-WF.1 Separation of duties:</strong> submitter ≠ approver enforced (403).</li>
+<li><strong>C-WF.2 Triple-gate:</strong> missing approval / tampered HMAC / wrong key
+  version / definition-hash mismatch → execution refused, <strong>zero step
+  side effects</strong>.</li>
+<li><strong>C-WF.3 Idempotent retry:</strong> <code>DONE</code> steps skipped, resume at <code>FAILED</code>.</li>
+<li><strong>C-CRAWLER.1</strong> Import does not instantiate paid LLM clients (lazy).</li>
+<li><strong>C-CRAWLER.2</strong> Backend switch dispatches to the correct client class.</li>
+</ul>
+<p><strong>Exit gate:</strong> all green; this becomes a permanent CI suite (<code>tests_e2e/</code>,
+mocked tier, no infra required).</p>
+<hr />
+<h3 id="phase-3-real-redis-t2-owner-claude-you-todo-1">Phase 3 — Real Redis (T2)  <em>(owner: Claude + you)</em>  — <strong>TODO #1</strong></h3>
+<p><strong>Entry:</strong> P2 green <strong>and</strong> you provide a reachable Redis.</p>
+<pre><code class="language-bash">export SERVICE_BROKER_URL=redis://&lt;host&gt;:6379
+export REDIS_DATABASE=redis://&lt;host&gt;:6379/0
+vaultdb -A vaultdb.service.app worker --loglevel=INFO   # separate terminal
+# (the console script is `vaultdb` — there is no `vaultdb-service`)
+</code></pre>
+<ul>
+<li><strong>R.1</strong> Live async dispatch: 10 tasks via API <code>runner=service</code>; poll to
+  <code>SUCCESS</code> on the real broker.</li>
+<li><strong>R.2</strong> Revocation: submit <code>sleep(30)</code>, revoke → worker aborts, status
+  <code>REVOKED</code>.</li>
+<li><strong>R.3 Beat leader election:</strong> two scheduler instances; verify exactly
+  one fires the cron (Redis lock).</li>
+<li><strong>R.4 Cache layer:</strong> Redis-backed cache set/get/expire round-trip.</li>
+<li><strong>R.5</strong> Re-validate Finding #2 in true <code>service</code> mode.</li>
+</ul>
+<p><strong>Exit gate:</strong> R.1–R.5 green on live Redis; evidence logged.</p>
+<hr />
+<h3 id="phase-4-real-s3-ducklake-t3-owner-claude-you-todo-2">Phase 4 — Real S3 DuckLake (T3)  <em>(owner: Claude + you)</em>  — <strong>TODO #2</strong></h3>
+<p><strong>Entry:</strong> P3 green <strong>and</strong> you provide AWS creds + an S3 bucket.</p>
+<pre><code class="language-bash">export CATALOG_DATA_PATH=s3://&lt;bucket&gt;/data
+</code></pre>
+<ul>
+<li><strong>D.1 Virtual-fork isolation:</strong> A and B fork <code>main</code>, edit the same row
+  differently; neither sees the other's nor <code>main</code>'s value.</li>
+<li><strong>D.2 Concurrent-writer lock:</strong> N threads write a delta simultaneously;
+  serialized, no <code>.ducklake</code> corruption. <em>(Note TODO #8: single-writer
+  model — pin actual behavior if a distributed lock is absent.)</em></li>
+<li><strong>D.3 Time-machine:</strong> update a row 5×; query versions 2/3/5 → exact
+  historical state.</li>
+<li><strong>D.4 S3 latency/retry:</strong> inject latency; partial Parquet-footer reads
+  do not corrupt the catalog.</li>
+</ul>
+<p><strong>Exit gate:</strong> D.1–D.4 green against real S3.</p>
+<hr />
+<h3 id="phase-5-real-aws-batch-lambda-t4-cost-incurring-owner-you-deploy-claude-drives">Phase 5 — Real AWS Batch + Lambda (T4, cost-incurring)  <em>(owner: you deploy, Claude drives)</em></h3>
+<p><strong>Entry:</strong> P4 green <strong>and</strong> you ran
+<code>scripts/deploy_infra.sh vaultdb dev &lt;region&gt;</code> and shared stack outputs
+(job queue, job definition, Lambda name).</p>
+<ul>
+<li><strong>A.1</strong> Real Batch submit; <code>AsyncResult.state</code> polls
+  <code>SUBMITTED→RUNNABLE→RUNNING→SUCCEEDED</code>.</li>
+<li><strong>A.2</strong> Real Lambda invoke (<code>Event</code> vs <code>RequestResponse</code>).</li>
+<li><strong>A.3</strong> &gt;6 MB payload → S3 offload <strong>(only if P0 marked EXISTS)</strong>.</li>
+<li><strong>A.4</strong> Cross-runner parity vs LOCAL on identical input.</li>
+</ul>
+<p><strong>Exit gate:</strong> A.1–A.4 green <strong>→ then MANDATORY teardown</strong>:
+<code>aws cloudformation delete-stack --stack-name vaultdb-dev-stack</code> and
+confirm deletion (cost control).</p>
+<hr />
+<h3 id="phase-6-manual-ui-t5-owner-you">Phase 6 — Manual UI (T5)  <em>(owner: you)</em></h3>
+<p><strong>Entry:</strong> P3 green (web server reachable). Cannot be automated headlessly.</p>
+<ol>
+<li>Open <code>http://localhost:8000</code>, click <strong>Login</strong>, complete the OIDC SSO
+   handshake on the IdP screen.</li>
+<li>Confirm the dashboard renders; capture a screenshot into the run log.</li>
+<li>Submit + approve a workflow through the chatbot UI; confirm the
+   triple-gate path visually.</li>
+</ol>
+<p><strong>Exit gate:</strong> screenshots captured; no console errors.</p>
+<hr />
+<h3 id="phase-7-gono-go-sign-off-owner-you">Phase 7 — Go/No-Go sign-off  <em>(owner: you)</em></h3>
+<p>Consolidate all phase evidence; review against
+<a href="CORE_TEST_READINESS.md"><code>CORE_TEST_READINESS.md</code></a>. Decide findings</p>
+<h1 id="15-written-sign-off-here-is-the-only-thing-that-unblocks-building">1–#5. **Written sign-off here is the only thing that unblocks building</h1>
+<p>other modules on <code>core</code>.**</p>
+<hr />
+<h3 id="phase-8-production-readiness-t6-the-what-if-it-breaks-tier-owner-claude-you">Phase 8 — Production Readiness (T6, The "What if it breaks?" Tier) <em>(owner: Claude + you)</em></h3>
+<p><strong>Entry:</strong> P7 Go/No-Go sign-off complete. These tests validate the system under adversarial conditions.</p>
+<ul>
+<li><strong>PR.1 Chaos &amp; Resilience:</strong> Simulate Redis disconnects (<code>SERVICE_BROKER_URL</code> temporary drops) and S3 eventual consistency. Assert no data loss and correct worker recovery. Simulate sudden worker death during a DuckLake commit.</li>
+<li><strong>PR.2 Load &amp; Stress:</strong> Flood the FastAPI API with 10,000 tasks to test Rate Limiting (<code>429</code>) and Broker Saturation. Assert memory stability of the Celery worker and the DuckLake concurrent writer lock under extreme contention.</li>
+<li><strong>PR.3 Observability Audit:</strong> Assert distributed trace IDs propagate seamlessly across API -&gt; Redis -&gt; Celery -&gt; Lambda. Assert that intentionally triggered errors with fake AWS/LLM keys correctly redact secrets from the log output.</li>
+<li><strong>PR.4 3rd-Party Circuit Breaking:</strong> Simulate <code>429</code> and <code>503</code> responses from OpenAI/Anthropic. Verify the <code>BaseLLMAdvisor</code> triggers exponential backoff or circuit breaks without crashing the parent workflow.</li>
+<li><strong>PR.5 Graceful Degradation:</strong> Send <code>SIGTERM</code> to the FastAPI web server and Celery workers during execution. Assert that active tasks finish or drain safely back to the queue.</li>
+</ul>
+<p><strong>Exit gate:</strong> All PR.1–PR.5 test cases written, executed, and passing. Evidence logged.</p>
+<hr />
+<h2 id="3-responsibilities-summary">3. Responsibilities summary</h2>
+<p><strong>You (manual / infra / decisions):</strong>
+1. Provide a Redis endpoint (P3).
+2. Provide AWS creds + S3 bucket (P4).
+3. Run <code>deploy_infra.sh</code>, share outputs, <strong>and tear down after P5</strong> (P5).
+4. Decide findings #1–#5 (esp. the <code>run_type</code> fix in P0).
+5. Manual OIDC/dashboard pass (P6).
+6. Final written sign-off (P7).
+7. Co-orchestrate load testing infrastructure and simulated outages (P8).</p>
+<p><strong>Claude (automated / code):</strong>
+- P0 capability probe + <code>run_type</code> fix.
+- P1 baseline + coverage.
+- P2 mocked E2E suite (<code>tests_e2e/</code>, permanent CI).
+- Drive P3/P4/P5 cases once you supply infra; capture evidence.
+- Update <code>CORE_TEST_READINESS.md</code> to final go/no-go.</p>
+<hr />
+<h2 id="4-deferred-pending-features-do-not-run-as-passfail">4. Deferred — pending features (DO NOT run as pass/fail)</h2>
+<p>These are tracked as <strong>known-gap pins</strong> until their TODO lands:</p>
+<ul>
+<li><strong>Immutable approval archive</strong> (S3 Object-Lock) — TODO #6.</li>
+<li><strong>TOCTOU abort on concurrent revoke</strong> — TODO #7. Current behavior
+  (single pre-check, no in-transaction re-verify) is <em>pinned</em>, not
+  asserted as correct.</li>
+<li><strong>Enforced single-writer / distributed lock for DuckLake</strong> — TODO #8.</li>
+<li>Any P0 endpoint marked ABSENT (e.g. schema-publish, rate-limit 429,
+  cross-schema 403) — removed from active cases until built.</li>
+</ul>
+<hr />
+<h2 id="5-process-rules">5. Process rules</h2>
+<ul>
+<li>A failed exit gate <strong>halts the pipeline</strong>; fix forward, do not skip.</li>
+<li>T0–T1 must stay green forever (regression guard); a red T0/T1 blocks
+  all merges.</li>
+<li>Phase 5 <strong>must</strong> be torn down (cost).</li>
+<li>Every phase writes evidence to <code>docs/e2e-runs/&lt;date&gt;/</code>.</li>
+<li>No E2E case may assert behavior for a feature P0 marked ABSENT/Deferred.</li>
+<li>Re-run P0 whenever the API surface or <code>config</code> changes.</li>
+</ul>
+                    </div>
+                </div>
+            </div>
+            
+</div></div>
+<!-- Footer (injected by js/nav.js) -->
+<div id="vdb-footer"></div>
+<script crossorigin="anonymous" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>AOS.init();</script>
+<script src="../../../js/nav.js"></script>
+</body>
+</html>
+            

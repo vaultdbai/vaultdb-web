@@ -4,9 +4,9 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>KRONOS Re: core Documentation - Authentication Guide</title>
+<title>KRONOS Re: core Documentation - Core Test Readiness</title>
 <meta content="noindex, nofollow" name="robots"/>
-<meta name="vdb-context" content="You are viewing the core documentation: Authentication Guide. Category: index."/>
+<meta name="vdb-context" content="You are viewing the core documentation: Core Test Readiness. Category: index."/>
 <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" rel="stylesheet"/>
 <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" referrerpolicy="no-referrer" rel="stylesheet"/>
 <link href="../../../img/v-logo.png" rel="icon" type="image/png"/>
@@ -66,7 +66,7 @@
                     <div class="col-lg-3">
                         <div class="side_accordian doc-nav"><ul class="nav flex-column">
         <li class="nav-item">
-            <a class="nav-link active " href="AUTHENTICATION_GUIDE.html">
+            <a class="nav-link  " href="AUTHENTICATION_GUIDE.html">
                 <i class="fa-solid fa-house me-2"></i> Authentication Guide
             </a>
         </li>
@@ -78,7 +78,7 @@
         </li>
         
         <li class="nav-item">
-            <a class="nav-link  " href="CORE_TEST_READINESS.html">
+            <a class="nav-link active " href="CORE_TEST_READINESS.html">
                 <i class="fa-solid fa-house me-2"></i> Core Test Readiness
             </a>
         </li>
@@ -221,160 +221,227 @@
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="../../../index.html">Home</a></li>
                                 <li class="breadcrumb-item"><a href="#">core</a></li>
-                                <li class="breadcrumb-item active">Authentication Guide <span class="persona-badge">index</span></li>
+                                <li class="breadcrumb-item active">Core Test Readiness <span class="persona-badge">index</span></li>
                             </ol>
                         </nav>
-                        <h1 id="vaultdb-authentication-guide">VaultDB Authentication Guide</h1>
-<p>VaultDB supports a unified, provider-agnostic authentication system based on <strong>OpenID Connect (OIDC)</strong> and <strong>GitHub</strong>.</p>
-<h2 id="1-global-configuration">1. Global Configuration</h2>
-<p>You can configure any OIDC-compliant provider using the following environment variables:</p>
+                        <h1 id="core-test-readiness-gono-go-resume-checklist">Core Test Readiness — Go/No-Go &amp; Resume Checklist</h1>
+<p><strong>Goal:</strong> validate all <code>core</code> functionality for all service types (LOCAL,
+SERVICE/Celery, FUNCTION/Lambda, BATCH) before building other modules on top.</p>
+<p><strong>Status as of 2026-05-16:</strong> Layer A (autonomous, no infra) is <strong>complete</strong>.
+Layers B/C are blocked on infrastructure you provide. Suite went from
+911 pass / 1 fail → <strong>931 pass / 0 fail</strong> (~73s).</p>
+<hr />
+<h2 id="layer-a-done-autonomous">Layer A — DONE (autonomous)</h2>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Variable</th>
-<th style="text-align: left;">Description</th>
-<th style="text-align: left;">Example</th>
+<th>#</th>
+<th>Task</th>
+<th>Result</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><code>AUTH_TYPE</code></td>
-<td style="text-align: left;">Type of authentication</td>
-<td style="text-align: left;"><code>oidc</code>, <code>github</code>, <code>basic</code>, <code>iam_role</code></td>
+<td>1</td>
+<td>Fix Gemini advisor bug</td>
+<td>Test-helper <code>_make_advisor</code> was out of sync with <code>__init__</code> (missing <code>_gemini_last_call_at</code>). Fixed. Crawler 159/159 green.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>AUTH_CLIENT_ID</code></td>
-<td style="text-align: left;">Client ID</td>
-<td style="text-align: left;"><code>your-app-id</code></td>
+<td>2</td>
+<td>Install moto + fakeredis</td>
+<td>moto 5.2.1, fakeredis 2.35.1 installed; pinned in <code>requirements-dev.txt</code> (see finding #4).</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>AUTH_CLIENT_SECRET</code></td>
-<td style="text-align: left;">Client Secret</td>
-<td style="text-align: left;"><code>your-secret</code></td>
+<td>3</td>
+<td>Per-subsystem coverage</td>
+<td>67% total. Table below.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>AUTH_AUTHORIZATION_URL</code></td>
-<td style="text-align: left;">Browser login endpoint</td>
-<td style="text-align: left;"><code>https://login.microsoftonline.com/.../authorize</code></td>
+<td>4</td>
+<td>4-runner parity matrix</td>
+<td><code>tests/compute/test_runner_parity_matrix.py</code> — 19 tests, green.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>AUTH_TOKEN_URL</code></td>
-<td style="text-align: left;">Token exchange endpoint</td>
-<td style="text-align: left;"><code>https://login.microsoftonline.com/.../token</code></td>
+<td>5</td>
+<td>Triple-gate + TOCTOU</td>
+<td><code>tests/workflow/test_triple_gate_invariants.py</code> — 4 tests, green.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>AUTH_REDIRECT_URI</code></td>
-<td style="text-align: left;">Your callback URL</td>
-<td style="text-align: left;"><code>http://localhost:8080/callback</code></td>
+<td>6</td>
+<td>Local FastAPI E2E</td>
+<td>Server boots; auth boundary verified; finding #1 surfaced and fixed.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>AUTH_SCOPE</code></td>
-<td style="text-align: left;">Requested OIDC scopes</td>
-<td style="text-align: left;"><code>openid profile email</code></td>
+<td>10</td>
+<td>This report</td>
+<td>Updated with production resiliency gaps.</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Fix <code>run_type</code> env var (Finding #1)</td>
+<td>Wired <code>RUN_TYPE</code>/<code>run_type</code> to <code>config._ENV_MAP</code>. <code>export run_type=local</code> now works.</td>
 </tr>
 </tbody>
 </table>
-<hr />
-<h2 id="2-provider-specific-templates">2. Provider Specific Templates</h2>
-<h3 id="a-aws-cognito-oidc-mode">A. AWS Cognito (OIDC Mode)</h3>
-<p>Use the values provided by the <code>infrastructure/cloudformation/cognito-auth.yaml</code> stack outputs.</p>
-<pre><code class="language-bash">export AUTH_TYPE=&quot;oidc&quot;
-export AUTH_CLIENT_ID=&quot;&lt;UserPoolClientId&gt;&quot;
-export AUTH_AUTHORIZATION_URL=&quot;https://&lt;domain&gt;.auth.&lt;region&gt;.amazoncognito.com/oauth2/authorize&quot;
-export AUTH_TOKEN_URL=&quot;https://&lt;domain&gt;.auth.&lt;region&gt;.amazoncognito.com/oauth2/token&quot;
-export AUTH_REDIRECT_URI=&quot;http://localhost:3000/callback&quot;
-</code></pre>
-<h3 id="b-microsoft-entra-id-azure-ad">B. Microsoft Entra ID (Azure AD)</h3>
-<p>Register a "Web" application in Azure Portal and set the redirect URI.</p>
-<pre><code class="language-bash">export AUTH_TYPE=&quot;oidc&quot;
-export AUTH_CLIENT_ID=&quot;00000000-0000-0000-0000-000000000000&quot;
-export AUTH_CLIENT_SECRET=&quot;your-client-secret&quot;
-export AUTH_AUTHORIZATION_URL=&quot;https://login.microsoftonline.com/&lt;tenant&gt;/oauth2/v2.0/authorize&quot;
-export AUTH_TOKEN_URL=&quot;https://login.microsoftonline.com/&lt;tenant&gt;/oauth2/v2.0/token&quot;
-export AUTH_REDIRECT_URI=&quot;http://localhost:8080/callback&quot;
-</code></pre>
-<h3 id="c-github">C. GitHub</h3>
-<pre><code class="language-bash">export AUTH_TYPE=&quot;github&quot;
-# For browser flow:
-export AUTH_CLIENT_ID=&quot;your-github-client-id&quot;
-export AUTH_CLIENT_SECRET=&quot;your-github-client-secret&quot;
-export AUTH_TOKEN_URL=&quot;https://github.com/login/oauth/access_token&quot;
-# Or use a Personal Access Token directly:
-# Application.connect(auth_type=AuthType.GITHUB, auth_token=&quot;gho_...&quot;)
-</code></pre>
-<h3 id="d-auth0-okta">D. Auth0 / Okta</h3>
-<pre><code class="language-bash">export AUTH_TYPE=&quot;oidc&quot;
-export AUTH_CLIENT_ID=&quot;your-client-id&quot;
-export AUTH_AUTHORIZATION_URL=&quot;https://your-tenant.auth0.com/authorize&quot;
-export AUTH_TOKEN_URL=&quot;https://your-tenant.auth0.com/oauth/token&quot;
-</code></pre>
-<hr />
-<h2 id="3-role-based-access-control-rbac">3. Role-Based Access Control (RBAC)</h2>
-<p>Instead of giving everyone the same permissions, you can group users into different roles (e.g., <code>Admin</code> vs <code>User</code>) based on their identity provider groups.</p>
-<h3 id="how-it-works">How it works:</h3>
-<ol>
-<li><strong>Identity Provider</strong>: Configure your provider (Microsoft, Okta, etc.) to include a "groups" or "roles" claim in the ID token.</li>
-<li><strong>AWS Identity Pool</strong>: The <code>infrastructure/cloudformation/cognito-auth.yaml</code> template defines <strong>Rules-based mapping</strong>.</li>
-<li><strong>Dynamic Permissions</strong>: When a user logs in, AWS inspects the claim and automatically assigns them the corresponding IAM Role (<code>VaultDBAdminRole</code> or <code>VaultDBUserRole</code>).</li>
-</ol>
-<h3 id="mapping-examples">Mapping Examples:</h3>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Provider</th>
-<th style="text-align: left;">Claim Key</th>
-<th style="text-align: left;">Value Example</th>
-<th style="text-align: left;">Resulting AWS Role</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><strong>Microsoft Entra</strong></td>
-<td style="text-align: left;"><code>roles</code></td>
-<td style="text-align: left;"><code>VaultDB.Admin</code></td>
-<td style="text-align: left;"><code>VaultDBAdminRole</code> (Full Admin / <code>vaultdb</code>)</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Okta</strong></td>
-<td style="text-align: left;"><code>groups</code></td>
-<td style="text-align: left;"><code>DataAdmins</code></td>
-<td style="text-align: left;"><code>VaultDBAdminRole</code> (Full Admin / <code>vaultdb</code>)</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Any</strong></td>
-<td style="text-align: left;">(Default)</td>
-<td style="text-align: left;"><em>Any valid login</em></td>
-<td style="text-align: left;"><code>VaultDBStandardRole</code> (Restricted)</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="4-developer-api-checking-roles">4. Developer API: Checking Roles</h2>
-<p>You can programmatically check the user's role in your application:</p>
-<pre><code class="language-python">from vaultdb.auth import get_authorized_role
-from vaultdb.core import settings
-
-# After Application.connect()
-print(f&quot;Current User Role: {settings.role}&quot;)
-</code></pre>
-<hr />
-<h2 id="5-verification-security">5. Verification &amp; Security</h2>
+<h3 id="files-changed-in-layer-a">Files changed in Layer A</h3>
 <ul>
-<li><strong>JWKS Fetching</strong>: VaultDB dynamically fetches public keys from the provider's <code>iss</code> URL (OpenID Discovery).</li>
-<li><strong>Caching</strong>: Fetched keys are cached in the <code>commitlog_directory</code> to ensure performance and offline verification stability.</li>
-<li><strong>Audience Check</strong>: The system validates that the token was issued for your configured <code>AUTH_CLIENT_ID</code>.</li>
+<li><code>tests/test_crawler/test_advisor.py</code> — added <code>advisor._gemini_last_call_at = 0.0</code> to <code>_make_advisor</code>.</li>
+<li><code>tests/compute/test_runner_parity_matrix.py</code> — <strong>new</strong> (interface / run_type / auth-gate / revoke / RBAC parity across 4 runners).</li>
+<li><code>tests/workflow/test_triple_gate_invariants.py</code> — <strong>new</strong> (no-bypass, precedence, TOCTOU pin).</li>
+<li><code>requirements-dev.txt</code> — added <code>moto[batch,awslambda,s3]&gt;=5.2.0</code>, <code>fakeredis&gt;=2.35.0</code> (NOTE: file is gitignored — see finding #4).</li>
 </ul>
+<h3 id="coverage-snapshot-912-base-tests-67-total">Coverage snapshot (912 base tests, 67% total)</h3>
+<table>
+<thead>
+<tr>
+<th>Subsystem</th>
+<th>Cov</th>
+<th>Verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>batch / function</td>
+<td>89.7% / 87.0%</td>
+<td>strong</td>
+</tr>
+<tr>
+<td>workflow / approval</td>
+<td>88.6% / 87.9%</td>
+<td>strong</td>
+</tr>
+<tr>
+<td>compute</td>
+<td>86.4%</td>
+<td>strong</td>
+</tr>
+<tr>
+<td>data (DuckLake)</td>
+<td>85.4%</td>
+<td>strong</td>
+</tr>
+<tr>
+<td>cache</td>
+<td>82.3%</td>
+<td>good</td>
+</tr>
+<tr>
+<td>web / scheduler / extraction / calendar</td>
+<td>73–80%</td>
+<td>adequate</td>
+</tr>
+<tr>
+<td>auth</td>
+<td>67.5%</td>
+<td>weak — security-critical, raise it</td>
+</tr>
+<tr>
+<td><strong>service (Celery runner)</strong></td>
+<td><strong>37.7%</strong></td>
+<td><strong>weakest — one of the 4 service types</strong></td>
+</tr>
+</tbody>
+</table>
 <hr />
-<h2 id="6-development-utility">6. Development Utility</h2>
-<p>For local development or CLI usage with a browser:</p>
-<pre><code class="language-python">from vaultdb.core import Application, AuthType
+<h2 id="findings-decisions-for-you">Findings — decisions for you</h2>
+<ol>
+<li><strong><code>run_type</code> env var is unwired (HIGH) — FIXED.</strong> <code>config.run_type</code> was hardcoded. Added to <code>config._ENV_MAP</code>. <code>export run_type=local</code> now works, unblocking local API testing.</li>
+<li><strong>Auth-gate divergence (MEDIUM, pinned by test).</strong> LOCAL <code>send_task</code>
+   rejects missing <code>auth_token</code> with <code>ValueError</code>; SERVICE/FUNCTION/BATCH
+   do not (gate deferred to worker via headers). Confirm intended.</li>
+<li><strong>TOCTOU window unfixed (MEDIUM, pinned by test).</strong> TODO #7 race is
+   real: <code>verify_approval</code> called once, before the RUNNING commit, no
+   re-check in that transaction. Test pins current behaviour.</li>
+<li><strong><code>requirements-dev.txt</code> is gitignored/untracked (LOW).</strong> moto/fakeredis
+   pins are local-only. Pin them in a tracked file (<code>pyproject.toml</code> test
+   extra or <code>setup.py</code>) for CI/team reproducibility.</li>
+</ol>
+<hr />
+<h2 id="verdict-per-service-type">Verdict per service type</h2>
+<table>
+<thead>
+<tr>
+<th>Service type</th>
+<th>Mock/unit</th>
+<th>Real-infra</th>
+<th>Depend on it yet?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LOCAL</td>
+<td>strong</td>
+<td>verified in-proc</td>
+<td>Yes (mind finding #1 for API)</td>
+</tr>
+<tr>
+<td>FUNCTION</td>
+<td>87% + parity</td>
+<td>pending (#9)</td>
+<td>Yes for unit; real E2E pending</td>
+</tr>
+<tr>
+<td>BATCH</td>
+<td>90% + parity</td>
+<td>pending (#9)</td>
+<td>Yes for unit; real E2E pending</td>
+</tr>
+<tr>
+<td>SERVICE</td>
+<td>37.7% + parity</td>
+<td>pending (#7)</td>
+<td>Conditional — do #7 before heavy reliance</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="layer-bc-remaining-resume-here-later">Layer B/C — REMAINING (resume here later)</h2>
+<h3 id="things-you-need-to-do">Things YOU need to do</h3>
+<ol>
+<li><strong>Redis</strong> — provide a reachable endpoint (no Docker/redis-server in the
+   dev env). Set <code>SERVICE_BROKER_URL</code> and <code>REDIS_DATABASE</code>. → unblocks #7.</li>
+<li><strong>AWS + S3</strong> — provide credentials + an S3 bucket name for the DuckLake
+   catalog (<code>CATALOG_DATA_PATH=s3://…</code>). → unblocks #8.</li>
+<li><strong>Deploy AWS infra</strong> — run <code>scripts/deploy_infra.sh vaultdb dev &lt;region&gt;</code>
+   (CloudFormation <code>infrastructure/cloudformation/master-stack.yaml</code>,
+   <strong>cost-incurring</strong>). Share stack outputs: Batch job queue, job
+   definition, Lambda function name. → unblocks #9.</li>
+<li><strong>Decide findings #1–#4</strong> (esp. whether to wire <code>run_type</code>).</li>
+<li><strong>Manual dashboard pass</strong> — click through OIDC/Dash login at
+   <code>localhost:8000</code> (can't be done headlessly here). → part of #10.</li>
+<li><strong>Sign off</strong> to start other modules.</li>
+</ol>
+<h3 id="things-i-claude-will-do-once-unblocked">Things I (Claude) will do once unblocked</h3>
+<ul>
+<li><strong>#7 Real Redis SERVICE E2E:</strong> start <code>vaultdb -A vaultdb.service.app worker</code>
+  against live Redis, run submit → execute → revoke → RBAC; raise SERVICE coverage
+  from 37.7%. Validate finding #1 in service mode. (TODO #1)</li>
+<li><strong>#8 S3-backed DuckLake E2E:</strong> set <code>CATALOG_DATA_PATH=s3://…</code>; exercise
+  catalog read/write/inheritance/timemachine on S3. (TODO #2)</li>
+<li><strong>#9 Real Batch + Lambda E2E:</strong> real job submission + function
+  invocation; cross-runner parity vs real backends.</li>
+<li>Update this report → final go/no-go.</li>
+</ul>
+<h3 id="quick-resume-commands">Quick resume commands</h3>
+<pre><code class="language-bash"># from /vaultdb/core, devcontainer (PYTHONPATH auto-set)
+python -m pytest -q --tb=short           # expect 931 passed
+python -m pytest tests/compute/test_runner_parity_matrix.py -q
+python -m pytest tests/workflow/test_triple_gate_invariants.py -q
 
-Application.connect(
-    auth=AuthType.OIDC,
-    # System will automatically use AUTH_* environment variables
-)
+# Real Redis SERVICE E2E (after Redis provided)
+export SERVICE_BROKER_URL=redis://&lt;host&gt;:6379
+export REDIS_DATABASE=redis://&lt;host&gt;:6379/0
+vaultdb -A vaultdb.service.app worker --loglevel=INFO   # separate terminal
+# then drive TEST-LOCAL.md scenarios B/C
+
+# Local FastAPI (note finding #1: run_type env is currently a no-op)
+DEBUG=true python -m vaultdb.web          # http://localhost:8000
 </code></pre>
-<p>This will launch your system browser, allow you to login via your chosen provider, and automatically receive the token.</p>
+<h3 id="task-tracker-mapping">Task tracker mapping</h3>
+<ul>
+<li>Done: #1 #2 #3 #4 #5 #6 #10 #11 (Finding #1)</li>
+<li>Blocked on you: #7 (Redis), #8 (AWS+S3), #9 (deploy_infra.sh)</li>
+</ul>
                     </div>
                 </div>
             </div>

@@ -4,9 +4,9 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>KRONOS Re: core Documentation - Authentication Guide</title>
+<title>KRONOS Re: core Documentation - Core Review And Test Plan</title>
 <meta content="noindex, nofollow" name="robots"/>
-<meta name="vdb-context" content="You are viewing the core documentation: Authentication Guide. Category: index."/>
+<meta name="vdb-context" content="You are viewing the core documentation: Core Review And Test Plan. Category: index."/>
 <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" rel="stylesheet"/>
 <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" referrerpolicy="no-referrer" rel="stylesheet"/>
 <link href="../../../img/v-logo.png" rel="icon" type="image/png"/>
@@ -66,7 +66,7 @@
                     <div class="col-lg-3">
                         <div class="side_accordian doc-nav"><ul class="nav flex-column">
         <li class="nav-item">
-            <a class="nav-link active " href="AUTHENTICATION_GUIDE.html">
+            <a class="nav-link  " href="AUTHENTICATION_GUIDE.html">
                 <i class="fa-solid fa-house me-2"></i> Authentication Guide
             </a>
         </li>
@@ -126,7 +126,7 @@
         </li>
         
         <li class="nav-item">
-            <a class="nav-link  " href="core_review_and_test_plan.html">
+            <a class="nav-link active " href="core_review_and_test_plan.html">
                 <i class="fa-solid fa-house me-2"></i> Core Review And Test Plan
             </a>
         </li>
@@ -221,160 +221,57 @@
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="../../../index.html">Home</a></li>
                                 <li class="breadcrumb-item"><a href="#">core</a></li>
-                                <li class="breadcrumb-item active">Authentication Guide <span class="persona-badge">index</span></li>
+                                <li class="breadcrumb-item active">Core Review And Test Plan <span class="persona-badge">index</span></li>
                             </ol>
                         </nav>
-                        <h1 id="vaultdb-authentication-guide">VaultDB Authentication Guide</h1>
-<p>VaultDB supports a unified, provider-agnostic authentication system based on <strong>OpenID Connect (OIDC)</strong> and <strong>GitHub</strong>.</p>
-<h2 id="1-global-configuration">1. Global Configuration</h2>
-<p>You can configure any OIDC-compliant provider using the following environment variables:</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Variable</th>
-<th style="text-align: left;">Description</th>
-<th style="text-align: left;">Example</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><code>AUTH_TYPE</code></td>
-<td style="text-align: left;">Type of authentication</td>
-<td style="text-align: left;"><code>oidc</code>, <code>github</code>, <code>basic</code>, <code>iam_role</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>AUTH_CLIENT_ID</code></td>
-<td style="text-align: left;">Client ID</td>
-<td style="text-align: left;"><code>your-app-id</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>AUTH_CLIENT_SECRET</code></td>
-<td style="text-align: left;">Client Secret</td>
-<td style="text-align: left;"><code>your-secret</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>AUTH_AUTHORIZATION_URL</code></td>
-<td style="text-align: left;">Browser login endpoint</td>
-<td style="text-align: left;"><code>https://login.microsoftonline.com/.../authorize</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>AUTH_TOKEN_URL</code></td>
-<td style="text-align: left;">Token exchange endpoint</td>
-<td style="text-align: left;"><code>https://login.microsoftonline.com/.../token</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>AUTH_REDIRECT_URI</code></td>
-<td style="text-align: left;">Your callback URL</td>
-<td style="text-align: left;"><code>http://localhost:8080/callback</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>AUTH_SCOPE</code></td>
-<td style="text-align: left;">Requested OIDC scopes</td>
-<td style="text-align: left;"><code>openid profile email</code></td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="2-provider-specific-templates">2. Provider Specific Templates</h2>
-<h3 id="a-aws-cognito-oidc-mode">A. AWS Cognito (OIDC Mode)</h3>
-<p>Use the values provided by the <code>infrastructure/cloudformation/cognito-auth.yaml</code> stack outputs.</p>
-<pre><code class="language-bash">export AUTH_TYPE=&quot;oidc&quot;
-export AUTH_CLIENT_ID=&quot;&lt;UserPoolClientId&gt;&quot;
-export AUTH_AUTHORIZATION_URL=&quot;https://&lt;domain&gt;.auth.&lt;region&gt;.amazoncognito.com/oauth2/authorize&quot;
-export AUTH_TOKEN_URL=&quot;https://&lt;domain&gt;.auth.&lt;region&gt;.amazoncognito.com/oauth2/token&quot;
-export AUTH_REDIRECT_URI=&quot;http://localhost:3000/callback&quot;
-</code></pre>
-<h3 id="b-microsoft-entra-id-azure-ad">B. Microsoft Entra ID (Azure AD)</h3>
-<p>Register a "Web" application in Azure Portal and set the redirect URI.</p>
-<pre><code class="language-bash">export AUTH_TYPE=&quot;oidc&quot;
-export AUTH_CLIENT_ID=&quot;00000000-0000-0000-0000-000000000000&quot;
-export AUTH_CLIENT_SECRET=&quot;your-client-secret&quot;
-export AUTH_AUTHORIZATION_URL=&quot;https://login.microsoftonline.com/&lt;tenant&gt;/oauth2/v2.0/authorize&quot;
-export AUTH_TOKEN_URL=&quot;https://login.microsoftonline.com/&lt;tenant&gt;/oauth2/v2.0/token&quot;
-export AUTH_REDIRECT_URI=&quot;http://localhost:8080/callback&quot;
-</code></pre>
-<h3 id="c-github">C. GitHub</h3>
-<pre><code class="language-bash">export AUTH_TYPE=&quot;github&quot;
-# For browser flow:
-export AUTH_CLIENT_ID=&quot;your-github-client-id&quot;
-export AUTH_CLIENT_SECRET=&quot;your-github-client-secret&quot;
-export AUTH_TOKEN_URL=&quot;https://github.com/login/oauth/access_token&quot;
-# Or use a Personal Access Token directly:
-# Application.connect(auth_type=AuthType.GITHUB, auth_token=&quot;gho_...&quot;)
-</code></pre>
-<h3 id="d-auth0-okta">D. Auth0 / Okta</h3>
-<pre><code class="language-bash">export AUTH_TYPE=&quot;oidc&quot;
-export AUTH_CLIENT_ID=&quot;your-client-id&quot;
-export AUTH_AUTHORIZATION_URL=&quot;https://your-tenant.auth0.com/authorize&quot;
-export AUTH_TOKEN_URL=&quot;https://your-tenant.auth0.com/oauth/token&quot;
-</code></pre>
-<hr />
-<h2 id="3-role-based-access-control-rbac">3. Role-Based Access Control (RBAC)</h2>
-<p>Instead of giving everyone the same permissions, you can group users into different roles (e.g., <code>Admin</code> vs <code>User</code>) based on their identity provider groups.</p>
-<h3 id="how-it-works">How it works:</h3>
-<ol>
-<li><strong>Identity Provider</strong>: Configure your provider (Microsoft, Okta, etc.) to include a "groups" or "roles" claim in the ID token.</li>
-<li><strong>AWS Identity Pool</strong>: The <code>infrastructure/cloudformation/cognito-auth.yaml</code> template defines <strong>Rules-based mapping</strong>.</li>
-<li><strong>Dynamic Permissions</strong>: When a user logs in, AWS inspects the claim and automatically assigns them the corresponding IAM Role (<code>VaultDBAdminRole</code> or <code>VaultDBUserRole</code>).</li>
-</ol>
-<h3 id="mapping-examples">Mapping Examples:</h3>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Provider</th>
-<th style="text-align: left;">Claim Key</th>
-<th style="text-align: left;">Value Example</th>
-<th style="text-align: left;">Resulting AWS Role</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><strong>Microsoft Entra</strong></td>
-<td style="text-align: left;"><code>roles</code></td>
-<td style="text-align: left;"><code>VaultDB.Admin</code></td>
-<td style="text-align: left;"><code>VaultDBAdminRole</code> (Full Admin / <code>vaultdb</code>)</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Okta</strong></td>
-<td style="text-align: left;"><code>groups</code></td>
-<td style="text-align: left;"><code>DataAdmins</code></td>
-<td style="text-align: left;"><code>VaultDBAdminRole</code> (Full Admin / <code>vaultdb</code>)</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Any</strong></td>
-<td style="text-align: left;">(Default)</td>
-<td style="text-align: left;"><em>Any valid login</em></td>
-<td style="text-align: left;"><code>VaultDBStandardRole</code> (Restricted)</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="4-developer-api-checking-roles">4. Developer API: Checking Roles</h2>
-<p>You can programmatically check the user's role in your application:</p>
-<pre><code class="language-python">from vaultdb.auth import get_authorized_role
-from vaultdb.core import settings
-
-# After Application.connect()
-print(f&quot;Current User Role: {settings.role}&quot;)
-</code></pre>
-<hr />
-<h2 id="5-verification-security">5. Verification &amp; Security</h2>
-<ul>
-<li><strong>JWKS Fetching</strong>: VaultDB dynamically fetches public keys from the provider's <code>iss</code> URL (OpenID Discovery).</li>
-<li><strong>Caching</strong>: Fetched keys are cached in the <code>commitlog_directory</code> to ensure performance and offline verification stability.</li>
-<li><strong>Audience Check</strong>: The system validates that the token was issued for your configured <code>AUTH_CLIENT_ID</code>.</li>
-</ul>
-<hr />
-<h2 id="6-development-utility">6. Development Utility</h2>
-<p>For local development or CLI usage with a browser:</p>
-<pre><code class="language-python">from vaultdb.core import Application, AuthType
-
-Application.connect(
-    auth=AuthType.OIDC,
-    # System will automatically use AUTH_* environment variables
-)
-</code></pre>
-<p>This will launch your system browser, allow you to login via your chosen provider, and automatically receive the token.</p>
+                        <h1 id="vaultdb-core-review-testing-plan">VaultDB Core Review &amp; Testing Plan</h1>
+<p>This document outlines a comprehensive plan to test, stabilize, and verify the <code>core</code> of VaultDB. This will ensure confidence in its functionality before migrating to building reinsurance models, as well as prepare it for a standalone public release.</p>
+<h2 id="current-state-assessment">Current State Assessment</h2>
+<p>Based on the review of the codebase, documentation (<code>ducklake.md</code>, <code>system-context.md</code>, <code>TASK_RUNNER_ARCHITECTURE.md</code>), and the recent local test runs, here is the current state:
+- <strong>Automated Tests</strong>: A recent pytest execution showed <strong>880 passed, 27 failed</strong>. The failures are primarily in the <code>DuckLake</code> data layer (<code>IO Error: No files found that match the pattern "None/*.parquet"</code>) due to a missing or unmocked <code>CATALOG_DATA_PATH</code>, and in the <code>GeminiBackend</code> crawler advisor.
+- <strong>Task Runners</strong>: Unified interface implemented across Celery, AWS Batch, and Lambda.
+- <strong>DuckLake</strong>: Powerful "Virtual Fork" engine, but needs verification for S3 paths and concurrent-writer semantics.
+- <strong>Workflows</strong>: Fully featured with triple-gate approval, but lacks an immutable artifact store and TOCTOU protection (per <code>TODO.md</code>).</p>
+<h2 id="strategic-plan">Strategic Plan</h2>
+<p>We will tackle the core review and testing in <strong>6 phases</strong>. You can prompt me to execute any of these phases one by one.</p>
+<h3 id="phase-1-test-suite-stabilization-fixing-the-27-failures">Phase 1: Test Suite Stabilization (Fixing the 27 Failures)</h3>
+<p>Before deep E2E testing, the foundational unit tests must be green.
+- <strong>Tasks you can ask me to do:</strong>
+  - "Fix the DuckLake IO Error failing tests in <code>tests/data/test_data.py</code> and <code>tests/data/test_transactions.py</code>."
+  - "Fix the GeminiBackend tests in <code>tests/test_crawler/test_advisor.py</code>."
+  - "Run a full pytest suite and ensure we achieve 100% pass rate."</p>
+<h3 id="phase-2-ducklake-storage-concurrency-e2e-crucial-for-reinsurance">Phase 2: DuckLake Storage &amp; Concurrency E2E (Crucial for Reinsurance)</h3>
+<p>Reinsurance models require heavy data manipulation. DuckLake needs to be rock solid.
+- <strong>Tasks you can ask me to do:</strong>
+  - "Write an E2E test script to verify DuckLake behavior locally."
+  - "Write a test to verify DuckLake interactions with S3 (mocked via <code>moto</code> or a local MinIO container)."
+  - "Implement the DuckLake concurrent-writer protection (as mentioned in <code>TODO.md</code> deferred item #8) using Redis locks."
+  - "Audit the <code>TimeSeriesModel</code> and <code>Model</code> pushdown logic for performance bottlenecks."</p>
+<h3 id="phase-3-task-orchestration-workflow-robustness">Phase 3: Task Orchestration &amp; Workflow Robustness</h3>
+<p>The unified task runner (TED) and Workflow engine must orchestrate reinsurance pipelines reliably.
+- <strong>Tasks you can ask me to do:</strong>
+  - "Review the <code>runner.py</code> and task execution proxies to ensure correct behavior across Local and Service runners."
+  - "Write E2E tests for the Workflow approval engine."
+  - "Implement the TOCTOU (Time-of-Check to Time-of-Use) protection on Workflow <code>verify -&gt; execute</code> (TODO #7)."
+  - "Add the immutable artifact store (append-only archive bucket) for <code>ApprovalRecord</code> compliance (TODO #6)."</p>
+<h3 id="phase-4-crawler-llm-advisers">Phase 4: Crawler &amp; LLM Advisers</h3>
+<p>Ensuring the multi-provider LLM abstraction works flawlessly for any data extraction needs.
+- <strong>Tasks you can ask me to do:</strong>
+  - "Review the <code>crawler/</code> module and ensure lazy-initialization is working for all LLM backends."
+  - "Create test stubs for Ollama, OpenAI, Anthropic, Bedrock, and Gemini backends."</p>
+<h3 id="phase-5-web-api-auth-verification">Phase 5: Web API &amp; Auth Verification</h3>
+<p>Testing the external-facing capabilities.
+- <strong>Tasks you can ask me to do:</strong>
+  - "Run a local instance of the FastAPI dashboard and test task submission and revocation."
+  - "Review the OIDC and basic authentication flows in <code>vaultdb.auth</code>."</p>
+<h3 id="phase-6-standalone-release-preparation">Phase 6: Standalone Release Preparation</h3>
+<p>Preparing the codebase for the world to use.
+- <strong>Tasks you can ask me to do:</strong>
+  - "Review <code>setup.py</code>, <code>pyproject.toml</code>, and <code>MANIFEST.in</code> for public packaging."
+  - "Check the core codebase for any hardcoded proprietary references that shouldn't be in the open-source/standalone version."
+  - "Generate infrastructure-as-code (Terraform or CloudFormation) to deploy the required Redis and S3 components."</p>
+<h2 id="how-to-proceed">How to Proceed</h2>
+<p>I recommend starting with <strong>Phase 1</strong> to fix the broken tests. Would you like me to begin fixing the <code>DuckLake</code> testing path issues and the <code>GeminiBackend</code> crawler failures?</p>
                     </div>
                 </div>
             </div>

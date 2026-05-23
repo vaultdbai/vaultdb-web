@@ -78,12 +78,6 @@
         </li>
         
         <li class="nav-item">
-            <a class="nav-link  " href="index.html">
-                <i class="fa-solid fa-house me-2"></i> Index
-            </a>
-        </li>
-        
-        <li class="nav-item">
             <a class="nav-link  " href="KRONOS-APPROVAL-VIEWER-PLAN.html">
                 <i class="fa-solid fa-house me-2"></i> Kronos Approval Viewer Plan
             </a>
@@ -98,6 +92,24 @@
         <li class="nav-item">
             <a class="nav-link  " href="KRONOS-CHATBOT-PLAN.html">
                 <i class="fa-solid fa-house me-2"></i> Kronos Chatbot Plan
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="RESEARCH-AGENT-ARCHITECTURE.html">
+                <i class="fa-solid fa-house me-2"></i> Research Agent Architecture
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link active " href="TODO.html">
+                <i class="fa-solid fa-house me-2"></i> Todo
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="index.html">
+                <i class="fa-solid fa-house me-2"></i> Index
             </a>
         </li>
         
@@ -120,12 +132,6 @@
         </li>
         
         <li class="nav-item">
-            <a class="nav-link  " href="RESEARCH-AGENT-ARCHITECTURE.html">
-                <i class="fa-solid fa-house me-2"></i> Research Agent Architecture
-            </a>
-        </li>
-        
-        <li class="nav-item">
             <a class="nav-link  ps-4" href="standards_SUBMODULE_DOC_CONVENTION.html">
                 <i class="fa-solid fa-file-lines me-2"></i> Submodule Doc Convention
             </a>
@@ -134,12 +140,6 @@
         <li class="nav-item">
             <a class="nav-link  ps-4" href="technology_system_architecture.html">
                 <i class="fa-solid fa-code me-2"></i> System Architecture
-            </a>
-        </li>
-        
-        <li class="nav-item">
-            <a class="nav-link active " href="TODO.html">
-                <i class="fa-solid fa-house me-2"></i> Todo
             </a>
         </li>
         
@@ -158,13 +158,14 @@
                                 <li class="breadcrumb-item active">Todo <span class="persona-badge">index</span></li>
                             </ol>
                         </nav>
-                        <p>1) Insuranmc-browser is now an mcpserver,i do not think that makes sense as this should be an agent or plugin or skill or something that is better suited for this job. mcp server is not suitewd for it. In order to that make it a agent cum tool or plugin inside vaultdb core module where crawler is there and make that installable like graphify and other tools do. move all tools and code from insurance browser to vaultddb crawler (maybe give it better name) and create a agent and or plugin and or skill I can ask to go through all the things and does the download etc. same agent should be exposed in dashboard chat system. I want to be able to call it from claude code like menu so add this as installer how graphify has it after pip install is done. I want to be able to ask it to download prospectuses for kronos re and also for other products we want to build models for. I also want it to be able to download data for scenarios and assumptions and save them in the right format so we can use them in our models. I want to be able to do that from dashboard and also from command line using a simple interface. This will help us keep all our data organized and easily accessible for our modeling and analysis work.</p>
+                        <p>1) once done move all skills to plugins submodules and update the maketplace as well and generate new vaultdb-web pages. review all skills and makr sure LLm prompt info uses pytorch and matrix calculations for anything written. we want tobe GPU first.</p>
+<p>1) Insuranmc-browser is now an mcpserver,i do not think that makes sense as this should be an agent or plugin or skill or something that is better suited for this job. mcp server is not suitewd for it. In order to that make it a agent cum tool or plugin inside vaultdb core module where crawler is there and make that installable like graphify and other tools do. move all tools and code from insurance browser to vaultddb crawler (maybe give it better name) and create a agent and or plugin and or skill I can ask to go through all the things and does the download etc. same agent should be exposed in dashboard chat system. I want to be able to call it from claude code like menu so add this as installer how graphify has it after pip install is done. I want to be able to ask it to download prospectuses for kronos re and also for other products we want to build models for. I also want it to be able to download data for scenarios and assumptions and save them in the right format so we can use them in our models. I want to be able to do that from dashboard and also from command line using a simple interface. This will help us keep all our data organized and easily accessible for our modeling and analysis work.</p>
 <p>1) Create scenarios generation models for real world and esg scenarios.</p>
-<p>2) create assumption generation models and generate assumptions and save them</p>
-<p>3) Download product prospectuses for kronos re. I want to build alm models and end to end models and system for these productios so we can show off a system. I also want to build sample inforce data for them and loaders so when we get original inforce we can use that with minimmal modifications.</p>
-<p>4) for each product calculate lapse build assumptions and write model to generate cashflows and Present value for differnt scenarions. also build runners that uses scenarios and differnet assumptions and create reserves and capital requirements.</p>
-<p>5) create UI to manipulate scenarios and shocks to value inforce and calcualte greeks. we must always use pytorch capability.</p>
-<p>6) build models that compares reserve and spread can be made if client goes through Krons reinsurance. dashboard must have pages for it
+<p>1) create assumption generation models and generate assumptions and save them</p>
+<p>1) Download product prospectuses for kronos re. I want to build alm models and end to end models and system for these productios so we can show off a system. I also want to build sample inforce data for them and loaders so when we get original inforce we can use that with minimmal modifications.</p>
+<p>1) for each product calculate lapse build assumptions and write model to generate cashflows and Present value for differnt scenarions. also build runners that uses scenarios and differnet assumptions and create reserves and capital requirements.</p>
+<p>1) create UI to manipulate scenarios and shocks to value inforce and calcualte greeks. we must always use pytorch capability.</p>
+<p>1) build models that compares reserve and spread can be made if client goes through Krons reinsurance. dashboard must have pages for it
 "PROMPT":--</p>
 <p>Act as an Expert Actuarial Developer and Financial Engineer. I am building a platform for KRONOS Re, an AI-native reinsurance sidecar focused on Fixed and Fixed Indexed Annuity (FIA) blocks. I need a Python-based framework to demonstrate an end-to-end 'Digital Chief Actuary' system.</p>
 <p>Please write modular code for the following four components:</p>
@@ -200,8 +201,8 @@ Write a function that takes the output of the ALM engine and generates a 'Draft 
 <p>1) Lets create sample data and laoders for each model so we have data on dashboard and ui and we can run things for demo.</p>
 <p>2) in core project and dashboard can you build documents and architecture diagrams for approval, chahub and other functionalities so that I can understand what is going on how this whole thing works. before you do that review all code in it's entirity and check for errors.</p>
 <hr />
-<p>2) lets look at vaultdb-web and make about kronos re, move Database part to separate page that talks about it with a separate top link, it's faq should also be in it's own page main website should become about Kronos Re and all it's features documantation and come up with pictures etc. deep think and plan first by reading following and attached @beautifulMention@beautifulMention@beautifulMention  </p>
-<p>3) based on attached plan build alm, trading, scenario generators, asset, markets, assumptions and other missing modules and required models and functionality to run them end to end and live using TED in vaultdb. suggest missing repos and add them. build plan first and save the plan in docs so we can use it later for refrence.</p>
+<p>1) lets look at vaultdb-web and make about kronos re, move Database part to separate page that talks about it with a separate top link, it's faq should also be in it's own page main website should become about Kronos Re and all it's features documantation and come up with pictures etc. deep think and plan first by reading following and attached @beautifulMention@beautifulMention@beautifulMention  </p>
+<p>2) based on attached plan build alm, trading, scenario generators, asset, markets, assumptions and other missing modules and required models and functionality to run them end to end and live using TED in vaultdb. suggest missing repos and add them. build plan first and save the plan in docs so we can use it later for refrence.</p>
 <p>use .md to html helper document website build repo and add script to convert and add thoes documents and links for vaultdb-web repo in basic form. make sure documents follow similar theme and colr and css as vaultdb-web website has. do not change the website just add link for documantation for each sub git submodule so each product documantation is avaialble.</p>
                     </div>
                 </div>

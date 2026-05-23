@@ -66,6 +66,12 @@
                     <div class="col-lg-3">
                         <div class="side_accordian doc-nav"><ul class="nav flex-column">
         <li class="nav-item">
+            <a class="nav-link  " href="README.html">
+                <i class="fa-solid fa-house me-2"></i> Readme
+            </a>
+        </li>
+        
+        <li class="nav-item">
             <a class="nav-link  ps-4" href="compliance_approval_integration.html">
                 <i class="fa-solid fa-shield-halved me-2"></i> Approval Integration
             </a>
@@ -74,12 +80,6 @@
         <li class="nav-item">
             <a class="nav-link  " href="index.html">
                 <i class="fa-solid fa-house me-2"></i> Index
-            </a>
-        </li>
-        
-        <li class="nav-item">
-            <a class="nav-link  " href="README.html">
-                <i class="fa-solid fa-house me-2"></i> Readme
             </a>
         </li>
         
@@ -119,7 +119,16 @@
                         <h1 id="chatbot-engine-claude-sdk-integration">Chatbot Engine — Claude SDK Integration</h1>
 <p>The KRONOS AI chatbot runs inside each UserProcess as a <code>ChatEngine</code> instance. It uses the Anthropic Claude SDK to power conversational interactions with actuaries and CIOs.</p>
 <h2 id="engine-architecture">Engine Architecture</h2>
-<div class="mermaid-diagram"><img src="diagram_1.svg" alt="Architecture Diagram 1" style="max-width:100%;height:auto;" /></div>
+<pre class="mermaid">flowchart TD
+    USER[&quot;User Message&quot;] --> ENGINE[&quot;ChatEngine&quot;]
+    ENGINE --> CLAUDE[&quot;Anthropic API<br/>claude-sonnet-4-6&quot;]
+    CLAUDE -->|end_turn| REPLY[&quot;Text Reply&quot;]
+    CLAUDE -->|tool_use| DISPATCH[&quot;dispatch_tool()&quot;]
+    DISPATCH --> TOOLS[&quot;Tool Implementations&quot;]
+    TOOLS --> RESULTS[&quot;Tool Results&quot;]
+    RESULTS --> ENGINE
+    ENGINE -->|loop max 20 iterations| CLAUDE
+</pre>
 <h2 id="chatengine-configuration">ChatEngine Configuration</h2>
 <pre><code class="language-python">ChatEngine(
     user_id=&quot;user-alice&quot;,
@@ -136,7 +145,32 @@
 - Propose workflows (not execute directly) — the human approves first
 - Structure workflow steps with proper dependencies</p>
 <h2 id="conversation-loop">Conversation Loop</h2>
-<div class="mermaid-diagram"><img src="diagram_2.svg" alt="Architecture Diagram 2" style="max-width:100%;height:auto;" /></div>
+<pre class="mermaid">sequenceDiagram
+    participant USER as User
+    participant ENGINE as ChatEngine
+    participant CLAUDE as Claude API
+    participant TOOLS as Tool Dispatch
+
+    USER->>ENGINE: send(&quot;Run Q1 valuation&quot;)
+    ENGINE->>ENGINE: Append to history
+
+    ENGINE->>CLAUDE: messages.create(tools=TOOL_DEFINITIONS)
+    CLAUDE-->>ENGINE: tool_use: list_modules
+
+    ENGINE->>TOOLS: dispatch_tool(&quot;list_modules&quot;, {})
+    TOOLS-->>ENGINE: {modules: {...}}
+
+    ENGINE->>CLAUDE: messages.create(tool_results)
+    CLAUDE-->>ENGINE: tool_use: propose_workflow
+
+    ENGINE->>TOOLS: dispatch_tool(&quot;propose_workflow&quot;, {name, steps})
+    TOOLS-->>ENGINE: {workflow_id, status}
+
+    ENGINE->>CLAUDE: messages.create(tool_results)
+    CLAUDE-->>ENGINE: end_turn: &quot;I've proposed a workflow...&quot;
+
+    ENGINE-->>USER: MessageResponse(reply, proposed_workflows)
+</pre>
 <h2 id="available-tools">Available Tools</h2>
 <p>The AI has access to these tools via <code>TOOL_DEFINITIONS</code>:</p>
 <h3 id="discovery-tools">Discovery Tools</h3>

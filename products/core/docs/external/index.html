@@ -31,7 +31,32 @@
     <h1 id="vaultdb-core-developer-documentation">VaultDB Core — Developer Documentation</h1>
 <p>VaultDB Core is the foundational infrastructure layer of the KRONOS Re platform. It provides data orchestration, task execution, authentication, and API services that all domain modules build upon.</p>
 <h2 id="platform-overview">Platform Overview</h2>
-<div class="mermaid-diagram"><img src="diagram_1.svg" alt="Architecture Diagram 1" style="max-width:100%;height:auto;" /></div>
+<pre class="mermaid">graph TD
+    subgraph &quot;VaultDB Core&quot;
+        DATA[&quot;Data Layer<br/>DuckLake ORM + Virtual Forks&quot;]
+        TED[&quot;Task Execution Dispatcher (TED)<br/>Celery | AWS Batch | Lambda&quot;]
+        AUTH[&quot;Authentication<br/>OIDC | GitHub | AWS Cognito&quot;]
+        API[&quot;FastAPI Web Layer<br/>REST API + OAuth2&quot;]
+        WF[&quot;Workflow Engine<br/>DAG-based pipeline execution&quot;]
+        APR[&quot;Approval Engine<br/>HMAC-SHA256 cryptographic signatures&quot;]
+    end
+
+    subgraph &quot;Domain Modules&quot;
+        direction LR
+        MOD1[&quot;Liability&quot;]
+        MOD2[&quot;ALM&quot;]
+        MOD3[&quot;Risk&quot;]
+        MOD4[&quot;Trading&quot;]
+        MOD5[&quot;Reporting&quot;]
+    end
+
+    MOD1 --> DATA
+    MOD1 --> TED
+    MOD2 --> DATA
+    MOD3 --> TED
+    MOD4 --> API
+    MOD5 --> DATA
+</pre>
 <h2 id="key-capabilities">Key Capabilities</h2>
 <h3 id="data-layer-ducklake-orm">Data Layer — DuckLake ORM</h3>
 <p>VaultDB uses DuckLake (DuckDB-backed, Parquet on S3) for persistent storage with an ORM-like interface:</p>
@@ -94,7 +119,14 @@ value = result.get(timeout=60)
 <li><strong>Human approves</strong> with a cryptographically signed approval record</li>
 <li><strong>Engine executes</strong> steps in topological order, resolving inter-step references</li>
 </ol>
-<div class="mermaid-diagram"><img src="diagram_2.svg" alt="Architecture Diagram 2" style="max-width:100%;height:auto;" /></div>
+<pre class="mermaid">stateDiagram-v2
+    [*] --> PENDING_APPROVAL: Workflow proposed
+    PENDING_APPROVAL --> APPROVED: Human approval
+    PENDING_APPROVAL --> REJECTED: Human rejection
+    APPROVED --> RUNNING: Execution started
+    RUNNING --> DONE: All steps complete
+    RUNNING --> FAILED: Step failure
+</pre>
 <h3 id="approval-engine">Approval Engine</h3>
 <p>Every material action requires a cryptographically verified human approval:</p>
 <ul>

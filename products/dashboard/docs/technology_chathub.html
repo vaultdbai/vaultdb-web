@@ -66,6 +66,12 @@
                     <div class="col-lg-3">
                         <div class="side_accordian doc-nav"><ul class="nav flex-column">
         <li class="nav-item">
+            <a class="nav-link  " href="README.html">
+                <i class="fa-solid fa-house me-2"></i> Readme
+            </a>
+        </li>
+        
+        <li class="nav-item">
             <a class="nav-link  ps-4" href="compliance_approval_integration.html">
                 <i class="fa-solid fa-shield-halved me-2"></i> Approval Integration
             </a>
@@ -74,12 +80,6 @@
         <li class="nav-item">
             <a class="nav-link  " href="index.html">
                 <i class="fa-solid fa-house me-2"></i> Index
-            </a>
-        </li>
-        
-        <li class="nav-item">
-            <a class="nav-link  " href="README.html">
-                <i class="fa-solid fa-house me-2"></i> Readme
             </a>
         </li>
         
@@ -160,7 +160,38 @@
     REAPER -->|SIGTERM after 30min idle| UP1
 </pre>
 <h2 id="process-lifecycle">Process Lifecycle</h2>
-<div class="mermaid-diagram"><img src="diagram_2.svg" alt="Architecture Diagram 2" style="max-width:100%;height:auto;" /></div>
+<pre class="mermaid">sequenceDiagram
+    participant UI as Dashboard
+    participant HUB as ChatHub
+    participant UP as UserProcess
+    participant API as Anthropic API
+
+    UI->>HUB: POST /chatbot/{user_id}/message
+
+    alt No process for user
+        HUB->>HUB: _next_free_port() → 9100
+        HUB->>UP: subprocess.Popen(user_server.py, port=9100)
+        HUB->>UP: Poll /healthz (up to 10s)
+        UP-->>HUB: 200 OK
+    end
+
+    HUB->>UP: Forward request (X-Hub-Token header)
+    UP->>UP: _verify_hub_token()
+    UP->>API: messages.create(model, tools, messages)
+    API-->>UP: Response (tool_use or end_turn)
+
+    loop Tool use iterations (max 20)
+        UP->>UP: dispatch_tool(name, input)
+        UP->>API: messages.create(..., tool_results)
+        API-->>UP: Next response
+    end
+
+    UP-->>HUB: MessageResponse
+    HUB-->>UI: JSON response
+
+    Note over HUB: Reaper checks every 60s
+    Note over HUB: Kill after 30min idle
+</pre>
 <h2 id="security-model">Security Model</h2>
 <h3 id="environment-isolation">Environment Isolation</h3>
 <p>When spawning a UserProcess, ChatHub strips the environment to an explicit allowlist:</p>

@@ -66,6 +66,12 @@
                     <div class="col-lg-3">
                         <div class="side_accordian doc-nav"><ul class="nav flex-column">
         <li class="nav-item">
+            <a class="nav-link  " href="README.html">
+                <i class="fa-solid fa-house me-2"></i> Readme
+            </a>
+        </li>
+        
+        <li class="nav-item">
             <a class="nav-link  ps-4" href="compliance_approval_integration.html">
                 <i class="fa-solid fa-shield-halved me-2"></i> Approval Integration
             </a>
@@ -74,12 +80,6 @@
         <li class="nav-item">
             <a class="nav-link  " href="index.html">
                 <i class="fa-solid fa-house me-2"></i> Index
-            </a>
-        </li>
-        
-        <li class="nav-item">
-            <a class="nav-link  " href="README.html">
-                <i class="fa-solid fa-house me-2"></i> Readme
             </a>
         </li>
         
@@ -119,7 +119,21 @@
                         <h1 id="kronos-rest-api-reference">KRONOS REST API Reference</h1>
 <p>All KRONOS API endpoints are mounted under <code>/api/v1/kronos</code> on the dashboard server (port 8050). Authentication is via OAuth2 bearer token.</p>
 <h2 id="api-router-structure">API Router Structure</h2>
-<div class="mermaid-diagram"><img src="diagram_1.svg" alt="Architecture Diagram 1" style="max-width:100%;height:auto;" /></div>
+<pre class="mermaid">graph TD
+    SERVER[&quot;FastAPI Server<br/>(Port 8050)&quot;]
+    KR[&quot;kronos_router<br/>/api/v1/kronos&quot;]
+
+    SERVER --> KR
+    KR --> CHAT[&quot;chatbot_router<br/>/chatbot&quot;]
+    KR --> APR[&quot;approvals_router<br/>/approvals&quot;]
+    KR --> ALM[&quot;alm_router<br/>/alm&quot;]
+    KR --> RISK[&quot;risk_router<br/>/risk&quot;]
+    KR --> TRADE[&quot;trading_router<br/>/trading&quot;]
+    KR --> LIAB[&quot;liability_router<br/>/liability&quot;]
+    KR --> RPT[&quot;reporting_router<br/>/reporting&quot;]
+    KR --> ING[&quot;ingestion_router<br/>/ingestion&quot;]
+    KR --> VAL[&quot;valuation_router<br/>/valuation&quot;]
+</pre>
 <h2 id="chatbot-endpoints">Chatbot Endpoints</h2>
 <p>Base: <code>/api/v1/kronos/chatbot</code></p>
 <p>All chatbot endpoints proxy through to ChatHub (port 8060) via <code>httpx.AsyncClient</code>.</p>

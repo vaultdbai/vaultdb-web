@@ -66,12 +66,6 @@
                     <div class="col-lg-3">
                         <div class="side_accordian doc-nav"><ul class="nav flex-column">
         <li class="nav-item">
-            <a class="nav-link  " href="abstract.html">
-                <i class="fa-solid fa-house me-2"></i> Abstract
-            </a>
-        </li>
-        
-        <li class="nav-item">
             <a class="nav-link  " href="AUTHENTICATION_GUIDE.html">
                 <i class="fa-solid fa-house me-2"></i> Authentication Guide
             </a>
@@ -84,8 +78,56 @@
         </li>
         
         <li class="nav-item">
+            <a class="nav-link  " href="CORE_TEST_READINESS.html">
+                <i class="fa-solid fa-house me-2"></i> Core Test Readiness
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="E2E_TESTING_STRATEGY.html">
+                <i class="fa-solid fa-house me-2"></i> E2E Testing Strategy
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="IMPLEMENTATION_SUMMARY.html">
+                <i class="fa-solid fa-house me-2"></i> Implementation Summary
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="INFRA_DEPLOY_RUNBOOK.html">
+                <i class="fa-solid fa-house me-2"></i> Infra Deploy Runbook
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="PYTHON312_COMPATIBILITY.html">
+                <i class="fa-solid fa-house me-2"></i> Python312 Compatibility
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="TASK_RUNNER_ARCHITECTURE.html">
+                <i class="fa-solid fa-house me-2"></i> Task Runner Architecture
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="abstract.html">
+                <i class="fa-solid fa-house me-2"></i> Abstract
+            </a>
+        </li>
+        
+        <li class="nav-item">
             <a class="nav-link  ps-4" href="compliance_approval_controls.html">
                 <i class="fa-solid fa-shield-halved me-2"></i> Approval Controls
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link  " href="core_review_and_test_plan.html">
+                <i class="fa-solid fa-house me-2"></i> Core Review And Test Plan
             </a>
         </li>
         
@@ -187,7 +229,17 @@
 <h2 id="overview">Overview</h2>
 <p>When the KRONOS AI chatbot proposes a workflow (e.g., "Q1 2026 Valuation Pipeline"), it defines a directed acyclic graph (DAG) of steps. Each step maps to a TED task in a domain submodule. The workflow must be reviewed and approved by a human before any step executes.</p>
 <h2 id="lifecycle-state-machine">Lifecycle State Machine</h2>
-<div class="mermaid-diagram"><img src="diagram_1.svg" alt="Architecture Diagram 1" style="max-width:100%;height:auto;" /></div>
+<pre class="mermaid">stateDiagram-v2
+    [*] --> PENDING_APPROVAL: AI proposes workflow
+    PENDING_APPROVAL --> APPROVED: Human approves (HMAC token created)
+    PENDING_APPROVAL --> REJECTED: Human rejects
+    APPROVED --> RUNNING: execute_workflow() called
+    RUNNING --> DONE: All steps complete
+    RUNNING --> FAILED: Step fails (on_failure=abort)
+    REJECTED --> [*]
+    DONE --> [*]
+    FAILED --> [*]
+</pre>
 <h2 id="data-models">Data Models</h2>
 <h3 id="workflowrun">WorkflowRun</h3>
 <p>The top-level record representing one proposed workflow. Stored in the <code>workflow_run</code> DuckLake table.</p>
@@ -370,7 +422,21 @@
 <p>Lists <code>WorkflowRun</code> records for a user, newest first (default limit: 20).</p>
 <h3 id="execute_workflow">execute_workflow</h3>
 <p>The critical function. Performs the <strong>triple-gate approval check</strong> before running any step:</p>
-<div class="mermaid-diagram"><img src="diagram_2.svg" alt="Architecture Diagram 2" style="max-width:100%;height:auto;" /></div>
+<pre class="mermaid">flowchart TD
+    START[&quot;execute_workflow(workflow_id)&quot;] --> GATE1
+    GATE1{&quot;Gate 1: ApprovalRecord exists?&quot;} -->|No| FAIL1[&quot;WorkflowApprovalError&quot;]
+    GATE1 -->|Yes| GATE2
+    GATE2{&quot;Gate 2: is_valid == True?&quot;} -->|No| FAIL2[&quot;WorkflowApprovalError&quot;]
+    GATE2 -->|Yes| GATE3
+    GATE3{&quot;Gate 3: HMAC token verifies?&quot;} -->|No| FAIL3[&quot;WorkflowApprovalError&quot;]
+    GATE3 -->|Yes| TOPO[&quot;Topological sort steps&quot;]
+    TOPO --> EXEC[&quot;Execute steps in DAG order&quot;]
+    EXEC --> RESOLVE[&quot;Resolve $step_xxx refs&quot;]
+    RESOLVE --> CALL[&quot;_call_task(dotted_name, kwargs)&quot;]
+    CALL --> NEXT{&quot;More steps?&quot;}
+    NEXT -->|Yes| EXEC
+    NEXT -->|No| DONE[&quot;WorkflowRun.status = DONE&quot;]
+</pre>
 <h3 id="execution-model">Execution Model</h3>
 <ol>
 <li>Steps are run <strong>in-process</strong> in topological order (Kahn's algorithm).</li>

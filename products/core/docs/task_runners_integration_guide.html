@@ -229,7 +229,7 @@
 <p>VaultDB supports multiple task runners (Celery, AWS Lambda, and AWS Batch) with a unified interface. All runners integrate with the <strong>DuckLake</strong> data layer, enabling tasks to operate within isolated "Virtual Forks" (sandboxes) using DuckDB for high-performant data access.</p>
 <h2 id="quick-start">Quick Start</h2>
 <h3 id="basic-task-definition">Basic Task Definition</h3>
-<pre><code class="language-python">from vaultdb import TED
+<pre><code class="language-python">from vaultdb.core import TED
 
 # Define a task
 @TED.task()
@@ -312,7 +312,7 @@ runner.close()  # Cleanup
 </code></pre>
 <h2 id="integration-examples">Integration Examples</h2>
 <h3 id="database-aware-tasks">Database-Aware Tasks</h3>
-<pre><code class="language-python">from vaultdb import Application, TED
+<pre><code class="language-python">from vaultdb.core import Application, TED
 
 @TED.task()
 def database_task(query: str) -&gt; list:

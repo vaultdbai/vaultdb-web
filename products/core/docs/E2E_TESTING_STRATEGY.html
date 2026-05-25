@@ -249,7 +249,7 @@ gated, with owners, entry criteria, evidence, and a final sign-off.</p>
    value must be a valid <code>RunType</code> (<code>service|function|batch|local</code>).
    <code>Dockerfile.lambda</code> previously set <code>run_type=lambda</code> (invalid) — <strong>fixed
    to <code>function</code></strong>. The Lambda handler also pointed at a non-existent
-   <code>vaultdb.lambda</code> module — <strong>fixed to <code>vaultdb.function.handler</code></strong> (was a
+   <code>vaultdb.lambda</code> module — <strong>fixed to <code>vaultdb.core.function.handler</code></strong> (was a
    hard P0 blocker for the FUNCTION service type; see Phase 0).</li>
 <li><strong>Auth-gate diverges across runners (MEDIUM).</strong> LOCAL <code>send_task</code>
    rejects a missing <code>auth_token</code> with <code>ValueError</code>; SERVICE / FUNCTION /

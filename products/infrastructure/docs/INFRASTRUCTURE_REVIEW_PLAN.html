@@ -346,14 +346,14 @@ its KMS ask (2.4).</p>
 - <code>Dockerfile.lambda</code> <code>CMD ["vaultdb.lambda.handler.task_handler"]</code> and
   <code>docker/scripts/entrypoint.sh</code> <code>python -m vaultdb.lambda.handler</code> —
   <strong>no <code>vaultdb.lambda</code> module exists</strong> (<code>lambda</code> is a Python keyword;
-  module is <code>vaultdb.function.handler</code>, callable <code>task_handler</code>). Every
+  module is <code>vaultdb.core.function.handler</code>, callable <code>task_handler</code>). Every
   Lambda cold-start failed → FUNCTION runner 100% broken in AWS.
 - <code>Dockerfile.lambda</code> set <code>ENV run_type=lambda</code>. <code>config.run_type</code> is now
   env-mapped (<code>_ENV_MAP</code>), and <code>RunType</code> only accepts
   <code>service|function|batch|local</code> — <code>lambda</code> is invalid.
 - <strong>Fixed:</strong> <code>Dockerfile.lambda</code> → <code>run_type=function</code> +
-  <code>CMD ["vaultdb.function.handler.task_handler"]</code>; <code>entrypoint.sh</code> →
-  <code>vaultdb.function.handler</code> (and stale <code>start_fastapi</code> fallback
+  <code>CMD ["vaultdb.core.function.handler.task_handler"]</code>; <code>entrypoint.sh</code> →
+  <code>vaultdb.core.function.handler</code> (and stale <code>start_fastapi</code> fallback
   <code>vaultdb.web.app:app</code> → <code>vaultdb.web:app</code>).</p>
 <h3 id="17-deployed-images-install-from-pypi-not-local-source">1.7 🟠 Deployed images install from PyPI, not local source</h3>
 <p><code>Dockerfile.{service,lambda,batch-*}</code> run <code>pip install vaultdb.core</code>

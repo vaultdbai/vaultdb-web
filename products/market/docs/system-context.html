@@ -161,7 +161,7 @@ Before suggesting any code, verify it aligns with the standards below.</p>
 </table>
 <h3 id="valuation-date">Valuation Date</h3>
 <p><strong>NEVER</strong> create ad-hoc QuantLib evaluation dates or use <code>datetime.today()</code> for timeseries/pricing data. Always use the central settings module to get the correct current date.</p>
-<pre><code class="language-python">from vaultdb import settings
+<pre><code class="language-python">from vaultdb.core import settings
 
 # Example: Set explicitly for a backtest or point-in-time calculation
 settings.valuation_date = date(2024, 12, 15)
@@ -171,7 +171,7 @@ ref_date = settings.sync_ql_evaluation_date()
 </code></pre>
 <h3 id="task-orchestration-ted">Task Orchestration (TED)</h3>
 <p>When defining background workflows or data loaders that run across multiple workers, <strong>ALWAYS use the <code>TED.task()</code> framework</strong> from <code>vaultdb.core</code>.
-*   <strong>Import</strong>: <code>from vaultdb import TED</code>
+*   <strong>Import</strong>: <code>from vaultdb.core import TED</code>
 *   <strong>Usage</strong>: Decorate task functions with <code>@TED.task()</code>.
 *   <strong>Execution</strong>: Dispatch distributed work via <code>&lt;task&gt;.apply_async(args=...)</code> and gather results via <code>.get()</code> instead of utilizing standard Python thread pools or native Celery canvas primitives (<code>group</code>/<code>chord</code>), which might break native execution runner isolation (Lambda, Batch, etc.).</p>
 <h3 id="core-skills-reference">Core Skills Reference</h3>

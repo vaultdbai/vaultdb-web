@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marketplace: agents and packs for VaultDB Nest | VaultDB.ai</title>
+  <meta name="description"
+    content="Browse every agent and pack in the public VaultDB Nest registry: what each one does, the tools, hosts, and OS control it asks for, and how to install it. Plus a guide to publishing your own agent." />
+  <link rel="canonical" href="https://vaultdb.ai/marketplace.html" />
+  <meta property="og:title" content="VaultDB Nest Marketplace" />
+  <meta property="og:description"
+    content="Agents and packs for VaultDB Nest, with the capabilities each one asks for." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://vaultdb.ai/img/nest-og.jpg" />
+  <meta property="og:url" content="https://vaultdb.ai/marketplace.html" />
+  <meta property="og:site_name" content="VaultDB.ai" />
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- favicon -->
+  <link rel="icon" type="image/png" href="img/v-logo.png" />
+  <!-- animation  -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+  <!-- Shared site styles, the accessible header from the Nest page, then page styles -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/nest.css" />
+  <link rel="stylesheet" href="css/products.css" />
+  <link rel="stylesheet" href="css/marketplace.css" />
+</head>
+
+<body>
+  <a href="#main" class="nest_skip">Skip to content</a>
+  <div class="container_body">
+    <div class="container_inside">
+      <!-- Nav Bar start Lg  -->
+      <header class="header">
+        <div class="logo">
+          <img src="img/mainlogo.png" alt="" />
+          <a href="index.html">VaultDB.ai</a>
+        </div>
+
+        <nav aria-label="Main">
+          <ul class="menu_bar">
+            <li class="first_bar">
+              <a href="products.html" class="header_hover">Products</a>
+              <ul class="dropdown-menu" style="background-color: #10101e; height: auto">
+                <li>
+                  <a href="index.html" class="second_content third_content nav_product" style="text-align: start; border-radius: 10px 10px 0 0">
+                    <div class="dropdown_img">
+                      <img src="img/nest-icon.svg" alt="" />
+                    </div>
+                    <div class="dropdown_content">
+                      <p>VaultDB Nest</p>
+                      <p class="para_1">
+                        The agent manager for teams: AI agents in containers, with approvals and audit logs.
+                      </p>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <div class="line" style="margin-top: 0"></div>
+                  <a href="database.html" class="second_content third_content nav_product" style="text-align: start">
+                    <div class="dropdown_img">
+                      <img src="img/database-icon.svg" alt="" />
+                    </div>
+                    <div class="dropdown_content">
+                      <p>VaultDB Database</p>
+                      <p class="para_1">
+                        In-process database and VaultDB HUB for IoT devices and model training.
+                      </p>
+                    </div>
+                  </a>
+                  <div class="dropdown_btns nav_docs" aria-label="VaultDB Database documentation">
+                  <a href="https://docs.vaultdb.ai/quickstart" class="dropdown_btn">Quick Start</a>
+                  <a href="https://docs.vaultdb.ai" class="dropdown_btn">Documentation</a>
+                  <a href="https://docs.vaultdb.ai/examples/roles" class="dropdown_btn">Code Examples</a>
+                  <a href="https://docs.vaultdb.ai/hub/datahub" class="dropdown_btn">Data Hub</a>
+                  </div>
+                </li>
+                <li>
+                  <div class="line" style="margin-top: 0"></div>
+                  <a href="products.html" class="second_content third_content nav_all_products" style="border-radius: 0 0 10px 10px">
+                    <div class="dropdown_content">
+                      <p>All products <i class="fa-solid fa-arrow-right ms-1" aria-hidden="true"></i></p>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li><a href="marketplace.html" aria-current="page" class="header_hover">Marketplace</a></li>
+            <li><a href="about.html" class="header_hover">About Us</a></li>
+
+            <li>
+              <a href="contact.html" class="contact_btn">Contact Us</a>
+            </li>
+          </ul>
+        </nav>
+        <div class="header_icons">
+          <button type="button" class="nest_icon_btn menu" aria-label="Open menu" aria-expanded="false"
+            aria-controls="nest-mobile-menu">
+            <i class="fa-solid fa-bars text-white fs-1" aria-hidden="true"></i>
+          </button>
+        </div>
+      </header>
+      <!-- Nav Bar End -->
+
+      <!-- Mobile sidebar=========================== -->
+      <div class="side_accordian" id="nest-mobile-menu">
+        <div class="menu_accordian">
+          <div class="mobile_nav" style="background-color: var(--main-color)">
+            <div class="logo">
+              <img src="img/logo.png" alt="" />
+              <a href="index.html" class="f-2">VaultDB.ai</a>
+            </div>
+            <button type="button" class="nest_icon_btn close_icon" aria-label="Close menu">
+              <i class="fa-solid fa-xmark text-white fs-1" aria-hidden="true"></i>
+            </button>
+          </div>
+          <div class="link">
+            <p class="dropdown_link dropdown_bar">Products</p>
+            <ul class="sub_menu dropdown">
+              <a href="index.html" class="second_menu first_menu">
+                <div class="content">
+                  <div class="second_img first_img">
+                    <img src="img/nest-icon.svg" alt="" />
+                  </div>
+                  <div class="first_menu_content">VaultDB Nest</div>
+                </div>
+                <div class="bottom_para">
+                  The agent manager for teams: AI agents in containers, with approvals and audit logs.
+                </div>
+              </a>
+            </ul>
+            <div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
+            <ul class="sub_menu dropdown">
+              <a href="database.html" class="second_menu first_menu">
+                <div class="content">
+                  <div class="second_img first_img">
+                    <img src="img/database-icon.svg" alt="" />
+                  </div>
+                  <div class="first_menu_content">VaultDB Database</div>
+                </div>
+                <div class="bottom_para">
+                  In-process database and VaultDB HUB for IoT devices and model training.
+                </div>
+              </a>
+              <div class="first_btns nav_docs">
+                <a href="https://docs.vaultdb.ai/quickstart" class="dropdown_btn">Quick Start</a>
+                <a href="https://docs.vaultdb.ai" class="dropdown_btn">Documentation</a>
+                <a href="https://docs.vaultdb.ai/examples/roles" class="dropdown_btn">Code Examples</a>
+                <a href="https://docs.vaultdb.ai/hub/datahub" class="dropdown_btn">Data Hub</a>
+              </div>
+            </ul>
+            <div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
+            <ul class="sub_menu dropdown">
+              <a href="products.html" class="second_menu first_menu">
+                <div class="content">
+                  <div class="first_menu_content">All products <i class="fa-solid fa-arrow-right ms-1" aria-hidden="true"></i></div>
+                </div>
+              </a>
+            </ul>
+            <div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
+          </div>
+          <div class="link" style="border: 0; outline: 0">
+            <a href="marketplace.html" aria-current="page" class="dropdown_link" style="font-size: 20px">Marketplace</a>
+          </div>
+          <div class="link" style="border: 0; outline: 0">
+            <a href="about.html" class="dropdown_link" style="font-size: 20px">About Us</a>
+            <div class="middle" style="border: 0">
+              <a href="contact.html" class="contact_btn">Contact Us</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <main id="main">
+        <section class="container products_hero" aria-labelledby="market-title">
+          <p class="nest_eyebrow">
+            <img src="img/nest-icon.svg" alt="" class="nest_eyebrow_icon" width="28" height="28" />
+            VaultDB Nest Marketplace
+          </p>
+          <h1 id="market-title">Agents and Packs for VaultDB Nest</h1>
+          <p class="nest_lede">
+            Every agent and pack in the public VaultDB Nest registry. Each one declares the tools, hosts, and OS
+            control it needs, and you approve them before it first runs.
+          </p>
+        </section>
+        <div class="light_img" aria-hidden="true">
+          <img src="img/Rectangle 9.png" alt="" />
+        </div>
+
+        <section class="container market_section" aria-labelledby="market-browse">
+          <h2 id="market-browse" class="visually-hidden">Browse the catalog</h2>
+          <div class="market_toolbar">
+            <label class="market_search">
+              <span class="visually-hidden">Search agents and packs</span>
+              <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+              <input type="search" id="market-search" placeholder="Search agents, packs, tags, or publishers"
+                autocomplete="off" />
+            </label>
+            <div class="market_chips" role="group" aria-label="Show">
+              <button type="button" class="market_chip" data-kind="all" aria-pressed="true">All</button>
+              <button type="button" class="market_chip" data-kind="agent" aria-pressed="false">Agents</button>
+              <button type="button" class="market_chip" data-kind="pack" aria-pressed="false">Packs</button>
+            </div>
+          </div>
+          <div class="market_chips market_tags" role="group" aria-label="Filter by tag" id="market-tags"></div>
+          <p class="market_count" id="market-count" aria-live="polite"></p>
+          <ul class="row gy-4 nest_grid" id="market-grid"></ul>
+          <noscript>
+            <p class="nest_note text-center">
+              The catalog needs JavaScript. You can also browse the registry directly on
+              <a class="nest_inline_link" href="https://github.com/devmchechi/nest-registry">GitHub</a>.
+            </p>
+          </noscript>
+          <p class="nest_note text-center mt-5" id="market-source"></p>
+        </section>
+
+        <!-- Detail view: filled in by js/marketplace.js -->
+        <dialog class="market_dialog" id="market-dialog" aria-labelledby="market-dialog-title">
+          <div class="market_dialog_inner">
+            <button type="button" class="nest_icon_btn market_close" id="market-close" aria-label="Close details">
+              <i class="fa-solid fa-xmark text-white fs-2" aria-hidden="true"></i>
+            </button>
+            <div id="market-detail"></div>
+          </div>
+        </dialog>
+
+        <!-- Publish guide ===================================== -->
+        <section class="container nest_section" id="publish" aria-labelledby="publish-title">
+          <div class="work_heading nest_heading">
+            <h2 id="publish-title" class="text-center text-white h1 mt-2">Publish Your Own Agent</h2>
+            <p class="text-center work_p">
+              An agent is a folder with a <code>skill.md</code> in a public GitHub repo. Publishing adds an entry
+              for it to the registry, which is itself a git repo: you open a pull request, and maintainers review
+              what the agent asks for before merging.
+            </p>
+          </div>
+
+          <div class="publish_steps">
+            <article class="publish_step" aria-labelledby="publish-1">
+              <h3 id="publish-1"><span class="nest_step_num" aria-hidden="true">1</span>Write <code>skill.md</code></h3>
+              <p>The front matter declares who the agent is and everything it may use. The body is its system
+                prompt.</p>
+              <div class="publish_skill">
+                <pre class="publish_code" tabindex="0" aria-label="Example skill.md"><code>---
+name: Invoice Reader
+description: Reads PDF invoices in your working folder and saves their totals to a CSV.
+allowed-tools: [shell, read_file, write_file, list_dir]
+requires_approval: [write_file]
+network:
+  allow:
+    - host: api.exchangerate.host
+---
+
+You are Invoice Reader. You extract the vendor, date, currency and total
+from each PDF in ./invoices/ and append one row per invoice to
+./invoices/totals.csv.
+
+- Never delete or modify the PDFs.
+- If a total is unreadable, list the file and say why instead of guessing.
+- Only api.exchangerate.host is reachable. If the user asks for another
+  source, explain that they can fork this agent and add the host to
+  network.allow.</code></pre>
+                <ul class="publish_notes">
+                  <li><code>name</code> and <code>description</code> appear in the marketplace and in the registry
+                    entry.</li>
+                  <li><code>allowed-tools</code> lists every tool the agent may call. Anything else is refused.</li>
+                  <li><code>requires_approval</code> pauses the run for your confirmation before these tools act.</li>
+                  <li><code>network.allow</code> lists the hosts it may reach through the egress proxy. Keep it as
+                    short as possible.</li>
+                  <li>The body after the front matter is the system prompt. Say what the agent does, what it must
+                    never do, and what to tell the user when it can't.</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="publish_step" aria-labelledby="publish-2">
+              <h3 id="publish-2"><span class="nest_step_num" aria-hidden="true">2</span>Test it locally</h3>
+              <p>Put the folder in your agents repo (<code>~/.nest/repo/.nest/agents/&lt;id&gt;/</code>) and VaultDB
+                Nest picks it up right away. Chat with it, check what it asks you to approve, and confirm its
+                prerequisites from a terminal:</p>
+              <pre class="publish_code" tabindex="0"><code>nest verify --agent invoice-reader</code></pre>
+              <p>To test a registry entry before you open the pull request, add your fork of the registry under
+                Marketplace &rarr; Registries and install from it.</p>
+            </article>
+
+            <article class="publish_step" aria-labelledby="publish-3">
+              <h3 id="publish-3"><span class="nest_step_num" aria-hidden="true">3</span>Tag a release</h3>
+              <p>Push the folder to a public GitHub repo and tag the release. A repo that holds one agent uses
+                <code>v&lt;version&gt;</code>; a repo with several uses <code>&lt;id&gt;-v&lt;version&gt;</code>.</p>
+              <pre class="publish_code" tabindex="0"><code>git tag v1.0.0        # or invoice-reader-v1.0.0 in a repo with several agents
+git push origin v1.0.0</code></pre>
+            </article>
+
+            <article class="publish_step" aria-labelledby="publish-4">
+              <h3 id="publish-4"><span class="nest_step_num" aria-hidden="true">4</span>Add it to the registry</h3>
+              <ol class="publish_list">
+                <li>Fork the registry repo.</li>
+                <li>Add <code>agents/&lt;id&gt;.json</code> matching the agent schema (example below).</li>
+                <li>If you're new, add <code>publishers/&lt;your-handle&gt;.json</code>.</li>
+                <li>Add the same entry to the <code>agents</code> list in <code>index.json</code>.</li>
+                <li>Open a pull request. Maintainers review the capabilities before merging.</li>
+              </ol>
+              <p class="publish_file">agents/invoice-reader.json</p>
+              <pre class="publish_code" tabindex="0"><code>{
+  "id": "invoice-reader",
+  "name": "Invoice Reader",
+  "description": "Reads PDF invoices in your working folder and saves their totals to a CSV.",
+  "publisher": "your-handle",
+  "repo": "github.com/your-handle/nest-agents",
+  "path": "agents/invoice-reader",
+  "latest_version": "1.0.0",
+  "tags": ["finance", "pdf"],
+  "min_nest_version": "0.1.0",
+  "capabilities": {
+    "tools": ["shell", "read_file", "write_file", "list_dir"],
+    "network": ["api.exchangerate.host"],
+    "pilots": []
+  },
+  "icon_url": "https://raw.githubusercontent.com/your-handle/nest-agents/HEAD/agents/invoice-reader/icon.svg",
+  "readme_url": "https://raw.githubusercontent.com/your-handle/nest-agents/HEAD/agents/invoice-reader/README.md"
+}</code></pre>
+              <p class="publish_file">publishers/your-handle.json</p>
+              <pre class="publish_code" tabindex="0"><code>{
+  "github_handle": "your-handle",
+  "display_name": "Your Name",
+  "public_key": "ed25519:&lt;printed by nest keygen&gt;",
+  "created_at": "2026-10-06T00:00:00Z"
+}</code></pre>
+              <p class="text-gray small_text">The full field list, including optional and reserved fields, is in the
+                <a class="nest_inline_link" href="https://github.com/devmchechi/nest-app/tree/main/registry-schema">registry
+                  schema</a>.</p>
+              <div class="nest_family mt-4">
+                <p class="mb-0">
+                  <strong class="text-white">Shortcut:</strong> Publish in VaultDB Nest's agent view does all of
+                  this for you. It tags the release, builds the entry from <code>skill.md</code>, signs it if you
+                  have a key, and opens the pull request.
+                </p>
+                <a href="https://github.com/devmchechi/nest-registry" class="nest_btn_outline">Open the registry repo</a>
+              </div>
+            </article>
+
+            <article class="publish_step" aria-labelledby="publish-5">
+              <h3 id="publish-5"><span class="nest_step_num" aria-hidden="true">5</span>Sign it (recommended)</h3>
+              <p>Signing is optional but recommended. Your public key goes in
+                <code>publishers/&lt;handle&gt;.json</code>; each entry carries the commit and the signature over it.
+                Signed entries show as verified, and VaultDB Nest refuses an install if the tag has moved since you
+                signed it.</p>
+              <pre class="publish_code" tabindex="0"><code>nest keygen     # once: saves ~/.nest/keys/publisher.key, prints the public key
+nest sign --kind agent --id invoice-reader --release 1.0.0 \
+          --repo github.com/your-handle/nest-agents
+# paste the printed "commit" and "signature" into agents/invoice-reader.json</code></pre>
+            </article>
+          </div>
+
+          <h3 class="publish_practices_title text-white">Best practices</h3>
+          <ul class="row gy-4 nest_grid">
+            <li class="col-lg-4 col-md-6 col-sm-12">
+              <div class="product_card nest_card">
+                <h4 class="h5 text-white">Declare the least you need</h4>
+                <p class="text-gray">Users approve every tool, host, and pilot capability. A short list gets
+                  approved; a long one gets uninstalled. Never list a host you don't call.</p>
+              </div>
+            </li>
+            <li class="col-lg-4 col-md-6 col-sm-12">
+              <div class="product_card nest_card">
+                <h4 class="h5 text-white">Ask before acting</h4>
+                <p class="text-gray">Put anything that writes, sends, deletes, or spends in
+                  <code>requires_approval</code>. Reading is usually fine without it.</p>
+              </div>
+            </li>
+            <li class="col-lg-4 col-md-6 col-sm-12">
+              <div class="product_card nest_card">
+                <h4 class="h5 text-white">Name things plainly</h4>
+                <p class="text-gray">IDs are lowercase letters, digits, and hyphens, and become folder names, so
+                  make them describe the job (<code>invoice-reader</code>, not <code>my-agent-2</code>).</p>
+              </div>
+            </li>
+            <li class="col-lg-6 col-md-6 col-sm-12">
+              <div class="product_card nest_card">
+                <h4 class="h5 text-white">Sign your releases</h4>
+                <p class="text-gray">Create a key once with <code>nest keygen</code>, then sign each release with
+                  <code>nest sign</code>.</p>
+              </div>
+            </li>
+            <li class="col-lg-6 col-md-12 col-sm-12">
+              <div class="product_card nest_card">
+                <h4 class="h5 text-white">Ship a README</h4>
+                <p class="text-gray">Say what the agent does, what it needs (files, hosts, keys), and a sample
+                  prompt. The README is shown in VaultDB Nest.</p>
+              </div>
+            </li>
+          </ul>
+        </section>
+      </main>
+    </div>
+  </div>
+  <!-- footer section ===========================================-->
+  <div class="container_body">
+    <div class="container_inside">
+      <footer class="footer_section">
+        <div class="footer mt-5" data-aos="fade-left" data-aos-duration="2000">
+          <div class="left">
+            <img src="img/mainlogo.png" alt="" />
+            <a href="index.html" class="footer_logo">VaultDB.ai</a>
+          </div>
+
+          <div class="right" style="margin-bottom: 10px">
+            <a href="https://github.com/devmchechi/nest-app" aria-label="VaultDB Nest on GitHub">
+              <i class="fa-brands fa-github" aria-hidden="true"></i>
+            </a>
+            <a href="#" aria-label="YouTube">
+              <i class="fa-brands fa-youtube" aria-hidden="true"></i>
+            </a>
+            <a href="#" aria-label="Facebook">
+              <i class="fa-brands fa-facebook" aria-hidden="true"></i>
+            </a>
+            <a href="#" aria-label="Twitter">
+              <i class="fa-brands fa-twitter" aria-hidden="true"></i>
+            </a>
+            <a href="#" aria-label="Instagram">
+              <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+            </a>
+            <a href="#" aria-label="LinkedIn">
+              <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <div class="row mb-5">
+            <div class="line mb-5"></div>
+            <div class="col-md-4 col-sm-12 col-lg-4">
+              <p class="bottom_left h5">
+                VaultDB.ai @ 2024. All rights reserved.
+              </p>
+            </div>
+
+            <div class="col-md-8 col-sm-12 col-lg-8 bottom_right">
+              <a href="index.html">VaultDB Nest</a>
+              <a href="products.html">Products</a>
+              <a href="marketplace.html" aria-current="page">Marketplace</a>
+              <a href="database.html">VaultDB Database</a>
+              <a href="contact.html">Contact Us</a>
+              <a href="about.html">About Us</a>
+              <a href="#">Privacy Policy</a>
+              <a href="#">Terms and Conditions</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer_box" aria-hidden="true">
+          <img src="img/Rectangle 9.png" alt="" class="footer_img" />
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous"></script>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <script>
+    AOS.init();
+  </script>
+
+  <script src="js/nest.js"></script>
+  <script src="js/catalog-data.js"></script>
+  <script src="js/marketplace.js"></script>
+</body>
+
+</html>

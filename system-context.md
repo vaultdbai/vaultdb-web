@@ -27,27 +27,37 @@ This is **NOT** a framework-based application. There is no React, Next.js, Vite,
 
 ```
 vaultdb-web/
-├── index.html              — Homepage (main landing page)
+├── index.html              — Home page: VaultDB Nest, the agent manager for teams
+├── database.html           — VaultDB Database (in-process database + VaultDB HUB for IoT and modeling; the former homepage) and its docs links
+├── products.html           — All products (VaultDB Nest, VaultDB Database) and the Nest marketplace
+├── marketplace.html        — VaultDB Nest marketplace: every registry agent and pack, plus the publish guide
+├── nest.html               — Redirect to index.html (old VaultDB Nest URL)
 ├── about.html              — About Us page
 ├── contact.html            — Contact Us page
-├── nest.html               — VaultDB Nest product page
 ├── error.html              — Error / 404 page
 ├── formsubmit.html         — Form submission handler
 ├── welcome_template.html   — Welcome email template
 ├── css/
-│   ├── style.css           — Homepage styles
+│   ├── style.css           — Shared base: header, footer, FAQ, cards (index, database, products, marketplace, error)
+│   ├── nest.css            — VaultDB Nest home page + accessible header (also loaded by products and marketplace)
+│   ├── products.css        — Products page
+│   ├── marketplace.css     — Marketplace page
 │   ├── about.css           — About page styles
 │   ├── contact.css         — Contact page styles
-│   ├── nest.css            — VaultDB Nest page styles (loaded after style.css)
 │   └── form.css            — Form styles
 ├── js/
-│   ├── index.js            — Homepage interactions
+│   ├── index.js            — Accordion + mobile menu (database, error)
+│   ├── nest.js             — Accordion + mobile menu with keyboard support, hero download by platform (index, products, marketplace)
+│   ├── catalog-data.js     — GENERATED registry snapshot (window.NEST_CATALOG); do not edit by hand
+│   ├── marketplace.js      — Renders the marketplace from catalog-data.js
 │   ├── about..js           — About page interactions
-│   ├── nest.js             — VaultDB Nest page interactions
 │   └── contact.js          — Contact page interactions
+├── scripts/
+│   └── build-catalog.mjs   — Refreshes js/catalog-data.js from the VaultDB Nest registry (not deployed)
 └── img/
     ├── mainlogo.png        — Primary logo
-    ├── v-logo.png          — Favicon / OG image
+    ├── v-logo.png          — Favicon
+    ├── nest-*.webp/.jpg    — VaultDB Nest design-preview screenshots (webp + jpg fallback), nest-og.jpg (1200x630)
     └── ...                 — All other static assets
 ```
 
@@ -78,6 +88,7 @@ This ensures the site works when:
 
 ### 2. No Build Step Required
 - **NO** `npm`, `node_modules`, `package.json`, `webpack`, `vite`, or any build tooling
+- Exception: `scripts/build-catalog.mjs` is an optional, dependency-free Node script that refreshes the committed data file `js/catalog-data.js`. The site works without running it; it is not a build step and `scripts/` is not deployed.
 - **NO** TypeScript, JSX, SCSS, LESS, or any transpiled language
 - **NO** `npm run build`, `npm run dev`, or any compilation step
 - The files in this repo ARE the final output — what you see is what gets deployed
@@ -101,6 +112,7 @@ All content is hardcoded in HTML. There is no CMS, no API-fetched content, no dy
 - Product descriptions, FAQ answers, team bios — all inline in HTML
 - Images — all pre-generated and stored in `img/`
 - No JavaScript-driven content loading (no `fetch()` to load page sections)
+- Exception: the marketplace list is rendered by `js/marketplace.js` from the local `js/catalog-data.js` (a `<script>`, not a fetch), so it works from `file://`. A `<noscript>` note links to the registry.
 
 ---
 
@@ -135,6 +147,22 @@ All content is hardcoded in HTML. There is no CMS, no API-fetched content, no dy
 
 | Page | File | Purpose |
 |------|------|---------|
+| **Home (VaultDB Nest)** | `index.html` | Agent manager for teams: hero with design preview, positioning, agent managers, who it's for, how it works, screenshots, features, privacy, Teams, download (S3 `downloads/nest/latest/...`), FAQ |
+| **VaultDB Database** | `database.html` | In-process database for IoT and model training, VaultDB HUB, documentation links (docs.vaultdb.ai), FAQ |
+| **Products** | `products.html` | Cards for the real products only (VaultDB Nest, VaultDB Database) plus the marketplace |
+| **Marketplace** | `marketplace.html` | Searchable, filterable catalog of registry agents and packs with a detail dialog (`#agent/<id>`, `#pack/<id>`), and the publish guide |
+| **VaultDB Nest (old URL)** | `nest.html` | Redirects to `index.html` (keeps `#anchors`) |
+| **About** | `about.html` | Company story, team photos, mission statement |
+| **Contact** | `contact.html` | Contact form, office details |
+| **Error** | `error.html` | 404 / error page |
+
+Navigation on every page: **Products** dropdown (VaultDB Nest, VaultDB Database with its docs links, All products), **Marketplace**, **About Us**, **Contact Us**; the same in the mobile sidebar and footer. Only list products that exist.
+
+### Marketplace data
+
+`marketplace.html` renders from `js/catalog-data.js`, a committed snapshot of the VaultDB Nest registry (`github.com/devmchechi/nest-registry`). The page itself loads no remote data. To refresh the snapshot run `node scripts/build-catalog.mjs` (Node 22+, no dependencies; `--from <dir>` reads a registry copy on disk). The deploy workflow also runs it before each deploy; if the fetch fails the committed snapshot is deployed.
+
+------|------|---------|
 | **Homepage** | `index.html` | Landing page with hero section, product overview, financial domain ecosystem grid, FAQ accordion |
 | **About** | `about.html` | Company story, team photos, mission statement |
 | **Contact** | `contact.html` | Contact form, office details |
@@ -150,7 +178,9 @@ The site can be deployed by simply copying all files to any static hosting:
 ```bash
 # GitHub Pages — just push to gh-pages branch
 # S3 — sync the directory
-aws s3 sync . s3://vaultdb-website/ --exclude ".git/*" --exclude "*.md"
+aws s3 sync dist s3://<bucket> --delete --exclude "downloads/*"   # what deploy.yml does
+# downloads/ holds the VaultDB Nest installers uploaded by the nest-app release
+# workflow: never delete it from the bucket
 
 # Local preview — just open in browser
 # Windows:

@@ -1,0 +1,117 @@
+/* Products page (products.html).
+   Loaded after css/style.css and css/nest.css; only page-specific rules here. */
+
+.products_hero {
+    margin-top: 6rem;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.products_section {
+    margin-top: 6rem;
+}
+
+/* Whole card is the link */
+a.products_card {
+    display: flex;
+    flex-direction: column;
+    color: inherit;
+}
+.products_card {
+    position: relative;
+    padding: 3.2rem 2.8rem;
+    border-color: #312A36;
+    background: rgba(30, 17, 44, 0.30);
+}
+.products_card h2 {
+    font-size: 2.2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+.products_card p {
+    font-size: 1.6rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+}
+.products_icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 5.6rem;
+    height: 5.6rem;
+    margin-bottom: 2rem;
+    border-radius: 16px;
+    border: 1px solid #312A36;
+    background: rgba(30, 17, 44, 0.60);
+}
+.products_badge {
+    position: absolute;
+    top: 3.2rem;
+    right: 2.8rem;
+}
+.products_more {
+    margin-top: auto;
+    color: var(--white-color);
+    font-size: 1.6rem;
+    font-weight: 500;
+}
+a.products_card:hover .products_more,
+a.products_card:focus-visible .products_more {
+    color: var(--white-color);
+    text-decoration: underline;
+    text-decoration-color: var(--purple-color);
+    text-underline-offset: 4px;
+}
+a.products_card:focus-visible {
+    outline: 2px solid var(--purple-color);
+    outline-offset: 3px;
+}
+
+/* Database card with its documentation links underneath */
+.products_stack {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    height: 100%;
+}
+.products_stack .products_card {
+    flex: 1;
+}
+.products_docs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem 1.6rem;
+    padding: 0 0.8rem;
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+/* Full-width marketplace card */
+a.products_wide {
+    flex-direction: row;
+    align-items: center;
+    gap: 2.4rem;
+}
+.products_wide .products_icon {
+    margin-bottom: 0;
+    flex-shrink: 0;
+}
+.products_wide .products_more {
+    margin: 0 0 0 auto;
+    white-space: nowrap;
+}
+
+@media (max-width: 769px) {
+    a.products_wide {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .products_wide .products_more {
+        margin: 0;
+    }
+    .products_hero,
+    .products_section {
+        margin-top: 3rem;
+    }
+}

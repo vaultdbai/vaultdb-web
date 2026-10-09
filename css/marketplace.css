@@ -1,0 +1,388 @@
+/* Marketplace page (marketplace.html).
+   Loaded after css/style.css, css/nest.css and css/products.css. */
+
+.market_section {
+    margin-top: 5rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* Search and filters */
+.market_toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.6rem;
+    align-items: center;
+    justify-content: space-between;
+}
+.market_search {
+    position: relative;
+    flex: 1 1 32rem;
+    max-width: 56rem;
+}
+.market_search i {
+    position: absolute;
+    left: 1.8rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--para-color);
+    font-size: 1.6rem;
+}
+.market_search input {
+    width: 100%;
+    padding: 1.3rem 2rem 1.3rem 4.8rem;
+    border-radius: 20px;
+    border: 1px solid #312A36;
+    background: rgba(30, 17, 44, 0.60);
+    color: var(--white-color);
+    font-size: 1.6rem;
+}
+.market_search input::placeholder {
+    color: var(--para-color);
+}
+.market_search input:focus-visible {
+    outline: 2px solid var(--purple-color);
+    outline-offset: 2px;
+}
+.market_chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+}
+.market_tags {
+    margin-top: 1.6rem;
+}
+.market_chip {
+    padding: 0.7rem 1.6rem;
+    border-radius: 20px;
+    border: 1px solid #312A36;
+    background: rgba(30, 17, 44, 0.30);
+    color: var(--white-color);
+    font-size: 1.4rem;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+.market_chip:hover {
+    background: rgba(160, 68, 255, 0.15);
+}
+.market_chip[aria-pressed="true"] {
+    background: linear-gradient(90deg, #6A3093 0%, #A044FF 100%);
+    border-color: transparent;
+}
+.market_chip:focus-visible,
+.market_close:focus-visible,
+.market_dialog a:focus-visible {
+    outline: 2px solid var(--purple-color);
+    outline-offset: 3px;
+}
+.market_chip_tag {
+    font-size: 1.3rem;
+    padding: 0.5rem 1.2rem;
+}
+.market_count {
+    color: var(--para-color);
+    font-size: 1.5rem;
+    margin: 2.4rem 0 1.6rem;
+}
+
+/* Cards */
+.market_card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border-color: #312A36;
+    background: rgba(30, 17, 44, 0.30);
+}
+.market_card h3 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+}
+.market_card_link {
+    color: var(--white-color);
+    display: inline;
+}
+/* Whole card is clickable through the title link */
+.market_card_link::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+}
+.market_card_link:hover {
+    color: var(--white-color);
+}
+.market_card_link:focus-visible {
+    outline: none;
+}
+.market_card:has(.market_card_link:focus-visible) {
+    outline: 2px solid var(--purple-color);
+    outline-offset: 3px;
+}
+.market_meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem 1.4rem;
+    align-items: center;
+    color: var(--para-color);
+    font-size: 1.35rem;
+    margin-bottom: 1.2rem;
+}
+.market_kind {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.2rem 1rem;
+    border-radius: 20px;
+    background: rgba(160, 68, 255, 0.15);
+    color: var(--white-color);
+}
+.market_kind_pack {
+    background: rgba(106, 48, 147, 0.45);
+}
+.market_desc {
+    font-size: 1.5rem;
+    line-height: 1.7;
+    margin-bottom: 1.2rem;
+}
+.market_extra {
+    color: var(--white-color);
+    font-size: 1.4rem;
+    margin-bottom: 1.2rem;
+}
+.market_tag_list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    padding: 0;
+    margin: auto 0 0;
+}
+.market_tag_list li {
+    padding: 0.2rem 1rem;
+    border-radius: 20px;
+    border: 1px solid #312A36;
+    color: var(--para-color);
+    font-size: 1.25rem;
+}
+
+/* Detail dialog */
+.market_dialog {
+    margin: auto;
+    width: min(76rem, calc(100vw - 3.2rem));
+    max-height: calc(100vh - 4rem);
+    padding: 0;
+    border-radius: 20px;
+    border: 1px solid #312A36;
+    background: #17142a;
+    color: var(--white-color);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+}
+.market_dialog::backdrop {
+    background: rgba(8, 8, 18, 0.75);
+}
+.market_dialog_inner {
+    position: relative;
+    padding: 3.2rem;
+}
+.market_dialog .market_tag_list {
+    margin-top: 1.2rem;
+}
+.market_close {
+    position: absolute;
+    top: 1.6rem;
+    right: 1.6rem;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+}
+.market_close:hover {
+    background: rgba(160, 68, 255, 0.15);
+}
+.market_dialog_title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin: 0 4rem 1rem 0;
+}
+.market_dialog_desc {
+    color: var(--para-color);
+    font-size: 1.7rem !important;
+    line-height: 1.6;
+}
+.market_dialog h3 {
+    font-size: 1.9rem;
+    font-weight: 600;
+    margin: 2.8rem 0 1rem;
+}
+.market_dialog p,
+.market_dialog li,
+.market_dialog dd,
+.market_dialog dt {
+    font-size: 1.5rem;
+    line-height: 1.6;
+}
+.market_dialog code {
+    color: var(--white-color);
+    background: rgba(160, 68, 255, 0.15);
+    border-radius: 6px;
+    padding: 0.1em 0.4em;
+    font-size: 0.92em;
+}
+.market_facts,
+.market_caps {
+    margin: 2rem 0 0;
+    border: 1px solid #312A36;
+    border-radius: 14px;
+}
+.market_facts > div,
+.market_caps > div {
+    display: grid;
+    grid-template-columns: 20rem 1fr;
+    gap: 0.4rem 1.6rem;
+    padding: 1rem 1.6rem;
+    border-top: 1px solid #312A36;
+}
+.market_facts > div:first-child,
+.market_caps > div:first-child {
+    border-top: 0;
+}
+.market_facts dt,
+.market_caps dt {
+    color: var(--para-color);
+    font-weight: 500;
+}
+.market_facts dd,
+.market_caps dd {
+    margin: 0;
+}
+.market_code_list {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    padding: 0;
+    margin: 0;
+}
+.market_pack_agents,
+.market_install {
+    padding-inline-start: 2rem;
+    color: var(--white-color);
+}
+.market_pack_agents li {
+    list-style: disc;
+    margin-bottom: 0.6rem;
+}
+.market_install li {
+    list-style: decimal;
+    margin-bottom: 0.6rem;
+}
+.market_dialog .nest_actions {
+    margin-top: 2.4rem;
+}
+
+/* Publish guide */
+.publish_steps {
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+}
+.publish_step {
+    padding: 3rem;
+    border-radius: 20px;
+    border: 1px solid #312A36;
+    background: rgba(30, 17, 44, 0.30);
+}
+.publish_step h3 {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    color: var(--white-color);
+    font-size: 2.2rem;
+    font-weight: 600;
+    margin-bottom: 1.4rem;
+}
+.publish_step .nest_step_num {
+    position: static;
+    flex-shrink: 0;
+}
+.publish_step p,
+.publish_list li,
+.publish_notes li {
+    color: var(--para-color);
+    font-size: 1.55rem;
+    line-height: 1.7;
+}
+.publish_list {
+    padding-inline-start: 2rem;
+}
+.publish_list li {
+    list-style: decimal;
+}
+.publish_skill {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 30rem;
+    gap: 2.4rem;
+    align-items: start;
+}
+.publish_notes {
+    padding-inline-start: 2rem;
+    margin: 1.2rem 0 0;
+}
+.publish_notes li {
+    list-style: disc;
+    margin-bottom: 1rem;
+}
+.publish_code {
+    margin: 1.2rem 0;
+    padding: 1.6rem 2rem;
+    border-radius: 14px;
+    border: 1px solid #312A36;
+    background: #0b0b16;
+    color: var(--white-color);
+    font-size: 1.35rem;
+    line-height: 1.6;
+    overflow-x: auto;
+}
+.publish_code code {
+    background: none;
+    padding: 0;
+    color: inherit;
+    font-size: inherit;
+    word-break: normal;
+    white-space: pre;
+}
+.publish_code:focus-visible {
+    outline: 2px solid var(--purple-color);
+    outline-offset: 2px;
+}
+.publish_file {
+    margin: 2rem 0 0;
+    color: var(--white-color) !important;
+    font-family: SFMono-Regular, Consolas, monospace;
+    font-size: 1.4rem !important;
+}
+.small_text {
+    font-size: 1.4rem;
+}
+.publish_practices_title {
+    font-size: 2.6rem;
+    font-weight: 600;
+    margin: 5rem 0 2.4rem;
+    text-align: center;
+}
+
+@media (max-width: 996px) {
+    .publish_skill {
+        grid-template-columns: 1fr;
+    }
+}
+@media (max-width: 600px) {
+    .market_dialog_inner {
+        padding: 2.4rem 1.8rem;
+    }
+    .market_facts > div,
+    .market_caps > div {
+        grid-template-columns: 1fr;
+    }
+    .publish_step {
+        padding: 2.2rem 1.6rem;
+    }
+}

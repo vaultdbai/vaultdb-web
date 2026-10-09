@@ -46,3 +46,22 @@ document.querySelectorAll('.link').forEach(function (section) {
     section.classList.toggle('active')
   })
 })
+
+// Hero download button: offer the installer for the visitor's platform
+// (Windows is the default in the markup, so it works without JS).
+;(function () {
+  var button = document.getElementById('hero-download')
+  if (!button) return
+  var ua = (navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || navigator.userAgent || ''
+  var builds = {
+    mac: ['downloads/nest/latest/VaultDB-Nest-macos-arm64.dmg', 'Download for macOS'],
+    linux: ['downloads/nest/latest/VaultDB-Nest-linux-x64.AppImage', 'Download for Linux'],
+  }
+  var pick = /mac/i.test(ua) && !/iphone|ipad/i.test(navigator.userAgent) ? builds.mac
+    : /linux/i.test(ua) && !/android/i.test(navigator.userAgent) ? builds.linux
+    : null
+  if (!pick) return
+  button.setAttribute('href', pick[0])
+  var label = button.querySelector('span')
+  if (label) label.textContent = pick[1]
+})()

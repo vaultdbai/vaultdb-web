@@ -2,8 +2,9 @@ name: deploy vaultdb.ai
 
 on:
   workflow_dispatch:
-#  schedule:
-#    - cron: "0 2 * * *"
+  # Daily, so new registry entries reach the Agent Hub page without a push
+  schedule:
+    - cron: "0 2 * * *"
   repository_dispatch:
   push:
     branches:
@@ -29,31 +30,37 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Build distribtion
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # Refresh the Agent Hub snapshot (js/catalog-data.js) from the VaultDB Nest
+      # registry. Non-fatal: if the registry can't be fetched, the committed
+      # snapshot is deployed as is.
+      - name: Refresh Agent Hub catalog
+        shell: bash
+        run: node scripts/build-catalog.mjs || echo "Catalog refresh failed; deploying the committed snapshot"
+
+      - name: Build distribution
         shell: bash
         run: |
             mkdir -p dist
             cp ./*.html ./dist/
-            cp -r ./css ./dist/          
-            cp -r ./img ./dist/          
-            cp -r ./js ./dist/          
+            cp -r ./css ./dist/
+            cp -r ./img ./dist/
+            cp -r ./js ./dist/
 
-      - uses: vitorsgomes/s3-rm-action@master
-        name: cleanup s3 folder awsquickstart
+      - uses: aws-actions/configure-aws-credentials@v4
         with:
-          args: --recursive
+          aws-access-key-id: ${{ secrets.S3_ID }}
+          aws-secret-access-key: ${{ secrets.S3_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      # Sync instead of wipe-and-upload: --delete removes pages that no longer
+      # exist, and downloads/ (installers uploaded by the nest-app release
+      # workflow) is excluded so a site deploy never deletes them.
+      - name: Sync to S3
+        shell: bash
         env:
-          AWS_S3_BUCKET: ${{ secrets.AWS_BUCKET }}
-          AWS_ACCESS_KEY_ID: ${{ secrets.S3_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.S3_KEY }}
-          AWS_REGION: ${{ secrets.AWS_REGION }}
-          PATH_TO_DELETE: '/'
-
-      - uses: shallwefootball/s3-upload-action@master
-        name: Upload S3
-        id: S3
-        with:
-          aws_key_id: ${{ secrets.S3_ID }}
-          aws_secret_access_key: ${{ secrets.S3_KEY}}
-          aws_bucket: ${{ secrets.AWS_BUCKET }}
-          source_dir: 'dist'
+          AWS_BUCKET: ${{ secrets.AWS_BUCKET }}
+        run: aws s3 sync dist "s3://$AWS_BUCKET" --delete --exclude "downloads/*"

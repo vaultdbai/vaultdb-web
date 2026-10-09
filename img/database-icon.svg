@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" role="img" aria-label="VaultDB Database">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#6A3093"/>
+      <stop offset="1" stop-color="#A044FF"/>
+    </linearGradient>
+  </defs>
+  <ellipse cx="24" cy="11" rx="15" ry="5.5" fill="url(#g)"/>
+  <path d="M9 11v26c0 3 6.7 5.5 15 5.5s15-2.5 15-5.5V11" fill="none" stroke="url(#g)" stroke-width="3.5" stroke-linejoin="round"/>
+  <path d="M9 20c0 3 6.7 5.5 15 5.5s15-2.5 15-5.5M9 28.5c0 3 6.7 5.5 15 5.5s15-2.5 15-5.5" fill="none" stroke="url(#g)" stroke-width="2.5" stroke-linecap="round"/>
+</svg>

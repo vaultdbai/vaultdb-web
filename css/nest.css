@@ -1,0 +1,586 @@
+/* VaultDB Nest home page (index.html). Also loaded by products.html and agents.html for the
+   accessible header (button toggles, focus rings, skip link).
+   Loaded after css/style.css, which provides the shared header, footer, FAQ
+   accordion, product cards and theme variables. Only page-specific rules here. */
+
+/* Skip link: hidden until focused */
+.nest_skip {
+    position: absolute;
+    left: 1rem;
+    top: -10rem;
+    z-index: 1000;
+    padding: 1rem 2rem;
+    border-radius: 20px;
+    background: linear-gradient(90deg, #6A3093 0%, #A044FF 100%);
+    color: var(--white-color);
+    font-size: 16px;
+}
+.nest_skip:focus {
+    top: 1rem;
+}
+
+/* Visible focus ring, in the site's purple */
+.nest_icon_btn:focus-visible,
+.nest_label_btn:focus-visible,
+.nest_btn_outline:focus-visible,
+main a:focus-visible,
+.contact_btn:focus-visible {
+    outline: 2px solid var(--purple-color);
+    outline-offset: 3px;
+}
+
+/* The menu list sits inside <nav> here, so repeat the .header>ul layout */
+.header > nav > ul {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+    position: relative;
+    margin: 0;
+}
+
+/* Menu / close icons as buttons */
+.nest_icon_btn {
+    background: transparent;
+    border: 0;
+    padding: 0;
+    line-height: 1;
+    cursor: pointer;
+}
+
+/* Hero */
+.nest_hero {
+    margin-top: 6rem;
+    padding: 0;
+    position: relative;
+    z-index: 1;
+}
+.nest_hero_text {
+    max-width: 92rem;
+    margin: 0 auto;
+    text-align: center;
+}
+.nest_hero h1,
+.products_hero h1 {
+    color: var(--white-color);
+    font-size: 6rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0.5px;
+    margin-bottom: 2rem;
+}
+.nest_eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.6rem 1.6rem 0.6rem 0.8rem;
+    margin-bottom: 2.4rem;
+    border-radius: 20px;
+    border: 1px solid #312A36;
+    background: rgba(30, 17, 44, 0.60);
+    color: var(--white-color);
+    font-size: 1.6rem;
+    line-height: 1.5;
+    letter-spacing: 1.5px;
+}
+.nest_eyebrow_icon {
+    width: 28px;
+    height: 28px;
+}
+.nest_lede {
+    color: var(--para-color);
+    font-size: 2rem;
+    line-height: 1.6;
+    font-weight: 500;
+    max-width: 76rem;
+    margin: 0 auto 3rem;
+}
+.nest_hero .nest_actions {
+    margin-top: 0;
+}
+.nest_text_link,
+.nest_inline_link {
+    color: var(--white-color);
+    font-size: 16px;
+    padding: 1.2rem 0.4rem;
+    border-bottom: 1px solid transparent;
+}
+.nest_text_link:hover,
+.nest_inline_link:hover {
+    color: var(--white-color);
+    border-bottom-color: var(--purple-color);
+}
+.nest_inline_link {
+    padding: 0;
+    border-bottom-color: var(--purple-color);
+}
+
+/* Hero screenshot, framed like the site's glass cards */
+.nest_hero_shot {
+    margin: 6rem auto 0;
+    max-width: 120rem;
+    padding: 1.2rem;
+    border-radius: 20px;
+    border: 1px solid #312A36;
+    background: rgba(30, 17, 44, 0.60);
+    box-shadow: 0 30px 80px rgba(106, 48, 147, 0.35);
+}
+.nest_hero_shot img,
+.nest_shot img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+}
+.nest_hero_shot figcaption,
+.nest_shot figcaption {
+    color: var(--para-color);
+    font-size: 1.4rem;
+    line-height: 1.6;
+    margin-top: 1.2rem;
+    text-align: center;
+}
+.nest_preview_tag {
+    display: inline-block;
+    margin-inline-end: 0.6rem;
+    padding: 0.1rem 1rem;
+    border-radius: 20px;
+    border: 1px solid rgba(160, 68, 255, 0.6);
+    color: var(--white-color);
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* Highlights under the hero */
+.nest_pills {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.2rem;
+    padding: 0;
+    margin: 4rem 0 0;
+}
+.nest_pills li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.8rem 1.6rem;
+    border-radius: 20px;
+    border: 1px solid #312A36;
+    background: rgba(30, 17, 44, 0.30);
+    color: var(--white-color);
+    font-size: 1.5rem;
+}
+.nest_pills i {
+    color: var(--purple-color);
+}
+
+/* Architecture diagram in the privacy section */
+.nest_arch_img {
+    display: block;
+    width: 100%;
+    max-width: 520px;
+    height: auto;
+    margin: 3rem auto 0;
+}
+
+.nest_actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.6rem;
+    align-items: center;
+    margin-top: 1rem;
+}
+.nest_btn_outline {
+    padding: 1.2rem 2rem;
+    font-size: 16px;
+    border-radius: 20px;
+    border: 1px solid var(--purple-color);
+    color: var(--white-color);
+    background: rgba(30, 17, 44, 0.30);
+    transition: background 0.3s ease;
+}
+.nest_btn_outline:hover {
+    background: rgba(160, 68, 255, 0.15);
+    color: var(--white-color);
+}
+.nest_note {
+    color: var(--para-color);
+    font-size: 1.5rem !important;
+    line-height: 1.6 !important;
+    margin-top: 1.6rem;
+}
+
+/* Sections */
+.nest_section {
+    margin-top: 12rem;
+    position: relative;
+}
+.nest_heading {
+    margin-bottom: 5rem;
+}
+.nest_heading .work_p {
+    max-width: 80rem;
+    margin: 0 auto;
+}
+.nest_h2 {
+    font-size: 4.5rem !important;
+    line-height: 1.3 !important;
+    margin-bottom: 1.5rem;
+}
+
+/* Card grids: lists without list styling */
+.nest_steps,
+.nest_grid {
+    padding: 0;
+    margin-bottom: 0;
+}
+.nest_card {
+    position: relative;
+    cursor: default;
+}
+.nest_card h3 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+.nest_card p {
+    font-size: 1.5rem;
+    line-height: 1.7;
+    margin-bottom: 0;
+}
+.nest_step_num {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    width: 3.2rem;
+    height: 3.2rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(90deg, #6A3093 0%, #A044FF 100%);
+    color: var(--white-color);
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+main code {
+    color: var(--white-color);
+    background: rgba(160, 68, 255, 0.15);
+    border-radius: 6px;
+    padding: 0.1em 0.4em;
+    font-size: 0.92em;
+    word-break: break-word;
+}
+
+/* Security checklist */
+.nest_checklist {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+}
+.nest_checklist li {
+    display: flex;
+    gap: 1.6rem;
+    align-items: flex-start;
+    padding: 2rem;
+    border-radius: 20px;
+    border: 1px solid #312A36;
+    background: rgba(30, 17, 44, 0.30);
+}
+.nest_checklist i {
+    font-size: 2.2rem;
+    margin-top: 0.3rem;
+    width: 2.6rem;
+    text-align: center;
+    flex-shrink: 0;
+}
+.nest_checklist h3 {
+    color: var(--white-color);
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+}
+.nest_checklist p {
+    color: var(--para-color);
+    font-size: 1.5rem;
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* "New" badge, styled like the dropdown pills */
+.nest_badge {
+    display: inline-block;
+    background-color: var(--purple-color);
+    border-radius: 20px;
+    color: var(--white-color);
+    padding: 0.6rem 1.6rem;
+    font-size: 1.3rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+/* Screenshot gallery: one row, equal heights. Each figure's flex-grow is its
+   image's aspect ratio (x100), set inline, so the row lines up exactly. */
+.nest_gallery {
+    display: flex;
+    gap: 2.4rem;
+    align-items: flex-start;
+}
+.nest_shot {
+    flex-basis: 0;
+    min-width: 0;
+    margin: 0;
+}
+.nest_shot picture {
+    display: block;
+    padding: 0.8rem;
+    border-radius: 20px;
+    border: 1px solid #312A36;
+    background: rgba(30, 17, 44, 0.60);
+}
+
+/* Teams: share, discover, delegate */
+.nest_flow {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.6rem 3rem;
+    padding: 0;
+    margin: 0 0 5rem;
+    counter-reset: none;
+}
+.nest_flow li {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    color: var(--para-color);
+    font-size: 1.6rem;
+    line-height: 1.5;
+    max-width: 34rem;
+}
+.nest_flow strong {
+    color: var(--white-color);
+}
+.nest_flow .nest_step_num {
+    position: static;
+    flex-shrink: 0;
+}
+
+/* Product family strip */
+.nest_family {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 3rem;
+    border-radius: 20px;
+    border: 1px solid #312A36;
+    background: rgba(30, 17, 44, 0.30);
+}
+.nest_family h2 {
+    font-size: 2.4rem;
+    margin-bottom: 0.8rem;
+}
+.nest_family p {
+    font-size: 1.6rem;
+    line-height: 1.6;
+    max-width: 70rem;
+}
+
+/* FAQ: the question is a button so it works from the keyboard */
+.nest_faq {
+    margin-top: 12rem;
+    position: relative;
+}
+.nest_faq .faq_heading {
+    display: block;
+}
+.nest_label_btn {
+    width: 100%;
+    background: transparent;
+    border: 0;
+    color: inherit;
+    text-align: start;
+    gap: 1rem;
+}
+.nest_label_btn img {
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+}
+.nest_faq code {
+    color: var(--white-color);
+}
+
+/* Footer copyright uses a <p> here (h5 style kept via class) */
+.bottom_left.h5 {
+    font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 996px) {
+    .nest_hero h1,
+    .products_hero h1 {
+        font-size: 4.4rem;
+    }
+    .nest_gallery {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .nest_shot {
+        flex-basis: auto;
+    }
+    .nest_shot:last-child {
+        max-width: 42rem;
+        margin: 0 auto;
+    }
+    .nest_h2 {
+        font-size: 3.4rem !important;
+    }
+}
+
+@media (max-width: 769px) {
+    .nest_hero {
+        margin-top: 3rem;
+    }
+    .nest_hero_text,
+    .nest_hero_text .nest_note {
+        text-align: center;
+    }
+    .nest_section,
+    .nest_faq {
+        margin-top: 8rem;
+    }
+    .nest_actions .contact_btn,
+    .nest_actions .nest_btn_outline {
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .nest_hero h1,
+    .products_hero h1 {
+        font-size: 3.4rem;
+    }
+    .nest_lede {
+        font-size: 1.7rem;
+    }
+    .nest_hero_shot {
+        padding: 0.6rem;
+        margin-top: 4rem;
+    }
+    .nest_pills li {
+        font-size: 1.4rem;
+    }
+    .nest_family {
+        padding: 2.4rem 1.8rem;
+    }
+    .nest_actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .nest_card {
+        padding: 2.4rem 1.8rem;
+    }
+    .nest_checklist li {
+        padding: 1.6rem;
+    }
+    .light_img img,
+    .light2_img {
+        max-width: 100vw;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto !important;
+    }
+    [data-aos] {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+    .product_card,
+    .product_card i,
+    .nest_label_btn img {
+        transition: none;
+    }
+    .product_card:hover {
+        transform: none;
+    }
+}
+
+/* Positioning line under the hero */
+.nest_compare {
+    text-align: center;
+    margin-top: 8rem;
+}
+.nest_compare_text {
+    color: var(--white-color);
+    font-size: 3rem;
+    font-weight: 600;
+    line-height: 1.4;
+    max-width: 90rem;
+    margin: 0 auto;
+}
+.nest_compare_text sup a {
+    color: var(--purple-color);
+    padding: 0 0.2rem;
+}
+.nest_footnote {
+    color: var(--para-color);
+    font-size: 1.3rem;
+    margin: 1.6rem auto 0;
+    opacity: 0.85;
+}
+
+/* Mission line */
+.nest_mission {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1.2rem;
+    margin: 5rem auto 0;
+    color: var(--white-color);
+    font-size: 2.4rem;
+    font-weight: 600;
+    text-align: center;
+}
+.nest_mission_label {
+    padding: 0.4rem 1.4rem;
+    border-radius: 20px;
+    border: 1px solid rgba(160, 68, 255, 0.6);
+    color: var(--para-color);
+    font-size: 1.3rem;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+/* Download cards */
+.nest_dl_card {
+    display: flex;
+    flex-direction: column;
+}
+.nest_dl_btn {
+    margin-top: auto;
+    align-self: flex-start;
+}
+.nest_dl_card p {
+    margin-bottom: 2rem;
+}
+
+@media (max-width: 480px) {
+    .nest_compare_text {
+        font-size: 2.2rem;
+    }
+    .nest_mission {
+        font-size: 2rem;
+    }
+}

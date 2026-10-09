@@ -1573,4 +1573,70 @@ margin-top:7rem;
 }
 .aos-animate {
     pointer-events: auto;
-}
+}
+
+/* Small screens: keep decorative glow images inside the viewport so they
+   don't widen the page (no horizontal scroll at phone widths). */
+@media (max-width: 480px) {
+    .footer_img {
+        width: 100%;
+        left: 50%;
+    }
+    .light2_img {
+        max-width: 100%;
+    }
+}
+
+/* Header Products dropdown and mobile sidebar: product entries are links,
+   the database docs sit under VaultDB Database, and "All products" closes the
+   list. Shared by every page (also in about.css and contact.css). */
+.header .dropdown-menu a.second_content {
+    letter-spacing: normal;
+    line-height: normal;
+    width: 100%;
+}
+.header .dropdown-menu a.second_content .dropdown_content p:nth-child(2) {
+    display: block;
+}
+.dropdown_img img[src$=".svg"] {
+    display: block;
+    width: 22px;
+    height: 22px;
+    max-width: none;
+    margin: -3.5px;
+}
+.first_img img[src$=".svg"] {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+/* Keep the header (and its dropdown) above page sections that set a z-index */
+.header {
+    position: relative;
+    z-index: 100;
+}
+.header .dropdown-menu .nav_docs {
+    flex-wrap: wrap;
+    padding: 0 1.6rem;
+    margin-top: 0.4rem;
+}
+.header .dropdown-menu .nav_docs a {
+    padding: 6px 12px;
+}
+.header .dropdown-menu a.nav_all_products {
+    justify-content: center;
+    padding-top: 1.2rem;
+    padding-bottom: 1.2rem;
+}
+.header .dropdown-menu a.nav_all_products .dropdown_content p {
+    margin: 0;
+}
+.side_accordian .nav_docs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin: 1rem 0 1.6rem;
+}
+.side_accordian .nav_docs a {
+    font-size: 1.3rem !important;
+}

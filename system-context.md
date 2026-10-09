@@ -30,6 +30,7 @@ vaultdb-web/
 ├── index.html              — Homepage (main landing page)
 ├── about.html              — About Us page
 ├── contact.html            — Contact Us page
+├── nest.html               — VaultDB Nest product page
 ├── error.html              — Error / 404 page
 ├── formsubmit.html         — Form submission handler
 ├── welcome_template.html   — Welcome email template
@@ -37,10 +38,12 @@ vaultdb-web/
 │   ├── style.css           — Homepage styles
 │   ├── about.css           — About page styles
 │   ├── contact.css         — Contact page styles
+│   ├── nest.css            — VaultDB Nest page styles (loaded after style.css)
 │   └── form.css            — Form styles
 ├── js/
 │   ├── index.js            — Homepage interactions
 │   ├── about..js           — About page interactions
+│   ├── nest.js             — VaultDB Nest page interactions
 │   └── contact.js          — Contact page interactions
 └── img/
     ├── mainlogo.png        — Primary logo
@@ -135,6 +138,7 @@ All content is hardcoded in HTML. There is no CMS, no API-fetched content, no dy
 | **Homepage** | `index.html` | Landing page with hero section, product overview, financial domain ecosystem grid, FAQ accordion |
 | **About** | `about.html` | Company story, team photos, mission statement |
 | **Contact** | `contact.html` | Contact form, office details |
+| **VaultDB Nest** | `nest.html` | Product page for VaultDB Nest (local-first desktop app for AI agents): features, Teams, download, FAQ. Linked from the Platform/Solutions menu and the footer |
 | **Error** | `error.html` | 404 / error page |
 
 ---

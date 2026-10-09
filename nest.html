@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VaultDB Nest: run a team of AI agents on your own machine | VaultDB.ai</title>
+  <meta name="description"
+    content="VaultDB Nest is a local-first desktop app for running a team of AI agents in Docker containers, with agent definitions in a git repo you own, keys in your OS keyring, a full audit log, and team sharing over a self-hostable relay." />
+  <meta property="og:title" content="VaultDB Nest: run a team of AI agents on your own machine" />
+  <meta property="og:description"
+    content="Local-first desktop app for running AI agents in Docker containers, with git-backed definitions, an audit log, and team delegation." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="img/v-logo.png" />
+  <meta property="og:url" content="http://vaultdb.ai/nest.html" />
+  <meta property="og:site_name" content="VaultDB.ai" />
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- favicon -->
+  <link rel="icon" type="image/png" href="img/v-logo.png" />
+  <!-- animation  -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+  <!-- Shared site styles (header, footer, FAQ, cards), then VaultDB Nest page styles -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/nest.css" />
+</head>
+
+<body>
+  <a href="#main" class="nest_skip">Skip to content</a>
+  <div class="container_body">
+    <div class="container_inside">
+      <!-- Nav Bar start Lg  -->
+      <header class="header">
+        <div class="logo">
+          <img src="img/mainlogo.png" alt="" />
+          <a href="index.html">VaultDB.ai</a>
+        </div>
+
+        <nav aria-label="Main">
+          <ul class="menu_bar">
+            <li class="first_bar">
+              <a href="#" class="header_hover">Platform</a>
+              <ul class="dropdown-menu" style="background-color: #10101e; height: auto">
+                <li class="first_content_container">
+                  <div class="first_content">
+                    <div class="dropdown_img">
+                      <img src="img/Group 1000001831.png" alt="" />
+                    </div>
+                    <div class="dropdown_content">
+                      <p>VaultDB HUB</p>
+                      <p>
+                        Train, Test and deploy and manage your models with
+                        integrated Governance, Risk and Controls.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="dropdown_btns">
+                    <a href="contact.html" class="dropdown_btn">IOT platform</a>
+                    <a href="contact.html" class="dropdown_btn">Websites and mobile Apps</a>
+                    <a href="https://docs.vaultdb.ai/hub/datahub" class="dropdown_btn">VaultDB Data Hub</a>
+                  </div>
+                  <div class="line"></div>
+                </li>
+                <li>
+                  <div class="second_content second">
+                    <div class="dropdown_img">
+                      <img src="img/Group 1000001832.png" alt="" />
+                    </div>
+                    <div class="dropdown_content">
+                      <p>VaultDB Compute</p>
+                      <p>
+                        Scalable cloud resources for distributed model execution.
+                      </p>
+                    </div>
+                    <div class="line_bottom">
+                      <div class="line"></div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="second_content third_content">
+                    <div class="dropdown_img">
+                      <img src="img/Group 1000001793.png" alt="" />
+                    </div>
+                    <div class="dropdown_content">
+                      <p>VaultDB Actions</p>
+                      <p class="para_1">
+                        CI/CD for compute intensive and analytical pipelines.
+                      </p>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="line" style="margin-top: 0"></div>
+                  <a href="nest.html" class="second_content third_content"
+                    style="text-align: start; border-radius: 0 0 10px 10px" aria-current="page">
+                    <div class="dropdown_img">
+                      <img src="img/nest-icon.svg" alt="" />
+                    </div>
+                    <div class="dropdown_content">
+                      <p>VaultDB Nest</p>
+                      <p class="para_1">
+                        Run a team of AI agents in containers on your own machine.
+                      </p>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="second_bar">
+              <a href="#" class="header_hover">Developers</a>
+              <ul class="dev_menu" style="background-color: #10101e">
+                <li>
+                  <div class="dev_box">
+                    <img src="img/Group 1000001838.png" alt="" class="first_dev_img" />
+                    <a href="https://docs.vaultdb.ai/quickstart">Quick Start</a>
+                    <div class="line" style="width: 100%"></div>
+                  </div>
+
+                  <div class="dev_box">
+                    <img src="img/Group 1000001840.png" alt="" />
+                    <a href="https://docs.vaultdb.ai">Documentation</a>
+                    <div class="line"></div>
+                  </div>
+                  <div class="dev_box">
+                    <img src="img/Group 1000001843.png" alt="" />
+                    <a href="https://docs.vaultdb.ai/examples/roles">Code Examples</a>
+                  </div>
+                </li>
+              </ul>
+            </li>
+            <li><a href="about.html" class="header_hover">About Us</a></li>
+
+            <li>
+              <a href="contact.html" class="contact_btn">Contact Us</a>
+            </li>
+          </ul>
+        </nav>
+        <div class="header_icons">
+          <button type="button" class="nest_icon_btn menu" aria-label="Open menu" aria-expanded="false"
+            aria-controls="nest-mobile-menu">
+            <i class="fa-solid fa-bars text-white fs-1" aria-hidden="true"></i>
+          </button>
+        </div>
+      </header>
+      <!-- Nav Bar End -->
+
+      <!-- Mobile sidebar=========================== -->
+      <div class="side_accordian" id="nest-mobile-menu">
+        <div class="menu_accordian">
+          <div class="mobile_nav" style="background-color: var(--main-color)">
+            <div class="logo">
+              <img src="img/logo.png" alt="" />
+              <a href="index.html" class="f-2">VaultDB.ai</a>
+            </div>
+            <button type="button" class="nest_icon_btn close_icon" aria-label="Close menu">
+              <i class="fa-solid fa-xmark text-white fs-1" aria-hidden="true"></i>
+            </button>
+          </div>
+          <div class="link">
+            <p class="dropdown_link dropdown_bar">Solutions</p>
+            <ul class="sub_menu dropdown">
+              <div class="first_menu pb-5">
+                <div class="content">
+                  <div class="first_img">
+                    <img src="img/Group 1000001831.png" alt="" />
+                  </div>
+                  <div class="first_menu_content">VaultDB HUB</div>
+                </div>
+                <div class="bottom_para">
+                  Train, Test and deploy and manage your models with
+                  integrated Governance, Risk and Controls. Control data your
+                  models are training on for Bias and compliance.
+                </div>
+                <div class="first_btns">
+                  <a href="#" class="contact_btn first_btn">IoT Platform</a>
+                  <a href="#" class="contact_btn first_btn">Websites and mobile Apps</a>
+                  <a href="https://docs.vaultdb.ai/hub/datahub" class="dropdown_btn">VaultDB Data Hub</a>
+                </div>
+              </div>
+            </ul>
+            <div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
+
+            <ul class="sub_menu dropdown">
+              <div class="second_menu first_menu mt-5">
+                <div class="content">
+                  <div class="second_img first_img">
+                    <img src="img/Group 1000001832.png" alt="" />
+                  </div>
+                  <div class="first_menu_content">VaultDB Compute</div>
+                </div>
+                <div class="bottom_para">
+                  Train and Run your models across cloud providers on cheapest
+                  and unlimited resources.
+                </div>
+              </div>
+            </ul>
+            <div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
+
+            <ul class="sub_menu dropdown">
+              <div class="second_menu first_menu">
+                <div class="content">
+                  <div class="second_img first_img">
+                    <img src="img/Frame.png" alt="" />
+                  </div>
+                  <div class="first_menu_content">
+                    VaultDB Actions (DevOps)
+                  </div>
+                </div>
+                <div class="bottom_para">
+                  Train and Run your models across cloud providers on cheapest
+                  and unlimited resources.
+                </div>
+              </div>
+            </ul>
+            <div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
+
+            <ul class="sub_menu dropdown">
+              <a href="nest.html" class="second_menu first_menu">
+                <div class="content">
+                  <div class="second_img first_img">
+                    <img src="img/nest-icon.svg" alt="" />
+                  </div>
+                  <div class="first_menu_content">VaultDB Nest</div>
+                </div>
+                <div class="bottom_para">
+                  Run a team of AI agents in containers on your own machine.
+                </div>
+              </a>
+            </ul>
+            <div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
+          </div>
+
+          <div class="link">
+            <p class="dropdown_link dropdown_bar">Developers</p>
+            <ul class="sub_menu dropdown">
+              <a href="https://docs.vaultdb.ai/quickstart">
+                <div class="dev_nav">
+                  <div class="dev_nav_box">
+                    <div class="dev_nav_img">
+                      <img src="img/Group 1000001838.png" alt="" />
+                    </div>
+                    <div class="dev_para">Quick Start</div>
+                  </div>
+                </div>
+              </a>
+            </ul>
+            <div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
+            <ul class="sub_menu dropdown">
+              <a href="https://docs.vaultdb.ai">
+                <div class="dev_nav">
+                  <div class="dev_nav_box">
+                    <div class="dev_nav_img image">
+                      <img src="img/Group 1000001840.png" alt="" />
+                    </div>
+                    <div class="dev_para">Documentation</div>
+                  </div>
+                </div>
+              </a>
+            </ul>
+            <div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
+            <ul class="sub_menu dropdown">
+              <a href="https://docs.vaultdb.ai/examples/roles">
+                <div class="dev_nav">
+                  <div class="dev_nav_box">
+                    <div class="dev_nav_img image">
+                      <img src="img/Group 1000001843.png" alt="" />
+                    </div>
+                    <div class="dev_para">Code Examples</div>
+                  </div>
+                </div>
+              </a>
+            </ul>
+            <div class="line line_navbar" style="position: relative; bottom: 0; left: 0"></div>
+          </div>
+
+          <div class="link" style="border: 0; outline: 0">
+            <a href="about.html" class="dropdown_link" style="font-size: 20px">About Us</a>
+            <div class="middle" style="border: 0">
+              <a href="contact.html" class="contact_btn">Contact Us</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <main id="main">
+        <!-- Hero ===================================== -->
+        <section class="nest_hero container-fluid row justify-content-center align-items-center"
+          aria-labelledby="nest-title">
+          <div class="col-lg-7 col-md-12 col-sm-12">
+            <div class="hero_content">
+              <p class="nest_eyebrow">
+                <img src="img/nest-icon.svg" alt="" class="nest_eyebrow_icon" />
+                VaultDB Nest
+              </p>
+              <h1 id="nest-title">Run a team of AI agents on your own machine</h1>
+              <p class="hero_head fs-2" style="color: var(--para-color); font-weight: bold">
+                Local-first. Isolated. Every definition is a file you own.
+              </p>
+              <p class="para">
+                VaultDB Nest is a desktop app for managing AI agents. You act as the manager: each agent has a job,
+                runs in its own Docker container, and reports back to you. Its definition lives in a git repo on your
+                machine, your API keys stay in the OS keyring, and everything it does is logged.
+              </p>
+              <div class="nest_actions">
+                <!-- LINK: GitHub Releases of the app repo. Installers appear here once a release is published. -->
+                <a href="https://github.com/devmchechi/nest-app/releases" class="contact_btn">
+                  <i class="fa-solid fa-download me-2" aria-hidden="true"></i>Download VaultDB Nest
+                </a>
+                <a href="https://github.com/devmchechi/nest-app" class="nest_btn_outline">
+                  <i class="fa-brands fa-github me-2" aria-hidden="true"></i>View on GitHub
+                </a>
+              </div>
+              <p class="nest_note">Windows, macOS, and Linux. Needs Docker running locally.</p>
+            </div>
+          </div>
+          <div class="col-lg-5 col-md-10 col-sm-12 d-flex justify-content-center">
+            <img class="img-fluid nest_hero_img" src="img/nest-architecture.svg" width="560" height="520"
+              alt="Diagram: on your machine, VaultDB Nest runs each agent in its own Docker container. Definitions live in a git repo, keys stay in the OS keyring, containers reach model providers and approved hosts only through the egress proxy, and everything goes to the audit log." />
+          </div>
+        </section>
+        <div class="light_img" aria-hidden="true">
+          <img src="img/Rectangle 9.png" alt="" />
+        </div>
+
+        <!-- How it works ===================================== -->
+        <section class="container nest_section" aria-labelledby="nest-how">
+          <div class="work_heading nest_heading">
+            <h2 id="nest-how" class="text-center text-white h1 mt-2">How it Works</h2>
+            <p class="text-center work_p">
+              An agent is a <code>skill.md</code> file: a prompt plus the tools, hosts, and approvals it gets.
+              VaultDB Nest turns that file into a running, supervised container.
+            </p>
+          </div>
+          <ol class="row gy-4 nest_steps">
+            <li class="col-md-4 col-sm-12" data-aos="fade-up" data-aos-duration="1500">
+              <div class="product_card nest_card">
+                <span class="nest_step_num" aria-hidden="true">1</span>
+                <i class="fa-solid fa-file-pen fs-1 text-purple mb-4" aria-hidden="true"></i>
+                <h3 class="h4 text-white">Define</h3>
+                <p class="text-gray">
+                  Write or install a <code>skill.md</code>. It goes into your agents repo
+                  (<code>~/.nest/repo</code>), so you can diff, review, branch, and push it like any code.
+                </p>
+              </div>
+            </li>
+            <li class="col-md-4 col-sm-12" data-aos="fade-up" data-aos-duration="1800">
+              <div class="product_card nest_card">
+                <span class="nest_step_num" aria-hidden="true">2</span>
+                <i class="fa-brands fa-docker fs-1 text-purple mb-4" aria-hidden="true"></i>
+                <h3 class="h4 text-white">Run</h3>
+                <p class="text-gray">
+                  Each agent runs in its own container with no keys and no direct network access. When it wants to
+                  run a command or send something, it asks you first.
+                </p>
+              </div>
+            </li>
+            <li class="col-md-4 col-sm-12" data-aos="fade-up" data-aos-duration="2100">
+              <div class="product_card nest_card">
+                <span class="nest_step_num" aria-hidden="true">3</span>
+                <i class="fa-solid fa-list-check fs-1 text-purple mb-4" aria-hidden="true"></i>
+                <h3 class="h4 text-white">Review</h3>
+                <p class="text-gray">
+                  The Agent Console shows every agent, its status, and what needs your approval. Each run is kept
+                  in its history, and network requests are recorded in the audit log.
+                </p>
+              </div>
+            </li>
+          </ol>
+        </section>
+
+        <!-- Features ===================================== -->
+        <section class="container nest_section" id="features" aria-labelledby="nest-features">
+          <div class="work_heading nest_heading">
+            <h2 id="nest-features" class="text-center text-white h1 mt-2">Everything an Agent Team Needs</h2>
+            <p class="text-center work_p">
+              Agents, workflows, triggers, and connectors are plain files. The app's database is only a cache of
+              them and can be rebuilt at any time.
+            </p>
+          </div>
+          <ul class="row gy-4 nest_grid">
+            <li class="col-lg-4 col-md-6 col-sm-12" data-aos="zoom-in" data-aos-duration="1000">
+              <div class="product_card nest_card">
+                <i class="fa-solid fa-code-branch fs-1 text-purple mb-4" aria-hidden="true"></i>
+                <h3 class="h4 text-white">Git-backed agent repo</h3>
+                <p class="text-gray">
+                  Every definition is a file in a git repo you own. Moving to a new machine is a
+                  <code>git clone</code>; sharing with your other machines is a push.
+                </p>
+              </div>
+            </li>
+            <li class="col-lg-4 col-md-6 col-sm-12" data-aos="zoom-in" data-aos-duration="1200">
+              <div class="product_card nest_card">
+                <i class="fa-solid fa-diagram-project fs-1 text-purple mb-4" aria-hidden="true"></i>
+                <h3 class="h4 text-white">Workflows</h3>
+                <p class="text-gray">
+                  Chain agents into multi-agent pipelines. Each step hands its output to the next, and every run
+                  is recorded.
+                </p>
+              </div>
+            </li>
+            <li class="col-lg-4 col-md-6 col-sm-12" data-aos="zoom-in" data-aos-duration="1400">
+              <div class="product_card nest_card">
+                <i class="fa-solid fa-bolt fs-1 text-purple mb-4" aria-hidden="true"></i>
+                <h3 class="h4 text-white">Triggers</h3>
+                <p class="text-gray">
+                  Start agents and workflows on a schedule, when files change, from a webhook or a device, or when
+                  another run finishes.
+                </p>
+              </div>
+            </li>
+            <li class="col-lg-4 col-md-6 col-sm-12" data-aos="zoom-in" data-aos-duration="1600">
+              <div class="product_card nest_card">
+                <i class="fa-solid fa-store fs-1 text-purple mb-4" aria-hidden="true"></i>
+                <h3 class="h4 text-white">Marketplace and registries</h3>
+                <p class="text-gray">
+                  Install agents and packs from shared git registries. Entries declare their capabilities,
+                  publisher-signed releases show as verified, and installed agents stay read-only until you fork
+                  them.
+                </p>
+              </div>
+            </li>
+            <li class="col-lg-4 col-md-6 col-sm-12" data-aos="zoom-in" data-aos-duration="1800">
+              <div class="product_card nest_card">
+                <i class="fa-solid fa-plug fs-1 text-purple mb-4" aria-hidden="true"></i>
+                <h3 class="h4 text-white">Connectors</h3>
+                <p class="text-gray">
+                  Give agents outside services through MCP servers and OAuth sign-in, with tokens kept in your
+                  keyring.
+                </p>
+              </div>
+            </li>
+            <li class="col-lg-4 col-md-6 col-sm-12" data-aos="zoom-in" data-aos-duration="2000">
+              <div class="product_card nest_card">
+                <i class="fa-solid fa-desktop fs-1 text-purple mb-4" aria-hidden="true"></i>
+                <h3 class="h4 text-white">Pilots</h3>
+                <p class="text-gray">
+                  Let an agent see the screen and use desktop apps through host-side pilots, one capability at a
+                  time, granted per agent.
+                </p>
+              </div>
+            </li>
+            <li class="col-lg-4 col-md-6 col-sm-12" data-aos="zoom-in" data-aos-duration="1000">
+              <div class="product_card nest_card">
+                <i class="fa-solid fa-microchip fs-1 text-purple mb-4" aria-hidden="true"></i>
+                <h3 class="h4 text-white">Your choice of models</h3>
+                <p class="text-gray">
+                  Use local models through Ollama, or Anthropic, OpenAI, and DeepSeek with your own API keys. Each
+                  agent picks its model in its <code>skill.md</code>.
+                </p>
+              </div>
+            </li>
+            <li class="col-lg-4 col-md-6 col-sm-12" data-aos="zoom-in" data-aos-duration="1200">
+              <div class="product_card nest_card">
+                <i class="fa-solid fa-scroll fs-1 text-purple mb-4" aria-hidden="true"></i>
+                <h3 class="h4 text-white">Audit logs</h3>
+                <p class="text-gray">
+                  See what each agent sent and where. Network requests, connector calls, pilot actions, and
+                  delegations are written to audit logs on your machine, next to each agent's run history.
+                </p>
+              </div>
+            </li>
+            <li class="col-lg-4 col-md-6 col-sm-12" data-aos="zoom-in" data-aos-duration="1400">
+              <div class="product_card nest_card">
+                <i class="fa-solid fa-wifi fs-1 text-purple mb-4" aria-hidden="true"></i>
+                <h3 class="h4 text-white">Desktop and LAN web</h3>
+                <p class="text-gray">
+                  The same core serves the desktop window and, with <code>--server</code>, a web UI on your local
+                  network, so you can check on agents from any browser.
+                </p>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Security ===================================== -->
+        <section class="container nest_section" id="security" aria-labelledby="nest-security">
+          <div class="row align-items-center gy-5">
+            <div class="col-lg-6 col-md-12">
+              <div class="hero_content">
+                <h2 id="nest-security" class="nest_h2">Isolation by Default</h2>
+                <p class="hero_head fs-2" style="color: var(--para-color); font-weight: bold">
+                  Agents get exactly what you approve, and nothing else.
+                </p>
+                <p class="para">
+                  Agents read your files, use your accounts, and act for you. That work belongs on a machine you
+                  control, under rules you can read, with a record you keep.
+                </p>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-12">
+              <ul class="nest_checklist">
+                <li>
+                  <i class="fa-solid fa-key text-purple" aria-hidden="true"></i>
+                  <div>
+                    <h3>Keys never enter containers</h3>
+                    <p>Provider keys and connector tokens live in your OS keyring. A proxy on the host adds them to
+                      model calls on the way out.</p>
+                  </div>
+                </li>
+                <li>
+                  <i class="fa-solid fa-shield-halved text-purple" aria-hidden="true"></i>
+                  <div>
+                    <h3>Only approved hosts</h3>
+                    <p>Containers reach the network only through the egress proxy, which allows the hosts an agent
+                      declares and you approved, and refuses the rest.</p>
+                  </div>
+                </li>
+                <li>
+                  <i class="fa-solid fa-hand text-purple" aria-hidden="true"></i>
+                  <div>
+                    <h3>Approval before action</h3>
+                    <p>Anything an agent marks as needing approval, such as running a shell command, pauses until you
+                      approve or reject it in the console.</p>
+                  </div>
+                </li>
+                <li>
+                  <i class="fa-solid fa-cloud-arrow-up text-purple" aria-hidden="true"></i>
+                  <div>
+                    <h3>Scoped cloud access</h3>
+                    <p>AWS calls go through the proxy under a scoped STS session, limited to the services the agent
+                      declares.</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Teams ===================================== -->
+        <section class="container nest_section" id="teams" aria-labelledby="nest-teams">
+          <div class="work_heading nest_heading">
+            <p class="text-center"><span class="nest_badge">New</span></p>
+            <h2 id="nest-teams" class="text-center text-white h1 mt-2">VaultDB Nest for Teams</h2>
+            <p class="text-center work_p">
+              Share agents with a small group of people you trust and let agents delegate work to each other,
+              across machines. The only cloud service involved is GitHub, plus a relay you can host yourself.
+            </p>
+          </div>
+          <ul class="row gy-4 nest_grid">
+            <li class="col-lg-4 col-md-6 col-sm-12" data-aos="fade-up" data-aos-duration="1200">
+              <div class="product_card nest_card">
+                <i class="fa-solid fa-id-card fs-1 text-purple mb-4" aria-hidden="true"></i>
+                <h3 class="h4 text-white">Agent cards</h3>
+                <p class="text-gray">
+                  An agent declares the capabilities it serves and whether it accepts delegation, with a limit on
+                  concurrent tasks. Its card is what teammates see.
+                </p>
+              </div>
+            </li>
+            <li class="col-lg-4 col-md-6 col-sm-12" data-aos="fade-up" data-aos-duration="1400">
+              <div class="product_card nest_card">
+                <i class="fa-solid fa-tower-broadcast fs-1 text-purple mb-4" aria-hidden="true"></i>
+                <h3 class="h4 text-white">Self-hostable relay</h3>
+                <p class="text-gray">
+                  <code>nest --relay</code> runs a small WebSocket relay for presence and task routing, so
+                  instances behind NAT can reach each other. Instances register with tokens the relay operator
+                  issues.
+                </p>
+              </div>
+            </li>
+            <li class="col-lg-4 col-md-6 col-sm-12" data-aos="fade-up" data-aos-duration="1600">
+              <div class="product_card nest_card">
+                <i class="fa-solid fa-people-arrows fs-1 text-purple mb-4" aria-hidden="true"></i>
+                <h3 class="h4 text-white">Cross-user delegation</h3>
+                <p class="text-gray">
+                  One agent asks another, on your machine or a teammate's, to handle a named capability. Calls go
+                  through the usual approval path, and each one is recorded in a delegation log.
+                </p>
+              </div>
+            </li>
+            <li class="col-lg-4 col-md-6 col-sm-12" data-aos="fade-up" data-aos-duration="1200">
+              <div class="product_card nest_card">
+                <i class="fa-brands fa-github fs-1 text-purple mb-4" aria-hidden="true"></i>
+                <h3 class="h4 text-white">Private team registries</h3>
+                <p class="text-gray">
+                  A team is a GitHub organization with a private <code>nest-registry</code> repo. Share an agent to
+                  the team and it syncs to every member's VaultDB Nest.
+                </p>
+              </div>
+            </li>
+            <li class="col-lg-4 col-md-6 col-sm-12" data-aos="fade-up" data-aos-duration="1400">
+              <div class="product_card nest_card">
+                <i class="fa-solid fa-share-nodes fs-1 text-purple mb-4" aria-hidden="true"></i>
+                <h3 class="h4 text-white">Shared with me, shared by me</h3>
+                <p class="text-gray">
+                  See the agents your teams and the relay make available to you, and the ones you share, with how
+                  often each is called.
+                </p>
+              </div>
+            </li>
+            <li class="col-lg-4 col-md-6 col-sm-12" data-aos="fade-up" data-aos-duration="1600">
+              <div class="product_card nest_card">
+                <i class="fa-solid fa-circle-nodes fs-1 text-purple mb-4" aria-hidden="true"></i>
+                <h3 class="h4 text-white">Trust graph</h3>
+                <p class="text-gray">
+                  Decide who may call which of your agents: allow, deny, or ask. Unknown callers default to ask,
+                  and an explicit deny always wins.
+                </p>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Screenshots (placeholders) ===================================== -->
+        <section class="container nest_section" aria-labelledby="nest-inside">
+          <div class="work_heading nest_heading">
+            <h2 id="nest-inside" class="text-center text-white h1 mt-2">A Look Inside</h2>
+          </div>
+          <div class="row gy-4">
+            <!-- PLACEHOLDER: replace with <img src="img/nest-console.png" alt="..."> -->
+            <figure class="col-lg-4 col-md-6 col-sm-12 nest_shot">
+              <div class="nest_shot_frame" role="img" aria-label="Screenshot coming soon">
+                <i class="fa-regular fa-image" aria-hidden="true"></i>
+                <span>Screenshot coming soon</span>
+              </div>
+              <figcaption>Agent Console: every agent, its status, and what needs your approval</figcaption>
+            </figure>
+            <!-- PLACEHOLDER: replace with <img src="img/nest-workflow.png" alt="..."> -->
+            <figure class="col-lg-4 col-md-6 col-sm-12 nest_shot">
+              <div class="nest_shot_frame" role="img" aria-label="Screenshot coming soon">
+                <i class="fa-regular fa-image" aria-hidden="true"></i>
+                <span>Screenshot coming soon</span>
+              </div>
+              <figcaption>Workflows: multi-agent pipelines as a graph</figcaption>
+            </figure>
+            <!-- PLACEHOLDER: replace with <img src="img/nest-teams.png" alt="..."> -->
+            <figure class="col-lg-4 col-md-12 col-sm-12 nest_shot">
+              <div class="nest_shot_frame" role="img" aria-label="Screenshot coming soon">
+                <i class="fa-regular fa-image" aria-hidden="true"></i>
+                <span>Screenshot coming soon</span>
+              </div>
+              <figcaption>Teams: shared agents and the trust graph</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <!-- Download ===================================== -->
+        <section class="container nest_section" id="download" aria-labelledby="nest-download">
+          <div class="work_heading nest_heading">
+            <h2 id="nest-download" class="text-center text-white h1 mt-2">Download VaultDB Nest</h2>
+            <p class="text-center work_p">
+              Installers are published on the GitHub Releases page of the VaultDB Nest repository.
+            </p>
+          </div>
+          <ul class="row gy-4 nest_grid">
+            <li class="col-lg-4 col-md-6 col-sm-12">
+              <div class="product_card nest_card">
+                <i class="fa-brands fa-windows fs-1 text-purple mb-4" aria-hidden="true"></i>
+                <h3 class="h4 text-white">Windows</h3>
+                <p class="text-gray">
+                  <code>.msi</code> installer. Windows 10 or 11 (64-bit) with the Microsoft Edge WebView2 runtime.
+                </p>
+              </div>
+            </li>
+            <li class="col-lg-4 col-md-6 col-sm-12">
+              <div class="product_card nest_card">
+                <i class="fa-brands fa-apple fs-1 text-purple mb-4" aria-hidden="true"></i>
+                <h3 class="h4 text-white">macOS</h3>
+                <p class="text-gray">
+                  <code>.dmg</code> disk image. macOS 10.15 Catalina or newer.
+                </p>
+              </div>
+            </li>
+            <li class="col-lg-4 col-md-12 col-sm-12">
+              <div class="product_card nest_card">
+                <i class="fa-brands fa-linux fs-1 text-purple mb-4" aria-hidden="true"></i>
+                <h3 class="h4 text-white">Linux</h3>
+                <p class="text-gray">
+                  <code>.AppImage</code>. A 64-bit distribution with WebKitGTK 4.1, such as Ubuntu 22.04 or newer.
+                </p>
+              </div>
+            </li>
+          </ul>
+          <p class="nest_note text-center mt-4">
+            All platforms need Docker: Docker Desktop on macOS and Windows, or Docker Engine on Linux.
+          </p>
+          <div class="nest_actions justify-content-center">
+            <!-- LINK: GitHub Releases of the app repo. Installers appear here once a release is published. -->
+            <a href="https://github.com/devmchechi/nest-app/releases" class="contact_btn">
+              <i class="fa-solid fa-download me-2" aria-hidden="true"></i>All releases on GitHub
+            </a>
+            <a href="https://github.com/devmchechi/nest-app/tree/main/docs" class="nest_btn_outline">
+              <i class="fa-solid fa-book me-2" aria-hidden="true"></i>Documentation
+            </a>
+          </div>
+        </section>
+
+        <!-- FAQ ===================================== -->
+        <section class="container col-lg-8 align-self-center accordian nest_faq" aria-labelledby="nest-faq">
+          <h2 id="nest-faq" class="faq_heading">Frequently Asked Questions</h2>
+
+          <div class="accordian_box">
+            <button type="button" class="label_box nest_label_btn" aria-expanded="false" aria-controls="faq-1">
+              <span class="label">What is VaultDB Nest?</span>
+              <img src="img/Group 19700.svg" alt="" />
+            </button>
+            <div class="content" id="faq-1">
+              <p>
+                A desktop app for managing a team of AI agents. Each agent runs in its own Docker container, is
+                defined by a <code>skill.md</code> file in a git repo you own, and reports back to you through the
+                Agent Console.
+              </p>
+            </div>
+          </div>
+
+          <div class="accordian_box">
+            <button type="button" class="label_box nest_label_btn" aria-expanded="false" aria-controls="faq-2">
+              <span class="label">Which models can I use?</span>
+              <img src="img/Group 19700.svg" alt="" />
+            </button>
+            <div class="content" id="faq-2">
+              <p>
+                Local models through Ollama, or Anthropic, OpenAI, and DeepSeek with your own API key. Each agent
+                picks its model in its <code>skill.md</code>.
+              </p>
+            </div>
+          </div>
+
+          <div class="accordian_box">
+            <button type="button" class="label_box nest_label_btn" aria-expanded="false" aria-controls="faq-3">
+              <span class="label">Why does VaultDB Nest need Docker?</span>
+              <img src="img/Group 19700.svg" alt="" />
+            </button>
+            <div class="content" id="faq-3">
+              <p>
+                Every agent runs in its own container, so a misbehaving agent can't touch your files, other agents,
+                or your keys. Use Docker Desktop on macOS and Windows, or Docker Engine on Linux.
+              </p>
+            </div>
+          </div>
+
+          <div class="accordian_box">
+            <button type="button" class="label_box nest_label_btn" aria-expanded="false" aria-controls="faq-4">
+              <span class="label">Where do my API keys go?</span>
+              <img src="img/Group 19700.svg" alt="" />
+            </button>
+            <div class="content" id="faq-4">
+              <p>
+                Into your operating system's keyring. Containers never see them: model calls go through a proxy on
+                your machine that adds the key on the way out.
+              </p>
+            </div>
+          </div>
+
+          <div class="accordian_box">
+            <button type="button" class="label_box nest_label_btn" aria-expanded="false" aria-controls="faq-5">
+              <span class="label">Where are my agents stored?</span>
+              <img src="img/Group 19700.svg" alt="" />
+            </button>
+            <div class="content" id="faq-5">
+              <p>
+                As files in a git repo in your home folder (<code>~/.nest/repo</code>). Push it to GitHub or any git
+                host to back it up or sync it to your other machines. The local database is a cache that VaultDB
+                Nest can rebuild from those files.
+              </p>
+            </div>
+          </div>
+
+          <div class="accordian_box">
+            <button type="button" class="label_box nest_label_btn" aria-expanded="false" aria-controls="faq-6">
+              <span class="label">How do teams share agents?</span>
+              <img src="img/Group 19700.svg" alt="" />
+            </button>
+            <div class="content" id="faq-6">
+              <p>
+                A team is a GitHub organization with a private <code>nest-registry</code> repository. Members sign in
+                with GitHub, join the team, and share agents to it. For live delegation between machines, the team
+                points VaultDB Nest at a relay, which anyone can host with <code>nest --relay</code>.
+              </p>
+            </div>
+          </div>
+
+          <div class="accordian_box">
+            <button type="button" class="label_box nest_label_btn" aria-expanded="false" aria-controls="faq-7">
+              <span class="label">Can a teammate's agent call mine without asking?</span>
+              <img src="img/Group 19700.svg" alt="" />
+            </button>
+            <div class="content" id="faq-7">
+              <p>
+                Only if you allow it. Your agent must accept delegation and serve the requested capability, and the
+                trust graph decides who may call it: allow, deny, or ask. Callers from another machine with no rule
+                are treated as ask.
+              </p>
+            </div>
+          </div>
+          <img src="img/Rectangle 23791.png" class="light2_img" alt="" />
+        </section>
+      </main>
+    </div>
+  </div>
+  <!-- footer section ===========================================-->
+  <div class="container_body">
+    <div class="container_inside">
+      <footer class="footer_section">
+        <div class="footer mt-5" data-aos="fade-left" data-aos-duration="2000">
+          <div class="left">
+            <img src="img/mainlogo.png" alt="" />
+            <a href="index.html" class="footer_logo">VaultDB.ai</a>
+          </div>
+
+          <div class="right" style="margin-bottom: 10px">
+            <a href="https://github.com/devmchechi/nest-app" aria-label="VaultDB Nest on GitHub">
+              <i class="fa-brands fa-github" aria-hidden="true"></i>
+            </a>
+            <a href="#" aria-label="YouTube">
+              <i class="fa-brands fa-youtube" aria-hidden="true"></i>
+            </a>
+            <a href="#" aria-label="Facebook">
+              <i class="fa-brands fa-facebook" aria-hidden="true"></i>
+            </a>
+            <a href="#" aria-label="Twitter">
+              <i class="fa-brands fa-twitter" aria-hidden="true"></i>
+            </a>
+            <a href="#" aria-label="Instagram">
+              <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+            </a>
+            <a href="#" aria-label="LinkedIn">
+              <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <div class="row mb-5">
+            <div class="line mb-5"></div>
+            <div class="col-md-4 col-sm-12 col-lg-4">
+              <p class="bottom_left h5">
+                VaultDB.ai @ 2024. All rights reserved.
+              </p>
+            </div>
+
+            <div class="col-md-8 col-sm-12 col-lg-8 bottom_right">
+              <a href="index.html">VaultDB.ai</a>
+              <a href="nest.html" aria-current="page">VaultDB Nest</a>
+              <a href="contact.html">Contact Us</a>
+              <a href="about.html">About Us</a>
+              <a href="#">Privacy Policy</a>
+              <a href="#">Terms and Conditions</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer_box" aria-hidden="true">
+          <img src="img/Rectangle 9.png" alt="" class="footer_img" />
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous"></script>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <script>
+    AOS.init();
+  </script>
+
+  <script src="js/nest.js"></script>
+</body>
+
+</html>

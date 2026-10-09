@@ -87,7 +87,7 @@ a.products_card:focus-visible {
     font-size: 1.5rem;
 }
 
-/* Full-width marketplace card */
+/* Full-width Agent Hub card */
 a.products_wide {
     flex-direction: row;
     align-items: center;

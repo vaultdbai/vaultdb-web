@@ -1,4 +1,4 @@
-// Marketplace page: renders the VaultDB Nest registry snapshot in
+// Agent Hub page (agents.html): renders the VaultDB Nest registry snapshot in
 // js/catalog-data.js (window.NEST_CATALOG, written by scripts/build-catalog.mjs).
 // Search, kind and tag filters, and a detail dialog. Each entry has its own
 // link (#agent/<id> or #pack/<id>) that opens its details.

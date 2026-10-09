@@ -2,7 +2,7 @@ name: deploy vaultdb.ai
 
 on:
   workflow_dispatch:
-  # Daily, so new registry entries reach the marketplace page without a push
+  # Daily, so new registry entries reach the Agent Hub page without a push
   schedule:
     - cron: "0 2 * * *"
   repository_dispatch:
@@ -34,10 +34,10 @@ jobs:
         with:
           node-version: 22
 
-      # Refresh the marketplace snapshot (js/catalog-data.js) from the VaultDB Nest
+      # Refresh the Agent Hub snapshot (js/catalog-data.js) from the VaultDB Nest
       # registry. Non-fatal: if the registry can't be fetched, the committed
       # snapshot is deployed as is.
-      - name: Refresh marketplace catalog
+      - name: Refresh Agent Hub catalog
         shell: bash
         run: node scripts/build-catalog.mjs || echo "Catalog refresh failed; deploying the committed snapshot"
 

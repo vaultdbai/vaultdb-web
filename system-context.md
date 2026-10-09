@@ -29,8 +29,9 @@ This is **NOT** a framework-based application. There is no React, Next.js, Vite,
 vaultdb-web/
 ├── index.html              — Home page: VaultDB Nest, the agent manager for teams
 ├── database.html           — VaultDB Database (in-process database + VaultDB HUB for IoT and modeling; the former homepage) and its docs links
-├── products.html           — All products (VaultDB Nest, VaultDB Database) and the Nest marketplace
-├── marketplace.html        — VaultDB Nest marketplace: every registry agent and pack, plus the publish guide
+├── products.html           — All products (VaultDB Nest, VaultDB Database) and the Agent Hub
+├── agents.html             — Agent Hub: every registry agent and pack for VaultDB Nest, plus the publish guide
+├── marketplace.html        — Redirect to agents.html (old URL; keeps #agent/<id> and #pack/<id>)
 ├── nest.html               — Redirect to index.html (old VaultDB Nest URL)
 ├── about.html              — About Us page
 ├── contact.html            — Contact Us page
@@ -38,18 +39,18 @@ vaultdb-web/
 ├── formsubmit.html         — Form submission handler
 ├── welcome_template.html   — Welcome email template
 ├── css/
-│   ├── style.css           — Shared base: header, footer, FAQ, cards (index, database, products, marketplace, error)
-│   ├── nest.css            — VaultDB Nest home page + accessible header (also loaded by products and marketplace)
+│   ├── style.css           — Shared base: header, footer, FAQ, cards (index, database, products, agents, error)
+│   ├── nest.css            — VaultDB Nest home page + accessible header (also loaded by products and agents)
 │   ├── products.css        — Products page
-│   ├── marketplace.css     — Marketplace page
+│   ├── agents.css          — Agent Hub page
 │   ├── about.css           — About page styles
 │   ├── contact.css         — Contact page styles
 │   └── form.css            — Form styles
 ├── js/
 │   ├── index.js            — Accordion + mobile menu (database, error)
-│   ├── nest.js             — Accordion + mobile menu with keyboard support, hero download by platform (index, products, marketplace)
+│   ├── nest.js             — Accordion + mobile menu with keyboard support, hero download by platform (index, products, agents)
 │   ├── catalog-data.js     — GENERATED registry snapshot (window.NEST_CATALOG); do not edit by hand
-│   ├── marketplace.js      — Renders the marketplace from catalog-data.js
+│   ├── agents.js           — Renders the Agent Hub from catalog-data.js
 │   ├── about..js           — About page interactions
 │   └── contact.js          — Contact page interactions
 ├── scripts/
@@ -112,7 +113,7 @@ All content is hardcoded in HTML. There is no CMS, no API-fetched content, no dy
 - Product descriptions, FAQ answers, team bios — all inline in HTML
 - Images — all pre-generated and stored in `img/`
 - No JavaScript-driven content loading (no `fetch()` to load page sections)
-- Exception: the marketplace list is rendered by `js/marketplace.js` from the local `js/catalog-data.js` (a `<script>`, not a fetch), so it works from `file://`. A `<noscript>` note links to the registry.
+- Exception: the Agent Hub list is rendered by `js/agents.js` from the local `js/catalog-data.js` (a `<script>`, not a fetch), so it works from `file://`. A `<noscript>` note links to the registry.
 
 ---
 
@@ -149,18 +150,21 @@ All content is hardcoded in HTML. There is no CMS, no API-fetched content, no dy
 |------|------|---------|
 | **Home (VaultDB Nest)** | `index.html` | Agent manager for teams: hero with design preview, positioning, agent managers, who it's for, how it works, screenshots, features, privacy, Teams, download (S3 `downloads/nest/latest/...`), FAQ |
 | **VaultDB Database** | `database.html` | In-process database for IoT and model training, VaultDB HUB, documentation links (docs.vaultdb.ai), FAQ |
-| **Products** | `products.html` | Cards for the real products only (VaultDB Nest, VaultDB Database) plus the marketplace |
-| **Marketplace** | `marketplace.html` | Searchable, filterable catalog of registry agents and packs with a detail dialog (`#agent/<id>`, `#pack/<id>`), and the publish guide |
+| **Products** | `products.html` | Cards for the real products only (VaultDB Nest, VaultDB Database) plus the Agent Hub |
+| **Agent Hub** | `agents.html` | Searchable, filterable catalog of registry agents and packs with a detail dialog (`#agent/<id>`, `#pack/<id>`), and the publish guide |
+| **Agent Hub (old URL)** | `marketplace.html` | Redirects to `agents.html` (keeps `#agent/<id>` / `#pack/<id>`) |
 | **VaultDB Nest (old URL)** | `nest.html` | Redirects to `index.html` (keeps `#anchors`) |
 | **About** | `about.html` | Company story, team photos, mission statement |
 | **Contact** | `contact.html` | Contact form, office details |
 | **Error** | `error.html` | 404 / error page |
 
-Navigation on every page: **Products** dropdown (VaultDB Nest, VaultDB Database with its docs links, All products), **Marketplace**, **About Us**, **Contact Us**; the same in the mobile sidebar and footer. Only list products that exist.
+Navigation on every page: **Products** dropdown (VaultDB Nest, VaultDB Database with its docs links, All products), **Agent Hub**, **About Us**, **Contact Us**; the same in the mobile sidebar and footer. Only list products that exist.
 
-### Marketplace data
+### Agent Hub data
 
-`marketplace.html` renders from `js/catalog-data.js`, a committed snapshot of the VaultDB Nest registry (`github.com/devmchechi/nest-registry`). The page itself loads no remote data. To refresh the snapshot run `node scripts/build-catalog.mjs` (Node 22+, no dependencies; `--from <dir>` reads a registry copy on disk). The deploy workflow also runs it before each deploy; if the fetch fails the committed snapshot is deployed.
+Naming: the website page is the **Agent Hub**; inside the VaultDB Nest app the same catalog is the **Marketplace** tab ("browse the Agent Hub here, install from the Marketplace in VaultDB Nest").
+
+`agents.html` renders from `js/catalog-data.js`, a committed snapshot of the VaultDB Nest registry (`github.com/devmchechi/nest-registry`). The page itself loads no remote data. To refresh the snapshot run `node scripts/build-catalog.mjs` (Node 22+, no dependencies; `--from <dir>` reads a registry copy on disk). The deploy workflow also runs it before each deploy; if the fetch fails the committed snapshot is deployed.
 
 ------|------|---------|
 | **Homepage** | `index.html` | Landing page with hero section, product overview, financial domain ecosystem grid, FAQ accordion |

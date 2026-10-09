@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Builds js/catalog-data.js, the snapshot of the VaultDB Nest registry that
-// marketplace.html renders from. The site has no build step: this script is
+// the Agent Hub page (agents.html) renders from. The site has no build step: this script is
 // only run to refresh the committed snapshot (by hand, or in the deploy
 // workflow). Node 22+, standard library only.
 //

@@ -1,4 +1,4 @@
-/* VaultDB Nest home page (index.html). Also loaded by products.html for the
+/* VaultDB Nest home page (index.html). Also loaded by products.html and agents.html for the
    accessible header (button toggles, focus rings, skip link).
    Loaded after css/style.css, which provides the shared header, footer, FAQ
    accordion, product cards and theme variables. Only page-specific rules here. */

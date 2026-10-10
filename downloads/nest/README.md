@@ -1,6 +1,8 @@
 # VaultDB Nest downloads
 
-Installers for VaultDB Nest, served from `https://vaultdb.ai/downloads/nest/`.
+Installers for VaultDB Nest, served from `https://www.vaultdb.ai/downloads/nest/`.
+
+> Use the `www` host in URLs: `https://vaultdb.ai` (no `www`) doesn't serve HTTPS; plain `http://vaultdb.ai` only redirects to `https://www.vaultdb.ai`.
 The deploy workflow (`.github/workflows/deploy.yml`) uploads this folder to the
 site bucket. Only Windows builds exist for now.
 
@@ -19,7 +21,7 @@ downloads/nest/
 - Every version keeps its own folder, `<version>/VaultDB-Nest-<version>-windows-x64.msi`.
   Old versions stay downloadable: the deploy never deletes anything under `downloads/`.
 - `latest.json` is what both readers use:
-  - the app's updater, at `https://vaultdb.ai/downloads/nest/latest.json`
+  - the app's updater, at `https://www.vaultdb.ai/downloads/nest/latest.json`
     (`plugins.updater.endpoints` in nest-app's `src-tauri/tauri.conf.json`). When it
     sees a newer `version`, VaultDB Nest shows an Update button in the title bar.
   - the website's download buttons (`js/nest.js`), which show the version and link to
@@ -33,7 +35,7 @@ downloads/nest/
   "platforms": {
     "windows-x86_64": {
       "signature": "<contents of the .msi.sig file>",
-      "url": "https://vaultdb.ai/downloads/nest/0.1.0/VaultDB-Nest-0.1.0-windows-x64.msi"
+      "url": "https://www.vaultdb.ai/downloads/nest/0.1.0/VaultDB-Nest-0.1.0-windows-x64.msi"
     }
   }
 }

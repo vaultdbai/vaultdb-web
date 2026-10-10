@@ -197,15 +197,17 @@
               your team share agents and hand work to each other.
             </p>
             <div class="nest_actions justify-content-center">
-              <a href="downloads/nest/latest/VaultDB-Nest-windows-x64.msi" class="contact_btn" id="hero-download">
-                <i class="fa-solid fa-download me-2" aria-hidden="true"></i><span>Download for Windows</span>
+              <a href="downloads/nest/0.1.0/VaultDB-Nest-0.1.0-windows-x64.msi" class="contact_btn js-nest-download" id="hero-download">
+                <i class="fa-solid fa-download me-2" aria-hidden="true"></i>Download for Windows
+                <span class="nest_dl_version">&middot; <span class="js-nest-version">v0.1.0</span></span>
               </a>
-              <a href="#download" class="nest_btn_outline">Other platforms</a>
+              <a href="#how" class="nest_btn_outline">See how it works</a>
               <a href="https://github.com/devmchechi/nest-app" class="nest_text_link">
                 <i class="fa-brands fa-github me-1" aria-hidden="true"></i> View on GitHub
               </a>
             </div>
-            <p class="nest_note">Desktop app for Windows, macOS, and Linux. Requires Docker.</p>
+            <p class="nest_note">Desktop app for Windows 10 and 11. Requires Docker.
+              <span class="js-nest-soon-note" hidden>macOS &amp; Linux coming soon.</span></p>
           </div>
 
           <figure class="nest_hero_shot">
@@ -695,8 +697,7 @@
           <div class="work_heading nest_heading">
             <h2 id="nest-download" class="text-center text-white h1 mt-2">Download VaultDB Nest</h2>
             <p class="text-center work_p">
-              The latest release for your platform. VaultDB Nest requires Docker: Docker Desktop on macOS and
-              Windows, or Docker Engine on Linux.
+              VaultDB Nest is available for Windows today. macOS and Linux are coming soon.
             </p>
           </div>
           <ul class="row gy-4 nest_grid">
@@ -704,41 +705,44 @@
               <div class="product_card nest_card nest_dl_card">
                 <i class="fa-brands fa-windows fs-1 text-purple mb-4" aria-hidden="true"></i>
                 <h3 class="h4 text-white">Windows</h3>
-                <p class="text-gray"><code>.msi</code> installer, x64. Windows 10 or 11 with the Microsoft Edge WebView2 runtime.</p>
-                <a href="downloads/nest/latest/VaultDB-Nest-windows-x64.msi" class="contact_btn nest_dl_btn">
-                  <i class="fa-solid fa-download me-2" aria-hidden="true"></i>Download .msi
+                <p class="text-gray"><code>.msi</code> installer, x64. Windows 10 or 11 with the Microsoft Edge
+                  WebView2 runtime.</p>
+                <a href="downloads/nest/0.1.0/VaultDB-Nest-0.1.0-windows-x64.msi" class="contact_btn nest_dl_btn js-nest-download">
+                  <i class="fa-solid fa-download me-2" aria-hidden="true"></i>Download for Windows
+                  <span class="nest_dl_version">&middot; <span class="js-nest-version">v0.1.0</span></span>
                 </a>
               </div>
             </li>
             <li class="col-lg-4 col-md-6 col-sm-12">
-              <div class="product_card nest_card nest_dl_card">
+              <div class="product_card nest_card nest_dl_card nest_dl_soon">
                 <i class="fa-brands fa-apple fs-1 text-purple mb-4" aria-hidden="true"></i>
                 <h3 class="h4 text-white">macOS</h3>
-                <p class="text-gray"><code>.dmg</code> disk image, Apple silicon. macOS 10.15 Catalina or newer.</p>
-                <a href="downloads/nest/latest/VaultDB-Nest-macos-arm64.dmg" class="contact_btn nest_dl_btn">
-                  <i class="fa-solid fa-download me-2" aria-hidden="true"></i>Download .dmg
-                </a>
+                <p class="text-gray">A macOS build is on the way.</p>
+                <span class="nest_soon" aria-disabled="true">Coming soon</span>
               </div>
             </li>
             <li class="col-lg-4 col-md-12 col-sm-12">
-              <div class="product_card nest_card nest_dl_card">
+              <div class="product_card nest_card nest_dl_card nest_dl_soon">
                 <i class="fa-brands fa-linux fs-1 text-purple mb-4" aria-hidden="true"></i>
                 <h3 class="h4 text-white">Linux</h3>
-                <p class="text-gray"><code>.AppImage</code>, x64. A distribution with WebKitGTK 4.1, such as Ubuntu 22.04 or newer.</p>
-                <a href="downloads/nest/latest/VaultDB-Nest-linux-x64.AppImage" class="contact_btn nest_dl_btn">
-                  <i class="fa-solid fa-download me-2" aria-hidden="true"></i>Download .AppImage
-                </a>
+                <p class="text-gray">A Linux build is on the way.</p>
+                <span class="nest_soon" aria-disabled="true">Coming soon</span>
               </div>
             </li>
           </ul>
-          <p class="nest_note text-center mt-4">
-            <i class="fa-brands fa-docker me-1 text-purple" aria-hidden="true"></i>
-            Docker must be installed and running before you start VaultDB Nest.
-          </p>
+          <ul class="nest_dl_notes">
+            <li>
+              <i class="fa-brands fa-docker text-purple" aria-hidden="true"></i>
+              <span><strong>Requires Docker.</strong> Install Docker Desktop and start it before you open VaultDB
+                Nest.</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-arrows-rotate text-purple" aria-hidden="true"></i>
+              <span><strong>Updates itself.</strong> When a new version is out, an Update button appears in the
+                VaultDB Nest title bar. Click it to install the update and restart.</span>
+            </li>
+          </ul>
           <div class="nest_actions justify-content-center">
-            <a href="https://github.com/devmchechi/nest-app/releases" class="nest_btn_outline">
-              <i class="fa-brands fa-github me-2" aria-hidden="true"></i>All releases on GitHub
-            </a>
             <a href="https://github.com/devmchechi/nest-app/tree/main/docs" class="nest_btn_outline">
               <i class="fa-solid fa-book me-2" aria-hidden="true"></i>VaultDB Nest docs on GitHub
             </a>

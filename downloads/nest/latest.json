@@ -1,0 +1,11 @@
+{
+  "version": "0.1.0",
+  "notes": "First release of VaultDB Nest for Windows.",
+  "pub_date": "2026-10-09T00:00:00Z",
+  "platforms": {
+    "windows-x86_64": {
+      "signature": "REPLACE_WITH_SIG",
+      "url": "https://vaultdb.ai/downloads/nest/0.1.0/VaultDB-Nest-0.1.0-windows-x64.msi"
+    }
+  }
+}

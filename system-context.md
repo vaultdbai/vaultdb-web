@@ -208,7 +208,7 @@ No build step. No compilation. No server process. Just files.
 Installers live in this repo under `downloads/nest/<version>/` and are uploaded by the deploy
 workflow without `--delete`, so old versions stay downloadable. `downloads/nest/latest.json`
 (Tauri v2 updater format) is the single source of truth for the current release: the app's
-updater reads `https://vaultdb.ai/downloads/nest/latest.json`, and `js/nest.js` reads it to label
+updater reads `https://www.vaultdb.ai/downloads/nest/latest.json`, and `js/nest.js` reads it to label
 and link the Windows download buttons (falling back to the version hard-coded in `index.html`,
 e.g. when opened from `file://`). Release steps are in `downloads/nest/README.md`. When you
 release, also update the fallback version and link in `index.html`.

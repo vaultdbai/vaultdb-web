@@ -584,3 +584,48 @@ main code {
         font-size: 2rem;
     }
 }
+
+/* Download: version next to the label, "Coming soon" platforms, notes */
+.nest_dl_version {
+    opacity: 0.85;
+    margin-inline-start: 0.2rem;
+}
+.nest_soon {
+    margin-top: auto;
+    align-self: flex-start;
+    padding: 1.2rem 2rem;
+    border-radius: 20px;
+    border: 1px dashed rgba(168, 150, 183, 0.6);
+    color: var(--para-color);
+    font-size: 16px;
+    cursor: not-allowed;
+}
+.nest_dl_soon:hover {
+    transform: none;
+    box-shadow: none;
+}
+.nest_dl_notes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.6rem 4rem;
+    padding: 0;
+    margin: 4rem auto 0;
+    max-width: 100rem;
+}
+.nest_dl_notes li {
+    display: flex;
+    gap: 1.2rem;
+    align-items: flex-start;
+    max-width: 44rem;
+    color: var(--para-color);
+    font-size: 1.5rem;
+    line-height: 1.6;
+}
+.nest_dl_notes i {
+    font-size: 2rem;
+    margin-top: 0.2rem;
+}
+.nest_dl_notes strong {
+    color: var(--white-color);
+}

@@ -47,21 +47,41 @@ document.querySelectorAll('.link').forEach(function (section) {
   })
 })
 
-// Hero download button: offer the installer for the visitor's platform
-// (Windows is the default in the markup, so it works without JS).
+// Download buttons: Windows is the only build for now. The markup links to a
+// fixed release so it works without JS (and from file://); when
+// downloads/nest/latest.json can be read (the file the app's updater also
+// reads), the buttons switch to its version and installer URL.
 ;(function () {
-  var button = document.getElementById('hero-download')
-  if (!button) return
-  var ua = (navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || navigator.userAgent || ''
-  var builds = {
-    mac: ['downloads/nest/latest/VaultDB-Nest-macos-arm64.dmg', 'Download for macOS'],
-    linux: ['downloads/nest/latest/VaultDB-Nest-linux-x64.AppImage', 'Download for Linux'],
+  var buttons = document.querySelectorAll('.js-nest-download')
+  if (buttons.length === 0) return
+
+  // Visitors on macOS or Linux still get the Windows button, plus a note
+  var platform = (navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || ''
+  if (!/win/i.test(platform)) {
+    document.querySelectorAll('.js-nest-soon-note').forEach(function (note) {
+      note.hidden = false
+    })
   }
-  var pick = /mac/i.test(ua) && !/iphone|ipad/i.test(navigator.userAgent) ? builds.mac
-    : /linux/i.test(ua) && !/android/i.test(navigator.userAgent) ? builds.linux
-    : null
-  if (!pick) return
-  button.setAttribute('href', pick[0])
-  var label = button.querySelector('span')
-  if (label) label.textContent = pick[1]
+
+  if (!window.fetch || window.location.protocol === 'file:') return
+  fetch('downloads/nest/latest.json', { cache: 'no-cache' })
+    .then(function (response) {
+      if (!response.ok) throw new Error('HTTP ' + response.status)
+      return response.json()
+    })
+    .then(function (release) {
+      var windows = release && release.platforms && release.platforms['windows-x86_64']
+      var version = release && typeof release.version === 'string' ? release.version.replace(/^v/, '') : null
+      var url = windows && typeof windows.url === 'string' ? windows.url : null
+      if (!version || !/^\d+\.\d+\.\d+/.test(version) || !url || !/^https:\/\/|^downloads\//.test(url)) return
+      buttons.forEach(function (button) {
+        button.setAttribute('href', url)
+      })
+      document.querySelectorAll('.js-nest-version').forEach(function (label) {
+        label.textContent = 'v' + version
+      })
+    })
+    .catch(function () {
+      // Keep the static link and version from the markup
+    })
 })()

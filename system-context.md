@@ -48,13 +48,17 @@ vaultdb-web/
 │   └── form.css            — Form styles
 ├── js/
 │   ├── index.js            — Accordion + mobile menu (database, error)
-│   ├── nest.js             — Accordion + mobile menu with keyboard support, hero download by platform (index, products, agents)
+│   ├── nest.js             — Accordion + mobile menu with keyboard support, download buttons read downloads/nest/latest.json (index, products, agents)
 │   ├── catalog-data.js     — GENERATED registry snapshot (window.NEST_CATALOG); do not edit by hand
 │   ├── agents.js           — Renders the Agent Hub from catalog-data.js
 │   ├── about..js           — About page interactions
 │   └── contact.js          — Contact page interactions
 ├── scripts/
 │   └── build-catalog.mjs   — Refreshes js/catalog-data.js from the VaultDB Nest registry (not deployed)
+├── downloads/
+│   └── nest/               — VaultDB Nest installers, uploaded to s3://<bucket>/downloads/ (see downloads/nest/README.md)
+│       ├── latest.json     — Current release, Tauri v2 updater format; read by the app updater and the site's download buttons
+│       └── <version>/      — VaultDB-Nest-<version>-windows-x64.msi, one folder per version, never deleted
 └── img/
     ├── mainlogo.png        — Primary logo
     ├── v-logo.png          — Favicon
@@ -148,7 +152,7 @@ All content is hardcoded in HTML. There is no CMS, no API-fetched content, no dy
 
 | Page | File | Purpose |
 |------|------|---------|
-| **Home (VaultDB Nest)** | `index.html` | Agent manager for teams: hero with design preview, positioning, agent managers, who it's for, how it works, screenshots, features, privacy, Teams, download (S3 `downloads/nest/latest/...`), FAQ |
+| **Home (VaultDB Nest)** | `index.html` | Agent manager for teams: hero with design preview, positioning, agent managers, who it's for, how it works, screenshots, features, privacy, Teams, download (Windows from `downloads/nest/latest.json`, macOS/Linux "Coming soon"), FAQ |
 | **VaultDB Database** | `database.html` | In-process database for IoT and model training, VaultDB HUB, documentation links (docs.vaultdb.ai), FAQ |
 | **Products** | `products.html` | Cards for the real products only (VaultDB Nest, VaultDB Database) plus the Agent Hub |
 | **Agent Hub** | `agents.html` | Searchable, filterable catalog of registry agents and packs with a detail dialog (`#agent/<id>`, `#pack/<id>`), and the publish guide |
@@ -182,9 +186,11 @@ The site can be deployed by simply copying all files to any static hosting:
 ```bash
 # GitHub Pages — just push to gh-pages branch
 # S3 — sync the directory
-aws s3 sync dist s3://<bucket> --delete --exclude "downloads/*"   # what deploy.yml does
-# downloads/ holds the VaultDB Nest installers uploaded by the nest-app release
-# workflow: never delete it from the bucket
+# What deploy.yml does:
+aws s3 sync dist s3://<bucket> --delete --exclude "downloads/*"      # the site
+aws s3 sync downloads s3://<bucket>/downloads ...                     # installers, NO --delete
+aws s3 cp downloads/nest/latest.json ... --cache-control "no-cache, max-age=0"
+# downloads/ in the bucket keeps every released installer: never delete it
 
 # Local preview — just open in browser
 # Windows:
@@ -196,3 +202,13 @@ xdg-open index.html
 ```
 
 No build step. No compilation. No server process. Just files.
+
+### VaultDB Nest downloads
+
+Installers live in this repo under `downloads/nest/<version>/` and are uploaded by the deploy
+workflow without `--delete`, so old versions stay downloadable. `downloads/nest/latest.json`
+(Tauri v2 updater format) is the single source of truth for the current release: the app's
+updater reads `https://vaultdb.ai/downloads/nest/latest.json`, and `js/nest.js` reads it to label
+and link the Windows download buttons (falling back to the version hard-coded in `index.html`,
+e.g. when opened from `file://`). Release steps are in `downloads/nest/README.md`. When you
+release, also update the fallback version and link in `index.html`.

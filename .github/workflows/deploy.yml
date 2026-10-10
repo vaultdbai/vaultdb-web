@@ -64,3 +64,15 @@ jobs:
         env:
           AWS_BUCKET: ${{ secrets.AWS_BUCKET }}
         run: aws s3 sync dist "s3://$AWS_BUCKET" --delete --exclude "downloads/*"
+
+      # VaultDB Nest installers (downloads/nest/, see downloads/nest/README.md).
+      # No --delete, so every older version stays downloadable. Order matters:
+      # the installers go up before latest.json points the app and site at them.
+      - name: Upload downloads to S3
+        shell: bash
+        env:
+          AWS_BUCKET: ${{ secrets.AWS_BUCKET }}
+        run: |
+          aws s3 sync downloads "s3://$AWS_BUCKET/downloads" --exclude "*.msi" --exclude "*.md" --exclude "nest/latest.json"
+          aws s3 sync downloads "s3://$AWS_BUCKET/downloads" --exclude "*" --include "*.msi" --content-type application/x-msi --content-disposition attachment
+          aws s3 cp downloads/nest/latest.json "s3://$AWS_BUCKET/downloads/nest/latest.json" --cache-control "no-cache, max-age=0" --content-type application/json

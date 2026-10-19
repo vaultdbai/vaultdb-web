@@ -1,4 +1,4 @@
-// Agent Hub page (agents.html): renders the VaultDB Nest registry snapshot in
+// Agent Hub page (agents.html): renders the Nandin registry snapshot in
 // js/catalog-data.js (window.NEST_CATALOG, written by scripts/build-catalog.mjs).
 // Search, kind and tag filters, and a detail dialog. Each entry has its own
 // link (#agent/<id> or #pack/<id>) that opens its details.
@@ -182,7 +182,7 @@
     var noun = e.kind === 'pack' ? 'pack' : 'agent'
     var facts = [
       ['Version', 'v' + e.version],
-      ['Needs VaultDB Nest', e.minNestVersion + ' or newer'],
+      ['Needs Nandin', e.minNestVersion + ' or newer'],
       ['Publisher', e.publisherName + (e.verified ? ' (signed release)' : '')],
     ]
     if (e.estimatedCostUsd) facts.push(['Estimated cost per run', '$' + e.estimatedCostUsd.min + ' to $' + e.estimatedCostUsd.max + ' (publisher estimate)'])
@@ -220,16 +220,16 @@
     body.push(el('p', { className: 'text-gray', text: 'You approve each item before this ' + noun + ' first runs. Anything not listed is denied by the container runtime and the egress proxy.' }))
     body.push(capabilityTable(e))
 
-    body.push(el('h3', { text: 'Install in VaultDB Nest' }))
+    body.push(el('h3', { text: 'Install in Nandin' }))
     body.push(
       el('ol', { className: 'market_install' }, [
-        el('li', {}, [document.createTextNode('Install VaultDB Nest from the '), el('a', { href: 'index.html#download', className: 'nest_inline_link', text: 'download section' }), document.createTextNode(' (Docker required).')]),
-        el('li', { text: 'Open VaultDB Nest and go to Marketplace.' }),
+        el('li', {}, [document.createTextNode('Install Nandin from the '), el('a', { href: 'index.html#download', className: 'nest_inline_link', text: 'download section' }), document.createTextNode(' (Docker required).')]),
+        el('li', { text: 'Open Nandin and go to Marketplace.' }),
         el('li', {}, [document.createTextNode('Search for the ID '), el('code', { text: e.id }), document.createTextNode(' and choose Install.')]),
         el('li', { text: 'Review the capabilities, then allow them on first run.' }),
       ])
     )
-    var links = [el('a', { href: 'index.html#download', className: 'contact_btn', text: 'Download VaultDB Nest' })]
+    var links = [el('a', { href: 'index.html#download', className: 'contact_btn', text: 'Download Nandin' })]
     if (e.repoUrl) links.push(el('a', { href: e.repoUrl, className: 'nest_btn_outline' }, [el('i', { className: 'fa-brands fa-github me-2', 'aria-hidden': 'true' }), document.createTextNode('Source on GitHub')]))
     body.push(el('div', { className: 'nest_actions' }, links))
 
@@ -276,7 +276,7 @@
   if (source) {
     source.textContent = ''
     source.appendChild(document.createTextNode(entries.length + ' entries from the '))
-    source.appendChild(el('a', { href: data.registryWebUrl, className: 'nest_inline_link', text: 'VaultDB Nest registry' }))
+    source.appendChild(el('a', { href: data.registryWebUrl, className: 'nest_inline_link', text: 'Nandin registry' }))
     source.appendChild(document.createTextNode(', snapshot of ' + data.snapshotDate + '.'))
   }
 

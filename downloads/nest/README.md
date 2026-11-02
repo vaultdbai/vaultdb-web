@@ -1,6 +1,6 @@
-# VaultDB Nest downloads
+# Nandin downloads
 
-Installers for VaultDB Nest, served from `https://www.vaultdb.ai/downloads/nest/`.
+Installers for Nandin, served from `https://www.vaultdb.ai/downloads/nest/`.
 
 > Use the `www` host in URLs: `https://vaultdb.ai` (no `www`) doesn't serve HTTPS; plain `http://vaultdb.ai` only redirects to `https://www.vaultdb.ai`.
 The deploy workflow (`.github/workflows/deploy.yml`) uploads this folder to the
@@ -23,14 +23,14 @@ downloads/nest/
 - `latest.json` is what both readers use:
   - the app's updater, at `https://www.vaultdb.ai/downloads/nest/latest.json`
     (`plugins.updater.endpoints` in nest-app's `src-tauri/tauri.conf.json`). When it
-    sees a newer `version`, VaultDB Nest shows an Update button in the title bar.
+    sees a newer `version`, Nandin shows an Update button in the title bar.
   - the website's download buttons (`js/nest.js`), which show the version and link to
     `platforms["windows-x86_64"].url`.
 
 ```json
 {
   "version": "0.1.0",
-  "notes": "First release of VaultDB Nest for Windows.",
+  "notes": "First release of Nandin for Windows.",
   "pub_date": "2026-10-09T00:00:00Z",
   "platforms": {
     "windows-x86_64": {

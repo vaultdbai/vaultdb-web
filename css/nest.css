@@ -1,4 +1,4 @@
-/* VaultDB Nest home page (index.html). Also loaded by products.html and agents.html for the
+/* Nandin home page (index.html). Also loaded by products.html and agents.html for the
    accessible header (button toggles, focus rings, skip link).
    Loaded after css/style.css, which provides the shared header, footer, FAQ
    accordion, product cards and theme variables. Only page-specific rules here. */
@@ -628,4 +628,16 @@ main code {
 }
 .nest_dl_notes strong {
     color: var(--white-color);
+}
+
+/* Nandin's bull in the hero (css/nandin-bull.css), coloured from the
+   site's tokens; the kit's hex values are only fallbacks */
+.nandin_hero_bull {
+  display: block;
+  margin: 0 auto 0.75rem;
+  --nandin-body: color-mix(in srgb, var(--purple-color) 30%, var(--main-color));
+  --nandin-line: var(--white-color);
+  --nandin-muzzle: var(--main-color);
+  --nandin-load: color-mix(in srgb, var(--para-color) 25%, var(--main-color));
+  --nandin-load-line: var(--para-color);
 }

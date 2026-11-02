@@ -1,4 +1,4 @@
-// VaultDB Nest page: FAQ accordion and mobile menu (same behavior as js/index.js,
+// Nandin page: FAQ accordion and mobile menu (same behavior as js/index.js,
 // plus keyboard and screen reader support).
 
 // FAQ

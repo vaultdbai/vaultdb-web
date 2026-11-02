@@ -4,13 +4,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Agent Hub: AI agents and packs for VaultDB Nest | VaultDB.ai</title>
+  <title>Agent Hub: AI agents and packs for Nandin | VaultDB.ai</title>
   <meta name="description"
-    content="Agent Hub: AI agents and packs, ready to install in VaultDB Nest. See what each one does, the tools, hosts, and OS control it asks for, and how to install it, plus a guide to publishing your own agent." />
+    content="Agent Hub: AI agents and packs, ready to install in Nandin. See what each one does, the tools, hosts, and OS control it asks for, and how to install it, plus a guide to publishing your own agent." />
   <link rel="canonical" href="https://vaultdb.ai/agents.html" />
-  <meta property="og:title" content="Agent Hub: AI agents and packs for VaultDB Nest" />
+  <meta property="og:title" content="Agent Hub: AI agents and packs for Nandin" />
   <meta property="og:description"
-    content="AI agents and packs, ready to install in VaultDB Nest, with the capabilities each one asks for." />
+    content="AI agents and packs, ready to install in Nandin, with the capabilities each one asks for." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://vaultdb.ai/img/nest-og.jpg" />
   <meta property="og:url" content="https://vaultdb.ai/agents.html" />
@@ -27,7 +27,7 @@
   <!-- animation  -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
-  <!-- Shared site styles, the accessible header from the Nest page, then page styles -->
+  <!-- Shared site styles, the accessible header from the Nandin page, then page styles -->
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/nest.css" />
   <link rel="stylesheet" href="css/products.css" />
@@ -56,7 +56,7 @@
                       <img src="img/nest-icon.svg" alt="" />
                     </div>
                     <div class="dropdown_content">
-                      <p>VaultDB Nest</p>
+                      <p>Nandin</p>
                       <p class="para_1">
                         The agent manager for teams: AI agents in containers, with approvals and audit logs.
                       </p>
@@ -130,7 +130,7 @@
                   <div class="second_img first_img">
                     <img src="img/nest-icon.svg" alt="" />
                   </div>
-                  <div class="first_menu_content">VaultDB Nest</div>
+                  <div class="first_menu_content">Nandin</div>
                 </div>
                 <div class="bottom_para">
                   The agent manager for teams: AI agents in containers, with approvals and audit logs.
@@ -183,11 +183,11 @@
         <section class="container products_hero" aria-labelledby="market-title">
           <p class="nest_eyebrow">
             <img src="img/nest-icon.svg" alt="" class="nest_eyebrow_icon" width="28" height="28" />
-            VaultDB Nest
+            Nandin
           </p>
           <h1 id="market-title">Agent Hub</h1>
           <p class="nest_lede">
-            AI agents and packs, ready to install in VaultDB Nest. Browse them here, then install from the
+            AI agents and packs, ready to install in Nandin. Browse them here, then install from the
             Marketplace in the app. Each one declares the tools, hosts, and OS control it needs, and you approve
             them before it first runs.
           </p>
@@ -285,7 +285,7 @@ from each PDF in ./invoices/ and append one row per invoice to
             <article class="publish_step" aria-labelledby="publish-2">
               <h3 id="publish-2"><span class="nest_step_num" aria-hidden="true">2</span>Test it locally</h3>
               <p>Put the folder in your agents repo (<code>~/.nest/repo/.nest/agents/&lt;id&gt;/</code>) and VaultDB
-                Nest picks it up right away. Chat with it, check what it asks you to approve, and confirm its
+                Nandin picks it up right away. Chat with it, check what it asks you to approve, and confirm its
                 prerequisites from a terminal:</p>
               <pre class="publish_code" tabindex="0"><code>nest verify --agent invoice-reader</code></pre>
               <p>To test a registry entry before you open the pull request, add your fork of the registry under
@@ -340,7 +340,7 @@ git push origin v1.0.0</code></pre>
                   schema</a>.</p>
               <div class="nest_family mt-4">
                 <p class="mb-0">
-                  <strong class="text-white">Shortcut:</strong> Publish in VaultDB Nest's agent view does all of
+                  <strong class="text-white">Shortcut:</strong> Publish in Nandin's agent view does all of
                   this for you. It tags the release, builds the entry from <code>skill.md</code>, signs it if you
                   have a key, and opens the pull request.
                 </p>
@@ -352,7 +352,7 @@ git push origin v1.0.0</code></pre>
               <h3 id="publish-5"><span class="nest_step_num" aria-hidden="true">5</span>Sign it (recommended)</h3>
               <p>Signing is optional but recommended. Your public key goes in
                 <code>publishers/&lt;handle&gt;.json</code>; each entry carries the commit and the signature over it.
-                Signed entries show as verified, and VaultDB Nest refuses an install if the tag has moved since you
+                Signed entries show as verified, and Nandin refuses an install if the tag has moved since you
                 signed it.</p>
               <pre class="publish_code" tabindex="0"><code>nest keygen     # once: saves ~/.nest/keys/publisher.key, prints the public key
 nest sign --kind agent --id invoice-reader --release 1.0.0 \
@@ -395,7 +395,7 @@ nest sign --kind agent --id invoice-reader --release 1.0.0 \
               <div class="product_card nest_card">
                 <h4 class="h5 text-white">Ship a README</h4>
                 <p class="text-gray">Say what the agent does, what it needs (files, hosts, keys), and a sample
-                  prompt. The README is shown in VaultDB Nest.</p>
+                  prompt. The README is shown in Nandin.</p>
               </div>
             </li>
           </ul>
@@ -414,7 +414,7 @@ nest sign --kind agent --id invoice-reader --release 1.0.0 \
           </div>
 
           <div class="right" style="margin-bottom: 10px">
-            <a href="https://github.com/devmchechi/nest-app" aria-label="VaultDB Nest on GitHub">
+            <a href="https://github.com/devmchechi/nest-app" aria-label="Nandin on GitHub">
               <i class="fa-brands fa-github" aria-hidden="true"></i>
             </a>
             <a href="#" aria-label="YouTube">
@@ -445,7 +445,7 @@ nest sign --kind agent --id invoice-reader --release 1.0.0 \
             </div>
 
             <div class="col-md-8 col-sm-12 col-lg-8 bottom_right">
-              <a href="index.html">VaultDB Nest</a>
+              <a href="index.html">Nandin</a>
               <a href="products.html">Products</a>
               <a href="agents.html" aria-current="page">Agent Hub</a>
               <a href="database.html">VaultDB Database</a>

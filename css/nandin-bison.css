@@ -624,3 +624,31 @@
     animation: none !important;
   }
 }
+
+/* The Nandin entry in the Products menus (desktop dropdown and phone menu):
+   a small bison walking with its crates. A dark tile, because the bison is
+   white; the phone menu's `.first_img img` rule would shrink its parts */
+.dropdown_img.dropdown_img_bison,
+.first_img:has(> .bison_menu) {
+  background: #241a45;
+}
+.dropdown_img.dropdown_img_bison {
+  box-sizing: border-box;
+  flex: none;
+  width: 40px;
+  height: 40px;
+  padding: 2px;
+}
+.bison.bison_menu {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.first_img .bison.bison_menu {
+  width: 34px;
+  height: 34px;
+}
+.first_img .bison_menu .bp-part {
+  padding: 0 !important;
+  width: 100% !important;
+}

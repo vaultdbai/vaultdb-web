@@ -27,7 +27,7 @@ This is **NOT** a framework-based application. There is no React, Next.js, Vite,
 
 ```
 vaultdb-web/
-├── index.html              — Home page: Nandin (your team's know-how, written down and put to work)
+├── index.html              — Home page: Nandin (the safe way to put AI agents to work in your business)
 ├── database.html           — VaultDB Database (in-process database + VaultDB HUB for IoT and modeling; the former homepage) and its docs links
 ├── products.html           — All products (Nandin, VaultDB Database) and the Agent Hub
 ├── agents.html             — Agent Hub: every registry agent and pack for Nandin, plus the publish guide

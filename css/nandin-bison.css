@@ -627,9 +627,8 @@
 
 /* The companion bison: the app's own companion animation (lying down,
    breathing in a 4-second loop, `src/assets/brand/mascot/companion-bison.webp`
-   in the app). Used in the corner and for the Nandin entry in the Products
-   menus (desktop dropdown and phone menu). The still frame shows when the
-   system asks for less motion */
+   in the app). The corner companion on the home page. The still frame shows
+   when the system asks for less motion */
 .nandin_companion {
   display: block;
   width: 100%;
@@ -654,27 +653,4 @@
 }
 .bison_companion .nandin_companion {
   filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.45));
-}
-
-/* In the menus: a dark tile, because the bison is white. The phone menu's
-   `.first_img img` rule would shrink and pad the image */
-.dropdown_img.dropdown_img_bison,
-.first_img:has(> .nandin_companion) {
-  background: #241a45;
-}
-.dropdown_img.dropdown_img_bison {
-  box-sizing: border-box;
-  flex: none;
-  /* Wider than the other tiles: the bison lies down (about 5:3) */
-  width: 56px;
-  height: 40px;
-  padding: 3px;
-}
-.first_img .nandin_companion {
-  width: 56px;
-  height: 34px;
-}
-.first_img .nandin_companion img {
-  padding: 2px !important;
-  width: 100% !important;
 }

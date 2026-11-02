@@ -1,15 +1,15 @@
 #!/usr/bin/env node
-// Builds js/catalog-data.js, the snapshot of the VaultDB Nest registry that
+// Builds js/catalog-data.js, the snapshot of the Nandin registry that
 // the Agent Hub page (agents.html) renders from. The site has no build step: this script is
 // only run to refresh the committed snapshot (by hand, or in the deploy
 // workflow). Node 22+, standard library only.
 //
 //   node scripts/build-catalog.mjs                 # fetch the canonical registry
 //   node scripts/build-catalog.mjs --from <dir>    # read a registry checkout / copy on disk
-//   NEST_REGISTRY=github.com/org/repo node scripts/build-catalog.mjs
+//   NANDIN_REGISTRY=github.com/org/repo node scripts/build-catalog.mjs
 //
-// Entries are parsed with the same rules as the app and the nest-app website
-// (nest-app/website/src/lib/registry/parse.ts): invalid entries are skipped,
+// Entries are parsed with the same rules as the Nandin app
+// (src-tauri/src/services/marketplace/): invalid entries are skipped,
 // duplicate IDs keep the highest version, deprecated entries are hidden, and
 // publisher signatures are checked against the publisher's Ed25519 key.
 //
@@ -22,7 +22,7 @@ import { fileURLToPath } from 'node:url'
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const OUT = path.join(ROOT, 'js', 'catalog-data.js')
-const DEFAULT_REGISTRY = 'github.com/devmchechi/nest-registry'
+const DEFAULT_REGISTRY = 'github.com/vaultdbai/nandin-registry'
 const INDEX_SCHEMA_VERSION = 1
 const TIMEOUT_MS = 15_000
 const MAX_BYTES = 5 * 1024 * 1024
@@ -126,7 +126,7 @@ const isRepoPath = p =>
   p.length > 0 &&
   Buffer.byteLength(p) <= 512 &&
   !p.startsWith('/') &&
-  p.split('/').every(part => part.length > 0 && (!part.startsWith('.') || part === '.nest') &&
+  p.split('/').every(part => part.length > 0 && (!part.startsWith('.') || part === '.nandin') &&
     !part.includes('\\') && !part.includes(':') && !CONTROL.test(part))
 
 function fail(what, reason) {
@@ -135,7 +135,7 @@ function fail(what, reason) {
 
 function capabilities(obj) {
   const value = obj.capabilities
-  if (value === undefined) return { tools: [], network: [], pilots: [], requiresApproval: [], aws: [] }
+  if (value === undefined) return { tools: [], network: [], pilots: [], requiresApproval: [], aws: [], connectors: [] }
   if (!isObject(value)) throw new EntryError('`capabilities` must be an object')
   const approvalKey = value.requiresApproval !== undefined ? 'requiresApproval' : 'requires_approval'
   const caps = {
@@ -144,6 +144,7 @@ function capabilities(obj) {
     pilots: strList(value, 'pilots'),
     requiresApproval: strList(value, approvalKey),
     aws: strList(value, 'aws'),
+    connectors: strList(value, 'connectors'),
   }
   const bad = Object.values(caps).flat().find(i => i.length === 0 || i.length > 253 || /\s/.test(i) || CONTROL.test(i))
   if (bad !== undefined) throw new EntryError(`capability '${bad}' is not a plain name`)
@@ -167,14 +168,14 @@ function common(what, obj) {
   const publisher = str(obj, 'publisher').toLowerCase()
   const repo = str(obj, 'repo')
   const latestVersion = str(obj, 'latest_version')
-  const minNestVersion = strOr(obj, 'min_nest_version', '0.0.0')
+  const minNandinVersion = strOr(obj, 'min_nandin_version', '0.0.0')
   if (name.trim().length === 0 || Buffer.byteLength(name) > 200) {
     throw new EntryError(`${what}: a name of 1-200 characters is required`)
   }
   fail(what, checkPublisher(publisher))
   fail(what, checkSource(repo))
   if (!isVersion(latestVersion)) throw new EntryError(`${what}: bad latest_version '${latestVersion}'`)
-  if (!isVersion(minNestVersion)) throw new EntryError(`${what}: bad min_nest_version '${minNestVersion}'`)
+  if (!isVersion(minNandinVersion)) throw new EntryError(`${what}: bad min_nandin_version '${minNandinVersion}'`)
   for (const key of ['icon_url', 'readme_url']) {
     const url = optStr(obj, key)
     if (url !== null && (!(url.startsWith('https://') || isRepoPath(url)) || /\s/.test(url))) {
@@ -194,7 +195,7 @@ function common(what, obj) {
     publisher,
     repo,
     version,
-    minNestVersion,
+    minNandinVersion,
     tags: strList(obj, 'tags'),
     capabilities: capabilities(obj),
     estimatedCostUsd: costRange(obj),
@@ -271,7 +272,7 @@ function verified(publicKey, entry) {
   if (key === null || sig === null || entry.commit === null) return false
   try {
     const keyObject = createPublicKey({ key: { kty: 'OKP', crv: 'Ed25519', x: key.toString('base64url') }, format: 'jwk' })
-    const message = `nest-signature-v1\n${entry.kind}\n${entry.id}\n${entry.version}\n${entry.commit}\n`
+    const message = `nandin-signature-v1\n${entry.kind}\n${entry.id}\n${entry.version}\n${entry.commit}\n`
     return cryptoVerify(null, Buffer.from(message), keyObject, sig)
   } catch {
     return false
@@ -281,7 +282,7 @@ function verified(publicKey, entry) {
 // -- Main ---------------------------------------------------------------------
 
 async function main() {
-  const registry = fromDir ?? process.env.NEST_REGISTRY ?? DEFAULT_REGISTRY
+  const registry = fromDir ?? process.env.NANDIN_REGISTRY ?? DEFAULT_REGISTRY
   const source = registryReader(registry)
   const raw = JSON.parse(await source.read('index.json'))
   let agentsRaw = []
@@ -345,7 +346,7 @@ async function main() {
         publisherName: publisher?.name ?? e.publisher,
         verified: publisher?.publicKey ? verified(publisher.publicKey, e) : false,
         version: e.version,
-        minNestVersion: e.minNestVersion,
+        minNandinVersion: e.minNandinVersion,
         tags: [...new Set(e.tags.map(t => t.toLowerCase()))],
         repoUrl: repoWebUrl(e.repo),
         capabilities: e.capabilities,
@@ -363,15 +364,15 @@ async function main() {
 
   const data = {
     registry: normalizeRegistryUrl(registry),
-    registryWebUrl: source.webUrl ?? 'https://github.com/devmchechi/nest-registry',
+    registryWebUrl: source.webUrl ?? 'https://github.com/vaultdbai/nandin-registry',
     source: fromDir ? 'local copy' : 'live',
     snapshotDate: new Date().toISOString().slice(0, 10),
     entries: out,
   }
   const js =
-    '// Generated by scripts/build-catalog.mjs from the VaultDB Nest registry. Do not edit by hand.\n' +
+    '// Generated by scripts/build-catalog.mjs from the Nandin registry. Do not edit by hand.\n' +
     `// Source: ${fromDir ? 'local copy of ' : ''}${data.registry} (${data.snapshotDate}). ${out.length} entries.\n` +
-    `window.NEST_CATALOG = ${JSON.stringify(data, null, 2)};\n`
+    `window.NANDIN_CATALOG = ${JSON.stringify(data, null, 2)};\n`
   await writeFile(OUT, js.replace(/\n/g, '\r\n'))
   const agents = out.filter(e => e.kind === 'agent').length
   console.log(`Wrote js/catalog-data.js: ${agents} agents, ${out.length - agents} packs from ${source.label}`)

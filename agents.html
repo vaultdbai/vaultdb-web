@@ -12,7 +12,7 @@
   <meta property="og:description"
     content="AI agents and packs, ready to install in Nandin, with the capabilities each one asks for." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://vaultdb.ai/img/nest-og.jpg" />
+  <meta property="og:image" content="https://www.vaultdb.ai/img/nandin-og.png" />
   <meta property="og:url" content="https://vaultdb.ai/agents.html" />
   <meta property="og:site_name" content="VaultDB.ai" />
 
@@ -53,12 +53,12 @@
                 <li>
                   <a href="index.html" class="second_content third_content nav_product" style="text-align: start; border-radius: 10px 10px 0 0">
                     <div class="dropdown_img">
-                      <img src="img/nest-icon.svg" alt="" />
+                      <img src="img/nandin-app-icon-64.png" alt="" />
                     </div>
                     <div class="dropdown_content">
                       <p>Nandin</p>
                       <p class="para_1">
-                        The agent manager for teams: AI agents in containers, with approvals and audit logs.
+                        A Chief of Staff for everyone, and AI agents your company owns.
                       </p>
                     </div>
                   </a>
@@ -128,12 +128,12 @@
               <a href="index.html" class="second_menu first_menu">
                 <div class="content">
                   <div class="second_img first_img">
-                    <img src="img/nest-icon.svg" alt="" />
+                    <img src="img/nandin-app-icon-64.png" alt="" />
                   </div>
                   <div class="first_menu_content">Nandin</div>
                 </div>
                 <div class="bottom_para">
-                  The agent manager for teams: AI agents in containers, with approvals and audit logs.
+                  A Chief of Staff for everyone, and AI agents your company owns.
                 </div>
               </a>
             </ul>
@@ -182,13 +182,13 @@
       <main id="main">
         <section class="container products_hero" aria-labelledby="market-title">
           <p class="nest_eyebrow">
-            <img src="img/nest-icon.svg" alt="" class="nest_eyebrow_icon" width="28" height="28" />
+            <img src="img/nandin-app-icon-64.png" alt="" class="nest_eyebrow_icon" width="28" height="28" />
             Nandin
           </p>
           <h1 id="market-title">Agent Hub</h1>
           <p class="nest_lede">
-            AI agents and packs, ready to install in Nandin. Browse them here, then install from the
-            Marketplace in the app. Each one declares the tools, hosts, and OS control it needs, and you approve
+            AI agents and packs, ready to install in Nandin. Browse them here, then install from
+            Library &rsaquo; Browse in the app. Each one declares the tools, hosts, and OS control it needs, and you approve
             them before it first runs.
           </p>
         </section>
@@ -217,7 +217,7 @@
           <noscript>
             <p class="nest_note text-center">
               The catalog needs JavaScript. You can also browse the registry directly on
-              <a class="nest_inline_link" href="https://github.com/devmchechi/nest-registry">GitHub</a>.
+              <a class="nest_inline_link" href="https://github.com/vaultdbai/nandin-registry">GitHub</a>.
             </p>
           </noscript>
           <p class="nest_note text-center mt-5" id="market-source"></p>
@@ -270,7 +270,7 @@ from each PDF in ./invoices/ and append one row per invoice to
   source, explain that they can fork this agent and add the host to
   network.allow.</code></pre>
                 <ul class="publish_notes">
-                  <li><code>name</code> and <code>description</code> appear in the Agent Hub, in the app's Marketplace,
+                  <li><code>name</code> and <code>description</code> appear in the Agent Hub, in the app's Library,
                     and in the registry entry.</li>
                   <li><code>allowed-tools</code> lists every tool the agent may call. Anything else is refused.</li>
                   <li><code>requires_approval</code> pauses the run for your confirmation before these tools act.</li>
@@ -284,12 +284,12 @@ from each PDF in ./invoices/ and append one row per invoice to
 
             <article class="publish_step" aria-labelledby="publish-2">
               <h3 id="publish-2"><span class="nest_step_num" aria-hidden="true">2</span>Test it locally</h3>
-              <p>Put the folder in your agents repo (<code>~/.nest/repo/.nest/agents/&lt;id&gt;/</code>) and VaultDB
+              <p>Put the folder in your agents repo (<code>~/.nandin/repo/.nandin/agents/&lt;id&gt;/</code>) and
                 Nandin picks it up right away. Chat with it, check what it asks you to approve, and confirm its
                 prerequisites from a terminal:</p>
-              <pre class="publish_code" tabindex="0"><code>nest verify --agent invoice-reader</code></pre>
+              <pre class="publish_code" tabindex="0"><code>nandin verify --agent invoice-reader</code></pre>
               <p>To test a registry entry before you open the pull request, add your fork of the registry under
-                Marketplace &rarr; Registries and install from it.</p>
+                Settings &rsaquo; Sources and install from it in Library &rsaquo; Browse.</p>
             </article>
 
             <article class="publish_step" aria-labelledby="publish-3">
@@ -315,36 +315,36 @@ git push origin v1.0.0</code></pre>
   "name": "Invoice Reader",
   "description": "Reads PDF invoices in your working folder and saves their totals to a CSV.",
   "publisher": "your-handle",
-  "repo": "github.com/your-handle/nest-agents",
+  "repo": "github.com/your-handle/nandin-agents",
   "path": "agents/invoice-reader",
   "latest_version": "1.0.0",
   "tags": ["finance", "pdf"],
-  "min_nest_version": "0.1.0",
+  "min_nandin_version": "0.1.0",
   "capabilities": {
     "tools": ["shell", "read_file", "write_file", "list_dir"],
     "network": ["api.exchangerate.host"],
     "pilots": []
   },
-  "icon_url": "https://raw.githubusercontent.com/your-handle/nest-agents/HEAD/agents/invoice-reader/icon.svg",
-  "readme_url": "https://raw.githubusercontent.com/your-handle/nest-agents/HEAD/agents/invoice-reader/README.md"
+  "icon_url": "https://raw.githubusercontent.com/your-handle/nandin-agents/HEAD/agents/invoice-reader/icon.svg",
+  "readme_url": "https://raw.githubusercontent.com/your-handle/nandin-agents/HEAD/agents/invoice-reader/README.md"
 }</code></pre>
               <p class="publish_file">publishers/your-handle.json</p>
               <pre class="publish_code" tabindex="0"><code>{
   "github_handle": "your-handle",
   "display_name": "Your Name",
-  "public_key": "ed25519:&lt;printed by nest keygen&gt;",
+  "public_key": "ed25519:&lt;printed by nandin keygen&gt;",
   "created_at": "2026-10-06T00:00:00Z"
 }</code></pre>
               <p class="text-gray small_text">The full field list, including optional and reserved fields, is in the
-                <a class="nest_inline_link" href="https://github.com/devmchechi/nest-app/tree/main/registry-schema">registry
+                <a class="nest_inline_link" href="https://github.com/vaultdbai/nandin-spec/tree/main/registry-schema">registry
                   schema</a>.</p>
               <div class="nest_family mt-4">
                 <p class="mb-0">
-                  <strong class="text-white">Shortcut:</strong> Publish in Nandin's agent view does all of
+                  <strong class="text-white">Shortcut:</strong> Publish, in the agent's &#8943; menu in Nandin, does all of
                   this for you. It tags the release, builds the entry from <code>skill.md</code>, signs it if you
                   have a key, and opens the pull request.
                 </p>
-                <a href="https://github.com/devmchechi/nest-registry" class="nest_btn_outline">Open the registry repo</a>
+                <a href="https://github.com/vaultdbai/nandin-registry" class="nest_btn_outline">Open the registry repo</a>
               </div>
             </article>
 
@@ -354,9 +354,9 @@ git push origin v1.0.0</code></pre>
                 <code>publishers/&lt;handle&gt;.json</code>; each entry carries the commit and the signature over it.
                 Signed entries show as verified, and Nandin refuses an install if the tag has moved since you
                 signed it.</p>
-              <pre class="publish_code" tabindex="0"><code>nest keygen     # once: saves ~/.nest/keys/publisher.key, prints the public key
-nest sign --kind agent --id invoice-reader --release 1.0.0 \
-          --repo github.com/your-handle/nest-agents
+              <pre class="publish_code" tabindex="0"><code>nandin keygen     # once: saves ~/.nandin/keys/publisher.key, prints the public key
+nandin sign --kind agent --id invoice-reader --release 1.0.0 \
+            --repo github.com/your-handle/nandin-agents
 # paste the printed "commit" and "signature" into agents/invoice-reader.json</code></pre>
             </article>
           </div>
@@ -387,8 +387,8 @@ nest sign --kind agent --id invoice-reader --release 1.0.0 \
             <li class="col-lg-6 col-md-6 col-sm-12">
               <div class="product_card nest_card">
                 <h4 class="h5 text-white">Sign your releases</h4>
-                <p class="text-gray">Create a key once with <code>nest keygen</code>, then sign each release with
-                  <code>nest sign</code>.</p>
+                <p class="text-gray">Create a key once with <code>nandin keygen</code>, then sign each release with
+                  <code>nandin sign</code>.</p>
               </div>
             </li>
             <li class="col-lg-6 col-md-12 col-sm-12">
@@ -414,7 +414,7 @@ nest sign --kind agent --id invoice-reader --release 1.0.0 \
           </div>
 
           <div class="right" style="margin-bottom: 10px">
-            <a href="https://github.com/devmchechi/nest-app" aria-label="Nandin on GitHub">
+            <a href="https://github.com/vaultdbai/nandin" aria-label="Nandin on GitHub">
               <i class="fa-brands fa-github" aria-hidden="true"></i>
             </a>
             <a href="#" aria-label="YouTube">

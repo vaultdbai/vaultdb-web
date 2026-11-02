@@ -1,9 +1,9 @@
 // Agent Hub page (agents.html): renders the Nandin registry snapshot in
-// js/catalog-data.js (window.NEST_CATALOG, written by scripts/build-catalog.mjs).
+// js/catalog-data.js (window.NANDIN_CATALOG, written by scripts/build-catalog.mjs).
 // Search, kind and tag filters, and a detail dialog. Each entry has its own
 // link (#agent/<id> or #pack/<id>) that opens its details.
 ;(function () {
-  var data = window.NEST_CATALOG
+  var data = window.NANDIN_CATALOG
   var grid = document.getElementById('market-grid')
   if (!data || !grid) return
 
@@ -161,6 +161,7 @@
       ['Network hosts', c.network],
       ['Pilots (OS control)', c.pilots],
     ]
+    if (c.connectors && c.connectors.length) rows.push(['Connectors', c.connectors])
     if (c.aws && c.aws.length) rows.push(['AWS services', c.aws])
     return el(
       'dl',
@@ -182,7 +183,7 @@
     var noun = e.kind === 'pack' ? 'pack' : 'agent'
     var facts = [
       ['Version', 'v' + e.version],
-      ['Needs Nandin', e.minNestVersion + ' or newer'],
+      ['Needs Nandin', e.minNandinVersion + ' or newer'],
       ['Publisher', e.publisherName + (e.verified ? ' (signed release)' : '')],
     ]
     if (e.estimatedCostUsd) facts.push(['Estimated cost per run', '$' + e.estimatedCostUsd.min + ' to $' + e.estimatedCostUsd.max + ' (publisher estimate)'])
@@ -224,9 +225,9 @@
     body.push(
       el('ol', { className: 'market_install' }, [
         el('li', {}, [document.createTextNode('Install Nandin from the '), el('a', { href: 'index.html#download', className: 'nest_inline_link', text: 'download section' }), document.createTextNode(' (Docker required).')]),
-        el('li', { text: 'Open Nandin and go to Marketplace.' }),
+        el('li', { text: 'Open Nandin and go to Library › Browse.' }),
         el('li', {}, [document.createTextNode('Search for the ID '), el('code', { text: e.id }), document.createTextNode(' and choose Install.')]),
-        el('li', { text: 'Review the capabilities, then allow them on first run.' }),
+        el('li', { text: 'Review what it may do, then choose Install and allow.' }),
       ])
     )
     var links = [el('a', { href: 'index.html#download', className: 'contact_btn', text: 'Download Nandin' })]

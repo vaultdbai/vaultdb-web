@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="520" viewBox="0 0 560 520" role="img" aria-labelledby="t d">
+  <title id="t">How VaultDB Nest runs agents</title>
+  <desc id="d">On your machine, VaultDB Nest runs each agent in its own Docker container. Agent definitions live in a git repo you own and API keys stay in the OS keyring. Containers reach model providers and approved hosts only through the egress proxy, and every action is written to the audit log.</desc>
+  <defs>
+    <linearGradient id="brand" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#6A3093"/>
+      <stop offset="1" stop-color="#A044FF"/>
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 10 5 0 10z" fill="#A044FF"/>
+    </marker>
+  </defs>
+  <style>
+    text { font-family: 'DM Sans', 'Segoe UI', Helvetica, Arial, sans-serif; }
+    .label { fill: #F5EBFF; font-size: 15px; font-weight: 600; }
+    .small { fill: #A896B7; font-size: 12px; }
+    .box { fill: rgba(30, 17, 44, 0.85); stroke: #312A36; stroke-width: 1.5; }
+    .accent { fill: rgba(160, 68, 255, 0.10); stroke: #A044FF; stroke-width: 1.5; }
+    .line { stroke: #A044FF; stroke-width: 1.5; fill: none; }
+    .dash { stroke: #A896B7; stroke-width: 1.2; stroke-dasharray: 4 4; fill: none; }
+  </style>
+
+  <!-- Your machine -->
+  <rect x="10" y="10" width="540" height="390" rx="22" fill="rgba(30, 17, 44, 0.45)" stroke="#312A36" stroke-width="1.5"/>
+  <text x="34" y="42" class="small">YOUR MACHINE</text>
+
+  <!-- App bar -->
+  <rect x="34" y="58" width="492" height="52" rx="14" fill="url(#brand)"/>
+  <text x="56" y="90" fill="#FFFFFF" font-size="18" font-weight="700">VaultDB Nest</text>
+  <text x="504" y="90" fill="#F5EBFF" font-size="12" text-anchor="end">desktop app · LAN web UI</text>
+
+  <!-- Left column: repo, keyring -->
+  <rect x="34" y="132" width="150" height="72" rx="14" class="box"/>
+  <text x="50" y="162" class="label">Git repo</text>
+  <text x="50" y="184" class="small">agents, workflows,</text>
+  <text x="50" y="199" class="small">triggers as files</text>
+
+  <rect x="34" y="222" width="150" height="72" rx="14" class="box"/>
+  <text x="50" y="252" class="label">OS keyring</text>
+  <text x="50" y="274" class="small">API keys and tokens</text>
+  <text x="50" y="289" class="small">never enter containers</text>
+
+  <!-- Containers -->
+  <rect x="206" y="132" width="320" height="162" rx="14" class="accent"/>
+  <text x="222" y="158" class="small">DOCKER CONTAINERS</text>
+  <rect x="222" y="172" width="92" height="104" rx="12" class="box"/>
+  <rect x="320" y="172" width="92" height="104" rx="12" class="box"/>
+  <rect x="418" y="172" width="92" height="104" rx="12" class="box"/>
+  <g class="label" text-anchor="middle">
+    <text x="268" y="218">Agent</text>
+    <text x="366" y="218">Agent</text>
+    <text x="464" y="218">Agent</text>
+  </g>
+  <g class="small" text-anchor="middle">
+    <text x="268" y="242">skill.md</text>
+    <text x="366" y="242">skill.md</text>
+    <text x="464" y="242">skill.md</text>
+    <text x="268" y="260">no keys</text>
+    <text x="366" y="260">no keys</text>
+    <text x="464" y="260">no keys</text>
+  </g>
+
+  <!-- Egress proxy + audit -->
+  <rect x="206" y="316" width="320" height="60" rx="14" class="box"/>
+  <text x="222" y="342" class="label">Egress proxy</text>
+  <text x="222" y="362" class="small">adds keys, allows only approved hosts</text>
+  <rect x="34" y="316" width="150" height="60" rx="14" class="box"/>
+  <text x="50" y="342" class="label">Audit log</text>
+  <text x="50" y="362" class="small">every run and request</text>
+
+  <path d="M366 294 V314" class="line" marker-end="url(#arrow)"/>
+  <path d="M204 346 H188" class="dash" marker-end="url(#arrow)"/>
+
+  <!-- Outside -->
+  <path d="M310 376 V430 H160 V452" class="line" marker-end="url(#arrow)"/>
+  <path d="M420 376 V430 H400 V452" class="line" marker-end="url(#arrow)"/>
+  <rect x="60" y="456" width="200" height="54" rx="14" class="box"/>
+  <text x="160" y="481" class="label" text-anchor="middle">Model providers</text>
+  <text x="160" y="499" class="small" text-anchor="middle">or local models via Ollama</text>
+  <rect x="300" y="456" width="200" height="54" rx="14" class="box"/>
+  <text x="400" y="481" class="label" text-anchor="middle">Approved hosts</text>
+  <text x="400" y="499" class="small" text-anchor="middle">MCP connectors, APIs</text>
+</svg>

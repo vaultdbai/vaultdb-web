@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" role="img" aria-label="VaultDB Nest">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#6A3093"/>
+      <stop offset="1" stop-color="#A044FF"/>
+    </linearGradient>
+  </defs>
+  <path d="M6 26c0 9 8 16 18 16s18-7 18-16" fill="none" stroke="url(#g)" stroke-width="4" stroke-linecap="round"/>
+  <path d="M10 31c4 3 9 5 14 5s10-2 14-5" fill="none" stroke="url(#g)" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="15" cy="17" r="5" fill="url(#g)"/>
+  <circle cx="24" cy="12" r="5" fill="url(#g)"/>
+  <circle cx="33" cy="17" r="5" fill="url(#g)"/>
+</svg>

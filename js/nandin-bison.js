@@ -102,7 +102,7 @@
     }
   }
 
-  // Companion: a small walking bison that takes you back to the top once
+  // Companion: the app's companion bison, breathing, that takes you back to the top once
   // you've scrolled past the hero
   var companion = document.querySelector('.js-bison-companion')
   if (companion) {

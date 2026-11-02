@@ -625,30 +625,56 @@
   }
 }
 
-/* The Nandin entry in the Products menus (desktop dropdown and phone menu):
-   a small bison walking with its crates. A dark tile, because the bison is
-   white; the phone menu's `.first_img img` rule would shrink its parts */
+/* The companion bison: the app's own companion animation (lying down,
+   breathing in a 4-second loop, `src/assets/brand/mascot/companion-bison.webp`
+   in the app). Used in the corner and for the Nandin entry in the Products
+   menus (desktop dropdown and phone menu). The still frame shows when the
+   system asks for less motion */
+.nandin_companion {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.nandin_companion img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.nandin_companion .nandin_companion_still {
+  display: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .nandin_companion .nandin_companion_moving {
+    display: none;
+  }
+  .nandin_companion .nandin_companion_still {
+    display: block;
+  }
+}
+.bison_companion .nandin_companion {
+  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.45));
+}
+
+/* In the menus: a dark tile, because the bison is white. The phone menu's
+   `.first_img img` rule would shrink and pad the image */
 .dropdown_img.dropdown_img_bison,
-.first_img:has(> .bison_menu) {
+.first_img:has(> .nandin_companion) {
   background: #241a45;
 }
 .dropdown_img.dropdown_img_bison {
   box-sizing: border-box;
   flex: none;
-  width: 40px;
+  /* Wider than the other tiles: the bison lies down (about 5:3) */
+  width: 56px;
   height: 40px;
-  padding: 2px;
+  padding: 3px;
 }
-.bison.bison_menu {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-.first_img .bison.bison_menu {
-  width: 34px;
+.first_img .nandin_companion {
+  width: 56px;
   height: 34px;
 }
-.first_img .bison_menu .bp-part {
-  padding: 0 !important;
+.first_img .nandin_companion img {
+  padding: 2px !important;
   width: 100% !important;
 }

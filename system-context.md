@@ -27,7 +27,7 @@ This is **NOT** a framework-based application. There is no React, Next.js, Vite,
 
 ```
 vaultdb-web/
-├── index.html              — Home page: Nandin, the agent manager for teams
+├── index.html              — Home page: Nandin (turn how your people work into AI your company owns)
 ├── database.html           — VaultDB Database (in-process database + VaultDB HUB for IoT and modeling; the former homepage) and its docs links
 ├── products.html           — All products (Nandin, VaultDB Database) and the Agent Hub
 ├── agents.html             — Agent Hub: every registry agent and pack for Nandin, plus the publish guide
@@ -41,6 +41,7 @@ vaultdb-web/
 ├── css/
 │   ├── style.css           — Shared base: header, footer, FAQ, cards (index, database, products, agents, error)
 │   ├── nest.css            — Nandin home page + accessible header (also loaded by products and agents)
+│   ├── nandin-bison.css    — The animated bison mascot (port of the app's bison-pose.css)
 │   ├── products.css        — Products page
 │   ├── agents.css          — Agent Hub page
 │   ├── about.css           — About page styles
@@ -48,21 +49,22 @@ vaultdb-web/
 │   └── form.css            — Form styles
 ├── js/
 │   ├── index.js            — Accordion + mobile menu (database, error)
-│   ├── nest.js             — Accordion + mobile menu with keyboard support, download buttons read downloads/nest/latest.json (index, products, agents)
-│   ├── catalog-data.js     — GENERATED registry snapshot (window.NEST_CATALOG); do not edit by hand
+│   ├── nest.js             — Accordion + mobile menu with keyboard support, names the visitor's platform on the download button (index, products, agents)
+│   ├── nandin-bison.js     — Bison pose switching, the hero's live demo and the corner companion (index)
+│   ├── catalog-data.js     — GENERATED registry snapshot (window.NANDIN_CATALOG); do not edit by hand
 │   ├── agents.js           — Renders the Agent Hub from catalog-data.js
 │   ├── about..js           — About page interactions
 │   └── contact.js          — Contact page interactions
 ├── scripts/
 │   └── build-catalog.mjs   — Refreshes js/catalog-data.js from the Nandin registry (not deployed)
 ├── downloads/
-│   └── nest/               — Nandin installers, uploaded to s3://<bucket>/downloads/ (see downloads/nest/README.md)
-│       ├── latest.json     — Current release, Tauri v2 updater format; read by the app updater and the site's download buttons
-│       └── <version>/      — VaultDB-Nest-<version>-windows-x64.msi, one folder per version, never deleted
+│   └── nest/               — The old VaultDB Nest 0.1.0 installer and its latest.json, kept for installs of that build (see below)
 └── img/
     ├── mainlogo.png        — Primary logo
     ├── v-logo.png          — Favicon
-    ├── nest-*.webp/.jpg    — Nandin design-preview screenshots (webp + jpg fallback), nest-og.jpg (1200x630)
+    ├── nandin-shot-*.webp/.jpg — Nandin design-preview screenshots (webp + jpg fallback): designed mockups with sample data
+    ├── nandin-bison-*.webp — The bison's four poses (rest, wait, carry, done), 384 px; brand assets of VaultDB.ai
+    ├── nandin-app-icon-*.png — Nandin's app icon (favicon, menus); nandin-og.png (1200x630) for link previews
     └── ...                 — All other static assets
 ```
 
@@ -152,7 +154,7 @@ All content is hardcoded in HTML. There is no CMS, no API-fetched content, no dy
 
 | Page | File | Purpose |
 |------|------|---------|
-| **Home (Nandin)** | `index.html` | Agent manager for teams: hero with design preview, positioning, agent managers, who it's for, how it works, screenshots, features, privacy, Teams, download (Windows from `downloads/nest/latest.json`, macOS/Linux "Coming soon"), FAQ |
+| **Home (Nandin)** | `index.html` | The pitch's story: hero with the live bison and a design preview, the problem, why AI programs stall, the six steps (Capture, Run, Prove, Own, Connect, Scale) each with a section, the bison's poses, starter packs, tools and models, privacy, the company relay (with `docker run`), licensing, downloads (GitHub Releases), FAQ |
 | **VaultDB Database** | `database.html` | In-process database for IoT and model training, VaultDB HUB, documentation links (docs.vaultdb.ai), FAQ |
 | **Products** | `products.html` | Cards for the real products only (Nandin, VaultDB Database) plus the Agent Hub |
 | **Agent Hub** | `agents.html` | Searchable, filterable catalog of registry agents and packs with a detail dialog (`#agent/<id>`, `#pack/<id>`), and the publish guide |
@@ -166,16 +168,9 @@ Navigation on every page: **Products** dropdown (Nandin, VaultDB Database with i
 
 ### Agent Hub data
 
-Naming: the website page is the **Agent Hub**; inside the Nandin app the same catalog is the **Marketplace** tab ("browse the Agent Hub here, install from the Marketplace in Nandin").
+Naming: the website page is the **Agent Hub**; inside the Nandin app the same catalog is **Library › Browse** ("browse the Agent Hub here, install from the Library in Nandin").
 
-`agents.html` renders from `js/catalog-data.js`, a committed snapshot of the Nandin registry (`github.com/devmchechi/nest-registry`). The page itself loads no remote data. To refresh the snapshot run `node scripts/build-catalog.mjs` (Node 22+, no dependencies; `--from <dir>` reads a registry copy on disk). The deploy workflow also runs it before each deploy; if the fetch fails the committed snapshot is deployed.
-
-------|------|---------|
-| **Homepage** | `index.html` | Landing page with hero section, product overview, financial domain ecosystem grid, FAQ accordion |
-| **About** | `about.html` | Company story, team photos, mission statement |
-| **Contact** | `contact.html` | Contact form, office details |
-| **Nandin** | `nest.html` | Product page for Nandin (local-first desktop app for AI agents): features, Teams, download, FAQ. Linked from the Platform/Solutions menu and the footer |
-| **Error** | `error.html` | 404 / error page |
+`agents.html` renders from `js/catalog-data.js`, a committed snapshot of the Nandin registry (`github.com/vaultdbai/nandin-registry`). The page itself loads no remote data. To refresh the snapshot run `node scripts/build-catalog.mjs` (Node 22+, no dependencies; `--from <dir>` reads a registry copy on disk). The deploy workflow also runs it before each deploy; if the fetch fails the committed snapshot is deployed.
 
 ---
 
@@ -205,10 +200,11 @@ No build step. No compilation. No server process. Just files.
 
 ### Nandin downloads
 
-Installers live in this repo under `downloads/nest/<version>/` and are uploaded by the deploy
-workflow without `--delete`, so old versions stay downloadable. `downloads/nest/latest.json`
-(Tauri v2 updater format) is the single source of truth for the current release: the app's
-updater reads `https://www.vaultdb.ai/downloads/nest/latest.json`, and `js/nest.js` reads it to label
-and link the Windows download buttons (falling back to the version hard-coded in `index.html`,
-e.g. when opened from `file://`). Release steps are in `downloads/nest/README.md`. When you
-release, also update the fallback version and link in `index.html`.
+The download buttons link to GitHub Releases (`https://github.com/vaultdbai/nandin/releases/latest`),
+where the app's release workflow publishes the Windows, macOS and Linux installers. The relay is a
+container image, `ghcr.io/vaultdbai/nandin-relay`.
+
+`downloads/nest/` holds the old VaultDB Nest 0.1.0 installer and its `latest.json`. The deploy
+workflow still uploads it (without `--delete`) so installs of that build keep working; nothing on
+the site links to it. The current app's updater reads `downloads/nandin/latest.json`, which the
+app's own release workflow is responsible for.

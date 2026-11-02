@@ -1,5 +1,5 @@
-// Nandin page: FAQ accordion and mobile menu (same behavior as js/index.js,
-// plus keyboard and screen reader support).
+// Nandin pages: FAQ accordion, mobile menu (same behavior as js/index.js, plus
+// keyboard and screen reader support) and the download button.
 
 // FAQ
 document.querySelectorAll('.accordian_box').forEach(function (box) {
@@ -47,41 +47,16 @@ document.querySelectorAll('.link').forEach(function (section) {
   })
 })
 
-// Download buttons: Windows is the only build for now. The markup links to a
-// fixed release so it works without JS (and from file://); when
-// downloads/nest/latest.json can be read (the file the app's updater also
-// reads), the buttons switch to its version and installer URL.
+// Download button: every installer is on GitHub Releases, so the link is the
+// same for everyone. Name the visitor's platform on the button when we can
+// tell; without JS it says "Download Nandin".
 ;(function () {
-  var buttons = document.querySelectorAll('.js-nest-download')
-  if (buttons.length === 0) return
-
-  // Visitors on macOS or Linux still get the Windows button, plus a note
-  var platform = (navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || ''
-  if (!/win/i.test(platform)) {
-    document.querySelectorAll('.js-nest-soon-note').forEach(function (note) {
-      note.hidden = false
-    })
-  }
-
-  if (!window.fetch || window.location.protocol === 'file:') return
-  fetch('downloads/nest/latest.json', { cache: 'no-cache' })
-    .then(function (response) {
-      if (!response.ok) throw new Error('HTTP ' + response.status)
-      return response.json()
-    })
-    .then(function (release) {
-      var windows = release && release.platforms && release.platforms['windows-x86_64']
-      var version = release && typeof release.version === 'string' ? release.version.replace(/^v/, '') : null
-      var url = windows && typeof windows.url === 'string' ? windows.url : null
-      if (!version || !/^\d+\.\d+\.\d+/.test(version) || !url || !/^https:\/\/|^downloads\//.test(url)) return
-      buttons.forEach(function (button) {
-        button.setAttribute('href', url)
-      })
-      document.querySelectorAll('.js-nest-version').forEach(function (label) {
-        label.textContent = 'v' + version
-      })
-    })
-    .catch(function () {
-      // Keep the static link and version from the markup
-    })
+  var labels = document.querySelectorAll('.js-platform-label')
+  if (labels.length === 0) return
+  var platform = ((navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || '').toLowerCase()
+  var name = /win/.test(platform) ? 'Windows' : /mac/.test(platform) ? 'macOS' : /linux|x11/.test(platform) ? 'Linux' : null
+  if (!name || /iphone|ipad|android/.test((navigator.userAgent || '').toLowerCase())) return
+  labels.forEach(function (label) {
+    label.textContent = 'Download for ' + name
+  })
 })()

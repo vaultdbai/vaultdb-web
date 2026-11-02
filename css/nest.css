@@ -630,14 +630,443 @@ main code {
     color: var(--white-color);
 }
 
-/* Nandin's bull in the hero (css/nandin-bull.css), coloured from the
-   site's tokens; the kit's hex values are only fallbacks */
-.nandin_hero_bull {
-  display: block;
-  margin: 0 auto 0.75rem;
-  --nandin-body: color-mix(in srgb, var(--purple-color) 30%, var(--main-color));
-  --nandin-line: var(--white-color);
-  --nandin-muzzle: var(--main-color);
-  --nandin-load: color-mix(in srgb, var(--para-color) 25%, var(--main-color));
-  --nandin-load-line: var(--para-color);
+/* ---------------------------------------------------------------------
+   Nandin home page sections (index.html, rebuilt 2026-11).
+   Colours come from the site's tokens in css/style.css.
+   --------------------------------------------------------------------- */
+
+.nest_lede_strong {
+    color: var(--white-color);
+    font-weight: 600;
+    font-size: 2.2rem;
+    margin-bottom: 1.2rem;
+}
+
+/* Small label above a heading */
+.nest_kicker {
+    color: var(--purple-color);
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+/* The bison, live, under the hero text */
+.bison_demo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2.4rem;
+    max-width: 62rem;
+    margin: 4rem auto 0;
+    padding: 1.6rem 2.4rem;
+    border-radius: 20px;
+    border: 1px solid #312A36;
+    background: radial-gradient(circle at 18% 50%, rgba(160, 68, 255, 0.22), rgba(30, 17, 44, 0.6) 60%);
+}
+.bison_demo_figure {
+    flex: none;
+    display: block;
+    width: 15rem;
+    height: 15rem;
+}
+.bison_demo_figure .bison,
+.bison_poses .bison,
+.bison_companion .bison {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.45));
+}
+.bison_demo_text {
+    text-align: start;
+}
+.bison_demo_kicker {
+    color: var(--para-color);
+    font-size: 1.3rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+}
+.bison_demo_status {
+    color: var(--white-color);
+    font-size: 1.8rem;
+    line-height: 1.5;
+    min-height: 5.4rem;
+    margin-bottom: 1rem;
+}
+.bison_demo_btn {
+    border: 0;
+    cursor: pointer;
+}
+.bison_demo_btn[aria-disabled="true"] {
+    opacity: 0.45;
+    cursor: default;
+}
+.bison_demo_btn:focus-visible {
+    outline: 2px solid var(--purple-color);
+    outline-offset: 3px;
+}
+
+/* The problem: three facts in a row */
+.nandin_facts {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border-top: 2px solid var(--purple-color);
+}
+.nandin_facts li {
+    padding: 2.4rem 2.4rem 2.4rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+.nandin_facts li + li {
+    border-inline-start: 1px solid #312A36;
+    padding-inline-start: 2.4rem;
+}
+.nandin_facts strong {
+    color: var(--white-color);
+    font-size: 2.2rem;
+}
+.nandin_facts span {
+    color: var(--para-color);
+    font-size: 1.6rem;
+    line-height: 1.7;
+}
+
+/* Why programs stall: the gap each approach leaves */
+.nandin_stall {
+    display: flex;
+    flex-direction: column;
+}
+.nandin_stall .text-gray {
+    margin-bottom: 1.4rem !important;
+}
+.nandin_stall .nandin_gap {
+    margin-top: auto !important;
+    margin-bottom: 0 !important;
+    padding-top: 1.4rem;
+    border-top: 1px dashed #3a2f45;
+    color: #c79bff;
+}
+
+/* The six steps */
+.nandin_steps {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    position: relative;
+}
+.nandin_steps::before {
+    content: "";
+    position: absolute;
+    top: 2.2rem;
+    left: 2.2rem;
+    right: 2.2rem;
+    height: 2px;
+    background: linear-gradient(90deg, #6A3093, var(--purple-color));
+}
+.nandin_steps a {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    padding: 0 1.4rem 1rem 0;
+    color: inherit;
+    text-decoration: none;
+    border-radius: 12px;
+}
+.nandin_steps a:hover strong {
+    color: #c79bff;
+}
+.nandin_dot {
+    width: 4.4rem;
+    height: 4.4rem;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: var(--white-color);
+    background: var(--main-color);
+    border: 2px solid var(--purple-color);
+}
+.nandin_steps strong {
+    color: var(--white-color);
+    font-size: 1.9rem;
+    line-height: 1.25;
+}
+.nandin_steps span:not(.nandin_dot) {
+    color: var(--para-color);
+    font-size: 1.5rem;
+    line-height: 1.6;
+}
+.nandin_steps em {
+    font-style: normal;
+    color: #c79bff;
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+}
+
+/* Split sections: text beside a screenshot */
+.nandin_para {
+    color: var(--para-color);
+    font-size: 1.7rem !important;
+    line-height: 1.8 !important;
+}
+.nandin_points {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+}
+.nandin_points li {
+    position: relative;
+    padding-inline-start: 2.4rem;
+    color: var(--para-color);
+    font-size: 1.6rem;
+    line-height: 1.7;
+}
+.nandin_points li::before {
+    content: "";
+    position: absolute;
+    inset-inline-start: 0;
+    top: 0.75em;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 3px;
+    background: var(--purple-color);
+}
+.nandin_points b {
+    color: var(--white-color);
+}
+.nandin_prompt {
+    margin: 1.6rem 0 0;
+    padding: 1rem 1.6rem;
+    border-radius: 10px;
+    border: 1px solid #312A36;
+    border-inline-start: 4px solid var(--purple-color);
+    background: rgba(30, 17, 44, 0.6);
+    color: var(--white-color);
+    font-family: "Cascadia Code", Consolas, ui-monospace, monospace;
+    font-size: 1.5rem;
+}
+.nandin_prompt span {
+    color: #c79bff;
+    margin-inline-end: 1.2rem;
+}
+.nandin_shot_side {
+    margin: 0;
+    padding: 1rem;
+    border-radius: 20px;
+    border: 1px solid #312A36;
+    background: rgba(30, 17, 44, 0.6);
+    box-shadow: 0 30px 80px rgba(106, 48, 147, 0.25);
+}
+#capture .nandin_shot_side {
+    max-width: 44rem;
+    margin: 0 auto;
+}
+.nandin_wide_shot {
+    margin-top: 0;
+}
+
+/* The four poses */
+.bison_poses {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 2rem;
+}
+.bison_poses li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.8rem;
+    padding: 2.4rem 1.6rem;
+    border-radius: 20px;
+    border: 1px solid rgba(160, 68, 255, 0.1);
+    background: rgba(255, 255, 255, 0.03);
+}
+.bison_poses .bison {
+    width: 16rem;
+    height: 16rem;
+}
+.bison_poses strong {
+    color: var(--white-color);
+    font-size: 1.9rem;
+}
+.bison_poses li > span:last-child {
+    color: var(--para-color);
+    font-size: 1.5rem;
+    line-height: 1.6;
+}
+
+/* Tags on cards (pack names, licences) */
+.nandin_tag {
+    display: block;
+    width: fit-content;
+    margin-bottom: 1.6rem;
+    padding: 0.3rem 1.2rem;
+    border-radius: 999px;
+    border: 1px solid rgba(160, 68, 255, 0.5);
+    color: #c79bff;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+.nandin_licence p + p {
+    margin-top: 1.2rem;
+}
+.nandin_licence_links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem 1.6rem;
+}
+
+/* Code block (relay) */
+.nandin_code {
+    border-radius: 20px;
+    border: 1px solid #312A36;
+    background: rgba(10, 8, 20, 0.85);
+    padding: 1.8rem 2rem;
+}
+.nandin_code_label {
+    color: #c79bff;
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+.nandin_code pre {
+    margin: 0;
+    color: var(--white-color);
+    font-size: 1.35rem;
+    line-height: 1.7;
+    white-space: pre;
+    overflow-x: auto;
+}
+.nandin_code pre code {
+    background: none;
+    padding: 0;
+    color: inherit;
+    font-size: inherit;
+}
+.nandin_code pre:focus-visible {
+    outline: 2px solid var(--purple-color);
+    outline-offset: 4px;
+}
+.nandin_code_note {
+    color: var(--para-color);
+    font-size: 1.4rem;
+    line-height: 1.6;
+    margin: 1.2rem 0 0;
+}
+
+/* The companion: appears after the hero, takes you back to the top */
+.bison_companion {
+    position: fixed;
+    right: 2rem;
+    bottom: 1.6rem;
+    z-index: 900;
+    width: 9.6rem;
+    height: 9.6rem;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(1.6rem);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    border-radius: 50%;
+}
+.bison_companion.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: none;
+}
+.bison_companion:focus-visible {
+    outline: 2px solid var(--purple-color);
+    outline-offset: 4px;
+}
+
+@media (max-width: 996px) {
+    .nandin_steps {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        row-gap: 3rem;
+    }
+    .nandin_steps::before {
+        display: none;
+    }
+    .bison_poses {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+@media (max-width: 769px) {
+    .nandin_facts {
+        grid-template-columns: 1fr;
+    }
+    .nandin_facts li,
+    .nandin_facts li + li {
+        padding: 2rem 0;
+        border-inline-start: 0;
+    }
+    .nandin_facts li + li {
+        border-top: 1px solid #312A36;
+    }
+    .nandin_steps {
+        grid-template-columns: 1fr;
+        row-gap: 2rem;
+    }
+    .nandin_steps a {
+        display: grid;
+        grid-template-columns: 4.4rem 1fr;
+        column-gap: 1.4rem;
+        row-gap: 0.4rem;
+        padding: 0;
+    }
+    .nandin_steps .nandin_dot {
+        grid-row: span 3;
+    }
+    .bison_companion {
+        width: 7rem;
+        height: 7rem;
+        right: 1.2rem;
+        bottom: 1.2rem;
+    }
+}
+@media (max-width: 480px) {
+    .bison_demo {
+        flex-direction: column;
+        padding: 1.6rem;
+    }
+    .bison_demo_text {
+        text-align: center;
+    }
+    .bison_demo_figure {
+        width: 12rem;
+        height: 12rem;
+    }
+    .bison_poses {
+        grid-template-columns: 1fr;
+    }
+    .nandin_code {
+        padding: 1.4rem;
+    }
+    .nandin_code pre {
+        font-size: 1.2rem;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .bison_companion {
+        transition: none;
+    }
 }

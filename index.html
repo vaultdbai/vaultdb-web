@@ -4,19 +4,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nandin: the agent manager for teams | VaultDB.ai</title>
+  <title>Nandin: turn how your people work into AI your company owns | VaultDB.ai</title>
   <meta name="description"
-    content="Nandin is the agent manager for teams: run AI agents in isolated containers, approve what they do, keep an audit log, and let agents delegate work across your team. For small businesses, corporates, and heavy agent users." />
+    content="Nandin gives everyone on your team a Chief of Staff and AI agents that run in sealed containers on your own machines. Anything risky waits for approval, and every run is on the record: backed up, auditable, replayable. Free and open source." />
   <link rel="canonical" href="https://vaultdb.ai/" />
-  <meta property="og:title" content="Nandin: the agent manager for teams" />
+  <meta property="og:title" content="Nandin: turn how your people work into AI your company owns" />
   <meta property="og:description"
-    content="Run AI agents safely across your team: container isolation, approvals, audit logs, shared registries, and delegation between teammates." />
+    content="A Chief of Staff for everyone, agents in sealed containers, approval before action, and a record your company keeps. Works on its own; connects teammates through your own relay." />
   <meta property="og:type" content="website" />
   <!-- Open Graph needs absolute URLs; these are metadata for link previews, not assets the page loads -->
-  <meta property="og:image" content="https://vaultdb.ai/img/nandin-og.png" />
+  <meta property="og:image" content="https://www.vaultdb.ai/img/nandin-og.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Nandin: the bull and the wordmark" />
+  <meta property="og:image:alt" content="Nandin by VaultDB.ai: the bison and the line Turn how your people work into AI your company owns" />
   <meta property="og:url" content="https://vaultdb.ai/" />
   <meta property="og:site_name" content="VaultDB.ai" />
   <meta name="twitter:card" content="summary_large_image" />
@@ -27,19 +27,20 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <!-- favicon -->
-  <link rel="icon" type="image/svg+xml" href="img/nandin-mark.svg" />
-  <link rel="apple-touch-icon" href="img/nandin-icon-256.png" />
+  <!-- favicon: Nandin's app icon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="img/nandin-app-icon-32.png" />
+  <link rel="icon" type="image/png" sizes="64x64" href="img/nandin-app-icon-64.png" />
+  <link rel="apple-touch-icon" href="img/nandin-app-icon-180.png" />
   <!-- animation  -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
-  <!-- Shared site styles (header, footer, FAQ, cards), then Nandin page styles -->
+  <!-- Shared site styles (header, footer, FAQ, cards), then Nandin page styles and the bison -->
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/nest.css" />
-  <link rel="stylesheet" href="css/nandin-bull.css" />
+  <link rel="stylesheet" href="css/nandin-bison.css" />
 </head>
 
-<body>
+<body id="top">
   <a href="#main" class="nest_skip">Skip to content</a>
   <div class="container_body">
     <div class="container_inside">
@@ -58,12 +59,12 @@
                 <li>
                   <a href="index.html" aria-current="page" class="second_content third_content nav_product" style="text-align: start; border-radius: 10px 10px 0 0">
                     <div class="dropdown_img">
-                      <img src="img/nest-icon.svg" alt="" />
+                      <img src="img/nandin-app-icon-64.png" alt="" />
                     </div>
                     <div class="dropdown_content">
                       <p>Nandin</p>
                       <p class="para_1">
-                        The agent manager for teams: AI agents in containers, with approvals and audit logs.
+                        A Chief of Staff for everyone, and AI agents your company owns.
                       </p>
                     </div>
                   </a>
@@ -133,12 +134,12 @@
               <a href="index.html" aria-current="page" class="second_menu first_menu">
                 <div class="content">
                   <div class="second_img first_img">
-                    <img src="img/nest-icon.svg" alt="" />
+                    <img src="img/nandin-app-icon-64.png" alt="" />
                   </div>
                   <div class="first_menu_content">Nandin</div>
                 </div>
                 <div class="bottom_para">
-                  The agent manager for teams: AI agents in containers, with approvals and audit logs.
+                  A Chief of Staff for everyone, and AI agents your company owns.
                 </div>
               </a>
             </ul>
@@ -189,383 +190,598 @@
         <section class="nest_hero container" aria-labelledby="nest-title">
           <div class="nest_hero_text">
             <p class="nest_eyebrow">
-              <img src="img/nandin-mark.svg" alt="" class="nest_eyebrow_icon" width="28" height="28" />
-              Nandin
+              <img src="img/nandin-app-icon-64.png" alt="" class="nest_eyebrow_icon" width="28" height="28" />
+              Nandin by VaultDB.ai
             </p>
-            <svg class="nandin-bull nandin_hero_bull" data-state="wait" viewBox="0 8 164 128" width="132" role="img" aria-label="Nandin, waiting for your approval">
-                <g class="nb-alert-g"><circle class="nb-alert" cx="62" cy="30" r="9" /></g>
-                <g class="nb-breathe">
-                  <path class="nb-stroke nb-tail" d="M140 96 q8 10 2 22" />
-                  <ellipse class="nb-fill" cx="88" cy="94" rx="54" ry="30" />
-                  <circle class="nb-fill" cx="64" cy="68" r="20" />
-                  <rect class="nb-fill" x="48" y="116" width="32" height="11" rx="5.5" />
-                  <rect class="nb-fill" x="100" y="116" width="32" height="11" rx="5.5" />
-                  <g class="nb-load"><rect class="nb-box" x="90" y="50" width="18" height="15" rx="3" /><rect class="nb-box" x="110" y="52" width="18" height="15" rx="3" /><rect class="nb-box" x="100" y="34" width="18" height="15" rx="3" /></g>
-                </g>
-                <g class="nb-head">
-                  <circle class="nb-fill" cx="34" cy="92" r="22" />
-                  <ellipse class="nb-muzzle" cx="20" cy="102" rx="12" ry="9" />
-                  <ellipse class="nb-fill nb-ear" cx="50" cy="86" rx="9" ry="5" />
-                  <path class="nb-stroke" d="M30 72 q-4 -10 4 -15" />
-                  <path class="nb-stroke nb-thin nb-eye-closed" d="M26 88 q4 3 8 0" />
-                  <circle class="nb-dot nb-eye-open" cx="29" cy="88" r="3" />
-                  <path class="nb-stroke nb-thin nb-eye-happy" d="M26 88 q4 -4 8 0" />
-                  <path class="nb-stroke nb-smile" style="stroke-width: 1.5" d="M15 106 q6 4 12 0" />
-                </g>
-                <path class="nb-stroke nb-check" d="M90 36 l7 7 l14 -14" />
-              </svg>
-            <h1 id="nest-title">Every responsibility, one accountable owner</h1>
+            <h1 id="nest-title">Turn how your people work into AI your company owns</h1>
+            <p class="nest_lede nest_lede_strong">Safely, one task at a time.</p>
             <p class="nest_lede">
-              Nandin turns each team responsibility into a capability with one owner, agents that do the
-              legwork, and a record that proves the work was done. It runs on your own machines, and nothing
-              leaves your organization.
-            </p>
-            <p class="nest_lede">
-              Every agent runs in its own container. Nothing leaves the gate without a person's approval, and
-              every step goes in the audit log.
+              Everyone on your team gets a Chief of Staff that learns their job, and agents that do the
+              legwork in sealed containers on your own machines. Anything risky waits for a person's approval,
+              and every run is on the record, kept by your company.
             </p>
             <div class="nest_actions justify-content-center">
-              <a href="downloads/nest/0.1.0/VaultDB-Nest-0.1.0-windows-x64.msi" class="contact_btn js-nest-download" id="hero-download">
-                <i class="fa-solid fa-download me-2" aria-hidden="true"></i>Download for Windows
-                <span class="nest_dl_version">&middot; <span class="js-nest-version">v0.1.0</span></span>
+              <a href="https://github.com/vaultdbai/nandin/releases/latest" class="contact_btn" id="hero-download">
+                <i class="fa-solid fa-download me-2" aria-hidden="true"></i><span class="js-platform-label">Download Nandin</span>
               </a>
-              <a href="#how" class="nest_btn_outline">See how it works</a>
-              <a href="https://github.com/devmchechi/nest-app" class="nest_text_link">
+              <a href="#answer" class="nest_btn_outline">See how it works</a>
+              <a href="https://github.com/vaultdbai/nandin" class="nest_text_link">
                 <i class="fa-brands fa-github me-1" aria-hidden="true"></i> View on GitHub
               </a>
             </div>
-            <p class="nest_note">Desktop app for Windows 10 and 11. Requires Docker.
-              <span class="js-nest-soon-note" hidden>macOS &amp; Linux coming soon.</span></p>
+            <p class="nest_note">Free and open source (Apache-2.0). Windows, macOS and Linux. Requires Docker.</p>
+          </div>
+
+          <!-- The bison, live: the same pose rule as the app's mascot -->
+          <div class="bison_demo js-bison-demo">
+            <span class="bison_demo_figure js-bison-label" role="img" aria-label="Nandin is resting: nothing needs you">
+              <span class="bison" data-pose="rest">
+                <span class="bp-group">
+                  <img class="bp-part bp-base" src="img/nandin-bison-rest.webp" alt="" width="384" height="384" />
+                  <img class="bp-part bp-head" src="img/nandin-bison-rest.webp" alt="" width="384" height="384" />
+                  <img class="bp-part bp-tail" src="img/nandin-bison-rest.webp" alt="" width="384" height="384" />
+                  <img class="bp-part bp-badge" src="img/nandin-bison-rest.webp" alt="" width="384" height="384" />
+                  <img class="bp-part bp-crates" src="img/nandin-bison-rest.webp" alt="" width="384" height="384" />
+                </span>
+                <img class="bp-part bp-stand" src="img/nandin-bison-wait.webp" alt="" width="384" height="384" />
+              </span>
+            </span>
+            <div class="bison_demo_text">
+              <p class="bison_demo_kicker">Your Nandin, right now</p>
+              <p class="bison_demo_status js-bison-status" aria-live="polite">Nothing needs you. Nothing is running.</p>
+              <button type="button" class="contact_btn bison_demo_btn js-bison-approve" aria-disabled="true">
+                <i class="fa-solid fa-check me-2" aria-hidden="true"></i>Approve
+              </button>
+            </div>
           </div>
 
           <figure class="nest_hero_shot">
             <picture>
-              <source type="image/webp" srcset="img/nest-run-detail.webp" />
-              <img src="img/nest-run-detail.jpg" width="1837" height="893" fetchpriority="high"
-                alt="Design preview of the Nandin run detail view: a sidebar of agents, workflows and runs; a run's step-by-step timeline with timestamps; a results panel with a chart and key figures; and a chat panel for questions about the run. Sample data." />
+              <source type="image/webp" srcset="img/nandin-shot-chief-of-staff.webp" />
+              <img src="img/nandin-shot-chief-of-staff.jpg" width="1800" height="1125" fetchpriority="high"
+                alt="Nandin's Chief of Staff chat. Asked what's on the plate this week, it lists three deadlines with the overdue CI key rotation first and names its sources. Told about time off, it notes it in deadlines.md and owners.md, points out what falls in the absence, and offers to ask Lena, shown as an approval card with Reject and Approve. The bison waits in the corner." />
             </picture>
             <figcaption>
               <span class="nest_preview_tag">Design preview</span>
-              Run detail view, shown with sample data.
+              Chief of Staff answers from your notes, keeps them current, and asks before it involves anyone else. Sample data.
             </figcaption>
           </figure>
 
           <ul class="nest_pills" aria-label="Highlights">
-            <li><i class="fa-solid fa-house-laptop" aria-hidden="true"></i>Local-first</li>
-            <li><i class="fa-brands fa-docker" aria-hidden="true"></i>One container per agent</li>
-            <li><i class="fa-solid fa-code-branch" aria-hidden="true"></i>Definitions in your git repo</li>
-            <li><i class="fa-solid fa-key" aria-hidden="true"></i>Keys in your OS keyring</li>
-            <li><i class="fa-solid fa-scroll" aria-hidden="true"></i>Full audit log</li>
+            <li><i class="fa-solid fa-house-laptop" aria-hidden="true"></i>Runs on your machines</li>
+            <li><i class="fa-brands fa-docker" aria-hidden="true"></i>Agents only in sealed containers</li>
+            <li><i class="fa-solid fa-hand" aria-hidden="true"></i>Approval before action</li>
+            <li><i class="fa-solid fa-scroll" aria-hidden="true"></i>Every run on the record</li>
+            <li><i class="fa-solid fa-plug-circle-xmark" aria-hidden="true"></i>Works without any server</li>
           </ul>
         </section>
         <div class="light_img" aria-hidden="true">
           <img src="img/Rectangle 9.png" alt="" />
         </div>
 
-        <!-- Who it's for ===================================== -->
-        <section class="container nest_section nest_compare" aria-labelledby="nest-compare">
-          <h2 id="nest-compare" class="nest_compare_text">
-            If OpenClaw is your personal agent, Nandin is your team's agent manager.<sup><a
-                href="#fn-trademark" class="nest_fn_ref" aria-label="Trademark note">*</a></sup>
-          </h2>
-          <p class="nest_footnote" id="fn-trademark">* OpenClaw is a trademark of its respective owners. VaultDB is
-            not affiliated with or endorsed by them.</p>
-        </section>
-
-        <!-- Agent managers ===================================== -->
-        <section class="container nest_section" id="agent-managers" aria-labelledby="nest-managers">
+        <!-- The problem ===================================== -->
+        <section class="container nest_section" id="problem" aria-labelledby="nest-problem">
           <div class="work_heading nest_heading">
-            <h2 id="nest-managers" class="text-center text-white h1 mt-2">Built for Agent Managers</h2>
+            <p class="nest_kicker text-center">The problem</p>
+            <h2 id="nest-problem" class="text-center text-white h1 mt-2">AI can now do much of the work. It can't reach it.</h2>
             <p class="text-center work_p">
-              An agent manager is the person responsible for a set of agents: what they may touch, what they're
-              working on, and what they did. Nandin is built around that role, and built for teams from the
-              ground up.
+              The know-how of how work is actually done lives in people's heads, and they have no safe way to hand
+              it over.
             </p>
           </div>
+          <ul class="nandin_facts">
+            <li><strong>It isn't written down</strong><span>The steps, the exceptions and who to ask live in people's
+                heads, chat threads and meetings.</span></li>
+            <li><strong>There's no safe handover</strong><span>Pasting work into a public chatbot leaves no approval, no
+                record, and data outside the company.</span></li>
+            <li><strong>It leaves when people do</strong><span>Every departure resets the clock, and what wasn't written
+                down is gone.</span></li>
+          </ul>
+        </section>
+
+        <!-- Why programs stall ===================================== -->
+        <section class="container nest_section" id="why" aria-labelledby="nest-why">
+          <div class="work_heading nest_heading">
+            <h2 id="nest-why" class="text-center text-white h1 mt-2">Why AI programs stall</h2>
+            <p class="text-center work_p">Every approach today skips the people who know the work.</p>
+          </div>
           <ul class="row gy-4 nest_grid">
+            <li class="col-lg-3 col-md-6 col-sm-12" data-aos="fade-up" data-aos-duration="1000">
+              <div class="product_card nest_card nandin_stall">
+                <h3 class="h4 text-white">Top-down AI programs</h3>
+                <p class="text-gray">Leaders and consultants choose the use cases, and IT builds them.</p>
+                <p class="nandin_gap">The people who know the work aren't building it, so it stalls at the pilot.</p>
+              </div>
+            </li>
             <li class="col-lg-3 col-md-6 col-sm-12" data-aos="fade-up" data-aos-duration="1200">
-              <div class="product_card nest_card">
-                <i class="fa-solid fa-shield-halved fs-1 text-purple mb-4" aria-hidden="true"></i>
-                <h3 class="h4 text-white">Safe and secure</h3>
-                <p class="text-gray">
-                  Every agent runs in its own Docker container. It reaches only the hosts it declares and you
-                  approve, and it never sees your API keys.
-                </p>
+              <div class="product_card nest_card nandin_stall">
+                <h3 class="h4 text-white">Chatbots and copilots</h3>
+                <p class="text-gray">They help one person in the moment.</p>
+                <p class="nandin_gap">Nothing is captured or owned, and trust never grows.</p>
               </div>
             </li>
             <li class="col-lg-3 col-md-6 col-sm-12" data-aos="fade-up" data-aos-duration="1400">
-              <div class="product_card nest_card">
-                <i class="fa-solid fa-user-check fs-1 text-purple mb-4" aria-hidden="true"></i>
-                <h3 class="h4 text-white">Human in the loop</h3>
-                <p class="text-gray">
-                  Agents pause for your approval before the actions they mark as needing it, such as running a
-                  command, and network requests, connector calls, and delegations go into an audit log.
-                </p>
+              <div class="product_card nest_card nandin_stall">
+                <h3 class="h4 text-white">RPA and workflow tools</h3>
+                <p class="text-gray">They need the process mapped up front by specialists.</p>
+                <p class="nandin_gap">That map is the know-how nobody has written down.</p>
               </div>
             </li>
             <li class="col-lg-3 col-md-6 col-sm-12" data-aos="fade-up" data-aos-duration="1600">
-              <div class="product_card nest_card">
-                <i class="fa-solid fa-people-group fs-1 text-purple mb-4" aria-hidden="true"></i>
-                <h3 class="h4 text-white">Works across teams</h3>
-                <p class="text-gray">
-                  Share agents through a private team registry, and let agents delegate tasks to a teammate's
-                  agents under trust rules each owner controls.
-                </p>
-              </div>
-            </li>
-            <li class="col-lg-3 col-md-6 col-sm-12" data-aos="fade-up" data-aos-duration="1800">
-              <div class="product_card nest_card">
-                <i class="fa-solid fa-gauge-high fs-1 text-purple mb-4" aria-hidden="true"></i>
-                <h3 class="h4 text-white">More done, less babysitting</h3>
-                <p class="text-gray">
-                  Chain agents into workflows, start them on schedules or file changes, install ready-made agents
-                  from the <a href="agents.html" class="nest_inline_link">Agent Hub</a>, and supervise them all from
-                  one console.
-                </p>
+              <div class="product_card nest_card nandin_stall">
+                <h3 class="h4 text-white">Wikis and search</h3>
+                <p class="text-gray">They find what's already written.</p>
+                <p class="nandin_gap">Nobody writes it, and what's written goes stale.</p>
               </div>
             </li>
           </ul>
-          <p class="nest_mission">
-            <span class="nest_mission_label">Our goal</span>
-            Make every agent manager 500&times; more productive.
-          </p>
         </section>
 
-        <!-- Who it's for ===================================== -->
-        <section class="container nest_section" id="who" aria-labelledby="nest-who">
+        <!-- Six steps ===================================== -->
+        <section class="container nest_section" id="answer" aria-labelledby="nest-answer">
           <div class="work_heading nest_heading">
-            <h2 id="nest-who" class="text-center text-white h1 mt-2">For Businesses That Run on Agents</h2>
+            <p class="nest_kicker text-center">Nandin's answer</p>
+            <h2 id="nest-answer" class="text-center text-white h1 mt-2">The people who do the work turn it into AI, and the
+              company keeps it</h2>
+          </div>
+          <ol class="nandin_steps">
+            <li><a href="#capture"><span class="nandin_dot" aria-hidden="true">1</span><strong>Capture</strong><span>Someone
+                  describes a task once, because that's easier than doing it again.</span><em>Know-how written down</em></a></li>
+            <li><a href="#run"><span class="nandin_dot" aria-hidden="true">2</span><strong>Run, with a person in
+                  charge</strong><span>The agent does the work; anything risky waits for approval.</span><em>Hours back</em></a></li>
+            <li><a href="#prove"><span class="nandin_dot" aria-hidden="true">3</span><strong>Prove</strong><span>Every run,
+                  approval and result is recorded and can be replayed.</span><em>Evidence</em></a></li>
+            <li><a href="#own"><span class="nandin_dot" aria-hidden="true">4</span><strong>Own</strong><span>Agents, steps and
+                  history belong to the company, not the person.</span><em>Survives leavers</em></a></li>
+            <li><a href="#connect"><span class="nandin_dot" aria-hidden="true">5</span><strong>Connect</strong><span>What one
+                  person captures becomes a capability anyone can ask for.</span><em>No ticket queue</em></a></li>
+            <li><a href="#scale"><span class="nandin_dot" aria-hidden="true">6</span><strong>Scale</strong><span>Jobs that
+                  prove themselves run on schedules and triggers, with fewer stops.</span><em>Capacity without headcount</em></a></li>
+          </ol>
+        </section>
+
+        <!-- 1 Capture ===================================== -->
+        <section class="container nest_section" id="capture" aria-labelledby="nest-capture">
+          <div class="row align-items-center gy-5">
+            <div class="col-lg-6 col-md-12">
+              <p class="nest_kicker">1 · Capture</p>
+              <h2 id="nest-capture" class="nest_h2 text-white">It learns the job by working alongside you</h2>
+              <p class="para nandin_para">
+                Each person's Chief of Staff keeps their notes as they talk: what they own, deadlines, decisions, who
+                to ask, runbooks. They're plain Markdown files on your computer that anyone can read and edit.
+              </p>
+              <ul class="nandin_points">
+                <li><b>Built in.</b> Chief of Staff comes with Nandin, first under Agents. New here? Say hello and it asks
+                  a few questions and writes your first notes.</li>
+                <li><b>Keeps up.</b> Tell it what changed ("the walkthrough moved to Nov 19") and it notes it in the right
+                  file, says where, and raises what's coming up: overdue items, this week's deadlines, notes that
+                  disagree.</li>
+                <li><b>Answers with sources.</b> Every answer names the notes it used. When the notes don't know, it says
+                  so instead of inventing a name.</li>
+                <li><b>Private stays private.</b> Anything in a <code>private/</code> folder is never used to answer a
+                  teammate.</li>
+              </ul>
+              <p class="nandin_prompt"><span>You type</span>What's on my plate this week?</p>
+              <p class="nandin_prompt"><span>You type</span>Heads up: I'm out Nov 3 to 7. Lena covers deploy approvals.</p>
+            </div>
+            <div class="col-lg-6 col-md-12">
+              <figure class="nest_shot nandin_shot_side">
+                <picture>
+                  <source type="image/webp" srcset="img/nandin-shot-companion.webp" />
+                  <img src="img/nandin-shot-companion.jpg" width="525" height="650" loading="lazy"
+                    alt="The Nandin companion: a small window above your other apps listing what needs you (an approval for PR Reviewer and a request from Sam), what's running, and a short chat answering what the agents did today, with the bison below it." />
+                </picture>
+                <figcaption>
+                  <span class="nest_preview_tag">Design preview</span>
+                  The companion: click the bison to see what needs you, approve, or ask what your agents did.
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+        </section>
+
+        <!-- 2 Run ===================================== -->
+        <section class="container nest_section" id="run" aria-labelledby="nest-run">
+          <div class="work_heading nest_heading">
+            <p class="nest_kicker text-center">2 · Run</p>
+            <h2 id="nest-run" class="text-center text-white h1 mt-2">It does the work. A person stays in charge.</h2>
             <p class="text-center work_p">
-              VaultDB has always put security and data privacy first. Nandin brings the same approach to AI
-              agents: you decide what each agent can see, reach, and do, and you keep the record.
+              Anything that changes something waits for an approval card that says exactly what will happen. Decide it
+              in the chat, the Inbox or the companion, and it clears everywhere.
+            </p>
+          </div>
+          <figure class="nest_hero_shot nandin_wide_shot">
+            <picture>
+              <source type="image/webp" srcset="img/nandin-shot-inbox.webp" />
+              <img src="img/nandin-shot-inbox.jpg" width="1800" height="1125" loading="lazy"
+                alt="Nandin Home with the Inbox: an approval for PR Reviewer to post a review with an expiry countdown, work Lena Fischer assigned with a due date, a note field and Done, and a request from Sam Okafor waiting for approval. Below, a running morning check-in at step 2 of 4, and a recent answer from Lena." />
+            </picture>
+            <figcaption>
+              <span class="nest_preview_tag">Design preview</span>
+              Home: everything waiting on you, each with its fix right there. Sample data.
+            </figcaption>
+          </figure>
+          <ul class="row gy-4 nest_grid mt-4">
+            <li class="col-lg-4 col-md-6 col-sm-12" data-aos="fade-up" data-aos-duration="1200">
+              <div class="product_card nest_card">
+                <i class="fa-solid fa-hand fs-1 text-purple mb-4" aria-hidden="true"></i>
+                <h3 class="h4 text-white">Approval before action</h3>
+                <p class="text-gray">A waiting agent is paused, not spinning: it uses no tokens, and the approval survives a
+                  restart. Nobody deciding within an hour counts as no.</p>
+              </div>
+            </li>
+            <li class="col-lg-4 col-md-6 col-sm-12" data-aos="fade-up" data-aos-duration="1400">
+              <div class="product_card nest_card">
+                <i class="fa-brands fa-docker fs-1 text-purple mb-4" aria-hidden="true"></i>
+                <h3 class="h4 text-white">Sealed containers</h3>
+                <p class="text-gray">Agent code runs only in its own container: no keys inside, no direct network, and only
+                  the sites allowed for it, through a proxy that logs every request.</p>
+              </div>
+            </li>
+            <li class="col-lg-4 col-md-12 col-sm-12" data-aos="fade-up" data-aos-duration="1600">
+              <div class="product_card nest_card">
+                <i class="fa-solid fa-list-check fs-1 text-purple mb-4" aria-hidden="true"></i>
+                <h3 class="h4 text-white">Tracked until done</h3>
+                <p class="text-gray">Every request is tracked until it's done or declined, with due dates and what's
+                  overdue. Ask "What am I waiting on?" any time.</p>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <!-- 3 Prove ===================================== -->
+        <section class="container nest_section" id="prove" aria-labelledby="nest-prove">
+          <div class="row align-items-center gy-5 flex-lg-row-reverse">
+            <div class="col-lg-5 col-md-12">
+              <p class="nest_kicker">3 · Prove</p>
+              <h2 id="nest-prove" class="nest_h2 text-white">Every run is on record</h2>
+              <p class="para nandin_para">
+                Open any run and step through it: who started it, what it read, each step and tool call, the approvals and
+                who gave them, and the result. Re-run it with the same input.
+              </p>
+              <ul class="nandin_points">
+                <li><b>Audit logs on your machine</b> for model calls (model, tokens, cost; never prompt text), internet
+                  requests, triggers, pilots, connectors and delegations.</li>
+                <li><b>All activity</b> lists every run and request, both ways, filterable, with <b>Export CSV</b>.</li>
+                <li><b>Ask about a run</b> ("why did step 3 fail?") from its Analysis tab.</li>
+              </ul>
+            </div>
+            <div class="col-lg-7 col-md-12">
+              <figure class="nest_shot nandin_shot_side">
+                <picture>
+                  <source type="image/webp" srcset="img/nandin-shot-run-record.webp" />
+                  <img src="img/nandin-shot-run-record.jpg" width="1800" height="850" loading="lazy"
+                    alt="A run's record in Nandin: AWS Ops Analyst explaining why a nightly job failed. The timeline lists each step with its time, from reading the job's logs and finding an out-of-memory error, to the approved restart. Beside it, key results, a summary with sources, and what's on the record." />
+                </picture>
+                <figcaption>
+                  <span class="nest_preview_tag">Design preview</span>
+                  A run's timeline, with the approval in it. Sample data.
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+        </section>
+
+        <!-- 4 Own ===================================== -->
+        <section class="container nest_section" id="own" aria-labelledby="nest-own">
+          <div class="work_heading nest_heading">
+            <p class="nest_kicker text-center">4 · Own</p>
+            <h2 id="nest-own" class="text-center text-white h1 mt-2">The company owns the work</h2>
+            <p class="text-center work_p">
+              Backed up, auditable, replayable. What people build with Nandin is the company's, and it stays when they
+              move on.
             </p>
           </div>
           <ul class="row gy-4 nest_grid">
             <li class="col-lg-4 col-md-6 col-sm-12" data-aos="fade-up" data-aos-duration="1200">
               <div class="product_card nest_card">
-                <i class="fa-solid fa-shop fs-1 text-purple mb-4" aria-hidden="true"></i>
-                <h3 class="h4 text-white">Small businesses</h3>
-                <p class="text-gray">
-                  Put agents to work on reporting, research, content, and email without a platform team. Pick
-                  ready-made agents from the <a href="agents.html" class="nest_inline_link">Agent Hub</a> and approve
-                  what they do.
-                </p>
+                <i class="fa-solid fa-code-branch fs-1 text-purple mb-4" aria-hidden="true"></i>
+                <h3 class="h4 text-white">Plain files in a git repo</h3>
+                <p class="text-gray">Agents, workflows, triggers and connector settings are files you can read, diff and
+                  review. Nandin's database is only a cache of them and can be rebuilt any time.</p>
               </div>
             </li>
             <li class="col-lg-4 col-md-6 col-sm-12" data-aos="fade-up" data-aos-duration="1400">
               <div class="product_card nest_card">
-                <i class="fa-solid fa-building fs-1 text-purple mb-4" aria-hidden="true"></i>
-                <h3 class="h4 text-white">Corporates</h3>
-                <p class="text-gray">
-                  Keep agents on machines you control, with keys in the OS keyring, a host allowlist per agent, and
-                  an audit trail. Use local models through Ollama when prompts must stay in-house.
-                </p>
+                <i class="fa-solid fa-cloud-arrow-up fs-1 text-purple mb-4" aria-hidden="true"></i>
+                <h3 class="h4 text-white">Backed up to your remote</h3>
+                <p class="text-gray">Settings › Backup pushes the repo to your company's git remote and restores from it on
+                  a new machine. Secrets never go in it: files hold references, keys stay in the OS keychain.</p>
               </div>
             </li>
             <li class="col-lg-4 col-md-12 col-sm-12" data-aos="fade-up" data-aos-duration="1600">
               <div class="product_card nest_card">
-                <i class="fa-solid fa-layer-group fs-1 text-purple mb-4" aria-hidden="true"></i>
-                <h3 class="h4 text-white">Heavy agent users</h3>
-                <p class="text-gray">
-                  Run many agents side by side, each with its own job, history, and permissions, defined as files
-                  in a git repo you can diff, review, and version like code.
-                </p>
+                <i class="fa-solid fa-people-arrows fs-1 text-purple mb-4" aria-hidden="true"></i>
+                <h3 class="h4 text-white">Survives leavers</h3>
+                <p class="text-gray">Keep notes in a company folder and a successor picks up the same notes, agents and
+                  responsibilities. The relay's operator revokes a leaver's device at once.</p>
               </div>
             </li>
           </ul>
         </section>
 
-        <!-- How it works ===================================== -->
-        <section class="container nest_section" id="how" aria-labelledby="nest-how">
+        <!-- 5 Connect ===================================== -->
+        <section class="container nest_section" id="connect" aria-labelledby="nest-connect">
           <div class="work_heading nest_heading">
-            <h2 id="nest-how" class="text-center text-white h1 mt-2">How it Works</h2>
+            <p class="nest_kicker text-center">5 · Connect</p>
+            <h2 id="nest-connect" class="text-center text-white h1 mt-2">What one person captures, everyone can ask for</h2>
             <p class="text-center work_p">
-              An agent is a <code>skill.md</code> file: a prompt plus the tools, hosts, and approvals it gets.
-              Nandin turns that file into a running, supervised container.
+              Everyone publishes what they own, so there's no directory to keep up. Ask instead of filing a ticket: your
+              Nandin finds the owner and asks their Nandin, which answers from their notes or does the work, with a person
+              approving.
             </p>
           </div>
-          <ol class="row gy-4 nest_steps">
-            <li class="col-md-4 col-sm-12" data-aos="fade-up" data-aos-duration="1500">
+          <figure class="nest_hero_shot nandin_wide_shot">
+            <picture>
+              <source type="image/webp" srcset="img/nandin-shot-people.webp" />
+              <img src="img/nandin-shot-people.jpg" width="1800" height="1025" loading="lazy"
+                alt="Nandin's Network, People tab. A search for who is responsible for SOC 1 finds Lena Fischer, online. Cards for five teammates show presence, what each owns and Ask and Assign buttons. Sam Okafor's card says Away until Tue, Nov 10, Lena covers." />
+            </picture>
+            <figcaption>
+              <span class="nest_preview_tag">Design preview</span>
+              People: who owns what, who's around, and who covers. Sample data.
+            </figcaption>
+          </figure>
+          <ul class="row gy-4 nest_grid mt-4">
+            <li class="col-lg-4 col-md-6 col-sm-12" data-aos="fade-up" data-aos-duration="1200">
               <div class="product_card nest_card">
-                <span class="nest_step_num" aria-hidden="true">1</span>
-                <i class="fa-solid fa-file-pen fs-1 text-purple mb-4" aria-hidden="true"></i>
-                <h3 class="h4 text-white">Define</h3>
-                <p class="text-gray">
-                  Write or install a <code>skill.md</code>. It goes into your agents repo
-                  (<code>~/.nest/repo</code>), so you can diff, review, branch, and push it like any code.
-                </p>
+                <i class="fa-solid fa-magnifying-glass fs-1 text-purple mb-4" aria-hidden="true"></i>
+                <h3 class="h4 text-white">Who's responsible?</h3>
+                <p class="text-gray">Ask "who is responsible for the SOX audit?" and get the person, from what people
+                  publish, with whether they're online.</p>
               </div>
             </li>
-            <li class="col-md-4 col-sm-12" data-aos="fade-up" data-aos-duration="1800">
+            <li class="col-lg-4 col-md-6 col-sm-12" data-aos="fade-up" data-aos-duration="1400">
               <div class="product_card nest_card">
-                <span class="nest_step_num" aria-hidden="true">2</span>
-                <i class="fa-brands fa-docker fs-1 text-purple mb-4" aria-hidden="true"></i>
-                <h3 class="h4 text-white">Run</h3>
-                <p class="text-gray">
-                  Each agent runs in its own container with no keys and no direct network access. When it wants to
-                  run a command or send something, it asks you first.
-                </p>
+                <i class="fa-solid fa-paper-plane fs-1 text-purple mb-4" aria-hidden="true"></i>
+                <h3 class="h4 text-white">Ask and assign</h3>
+                <p class="text-gray">"Assign Lena: send the evidence list, due Friday." It lands in her team inbox with the
+                  due date, stays until she clicks Done or Decline, and her note comes back to you.</p>
               </div>
             </li>
-            <li class="col-md-4 col-sm-12" data-aos="fade-up" data-aos-duration="2100">
+            <li class="col-lg-4 col-md-12 col-sm-12" data-aos="fade-up" data-aos-duration="1600">
               <div class="product_card nest_card">
-                <span class="nest_step_num" aria-hidden="true">3</span>
-                <i class="fa-solid fa-list-check fs-1 text-purple mb-4" aria-hidden="true"></i>
-                <h3 class="h4 text-white">Review</h3>
-                <p class="text-gray">
-                  The Agent Console shows every agent, its status, and what needs your approval. Each run is kept
-                  in its history, and network requests are recorded in the audit log.
-                </p>
+                <i class="fa-solid fa-umbrella-beach fs-1 text-purple mb-4" aria-hidden="true"></i>
+                <h3 class="h4 text-white">Away, and who covers</h3>
+                <p class="text-gray">Set "away until" and who covers. Teammates see "Away until Tue, Nov 10 · Lena covers",
+                  and requests reach you when you're back.</p>
               </div>
             </li>
-          </ol>
+            <li class="col-lg-4 col-md-6 col-sm-12" data-aos="fade-up" data-aos-duration="1200">
+              <div class="product_card nest_card">
+                <i class="fa-solid fa-shuffle fs-1 text-purple mb-4" aria-hidden="true"></i>
+                <h3 class="h4 text-white">Reassign and hand over</h3>
+                <p class="text-gray">Swamped? Reassign a task to a teammate who serves the same thing, without the asker
+                  sending it again. Duties on a calendar hand over to a backup by themselves.</p>
+              </div>
+            </li>
+            <li class="col-lg-4 col-md-6 col-sm-12" data-aos="fade-up" data-aos-duration="1400">
+              <div class="product_card nest_card">
+                <i class="fa-solid fa-robot fs-1 text-purple mb-4" aria-hidden="true"></i>
+                <h3 class="h4 text-white">Agents that help each other</h3>
+                <p class="text-gray">Send a pull request to a teammate's PR Reviewer: it reviews on their machine and the
+                  findings come back to you. Each owner decides who may call their agents.</p>
+              </div>
+            </li>
+            <li class="col-lg-4 col-md-12 col-sm-12" data-aos="fade-up" data-aos-duration="1600">
+              <div class="product_card nest_card">
+                <i class="fa-solid fa-user-shield fs-1 text-purple mb-4" aria-hidden="true"></i>
+                <h3 class="h4 text-white">Your rules on trust</h3>
+                <p class="text-gray">Everyone your company enrolled on its relay is trusted by default. Pause or block anyone,
+                  and work assigned to you still waits for your approval.</p>
+              </div>
+            </li>
+          </ul>
+          <p class="nest_note text-center mt-4">These need your company's relay (below). Everything else in Nandin works on
+            its own.</p>
         </section>
 
-        <!-- Screenshots ===================================== -->
-        <section class="container nest_section" id="preview" aria-labelledby="nest-inside">
+        <!-- 6 Scale ===================================== -->
+        <section class="container nest_section" id="scale" aria-labelledby="nest-scale">
+          <div class="row align-items-center gy-5">
+            <div class="col-lg-5 col-md-12">
+              <p class="nest_kicker">6 · Scale</p>
+              <h2 id="nest-scale" class="nest_h2 text-white">Proven jobs run on their own schedule</h2>
+              <p class="para nandin_para">
+                Start supervised: new agents ask before every command. Once a job has a clean record, relax its approvals
+                and give it a trigger. Asking or assigning anyone still waits for a person.
+              </p>
+              <ul class="nandin_points">
+                <li><b>Workflows</b> chain agents step by step, with steps that wait for a person to sign off and steps
+                  that ask a colleague and wait, for days if needed.</li>
+                <li><b>Triggers</b> start them on a schedule, when a file changes, from a webhook or a device, when another
+                  run finishes, or on a duty calendar.</li>
+                <li><b>Duty calendars</b> know who's on duty each day (turns, stand-ins, days off) and hand over to a backup
+                  when the run fails or never starts.</li>
+                <li><b>Nothing runs unless something starts it.</b> Between runs no agent watches anything and no model is
+                  called.</li>
+              </ul>
+            </div>
+            <div class="col-lg-7 col-md-12">
+              <figure class="nest_shot nandin_shot_side">
+                <picture>
+                  <source type="image/webp" srcset="img/nandin-shot-trigger.webp" />
+                  <img src="img/nandin-shot-trigger.jpg" width="1800" height="800" loading="lazy"
+                    alt="A calendar trigger in Nandin: the Monday ops review at 09:30, three people taking turns weekly, a stand-in, a backup that takes over if the run fails or isn't done in 30 minutes, and skipped dates. Recent firings show who was on duty and one handover to a backup." />
+                </picture>
+                <figcaption>
+                  <span class="nest_preview_tag">Design preview</span>
+                  A duty calendar trigger, with its handovers on record. Sample data.
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+        </section>
+
+        <!-- The bison ===================================== -->
+        <section class="container nest_section" id="bison" aria-labelledby="nest-bison">
           <div class="work_heading nest_heading">
-            <h2 id="nest-inside" class="text-center text-white h1 mt-2">A Look Inside</h2>
+            <h2 id="nest-bison" class="text-center text-white h1 mt-2">Meet the bison</h2>
             <p class="text-center work_p">
-              Design previews of where the interface is headed. They use sample data, and some of what they show,
-              such as the run chat and marketplace ratings, isn't in the current release yet.
+              Nandin lives in a corner of your screen, above your other apps. One look tells you whether anything needs
+              you. Click it to approve, answer, or ask what your agents did today.
             </p>
           </div>
-          <div class="nest_gallery">
-            <figure class="nest_shot" style="flex-grow: 186">
-              <picture>
-                <source type="image/webp" srcset="img/nest-workflow.webp" />
-                <img src="img/nest-workflow.jpg" width="900" height="483" loading="lazy"
-                  alt="Design preview of the workflow builder: a customer onboarding workflow drawn as a graph of steps from a scheduled trigger through data extraction, analysis, a report, and an email that requires approval, with a step details panel showing status, timing, inputs, and outputs." />
-              </picture>
-              <figcaption>
-                <span class="nest_preview_tag">Design preview</span>
-                Workflow builder: steps as a graph, with each step's status, inputs, and outputs.
-              </figcaption>
-            </figure>
-            <figure class="nest_shot" style="flex-grow: 181">
-              <picture>
-                <source type="image/webp" srcset="img/nest-marketplace.webp" />
-                <img src="img/nest-marketplace.jpg" width="876" height="484" loading="lazy"
-                  alt="Design preview of the marketplace: a grid of installable agents and workflows, each card with a description, type and category tags, and a version number." />
-              </picture>
-              <figcaption>
-                <span class="nest_preview_tag">Design preview</span>
-                Marketplace: browse agents and workflows from your registries.
-              </figcaption>
-            </figure>
-            <figure class="nest_shot" style="flex-grow: 86">
-              <picture>
-                <source type="image/webp" srcset="img/nest-companion.webp" />
-                <img src="img/nest-companion.jpg" width="405" height="470" loading="lazy"
-                  alt="Design preview of the floating companion window: a small chat window summarising agent activity, with shortcuts to the dashboard and pending approvals." />
-              </picture>
-              <figcaption>
-                <span class="nest_preview_tag">Design preview</span>
-                Companion: a small window that stays on top while you work.
-              </figcaption>
-            </figure>
+          <ul class="bison_poses">
+            <li>
+              <span class="bison" data-pose="rest" aria-hidden="true">
+                <span class="bp-group">
+                  <img class="bp-part bp-base" src="img/nandin-bison-rest.webp" alt="" width="384" height="384" loading="lazy" />
+                  <img class="bp-part bp-head" src="img/nandin-bison-rest.webp" alt="" width="384" height="384" loading="lazy" />
+                </span>
+                <img class="bp-part bp-stand" src="img/nandin-bison-wait.webp" alt="" width="384" height="384" loading="lazy" />
+              </span>
+              <strong>Resting</strong><span>Nothing needs you. It breathes, dozes, and now and then gets up for a stretch.</span>
+            </li>
+            <li>
+              <span class="bison" data-pose="wait" aria-hidden="true">
+                <span class="bp-group">
+                  <img class="bp-part bp-base" src="img/nandin-bison-wait.webp" alt="" width="384" height="384" loading="lazy" />
+                  <img class="bp-part bp-head" src="img/nandin-bison-wait.webp" alt="" width="384" height="384" loading="lazy" />
+                  <img class="bp-part bp-tail" src="img/nandin-bison-wait.webp" alt="" width="384" height="384" loading="lazy" />
+                  <img class="bp-part bp-badge" src="img/nandin-bison-wait.webp" alt="" width="384" height="384" loading="lazy" />
+                </span>
+              </span>
+              <strong>Waiting on you</strong><span>An approval is pending. It looks at you and swishes its tail.</span>
+            </li>
+            <li>
+              <span class="bison" data-pose="carry" aria-hidden="true">
+                <span class="bp-group">
+                  <img class="bp-part bp-base" src="img/nandin-bison-carry.webp" alt="" width="384" height="384" loading="lazy" />
+                  <img class="bp-part bp-head" src="img/nandin-bison-carry.webp" alt="" width="384" height="384" loading="lazy" />
+                  <img class="bp-part bp-tail" src="img/nandin-bison-carry.webp" alt="" width="384" height="384" loading="lazy" />
+                  <img class="bp-part bp-crates" src="img/nandin-bison-carry.webp" alt="" width="384" height="384" loading="lazy" />
+                </span>
+              </span>
+              <strong>Carrying work</strong><span>Agents are running. It walks along with the crates on its back.</span>
+            </li>
+            <li>
+              <span class="bison" data-pose="done" aria-hidden="true">
+                <span class="bp-group">
+                  <img class="bp-part bp-base" src="img/nandin-bison-done.webp" alt="" width="384" height="384" loading="lazy" />
+                  <img class="bp-part bp-head" src="img/nandin-bison-done.webp" alt="" width="384" height="384" loading="lazy" />
+                  <img class="bp-part bp-tail" src="img/nandin-bison-done.webp" alt="" width="384" height="384" loading="lazy" />
+                  <img class="bp-part bp-badge" src="img/nandin-bison-done.webp" alt="" width="384" height="384" loading="lazy" />
+                </span>
+              </span>
+              <strong>Done</strong><span>You approved. The check pops in and it nods.</span>
+            </li>
+          </ul>
+          <p class="nest_note text-center mt-4">Prefer it still? Settings › Appearance › Bison moves. It also holds still when
+            your system asks for less motion.</p>
+        </section>
+
+        <!-- Starter packs ===================================== -->
+        <section class="container nest_section" id="packs" aria-labelledby="nest-packs">
+          <div class="work_heading nest_heading">
+            <h2 id="nest-packs" class="text-center text-white h1 mt-2">Ready-made agents, signed by their publisher</h2>
+            <p class="text-center work_p">
+              Install starter packs from the Nandin registry, or from a folder or <code>.zip</code> on your computer with no
+              internet at all. Before anything installs, you see exactly what it will be allowed to do.
+            </p>
+          </div>
+          <ul class="row gy-4 nest_grid">
+            <li class="col-lg-4 col-md-6 col-sm-12" data-aos="fade-up" data-aos-duration="1200">
+              <div class="product_card nest_card">
+                <span class="nandin_tag">Built in</span>
+                <i class="fa-solid fa-user-tie fs-1 text-purple mb-4" aria-hidden="true"></i>
+                <h3 class="h4 text-white">Chief of Staff</h3>
+                <p class="text-gray">Knows your job from your notes, finds who's responsible, asks and assigns with your
+                  approval, and tracks what's open. Comes with Nandin; change its rules any time.</p>
+              </div>
+            </li>
+            <li class="col-lg-4 col-md-6 col-sm-12" data-aos="fade-up" data-aos-duration="1400">
+              <div class="product_card nest_card">
+                <span class="nandin_tag">Nandin Dev Pack</span>
+                <i class="fa-solid fa-code-pull-request fs-1 text-purple mb-4" aria-hidden="true"></i>
+                <h3 class="h4 text-white">PR Reviewer and AWS Ops Analyst</h3>
+                <p class="text-gray">Reviews pull requests (private repos too) against your rules and posts after you approve
+                  the exact comments. Finds why AWS jobs and alarms failed, with evidence, and proposes a fix you approve.</p>
+              </div>
+            </li>
+            <li class="col-lg-4 col-md-12 col-sm-12" data-aos="fade-up" data-aos-duration="1600">
+              <div class="product_card nest_card">
+                <span class="nandin_tag">Nandin Personal Backup</span>
+                <i class="fa-solid fa-box-archive fs-1 text-purple mb-4" aria-hidden="true"></i>
+                <h3 class="h4 text-white">Backup Keeper</h3>
+                <p class="text-gray">Backs up the folders you choose to your own S3 bucket as Glacier Deep Archive, as they
+                  change and nightly, and sets up the AWS side with you, one approval at a time.</p>
+              </div>
+            </li>
+          </ul>
+          <figure class="nest_hero_shot nandin_wide_shot mt-5">
+            <picture>
+              <source type="image/webp" srcset="img/nandin-shot-library.webp" />
+              <img src="img/nandin-shot-library.jpg" width="1800" height="1025" loading="lazy"
+                alt="Nandin's Library, Browse tab, with the install dialog for the Nandin Dev Pack open. It lists the two agents, what they will be allowed to do (read files, the GitHub and AWS connectors, no other internet, no keys inside the container), and a Verified note: signed by the publisher and the code is exactly the signed commit. Buttons: Cancel and Install and allow." />
+            </picture>
+            <figcaption>
+              <span class="nest_preview_tag">Design preview</span>
+              Install and allow: what it may do, who signed it, and nothing else. Sample data.
+            </figcaption>
+          </figure>
+          <div class="nest_actions justify-content-center mt-4">
+            <a href="agents.html" class="nest_btn_outline"><i class="fa-solid fa-store me-2" aria-hidden="true"></i>Browse the Agent Hub</a>
           </div>
         </section>
 
-        <!-- Features ===================================== -->
+        <!-- Tools and models ===================================== -->
         <section class="container nest_section" id="features" aria-labelledby="nest-features">
           <div class="work_heading nest_heading">
-            <h2 id="nest-features" class="text-center text-white h1 mt-2">Everything an Agent Team Needs</h2>
+            <h2 id="nest-features" class="text-center text-white h1 mt-2">Tools and models, on your terms</h2>
             <p class="text-center work_p">
-              Agents, workflows, triggers, and connectors are plain files. The app's database is only a cache of
-              them and can be rebuilt at any time.
+              Give each agent only what its job needs. Company sign-in first, your own keys if you like, local models when
+              prompts must stay in-house.
             </p>
           </div>
           <ul class="row gy-4 nest_grid">
             <li class="col-lg-4 col-md-6 col-sm-12" data-aos="zoom-in" data-aos-duration="1000">
               <div class="product_card nest_card">
-                <i class="fa-solid fa-code-branch fs-1 text-purple mb-4" aria-hidden="true"></i>
-                <h3 class="h4 text-white">Git-backed agent repo</h3>
-                <p class="text-gray">
-                  Every definition is a file in a git repo you own. Moving to a new machine is a
-                  <code>git clone</code>; sharing with your other machines is a push.
-                </p>
+                <i class="fa-solid fa-plug fs-1 text-purple mb-4" aria-hidden="true"></i>
+                <h3 class="h4 text-white">Connectors and MCP</h3>
+                <p class="text-gray">GitHub, AWS, S3 Backup and shared folders built in, and any service with an MCP server
+                  (Outlook, Slack, Jira, a database). Tokens stay in your keychain, calls run on your computer.</p>
               </div>
             </li>
             <li class="col-lg-4 col-md-6 col-sm-12" data-aos="zoom-in" data-aos-duration="1200">
               <div class="product_card nest_card">
-                <i class="fa-solid fa-diagram-project fs-1 text-purple mb-4" aria-hidden="true"></i>
-                <h3 class="h4 text-white">Workflows</h3>
-                <p class="text-gray">
-                  Chain agents into multi-agent pipelines. Each step hands its output to the next, and every run
-                  is recorded.
-                </p>
+                <i class="fa-solid fa-globe fs-1 text-purple mb-4" aria-hidden="true"></i>
+                <h3 class="h4 text-white">Browser pilots</h3>
+                <p class="text-gray">An agent drives a real browser, in a window you can watch or headless in a sandbox, only
+                  on its allowed sites. Clicking, submitting and paying wait for your approval.</p>
               </div>
             </li>
             <li class="col-lg-4 col-md-6 col-sm-12" data-aos="zoom-in" data-aos-duration="1400">
               <div class="product_card nest_card">
-                <i class="fa-solid fa-bolt fs-1 text-purple mb-4" aria-hidden="true"></i>
-                <h3 class="h4 text-white">Triggers</h3>
-                <p class="text-gray">
-                  Start agents and workflows on a schedule, when files change, from a webhook or a device, or when
-                  another run finishes.
-                </p>
+                <i class="fa-solid fa-magnifying-glass-chart fs-1 text-purple mb-4" aria-hidden="true"></i>
+                <h3 class="h4 text-white">Web search without a key</h3>
+                <p class="text-gray">Built-in search needs no account or API key, and only returns and reads pages on the
+                  sites the agent is allowed to reach.</p>
               </div>
             </li>
             <li class="col-lg-4 col-md-6 col-sm-12" data-aos="zoom-in" data-aos-duration="1600">
               <div class="product_card nest_card">
-                <i class="fa-solid fa-store fs-1 text-purple mb-4" aria-hidden="true"></i>
-                <h3 class="h4 text-white">Marketplace and registries</h3>
-                <p class="text-gray">
-                  Install agents and packs from shared git registries. Entries declare their capabilities,
-                  publisher-signed releases show as verified, and installed agents stay read-only until you fork
-                  them. <a href="agents.html" class="nest_inline_link">Browse the Agent Hub</a>.
-                </p>
+                <i class="fa-solid fa-microchip fs-1 text-purple mb-4" aria-hidden="true"></i>
+                <h3 class="h4 text-white">Your choice of models</h3>
+                <p class="text-gray">Claude through your Claude sign-in or key, OpenAI and DeepSeek with your own keys,
+                  Amazon Bedrock through AWS SSO, and Azure AI Foundry or a LiteLLM gateway set once for the whole team.
+                  Local models through Ollama are experimental.</p>
               </div>
             </li>
             <li class="col-lg-4 col-md-6 col-sm-12" data-aos="zoom-in" data-aos-duration="1800">
               <div class="product_card nest_card">
-                <i class="fa-solid fa-plug fs-1 text-purple mb-4" aria-hidden="true"></i>
-                <h3 class="h4 text-white">Connectors</h3>
-                <p class="text-gray">
-                  Give agents outside services through MCP servers and OAuth sign-in, with tokens kept in your
-                  keyring.
-                </p>
+                <i class="fa-solid fa-terminal fs-1 text-purple mb-4" aria-hidden="true"></i>
+                <h3 class="h4 text-white">Coding agents, contained</h3>
+                <p class="text-gray">Run Claude Code, Codex or Gemini CLI as an agent's engine. They always run in a
+                  container, under the same allowed sites and approvals.</p>
               </div>
             </li>
             <li class="col-lg-4 col-md-6 col-sm-12" data-aos="zoom-in" data-aos-duration="2000">
               <div class="product_card nest_card">
-                <i class="fa-solid fa-desktop fs-1 text-purple mb-4" aria-hidden="true"></i>
-                <h3 class="h4 text-white">Pilots</h3>
-                <p class="text-gray">
-                  Let an agent see the screen and use desktop apps through host-side pilots, one capability at a
-                  time, granted per agent.
-                </p>
-              </div>
-            </li>
-            <li class="col-lg-4 col-md-6 col-sm-12" data-aos="zoom-in" data-aos-duration="1000">
-              <div class="product_card nest_card">
-                <i class="fa-solid fa-microchip fs-1 text-purple mb-4" aria-hidden="true"></i>
-                <h3 class="h4 text-white">Your choice of models</h3>
-                <p class="text-gray">
-                  Use local models through Ollama, or Anthropic, OpenAI, and DeepSeek with your own API keys. Each
-                  agent picks its model in its <code>skill.md</code>.
-                </p>
-              </div>
-            </li>
-            <li class="col-lg-4 col-md-6 col-sm-12" data-aos="zoom-in" data-aos-duration="1200">
-              <div class="product_card nest_card">
-                <i class="fa-solid fa-scroll fs-1 text-purple mb-4" aria-hidden="true"></i>
-                <h3 class="h4 text-white">Audit logs</h3>
-                <p class="text-gray">
-                  See what each agent sent and where. Network requests, connector calls, pilot actions, and
-                  delegations are written to audit logs on your machine, next to each agent's run history.
-                </p>
-              </div>
-            </li>
-            <li class="col-lg-4 col-md-6 col-sm-12" data-aos="zoom-in" data-aos-duration="1400">
-              <div class="product_card nest_card">
-                <i class="fa-solid fa-wifi fs-1 text-purple mb-4" aria-hidden="true"></i>
-                <h3 class="h4 text-white">Desktop and LAN web</h3>
-                <p class="text-gray">
-                  The same core serves the desktop window and, with <code>--server</code>, a web UI on your local
-                  network, so you can check on agents from any browser.
-                </p>
+                <i class="fa-solid fa-gift fs-1 text-purple mb-4" aria-hidden="true"></i>
+                <h3 class="h4 text-white">Free tokens to start</h3>
+                <p class="text-gray">Nandin comes with 100,000 free tokens on DeepSeek Flash, so you can start without a key.
+                  They switch off once you set up your own model.</p>
               </div>
             </li>
           </ul>
@@ -576,59 +792,57 @@
           <div class="row align-items-center gy-5">
             <div class="col-lg-6 col-md-12">
               <div class="hero_content">
-                <h2 id="nest-security" class="nest_h2">Private by Design</h2>
+                <h2 id="nest-security" class="nest_h2">Private by design</h2>
                 <p class="hero_head fs-2" style="color: var(--para-color); font-weight: bold">
                   Agents get exactly what you approve, and nothing else.
                 </p>
                 <p class="para">
-                  Agents read your files, use your accounts, and act for you. That work belongs on a machine you
-                  control, under rules you can read, with a record you keep.
+                  Agents read your files, use your accounts, and act for you. That work belongs on machines you control,
+                  under rules you can read, with a record you keep. There's no VaultDB server in the middle.
                 </p>
               </div>
-              <img class="img-fluid nest_arch_img" src="img/nest-architecture.svg" width="560" height="520"
-                loading="lazy"
-                alt="Diagram: on your machine, Nandin runs each agent in its own Docker container. Definitions live in a git repo, keys stay in the OS keyring, containers reach model providers and approved hosts only through the egress proxy, and everything goes to the audit log." />
             </div>
             <div class="col-lg-6 col-md-12">
               <ul class="nest_checklist">
                 <li>
                   <i class="fa-solid fa-key text-purple" aria-hidden="true"></i>
                   <div>
-                    <h3>Keys never enter containers</h3>
-                    <p>Provider keys and connector tokens live in your OS keyring. A proxy on the host adds them to
-                      model calls on the way out.</p>
+                    <h3>Credentials never go inside</h3>
+                    <p>Model keys, tokens and cloud credentials live in your OS keychain. A proxy on your computer adds them
+                      on the way out, so containers never see them.</p>
                   </div>
                 </li>
                 <li>
                   <i class="fa-solid fa-shield-halved text-purple" aria-hidden="true"></i>
                   <div>
-                    <h3>Only approved hosts</h3>
-                    <p>Containers reach the network only through the egress proxy, which allows the hosts an agent
-                      declares and you approved, and refuses the rest.</p>
+                    <h3>Only allowed sites</h3>
+                    <p>Containers reach the network only through the egress proxy, which allows the sites set for each
+                      agent, refuses the rest, and logs both.</p>
                   </div>
                 </li>
                 <li>
-                  <i class="fa-solid fa-hand text-purple" aria-hidden="true"></i>
+                  <i class="fa-solid fa-lock text-purple" aria-hidden="true"></i>
                   <div>
-                    <h3>Approval before action</h3>
-                    <p>Anything an agent marks as needing approval, such as running a shell command, pauses until you
-                      approve or reject it in the console.</p>
+                    <h3>Hardened containers</h3>
+                    <p>A non-root user, every Linux capability dropped, a read-only root, and memory and process limits. An
+                      agent sees its own folders and nothing else on your disk.</p>
                   </div>
                 </li>
                 <li>
-                  <i class="fa-solid fa-cloud-arrow-up text-purple" aria-hidden="true"></i>
+                  <i class="fa-solid fa-file-signature text-purple" aria-hidden="true"></i>
                   <div>
-                    <h3>Scoped cloud access</h3>
-                    <p>AWS calls go through the proxy under a scoped STS session, limited to the services the agent
-                      declares.</p>
+                    <h3>Consent for installed agents</h3>
+                    <p>An agent from the registry can't run until you allow each thing it asks for. It installs read-only,
+                      with scripts stripped out.</p>
                   </div>
                 </li>
                 <li>
                   <i class="fa-solid fa-hard-drive text-purple" aria-hidden="true"></i>
                   <div>
                     <h3>Your records stay with you</h3>
-                    <p>Definitions, run history, and audit logs are kept on your machine. Nothing is sent to a VaultDB
-                      service; prompts go only to the model provider each agent uses.</p>
+                    <p>Run history, approvals and logs stay on your machine. What leaves: the model calls you chose, the
+                      sites you allowed, pushes to your own git remote, and, if you connect one, requests through your
+                      company's relay.</p>
                   </div>
                 </li>
               </ul>
@@ -636,88 +850,108 @@
           </div>
         </section>
 
-        <!-- Teams ===================================== -->
+        <!-- Relay ===================================== -->
         <section class="container nest_section" id="teams" aria-labelledby="nest-teams">
-          <div class="work_heading nest_heading">
-            <p class="text-center"><span class="nest_badge">New</span></p>
-            <h2 id="nest-teams" class="text-center text-white h1 mt-2">Nandin for Teams</h2>
-            <p class="text-center work_p">
-              Your research agent can ask a teammate's reporting agent to take a task, across machines, without a
-              central server holding your data. Teams share agents through a private GitHub repo, and a relay you
-              can host yourself routes live delegation.
-            </p>
+          <div class="row gy-5">
+            <div class="col-lg-6 col-md-12">
+              <p class="nest_kicker">For teams</p>
+              <h2 id="nest-teams" class="nest_h2 text-white">Works alone. Better with your company's relay.</h2>
+              <p class="para nandin_para">
+                Nandin is fully usable on its own: agents, Chief of Staff, workflows, triggers, approvals, backups and
+                starter packs all work with no relay. To connect teammates, your company runs its own relay: a small
+                server, one per company, on a machine everyone can reach.
+              </p>
+              <ul class="nandin_points">
+                <li><b>Self-hosted.</b> A Docker image or a Helm chart. It keeps the member directory (names, what people
+                  own, availability) and passes requests through; it doesn't store what people ask or answer.</li>
+                <li><b>Only your people.</b> Staff enroll with a join code you hand out, over <code>wss://</code> with your
+                  certificate or behind your TLS proxy. Revoke a device when someone leaves.</li>
+                <li><b>Free for up to 20 users.</b> More with a licence file from VaultDB.ai (see licensing below).</li>
+              </ul>
+            </div>
+            <div class="col-lg-6 col-md-12">
+              <div class="nandin_code" role="group" aria-labelledby="relay-run-label">
+                <p class="nandin_code_label" id="relay-run-label">Run a company relay</p>
+                <pre tabindex="0"><code>export NANDIN_RELAY_SECRET=$(openssl rand -hex 32)   # keep it secret
+export NANDIN_RELAY_JOIN_CODE=&lt;a code you give your staff&gt;
+
+docker run -d --name nandin-relay -p 8787:8787 \
+  -e NANDIN_RELAY_SECRET -e NANDIN_RELAY_JOIN_CODE \
+  -v nandin-relay-data:/data \
+  ghcr.io/vaultdbai/nandin-relay --data-dir /data</code></pre>
+                <p class="nandin_code_note">Then in Nandin: Network › Connection, enter the relay's address and join code.
+                  For TLS, licence files and backups, see the <a class="nest_inline_link"
+                    href="https://github.com/vaultdbai/nandin-relay#readme">relay README</a>.</p>
+              </div>
+              <figure class="nest_shot nandin_shot_side mt-4">
+                <picture>
+                  <source type="image/webp" srcset="img/nandin-shot-relay.webp" />
+                  <img src="img/nandin-shot-relay.jpg" width="1800" height="900" loading="lazy"
+                    alt="Nandin's Network, Connection tab: connected to the company's relay over wss with the join code, a switch to trust everyone on the relay, and a checklist to make this Nandin reachable, every row ticked." />
+                </picture>
+                <figcaption>
+                  <span class="nest_preview_tag">Design preview</span>
+                  Connection: one relay per company. Sample data.
+                </figcaption>
+              </figure>
+            </div>
           </div>
-          <ol class="nest_flow" aria-label="How delegation works">
-            <li><span class="nest_step_num" aria-hidden="true">1</span><strong>Share</strong> an agent to your
-              team's private registry.</li>
-            <li><span class="nest_step_num" aria-hidden="true">2</span><strong>Discover</strong> what teammates
-              share under "Shared with me".</li>
-            <li><span class="nest_step_num" aria-hidden="true">3</span><strong>Delegate</strong> a task; the owner's
-              trust rules decide, and both sides log it.</li>
-          </ol>
+        </section>
+
+        <!-- Licensing ===================================== -->
+        <section class="container nest_section" id="licensing" aria-labelledby="nest-licensing">
+          <div class="work_heading nest_heading">
+            <h2 id="nest-licensing" class="text-center text-white h1 mt-2">Licensing, in plain words</h2>
+            <p class="text-center work_p">The app is open source. The team relay is source-available and free for smaller
+              organisations. The formats and starter packs are yours to reuse.</p>
+          </div>
           <ul class="row gy-4 nest_grid">
-            <li class="col-lg-4 col-md-6 col-sm-12" data-aos="fade-up" data-aos-duration="1200">
-              <div class="product_card nest_card">
-                <i class="fa-solid fa-id-card fs-1 text-purple mb-4" aria-hidden="true"></i>
-                <h3 class="h4 text-white">Agent cards</h3>
-                <p class="text-gray">
-                  An agent declares the capabilities it serves and whether it accepts delegation, with a limit on
-                  concurrent tasks. Its card is what teammates see.
+            <li class="col-lg-4 col-md-6 col-sm-12">
+              <div class="product_card nest_card nandin_licence">
+                <span class="nandin_tag">Apache-2.0</span>
+                <h3 class="h4 text-white">The Nandin app</h3>
+                <p class="text-gray">Open source under the Apache License 2.0: use it, change it and ship it, at any size,
+                  for free.</p>
+                <p class="text-gray">The Nandin name, the bison and the logos are trademarks of VaultDB.ai and aren't covered
+                  by the Apache licence. Run official builds as they are; a fork must use its own name and artwork.</p>
+                <p class="nandin_licence_links">
+                  <a class="nest_inline_link" href="https://github.com/vaultdbai/nandin/blob/main/LICENSE">LICENSE</a>
+                  <a class="nest_inline_link" href="https://github.com/vaultdbai/nandin/blob/main/TRADEMARKS.md">TRADEMARKS</a>
                 </p>
               </div>
             </li>
-            <li class="col-lg-4 col-md-6 col-sm-12" data-aos="fade-up" data-aos-duration="1400">
-              <div class="product_card nest_card">
-                <i class="fa-solid fa-tower-broadcast fs-1 text-purple mb-4" aria-hidden="true"></i>
-                <h3 class="h4 text-white">Self-hostable relay</h3>
-                <p class="text-gray">
-                  <code>nest --relay</code> runs a small WebSocket relay for presence and task routing, so
-                  instances behind NAT can reach each other. Instances register with tokens the relay operator
-                  issues.
+            <li class="col-lg-4 col-md-6 col-sm-12">
+              <div class="product_card nest_card nandin_licence">
+                <span class="nandin_tag">BUSL-1.1</span>
+                <h3 class="h4 text-white">The Nandin relay</h3>
+                <p class="text-gray">Source-available under the Business Source License 1.1. Free in production when your
+                  organisation (with its affiliates) has up to 20 users, runs one active relay plus one standby, and doesn't
+                  offer it as a competing hosted service. AI agents don't count as users.</p>
+                <p class="text-gray">Each version becomes Apache-2.0 four years after its release. More users need a
+                  licence file from VaultDB.ai: <a class="nest_inline_link"
+                    href="mailto:licensing@vaultdb.ai">licensing@vaultdb.ai</a>.</p>
+                <p class="nandin_licence_links">
+                  <a class="nest_inline_link" href="https://github.com/vaultdbai/nandin-relay/blob/main/LICENSE">LICENSE</a>
                 </p>
               </div>
             </li>
-            <li class="col-lg-4 col-md-6 col-sm-12" data-aos="fade-up" data-aos-duration="1600">
-              <div class="product_card nest_card">
-                <i class="fa-solid fa-people-arrows fs-1 text-purple mb-4" aria-hidden="true"></i>
-                <h3 class="h4 text-white">Cross-user delegation</h3>
-                <p class="text-gray">
-                  One agent asks another, on your machine or a teammate's, to handle a named capability. Calls go
-                  through the usual approval path, and each one is recorded in a delegation log.
-                </p>
-              </div>
-            </li>
-            <li class="col-lg-4 col-md-6 col-sm-12" data-aos="fade-up" data-aos-duration="1200">
-              <div class="product_card nest_card">
-                <i class="fa-brands fa-github fs-1 text-purple mb-4" aria-hidden="true"></i>
-                <h3 class="h4 text-white">Private team registries</h3>
-                <p class="text-gray">
-                  A team is a GitHub organization with a private <code>nest-registry</code> repo. Share an agent to
-                  the team and it syncs to every member's Nandin.
-                </p>
-              </div>
-            </li>
-            <li class="col-lg-4 col-md-6 col-sm-12" data-aos="fade-up" data-aos-duration="1400">
-              <div class="product_card nest_card">
-                <i class="fa-solid fa-share-nodes fs-1 text-purple mb-4" aria-hidden="true"></i>
-                <h3 class="h4 text-white">Shared with me, shared by me</h3>
-                <p class="text-gray">
-                  See the agents your teams and the relay make available to you, and the ones you share, with how
-                  often each is called.
-                </p>
-              </div>
-            </li>
-            <li class="col-lg-4 col-md-6 col-sm-12" data-aos="fade-up" data-aos-duration="1600">
-              <div class="product_card nest_card">
-                <i class="fa-solid fa-circle-nodes fs-1 text-purple mb-4" aria-hidden="true"></i>
-                <h3 class="h4 text-white">Trust graph</h3>
-                <p class="text-gray">
-                  Decide who may call which of your agents: allow, deny, or ask. Unknown callers default to ask,
-                  and an explicit deny always wins.
+            <li class="col-lg-4 col-md-12 col-sm-12">
+              <div class="product_card nest_card nandin_licence">
+                <span class="nandin_tag">MIT</span>
+                <h3 class="h4 text-white">Spec, registry and starter packs</h3>
+                <p class="text-gray">The open formats and relay protocol, the registry index, and the starter packs are MIT
+                  licensed. Copy, change and share them freely.</p>
+                <p class="nandin_licence_links">
+                  <a class="nest_inline_link" href="https://github.com/vaultdbai/nandin-spec">nandin-spec</a>
+                  <a class="nest_inline_link" href="https://github.com/vaultdbai/nandin-registry">nandin-registry</a>
+                  <a class="nest_inline_link" href="https://github.com/vaultdbai/nandin-dev-pack">Dev Pack</a>
+                  <a class="nest_inline_link" href="https://github.com/vaultdbai/nandin-personal-backup">Personal Backup</a>
                 </p>
               </div>
             </li>
           </ul>
+          <p class="nest_note text-center mt-4">The app has no licence keys, seat checks or nags. The 20-user limit lives only
+            in the relay, and people already on a relay are never cut off.</p>
         </section>
 
         <!-- Download ===================================== -->
@@ -725,7 +959,7 @@
           <div class="work_heading nest_heading">
             <h2 id="nest-download" class="text-center text-white h1 mt-2">Download Nandin</h2>
             <p class="text-center work_p">
-              Nandin is available for Windows today. macOS and Linux are coming soon.
+              Installers for every platform are on GitHub Releases.
             </p>
           </div>
           <ul class="row gy-4 nest_grid">
@@ -733,46 +967,48 @@
               <div class="product_card nest_card nest_dl_card">
                 <i class="fa-brands fa-windows fs-1 text-purple mb-4" aria-hidden="true"></i>
                 <h3 class="h4 text-white">Windows</h3>
-                <p class="text-gray"><code>.msi</code> installer, x64. Windows 10 or 11 with the Microsoft Edge
-                  WebView2 runtime.</p>
-                <a href="downloads/nest/0.1.0/VaultDB-Nest-0.1.0-windows-x64.msi" class="contact_btn nest_dl_btn js-nest-download">
+                <p class="text-gray"><code>.msi</code> installer, x64. Windows 10 or 11.</p>
+                <a href="https://github.com/vaultdbai/nandin/releases/latest" class="contact_btn nest_dl_btn">
                   <i class="fa-solid fa-download me-2" aria-hidden="true"></i>Download for Windows
-                  <span class="nest_dl_version">&middot; <span class="js-nest-version">v0.1.0</span></span>
                 </a>
               </div>
             </li>
             <li class="col-lg-4 col-md-6 col-sm-12">
-              <div class="product_card nest_card nest_dl_card nest_dl_soon">
+              <div class="product_card nest_card nest_dl_card">
                 <i class="fa-brands fa-apple fs-1 text-purple mb-4" aria-hidden="true"></i>
                 <h3 class="h4 text-white">macOS</h3>
-                <p class="text-gray">A macOS build is on the way.</p>
-                <span class="nest_soon" aria-disabled="true">Coming soon</span>
+                <p class="text-gray"><code>.dmg</code> for Apple silicon. Drag Nandin to Applications.</p>
+                <a href="https://github.com/vaultdbai/nandin/releases/latest" class="contact_btn nest_dl_btn">
+                  <i class="fa-solid fa-download me-2" aria-hidden="true"></i>Download for macOS
+                </a>
               </div>
             </li>
             <li class="col-lg-4 col-md-12 col-sm-12">
-              <div class="product_card nest_card nest_dl_card nest_dl_soon">
+              <div class="product_card nest_card nest_dl_card">
                 <i class="fa-brands fa-linux fs-1 text-purple mb-4" aria-hidden="true"></i>
                 <h3 class="h4 text-white">Linux</h3>
-                <p class="text-gray">A Linux build is on the way.</p>
-                <span class="nest_soon" aria-disabled="true">Coming soon</span>
+                <p class="text-gray"><code>.AppImage</code>, x64. Make it executable, then run it.</p>
+                <a href="https://github.com/vaultdbai/nandin/releases/latest" class="contact_btn nest_dl_btn">
+                  <i class="fa-solid fa-download me-2" aria-hidden="true"></i>Download for Linux
+                </a>
               </div>
             </li>
           </ul>
           <ul class="nest_dl_notes">
             <li>
               <i class="fa-brands fa-docker text-purple" aria-hidden="true"></i>
-              <span><strong>Requires Docker.</strong> Install Docker Desktop and start it before you open VaultDB
-                Nandin.</span>
+              <span><strong>Requires Docker.</strong> Docker Desktop on Windows and macOS, Docker Engine on Linux. Agents'
+                sandbox images are set up from Settings › Models &amp; runtimes.</span>
             </li>
             <li>
-              <i class="fa-solid fa-arrows-rotate text-purple" aria-hidden="true"></i>
-              <span><strong>Updates itself.</strong> When a new version is out, an Update button appears in the
-                Nandin title bar. Click it to install the update and restart.</span>
+              <i class="fa-solid fa-tower-broadcast text-purple" aria-hidden="true"></i>
+              <span><strong>Running a team?</strong> The relay is a separate container image,
+                <code>ghcr.io/vaultdbai/nandin-relay</code> (<a href="#teams" class="nest_inline_link">how to run it</a>).</span>
             </li>
           </ul>
           <div class="nest_actions justify-content-center">
-            <a href="https://github.com/devmchechi/nest-app/tree/main/docs" class="nest_btn_outline">
-              <i class="fa-solid fa-book me-2" aria-hidden="true"></i>Nandin docs on GitHub
+            <a href="https://github.com/vaultdbai/nandin/tree/main/docs/userguide" class="nest_btn_outline">
+              <i class="fa-solid fa-book me-2" aria-hidden="true"></i>User guide on GitHub
             </a>
           </div>
         </section>
@@ -802,112 +1038,123 @@
             </button>
             <div class="content" id="faq-1">
               <p>
-                An agent manager: a desktop app for running and supervising a team of AI agents, on your own or
-                with colleagues. Each agent runs in its own Docker container, is defined by a <code>skill.md</code>
-                file in a git repo you own, and reports back to you through the Agent Console, where you approve what
-                it does.
+                A desktop app that gives each person a Chief of Staff and a team of AI agents. The Chief of Staff learns
+                your job from your notes and works with your colleagues' Nandins; agents do the legwork in sealed Docker
+                containers on your machine. You approve anything risky, and every run is recorded.
               </p>
             </div>
           </div>
 
           <div class="accordian_box">
             <button type="button" class="label_box nest_label_btn" aria-expanded="false" aria-controls="faq-2">
-              <span class="label">Does my data leave my machine?</span>
+              <span class="label">Does Chief of Staff watch everything I do?</span>
               <img src="img/Group 19700.svg" alt="" />
             </button>
             <div class="content" id="faq-2">
               <p>
-                Only where you send it. An agent's prompts go to the model provider it uses, or stay on your machine
-                with a local model through Ollama. Containers can reach only the hosts you approved, and every
-                request is written to the audit log. Definitions, run history, and logs stay on your machine unless
-                you push your agents repo somewhere.
+                No, on purpose. It runs only when something starts it: you message it, a teammate's agent asks it
+                something, or a trigger fires. It updates your notes only while you talk to it. To have it check in by
+                itself, add a schedule trigger, for example weekdays at 9:00.
               </p>
             </div>
           </div>
 
           <div class="accordian_box">
             <button type="button" class="label_box nest_label_btn" aria-expanded="false" aria-controls="faq-3">
-              <span class="label">Which models can I use?</span>
+              <span class="label">Does my data leave my machine?</span>
               <img src="img/Group 19700.svg" alt="" />
             </button>
             <div class="content" id="faq-3">
               <p>
-                Local models through Ollama, or Anthropic, OpenAI, and DeepSeek with your own API key. Each agent
-                picks its model in its <code>skill.md</code>.
+                Only where you send it. Prompts go to the model provider each agent uses (or stay on your machine with a
+                local model). Containers reach only the sites you allowed, and every request is logged. Definitions, run
+                history and logs stay on your machine unless you back them up to your own git remote.
               </p>
             </div>
           </div>
 
           <div class="accordian_box">
             <button type="button" class="label_box nest_label_btn" aria-expanded="false" aria-controls="faq-4">
-              <span class="label">Why does Nandin need Docker?</span>
+              <span class="label">Do I need a relay or any server?</span>
               <img src="img/Group 19700.svg" alt="" />
             </button>
             <div class="content" id="faq-4">
               <p>
-                Every agent runs in its own container, so a misbehaving agent can't touch your files, other agents,
-                or your keys. Use Docker Desktop on macOS and Windows, or Docker Engine on Linux.
+                No. Everything works on one computer. Only person-to-person features (asking or assigning a teammate, the
+                team inbox, reassignment and handover, finding owners and who's online) need your company's relay, which
+                you host yourself.
               </p>
             </div>
           </div>
 
           <div class="accordian_box">
             <button type="button" class="label_box nest_label_btn" aria-expanded="false" aria-controls="faq-5">
-              <span class="label">Where do my API keys go?</span>
+              <span class="label">Which models can I use?</span>
               <img src="img/Group 19700.svg" alt="" />
             </button>
             <div class="content" id="faq-5">
               <p>
-                Into your operating system's keyring. Containers never see them: model calls go through a proxy on
-                your machine that adds the key on the way out.
+                Claude (with your Claude sign-in or an Anthropic key), OpenAI and DeepSeek with your own keys, Amazon
+                Bedrock, Azure AI Foundry or a LiteLLM gateway, and local models through Ollama (experimental). New
+                installs come with 100,000 free DeepSeek Flash tokens.
               </p>
             </div>
           </div>
 
           <div class="accordian_box">
             <button type="button" class="label_box nest_label_btn" aria-expanded="false" aria-controls="faq-6">
-              <span class="label">Where are my agents stored?</span>
+              <span class="label">Why does Nandin need Docker?</span>
               <img src="img/Group 19700.svg" alt="" />
             </button>
             <div class="content" id="faq-6">
               <p>
-                As files in a git repo in your home folder (<code>~/.nest/repo</code>). Push it to GitHub or any git
-                host to back it up or sync it to your other machines. The local database is a cache that VaultDB
-                Nandin can rebuild from those files.
+                Agents run only in containers, so a misbehaving agent can't touch your files, other agents or your keys.
+                Use Docker Desktop on Windows and macOS, or Docker Engine on Linux.
               </p>
             </div>
           </div>
 
           <div class="accordian_box">
             <button type="button" class="label_box nest_label_btn" aria-expanded="false" aria-controls="faq-7">
-              <span class="label">How do teams share agents?</span>
+              <span class="label">Is Nandin free?</span>
               <img src="img/Group 19700.svg" alt="" />
             </button>
             <div class="content" id="faq-7">
               <p>
-                A team is a GitHub organization with a private <code>nest-registry</code> repository. Members sign in
-                with GitHub, join the team, and share agents to it. For live delegation between machines, the team
-                points Nandin at a relay, which anyone can host with <code>nest --relay</code>.
+                The app is free and open source (Apache-2.0). The relay that connects teammates is free for organisations
+                with up to 20 users; beyond that, contact <a class="nest_inline_link"
+                  href="mailto:licensing@vaultdb.ai">licensing@vaultdb.ai</a> for a licence file. You pay your model
+                provider for model calls.
               </p>
             </div>
           </div>
 
           <div class="accordian_box">
             <button type="button" class="label_box nest_label_btn" aria-expanded="false" aria-controls="faq-8">
-              <span class="label">Can a teammate's agent call mine without asking?</span>
+              <span class="label">Can a teammate's agent act on my machine without asking?</span>
               <img src="img/Group 19700.svg" alt="" />
             </button>
             <div class="content" id="faq-8">
               <p>
-                Only if you allow it. Your agent must accept delegation and serve the requested capability, and the
-                trust graph decides who may call it: allow, deny, or ask. Callers from another machine with no rule
-                are treated as ask.
+                Only what you allow. Your agent must accept requests, and you decide who may call it: allow, ask or deny.
+                Work assigned to you always waits for your approval in your Inbox, and you can pause or block anyone.
               </p>
             </div>
           </div>
           <img src="img/Rectangle 23791.png" class="light2_img" alt="" />
         </section>
       </main>
+
+      <!-- The companion: a resting bison that takes you back to the top -->
+      <a href="#top" class="bison_companion js-bison-companion" aria-label="Back to top" tabindex="-1" aria-hidden="true">
+        <span class="bison" data-pose="rest">
+          <span class="bp-group">
+            <img class="bp-part bp-base" src="img/nandin-bison-rest.webp" alt="" width="384" height="384" loading="lazy" />
+            <img class="bp-part bp-head" src="img/nandin-bison-rest.webp" alt="" width="384" height="384" loading="lazy" />
+          </span>
+          <img class="bp-part bp-stand" src="img/nandin-bison-wait.webp" alt="" width="384" height="384" loading="lazy" />
+        </span>
+      </a>
     </div>
   </div>
   <!-- footer section ===========================================-->
@@ -921,7 +1168,7 @@
           </div>
 
           <div class="right" style="margin-bottom: 10px">
-            <a href="https://github.com/devmchechi/nest-app" aria-label="Nandin on GitHub">
+            <a href="https://github.com/vaultdbai/nandin" aria-label="Nandin on GitHub">
               <i class="fa-brands fa-github" aria-hidden="true"></i>
             </a>
             <a href="#" aria-label="YouTube">
@@ -981,6 +1228,7 @@
   </script>
 
   <script src="js/nest.js"></script>
+  <script src="js/nandin-bison.js"></script>
 </body>
 
 </html>

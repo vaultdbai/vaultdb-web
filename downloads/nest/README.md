@@ -1,6 +1,8 @@
-# Nandin downloads
+# VaultDB Nest downloads (old builds)
 
-Installers for Nandin, served from `https://www.vaultdb.ai/downloads/nest/`.
+> **Superseded.** This folder holds the VaultDB Nest 0.1.0 installer, from before the product became Nandin. The website now links to GitHub Releases (`https://github.com/vaultdbai/nandin/releases/latest`), and the Nandin app's updater reads `downloads/nandin/latest.json`, published by the app's own release workflow. Keep this folder so installs of the old build keep working; don't add new releases here.
+
+Installers for VaultDB Nest, served from `https://www.vaultdb.ai/downloads/nest/`.
 
 > Use the `www` host in URLs: `https://vaultdb.ai` (no `www`) doesn't serve HTTPS; plain `http://vaultdb.ai` only redirects to `https://www.vaultdb.ai`.
 The deploy workflow (`.github/workflows/deploy.yml`) uploads this folder to the
